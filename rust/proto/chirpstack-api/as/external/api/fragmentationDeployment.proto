@@ -1,0 +1,210 @@
+syntax = "proto3";
+
+package api;
+
+option go_package = "github.com/brocaar/chirpstack-api/go/v3/as/external/api";
+
+import "google/api/annotations.proto";
+import "google/protobuf/timestamp.proto";
+import "google/protobuf/duration.proto";
+import "google/protobuf/empty.proto";
+
+// FragmentationDeploymentService is the service managing fragmentation.
+service FragmentationDeploymentService {
+  // Create creates the given fragmentation deployment for given DevEUI.
+  rpc Create(FragmentationDeploymentRequest)
+      returns (FragmentationDeploymentResponse) {
+    option (google.api.http) = {
+      post : "/api/fragmentations"
+      body : "*"
+    };
+  }
+
+  // Get returns a fragmentation deployment given an ID.
+  rpc Get(GetFragmentationDeploymentRequest)
+      returns (GetFragmentationDeploymentResponse) {
+    option (google.api.http) = {
+      get : "/api/fragmentations/{id}"
+    };
+  }
+
+  // Update updates the given fragmentation deployment.
+  rpc Update(UpdateFragmentationDeploymentRequest)
+      returns (google.protobuf.Empty) {
+    option (google.api.http) = {
+      put : "/api/fragmentations/{fragmentation_deployment.id}"
+      body : "*"
+    };
+  }
+
+  // Delete deletes a fragmentation deployment given an ID.
+  rpc Delete(DeleteFragmentationDeploymentRequest)
+      returns (google.protobuf.Empty) {
+    option (google.api.http) = {
+      delete : "/api/fragmentations/{id}"
+    };
+  }
+
+  // List lists the available fragmentation deployment.
+  rpc List(ListFragmentationDeploymentRequest)
+      returns (ListFragmentationDeploymentResponse) {
+    option (google.api.http) = {
+      get : "/api/fragmentations"
+    };
+  }
+}
+
+enum FragmentationDeploymentGroupType {
+  // Class-C.
+  CLASS_C = 0;
+
+  // Class-B.
+  CLASS_B = 1;
+}
+
+message FragmentationDeployment {
+  // ID of the deployment (string formatted UUID).
+  // This value will be automatically assigned on create.
+  string id = 1;
+
+  // Name of the deployment.
+  string name = 2;
+
+  // Device EUI (HEX encoded).
+  string dev_eui = 3 [ json_name = "devEUI" ];
+
+  // Payload.
+  bytes payload = 4;
+
+  // Fragmentation deployment group type.
+  FragmentationDeploymentGroupType group_type = 5;
+
+  // Ping-slot period.
+  // Mandatory for Class-B fragmentation deployment.
+  uint32 ping_slot_period = 6;
+
+  // Redundancy (number of packages).
+  uint32 redundancy = 7;
+
+  // Unicast time-out.
+  // Set this to the value in which you at least expect an uplink frame from the
+  // device. The FUOTA deployment engine will wait at least for the given time
+  // before proceeding with the next steps.
+  google.protobuf.Duration unicast_timeout = 8;
+
+  // Deployment state.
+  // This value will be automatically set on create.
+  string state = 9;
+
+  // Next step after.
+  // This value will be automatically set on create.
+  google.protobuf.Timestamp next_step_after = 10;
+}
+
+message GetFragmentationDeployment {
+  // ID of the deployment (string formatted UUID).
+  // This value will be automatically assigned on create.
+  string id = 1;
+
+  // Name of the deployment.
+  string name = 2;
+
+  // Device EUI (HEX encoded).
+  string dev_eui = 3 [ json_name = "devEUI" ];
+
+  // Payload.
+  bytes payload = 4;
+
+  // Payload Size.
+  uint32 payload_size = 5;
+
+  // Fragmentation deployment group type.
+  FragmentationDeploymentGroupType group_type = 6;
+
+  // Ping-slot period.
+  // Mandatory for Class-B fragmentation deployment.
+  uint32 ping_slot_period = 7;
+
+  // Frag Size.
+  uint32 frag_size = 8;
+
+  // Redundancy (number of packages).
+  uint32 redundancy = 9;
+
+  // Unicast time-out.
+  // Set this to the value in which you at least expect an uplink frame from the
+  // device. The FUOTA deployment engine will wait at least for the given time
+  // before proceeding with the next steps.
+  google.protobuf.Duration unicast_timeout = 10;
+
+  // Deployment state.
+  // This value will be automatically set on create.
+  string state = 11;
+
+  // Device Deployment state.
+  string device_state = 12;
+
+  // Device Error Message.
+  string error_message = 13;
+
+  // Next step after.
+  // This value will be automatically set on create.
+  google.protobuf.Timestamp next_step_after = 14;
+}
+
+message FragmentationDeploymentRequest {
+  // Fragmentation Deployment object to create.
+  FragmentationDeployment fragmentationDeployment = 1;
+}
+
+message FragmentationDeploymentResponse {
+  // ID of created group (string formatted UUID).
+  string id = 1;
+}
+
+message GetFragmentationDeploymentRequest {
+  // ID (string formatted UUID).
+  string id = 1;
+}
+
+message GetFragmentationDeploymentResponse {
+  // Fragmentation Deployment object to create.
+  GetFragmentationDeployment fragmentationDeployment = 1;
+
+  // Created at timestamp.
+  google.protobuf.Timestamp created_at = 2;
+
+  // Last update timestamp.
+  google.protobuf.Timestamp updated_at = 3;
+}
+
+message UpdateFragmentationDeploymentRequest {
+  // Fragmentation Deployment object to create.
+  FragmentationDeployment fragmentation_deployment = 1;
+}
+
+message DeleteFragmentationDeploymentRequest {
+  // ID (string formatted UUID).
+  string id = 1;
+}
+
+message ListFragmentationDeploymentRequest {
+  // Max number of items to return.
+  int64 limit = 1;
+
+  // Offset in the result-set (for pagination).
+  int64 offset = 2;
+
+  // Search can be used to search on the fragmentation deployment name.
+  string search = 3;
+
+  // Device EUI (HEX encoded).
+  string dev_eui = 4 [ json_name = "devEUI" ];
+}
+
+message ListFragmentationDeploymentResponse {
+  // Total number of fragmentation deployments.
+  int64 total_count = 1;
+
+  repeated GetFragmentationDeployment result = 2;
+}

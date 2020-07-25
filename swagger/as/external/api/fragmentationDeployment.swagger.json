@@ -1,0 +1,366 @@
+{
+  "swagger": "2.0",
+  "info": {
+    "title": "as/external/api/fragmentationDeployment.proto",
+    "version": "version not set"
+  },
+  "schemes": [
+    "http",
+    "https"
+  ],
+  "consumes": [
+    "application/json"
+  ],
+  "produces": [
+    "application/json"
+  ],
+  "paths": {
+    "/api/fragmentations": {
+      "get": {
+        "summary": "List lists the available fragmentation deployment.",
+        "operationId": "List",
+        "responses": {
+          "200": {
+            "description": "A successful response.",
+            "schema": {
+              "$ref": "#/definitions/apiListFragmentationDeploymentResponse"
+            }
+          }
+        },
+        "parameters": [
+          {
+            "name": "limit",
+            "description": "Max number of items to return.",
+            "in": "query",
+            "required": false,
+            "type": "string",
+            "format": "int64"
+          },
+          {
+            "name": "offset",
+            "description": "Offset in the result-set (for pagination).",
+            "in": "query",
+            "required": false,
+            "type": "string",
+            "format": "int64"
+          },
+          {
+            "name": "search",
+            "description": "Search can be used to search on the fragmentation deployment name.",
+            "in": "query",
+            "required": false,
+            "type": "string"
+          },
+          {
+            "name": "devEUI",
+            "description": "Device EUI (HEX encoded).",
+            "in": "query",
+            "required": false,
+            "type": "string"
+          }
+        ],
+        "tags": [
+          "FragmentationDeploymentService"
+        ]
+      },
+      "post": {
+        "summary": "Create creates the given fragmentation deployment for given DevEUI.",
+        "operationId": "Create",
+        "responses": {
+          "200": {
+            "description": "A successful response.",
+            "schema": {
+              "$ref": "#/definitions/apiFragmentationDeploymentResponse"
+            }
+          }
+        },
+        "parameters": [
+          {
+            "name": "body",
+            "in": "body",
+            "required": true,
+            "schema": {
+              "$ref": "#/definitions/apiFragmentationDeploymentRequest"
+            }
+          }
+        ],
+        "tags": [
+          "FragmentationDeploymentService"
+        ]
+      }
+    },
+    "/api/fragmentations/{fragmentation_deployment.id}": {
+      "put": {
+        "summary": "Update updates the given fragmentation deployment.",
+        "operationId": "Update",
+        "responses": {
+          "200": {
+            "description": "A successful response.",
+            "schema": {
+              "properties": {}
+            }
+          }
+        },
+        "parameters": [
+          {
+            "name": "fragmentation_deployment.id",
+            "description": "ID of the deployment (string formatted UUID).\nThis value will be automatically assigned on create.",
+            "in": "path",
+            "required": true,
+            "type": "string"
+          },
+          {
+            "name": "body",
+            "in": "body",
+            "required": true,
+            "schema": {
+              "$ref": "#/definitions/apiUpdateFragmentationDeploymentRequest"
+            }
+          }
+        ],
+        "tags": [
+          "FragmentationDeploymentService"
+        ]
+      }
+    },
+    "/api/fragmentations/{id}": {
+      "get": {
+        "summary": "Get returns a fragmentation deployment given an ID.",
+        "operationId": "Get",
+        "responses": {
+          "200": {
+            "description": "A successful response.",
+            "schema": {
+              "$ref": "#/definitions/apiGetFragmentationDeploymentResponse"
+            }
+          }
+        },
+        "parameters": [
+          {
+            "name": "id",
+            "description": "ID (string formatted UUID).",
+            "in": "path",
+            "required": true,
+            "type": "string"
+          }
+        ],
+        "tags": [
+          "FragmentationDeploymentService"
+        ]
+      },
+      "delete": {
+        "summary": "Delete deletes a fragmentation deployment given an ID.",
+        "operationId": "Delete",
+        "responses": {
+          "200": {
+            "description": "A successful response.",
+            "schema": {
+              "properties": {}
+            }
+          }
+        },
+        "parameters": [
+          {
+            "name": "id",
+            "description": "ID (string formatted UUID).",
+            "in": "path",
+            "required": true,
+            "type": "string"
+          }
+        ],
+        "tags": [
+          "FragmentationDeploymentService"
+        ]
+      }
+    }
+  },
+  "definitions": {
+    "apiFragmentationDeployment": {
+      "type": "object",
+      "properties": {
+        "id": {
+          "type": "string",
+          "description": "ID of the deployment (string formatted UUID).\nThis value will be automatically assigned on create."
+        },
+        "name": {
+          "type": "string",
+          "description": "Name of the deployment."
+        },
+        "devEUI": {
+          "type": "string",
+          "description": "Device EUI (HEX encoded)."
+        },
+        "payload": {
+          "type": "string",
+          "format": "byte",
+          "description": "Payload."
+        },
+        "groupType": {
+          "$ref": "#/definitions/apiFragmentationDeploymentGroupType",
+          "description": "Fragmentation deployment group type."
+        },
+        "pingSlotPeriod": {
+          "type": "integer",
+          "format": "int64",
+          "description": "Ping-slot period.\nMandatory for Class-B fragmentation deployment."
+        },
+        "redundancy": {
+          "type": "integer",
+          "format": "int64",
+          "description": "Redundancy (number of packages)."
+        },
+        "unicastTimeout": {
+          "type": "string",
+          "description": "Unicast time-out.\nSet this to the value in which you at least expect an uplink frame from the\ndevice. The FUOTA deployment engine will wait at least for the given time\nbefore proceeding with the next steps."
+        },
+        "state": {
+          "type": "string",
+          "description": "Deployment state.\nThis value will be automatically set on create."
+        },
+        "nextStepAfter": {
+          "type": "string",
+          "format": "date-time",
+          "description": "Next step after.\nThis value will be automatically set on create."
+        }
+      }
+    },
+    "apiFragmentationDeploymentGroupType": {
+      "type": "string",
+      "enum": [
+        "CLASS_C",
+        "CLASS_B"
+      ],
+      "default": "CLASS_C",
+      "description": " - CLASS_C: Class-C.\n - CLASS_B: Class-B."
+    },
+    "apiFragmentationDeploymentRequest": {
+      "type": "object",
+      "properties": {
+        "fragmentationDeployment": {
+          "$ref": "#/definitions/apiFragmentationDeployment",
+          "description": "Fragmentation Deployment object to create."
+        }
+      }
+    },
+    "apiFragmentationDeploymentResponse": {
+      "type": "object",
+      "properties": {
+        "id": {
+          "type": "string",
+          "description": "ID of created group (string formatted UUID)."
+        }
+      }
+    },
+    "apiGetFragmentationDeployment": {
+      "type": "object",
+      "properties": {
+        "id": {
+          "type": "string",
+          "description": "ID of the deployment (string formatted UUID).\nThis value will be automatically assigned on create."
+        },
+        "name": {
+          "type": "string",
+          "description": "Name of the deployment."
+        },
+        "devEUI": {
+          "type": "string",
+          "description": "Device EUI (HEX encoded)."
+        },
+        "payload": {
+          "type": "string",
+          "format": "byte",
+          "description": "Payload."
+        },
+        "payloadSize": {
+          "type": "integer",
+          "format": "int64",
+          "description": "Payload Size."
+        },
+        "groupType": {
+          "$ref": "#/definitions/apiFragmentationDeploymentGroupType",
+          "description": "Fragmentation deployment group type."
+        },
+        "pingSlotPeriod": {
+          "type": "integer",
+          "format": "int64",
+          "description": "Ping-slot period.\nMandatory for Class-B fragmentation deployment."
+        },
+        "fragSize": {
+          "type": "integer",
+          "format": "int64",
+          "description": "Frag Size."
+        },
+        "redundancy": {
+          "type": "integer",
+          "format": "int64",
+          "description": "Redundancy (number of packages)."
+        },
+        "unicastTimeout": {
+          "type": "string",
+          "description": "Unicast time-out.\nSet this to the value in which you at least expect an uplink frame from the\ndevice. The FUOTA deployment engine will wait at least for the given time\nbefore proceeding with the next steps."
+        },
+        "state": {
+          "type": "string",
+          "description": "Deployment state.\nThis value will be automatically set on create."
+        },
+        "deviceState": {
+          "type": "string",
+          "description": "Device Deployment state."
+        },
+        "errorMessage": {
+          "type": "string",
+          "description": "Device Error Message."
+        },
+        "nextStepAfter": {
+          "type": "string",
+          "format": "date-time",
+          "description": "Next step after.\nThis value will be automatically set on create."
+        }
+      }
+    },
+    "apiGetFragmentationDeploymentResponse": {
+      "type": "object",
+      "properties": {
+        "fragmentationDeployment": {
+          "$ref": "#/definitions/apiGetFragmentationDeployment",
+          "description": "Fragmentation Deployment object to create."
+        },
+        "createdAt": {
+          "type": "string",
+          "format": "date-time",
+          "description": "Created at timestamp."
+        },
+        "updatedAt": {
+          "type": "string",
+          "format": "date-time",
+          "description": "Last update timestamp."
+        }
+      }
+    },
+    "apiListFragmentationDeploymentResponse": {
+      "type": "object",
+      "properties": {
+        "totalCount": {
+          "type": "string",
+          "format": "int64",
+          "description": "Total number of fragmentation deployments."
+        },
+        "result": {
+          "type": "array",
+          "items": {
+            "$ref": "#/definitions/apiGetFragmentationDeployment"
+          }
+        }
+      }
+    },
+    "apiUpdateFragmentationDeploymentRequest": {
+      "type": "object",
+      "properties": {
+        "fragmentationDeployment": {
+          "$ref": "#/definitions/apiFragmentationDeployment",
+          "description": "Fragmentation Deployment object to create."
+        }
+      }
+    }
+  }
+}
