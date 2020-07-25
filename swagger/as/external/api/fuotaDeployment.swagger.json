@@ -15,6 +15,41 @@
     "application/json"
   ],
   "paths": {
+    "/api/applications/{application_id}/fuota-deployments": {
+      "post": {
+        "summary": "CreateForApplication creates a deployment for the given Application.",
+        "operationId": "CreateForApplication",
+        "responses": {
+          "200": {
+            "description": "A successful response.",
+            "schema": {
+              "$ref": "#/definitions/apiCreateFUOTADeploymentForApplicationResponse"
+            }
+          }
+        },
+        "parameters": [
+          {
+            "name": "application_id",
+            "description": "Application ID.",
+            "in": "path",
+            "required": true,
+            "type": "string",
+            "format": "int64"
+          },
+          {
+            "name": "body",
+            "in": "body",
+            "required": true,
+            "schema": {
+              "$ref": "#/definitions/apiCreateFUOTADeploymentForApplicationRequest"
+            }
+          }
+        ],
+        "tags": [
+          "FUOTADeploymentService"
+        ]
+      }
+    },
     "/api/devices/{dev_eui}/fuota-deployments": {
       "post": {
         "summary": "CreateForDevice creates a deployment for the given DevEUI.",
@@ -202,6 +237,29 @@
     }
   },
   "definitions": {
+    "apiCreateFUOTADeploymentForApplicationRequest": {
+      "type": "object",
+      "properties": {
+        "applicationID": {
+          "type": "string",
+          "format": "int64",
+          "description": "Application ID."
+        },
+        "fuotaDeployment": {
+          "$ref": "#/definitions/apiFUOTADeployment",
+          "description": "FUOTA deployment."
+        }
+      }
+    },
+    "apiCreateFUOTADeploymentForApplicationResponse": {
+      "type": "object",
+      "properties": {
+        "id": {
+          "type": "string",
+          "description": "ID of the created deployment (string formatted UUID)."
+        }
+      }
+    },
     "apiCreateFUOTADeploymentForDeviceRequest": {
       "type": "object",
       "properties": {

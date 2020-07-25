@@ -1,0 +1,788 @@
+{
+  "swagger": "2.0",
+  "info": {
+    "title": "as/external/api/remoteMulticastGroup.proto",
+    "version": "version not set"
+  },
+  "schemes": [
+    "http",
+    "https"
+  ],
+  "consumes": [
+    "application/json"
+  ],
+  "produces": [
+    "application/json"
+  ],
+  "paths": {
+    "/api/remote-multicast-groups": {
+      "get": {
+        "summary": "List lists the available remote multicast-groups.",
+        "operationId": "List",
+        "responses": {
+          "200": {
+            "description": "A successful response.",
+            "schema": {
+              "$ref": "#/definitions/apiListRemoteMulticastGroupResponse"
+            }
+          }
+        },
+        "parameters": [
+          {
+            "name": "limit",
+            "description": "Max number of items to return.",
+            "in": "query",
+            "required": false,
+            "type": "string",
+            "format": "int64"
+          },
+          {
+            "name": "offset",
+            "description": "Offset in the result-set (for pagination).",
+            "in": "query",
+            "required": false,
+            "type": "string",
+            "format": "int64"
+          },
+          {
+            "name": "organizationID",
+            "description": "Organization id to filter on.",
+            "in": "query",
+            "required": false,
+            "type": "string",
+            "format": "int64"
+          },
+          {
+            "name": "applicationID",
+            "description": "Application ID to filter on.",
+            "in": "query",
+            "required": false,
+            "type": "string",
+            "format": "int64"
+          },
+          {
+            "name": "serviceProfileID",
+            "description": "Service-profile ID to filter on.",
+            "in": "query",
+            "required": false,
+            "type": "string"
+          },
+          {
+            "name": "search",
+            "description": "Search can be used to search on the remote multicast-group name.",
+            "in": "query",
+            "required": false,
+            "type": "string"
+          }
+        ],
+        "tags": [
+          "RemoteMulticastGroupService"
+        ]
+      },
+      "post": {
+        "summary": "Create creates the given remote multicast-group.",
+        "operationId": "Create",
+        "responses": {
+          "200": {
+            "description": "A successful response.",
+            "schema": {
+              "$ref": "#/definitions/apiCreateRemoteMulticastGroupResponse"
+            }
+          }
+        },
+        "parameters": [
+          {
+            "name": "body",
+            "in": "body",
+            "required": true,
+            "schema": {
+              "$ref": "#/definitions/apiCreateRemoteMulticastGroupRequest"
+            }
+          }
+        ],
+        "tags": [
+          "RemoteMulticastGroupService"
+        ]
+      }
+    },
+    "/api/remote-multicast-groups/{id}": {
+      "get": {
+        "summary": "Get returns a remote multicast-group given an ID.",
+        "operationId": "Get",
+        "responses": {
+          "200": {
+            "description": "A successful response.",
+            "schema": {
+              "$ref": "#/definitions/apiGetRemoteMulticastGroupResponse"
+            }
+          }
+        },
+        "parameters": [
+          {
+            "name": "id",
+            "description": "ID (string formatted UUID).",
+            "in": "path",
+            "required": true,
+            "type": "string"
+          }
+        ],
+        "tags": [
+          "RemoteMulticastGroupService"
+        ]
+      },
+      "delete": {
+        "summary": "Delete deletes a remote multicast-group given an ID.",
+        "operationId": "Delete",
+        "responses": {
+          "200": {
+            "description": "A successful response.",
+            "schema": {
+              "properties": {}
+            }
+          }
+        },
+        "parameters": [
+          {
+            "name": "id",
+            "description": "ID (string formatted UUID).",
+            "in": "path",
+            "required": true,
+            "type": "string"
+          }
+        ],
+        "tags": [
+          "RemoteMulticastGroupService"
+        ]
+      }
+    },
+    "/api/remote-multicast-groups/{remote_multicast_group.id}": {
+      "put": {
+        "summary": "Update updates the given remote multicast-group.",
+        "operationId": "Update",
+        "responses": {
+          "200": {
+            "description": "A successful response.",
+            "schema": {
+              "properties": {}
+            }
+          }
+        },
+        "parameters": [
+          {
+            "name": "remote_multicast_group.id",
+            "description": "ID (string formatted UUID).\nThis will be generated automatically on create.",
+            "in": "path",
+            "required": true,
+            "type": "string"
+          },
+          {
+            "name": "body",
+            "in": "body",
+            "required": true,
+            "schema": {
+              "$ref": "#/definitions/apiUpdateRemoteMulticastGroupRequest"
+            }
+          }
+        ],
+        "tags": [
+          "RemoteMulticastGroupService"
+        ]
+      }
+    },
+    "/api/remote-multicast-groups/{remote_multicast_group_id}/application/{application_id}/devices": {
+      "get": {
+        "summary": "ListDevicesForRemoteMulticast Lists the available devices for joining to remote multicast-group for given application id.",
+        "operationId": "ListDevicesForRemoteMulticast",
+        "responses": {
+          "200": {
+            "description": "A successful response.",
+            "schema": {
+              "$ref": "#/definitions/apiListRemoteMulticastDeviceResponse"
+            }
+          }
+        },
+        "parameters": [
+          {
+            "name": "remote_multicast_group_id",
+            "description": "Remote Multicast deployment ID (string formatted UUID).",
+            "in": "path",
+            "required": true,
+            "type": "string"
+          },
+          {
+            "name": "application_id",
+            "description": "Application ID to filter on.",
+            "in": "path",
+            "required": true,
+            "type": "string",
+            "format": "int64"
+          },
+          {
+            "name": "limit",
+            "description": "Max number of remote multicast devices to return in the result-set.",
+            "in": "query",
+            "required": false,
+            "type": "string",
+            "format": "int64"
+          },
+          {
+            "name": "offset",
+            "description": "Offset in the result-set (for pagination).",
+            "in": "query",
+            "required": false,
+            "type": "string",
+            "format": "int64"
+          },
+          {
+            "name": "search",
+            "description": "Search on name or DevEUI.",
+            "in": "query",
+            "required": false,
+            "type": "string"
+          }
+        ],
+        "tags": [
+          "RemoteMulticastGroupService"
+        ]
+      }
+    },
+    "/api/remote-multicast-groups/{remote_multicast_group_id}/devices": {
+      "get": {
+        "summary": "GetDevicesList Lists the available devices in remote multicast-groups.",
+        "operationId": "GetDevicesList",
+        "responses": {
+          "200": {
+            "description": "A successful response.",
+            "schema": {
+              "$ref": "#/definitions/apiListRemoteMulticastDevicesResponse"
+            }
+          }
+        },
+        "parameters": [
+          {
+            "name": "remote_multicast_group_id",
+            "description": "Remote Multicast deployment ID (string formatted UUID).",
+            "in": "path",
+            "required": true,
+            "type": "string"
+          },
+          {
+            "name": "limit",
+            "description": "Max number of remote multicast devices to return in the result-set.",
+            "in": "query",
+            "required": false,
+            "type": "string",
+            "format": "int64"
+          },
+          {
+            "name": "offset",
+            "description": "Offset in the result-set (for pagination).",
+            "in": "query",
+            "required": false,
+            "type": "string",
+            "format": "int64"
+          },
+          {
+            "name": "applicationID",
+            "description": "Application ID to filter on.",
+            "in": "query",
+            "required": false,
+            "type": "string",
+            "format": "int64"
+          },
+          {
+            "name": "search",
+            "description": "Search on name or DevEUI.",
+            "in": "query",
+            "required": false,
+            "type": "string"
+          }
+        ],
+        "tags": [
+          "RemoteMulticastGroupService"
+        ]
+      },
+      "post": {
+        "summary": "AddDevice adds the given device to the remote multicast-group.",
+        "operationId": "AddDevice",
+        "responses": {
+          "200": {
+            "description": "A successful response.",
+            "schema": {
+              "properties": {}
+            }
+          }
+        },
+        "parameters": [
+          {
+            "name": "remote_multicast_group_id",
+            "description": "Remote Multicast deployment ID (string formatted UUID).",
+            "in": "path",
+            "required": true,
+            "type": "string"
+          },
+          {
+            "name": "body",
+            "in": "body",
+            "required": true,
+            "schema": {
+              "$ref": "#/definitions/apiAddDeviceToRemoteMulticastGroupRequest"
+            }
+          }
+        ],
+        "tags": [
+          "RemoteMulticastGroupService"
+        ]
+      }
+    },
+    "/api/remote-multicast-groups/{remote_multicast_group_id}/devices/{dev_eui}": {
+      "get": {
+        "summary": "GetDeploymentDevice returns the deployment device.",
+        "operationId": "GetDeploymentDevice",
+        "responses": {
+          "200": {
+            "description": "A successful response.",
+            "schema": {
+              "$ref": "#/definitions/apiGetRemoteMulticastDeploymentDeviceResponse"
+            }
+          }
+        },
+        "parameters": [
+          {
+            "name": "remote_multicast_group_id",
+            "description": "ID of the deployment (string formatted UUID).\nThis value will be automatically assigned on create.",
+            "in": "path",
+            "required": true,
+            "type": "string"
+          },
+          {
+            "name": "dev_eui",
+            "description": "Device EUI (HEX encoded).",
+            "in": "path",
+            "required": true,
+            "type": "string"
+          }
+        ],
+        "tags": [
+          "RemoteMulticastGroupService"
+        ]
+      },
+      "delete": {
+        "summary": "RemoveDevice removes the given device from the remote multicast-group.",
+        "operationId": "RemoveDevice",
+        "responses": {
+          "200": {
+            "description": "A successful response.",
+            "schema": {
+              "properties": {}
+            }
+          }
+        },
+        "parameters": [
+          {
+            "name": "remote_multicast_group_id",
+            "description": "Remote Multicast deployment ID (string formatted UUID).",
+            "in": "path",
+            "required": true,
+            "type": "string"
+          },
+          {
+            "name": "dev_eui",
+            "description": "Device EUI (HEX encoded string).",
+            "in": "path",
+            "required": true,
+            "type": "string"
+          }
+        ],
+        "tags": [
+          "RemoteMulticastGroupService"
+        ]
+      }
+    },
+    "/api/remote-multicast-groups/{remote_multicast_group_id}/devices/{dev_eui}/reset": {
+      "put": {
+        "summary": "ResetDevice Restart the remote multicast process of given device.",
+        "operationId": "ResetDevice",
+        "responses": {
+          "200": {
+            "description": "A successful response.",
+            "schema": {
+              "properties": {}
+            }
+          }
+        },
+        "parameters": [
+          {
+            "name": "remote_multicast_group_id",
+            "description": "ID of the deployment (string formatted UUID).\nThis value will be automatically assigned on create.",
+            "in": "path",
+            "required": true,
+            "type": "string"
+          },
+          {
+            "name": "dev_eui",
+            "description": "Device EUI (HEX encoded).",
+            "in": "path",
+            "required": true,
+            "type": "string"
+          }
+        ],
+        "tags": [
+          "RemoteMulticastGroupService"
+        ]
+      }
+    }
+  },
+  "definitions": {
+    "apiAddDeviceToRemoteMulticastGroupRequest": {
+      "type": "object",
+      "properties": {
+        "remoteMulticastDeploymentID": {
+          "type": "string",
+          "description": "Remote Multicast deployment ID (string formatted UUID)."
+        },
+        "devEUI": {
+          "type": "string",
+          "description": "Device EUI (HEX encoded string).\nNote that the device must be under the same service-profile as the\nremote multicast-group."
+        }
+      }
+    },
+    "apiCreateRemoteMulticastGroupRequest": {
+      "type": "object",
+      "properties": {
+        "remoteMulticastGroup": {
+          "$ref": "#/definitions/apiRemoteMulticastGroup",
+          "description": "Remote Multicast-group object to create."
+        }
+      }
+    },
+    "apiCreateRemoteMulticastGroupResponse": {
+      "type": "object",
+      "properties": {
+        "id": {
+          "type": "string",
+          "description": "ID of created group (string formatted UUID)."
+        }
+      }
+    },
+    "apiDeviceListItem": {
+      "type": "object",
+      "properties": {
+        "devEUI": {
+          "type": "string",
+          "description": "Device EUI (HEX encoded)."
+        },
+        "name": {
+          "type": "string",
+          "description": "Name of the device."
+        },
+        "applicationID": {
+          "type": "string",
+          "format": "int64",
+          "description": "Application ID."
+        },
+        "description": {
+          "type": "string",
+          "description": "Description of the device."
+        },
+        "deviceProfileID": {
+          "type": "string",
+          "description": "Device-profile ID attached to the device."
+        },
+        "deviceProfileName": {
+          "type": "string",
+          "description": "Device-profile name."
+        },
+        "deviceStatusBattery": {
+          "type": "integer",
+          "format": "int64",
+          "description": "The device battery status (deprecated, use device_status_battery_level).\n0:      The end-device is connected to an external power source\n1..254: The battery level, 1 being at minimum and 254 being at maximum\n255:    The end-device was not able to measure the battery level\n256:    The device-status is not available."
+        },
+        "deviceStatusMargin": {
+          "type": "integer",
+          "format": "int32",
+          "description": "The device margin status\n-32..32: The demodulation SNR ration in dB\n256:     The device-status is not available."
+        },
+        "deviceStatusExternalPowerSource": {
+          "type": "boolean",
+          "format": "boolean",
+          "description": "Device is connected to an external power source."
+        },
+        "deviceStatusBatteryLevelUnavailable": {
+          "type": "boolean",
+          "format": "boolean",
+          "description": "Device battery status is unavailable."
+        },
+        "deviceStatusBatteryLevel": {
+          "type": "number",
+          "format": "float",
+          "description": "Device battery level as a percentage."
+        },
+        "lastSeenAt": {
+          "type": "string",
+          "format": "date-time",
+          "description": "The last time the application-server received any data from the device,\nor an empty string when the device never sent any data."
+        }
+      }
+    },
+    "apiGetRemoteMulticastDeploymentDeviceResponse": {
+      "type": "object",
+      "properties": {
+        "deploymentDevice": {
+          "$ref": "#/definitions/apiRemoteMulticastDeploymentDevice"
+        }
+      }
+    },
+    "apiGetRemoteMulticastGroupResponse": {
+      "type": "object",
+      "properties": {
+        "remoteMulticastGroup": {
+          "$ref": "#/definitions/apiRemoteMulticastGroup",
+          "description": "Remote Multicast-group object."
+        },
+        "createdAt": {
+          "type": "string",
+          "format": "date-time",
+          "description": "Created at timestamp."
+        },
+        "updatedAt": {
+          "type": "string",
+          "format": "date-time",
+          "description": "Last update timestamp."
+        },
+        "mcAddr": {
+          "type": "string",
+          "description": "Multicast address (HEX encoded DevAddr)."
+        },
+        "mcNwkSKey": {
+          "type": "string",
+          "description": "Multicast network session key (HEX encoded AES128 key)."
+        },
+        "mcAppSKey": {
+          "type": "string",
+          "description": "Multicast application session key (HEX encoded AES128 key)."
+        },
+        "fCnt": {
+          "type": "integer",
+          "format": "int64",
+          "description": "Frame-counter."
+        }
+      }
+    },
+    "apiListRemoteMulticastDeviceResponse": {
+      "type": "object",
+      "properties": {
+        "totalCount": {
+          "type": "string",
+          "format": "int64",
+          "description": "Total number of devices available within the result-set."
+        },
+        "result": {
+          "type": "array",
+          "items": {
+            "$ref": "#/definitions/apiDeviceListItem"
+          },
+          "description": "Devices within this result-set."
+        }
+      }
+    },
+    "apiListRemoteMulticastDevicesResponse": {
+      "type": "object",
+      "properties": {
+        "totalCount": {
+          "type": "string",
+          "format": "int64",
+          "description": "Total number of remote multicast-groups."
+        },
+        "result": {
+          "type": "array",
+          "items": {
+            "$ref": "#/definitions/apiRemoteMulticastDeploymentDevice"
+          }
+        }
+      }
+    },
+    "apiListRemoteMulticastGroupResponse": {
+      "type": "object",
+      "properties": {
+        "totalCount": {
+          "type": "string",
+          "format": "int64",
+          "description": "Total number of remote multicast-groups."
+        },
+        "result": {
+          "type": "array",
+          "items": {
+            "$ref": "#/definitions/apiRemoteMulticastGroupListItem"
+          }
+        }
+      }
+    },
+    "apiRemoteMulticastDeploymentDevice": {
+      "type": "object",
+      "properties": {
+        "id": {
+          "type": "string",
+          "description": "Remote multicast ID (string formatted UUID).\nThis will be generated automatically on create."
+        },
+        "devEUI": {
+          "type": "string",
+          "description": "Device EUI (HEX encoded) (optional)."
+        },
+        "deviceName": {
+          "type": "string"
+        },
+        "multicastGroupID": {
+          "type": "string",
+          "description": "Multicast-group ID (string formatted UUID)."
+        },
+        "multicastGroupName": {
+          "type": "string"
+        },
+        "createdAt": {
+          "type": "string",
+          "format": "date-time",
+          "description": "Created at timestamp."
+        },
+        "updatedAt": {
+          "type": "string",
+          "format": "date-time",
+          "description": "Last update timestamp."
+        },
+        "state": {
+          "$ref": "#/definitions/apiRemoteMulticastDeploymentDeviceState",
+          "description": "Remote Multicast Deployment Device state.\nThis value will be automatically set on create."
+        },
+        "errorMessage": {
+          "type": "string",
+          "description": "Error message (in case of error state)."
+        }
+      }
+    },
+    "apiRemoteMulticastDeploymentDeviceState": {
+      "type": "string",
+      "enum": [
+        "PENDING",
+        "SUCCESS",
+        "ERROR"
+      ],
+      "default": "PENDING",
+      "description": " - PENDING: Pending.\n - SUCCESS: Success.\n - ERROR: Error."
+    },
+    "apiRemoteMulticastGroup": {
+      "type": "object",
+      "properties": {
+        "id": {
+          "type": "string",
+          "description": "ID (string formatted UUID).\nThis will be generated automatically on create."
+        },
+        "name": {
+          "type": "string",
+          "description": "Remote Multicast-group name."
+        },
+        "multicastGroupId": {
+          "type": "string",
+          "description": "Multicast Group ID."
+        },
+        "serviceProfileID": {
+          "type": "string",
+          "description": "Service-profile ID.\nAfter creation, this can not be updated."
+        },
+        "applicationID": {
+          "type": "string",
+          "format": "int64",
+          "description": "Application ID\nAfter creation, this can not be updated."
+        },
+        "groupType": {
+          "$ref": "#/definitions/apiRemoteMulticastGroupType",
+          "description": "Remote Multicast type."
+        },
+        "dr": {
+          "type": "integer",
+          "format": "int64",
+          "description": "Data-rate."
+        },
+        "frequency": {
+          "type": "integer",
+          "format": "int64",
+          "description": "Frequency (Hz)."
+        },
+        "pingSlotPeriod": {
+          "type": "integer",
+          "format": "int64",
+          "description": "Ping-slot period.\nMandatory for Class-B remote multicast groups."
+        },
+        "state": {
+          "type": "string",
+          "description": "Remote Multicast Deployment state.\nThis value will be automatically set on create."
+        },
+        "unicastTimeout": {
+          "type": "string",
+          "description": "Unicast time-out.\nSet this to the value in which you at least expect an uplink frame from the\ndevice. The Remote Multicast deployment engine will wait at least for the given time\nbefore proceeding with the next steps."
+        },
+        "nextStepAfter": {
+          "type": "string",
+          "format": "date-time",
+          "description": "Next step after.\nThis value will be automatically set on create."
+        }
+      }
+    },
+    "apiRemoteMulticastGroupListItem": {
+      "type": "object",
+      "properties": {
+        "id": {
+          "type": "string",
+          "description": "ID (string formatted UUID)."
+        },
+        "name": {
+          "type": "string",
+          "description": "Remote Multicast-group name."
+        },
+        "serviceProfileID": {
+          "type": "string",
+          "description": "Service-profile ID (string formatted UUID)."
+        },
+        "serviceProfileName": {
+          "type": "string",
+          "description": "Service-profile name."
+        },
+        "applicationID": {
+          "type": "string",
+          "format": "int64"
+        },
+        "applicationName": {
+          "type": "string"
+        },
+        "multicastGroupID": {
+          "type": "string",
+          "description": "Multicast-group ID (string formatted UUID)."
+        },
+        "multicastGroupName": {
+          "type": "string"
+        },
+        "state": {
+          "type": "string",
+          "description": "Deployment state."
+        }
+      }
+    },
+    "apiRemoteMulticastGroupType": {
+      "type": "string",
+      "enum": [
+        "CLASS_C",
+        "CLASS_B"
+      ],
+      "default": "CLASS_C",
+      "description": " - CLASS_C: Class-C.\n - CLASS_B: Class-B."
+    },
+    "apiUpdateRemoteMulticastGroupRequest": {
+      "type": "object",
+      "properties": {
+        "remoteMulticastGroup": {
+          "$ref": "#/definitions/apiRemoteMulticastGroup",
+          "description": "Remote Multicast-group object to update."
+        }
+      }
+    }
+  }
+}

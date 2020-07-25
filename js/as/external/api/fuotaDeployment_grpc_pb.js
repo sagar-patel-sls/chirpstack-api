@@ -8,6 +8,28 @@ var google_protobuf_timestamp_pb = require('google-protobuf/google/protobuf/time
 var google_protobuf_duration_pb = require('google-protobuf/google/protobuf/duration_pb.js');
 var as_external_api_multicastGroup_pb = require('../../../as/external/api/multicastGroup_pb.js');
 
+function serialize_api_CreateFUOTADeploymentForApplicationRequest(arg) {
+  if (!(arg instanceof as_external_api_fuotaDeployment_pb.CreateFUOTADeploymentForApplicationRequest)) {
+    throw new Error('Expected argument of type api.CreateFUOTADeploymentForApplicationRequest');
+  }
+  return Buffer.from(arg.serializeBinary());
+}
+
+function deserialize_api_CreateFUOTADeploymentForApplicationRequest(buffer_arg) {
+  return as_external_api_fuotaDeployment_pb.CreateFUOTADeploymentForApplicationRequest.deserializeBinary(new Uint8Array(buffer_arg));
+}
+
+function serialize_api_CreateFUOTADeploymentForApplicationResponse(arg) {
+  if (!(arg instanceof as_external_api_fuotaDeployment_pb.CreateFUOTADeploymentForApplicationResponse)) {
+    throw new Error('Expected argument of type api.CreateFUOTADeploymentForApplicationResponse');
+  }
+  return Buffer.from(arg.serializeBinary());
+}
+
+function deserialize_api_CreateFUOTADeploymentForApplicationResponse(buffer_arg) {
+  return as_external_api_fuotaDeployment_pb.CreateFUOTADeploymentForApplicationResponse.deserializeBinary(new Uint8Array(buffer_arg));
+}
+
 function serialize_api_CreateFUOTADeploymentForDeviceRequest(arg) {
   if (!(arg instanceof as_external_api_fuotaDeployment_pb.CreateFUOTADeploymentForDeviceRequest)) {
     throw new Error('Expected argument of type api.CreateFUOTADeploymentForDeviceRequest');
@@ -132,6 +154,18 @@ var FUOTADeploymentServiceService = exports.FUOTADeploymentServiceService = {
     requestDeserialize: deserialize_api_CreateFUOTADeploymentForDeviceRequest,
     responseSerialize: serialize_api_CreateFUOTADeploymentForDeviceResponse,
     responseDeserialize: deserialize_api_CreateFUOTADeploymentForDeviceResponse,
+  },
+  // CreateForApplication creates a deployment for the given Application.
+  createForApplication: {
+    path: '/api.FUOTADeploymentService/CreateForApplication',
+    requestStream: false,
+    responseStream: false,
+    requestType: as_external_api_fuotaDeployment_pb.CreateFUOTADeploymentForApplicationRequest,
+    responseType: as_external_api_fuotaDeployment_pb.CreateFUOTADeploymentForApplicationResponse,
+    requestSerialize: serialize_api_CreateFUOTADeploymentForApplicationRequest,
+    requestDeserialize: deserialize_api_CreateFUOTADeploymentForApplicationRequest,
+    responseSerialize: serialize_api_CreateFUOTADeploymentForApplicationResponse,
+    responseDeserialize: deserialize_api_CreateFUOTADeploymentForApplicationResponse,
   },
   // Get returns the fuota deployment for the given id.
   get: {

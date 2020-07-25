@@ -20,6 +20,14 @@ service FUOTADeploymentService {
         };
     }
 
+    // CreateForApplication creates a deployment for the given Application.
+    rpc CreateForApplication(CreateFUOTADeploymentForApplicationRequest) returns (CreateFUOTADeploymentForApplicationResponse) {
+        option(google.api.http) = {
+            post: "/api/applications/{application_id}/fuota-deployments"
+            body: "*"
+        };
+    }
+
     // Get returns the fuota deployment for the given id.
     rpc Get(GetFUOTADeploymentRequest) returns (GetFUOTADeploymentResponse) {
         option(google.api.http) = {
@@ -133,6 +141,18 @@ message CreateFUOTADeploymentForDeviceRequest {
 }
 
 message CreateFUOTADeploymentForDeviceResponse {
+    // ID of the created deployment (string formatted UUID).
+    string id = 1;
+}
+message CreateFUOTADeploymentForApplicationRequest {
+    // Application ID.
+	int64 application_id = 1 [json_name = "applicationID"];
+
+    // FUOTA deployment.
+    FUOTADeployment fuota_deployment = 2;
+}
+
+message CreateFUOTADeploymentForApplicationResponse {
     // ID of the created deployment (string formatted UUID).
     string id = 1;
 }

@@ -165,6 +165,52 @@ export namespace CreateFUOTADeploymentForDeviceResponse {
   }
 }
 
+export class CreateFUOTADeploymentForApplicationRequest extends jspb.Message {
+  getApplicationId(): number;
+  setApplicationId(value: number): void;
+
+  hasFuotaDeployment(): boolean;
+  clearFuotaDeployment(): void;
+  getFuotaDeployment(): FUOTADeployment | undefined;
+  setFuotaDeployment(value?: FUOTADeployment): void;
+
+  serializeBinary(): Uint8Array;
+  toObject(includeInstance?: boolean): CreateFUOTADeploymentForApplicationRequest.AsObject;
+  static toObject(includeInstance: boolean, msg: CreateFUOTADeploymentForApplicationRequest): CreateFUOTADeploymentForApplicationRequest.AsObject;
+  static extensions: {[key: number]: jspb.ExtensionFieldInfo<jspb.Message>};
+  static extensionsBinary: {[key: number]: jspb.ExtensionFieldBinaryInfo<jspb.Message>};
+  static serializeBinaryToWriter(message: CreateFUOTADeploymentForApplicationRequest, writer: jspb.BinaryWriter): void;
+  static deserializeBinary(bytes: Uint8Array): CreateFUOTADeploymentForApplicationRequest;
+  static deserializeBinaryFromReader(message: CreateFUOTADeploymentForApplicationRequest, reader: jspb.BinaryReader): CreateFUOTADeploymentForApplicationRequest;
+}
+
+export namespace CreateFUOTADeploymentForApplicationRequest {
+  export type AsObject = {
+    applicationId: number,
+    fuotaDeployment?: FUOTADeployment.AsObject,
+  }
+}
+
+export class CreateFUOTADeploymentForApplicationResponse extends jspb.Message {
+  getId(): string;
+  setId(value: string): void;
+
+  serializeBinary(): Uint8Array;
+  toObject(includeInstance?: boolean): CreateFUOTADeploymentForApplicationResponse.AsObject;
+  static toObject(includeInstance: boolean, msg: CreateFUOTADeploymentForApplicationResponse): CreateFUOTADeploymentForApplicationResponse.AsObject;
+  static extensions: {[key: number]: jspb.ExtensionFieldInfo<jspb.Message>};
+  static extensionsBinary: {[key: number]: jspb.ExtensionFieldBinaryInfo<jspb.Message>};
+  static serializeBinaryToWriter(message: CreateFUOTADeploymentForApplicationResponse, writer: jspb.BinaryWriter): void;
+  static deserializeBinary(bytes: Uint8Array): CreateFUOTADeploymentForApplicationResponse;
+  static deserializeBinaryFromReader(message: CreateFUOTADeploymentForApplicationResponse, reader: jspb.BinaryReader): CreateFUOTADeploymentForApplicationResponse;
+}
+
+export namespace CreateFUOTADeploymentForApplicationResponse {
+  export type AsObject = {
+    id: string,
+  }
+}
+
 export class GetFUOTADeploymentRequest extends jspb.Message {
   getId(): string;
   setId(value: string): void;

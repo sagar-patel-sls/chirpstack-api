@@ -8,6 +8,7 @@ import * as grpc from "grpc";
 
 interface IFUOTADeploymentServiceService extends grpc.ServiceDefinition<grpc.UntypedServiceImplementation> {
   createForDevice: grpc.MethodDefinition<as_external_api_fuotaDeployment_pb.CreateFUOTADeploymentForDeviceRequest, as_external_api_fuotaDeployment_pb.CreateFUOTADeploymentForDeviceResponse>;
+  createForApplication: grpc.MethodDefinition<as_external_api_fuotaDeployment_pb.CreateFUOTADeploymentForApplicationRequest, as_external_api_fuotaDeployment_pb.CreateFUOTADeploymentForApplicationResponse>;
   get: grpc.MethodDefinition<as_external_api_fuotaDeployment_pb.GetFUOTADeploymentRequest, as_external_api_fuotaDeployment_pb.GetFUOTADeploymentResponse>;
   list: grpc.MethodDefinition<as_external_api_fuotaDeployment_pb.ListFUOTADeploymentRequest, as_external_api_fuotaDeployment_pb.ListFUOTADeploymentResponse>;
   getDeploymentDevice: grpc.MethodDefinition<as_external_api_fuotaDeployment_pb.GetFUOTADeploymentDeviceRequest, as_external_api_fuotaDeployment_pb.GetFUOTADeploymentDeviceResponse>;
@@ -21,6 +22,9 @@ export class FUOTADeploymentServiceClient extends grpc.Client {
   createForDevice(argument: as_external_api_fuotaDeployment_pb.CreateFUOTADeploymentForDeviceRequest, callback: grpc.requestCallback<as_external_api_fuotaDeployment_pb.CreateFUOTADeploymentForDeviceResponse>): grpc.ClientUnaryCall;
   createForDevice(argument: as_external_api_fuotaDeployment_pb.CreateFUOTADeploymentForDeviceRequest, metadataOrOptions: grpc.Metadata | grpc.CallOptions | null, callback: grpc.requestCallback<as_external_api_fuotaDeployment_pb.CreateFUOTADeploymentForDeviceResponse>): grpc.ClientUnaryCall;
   createForDevice(argument: as_external_api_fuotaDeployment_pb.CreateFUOTADeploymentForDeviceRequest, metadata: grpc.Metadata | null, options: grpc.CallOptions | null, callback: grpc.requestCallback<as_external_api_fuotaDeployment_pb.CreateFUOTADeploymentForDeviceResponse>): grpc.ClientUnaryCall;
+  createForApplication(argument: as_external_api_fuotaDeployment_pb.CreateFUOTADeploymentForApplicationRequest, callback: grpc.requestCallback<as_external_api_fuotaDeployment_pb.CreateFUOTADeploymentForApplicationResponse>): grpc.ClientUnaryCall;
+  createForApplication(argument: as_external_api_fuotaDeployment_pb.CreateFUOTADeploymentForApplicationRequest, metadataOrOptions: grpc.Metadata | grpc.CallOptions | null, callback: grpc.requestCallback<as_external_api_fuotaDeployment_pb.CreateFUOTADeploymentForApplicationResponse>): grpc.ClientUnaryCall;
+  createForApplication(argument: as_external_api_fuotaDeployment_pb.CreateFUOTADeploymentForApplicationRequest, metadata: grpc.Metadata | null, options: grpc.CallOptions | null, callback: grpc.requestCallback<as_external_api_fuotaDeployment_pb.CreateFUOTADeploymentForApplicationResponse>): grpc.ClientUnaryCall;
   get(argument: as_external_api_fuotaDeployment_pb.GetFUOTADeploymentRequest, callback: grpc.requestCallback<as_external_api_fuotaDeployment_pb.GetFUOTADeploymentResponse>): grpc.ClientUnaryCall;
   get(argument: as_external_api_fuotaDeployment_pb.GetFUOTADeploymentRequest, metadataOrOptions: grpc.Metadata | grpc.CallOptions | null, callback: grpc.requestCallback<as_external_api_fuotaDeployment_pb.GetFUOTADeploymentResponse>): grpc.ClientUnaryCall;
   get(argument: as_external_api_fuotaDeployment_pb.GetFUOTADeploymentRequest, metadata: grpc.Metadata | null, options: grpc.CallOptions | null, callback: grpc.requestCallback<as_external_api_fuotaDeployment_pb.GetFUOTADeploymentResponse>): grpc.ClientUnaryCall;
