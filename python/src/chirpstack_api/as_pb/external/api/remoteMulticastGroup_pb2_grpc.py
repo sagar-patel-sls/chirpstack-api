@@ -134,7 +134,8 @@ class RemoteMulticastGroupServiceServicer(object):
         raise NotImplementedError('Method not implemented!')
 
     def ListDevicesForRemoteMulticast(self, request, context):
-        """ListDevicesForRemoteMulticast Lists the available devices for joining to remote multicast-group for given application id.
+        """ListDevicesForRemoteMulticast Lists the available devices for joining to
+        remote multicast-group for given application id.
         """
         context.set_code(grpc.StatusCode.UNIMPLEMENTED)
         context.set_details('Method not implemented!')

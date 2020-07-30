@@ -191,7 +191,7 @@
     },
     "/api/remote-multicast-groups/{remote_multicast_group_id}/application/{application_id}/devices": {
       "get": {
-        "summary": "ListDevicesForRemoteMulticast Lists the available devices for joining to remote multicast-group for given application id.",
+        "summary": "ListDevicesForRemoteMulticast Lists the available devices for joining to\nremote multicast-group for given application id.",
         "operationId": "ListDevicesForRemoteMulticast",
         "responses": {
           "200": {
@@ -525,6 +525,16 @@
         }
       }
     },
+    "apiFUOTADeploymentDeviceState": {
+      "type": "string",
+      "enum": [
+        "PENDING",
+        "SUCCESS",
+        "ERROR"
+      ],
+      "default": "PENDING",
+      "description": " - PENDING: Pending.\n - SUCCESS: Success.\n - ERROR: Error."
+    },
     "apiGetRemoteMulticastDeploymentDeviceResponse": {
       "type": "object",
       "properties": {
@@ -618,6 +628,15 @@
         }
       }
     },
+    "apiMulticastGroupType": {
+      "type": "string",
+      "enum": [
+        "CLASS_C",
+        "CLASS_B"
+      ],
+      "default": "CLASS_C",
+      "description": " - CLASS_C: Class-C.\n - CLASS_B: Class-B."
+    },
     "apiRemoteMulticastDeploymentDevice": {
       "type": "object",
       "properties": {
@@ -650,7 +669,7 @@
           "description": "Last update timestamp."
         },
         "state": {
-          "$ref": "#/definitions/apiRemoteMulticastDeploymentDeviceState",
+          "$ref": "#/definitions/apiFUOTADeploymentDeviceState",
           "description": "Remote Multicast Deployment Device state.\nThis value will be automatically set on create."
         },
         "errorMessage": {
@@ -658,16 +677,6 @@
           "description": "Error message (in case of error state)."
         }
       }
-    },
-    "apiRemoteMulticastDeploymentDeviceState": {
-      "type": "string",
-      "enum": [
-        "PENDING",
-        "SUCCESS",
-        "ERROR"
-      ],
-      "default": "PENDING",
-      "description": " - PENDING: Pending.\n - SUCCESS: Success.\n - ERROR: Error."
     },
     "apiRemoteMulticastGroup": {
       "type": "object",
@@ -694,7 +703,7 @@
           "description": "Application ID\nAfter creation, this can not be updated."
         },
         "groupType": {
-          "$ref": "#/definitions/apiRemoteMulticastGroupType",
+          "$ref": "#/definitions/apiMulticastGroupType",
           "description": "Remote Multicast type."
         },
         "dr": {
@@ -718,7 +727,7 @@
         },
         "unicastTimeout": {
           "type": "string",
-          "description": "Unicast time-out.\nSet this to the value in which you at least expect an uplink frame from the\ndevice. The Remote Multicast deployment engine will wait at least for the given time\nbefore proceeding with the next steps."
+          "description": "Unicast time-out.\nSet this to the value in which you at least expect an uplink frame from the\ndevice. The Remote Multicast deployment engine will wait at least for the\ngiven time before proceeding with the next steps."
         },
         "nextStepAfter": {
           "type": "string",
@@ -765,15 +774,6 @@
           "description": "Deployment state."
         }
       }
-    },
-    "apiRemoteMulticastGroupType": {
-      "type": "string",
-      "enum": [
-        "CLASS_C",
-        "CLASS_B"
-      ],
-      "default": "CLASS_C",
-      "description": " - CLASS_C: Class-C.\n - CLASS_B: Class-B."
     },
     "apiUpdateRemoteMulticastGroupRequest": {
       "type": "object",

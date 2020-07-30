@@ -14,6 +14,8 @@ var google_protobuf_timestamp_pb = require('google-protobuf/google/protobuf/time
 var google_protobuf_duration_pb = require('google-protobuf/google/protobuf/duration_pb.js');
 var google_protobuf_empty_pb = require('google-protobuf/google/protobuf/empty_pb.js');
 var as_external_api_device_pb = require('../../../as/external/api/device_pb.js');
+var as_external_api_multicastGroup_pb = require('../../../as/external/api/multicastGroup_pb.js');
+var as_external_api_fuotaDeployment_pb = require('../../../as/external/api/fuotaDeployment_pb.js');
 goog.exportSymbol('proto.api.AddDeviceToRemoteMulticastGroupRequest', null, global);
 goog.exportSymbol('proto.api.CreateRemoteMulticastGroupRequest', null, global);
 goog.exportSymbol('proto.api.CreateRemoteMulticastGroupResponse', null, global);
@@ -28,10 +30,8 @@ goog.exportSymbol('proto.api.ListRemoteMulticastDevicesResponse', null, global);
 goog.exportSymbol('proto.api.ListRemoteMulticastGroupRequest', null, global);
 goog.exportSymbol('proto.api.ListRemoteMulticastGroupResponse', null, global);
 goog.exportSymbol('proto.api.RemoteMulticastDeploymentDevice', null, global);
-goog.exportSymbol('proto.api.RemoteMulticastDeploymentDeviceState', null, global);
 goog.exportSymbol('proto.api.RemoteMulticastGroup', null, global);
 goog.exportSymbol('proto.api.RemoteMulticastGroupListItem', null, global);
-goog.exportSymbol('proto.api.RemoteMulticastGroupType', null, global);
 goog.exportSymbol('proto.api.RemoveDeviceFromRemoteMulticastGroupRequest', null, global);
 goog.exportSymbol('proto.api.ResetRemoteMulticastDeviceRequest', null, global);
 goog.exportSymbol('proto.api.UpdateRemoteMulticastGroupRequest', null, global);
@@ -150,7 +150,7 @@ proto.api.RemoteMulticastGroup.deserializeBinaryFromReader = function(msg, reade
       msg.setApplicationId(value);
       break;
     case 6:
-      var value = /** @type {!proto.api.RemoteMulticastGroupType} */ (reader.readEnum());
+      var value = /** @type {!proto.api.MulticastGroupType} */ (reader.readEnum());
       msg.setGroupType(value);
       break;
     case 7:
@@ -391,15 +391,15 @@ proto.api.RemoteMulticastGroup.prototype.setApplicationId = function(value) {
 
 
 /**
- * optional RemoteMulticastGroupType group_type = 6;
- * @return {!proto.api.RemoteMulticastGroupType}
+ * optional MulticastGroupType group_type = 6;
+ * @return {!proto.api.MulticastGroupType}
  */
 proto.api.RemoteMulticastGroup.prototype.getGroupType = function() {
-  return /** @type {!proto.api.RemoteMulticastGroupType} */ (jspb.Message.getFieldProto3(this, 6, 0));
+  return /** @type {!proto.api.MulticastGroupType} */ (jspb.Message.getFieldProto3(this, 6, 0));
 };
 
 
-/** @param {!proto.api.RemoteMulticastGroupType} value  */
+/** @param {!proto.api.MulticastGroupType} value  */
 proto.api.RemoteMulticastGroup.prototype.setGroupType = function(value) {
   jspb.Message.setField(this, 6, value);
 };
@@ -647,7 +647,7 @@ proto.api.RemoteMulticastDeploymentDevice.deserializeBinaryFromReader = function
       msg.setUpdatedAt(value);
       break;
     case 8:
-      var value = /** @type {!proto.api.RemoteMulticastDeploymentDeviceState} */ (reader.readEnum());
+      var value = /** @type {!proto.api.FUOTADeploymentDeviceState} */ (reader.readEnum());
       msg.setState(value);
       break;
     case 9:
@@ -905,15 +905,15 @@ proto.api.RemoteMulticastDeploymentDevice.prototype.hasUpdatedAt = function() {
 
 
 /**
- * optional RemoteMulticastDeploymentDeviceState state = 8;
- * @return {!proto.api.RemoteMulticastDeploymentDeviceState}
+ * optional FUOTADeploymentDeviceState state = 8;
+ * @return {!proto.api.FUOTADeploymentDeviceState}
  */
 proto.api.RemoteMulticastDeploymentDevice.prototype.getState = function() {
-  return /** @type {!proto.api.RemoteMulticastDeploymentDeviceState} */ (jspb.Message.getFieldProto3(this, 8, 0));
+  return /** @type {!proto.api.FUOTADeploymentDeviceState} */ (jspb.Message.getFieldProto3(this, 8, 0));
 };
 
 
-/** @param {!proto.api.RemoteMulticastDeploymentDeviceState} value  */
+/** @param {!proto.api.FUOTADeploymentDeviceState} value  */
 proto.api.RemoteMulticastDeploymentDevice.prototype.setState = function(value) {
   jspb.Message.setField(this, 8, value);
 };
@@ -4605,22 +4605,5 @@ proto.api.GetRemoteMulticastDeploymentDeviceResponse.prototype.hasDeploymentDevi
   return jspb.Message.getField(this, 1) != null;
 };
 
-
-/**
- * @enum {number}
- */
-proto.api.RemoteMulticastGroupType = {
-  CLASS_C: 0,
-  CLASS_B: 1
-};
-
-/**
- * @enum {number}
- */
-proto.api.RemoteMulticastDeploymentDeviceState = {
-  PENDING: 0,
-  SUCCESS: 1,
-  ERROR: 2
-};
 
 goog.object.extend(exports, proto.api);

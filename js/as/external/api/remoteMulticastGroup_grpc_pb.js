@@ -8,6 +8,8 @@ var google_protobuf_timestamp_pb = require('google-protobuf/google/protobuf/time
 var google_protobuf_duration_pb = require('google-protobuf/google/protobuf/duration_pb.js');
 var google_protobuf_empty_pb = require('google-protobuf/google/protobuf/empty_pb.js');
 var as_external_api_device_pb = require('../../../as/external/api/device_pb.js');
+var as_external_api_multicastGroup_pb = require('../../../as/external/api/multicastGroup_pb.js');
+var as_external_api_fuotaDeployment_pb = require('../../../as/external/api/fuotaDeployment_pb.js');
 
 function serialize_api_AddDeviceToRemoteMulticastGroupRequest(arg) {
   if (!(arg instanceof as_external_api_remoteMulticastGroup_pb.AddDeviceToRemoteMulticastGroupRequest)) {
@@ -295,7 +297,8 @@ var RemoteMulticastGroupServiceService = exports.RemoteMulticastGroupServiceServ
     responseSerialize: serialize_google_protobuf_Empty,
     responseDeserialize: deserialize_google_protobuf_Empty,
   },
-  // ListDevicesForRemoteMulticast Lists the available devices for joining to remote multicast-group for given application id.
+  // ListDevicesForRemoteMulticast Lists the available devices for joining to
+  // remote multicast-group for given application id.
   listDevicesForRemoteMulticast: {
     path: '/api.RemoteMulticastGroupService/ListDevicesForRemoteMulticast',
     requestStream: false,

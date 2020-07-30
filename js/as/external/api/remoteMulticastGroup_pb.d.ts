@@ -7,6 +7,8 @@ import * as google_protobuf_timestamp_pb from "google-protobuf/google/protobuf/t
 import * as google_protobuf_duration_pb from "google-protobuf/google/protobuf/duration_pb";
 import * as google_protobuf_empty_pb from "google-protobuf/google/protobuf/empty_pb";
 import * as as_external_api_device_pb from "../../../as/external/api/device_pb";
+import * as as_external_api_multicastGroup_pb from "../../../as/external/api/multicastGroup_pb";
+import * as as_external_api_fuotaDeployment_pb from "../../../as/external/api/fuotaDeployment_pb";
 
 export class RemoteMulticastGroup extends jspb.Message {
   getId(): string;
@@ -24,8 +26,8 @@ export class RemoteMulticastGroup extends jspb.Message {
   getApplicationId(): number;
   setApplicationId(value: number): void;
 
-  getGroupType(): RemoteMulticastGroupTypeMap[keyof RemoteMulticastGroupTypeMap];
-  setGroupType(value: RemoteMulticastGroupTypeMap[keyof RemoteMulticastGroupTypeMap]): void;
+  getGroupType(): as_external_api_multicastGroup_pb.MulticastGroupTypeMap[keyof as_external_api_multicastGroup_pb.MulticastGroupTypeMap];
+  setGroupType(value: as_external_api_multicastGroup_pb.MulticastGroupTypeMap[keyof as_external_api_multicastGroup_pb.MulticastGroupTypeMap]): void;
 
   getDr(): number;
   setDr(value: number): void;
@@ -66,7 +68,7 @@ export namespace RemoteMulticastGroup {
     multicastGroupId: string,
     serviceProfileId: string,
     applicationId: number,
-    groupType: RemoteMulticastGroupTypeMap[keyof RemoteMulticastGroupTypeMap],
+    groupType: as_external_api_multicastGroup_pb.MulticastGroupTypeMap[keyof as_external_api_multicastGroup_pb.MulticastGroupTypeMap],
     dr: number,
     frequency: number,
     pingSlotPeriod: number,
@@ -102,8 +104,8 @@ export class RemoteMulticastDeploymentDevice extends jspb.Message {
   getUpdatedAt(): google_protobuf_timestamp_pb.Timestamp | undefined;
   setUpdatedAt(value?: google_protobuf_timestamp_pb.Timestamp): void;
 
-  getState(): RemoteMulticastDeploymentDeviceStateMap[keyof RemoteMulticastDeploymentDeviceStateMap];
-  setState(value: RemoteMulticastDeploymentDeviceStateMap[keyof RemoteMulticastDeploymentDeviceStateMap]): void;
+  getState(): as_external_api_fuotaDeployment_pb.FUOTADeploymentDeviceStateMap[keyof as_external_api_fuotaDeployment_pb.FUOTADeploymentDeviceStateMap];
+  setState(value: as_external_api_fuotaDeployment_pb.FUOTADeploymentDeviceStateMap[keyof as_external_api_fuotaDeployment_pb.FUOTADeploymentDeviceStateMap]): void;
 
   getErrorMessage(): string;
   setErrorMessage(value: string): void;
@@ -127,7 +129,7 @@ export namespace RemoteMulticastDeploymentDevice {
     multicastGroupName: string,
     createdAt?: google_protobuf_timestamp_pb.Timestamp.AsObject,
     updatedAt?: google_protobuf_timestamp_pb.Timestamp.AsObject,
-    state: RemoteMulticastDeploymentDeviceStateMap[keyof RemoteMulticastDeploymentDeviceStateMap],
+    state: as_external_api_fuotaDeployment_pb.FUOTADeploymentDeviceStateMap[keyof as_external_api_fuotaDeployment_pb.FUOTADeploymentDeviceStateMap],
     errorMessage: string,
   }
 }
@@ -609,19 +611,4 @@ export namespace GetRemoteMulticastDeploymentDeviceResponse {
     deploymentDevice?: RemoteMulticastDeploymentDevice.AsObject,
   }
 }
-
-export interface RemoteMulticastGroupTypeMap {
-  CLASS_C: 0;
-  CLASS_B: 1;
-}
-
-export const RemoteMulticastGroupType: RemoteMulticastGroupTypeMap;
-
-export interface RemoteMulticastDeploymentDeviceStateMap {
-  PENDING: 0;
-  SUCCESS: 1;
-  ERROR: 2;
-}
-
-export const RemoteMulticastDeploymentDeviceState: RemoteMulticastDeploymentDeviceStateMap;
 
