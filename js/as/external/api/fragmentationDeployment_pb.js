@@ -13,9 +13,9 @@ var google_api_annotations_pb = require('../../../google/api/annotations_pb.js')
 var google_protobuf_timestamp_pb = require('google-protobuf/google/protobuf/timestamp_pb.js');
 var google_protobuf_duration_pb = require('google-protobuf/google/protobuf/duration_pb.js');
 var google_protobuf_empty_pb = require('google-protobuf/google/protobuf/empty_pb.js');
+var as_external_api_multicastGroup_pb = require('../../../as/external/api/multicastGroup_pb.js');
 goog.exportSymbol('proto.api.DeleteFragmentationDeploymentRequest', null, global);
 goog.exportSymbol('proto.api.FragmentationDeployment', null, global);
-goog.exportSymbol('proto.api.FragmentationDeploymentGroupType', null, global);
 goog.exportSymbol('proto.api.FragmentationDeploymentRequest', null, global);
 goog.exportSymbol('proto.api.FragmentationDeploymentResponse', null, global);
 goog.exportSymbol('proto.api.GetFragmentationDeployment', null, global);
@@ -133,7 +133,7 @@ proto.api.FragmentationDeployment.deserializeBinaryFromReader = function(msg, re
       msg.setPayload(value);
       break;
     case 5:
-      var value = /** @type {!proto.api.FragmentationDeploymentGroupType} */ (reader.readEnum());
+      var value = /** @type {!proto.api.MulticastGroupType} */ (reader.readEnum());
       msg.setGroupType(value);
       break;
     case 6:
@@ -365,15 +365,15 @@ proto.api.FragmentationDeployment.prototype.setPayload = function(value) {
 
 
 /**
- * optional FragmentationDeploymentGroupType group_type = 5;
- * @return {!proto.api.FragmentationDeploymentGroupType}
+ * optional MulticastGroupType group_type = 5;
+ * @return {!proto.api.MulticastGroupType}
  */
 proto.api.FragmentationDeployment.prototype.getGroupType = function() {
-  return /** @type {!proto.api.FragmentationDeploymentGroupType} */ (jspb.Message.getFieldProto3(this, 5, 0));
+  return /** @type {!proto.api.MulticastGroupType} */ (jspb.Message.getFieldProto3(this, 5, 0));
 };
 
 
-/** @param {!proto.api.FragmentationDeploymentGroupType} value  */
+/** @param {!proto.api.MulticastGroupType} value  */
 proto.api.FragmentationDeployment.prototype.setGroupType = function(value) {
   jspb.Message.setField(this, 5, value);
 };
@@ -601,7 +601,7 @@ proto.api.GetFragmentationDeployment.deserializeBinaryFromReader = function(msg,
       msg.setPayloadSize(value);
       break;
     case 6:
-      var value = /** @type {!proto.api.FragmentationDeploymentGroupType} */ (reader.readEnum());
+      var value = /** @type {!proto.api.MulticastGroupType} */ (reader.readEnum());
       msg.setGroupType(value);
       break;
     case 7:
@@ -888,15 +888,15 @@ proto.api.GetFragmentationDeployment.prototype.setPayloadSize = function(value) 
 
 
 /**
- * optional FragmentationDeploymentGroupType group_type = 6;
- * @return {!proto.api.FragmentationDeploymentGroupType}
+ * optional MulticastGroupType group_type = 6;
+ * @return {!proto.api.MulticastGroupType}
  */
 proto.api.GetFragmentationDeployment.prototype.getGroupType = function() {
-  return /** @type {!proto.api.FragmentationDeploymentGroupType} */ (jspb.Message.getFieldProto3(this, 6, 0));
+  return /** @type {!proto.api.MulticastGroupType} */ (jspb.Message.getFieldProto3(this, 6, 0));
 };
 
 
-/** @param {!proto.api.FragmentationDeploymentGroupType} value  */
+/** @param {!proto.api.MulticastGroupType} value  */
 proto.api.GetFragmentationDeployment.prototype.setGroupType = function(value) {
   jspb.Message.setField(this, 6, value);
 };
@@ -2589,13 +2589,5 @@ proto.api.ListFragmentationDeploymentResponse.prototype.clearResultList = functi
   this.setResultList([]);
 };
 
-
-/**
- * @enum {number}
- */
-proto.api.FragmentationDeploymentGroupType = {
-  CLASS_C: 0,
-  CLASS_B: 1
-};
 
 goog.object.extend(exports, proto.api);

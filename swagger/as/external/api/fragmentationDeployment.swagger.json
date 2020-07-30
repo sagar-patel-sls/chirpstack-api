@@ -196,7 +196,7 @@
           "description": "Payload."
         },
         "groupType": {
-          "$ref": "#/definitions/apiFragmentationDeploymentGroupType",
+          "$ref": "#/definitions/apiMulticastGroupType",
           "description": "Fragmentation deployment group type."
         },
         "pingSlotPeriod": {
@@ -223,15 +223,6 @@
           "description": "Next step after.\nThis value will be automatically set on create."
         }
       }
-    },
-    "apiFragmentationDeploymentGroupType": {
-      "type": "string",
-      "enum": [
-        "CLASS_C",
-        "CLASS_B"
-      ],
-      "default": "CLASS_C",
-      "description": " - CLASS_C: Class-C.\n - CLASS_B: Class-B."
     },
     "apiFragmentationDeploymentRequest": {
       "type": "object",
@@ -277,7 +268,7 @@
           "description": "Payload Size."
         },
         "groupType": {
-          "$ref": "#/definitions/apiFragmentationDeploymentGroupType",
+          "$ref": "#/definitions/apiMulticastGroupType",
           "description": "Fragmentation deployment group type."
         },
         "pingSlotPeriod": {
@@ -352,6 +343,15 @@
           }
         }
       }
+    },
+    "apiMulticastGroupType": {
+      "type": "string",
+      "enum": [
+        "CLASS_C",
+        "CLASS_B"
+      ],
+      "default": "CLASS_C",
+      "description": " - CLASS_C: Class-C.\n - CLASS_B: Class-B."
     },
     "apiUpdateFragmentationDeploymentRequest": {
       "type": "object",

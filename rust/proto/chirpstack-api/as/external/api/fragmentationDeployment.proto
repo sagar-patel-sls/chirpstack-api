@@ -8,6 +8,7 @@ import "google/api/annotations.proto";
 import "google/protobuf/timestamp.proto";
 import "google/protobuf/duration.proto";
 import "google/protobuf/empty.proto";
+import "as/external/api/multicastGroup.proto";
 
 // FragmentationDeploymentService is the service managing fragmentation.
 service FragmentationDeploymentService {
@@ -54,14 +55,6 @@ service FragmentationDeploymentService {
   }
 }
 
-enum FragmentationDeploymentGroupType {
-  // Class-C.
-  CLASS_C = 0;
-
-  // Class-B.
-  CLASS_B = 1;
-}
-
 message FragmentationDeployment {
   // ID of the deployment (string formatted UUID).
   // This value will be automatically assigned on create.
@@ -77,7 +70,7 @@ message FragmentationDeployment {
   bytes payload = 4;
 
   // Fragmentation deployment group type.
-  FragmentationDeploymentGroupType group_type = 5;
+  MulticastGroupType group_type = 5;
 
   // Ping-slot period.
   // Mandatory for Class-B fragmentation deployment.
@@ -119,7 +112,7 @@ message GetFragmentationDeployment {
   uint32 payload_size = 5;
 
   // Fragmentation deployment group type.
-  FragmentationDeploymentGroupType group_type = 6;
+  MulticastGroupType group_type = 6;
 
   // Ping-slot period.
   // Mandatory for Class-B fragmentation deployment.

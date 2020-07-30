@@ -6,6 +6,7 @@ import * as google_api_annotations_pb from "../../../google/api/annotations_pb";
 import * as google_protobuf_timestamp_pb from "google-protobuf/google/protobuf/timestamp_pb";
 import * as google_protobuf_duration_pb from "google-protobuf/google/protobuf/duration_pb";
 import * as google_protobuf_empty_pb from "google-protobuf/google/protobuf/empty_pb";
+import * as as_external_api_multicastGroup_pb from "../../../as/external/api/multicastGroup_pb";
 
 export class FragmentationDeployment extends jspb.Message {
   getId(): string;
@@ -22,8 +23,8 @@ export class FragmentationDeployment extends jspb.Message {
   getPayload_asB64(): string;
   setPayload(value: Uint8Array | string): void;
 
-  getGroupType(): FragmentationDeploymentGroupTypeMap[keyof FragmentationDeploymentGroupTypeMap];
-  setGroupType(value: FragmentationDeploymentGroupTypeMap[keyof FragmentationDeploymentGroupTypeMap]): void;
+  getGroupType(): as_external_api_multicastGroup_pb.MulticastGroupTypeMap[keyof as_external_api_multicastGroup_pb.MulticastGroupTypeMap];
+  setGroupType(value: as_external_api_multicastGroup_pb.MulticastGroupTypeMap[keyof as_external_api_multicastGroup_pb.MulticastGroupTypeMap]): void;
 
   getPingSlotPeriod(): number;
   setPingSlotPeriod(value: number): void;
@@ -60,7 +61,7 @@ export namespace FragmentationDeployment {
     name: string,
     devEui: string,
     payload: Uint8Array | string,
-    groupType: FragmentationDeploymentGroupTypeMap[keyof FragmentationDeploymentGroupTypeMap],
+    groupType: as_external_api_multicastGroup_pb.MulticastGroupTypeMap[keyof as_external_api_multicastGroup_pb.MulticastGroupTypeMap],
     pingSlotPeriod: number,
     redundancy: number,
     unicastTimeout?: google_protobuf_duration_pb.Duration.AsObject,
@@ -87,8 +88,8 @@ export class GetFragmentationDeployment extends jspb.Message {
   getPayloadSize(): number;
   setPayloadSize(value: number): void;
 
-  getGroupType(): FragmentationDeploymentGroupTypeMap[keyof FragmentationDeploymentGroupTypeMap];
-  setGroupType(value: FragmentationDeploymentGroupTypeMap[keyof FragmentationDeploymentGroupTypeMap]): void;
+  getGroupType(): as_external_api_multicastGroup_pb.MulticastGroupTypeMap[keyof as_external_api_multicastGroup_pb.MulticastGroupTypeMap];
+  setGroupType(value: as_external_api_multicastGroup_pb.MulticastGroupTypeMap[keyof as_external_api_multicastGroup_pb.MulticastGroupTypeMap]): void;
 
   getPingSlotPeriod(): number;
   setPingSlotPeriod(value: number): void;
@@ -135,7 +136,7 @@ export namespace GetFragmentationDeployment {
     devEui: string,
     payload: Uint8Array | string,
     payloadSize: number,
-    groupType: FragmentationDeploymentGroupTypeMap[keyof FragmentationDeploymentGroupTypeMap],
+    groupType: as_external_api_multicastGroup_pb.MulticastGroupTypeMap[keyof as_external_api_multicastGroup_pb.MulticastGroupTypeMap],
     pingSlotPeriod: number,
     fragSize: number,
     redundancy: number,
@@ -342,11 +343,4 @@ export namespace ListFragmentationDeploymentResponse {
     resultList: Array<GetFragmentationDeployment.AsObject>,
   }
 }
-
-export interface FragmentationDeploymentGroupTypeMap {
-  CLASS_C: 0;
-  CLASS_B: 1;
-}
-
-export const FragmentationDeploymentGroupType: FragmentationDeploymentGroupTypeMap;
 
