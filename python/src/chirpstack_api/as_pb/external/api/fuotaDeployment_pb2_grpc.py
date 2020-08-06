@@ -143,6 +143,7 @@ class FUOTADeploymentService(object):
             options=(),
             channel_credentials=None,
             call_credentials=None,
+            insecure=False,
             compression=None,
             wait_for_ready=None,
             timeout=None,
@@ -151,7 +152,7 @@ class FUOTADeploymentService(object):
             chirpstack__api_dot_as__pb_dot_external_dot_api_dot_fuotaDeployment__pb2.CreateFUOTADeploymentForDeviceRequest.SerializeToString,
             chirpstack__api_dot_as__pb_dot_external_dot_api_dot_fuotaDeployment__pb2.CreateFUOTADeploymentForDeviceResponse.FromString,
             options, channel_credentials,
-            call_credentials, compression, wait_for_ready, timeout, metadata)
+            insecure, call_credentials, compression, wait_for_ready, timeout, metadata)
 
     @staticmethod
     def CreateForApplication(request,
@@ -159,6 +160,7 @@ class FUOTADeploymentService(object):
             options=(),
             channel_credentials=None,
             call_credentials=None,
+            insecure=False,
             compression=None,
             wait_for_ready=None,
             timeout=None,
@@ -167,7 +169,7 @@ class FUOTADeploymentService(object):
             chirpstack__api_dot_as__pb_dot_external_dot_api_dot_fuotaDeployment__pb2.CreateFUOTADeploymentForApplicationRequest.SerializeToString,
             chirpstack__api_dot_as__pb_dot_external_dot_api_dot_fuotaDeployment__pb2.CreateFUOTADeploymentForApplicationResponse.FromString,
             options, channel_credentials,
-            call_credentials, compression, wait_for_ready, timeout, metadata)
+            insecure, call_credentials, compression, wait_for_ready, timeout, metadata)
 
     @staticmethod
     def Get(request,
@@ -175,6 +177,7 @@ class FUOTADeploymentService(object):
             options=(),
             channel_credentials=None,
             call_credentials=None,
+            insecure=False,
             compression=None,
             wait_for_ready=None,
             timeout=None,
@@ -183,7 +186,7 @@ class FUOTADeploymentService(object):
             chirpstack__api_dot_as__pb_dot_external_dot_api_dot_fuotaDeployment__pb2.GetFUOTADeploymentRequest.SerializeToString,
             chirpstack__api_dot_as__pb_dot_external_dot_api_dot_fuotaDeployment__pb2.GetFUOTADeploymentResponse.FromString,
             options, channel_credentials,
-            call_credentials, compression, wait_for_ready, timeout, metadata)
+            insecure, call_credentials, compression, wait_for_ready, timeout, metadata)
 
     @staticmethod
     def List(request,
@@ -191,6 +194,7 @@ class FUOTADeploymentService(object):
             options=(),
             channel_credentials=None,
             call_credentials=None,
+            insecure=False,
             compression=None,
             wait_for_ready=None,
             timeout=None,
@@ -199,7 +203,7 @@ class FUOTADeploymentService(object):
             chirpstack__api_dot_as__pb_dot_external_dot_api_dot_fuotaDeployment__pb2.ListFUOTADeploymentRequest.SerializeToString,
             chirpstack__api_dot_as__pb_dot_external_dot_api_dot_fuotaDeployment__pb2.ListFUOTADeploymentResponse.FromString,
             options, channel_credentials,
-            call_credentials, compression, wait_for_ready, timeout, metadata)
+            insecure, call_credentials, compression, wait_for_ready, timeout, metadata)
 
     @staticmethod
     def GetDeploymentDevice(request,
@@ -207,6 +211,7 @@ class FUOTADeploymentService(object):
             options=(),
             channel_credentials=None,
             call_credentials=None,
+            insecure=False,
             compression=None,
             wait_for_ready=None,
             timeout=None,
@@ -215,7 +220,7 @@ class FUOTADeploymentService(object):
             chirpstack__api_dot_as__pb_dot_external_dot_api_dot_fuotaDeployment__pb2.GetFUOTADeploymentDeviceRequest.SerializeToString,
             chirpstack__api_dot_as__pb_dot_external_dot_api_dot_fuotaDeployment__pb2.GetFUOTADeploymentDeviceResponse.FromString,
             options, channel_credentials,
-            call_credentials, compression, wait_for_ready, timeout, metadata)
+            insecure, call_credentials, compression, wait_for_ready, timeout, metadata)
 
     @staticmethod
     def ListDeploymentDevices(request,
@@ -223,6 +228,7 @@ class FUOTADeploymentService(object):
             options=(),
             channel_credentials=None,
             call_credentials=None,
+            insecure=False,
             compression=None,
             wait_for_ready=None,
             timeout=None,
@@ -231,4 +237,4 @@ class FUOTADeploymentService(object):
             chirpstack__api_dot_as__pb_dot_external_dot_api_dot_fuotaDeployment__pb2.ListFUOTADeploymentDevicesRequest.SerializeToString,
             chirpstack__api_dot_as__pb_dot_external_dot_api_dot_fuotaDeployment__pb2.ListFUOTADeploymentDevicesResponse.FromString,
             options, channel_credentials,
-            call_credentials, compression, wait_for_ready, timeout, metadata)
+            insecure, call_credentials, compression, wait_for_ready, timeout, metadata)

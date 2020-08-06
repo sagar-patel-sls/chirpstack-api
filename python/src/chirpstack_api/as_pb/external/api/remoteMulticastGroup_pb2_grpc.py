@@ -230,6 +230,7 @@ class RemoteMulticastGroupService(object):
             options=(),
             channel_credentials=None,
             call_credentials=None,
+            insecure=False,
             compression=None,
             wait_for_ready=None,
             timeout=None,
@@ -238,7 +239,7 @@ class RemoteMulticastGroupService(object):
             chirpstack__api_dot_as__pb_dot_external_dot_api_dot_remoteMulticastGroup__pb2.CreateRemoteMulticastGroupRequest.SerializeToString,
             chirpstack__api_dot_as__pb_dot_external_dot_api_dot_remoteMulticastGroup__pb2.CreateRemoteMulticastGroupResponse.FromString,
             options, channel_credentials,
-            call_credentials, compression, wait_for_ready, timeout, metadata)
+            insecure, call_credentials, compression, wait_for_ready, timeout, metadata)
 
     @staticmethod
     def Get(request,
@@ -246,6 +247,7 @@ class RemoteMulticastGroupService(object):
             options=(),
             channel_credentials=None,
             call_credentials=None,
+            insecure=False,
             compression=None,
             wait_for_ready=None,
             timeout=None,
@@ -254,7 +256,7 @@ class RemoteMulticastGroupService(object):
             chirpstack__api_dot_as__pb_dot_external_dot_api_dot_remoteMulticastGroup__pb2.GetRemoteMulticastGroupRequest.SerializeToString,
             chirpstack__api_dot_as__pb_dot_external_dot_api_dot_remoteMulticastGroup__pb2.GetRemoteMulticastGroupResponse.FromString,
             options, channel_credentials,
-            call_credentials, compression, wait_for_ready, timeout, metadata)
+            insecure, call_credentials, compression, wait_for_ready, timeout, metadata)
 
     @staticmethod
     def Update(request,
@@ -262,6 +264,7 @@ class RemoteMulticastGroupService(object):
             options=(),
             channel_credentials=None,
             call_credentials=None,
+            insecure=False,
             compression=None,
             wait_for_ready=None,
             timeout=None,
@@ -270,7 +273,7 @@ class RemoteMulticastGroupService(object):
             chirpstack__api_dot_as__pb_dot_external_dot_api_dot_remoteMulticastGroup__pb2.UpdateRemoteMulticastGroupRequest.SerializeToString,
             google_dot_protobuf_dot_empty__pb2.Empty.FromString,
             options, channel_credentials,
-            call_credentials, compression, wait_for_ready, timeout, metadata)
+            insecure, call_credentials, compression, wait_for_ready, timeout, metadata)
 
     @staticmethod
     def Delete(request,
@@ -278,6 +281,7 @@ class RemoteMulticastGroupService(object):
             options=(),
             channel_credentials=None,
             call_credentials=None,
+            insecure=False,
             compression=None,
             wait_for_ready=None,
             timeout=None,
@@ -286,7 +290,7 @@ class RemoteMulticastGroupService(object):
             chirpstack__api_dot_as__pb_dot_external_dot_api_dot_remoteMulticastGroup__pb2.DeleteRemoteMulticastGroupRequest.SerializeToString,
             google_dot_protobuf_dot_empty__pb2.Empty.FromString,
             options, channel_credentials,
-            call_credentials, compression, wait_for_ready, timeout, metadata)
+            insecure, call_credentials, compression, wait_for_ready, timeout, metadata)
 
     @staticmethod
     def List(request,
@@ -294,6 +298,7 @@ class RemoteMulticastGroupService(object):
             options=(),
             channel_credentials=None,
             call_credentials=None,
+            insecure=False,
             compression=None,
             wait_for_ready=None,
             timeout=None,
@@ -302,7 +307,7 @@ class RemoteMulticastGroupService(object):
             chirpstack__api_dot_as__pb_dot_external_dot_api_dot_remoteMulticastGroup__pb2.ListRemoteMulticastGroupRequest.SerializeToString,
             chirpstack__api_dot_as__pb_dot_external_dot_api_dot_remoteMulticastGroup__pb2.ListRemoteMulticastGroupResponse.FromString,
             options, channel_credentials,
-            call_credentials, compression, wait_for_ready, timeout, metadata)
+            insecure, call_credentials, compression, wait_for_ready, timeout, metadata)
 
     @staticmethod
     def AddDevice(request,
@@ -310,6 +315,7 @@ class RemoteMulticastGroupService(object):
             options=(),
             channel_credentials=None,
             call_credentials=None,
+            insecure=False,
             compression=None,
             wait_for_ready=None,
             timeout=None,
@@ -318,7 +324,7 @@ class RemoteMulticastGroupService(object):
             chirpstack__api_dot_as__pb_dot_external_dot_api_dot_remoteMulticastGroup__pb2.AddDeviceToRemoteMulticastGroupRequest.SerializeToString,
             google_dot_protobuf_dot_empty__pb2.Empty.FromString,
             options, channel_credentials,
-            call_credentials, compression, wait_for_ready, timeout, metadata)
+            insecure, call_credentials, compression, wait_for_ready, timeout, metadata)
 
     @staticmethod
     def ResetDevice(request,
@@ -326,6 +332,7 @@ class RemoteMulticastGroupService(object):
             options=(),
             channel_credentials=None,
             call_credentials=None,
+            insecure=False,
             compression=None,
             wait_for_ready=None,
             timeout=None,
@@ -334,7 +341,7 @@ class RemoteMulticastGroupService(object):
             chirpstack__api_dot_as__pb_dot_external_dot_api_dot_remoteMulticastGroup__pb2.ResetRemoteMulticastDeviceRequest.SerializeToString,
             google_dot_protobuf_dot_empty__pb2.Empty.FromString,
             options, channel_credentials,
-            call_credentials, compression, wait_for_ready, timeout, metadata)
+            insecure, call_credentials, compression, wait_for_ready, timeout, metadata)
 
     @staticmethod
     def RemoveDevice(request,
@@ -342,6 +349,7 @@ class RemoteMulticastGroupService(object):
             options=(),
             channel_credentials=None,
             call_credentials=None,
+            insecure=False,
             compression=None,
             wait_for_ready=None,
             timeout=None,
@@ -350,7 +358,7 @@ class RemoteMulticastGroupService(object):
             chirpstack__api_dot_as__pb_dot_external_dot_api_dot_remoteMulticastGroup__pb2.RemoveDeviceFromRemoteMulticastGroupRequest.SerializeToString,
             google_dot_protobuf_dot_empty__pb2.Empty.FromString,
             options, channel_credentials,
-            call_credentials, compression, wait_for_ready, timeout, metadata)
+            insecure, call_credentials, compression, wait_for_ready, timeout, metadata)
 
     @staticmethod
     def ListDevicesForRemoteMulticast(request,
@@ -358,6 +366,7 @@ class RemoteMulticastGroupService(object):
             options=(),
             channel_credentials=None,
             call_credentials=None,
+            insecure=False,
             compression=None,
             wait_for_ready=None,
             timeout=None,
@@ -366,7 +375,7 @@ class RemoteMulticastGroupService(object):
             chirpstack__api_dot_as__pb_dot_external_dot_api_dot_remoteMulticastGroup__pb2.ListRemoteMulticastDeviceRequest.SerializeToString,
             chirpstack__api_dot_as__pb_dot_external_dot_api_dot_remoteMulticastGroup__pb2.ListRemoteMulticastDeviceResponse.FromString,
             options, channel_credentials,
-            call_credentials, compression, wait_for_ready, timeout, metadata)
+            insecure, call_credentials, compression, wait_for_ready, timeout, metadata)
 
     @staticmethod
     def GetDevicesList(request,
@@ -374,6 +383,7 @@ class RemoteMulticastGroupService(object):
             options=(),
             channel_credentials=None,
             call_credentials=None,
+            insecure=False,
             compression=None,
             wait_for_ready=None,
             timeout=None,
@@ -382,7 +392,7 @@ class RemoteMulticastGroupService(object):
             chirpstack__api_dot_as__pb_dot_external_dot_api_dot_remoteMulticastGroup__pb2.ListRemoteMulticastDeviceRequest.SerializeToString,
             chirpstack__api_dot_as__pb_dot_external_dot_api_dot_remoteMulticastGroup__pb2.ListRemoteMulticastDevicesResponse.FromString,
             options, channel_credentials,
-            call_credentials, compression, wait_for_ready, timeout, metadata)
+            insecure, call_credentials, compression, wait_for_ready, timeout, metadata)
 
     @staticmethod
     def GetDeploymentDevice(request,
@@ -390,6 +400,7 @@ class RemoteMulticastGroupService(object):
             options=(),
             channel_credentials=None,
             call_credentials=None,
+            insecure=False,
             compression=None,
             wait_for_ready=None,
             timeout=None,
@@ -398,4 +409,4 @@ class RemoteMulticastGroupService(object):
             chirpstack__api_dot_as__pb_dot_external_dot_api_dot_remoteMulticastGroup__pb2.GetRemoteMulticastDeploymentDeviceRequest.SerializeToString,
             chirpstack__api_dot_as__pb_dot_external_dot_api_dot_remoteMulticastGroup__pb2.GetRemoteMulticastDeploymentDeviceResponse.FromString,
             options, channel_credentials,
-            call_credentials, compression, wait_for_ready, timeout, metadata)
+            insecure, call_credentials, compression, wait_for_ready, timeout, metadata)
