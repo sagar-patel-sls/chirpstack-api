@@ -46,6 +46,10 @@ interface IApplicationServiceService extends grpc.ServiceDefinition<grpc.Untyped
   updateAzureServiceBusIntegration: grpc.MethodDefinition<as_external_api_application_pb.UpdateAzureServiceBusIntegrationRequest, google_protobuf_empty_pb.Empty>;
   deleteAzureServiceBusIntegration: grpc.MethodDefinition<as_external_api_application_pb.DeleteAzureServiceBusIntegrationRequest, google_protobuf_empty_pb.Empty>;
   listIntegrations: grpc.MethodDefinition<as_external_api_application_pb.ListIntegrationRequest, as_external_api_application_pb.ListIntegrationResponse>;
+  createLoccartoIntegration: grpc.MethodDefinition<as_external_api_application_pb.CreateLoccartoIntegrationRequest, google_protobuf_empty_pb.Empty>;
+  getLoccartoIntegration: grpc.MethodDefinition<as_external_api_application_pb.GetLoccartoIntegrationRequest, as_external_api_application_pb.GetLoccartoIntegrationResponse>;
+  updateLoccartoIntegration: grpc.MethodDefinition<as_external_api_application_pb.UpdateLoccartoIntegrationRequest, google_protobuf_empty_pb.Empty>;
+  deleteLoccartoIntegration: grpc.MethodDefinition<as_external_api_application_pb.DeleteLoccartoIntegrationRequest, google_protobuf_empty_pb.Empty>;
 }
 
 export const ApplicationServiceService: IApplicationServiceService;
@@ -166,4 +170,16 @@ export class ApplicationServiceClient extends grpc.Client {
   listIntegrations(argument: as_external_api_application_pb.ListIntegrationRequest, callback: grpc.requestCallback<as_external_api_application_pb.ListIntegrationResponse>): grpc.ClientUnaryCall;
   listIntegrations(argument: as_external_api_application_pb.ListIntegrationRequest, metadataOrOptions: grpc.Metadata | grpc.CallOptions | null, callback: grpc.requestCallback<as_external_api_application_pb.ListIntegrationResponse>): grpc.ClientUnaryCall;
   listIntegrations(argument: as_external_api_application_pb.ListIntegrationRequest, metadata: grpc.Metadata | null, options: grpc.CallOptions | null, callback: grpc.requestCallback<as_external_api_application_pb.ListIntegrationResponse>): grpc.ClientUnaryCall;
+  createLoccartoIntegration(argument: as_external_api_application_pb.CreateLoccartoIntegrationRequest, callback: grpc.requestCallback<google_protobuf_empty_pb.Empty>): grpc.ClientUnaryCall;
+  createLoccartoIntegration(argument: as_external_api_application_pb.CreateLoccartoIntegrationRequest, metadataOrOptions: grpc.Metadata | grpc.CallOptions | null, callback: grpc.requestCallback<google_protobuf_empty_pb.Empty>): grpc.ClientUnaryCall;
+  createLoccartoIntegration(argument: as_external_api_application_pb.CreateLoccartoIntegrationRequest, metadata: grpc.Metadata | null, options: grpc.CallOptions | null, callback: grpc.requestCallback<google_protobuf_empty_pb.Empty>): grpc.ClientUnaryCall;
+  getLoccartoIntegration(argument: as_external_api_application_pb.GetLoccartoIntegrationRequest, callback: grpc.requestCallback<as_external_api_application_pb.GetLoccartoIntegrationResponse>): grpc.ClientUnaryCall;
+  getLoccartoIntegration(argument: as_external_api_application_pb.GetLoccartoIntegrationRequest, metadataOrOptions: grpc.Metadata | grpc.CallOptions | null, callback: grpc.requestCallback<as_external_api_application_pb.GetLoccartoIntegrationResponse>): grpc.ClientUnaryCall;
+  getLoccartoIntegration(argument: as_external_api_application_pb.GetLoccartoIntegrationRequest, metadata: grpc.Metadata | null, options: grpc.CallOptions | null, callback: grpc.requestCallback<as_external_api_application_pb.GetLoccartoIntegrationResponse>): grpc.ClientUnaryCall;
+  updateLoccartoIntegration(argument: as_external_api_application_pb.UpdateLoccartoIntegrationRequest, callback: grpc.requestCallback<google_protobuf_empty_pb.Empty>): grpc.ClientUnaryCall;
+  updateLoccartoIntegration(argument: as_external_api_application_pb.UpdateLoccartoIntegrationRequest, metadataOrOptions: grpc.Metadata | grpc.CallOptions | null, callback: grpc.requestCallback<google_protobuf_empty_pb.Empty>): grpc.ClientUnaryCall;
+  updateLoccartoIntegration(argument: as_external_api_application_pb.UpdateLoccartoIntegrationRequest, metadata: grpc.Metadata | null, options: grpc.CallOptions | null, callback: grpc.requestCallback<google_protobuf_empty_pb.Empty>): grpc.ClientUnaryCall;
+  deleteLoccartoIntegration(argument: as_external_api_application_pb.DeleteLoccartoIntegrationRequest, callback: grpc.requestCallback<google_protobuf_empty_pb.Empty>): grpc.ClientUnaryCall;
+  deleteLoccartoIntegration(argument: as_external_api_application_pb.DeleteLoccartoIntegrationRequest, metadataOrOptions: grpc.Metadata | grpc.CallOptions | null, callback: grpc.requestCallback<google_protobuf_empty_pb.Empty>): grpc.ClientUnaryCall;
+  deleteLoccartoIntegration(argument: as_external_api_application_pb.DeleteLoccartoIntegrationRequest, metadata: grpc.Metadata | null, options: grpc.CallOptions | null, callback: grpc.requestCallback<google_protobuf_empty_pb.Empty>): grpc.ClientUnaryCall;
 }

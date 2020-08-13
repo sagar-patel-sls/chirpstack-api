@@ -94,6 +94,17 @@ function deserialize_api_CreateLoRaCloudIntegrationRequest(buffer_arg) {
   return as_external_api_application_pb.CreateLoRaCloudIntegrationRequest.deserializeBinary(new Uint8Array(buffer_arg));
 }
 
+function serialize_api_CreateLoccartoIntegrationRequest(arg) {
+  if (!(arg instanceof as_external_api_application_pb.CreateLoccartoIntegrationRequest)) {
+    throw new Error('Expected argument of type api.CreateLoccartoIntegrationRequest');
+  }
+  return Buffer.from(arg.serializeBinary());
+}
+
+function deserialize_api_CreateLoccartoIntegrationRequest(buffer_arg) {
+  return as_external_api_application_pb.CreateLoccartoIntegrationRequest.deserializeBinary(new Uint8Array(buffer_arg));
+}
+
 function serialize_api_CreateMyDevicesIntegrationRequest(arg) {
   if (!(arg instanceof as_external_api_application_pb.CreateMyDevicesIntegrationRequest)) {
     throw new Error('Expected argument of type api.CreateMyDevicesIntegrationRequest');
@@ -191,6 +202,17 @@ function serialize_api_DeleteLoRaCloudIntegrationRequest(arg) {
 
 function deserialize_api_DeleteLoRaCloudIntegrationRequest(buffer_arg) {
   return as_external_api_application_pb.DeleteLoRaCloudIntegrationRequest.deserializeBinary(new Uint8Array(buffer_arg));
+}
+
+function serialize_api_DeleteLoccartoIntegrationRequest(arg) {
+  if (!(arg instanceof as_external_api_application_pb.DeleteLoccartoIntegrationRequest)) {
+    throw new Error('Expected argument of type api.DeleteLoccartoIntegrationRequest');
+  }
+  return Buffer.from(arg.serializeBinary());
+}
+
+function deserialize_api_DeleteLoccartoIntegrationRequest(buffer_arg) {
+  return as_external_api_application_pb.DeleteLoccartoIntegrationRequest.deserializeBinary(new Uint8Array(buffer_arg));
 }
 
 function serialize_api_DeleteMyDevicesIntegrationRequest(arg) {
@@ -369,6 +391,28 @@ function deserialize_api_GetLoRaCloudIntegrationResponse(buffer_arg) {
   return as_external_api_application_pb.GetLoRaCloudIntegrationResponse.deserializeBinary(new Uint8Array(buffer_arg));
 }
 
+function serialize_api_GetLoccartoIntegrationRequest(arg) {
+  if (!(arg instanceof as_external_api_application_pb.GetLoccartoIntegrationRequest)) {
+    throw new Error('Expected argument of type api.GetLoccartoIntegrationRequest');
+  }
+  return Buffer.from(arg.serializeBinary());
+}
+
+function deserialize_api_GetLoccartoIntegrationRequest(buffer_arg) {
+  return as_external_api_application_pb.GetLoccartoIntegrationRequest.deserializeBinary(new Uint8Array(buffer_arg));
+}
+
+function serialize_api_GetLoccartoIntegrationResponse(arg) {
+  if (!(arg instanceof as_external_api_application_pb.GetLoccartoIntegrationResponse)) {
+    throw new Error('Expected argument of type api.GetLoccartoIntegrationResponse');
+  }
+  return Buffer.from(arg.serializeBinary());
+}
+
+function deserialize_api_GetLoccartoIntegrationResponse(buffer_arg) {
+  return as_external_api_application_pb.GetLoccartoIntegrationResponse.deserializeBinary(new Uint8Array(buffer_arg));
+}
+
 function serialize_api_GetMyDevicesIntegrationRequest(arg) {
   if (!(arg instanceof as_external_api_application_pb.GetMyDevicesIntegrationRequest)) {
     throw new Error('Expected argument of type api.GetMyDevicesIntegrationRequest');
@@ -532,6 +576,17 @@ function serialize_api_UpdateLoRaCloudIntegrationRequest(arg) {
 
 function deserialize_api_UpdateLoRaCloudIntegrationRequest(buffer_arg) {
   return as_external_api_application_pb.UpdateLoRaCloudIntegrationRequest.deserializeBinary(new Uint8Array(buffer_arg));
+}
+
+function serialize_api_UpdateLoccartoIntegrationRequest(arg) {
+  if (!(arg instanceof as_external_api_application_pb.UpdateLoccartoIntegrationRequest)) {
+    throw new Error('Expected argument of type api.UpdateLoccartoIntegrationRequest');
+  }
+  return Buffer.from(arg.serializeBinary());
+}
+
+function deserialize_api_UpdateLoccartoIntegrationRequest(buffer_arg) {
+  return as_external_api_application_pb.UpdateLoccartoIntegrationRequest.deserializeBinary(new Uint8Array(buffer_arg));
 }
 
 function serialize_api_UpdateMyDevicesIntegrationRequest(arg) {
@@ -1025,6 +1080,54 @@ var ApplicationServiceService = exports.ApplicationServiceService = {
     requestDeserialize: deserialize_api_ListIntegrationRequest,
     responseSerialize: serialize_api_ListIntegrationResponse,
     responseDeserialize: deserialize_api_ListIntegrationResponse,
+  },
+  // CreateLoccartoIntegration creates A Loccarto application-integration.
+  createLoccartoIntegration: {
+    path: '/api.ApplicationService/CreateLoccartoIntegration',
+    requestStream: false,
+    responseStream: false,
+    requestType: as_external_api_application_pb.CreateLoccartoIntegrationRequest,
+    responseType: google_protobuf_empty_pb.Empty,
+    requestSerialize: serialize_api_CreateLoccartoIntegrationRequest,
+    requestDeserialize: deserialize_api_CreateLoccartoIntegrationRequest,
+    responseSerialize: serialize_google_protobuf_Empty,
+    responseDeserialize: deserialize_google_protobuf_Empty,
+  },
+  // GetLoccartoIntegration returns the Loccarto application-integration.
+  getLoccartoIntegration: {
+    path: '/api.ApplicationService/GetLoccartoIntegration',
+    requestStream: false,
+    responseStream: false,
+    requestType: as_external_api_application_pb.GetLoccartoIntegrationRequest,
+    responseType: as_external_api_application_pb.GetLoccartoIntegrationResponse,
+    requestSerialize: serialize_api_GetLoccartoIntegrationRequest,
+    requestDeserialize: deserialize_api_GetLoccartoIntegrationRequest,
+    responseSerialize: serialize_api_GetLoccartoIntegrationResponse,
+    responseDeserialize: deserialize_api_GetLoccartoIntegrationResponse,
+  },
+  // UpdateLoccartoIntegration updates the Loccarto application-integration.
+  updateLoccartoIntegration: {
+    path: '/api.ApplicationService/UpdateLoccartoIntegration',
+    requestStream: false,
+    responseStream: false,
+    requestType: as_external_api_application_pb.UpdateLoccartoIntegrationRequest,
+    responseType: google_protobuf_empty_pb.Empty,
+    requestSerialize: serialize_api_UpdateLoccartoIntegrationRequest,
+    requestDeserialize: deserialize_api_UpdateLoccartoIntegrationRequest,
+    responseSerialize: serialize_google_protobuf_Empty,
+    responseDeserialize: deserialize_google_protobuf_Empty,
+  },
+  // DeleteLoccartoIntegration deletes the Loccarto application-integration.
+  deleteLoccartoIntegration: {
+    path: '/api.ApplicationService/DeleteLoccartoIntegration',
+    requestStream: false,
+    responseStream: false,
+    requestType: as_external_api_application_pb.DeleteLoccartoIntegrationRequest,
+    responseType: google_protobuf_empty_pb.Empty,
+    requestSerialize: serialize_api_DeleteLoccartoIntegrationRequest,
+    requestDeserialize: deserialize_api_DeleteLoccartoIntegrationRequest,
+    responseSerialize: serialize_google_protobuf_Empty,
+    responseDeserialize: deserialize_google_protobuf_Empty,
   },
 };
 

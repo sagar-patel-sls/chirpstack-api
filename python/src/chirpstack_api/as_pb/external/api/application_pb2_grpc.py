@@ -206,6 +206,26 @@ class ApplicationServiceStub(object):
                 request_serializer=chirpstack__api_dot_as__pb_dot_external_dot_api_dot_application__pb2.ListIntegrationRequest.SerializeToString,
                 response_deserializer=chirpstack__api_dot_as__pb_dot_external_dot_api_dot_application__pb2.ListIntegrationResponse.FromString,
                 )
+        self.CreateLoccartoIntegration = channel.unary_unary(
+                '/api.ApplicationService/CreateLoccartoIntegration',
+                request_serializer=chirpstack__api_dot_as__pb_dot_external_dot_api_dot_application__pb2.CreateLoccartoIntegrationRequest.SerializeToString,
+                response_deserializer=google_dot_protobuf_dot_empty__pb2.Empty.FromString,
+                )
+        self.GetLoccartoIntegration = channel.unary_unary(
+                '/api.ApplicationService/GetLoccartoIntegration',
+                request_serializer=chirpstack__api_dot_as__pb_dot_external_dot_api_dot_application__pb2.GetLoccartoIntegrationRequest.SerializeToString,
+                response_deserializer=chirpstack__api_dot_as__pb_dot_external_dot_api_dot_application__pb2.GetLoccartoIntegrationResponse.FromString,
+                )
+        self.UpdateLoccartoIntegration = channel.unary_unary(
+                '/api.ApplicationService/UpdateLoccartoIntegration',
+                request_serializer=chirpstack__api_dot_as__pb_dot_external_dot_api_dot_application__pb2.UpdateLoccartoIntegrationRequest.SerializeToString,
+                response_deserializer=google_dot_protobuf_dot_empty__pb2.Empty.FromString,
+                )
+        self.DeleteLoccartoIntegration = channel.unary_unary(
+                '/api.ApplicationService/DeleteLoccartoIntegration',
+                request_serializer=chirpstack__api_dot_as__pb_dot_external_dot_api_dot_application__pb2.DeleteLoccartoIntegrationRequest.SerializeToString,
+                response_deserializer=google_dot_protobuf_dot_empty__pb2.Empty.FromString,
+                )
 
 
 class ApplicationServiceServicer(object):
@@ -478,6 +498,34 @@ class ApplicationServiceServicer(object):
         context.set_details('Method not implemented!')
         raise NotImplementedError('Method not implemented!')
 
+    def CreateLoccartoIntegration(self, request, context):
+        """CreateLoccartoIntegration creates A Loccarto application-integration.
+        """
+        context.set_code(grpc.StatusCode.UNIMPLEMENTED)
+        context.set_details('Method not implemented!')
+        raise NotImplementedError('Method not implemented!')
+
+    def GetLoccartoIntegration(self, request, context):
+        """GetLoccartoIntegration returns the Loccarto application-integration.
+        """
+        context.set_code(grpc.StatusCode.UNIMPLEMENTED)
+        context.set_details('Method not implemented!')
+        raise NotImplementedError('Method not implemented!')
+
+    def UpdateLoccartoIntegration(self, request, context):
+        """UpdateLoccartoIntegration updates the Loccarto application-integration.
+        """
+        context.set_code(grpc.StatusCode.UNIMPLEMENTED)
+        context.set_details('Method not implemented!')
+        raise NotImplementedError('Method not implemented!')
+
+    def DeleteLoccartoIntegration(self, request, context):
+        """DeleteLoccartoIntegration deletes the Loccarto application-integration.
+        """
+        context.set_code(grpc.StatusCode.UNIMPLEMENTED)
+        context.set_details('Method not implemented!')
+        raise NotImplementedError('Method not implemented!')
+
 
 def add_ApplicationServiceServicer_to_server(servicer, server):
     rpc_method_handlers = {
@@ -670,6 +718,26 @@ def add_ApplicationServiceServicer_to_server(servicer, server):
                     servicer.ListIntegrations,
                     request_deserializer=chirpstack__api_dot_as__pb_dot_external_dot_api_dot_application__pb2.ListIntegrationRequest.FromString,
                     response_serializer=chirpstack__api_dot_as__pb_dot_external_dot_api_dot_application__pb2.ListIntegrationResponse.SerializeToString,
+            ),
+            'CreateLoccartoIntegration': grpc.unary_unary_rpc_method_handler(
+                    servicer.CreateLoccartoIntegration,
+                    request_deserializer=chirpstack__api_dot_as__pb_dot_external_dot_api_dot_application__pb2.CreateLoccartoIntegrationRequest.FromString,
+                    response_serializer=google_dot_protobuf_dot_empty__pb2.Empty.SerializeToString,
+            ),
+            'GetLoccartoIntegration': grpc.unary_unary_rpc_method_handler(
+                    servicer.GetLoccartoIntegration,
+                    request_deserializer=chirpstack__api_dot_as__pb_dot_external_dot_api_dot_application__pb2.GetLoccartoIntegrationRequest.FromString,
+                    response_serializer=chirpstack__api_dot_as__pb_dot_external_dot_api_dot_application__pb2.GetLoccartoIntegrationResponse.SerializeToString,
+            ),
+            'UpdateLoccartoIntegration': grpc.unary_unary_rpc_method_handler(
+                    servicer.UpdateLoccartoIntegration,
+                    request_deserializer=chirpstack__api_dot_as__pb_dot_external_dot_api_dot_application__pb2.UpdateLoccartoIntegrationRequest.FromString,
+                    response_serializer=google_dot_protobuf_dot_empty__pb2.Empty.SerializeToString,
+            ),
+            'DeleteLoccartoIntegration': grpc.unary_unary_rpc_method_handler(
+                    servicer.DeleteLoccartoIntegration,
+                    request_deserializer=chirpstack__api_dot_as__pb_dot_external_dot_api_dot_application__pb2.DeleteLoccartoIntegrationRequest.FromString,
+                    response_serializer=google_dot_protobuf_dot_empty__pb2.Empty.SerializeToString,
             ),
     }
     generic_handler = grpc.method_handlers_generic_handler(
@@ -1325,5 +1393,73 @@ class ApplicationService(object):
         return grpc.experimental.unary_unary(request, target, '/api.ApplicationService/ListIntegrations',
             chirpstack__api_dot_as__pb_dot_external_dot_api_dot_application__pb2.ListIntegrationRequest.SerializeToString,
             chirpstack__api_dot_as__pb_dot_external_dot_api_dot_application__pb2.ListIntegrationResponse.FromString,
+            options, channel_credentials,
+            insecure, call_credentials, compression, wait_for_ready, timeout, metadata)
+
+    @staticmethod
+    def CreateLoccartoIntegration(request,
+            target,
+            options=(),
+            channel_credentials=None,
+            call_credentials=None,
+            insecure=False,
+            compression=None,
+            wait_for_ready=None,
+            timeout=None,
+            metadata=None):
+        return grpc.experimental.unary_unary(request, target, '/api.ApplicationService/CreateLoccartoIntegration',
+            chirpstack__api_dot_as__pb_dot_external_dot_api_dot_application__pb2.CreateLoccartoIntegrationRequest.SerializeToString,
+            google_dot_protobuf_dot_empty__pb2.Empty.FromString,
+            options, channel_credentials,
+            insecure, call_credentials, compression, wait_for_ready, timeout, metadata)
+
+    @staticmethod
+    def GetLoccartoIntegration(request,
+            target,
+            options=(),
+            channel_credentials=None,
+            call_credentials=None,
+            insecure=False,
+            compression=None,
+            wait_for_ready=None,
+            timeout=None,
+            metadata=None):
+        return grpc.experimental.unary_unary(request, target, '/api.ApplicationService/GetLoccartoIntegration',
+            chirpstack__api_dot_as__pb_dot_external_dot_api_dot_application__pb2.GetLoccartoIntegrationRequest.SerializeToString,
+            chirpstack__api_dot_as__pb_dot_external_dot_api_dot_application__pb2.GetLoccartoIntegrationResponse.FromString,
+            options, channel_credentials,
+            insecure, call_credentials, compression, wait_for_ready, timeout, metadata)
+
+    @staticmethod
+    def UpdateLoccartoIntegration(request,
+            target,
+            options=(),
+            channel_credentials=None,
+            call_credentials=None,
+            insecure=False,
+            compression=None,
+            wait_for_ready=None,
+            timeout=None,
+            metadata=None):
+        return grpc.experimental.unary_unary(request, target, '/api.ApplicationService/UpdateLoccartoIntegration',
+            chirpstack__api_dot_as__pb_dot_external_dot_api_dot_application__pb2.UpdateLoccartoIntegrationRequest.SerializeToString,
+            google_dot_protobuf_dot_empty__pb2.Empty.FromString,
+            options, channel_credentials,
+            insecure, call_credentials, compression, wait_for_ready, timeout, metadata)
+
+    @staticmethod
+    def DeleteLoccartoIntegration(request,
+            target,
+            options=(),
+            channel_credentials=None,
+            call_credentials=None,
+            insecure=False,
+            compression=None,
+            wait_for_ready=None,
+            timeout=None,
+            metadata=None):
+        return grpc.experimental.unary_unary(request, target, '/api.ApplicationService/DeleteLoccartoIntegration',
+            chirpstack__api_dot_as__pb_dot_external_dot_api_dot_application__pb2.DeleteLoccartoIntegrationRequest.SerializeToString,
+            google_dot_protobuf_dot_empty__pb2.Empty.FromString,
             options, channel_credentials,
             insecure, call_credentials, compression, wait_for_ready, timeout, metadata)

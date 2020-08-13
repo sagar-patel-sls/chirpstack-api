@@ -412,6 +412,58 @@
         ]
       }
     },
+    "/api/applications/{application_id}/integrations/loccarto": {
+      "get": {
+        "summary": "GetLoccartoIntegration returns the Loccarto application-integration.",
+        "operationId": "GetLoccartoIntegration",
+        "responses": {
+          "200": {
+            "description": "A successful response.",
+            "schema": {
+              "$ref": "#/definitions/apiGetLoccartoIntegrationResponse"
+            }
+          }
+        },
+        "parameters": [
+          {
+            "name": "application_id",
+            "description": "Application ID.",
+            "in": "path",
+            "required": true,
+            "type": "string",
+            "format": "int64"
+          }
+        ],
+        "tags": [
+          "ApplicationService"
+        ]
+      },
+      "delete": {
+        "summary": "DeleteLoccartoIntegration deletes the Loccarto application-integration.",
+        "operationId": "DeleteLoccartoIntegration",
+        "responses": {
+          "200": {
+            "description": "A successful response.",
+            "schema": {
+              "properties": {}
+            }
+          }
+        },
+        "parameters": [
+          {
+            "name": "application_id",
+            "description": "Application ID.",
+            "in": "path",
+            "required": true,
+            "type": "string",
+            "format": "int64"
+          }
+        ],
+        "tags": [
+          "ApplicationService"
+        ]
+      }
+    },
     "/api/applications/{application_id}/integrations/loracloud": {
       "get": {
         "summary": "GetLoRaCloudIntegration returns the LoRaCloud application-integration.",
@@ -960,6 +1012,74 @@
         ]
       }
     },
+    "/api/applications/{integration.application_id}/integrations/loccarto": {
+      "post": {
+        "summary": "CreateLoccartoIntegration creates A Loccarto application-integration.",
+        "operationId": "CreateLoccartoIntegration",
+        "responses": {
+          "200": {
+            "description": "A successful response.",
+            "schema": {
+              "properties": {}
+            }
+          }
+        },
+        "parameters": [
+          {
+            "name": "integration.application_id",
+            "description": "Application ID.",
+            "in": "path",
+            "required": true,
+            "type": "string",
+            "format": "int64"
+          },
+          {
+            "name": "body",
+            "in": "body",
+            "required": true,
+            "schema": {
+              "$ref": "#/definitions/apiCreateLoccartoIntegrationRequest"
+            }
+          }
+        ],
+        "tags": [
+          "ApplicationService"
+        ]
+      },
+      "put": {
+        "summary": "UpdateLoccartoIntegration updates the Loccarto application-integration.",
+        "operationId": "UpdateLoccartoIntegration",
+        "responses": {
+          "200": {
+            "description": "A successful response.",
+            "schema": {
+              "properties": {}
+            }
+          }
+        },
+        "parameters": [
+          {
+            "name": "integration.application_id",
+            "description": "Application ID.",
+            "in": "path",
+            "required": true,
+            "type": "string",
+            "format": "int64"
+          },
+          {
+            "name": "body",
+            "in": "body",
+            "required": true,
+            "schema": {
+              "$ref": "#/definitions/apiUpdateLoccartoIntegrationRequest"
+            }
+          }
+        ],
+        "tags": [
+          "ApplicationService"
+        ]
+      }
+    },
     "/api/applications/{integration.application_id}/integrations/loracloud": {
       "post": {
         "summary": "CreateLoRaCloudIntegration creates A LoRaCloud application-integration.",
@@ -1361,6 +1481,15 @@
         }
       }
     },
+    "apiCreateLoccartoIntegrationRequest": {
+      "type": "object",
+      "properties": {
+        "integration": {
+          "$ref": "#/definitions/apiLoccartoIntegration",
+          "description": "Integration object to create."
+        }
+      }
+    },
     "apiCreateMyDevicesIntegrationRequest": {
       "type": "object",
       "properties": {
@@ -1464,6 +1593,15 @@
       "properties": {
         "integration": {
           "$ref": "#/definitions/apiLoRaCloudIntegration",
+          "description": "Integration object."
+        }
+      }
+    },
+    "apiGetLoccartoIntegrationResponse": {
+      "type": "object",
+      "properties": {
+        "integration": {
+          "$ref": "#/definitions/apiLoccartoIntegration",
           "description": "Integration object."
         }
       }
@@ -1612,7 +1750,8 @@
         "LORACLOUD",
         "GCP_PUBSUB",
         "AWS_SNS",
-        "AZURE_SERVICE_BUS"
+        "AZURE_SERVICE_BUS",
+        "LOCCARTO"
       ],
       "default": "HTTP"
     },
@@ -1745,6 +1884,31 @@
         }
       }
     },
+    "apiLoccartoIntegration": {
+      "type": "object",
+      "properties": {
+        "applicationID": {
+          "type": "string",
+          "format": "int64",
+          "description": "Application ID."
+        },
+        "loccartoClientkey": {
+          "type": "string",
+          "description": "Loccarto clientkey.\nThis token can be obtained from the Loccarto console."
+        },
+        "loccartoTDOA": {
+          "type": "boolean",
+          "format": "boolean",
+          "description": "TDOA based loccarto is enabled."
+        },
+        "loccartoRSSI": {
+          "type": "boolean",
+          "format": "boolean",
+          "description": "RSSI based loccarto is enabled."
+        }
+      },
+      "title": "LOCCARTO"
+    },
     "apiMarshaler": {
       "type": "string",
       "enum": [
@@ -1841,6 +2005,15 @@
       "properties": {
         "integration": {
           "$ref": "#/definitions/apiLoRaCloudIntegration",
+          "description": "Integration object."
+        }
+      }
+    },
+    "apiUpdateLoccartoIntegrationRequest": {
+      "type": "object",
+      "properties": {
+        "integration": {
+          "$ref": "#/definitions/apiLoccartoIntegration",
           "description": "Integration object."
         }
       }

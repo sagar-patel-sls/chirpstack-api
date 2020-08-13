@@ -293,6 +293,36 @@ service ApplicationService {
 			get: "/api/applications/{application_id}/integrations"
 		};
 	}
+
+     // CreateLoccartoIntegration creates A Loccarto application-integration.
+    rpc CreateLoccartoIntegration(CreateLoccartoIntegrationRequest) returns (google.protobuf.Empty) {
+        option(google.api.http) = {
+            post: "/api/applications/{integration.application_id}/integrations/loccarto"
+            body: "*"
+        };
+    }
+
+    // GetLoccartoIntegration returns the Loccarto application-integration.
+    rpc GetLoccartoIntegration(GetLoccartoIntegrationRequest) returns (GetLoccartoIntegrationResponse) {
+        option(google.api.http) = {
+            get: "/api/applications/{application_id}/integrations/loccarto"
+        };
+    }
+
+    // UpdateLoccartoIntegration updates the Loccarto application-integration.
+    rpc UpdateLoccartoIntegration(UpdateLoccartoIntegrationRequest) returns (google.protobuf.Empty) {
+        option(google.api.http) = {
+            put: "/api/applications/{integration.application_id}/integrations/loccarto"
+            body: "*"
+        };
+    }
+
+    // DeleteLoccartoIntegration deletes the Loccarto application-integration.
+    rpc DeleteLoccartoIntegration(DeleteLoccartoIntegrationRequest) returns (google.protobuf.Empty) {
+        option(google.api.http) = {
+            delete: "/api/applications/{application_id}/integrations/loccarto"
+        };
+    }
 }
 
 enum IntegrationKind {
@@ -304,6 +334,7 @@ enum IntegrationKind {
     GCP_PUBSUB = 5;
     AWS_SNS = 6;
     AZURE_SERVICE_BUS = 7;
+    LOCCARTO = 8;
 }
 
 enum Marshaler {
@@ -875,4 +906,45 @@ message UpdateAzureServiceBusIntegrationRequest {
 message DeleteAzureServiceBusIntegrationRequest {
 	// The id of the application.
 	int64 application_id = 1 [json_name = "applicationID"];
+}
+
+//LOCCARTO
+message LoccartoIntegration {
+    // Application ID.
+    int64 application_id = 1 [json_name = "applicationID"];
+
+    // Loccarto clientkey.
+    // This token can be obtained from the Loccarto console.
+    string loccarto_clientkey = 2;
+
+    // TDOA based loccarto is enabled.
+    bool loccarto_tdoa = 3 [json_name = "loccartoTDOA"];
+
+    // RSSI based loccarto is enabled.
+    bool loccarto_rssi = 4 [json_name = "loccartoRSSI"];
+}
+
+message CreateLoccartoIntegrationRequest {
+    // Integration object to create.
+    LoccartoIntegration integration = 1;
+}
+
+message GetLoccartoIntegrationRequest {
+    // Application ID.
+    int64 application_id = 1 [json_name = "applicationID"];
+}
+
+message GetLoccartoIntegrationResponse {
+    // Integration object.
+    LoccartoIntegration integration = 1;
+}
+
+message UpdateLoccartoIntegrationRequest {
+    // Integration object.
+    LoccartoIntegration integration = 1;
+}
+
+message DeleteLoccartoIntegrationRequest {
+    // Application ID.
+    int64 application_id = 1 [json_name = "applicationID"];
 }

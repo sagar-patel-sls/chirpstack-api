@@ -1565,6 +1565,144 @@ export namespace DeleteAzureServiceBusIntegrationRequest {
   }
 }
 
+export class LoccartoIntegration extends jspb.Message {
+  getApplicationId(): number;
+  setApplicationId(value: number): void;
+
+  getLoccartoClientkey(): string;
+  setLoccartoClientkey(value: string): void;
+
+  getLoccartoTdoa(): boolean;
+  setLoccartoTdoa(value: boolean): void;
+
+  getLoccartoRssi(): boolean;
+  setLoccartoRssi(value: boolean): void;
+
+  serializeBinary(): Uint8Array;
+  toObject(includeInstance?: boolean): LoccartoIntegration.AsObject;
+  static toObject(includeInstance: boolean, msg: LoccartoIntegration): LoccartoIntegration.AsObject;
+  static extensions: {[key: number]: jspb.ExtensionFieldInfo<jspb.Message>};
+  static extensionsBinary: {[key: number]: jspb.ExtensionFieldBinaryInfo<jspb.Message>};
+  static serializeBinaryToWriter(message: LoccartoIntegration, writer: jspb.BinaryWriter): void;
+  static deserializeBinary(bytes: Uint8Array): LoccartoIntegration;
+  static deserializeBinaryFromReader(message: LoccartoIntegration, reader: jspb.BinaryReader): LoccartoIntegration;
+}
+
+export namespace LoccartoIntegration {
+  export type AsObject = {
+    applicationId: number,
+    loccartoClientkey: string,
+    loccartoTdoa: boolean,
+    loccartoRssi: boolean,
+  }
+}
+
+export class CreateLoccartoIntegrationRequest extends jspb.Message {
+  hasIntegration(): boolean;
+  clearIntegration(): void;
+  getIntegration(): LoccartoIntegration | undefined;
+  setIntegration(value?: LoccartoIntegration): void;
+
+  serializeBinary(): Uint8Array;
+  toObject(includeInstance?: boolean): CreateLoccartoIntegrationRequest.AsObject;
+  static toObject(includeInstance: boolean, msg: CreateLoccartoIntegrationRequest): CreateLoccartoIntegrationRequest.AsObject;
+  static extensions: {[key: number]: jspb.ExtensionFieldInfo<jspb.Message>};
+  static extensionsBinary: {[key: number]: jspb.ExtensionFieldBinaryInfo<jspb.Message>};
+  static serializeBinaryToWriter(message: CreateLoccartoIntegrationRequest, writer: jspb.BinaryWriter): void;
+  static deserializeBinary(bytes: Uint8Array): CreateLoccartoIntegrationRequest;
+  static deserializeBinaryFromReader(message: CreateLoccartoIntegrationRequest, reader: jspb.BinaryReader): CreateLoccartoIntegrationRequest;
+}
+
+export namespace CreateLoccartoIntegrationRequest {
+  export type AsObject = {
+    integration?: LoccartoIntegration.AsObject,
+  }
+}
+
+export class GetLoccartoIntegrationRequest extends jspb.Message {
+  getApplicationId(): number;
+  setApplicationId(value: number): void;
+
+  serializeBinary(): Uint8Array;
+  toObject(includeInstance?: boolean): GetLoccartoIntegrationRequest.AsObject;
+  static toObject(includeInstance: boolean, msg: GetLoccartoIntegrationRequest): GetLoccartoIntegrationRequest.AsObject;
+  static extensions: {[key: number]: jspb.ExtensionFieldInfo<jspb.Message>};
+  static extensionsBinary: {[key: number]: jspb.ExtensionFieldBinaryInfo<jspb.Message>};
+  static serializeBinaryToWriter(message: GetLoccartoIntegrationRequest, writer: jspb.BinaryWriter): void;
+  static deserializeBinary(bytes: Uint8Array): GetLoccartoIntegrationRequest;
+  static deserializeBinaryFromReader(message: GetLoccartoIntegrationRequest, reader: jspb.BinaryReader): GetLoccartoIntegrationRequest;
+}
+
+export namespace GetLoccartoIntegrationRequest {
+  export type AsObject = {
+    applicationId: number,
+  }
+}
+
+export class GetLoccartoIntegrationResponse extends jspb.Message {
+  hasIntegration(): boolean;
+  clearIntegration(): void;
+  getIntegration(): LoccartoIntegration | undefined;
+  setIntegration(value?: LoccartoIntegration): void;
+
+  serializeBinary(): Uint8Array;
+  toObject(includeInstance?: boolean): GetLoccartoIntegrationResponse.AsObject;
+  static toObject(includeInstance: boolean, msg: GetLoccartoIntegrationResponse): GetLoccartoIntegrationResponse.AsObject;
+  static extensions: {[key: number]: jspb.ExtensionFieldInfo<jspb.Message>};
+  static extensionsBinary: {[key: number]: jspb.ExtensionFieldBinaryInfo<jspb.Message>};
+  static serializeBinaryToWriter(message: GetLoccartoIntegrationResponse, writer: jspb.BinaryWriter): void;
+  static deserializeBinary(bytes: Uint8Array): GetLoccartoIntegrationResponse;
+  static deserializeBinaryFromReader(message: GetLoccartoIntegrationResponse, reader: jspb.BinaryReader): GetLoccartoIntegrationResponse;
+}
+
+export namespace GetLoccartoIntegrationResponse {
+  export type AsObject = {
+    integration?: LoccartoIntegration.AsObject,
+  }
+}
+
+export class UpdateLoccartoIntegrationRequest extends jspb.Message {
+  hasIntegration(): boolean;
+  clearIntegration(): void;
+  getIntegration(): LoccartoIntegration | undefined;
+  setIntegration(value?: LoccartoIntegration): void;
+
+  serializeBinary(): Uint8Array;
+  toObject(includeInstance?: boolean): UpdateLoccartoIntegrationRequest.AsObject;
+  static toObject(includeInstance: boolean, msg: UpdateLoccartoIntegrationRequest): UpdateLoccartoIntegrationRequest.AsObject;
+  static extensions: {[key: number]: jspb.ExtensionFieldInfo<jspb.Message>};
+  static extensionsBinary: {[key: number]: jspb.ExtensionFieldBinaryInfo<jspb.Message>};
+  static serializeBinaryToWriter(message: UpdateLoccartoIntegrationRequest, writer: jspb.BinaryWriter): void;
+  static deserializeBinary(bytes: Uint8Array): UpdateLoccartoIntegrationRequest;
+  static deserializeBinaryFromReader(message: UpdateLoccartoIntegrationRequest, reader: jspb.BinaryReader): UpdateLoccartoIntegrationRequest;
+}
+
+export namespace UpdateLoccartoIntegrationRequest {
+  export type AsObject = {
+    integration?: LoccartoIntegration.AsObject,
+  }
+}
+
+export class DeleteLoccartoIntegrationRequest extends jspb.Message {
+  getApplicationId(): number;
+  setApplicationId(value: number): void;
+
+  serializeBinary(): Uint8Array;
+  toObject(includeInstance?: boolean): DeleteLoccartoIntegrationRequest.AsObject;
+  static toObject(includeInstance: boolean, msg: DeleteLoccartoIntegrationRequest): DeleteLoccartoIntegrationRequest.AsObject;
+  static extensions: {[key: number]: jspb.ExtensionFieldInfo<jspb.Message>};
+  static extensionsBinary: {[key: number]: jspb.ExtensionFieldBinaryInfo<jspb.Message>};
+  static serializeBinaryToWriter(message: DeleteLoccartoIntegrationRequest, writer: jspb.BinaryWriter): void;
+  static deserializeBinary(bytes: Uint8Array): DeleteLoccartoIntegrationRequest;
+  static deserializeBinaryFromReader(message: DeleteLoccartoIntegrationRequest, reader: jspb.BinaryReader): DeleteLoccartoIntegrationRequest;
+}
+
+export namespace DeleteLoccartoIntegrationRequest {
+  export type AsObject = {
+    applicationId: number,
+  }
+}
+
 export interface IntegrationKindMap {
   HTTP: 0;
   INFLUXDB: 1;
@@ -1574,6 +1712,7 @@ export interface IntegrationKindMap {
   GCP_PUBSUB: 5;
   AWS_SNS: 6;
   AZURE_SERVICE_BUS: 7;
+  LOCCARTO: 8;
 }
 
 export const IntegrationKind: IntegrationKindMap;
