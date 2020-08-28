@@ -431,6 +431,90 @@
           "RemoteMulticastGroupService"
         ]
       }
+    },
+    "/api/remote-multicast-groups/{remote_multicast_group_id}/queue": {
+      "get": {
+        "summary": "ListQueue lists the items in the remote multicast-group queue.",
+        "operationId": "ListQueue",
+        "responses": {
+          "200": {
+            "description": "A successful response.",
+            "schema": {
+              "$ref": "#/definitions/apiListRemoteMulticastGroupQueueItemsResponse"
+            }
+          }
+        },
+        "parameters": [
+          {
+            "name": "remote_multicast_group_id",
+            "description": "Remote Multicast-group ID (string formatted UUID).",
+            "in": "path",
+            "required": true,
+            "type": "string"
+          }
+        ],
+        "tags": [
+          "RemoteMulticastGroupService"
+        ]
+      },
+      "delete": {
+        "summary": "FlushQueue flushes the remote multicast-group queue.",
+        "operationId": "FlushQueue",
+        "responses": {
+          "200": {
+            "description": "A successful response.",
+            "schema": {
+              "properties": {}
+            }
+          }
+        },
+        "parameters": [
+          {
+            "name": "remote_multicast_group_id",
+            "description": "Remote Multicast-group ID (string formatted UUID).",
+            "in": "path",
+            "required": true,
+            "type": "string"
+          }
+        ],
+        "tags": [
+          "RemoteMulticastGroupService"
+        ]
+      }
+    },
+    "/api/remote-multicast-groups/{remote_multicast_queue_item.remote_multicast_group_id}/queue": {
+      "post": {
+        "summary": "Enqueue adds the given item to the remote multicast-queue.",
+        "operationId": "Enqueue",
+        "responses": {
+          "200": {
+            "description": "A successful response.",
+            "schema": {
+              "$ref": "#/definitions/apiEnqueueRemoteMulticastQueueItemResponse"
+            }
+          }
+        },
+        "parameters": [
+          {
+            "name": "remote_multicast_queue_item.remote_multicast_group_id",
+            "description": "Remote Multicast-group ID (string formatted UUID).",
+            "in": "path",
+            "required": true,
+            "type": "string"
+          },
+          {
+            "name": "body",
+            "in": "body",
+            "required": true,
+            "schema": {
+              "$ref": "#/definitions/apiEnqueueRemoteMulticastQueueItemRequest"
+            }
+          }
+        ],
+        "tags": [
+          "RemoteMulticastGroupService"
+        ]
+      }
     }
   },
   "definitions": {
@@ -525,6 +609,25 @@
         }
       }
     },
+    "apiEnqueueRemoteMulticastQueueItemRequest": {
+      "type": "object",
+      "properties": {
+        "remoteMulticastQueueItem": {
+          "$ref": "#/definitions/apiRemoteMulticastQueueItem",
+          "description": "Remote Multicast queue-item object to enqueue."
+        }
+      }
+    },
+    "apiEnqueueRemoteMulticastQueueItemResponse": {
+      "type": "object",
+      "properties": {
+        "fCnt": {
+          "type": "integer",
+          "format": "int64",
+          "description": "Frame-counter for the enqueued payload."
+        }
+      }
+    },
     "apiFUOTADeploymentDeviceState": {
       "type": "string",
       "enum": [
@@ -559,23 +662,6 @@
           "type": "string",
           "format": "date-time",
           "description": "Last update timestamp."
-        },
-        "mcAddr": {
-          "type": "string",
-          "description": "Multicast address (HEX encoded DevAddr)."
-        },
-        "mcNwkSKey": {
-          "type": "string",
-          "description": "Multicast network session key (HEX encoded AES128 key)."
-        },
-        "mcAppSKey": {
-          "type": "string",
-          "description": "Multicast application session key (HEX encoded AES128 key)."
-        },
-        "fCnt": {
-          "type": "integer",
-          "format": "int64",
-          "description": "Frame-counter."
         }
       }
     },
@@ -608,6 +694,17 @@
           "type": "array",
           "items": {
             "$ref": "#/definitions/apiRemoteMulticastDeploymentDevice"
+          }
+        }
+      }
+    },
+    "apiListRemoteMulticastGroupQueueItemsResponse": {
+      "type": "object",
+      "properties": {
+        "remoteMulticastQueueItems": {
+          "type": "array",
+          "items": {
+            "$ref": "#/definitions/apiRemoteMulticastQueueItem"
           }
         }
       }
@@ -651,10 +748,6 @@
         "deviceName": {
           "type": "string"
         },
-        "multicastGroupID": {
-          "type": "string",
-          "description": "Multicast-group ID (string formatted UUID)."
-        },
         "multicastGroupName": {
           "type": "string"
         },
@@ -689,13 +782,9 @@
           "type": "string",
           "description": "Remote Multicast-group name."
         },
-        "multicastGroupId": {
-          "type": "string",
-          "description": "Multicast Group ID."
-        },
         "serviceProfileID": {
           "type": "string",
-          "description": "Service-profile ID.\nAfter creation, this can not be updated."
+          "description": "Service-profile ID.\nThis value will be automatically set on create.\nAfter creation, this can not be updated."
         },
         "applicationID": {
           "type": "string",
@@ -720,6 +809,28 @@
           "type": "integer",
           "format": "int64",
           "description": "Ping-slot period.\nMandatory for Class-B remote multicast groups."
+        },
+        "mcAddr": {
+          "type": "string",
+          "description": "Multicast address (HEX encoded DevAddr).\nThis value will be automatically set on create."
+        },
+        "mcNwkSKey": {
+          "type": "string",
+          "description": "Multicast network session key (HEX encoded AES128 key).\nThis value will be automatically set on create."
+        },
+        "mcAppSKey": {
+          "type": "string",
+          "description": "Multicast application session key (HEX encoded AES128 key).\nThis value will be automatically set on create."
+        },
+        "fCnt": {
+          "type": "integer",
+          "format": "int64",
+          "description": "Frame-counter.\nThis value will be automatically set on create."
+        },
+        "mcGroupId": {
+          "type": "integer",
+          "format": "int64",
+          "description": "Mc Group id\nThis value will be automatically set on create."
         },
         "state": {
           "type": "string",
@@ -772,6 +883,30 @@
         "state": {
           "type": "string",
           "description": "Deployment state."
+        }
+      }
+    },
+    "apiRemoteMulticastQueueItem": {
+      "type": "object",
+      "properties": {
+        "remoteMulticastGroupID": {
+          "type": "string",
+          "description": "Remote Multicast-group ID (string formatted UUID)."
+        },
+        "fCnt": {
+          "type": "integer",
+          "format": "int64",
+          "description": "Downlink frame-counter.\nThis will be automatically set on enqueue."
+        },
+        "fPort": {
+          "type": "integer",
+          "format": "int64",
+          "description": "FPort used (must be \u003e 0)."
+        },
+        "data": {
+          "type": "string",
+          "format": "byte",
+          "description": "Base64 encoded data."
         }
       }
     },

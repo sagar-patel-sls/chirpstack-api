@@ -55,6 +55,39 @@ function deserialize_api_DeleteRemoteMulticastGroupRequest(buffer_arg) {
   return as_external_api_remoteMulticastGroup_pb.DeleteRemoteMulticastGroupRequest.deserializeBinary(new Uint8Array(buffer_arg));
 }
 
+function serialize_api_EnqueueRemoteMulticastQueueItemRequest(arg) {
+  if (!(arg instanceof as_external_api_remoteMulticastGroup_pb.EnqueueRemoteMulticastQueueItemRequest)) {
+    throw new Error('Expected argument of type api.EnqueueRemoteMulticastQueueItemRequest');
+  }
+  return Buffer.from(arg.serializeBinary());
+}
+
+function deserialize_api_EnqueueRemoteMulticastQueueItemRequest(buffer_arg) {
+  return as_external_api_remoteMulticastGroup_pb.EnqueueRemoteMulticastQueueItemRequest.deserializeBinary(new Uint8Array(buffer_arg));
+}
+
+function serialize_api_EnqueueRemoteMulticastQueueItemResponse(arg) {
+  if (!(arg instanceof as_external_api_remoteMulticastGroup_pb.EnqueueRemoteMulticastQueueItemResponse)) {
+    throw new Error('Expected argument of type api.EnqueueRemoteMulticastQueueItemResponse');
+  }
+  return Buffer.from(arg.serializeBinary());
+}
+
+function deserialize_api_EnqueueRemoteMulticastQueueItemResponse(buffer_arg) {
+  return as_external_api_remoteMulticastGroup_pb.EnqueueRemoteMulticastQueueItemResponse.deserializeBinary(new Uint8Array(buffer_arg));
+}
+
+function serialize_api_FlushRemoteMulticastGroupQueueItemsRequest(arg) {
+  if (!(arg instanceof as_external_api_remoteMulticastGroup_pb.FlushRemoteMulticastGroupQueueItemsRequest)) {
+    throw new Error('Expected argument of type api.FlushRemoteMulticastGroupQueueItemsRequest');
+  }
+  return Buffer.from(arg.serializeBinary());
+}
+
+function deserialize_api_FlushRemoteMulticastGroupQueueItemsRequest(buffer_arg) {
+  return as_external_api_remoteMulticastGroup_pb.FlushRemoteMulticastGroupQueueItemsRequest.deserializeBinary(new Uint8Array(buffer_arg));
+}
+
 function serialize_api_GetRemoteMulticastDeploymentDeviceRequest(arg) {
   if (!(arg instanceof as_external_api_remoteMulticastGroup_pb.GetRemoteMulticastDeploymentDeviceRequest)) {
     throw new Error('Expected argument of type api.GetRemoteMulticastDeploymentDeviceRequest');
@@ -130,6 +163,28 @@ function serialize_api_ListRemoteMulticastDevicesResponse(arg) {
 
 function deserialize_api_ListRemoteMulticastDevicesResponse(buffer_arg) {
   return as_external_api_remoteMulticastGroup_pb.ListRemoteMulticastDevicesResponse.deserializeBinary(new Uint8Array(buffer_arg));
+}
+
+function serialize_api_ListRemoteMulticastGroupQueueItemsRequest(arg) {
+  if (!(arg instanceof as_external_api_remoteMulticastGroup_pb.ListRemoteMulticastGroupQueueItemsRequest)) {
+    throw new Error('Expected argument of type api.ListRemoteMulticastGroupQueueItemsRequest');
+  }
+  return Buffer.from(arg.serializeBinary());
+}
+
+function deserialize_api_ListRemoteMulticastGroupQueueItemsRequest(buffer_arg) {
+  return as_external_api_remoteMulticastGroup_pb.ListRemoteMulticastGroupQueueItemsRequest.deserializeBinary(new Uint8Array(buffer_arg));
+}
+
+function serialize_api_ListRemoteMulticastGroupQueueItemsResponse(arg) {
+  if (!(arg instanceof as_external_api_remoteMulticastGroup_pb.ListRemoteMulticastGroupQueueItemsResponse)) {
+    throw new Error('Expected argument of type api.ListRemoteMulticastGroupQueueItemsResponse');
+  }
+  return Buffer.from(arg.serializeBinary());
+}
+
+function deserialize_api_ListRemoteMulticastGroupQueueItemsResponse(buffer_arg) {
+  return as_external_api_remoteMulticastGroup_pb.ListRemoteMulticastGroupQueueItemsResponse.deserializeBinary(new Uint8Array(buffer_arg));
 }
 
 function serialize_api_ListRemoteMulticastGroupRequest(arg) {
@@ -333,6 +388,42 @@ var RemoteMulticastGroupServiceService = exports.RemoteMulticastGroupServiceServ
     requestDeserialize: deserialize_api_GetRemoteMulticastDeploymentDeviceRequest,
     responseSerialize: serialize_api_GetRemoteMulticastDeploymentDeviceResponse,
     responseDeserialize: deserialize_api_GetRemoteMulticastDeploymentDeviceResponse,
+  },
+  // Enqueue adds the given item to the remote multicast-queue.
+  enqueue: {
+    path: '/api.RemoteMulticastGroupService/Enqueue',
+    requestStream: false,
+    responseStream: false,
+    requestType: as_external_api_remoteMulticastGroup_pb.EnqueueRemoteMulticastQueueItemRequest,
+    responseType: as_external_api_remoteMulticastGroup_pb.EnqueueRemoteMulticastQueueItemResponse,
+    requestSerialize: serialize_api_EnqueueRemoteMulticastQueueItemRequest,
+    requestDeserialize: deserialize_api_EnqueueRemoteMulticastQueueItemRequest,
+    responseSerialize: serialize_api_EnqueueRemoteMulticastQueueItemResponse,
+    responseDeserialize: deserialize_api_EnqueueRemoteMulticastQueueItemResponse,
+  },
+  // FlushQueue flushes the remote multicast-group queue.
+  flushQueue: {
+    path: '/api.RemoteMulticastGroupService/FlushQueue',
+    requestStream: false,
+    responseStream: false,
+    requestType: as_external_api_remoteMulticastGroup_pb.FlushRemoteMulticastGroupQueueItemsRequest,
+    responseType: google_protobuf_empty_pb.Empty,
+    requestSerialize: serialize_api_FlushRemoteMulticastGroupQueueItemsRequest,
+    requestDeserialize: deserialize_api_FlushRemoteMulticastGroupQueueItemsRequest,
+    responseSerialize: serialize_google_protobuf_Empty,
+    responseDeserialize: deserialize_google_protobuf_Empty,
+  },
+  // ListQueue lists the items in the remote multicast-group queue.
+  listQueue: {
+    path: '/api.RemoteMulticastGroupService/ListQueue',
+    requestStream: false,
+    responseStream: false,
+    requestType: as_external_api_remoteMulticastGroup_pb.ListRemoteMulticastGroupQueueItemsRequest,
+    responseType: as_external_api_remoteMulticastGroup_pb.ListRemoteMulticastGroupQueueItemsResponse,
+    requestSerialize: serialize_api_ListRemoteMulticastGroupQueueItemsRequest,
+    requestDeserialize: deserialize_api_ListRemoteMulticastGroupQueueItemsRequest,
+    responseSerialize: serialize_api_ListRemoteMulticastGroupQueueItemsResponse,
+    responseDeserialize: deserialize_api_ListRemoteMulticastGroupQueueItemsResponse,
   },
 };
 

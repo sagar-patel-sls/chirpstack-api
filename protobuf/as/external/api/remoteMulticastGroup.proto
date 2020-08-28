@@ -110,6 +110,32 @@ service RemoteMulticastGroupService {
             "{dev_eui}"
     };
   }
+
+  // Enqueue adds the given item to the remote multicast-queue.
+  rpc Enqueue(EnqueueRemoteMulticastQueueItemRequest)
+      returns (EnqueueRemoteMulticastQueueItemResponse) {
+    option (google.api.http) = {
+      post : "/api/remote-multicast-groups/"
+             "{remote_multicast_queue_item.remote_multicast_group_id}/queue"
+      body : "*"
+    };
+  }
+
+  // FlushQueue flushes the remote multicast-group queue.
+  rpc FlushQueue(FlushRemoteMulticastGroupQueueItemsRequest)
+      returns (google.protobuf.Empty) {
+    option (google.api.http) = {
+      delete : "/api/remote-multicast-groups/{remote_multicast_group_id}/queue"
+    };
+  }
+
+  // ListQueue lists the items in the remote multicast-group queue.
+  rpc ListQueue(ListRemoteMulticastGroupQueueItemsRequest)
+      returns (ListRemoteMulticastGroupQueueItemsResponse) {
+    option (google.api.http) = {
+      get : "/api/remote-multicast-groups/{remote_multicast_group_id}/queue"
+    };
+  }
 }
 
 message RemoteMulticastGroup {
@@ -120,43 +146,61 @@ message RemoteMulticastGroup {
   // Remote Multicast-group name.
   string name = 2;
 
-  // Multicast Group ID.
-  string multicast_group_id = 3;
-
   // Service-profile ID.
+  // This value will be automatically set on create.
   // After creation, this can not be updated.
-  string service_profile_id = 4 [ json_name = "serviceProfileID" ];
+  string service_profile_id = 3 [ json_name = "serviceProfileID" ];
 
   // Application ID
   // After creation, this can not be updated.
-  int64 application_id = 5 [ json_name = "applicationID" ];
+  int64 application_id = 4 [ json_name = "applicationID" ];
 
   // Remote Multicast type.
-  MulticastGroupType group_type = 6;
+  MulticastGroupType group_type = 5;
 
   // Data-rate.
-  uint32 dr = 7;
+  uint32 dr = 6;
 
   // Frequency (Hz).
-  uint32 frequency = 8;
+  uint32 frequency = 7;
 
   // Ping-slot period.
   // Mandatory for Class-B remote multicast groups.
-  uint32 ping_slot_period = 9;
+  uint32 ping_slot_period = 8;
+
+  // Multicast address (HEX encoded DevAddr).
+  // This value will be automatically set on create.
+  string mc_addr = 9;
+
+  // Multicast network session key (HEX encoded AES128 key).
+  // This value will be automatically set on create.
+  string mc_nwk_s_key = 10;
+
+  // Multicast application session key (HEX encoded AES128 key).
+  // This value will be automatically set on create.
+  string mc_app_s_key = 11;
+
+  // Frame-counter.
+  // This value will be automatically set on create.
+  uint32 f_cnt = 12;
+
+  // Mc Group id
+  // This value will be automatically set on create.
+  uint32 mc_group_id = 13;
 
   // Remote Multicast Deployment state.
   // This value will be automatically set on create.
-  string state = 10;
+  string state = 14;
 
   // Unicast time-out.
   // Set this to the value in which you at least expect an uplink frame from the
   // device. The Remote Multicast deployment engine will wait at least for the
   // given time before proceeding with the next steps.
-  google.protobuf.Duration unicast_timeout = 11;
+  google.protobuf.Duration unicast_timeout = 15;
 
   // Next step after.
   // This value will be automatically set on create.
-  google.protobuf.Timestamp next_step_after = 12;
+  google.protobuf.Timestamp next_step_after = 16;
 }
 
 message RemoteMulticastDeploymentDevice {
@@ -169,23 +213,20 @@ message RemoteMulticastDeploymentDevice {
 
   string device_name = 3;
 
-  // Multicast-group ID (string formatted UUID).
-  string multicast_group_id = 4 [ json_name = "multicastGroupID" ];
-
-  string multicast_group_name = 5;
+  string multicast_group_name = 4;
 
   // Created at timestamp.
-  google.protobuf.Timestamp created_at = 6;
+  google.protobuf.Timestamp created_at = 5;
 
   // Last update timestamp.
-  google.protobuf.Timestamp updated_at = 7;
+  google.protobuf.Timestamp updated_at = 6;
 
   // Remote Multicast Deployment Device state.
   // This value will be automatically set on create.
-  FUOTADeploymentDeviceState state = 8;
+  FUOTADeploymentDeviceState state = 7;
 
   // Error message (in case of error state).
-  string error_message = 9;
+  string error_message = 8;
 }
 
 message RemoteMulticastGroupListItem {
@@ -238,18 +279,6 @@ message GetRemoteMulticastGroupResponse {
 
   // Last update timestamp.
   google.protobuf.Timestamp updated_at = 3;
-
-  // Multicast address (HEX encoded DevAddr).
-  string mc_addr = 4;
-
-  // Multicast network session key (HEX encoded AES128 key).
-  string mc_nwk_s_key = 5;
-
-  // Multicast application session key (HEX encoded AES128 key).
-  string mc_app_s_key = 6;
-
-  // Frame-counter.
-  uint32 f_cnt = 7;
 }
 
 message ListRemoteMulticastGroupRequest {
@@ -364,4 +393,43 @@ message GetRemoteMulticastDeploymentDeviceRequest {
 
 message GetRemoteMulticastDeploymentDeviceResponse {
   RemoteMulticastDeploymentDevice deployment_device = 1;
+}
+
+message RemoteMulticastQueueItem {
+  // Remote Multicast-group ID (string formatted UUID).
+  string remote_multicast_group_id = 1 [ json_name = "remoteMulticastGroupID" ];
+
+  // Downlink frame-counter.
+  // This will be automatically set on enqueue.
+  uint32 f_cnt = 2;
+
+  // FPort used (must be > 0).
+  uint32 f_port = 3;
+
+  // Base64 encoded data.
+  bytes data = 4;
+}
+
+message EnqueueRemoteMulticastQueueItemRequest {
+  // Remote Multicast queue-item object to enqueue.
+  RemoteMulticastQueueItem remote_multicast_queue_item = 1;
+}
+
+message EnqueueRemoteMulticastQueueItemResponse {
+  // Frame-counter for the enqueued payload.
+  uint32 f_cnt = 1;
+}
+
+message FlushRemoteMulticastGroupQueueItemsRequest {
+  // Remote Multicast-group ID (string formatted UUID).
+  string remote_multicast_group_id = 1 [ json_name = "remoteMulticastGroupID" ];
+}
+
+message ListRemoteMulticastGroupQueueItemsRequest {
+  // Remote Multicast-group ID (string formatted UUID).
+  string remote_multicast_group_id = 1 [ json_name = "remoteMulticastGroupID" ];
+}
+
+message ListRemoteMulticastGroupQueueItemsResponse {
+  repeated RemoteMulticastQueueItem remote_multicast_queue_items = 1;
 }

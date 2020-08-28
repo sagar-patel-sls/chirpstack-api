@@ -71,6 +71,21 @@ class RemoteMulticastGroupServiceStub(object):
                 request_serializer=chirpstack__api_dot_as__pb_dot_external_dot_api_dot_remoteMulticastGroup__pb2.GetRemoteMulticastDeploymentDeviceRequest.SerializeToString,
                 response_deserializer=chirpstack__api_dot_as__pb_dot_external_dot_api_dot_remoteMulticastGroup__pb2.GetRemoteMulticastDeploymentDeviceResponse.FromString,
                 )
+        self.Enqueue = channel.unary_unary(
+                '/api.RemoteMulticastGroupService/Enqueue',
+                request_serializer=chirpstack__api_dot_as__pb_dot_external_dot_api_dot_remoteMulticastGroup__pb2.EnqueueRemoteMulticastQueueItemRequest.SerializeToString,
+                response_deserializer=chirpstack__api_dot_as__pb_dot_external_dot_api_dot_remoteMulticastGroup__pb2.EnqueueRemoteMulticastQueueItemResponse.FromString,
+                )
+        self.FlushQueue = channel.unary_unary(
+                '/api.RemoteMulticastGroupService/FlushQueue',
+                request_serializer=chirpstack__api_dot_as__pb_dot_external_dot_api_dot_remoteMulticastGroup__pb2.FlushRemoteMulticastGroupQueueItemsRequest.SerializeToString,
+                response_deserializer=google_dot_protobuf_dot_empty__pb2.Empty.FromString,
+                )
+        self.ListQueue = channel.unary_unary(
+                '/api.RemoteMulticastGroupService/ListQueue',
+                request_serializer=chirpstack__api_dot_as__pb_dot_external_dot_api_dot_remoteMulticastGroup__pb2.ListRemoteMulticastGroupQueueItemsRequest.SerializeToString,
+                response_deserializer=chirpstack__api_dot_as__pb_dot_external_dot_api_dot_remoteMulticastGroup__pb2.ListRemoteMulticastGroupQueueItemsResponse.FromString,
+                )
 
 
 class RemoteMulticastGroupServiceServicer(object):
@@ -155,6 +170,27 @@ class RemoteMulticastGroupServiceServicer(object):
         context.set_details('Method not implemented!')
         raise NotImplementedError('Method not implemented!')
 
+    def Enqueue(self, request, context):
+        """Enqueue adds the given item to the remote multicast-queue.
+        """
+        context.set_code(grpc.StatusCode.UNIMPLEMENTED)
+        context.set_details('Method not implemented!')
+        raise NotImplementedError('Method not implemented!')
+
+    def FlushQueue(self, request, context):
+        """FlushQueue flushes the remote multicast-group queue.
+        """
+        context.set_code(grpc.StatusCode.UNIMPLEMENTED)
+        context.set_details('Method not implemented!')
+        raise NotImplementedError('Method not implemented!')
+
+    def ListQueue(self, request, context):
+        """ListQueue lists the items in the remote multicast-group queue.
+        """
+        context.set_code(grpc.StatusCode.UNIMPLEMENTED)
+        context.set_details('Method not implemented!')
+        raise NotImplementedError('Method not implemented!')
+
 
 def add_RemoteMulticastGroupServiceServicer_to_server(servicer, server):
     rpc_method_handlers = {
@@ -212,6 +248,21 @@ def add_RemoteMulticastGroupServiceServicer_to_server(servicer, server):
                     servicer.GetDeploymentDevice,
                     request_deserializer=chirpstack__api_dot_as__pb_dot_external_dot_api_dot_remoteMulticastGroup__pb2.GetRemoteMulticastDeploymentDeviceRequest.FromString,
                     response_serializer=chirpstack__api_dot_as__pb_dot_external_dot_api_dot_remoteMulticastGroup__pb2.GetRemoteMulticastDeploymentDeviceResponse.SerializeToString,
+            ),
+            'Enqueue': grpc.unary_unary_rpc_method_handler(
+                    servicer.Enqueue,
+                    request_deserializer=chirpstack__api_dot_as__pb_dot_external_dot_api_dot_remoteMulticastGroup__pb2.EnqueueRemoteMulticastQueueItemRequest.FromString,
+                    response_serializer=chirpstack__api_dot_as__pb_dot_external_dot_api_dot_remoteMulticastGroup__pb2.EnqueueRemoteMulticastQueueItemResponse.SerializeToString,
+            ),
+            'FlushQueue': grpc.unary_unary_rpc_method_handler(
+                    servicer.FlushQueue,
+                    request_deserializer=chirpstack__api_dot_as__pb_dot_external_dot_api_dot_remoteMulticastGroup__pb2.FlushRemoteMulticastGroupQueueItemsRequest.FromString,
+                    response_serializer=google_dot_protobuf_dot_empty__pb2.Empty.SerializeToString,
+            ),
+            'ListQueue': grpc.unary_unary_rpc_method_handler(
+                    servicer.ListQueue,
+                    request_deserializer=chirpstack__api_dot_as__pb_dot_external_dot_api_dot_remoteMulticastGroup__pb2.ListRemoteMulticastGroupQueueItemsRequest.FromString,
+                    response_serializer=chirpstack__api_dot_as__pb_dot_external_dot_api_dot_remoteMulticastGroup__pb2.ListRemoteMulticastGroupQueueItemsResponse.SerializeToString,
             ),
     }
     generic_handler = grpc.method_handlers_generic_handler(
@@ -408,5 +459,56 @@ class RemoteMulticastGroupService(object):
         return grpc.experimental.unary_unary(request, target, '/api.RemoteMulticastGroupService/GetDeploymentDevice',
             chirpstack__api_dot_as__pb_dot_external_dot_api_dot_remoteMulticastGroup__pb2.GetRemoteMulticastDeploymentDeviceRequest.SerializeToString,
             chirpstack__api_dot_as__pb_dot_external_dot_api_dot_remoteMulticastGroup__pb2.GetRemoteMulticastDeploymentDeviceResponse.FromString,
+            options, channel_credentials,
+            insecure, call_credentials, compression, wait_for_ready, timeout, metadata)
+
+    @staticmethod
+    def Enqueue(request,
+            target,
+            options=(),
+            channel_credentials=None,
+            call_credentials=None,
+            insecure=False,
+            compression=None,
+            wait_for_ready=None,
+            timeout=None,
+            metadata=None):
+        return grpc.experimental.unary_unary(request, target, '/api.RemoteMulticastGroupService/Enqueue',
+            chirpstack__api_dot_as__pb_dot_external_dot_api_dot_remoteMulticastGroup__pb2.EnqueueRemoteMulticastQueueItemRequest.SerializeToString,
+            chirpstack__api_dot_as__pb_dot_external_dot_api_dot_remoteMulticastGroup__pb2.EnqueueRemoteMulticastQueueItemResponse.FromString,
+            options, channel_credentials,
+            insecure, call_credentials, compression, wait_for_ready, timeout, metadata)
+
+    @staticmethod
+    def FlushQueue(request,
+            target,
+            options=(),
+            channel_credentials=None,
+            call_credentials=None,
+            insecure=False,
+            compression=None,
+            wait_for_ready=None,
+            timeout=None,
+            metadata=None):
+        return grpc.experimental.unary_unary(request, target, '/api.RemoteMulticastGroupService/FlushQueue',
+            chirpstack__api_dot_as__pb_dot_external_dot_api_dot_remoteMulticastGroup__pb2.FlushRemoteMulticastGroupQueueItemsRequest.SerializeToString,
+            google_dot_protobuf_dot_empty__pb2.Empty.FromString,
+            options, channel_credentials,
+            insecure, call_credentials, compression, wait_for_ready, timeout, metadata)
+
+    @staticmethod
+    def ListQueue(request,
+            target,
+            options=(),
+            channel_credentials=None,
+            call_credentials=None,
+            insecure=False,
+            compression=None,
+            wait_for_ready=None,
+            timeout=None,
+            metadata=None):
+        return grpc.experimental.unary_unary(request, target, '/api.RemoteMulticastGroupService/ListQueue',
+            chirpstack__api_dot_as__pb_dot_external_dot_api_dot_remoteMulticastGroup__pb2.ListRemoteMulticastGroupQueueItemsRequest.SerializeToString,
+            chirpstack__api_dot_as__pb_dot_external_dot_api_dot_remoteMulticastGroup__pb2.ListRemoteMulticastGroupQueueItemsResponse.FromString,
             options, channel_credentials,
             insecure, call_credentials, compression, wait_for_ready, timeout, metadata)

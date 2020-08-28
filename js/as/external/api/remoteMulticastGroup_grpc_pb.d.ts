@@ -19,6 +19,9 @@ interface IRemoteMulticastGroupServiceService extends grpc.ServiceDefinition<grp
   listDevicesForRemoteMulticast: grpc.MethodDefinition<as_external_api_remoteMulticastGroup_pb.ListRemoteMulticastDeviceRequest, as_external_api_remoteMulticastGroup_pb.ListRemoteMulticastDeviceResponse>;
   getDevicesList: grpc.MethodDefinition<as_external_api_remoteMulticastGroup_pb.ListRemoteMulticastDeviceRequest, as_external_api_remoteMulticastGroup_pb.ListRemoteMulticastDevicesResponse>;
   getDeploymentDevice: grpc.MethodDefinition<as_external_api_remoteMulticastGroup_pb.GetRemoteMulticastDeploymentDeviceRequest, as_external_api_remoteMulticastGroup_pb.GetRemoteMulticastDeploymentDeviceResponse>;
+  enqueue: grpc.MethodDefinition<as_external_api_remoteMulticastGroup_pb.EnqueueRemoteMulticastQueueItemRequest, as_external_api_remoteMulticastGroup_pb.EnqueueRemoteMulticastQueueItemResponse>;
+  flushQueue: grpc.MethodDefinition<as_external_api_remoteMulticastGroup_pb.FlushRemoteMulticastGroupQueueItemsRequest, google_protobuf_empty_pb.Empty>;
+  listQueue: grpc.MethodDefinition<as_external_api_remoteMulticastGroup_pb.ListRemoteMulticastGroupQueueItemsRequest, as_external_api_remoteMulticastGroup_pb.ListRemoteMulticastGroupQueueItemsResponse>;
 }
 
 export const RemoteMulticastGroupServiceService: IRemoteMulticastGroupServiceService;
@@ -58,4 +61,13 @@ export class RemoteMulticastGroupServiceClient extends grpc.Client {
   getDeploymentDevice(argument: as_external_api_remoteMulticastGroup_pb.GetRemoteMulticastDeploymentDeviceRequest, callback: grpc.requestCallback<as_external_api_remoteMulticastGroup_pb.GetRemoteMulticastDeploymentDeviceResponse>): grpc.ClientUnaryCall;
   getDeploymentDevice(argument: as_external_api_remoteMulticastGroup_pb.GetRemoteMulticastDeploymentDeviceRequest, metadataOrOptions: grpc.Metadata | grpc.CallOptions | null, callback: grpc.requestCallback<as_external_api_remoteMulticastGroup_pb.GetRemoteMulticastDeploymentDeviceResponse>): grpc.ClientUnaryCall;
   getDeploymentDevice(argument: as_external_api_remoteMulticastGroup_pb.GetRemoteMulticastDeploymentDeviceRequest, metadata: grpc.Metadata | null, options: grpc.CallOptions | null, callback: grpc.requestCallback<as_external_api_remoteMulticastGroup_pb.GetRemoteMulticastDeploymentDeviceResponse>): grpc.ClientUnaryCall;
+  enqueue(argument: as_external_api_remoteMulticastGroup_pb.EnqueueRemoteMulticastQueueItemRequest, callback: grpc.requestCallback<as_external_api_remoteMulticastGroup_pb.EnqueueRemoteMulticastQueueItemResponse>): grpc.ClientUnaryCall;
+  enqueue(argument: as_external_api_remoteMulticastGroup_pb.EnqueueRemoteMulticastQueueItemRequest, metadataOrOptions: grpc.Metadata | grpc.CallOptions | null, callback: grpc.requestCallback<as_external_api_remoteMulticastGroup_pb.EnqueueRemoteMulticastQueueItemResponse>): grpc.ClientUnaryCall;
+  enqueue(argument: as_external_api_remoteMulticastGroup_pb.EnqueueRemoteMulticastQueueItemRequest, metadata: grpc.Metadata | null, options: grpc.CallOptions | null, callback: grpc.requestCallback<as_external_api_remoteMulticastGroup_pb.EnqueueRemoteMulticastQueueItemResponse>): grpc.ClientUnaryCall;
+  flushQueue(argument: as_external_api_remoteMulticastGroup_pb.FlushRemoteMulticastGroupQueueItemsRequest, callback: grpc.requestCallback<google_protobuf_empty_pb.Empty>): grpc.ClientUnaryCall;
+  flushQueue(argument: as_external_api_remoteMulticastGroup_pb.FlushRemoteMulticastGroupQueueItemsRequest, metadataOrOptions: grpc.Metadata | grpc.CallOptions | null, callback: grpc.requestCallback<google_protobuf_empty_pb.Empty>): grpc.ClientUnaryCall;
+  flushQueue(argument: as_external_api_remoteMulticastGroup_pb.FlushRemoteMulticastGroupQueueItemsRequest, metadata: grpc.Metadata | null, options: grpc.CallOptions | null, callback: grpc.requestCallback<google_protobuf_empty_pb.Empty>): grpc.ClientUnaryCall;
+  listQueue(argument: as_external_api_remoteMulticastGroup_pb.ListRemoteMulticastGroupQueueItemsRequest, callback: grpc.requestCallback<as_external_api_remoteMulticastGroup_pb.ListRemoteMulticastGroupQueueItemsResponse>): grpc.ClientUnaryCall;
+  listQueue(argument: as_external_api_remoteMulticastGroup_pb.ListRemoteMulticastGroupQueueItemsRequest, metadataOrOptions: grpc.Metadata | grpc.CallOptions | null, callback: grpc.requestCallback<as_external_api_remoteMulticastGroup_pb.ListRemoteMulticastGroupQueueItemsResponse>): grpc.ClientUnaryCall;
+  listQueue(argument: as_external_api_remoteMulticastGroup_pb.ListRemoteMulticastGroupQueueItemsRequest, metadata: grpc.Metadata | null, options: grpc.CallOptions | null, callback: grpc.requestCallback<as_external_api_remoteMulticastGroup_pb.ListRemoteMulticastGroupQueueItemsResponse>): grpc.ClientUnaryCall;
 }

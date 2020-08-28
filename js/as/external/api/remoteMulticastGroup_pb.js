@@ -20,6 +20,9 @@ goog.exportSymbol('proto.api.AddDeviceToRemoteMulticastGroupRequest', null, glob
 goog.exportSymbol('proto.api.CreateRemoteMulticastGroupRequest', null, global);
 goog.exportSymbol('proto.api.CreateRemoteMulticastGroupResponse', null, global);
 goog.exportSymbol('proto.api.DeleteRemoteMulticastGroupRequest', null, global);
+goog.exportSymbol('proto.api.EnqueueRemoteMulticastQueueItemRequest', null, global);
+goog.exportSymbol('proto.api.EnqueueRemoteMulticastQueueItemResponse', null, global);
+goog.exportSymbol('proto.api.FlushRemoteMulticastGroupQueueItemsRequest', null, global);
 goog.exportSymbol('proto.api.GetRemoteMulticastDeploymentDeviceRequest', null, global);
 goog.exportSymbol('proto.api.GetRemoteMulticastDeploymentDeviceResponse', null, global);
 goog.exportSymbol('proto.api.GetRemoteMulticastGroupRequest', null, global);
@@ -27,11 +30,14 @@ goog.exportSymbol('proto.api.GetRemoteMulticastGroupResponse', null, global);
 goog.exportSymbol('proto.api.ListRemoteMulticastDeviceRequest', null, global);
 goog.exportSymbol('proto.api.ListRemoteMulticastDeviceResponse', null, global);
 goog.exportSymbol('proto.api.ListRemoteMulticastDevicesResponse', null, global);
+goog.exportSymbol('proto.api.ListRemoteMulticastGroupQueueItemsRequest', null, global);
+goog.exportSymbol('proto.api.ListRemoteMulticastGroupQueueItemsResponse', null, global);
 goog.exportSymbol('proto.api.ListRemoteMulticastGroupRequest', null, global);
 goog.exportSymbol('proto.api.ListRemoteMulticastGroupResponse', null, global);
 goog.exportSymbol('proto.api.RemoteMulticastDeploymentDevice', null, global);
 goog.exportSymbol('proto.api.RemoteMulticastGroup', null, global);
 goog.exportSymbol('proto.api.RemoteMulticastGroupListItem', null, global);
+goog.exportSymbol('proto.api.RemoteMulticastQueueItem', null, global);
 goog.exportSymbol('proto.api.RemoveDeviceFromRemoteMulticastGroupRequest', null, global);
 goog.exportSymbol('proto.api.ResetRemoteMulticastDeviceRequest', null, global);
 goog.exportSymbol('proto.api.UpdateRemoteMulticastGroupRequest', null, global);
@@ -83,13 +89,17 @@ proto.api.RemoteMulticastGroup.toObject = function(includeInstance, msg) {
   var f, obj = {
     id: msg.getId(),
     name: msg.getName(),
-    multicastGroupId: msg.getMulticastGroupId(),
     serviceProfileId: msg.getServiceProfileId(),
     applicationId: msg.getApplicationId(),
     groupType: msg.getGroupType(),
     dr: msg.getDr(),
     frequency: msg.getFrequency(),
     pingSlotPeriod: msg.getPingSlotPeriod(),
+    mcAddr: msg.getMcAddr(),
+    mcNwkSKey: msg.getMcNwkSKey(),
+    mcAppSKey: msg.getMcAppSKey(),
+    fCnt: msg.getFCnt(),
+    mcGroupId: msg.getMcGroupId(),
     state: msg.getState(),
     unicastTimeout: (f = msg.getUnicastTimeout()) && google_protobuf_duration_pb.Duration.toObject(includeInstance, f),
     nextStepAfter: (f = msg.getNextStepAfter()) && google_protobuf_timestamp_pb.Timestamp.toObject(includeInstance, f)
@@ -139,42 +149,58 @@ proto.api.RemoteMulticastGroup.deserializeBinaryFromReader = function(msg, reade
       break;
     case 3:
       var value = /** @type {string} */ (reader.readString());
-      msg.setMulticastGroupId(value);
-      break;
-    case 4:
-      var value = /** @type {string} */ (reader.readString());
       msg.setServiceProfileId(value);
       break;
-    case 5:
+    case 4:
       var value = /** @type {number} */ (reader.readInt64());
       msg.setApplicationId(value);
       break;
-    case 6:
+    case 5:
       var value = /** @type {!proto.api.MulticastGroupType} */ (reader.readEnum());
       msg.setGroupType(value);
       break;
-    case 7:
+    case 6:
       var value = /** @type {number} */ (reader.readUint32());
       msg.setDr(value);
       break;
-    case 8:
+    case 7:
       var value = /** @type {number} */ (reader.readUint32());
       msg.setFrequency(value);
       break;
-    case 9:
+    case 8:
       var value = /** @type {number} */ (reader.readUint32());
       msg.setPingSlotPeriod(value);
       break;
+    case 9:
+      var value = /** @type {string} */ (reader.readString());
+      msg.setMcAddr(value);
+      break;
     case 10:
+      var value = /** @type {string} */ (reader.readString());
+      msg.setMcNwkSKey(value);
+      break;
+    case 11:
+      var value = /** @type {string} */ (reader.readString());
+      msg.setMcAppSKey(value);
+      break;
+    case 12:
+      var value = /** @type {number} */ (reader.readUint32());
+      msg.setFCnt(value);
+      break;
+    case 13:
+      var value = /** @type {number} */ (reader.readUint32());
+      msg.setMcGroupId(value);
+      break;
+    case 14:
       var value = /** @type {string} */ (reader.readString());
       msg.setState(value);
       break;
-    case 11:
+    case 15:
       var value = new google_protobuf_duration_pb.Duration;
       reader.readMessage(value,google_protobuf_duration_pb.Duration.deserializeBinaryFromReader);
       msg.setUnicastTimeout(value);
       break;
-    case 12:
+    case 16:
       var value = new google_protobuf_timestamp_pb.Timestamp;
       reader.readMessage(value,google_protobuf_timestamp_pb.Timestamp.deserializeBinaryFromReader);
       msg.setNextStepAfter(value);
@@ -231,66 +257,94 @@ proto.api.RemoteMulticastGroup.prototype.serializeBinaryToWriter = function (wri
       f
     );
   }
-  f = this.getMulticastGroupId();
+  f = this.getServiceProfileId();
   if (f.length > 0) {
     writer.writeString(
       3,
       f
     );
   }
-  f = this.getServiceProfileId();
-  if (f.length > 0) {
-    writer.writeString(
-      4,
-      f
-    );
-  }
   f = this.getApplicationId();
   if (f !== 0) {
     writer.writeInt64(
-      5,
+      4,
       f
     );
   }
   f = this.getGroupType();
   if (f !== 0.0) {
     writer.writeEnum(
-      6,
+      5,
       f
     );
   }
   f = this.getDr();
   if (f !== 0) {
     writer.writeUint32(
-      7,
+      6,
       f
     );
   }
   f = this.getFrequency();
   if (f !== 0) {
     writer.writeUint32(
-      8,
+      7,
       f
     );
   }
   f = this.getPingSlotPeriod();
   if (f !== 0) {
     writer.writeUint32(
+      8,
+      f
+    );
+  }
+  f = this.getMcAddr();
+  if (f.length > 0) {
+    writer.writeString(
       9,
       f
     );
   }
-  f = this.getState();
+  f = this.getMcNwkSKey();
   if (f.length > 0) {
     writer.writeString(
       10,
       f
     );
   }
+  f = this.getMcAppSKey();
+  if (f.length > 0) {
+    writer.writeString(
+      11,
+      f
+    );
+  }
+  f = this.getFCnt();
+  if (f !== 0) {
+    writer.writeUint32(
+      12,
+      f
+    );
+  }
+  f = this.getMcGroupId();
+  if (f !== 0) {
+    writer.writeUint32(
+      13,
+      f
+    );
+  }
+  f = this.getState();
+  if (f.length > 0) {
+    writer.writeString(
+      14,
+      f
+    );
+  }
   f = this.getUnicastTimeout();
   if (f != null) {
     writer.writeMessage(
-      11,
+      15,
       f,
       google_protobuf_duration_pb.Duration.serializeBinaryToWriter
     );
@@ -298,7 +352,7 @@ proto.api.RemoteMulticastGroup.prototype.serializeBinaryToWriter = function (wri
   f = this.getNextStepAfter();
   if (f != null) {
     writer.writeMessage(
-      12,
+      16,
       f,
       google_protobuf_timestamp_pb.Timestamp.serializeBinaryToWriter
     );
@@ -346,138 +400,198 @@ proto.api.RemoteMulticastGroup.prototype.setName = function(value) {
 
 
 /**
- * optional string multicast_group_id = 3;
+ * optional string service_profile_id = 3;
  * @return {string}
  */
-proto.api.RemoteMulticastGroup.prototype.getMulticastGroupId = function() {
+proto.api.RemoteMulticastGroup.prototype.getServiceProfileId = function() {
   return /** @type {string} */ (jspb.Message.getFieldProto3(this, 3, ""));
 };
 
 
 /** @param {string} value  */
-proto.api.RemoteMulticastGroup.prototype.setMulticastGroupId = function(value) {
+proto.api.RemoteMulticastGroup.prototype.setServiceProfileId = function(value) {
   jspb.Message.setField(this, 3, value);
 };
 
 
 /**
- * optional string service_profile_id = 4;
- * @return {string}
- */
-proto.api.RemoteMulticastGroup.prototype.getServiceProfileId = function() {
-  return /** @type {string} */ (jspb.Message.getFieldProto3(this, 4, ""));
-};
-
-
-/** @param {string} value  */
-proto.api.RemoteMulticastGroup.prototype.setServiceProfileId = function(value) {
-  jspb.Message.setField(this, 4, value);
-};
-
-
-/**
- * optional int64 application_id = 5;
+ * optional int64 application_id = 4;
  * @return {number}
  */
 proto.api.RemoteMulticastGroup.prototype.getApplicationId = function() {
-  return /** @type {number} */ (jspb.Message.getFieldProto3(this, 5, 0));
+  return /** @type {number} */ (jspb.Message.getFieldProto3(this, 4, 0));
 };
 
 
 /** @param {number} value  */
 proto.api.RemoteMulticastGroup.prototype.setApplicationId = function(value) {
-  jspb.Message.setField(this, 5, value);
+  jspb.Message.setField(this, 4, value);
 };
 
 
 /**
- * optional MulticastGroupType group_type = 6;
+ * optional MulticastGroupType group_type = 5;
  * @return {!proto.api.MulticastGroupType}
  */
 proto.api.RemoteMulticastGroup.prototype.getGroupType = function() {
-  return /** @type {!proto.api.MulticastGroupType} */ (jspb.Message.getFieldProto3(this, 6, 0));
+  return /** @type {!proto.api.MulticastGroupType} */ (jspb.Message.getFieldProto3(this, 5, 0));
 };
 
 
 /** @param {!proto.api.MulticastGroupType} value  */
 proto.api.RemoteMulticastGroup.prototype.setGroupType = function(value) {
-  jspb.Message.setField(this, 6, value);
+  jspb.Message.setField(this, 5, value);
 };
 
 
 /**
- * optional uint32 dr = 7;
+ * optional uint32 dr = 6;
  * @return {number}
  */
 proto.api.RemoteMulticastGroup.prototype.getDr = function() {
-  return /** @type {number} */ (jspb.Message.getFieldProto3(this, 7, 0));
+  return /** @type {number} */ (jspb.Message.getFieldProto3(this, 6, 0));
 };
 
 
 /** @param {number} value  */
 proto.api.RemoteMulticastGroup.prototype.setDr = function(value) {
-  jspb.Message.setField(this, 7, value);
+  jspb.Message.setField(this, 6, value);
 };
 
 
 /**
- * optional uint32 frequency = 8;
+ * optional uint32 frequency = 7;
  * @return {number}
  */
 proto.api.RemoteMulticastGroup.prototype.getFrequency = function() {
-  return /** @type {number} */ (jspb.Message.getFieldProto3(this, 8, 0));
+  return /** @type {number} */ (jspb.Message.getFieldProto3(this, 7, 0));
 };
 
 
 /** @param {number} value  */
 proto.api.RemoteMulticastGroup.prototype.setFrequency = function(value) {
-  jspb.Message.setField(this, 8, value);
+  jspb.Message.setField(this, 7, value);
 };
 
 
 /**
- * optional uint32 ping_slot_period = 9;
+ * optional uint32 ping_slot_period = 8;
  * @return {number}
  */
 proto.api.RemoteMulticastGroup.prototype.getPingSlotPeriod = function() {
-  return /** @type {number} */ (jspb.Message.getFieldProto3(this, 9, 0));
+  return /** @type {number} */ (jspb.Message.getFieldProto3(this, 8, 0));
 };
 
 
 /** @param {number} value  */
 proto.api.RemoteMulticastGroup.prototype.setPingSlotPeriod = function(value) {
+  jspb.Message.setField(this, 8, value);
+};
+
+
+/**
+ * optional string mc_addr = 9;
+ * @return {string}
+ */
+proto.api.RemoteMulticastGroup.prototype.getMcAddr = function() {
+  return /** @type {string} */ (jspb.Message.getFieldProto3(this, 9, ""));
+};
+
+
+/** @param {string} value  */
+proto.api.RemoteMulticastGroup.prototype.setMcAddr = function(value) {
   jspb.Message.setField(this, 9, value);
 };
 
 
 /**
- * optional string state = 10;
+ * optional string mc_nwk_s_key = 10;
  * @return {string}
  */
-proto.api.RemoteMulticastGroup.prototype.getState = function() {
+proto.api.RemoteMulticastGroup.prototype.getMcNwkSKey = function() {
   return /** @type {string} */ (jspb.Message.getFieldProto3(this, 10, ""));
 };
 
 
 /** @param {string} value  */
-proto.api.RemoteMulticastGroup.prototype.setState = function(value) {
+proto.api.RemoteMulticastGroup.prototype.setMcNwkSKey = function(value) {
   jspb.Message.setField(this, 10, value);
 };
 
 
 /**
- * optional google.protobuf.Duration unicast_timeout = 11;
+ * optional string mc_app_s_key = 11;
+ * @return {string}
+ */
+proto.api.RemoteMulticastGroup.prototype.getMcAppSKey = function() {
+  return /** @type {string} */ (jspb.Message.getFieldProto3(this, 11, ""));
+};
+
+
+/** @param {string} value  */
+proto.api.RemoteMulticastGroup.prototype.setMcAppSKey = function(value) {
+  jspb.Message.setField(this, 11, value);
+};
+
+
+/**
+ * optional uint32 f_cnt = 12;
+ * @return {number}
+ */
+proto.api.RemoteMulticastGroup.prototype.getFCnt = function() {
+  return /** @type {number} */ (jspb.Message.getFieldProto3(this, 12, 0));
+};
+
+
+/** @param {number} value  */
+proto.api.RemoteMulticastGroup.prototype.setFCnt = function(value) {
+  jspb.Message.setField(this, 12, value);
+};
+
+
+/**
+ * optional uint32 mc_group_id = 13;
+ * @return {number}
+ */
+proto.api.RemoteMulticastGroup.prototype.getMcGroupId = function() {
+  return /** @type {number} */ (jspb.Message.getFieldProto3(this, 13, 0));
+};
+
+
+/** @param {number} value  */
+proto.api.RemoteMulticastGroup.prototype.setMcGroupId = function(value) {
+  jspb.Message.setField(this, 13, value);
+};
+
+
+/**
+ * optional string state = 14;
+ * @return {string}
+ */
+proto.api.RemoteMulticastGroup.prototype.getState = function() {
+  return /** @type {string} */ (jspb.Message.getFieldProto3(this, 14, ""));
+};
+
+
+/** @param {string} value  */
+proto.api.RemoteMulticastGroup.prototype.setState = function(value) {
+  jspb.Message.setField(this, 14, value);
+};
+
+
+/**
+ * optional google.protobuf.Duration unicast_timeout = 15;
  * @return {proto.google.protobuf.Duration}
  */
 proto.api.RemoteMulticastGroup.prototype.getUnicastTimeout = function() {
   return /** @type{proto.google.protobuf.Duration} */ (
-    jspb.Message.getWrapperField(this, google_protobuf_duration_pb.Duration, 11));
+    jspb.Message.getWrapperField(this, google_protobuf_duration_pb.Duration, 15));
 };
 
 
 /** @param {proto.google.protobuf.Duration|undefined} value  */
 proto.api.RemoteMulticastGroup.prototype.setUnicastTimeout = function(value) {
-  jspb.Message.setWrapperField(this, 11, value);
+  jspb.Message.setWrapperField(this, 15, value);
 };
 
 
@@ -491,23 +605,23 @@ proto.api.RemoteMulticastGroup.prototype.clearUnicastTimeout = function() {
  * @return{!boolean}
  */
 proto.api.RemoteMulticastGroup.prototype.hasUnicastTimeout = function() {
-  return jspb.Message.getField(this, 11) != null;
+  return jspb.Message.getField(this, 15) != null;
 };
 
 
 /**
- * optional google.protobuf.Timestamp next_step_after = 12;
+ * optional google.protobuf.Timestamp next_step_after = 16;
  * @return {proto.google.protobuf.Timestamp}
  */
 proto.api.RemoteMulticastGroup.prototype.getNextStepAfter = function() {
   return /** @type{proto.google.protobuf.Timestamp} */ (
-    jspb.Message.getWrapperField(this, google_protobuf_timestamp_pb.Timestamp, 12));
+    jspb.Message.getWrapperField(this, google_protobuf_timestamp_pb.Timestamp, 16));
 };
 
 
 /** @param {proto.google.protobuf.Timestamp|undefined} value  */
 proto.api.RemoteMulticastGroup.prototype.setNextStepAfter = function(value) {
-  jspb.Message.setWrapperField(this, 12, value);
+  jspb.Message.setWrapperField(this, 16, value);
 };
 
 
@@ -521,7 +635,7 @@ proto.api.RemoteMulticastGroup.prototype.clearNextStepAfter = function() {
  * @return{!boolean}
  */
 proto.api.RemoteMulticastGroup.prototype.hasNextStepAfter = function() {
-  return jspb.Message.getField(this, 12) != null;
+  return jspb.Message.getField(this, 16) != null;
 };
 
 
@@ -574,7 +688,6 @@ proto.api.RemoteMulticastDeploymentDevice.toObject = function(includeInstance, m
     id: msg.getId(),
     devEui: msg.getDevEui(),
     deviceName: msg.getDeviceName(),
-    multicastGroupId: msg.getMulticastGroupId(),
     multicastGroupName: msg.getMulticastGroupName(),
     createdAt: (f = msg.getCreatedAt()) && google_protobuf_timestamp_pb.Timestamp.toObject(includeInstance, f),
     updatedAt: (f = msg.getUpdatedAt()) && google_protobuf_timestamp_pb.Timestamp.toObject(includeInstance, f),
@@ -630,27 +743,23 @@ proto.api.RemoteMulticastDeploymentDevice.deserializeBinaryFromReader = function
       break;
     case 4:
       var value = /** @type {string} */ (reader.readString());
-      msg.setMulticastGroupId(value);
-      break;
-    case 5:
-      var value = /** @type {string} */ (reader.readString());
       msg.setMulticastGroupName(value);
       break;
-    case 6:
+    case 5:
       var value = new google_protobuf_timestamp_pb.Timestamp;
       reader.readMessage(value,google_protobuf_timestamp_pb.Timestamp.deserializeBinaryFromReader);
       msg.setCreatedAt(value);
       break;
-    case 7:
+    case 6:
       var value = new google_protobuf_timestamp_pb.Timestamp;
       reader.readMessage(value,google_protobuf_timestamp_pb.Timestamp.deserializeBinaryFromReader);
       msg.setUpdatedAt(value);
       break;
-    case 8:
+    case 7:
       var value = /** @type {!proto.api.FUOTADeploymentDeviceState} */ (reader.readEnum());
       msg.setState(value);
       break;
-    case 9:
+    case 8:
       var value = /** @type {string} */ (reader.readString());
       msg.setErrorMessage(value);
       break;
@@ -713,24 +822,17 @@ proto.api.RemoteMulticastDeploymentDevice.prototype.serializeBinaryToWriter = fu
       f
     );
   }
-  f = this.getMulticastGroupId();
+  f = this.getMulticastGroupName();
   if (f.length > 0) {
     writer.writeString(
       4,
       f
     );
   }
-  f = this.getMulticastGroupName();
-  if (f.length > 0) {
-    writer.writeString(
-      5,
-      f
-    );
-  }
   f = this.getCreatedAt();
   if (f != null) {
     writer.writeMessage(
-      6,
+      5,
       f,
       google_protobuf_timestamp_pb.Timestamp.serializeBinaryToWriter
     );
@@ -738,7 +840,7 @@ proto.api.RemoteMulticastDeploymentDevice.prototype.serializeBinaryToWriter = fu
   f = this.getUpdatedAt();
   if (f != null) {
     writer.writeMessage(
-      7,
+      6,
       f,
       google_protobuf_timestamp_pb.Timestamp.serializeBinaryToWriter
     );
@@ -746,14 +848,14 @@ proto.api.RemoteMulticastDeploymentDevice.prototype.serializeBinaryToWriter = fu
   f = this.getState();
   if (f !== 0.0) {
     writer.writeEnum(
-      8,
+      7,
       f
     );
   }
   f = this.getErrorMessage();
   if (f.length > 0) {
     writer.writeString(
-      9,
+      8,
       f
     );
   }
@@ -815,48 +917,33 @@ proto.api.RemoteMulticastDeploymentDevice.prototype.setDeviceName = function(val
 
 
 /**
- * optional string multicast_group_id = 4;
+ * optional string multicast_group_name = 4;
  * @return {string}
  */
-proto.api.RemoteMulticastDeploymentDevice.prototype.getMulticastGroupId = function() {
+proto.api.RemoteMulticastDeploymentDevice.prototype.getMulticastGroupName = function() {
   return /** @type {string} */ (jspb.Message.getFieldProto3(this, 4, ""));
 };
 
 
 /** @param {string} value  */
-proto.api.RemoteMulticastDeploymentDevice.prototype.setMulticastGroupId = function(value) {
+proto.api.RemoteMulticastDeploymentDevice.prototype.setMulticastGroupName = function(value) {
   jspb.Message.setField(this, 4, value);
 };
 
 
 /**
- * optional string multicast_group_name = 5;
- * @return {string}
- */
-proto.api.RemoteMulticastDeploymentDevice.prototype.getMulticastGroupName = function() {
-  return /** @type {string} */ (jspb.Message.getFieldProto3(this, 5, ""));
-};
-
-
-/** @param {string} value  */
-proto.api.RemoteMulticastDeploymentDevice.prototype.setMulticastGroupName = function(value) {
-  jspb.Message.setField(this, 5, value);
-};
-
-
-/**
- * optional google.protobuf.Timestamp created_at = 6;
+ * optional google.protobuf.Timestamp created_at = 5;
  * @return {proto.google.protobuf.Timestamp}
  */
 proto.api.RemoteMulticastDeploymentDevice.prototype.getCreatedAt = function() {
   return /** @type{proto.google.protobuf.Timestamp} */ (
-    jspb.Message.getWrapperField(this, google_protobuf_timestamp_pb.Timestamp, 6));
+    jspb.Message.getWrapperField(this, google_protobuf_timestamp_pb.Timestamp, 5));
 };
 
 
 /** @param {proto.google.protobuf.Timestamp|undefined} value  */
 proto.api.RemoteMulticastDeploymentDevice.prototype.setCreatedAt = function(value) {
-  jspb.Message.setWrapperField(this, 6, value);
+  jspb.Message.setWrapperField(this, 5, value);
 };
 
 
@@ -870,23 +957,23 @@ proto.api.RemoteMulticastDeploymentDevice.prototype.clearCreatedAt = function() 
  * @return{!boolean}
  */
 proto.api.RemoteMulticastDeploymentDevice.prototype.hasCreatedAt = function() {
-  return jspb.Message.getField(this, 6) != null;
+  return jspb.Message.getField(this, 5) != null;
 };
 
 
 /**
- * optional google.protobuf.Timestamp updated_at = 7;
+ * optional google.protobuf.Timestamp updated_at = 6;
  * @return {proto.google.protobuf.Timestamp}
  */
 proto.api.RemoteMulticastDeploymentDevice.prototype.getUpdatedAt = function() {
   return /** @type{proto.google.protobuf.Timestamp} */ (
-    jspb.Message.getWrapperField(this, google_protobuf_timestamp_pb.Timestamp, 7));
+    jspb.Message.getWrapperField(this, google_protobuf_timestamp_pb.Timestamp, 6));
 };
 
 
 /** @param {proto.google.protobuf.Timestamp|undefined} value  */
 proto.api.RemoteMulticastDeploymentDevice.prototype.setUpdatedAt = function(value) {
-  jspb.Message.setWrapperField(this, 7, value);
+  jspb.Message.setWrapperField(this, 6, value);
 };
 
 
@@ -900,37 +987,37 @@ proto.api.RemoteMulticastDeploymentDevice.prototype.clearUpdatedAt = function() 
  * @return{!boolean}
  */
 proto.api.RemoteMulticastDeploymentDevice.prototype.hasUpdatedAt = function() {
-  return jspb.Message.getField(this, 7) != null;
+  return jspb.Message.getField(this, 6) != null;
 };
 
 
 /**
- * optional FUOTADeploymentDeviceState state = 8;
+ * optional FUOTADeploymentDeviceState state = 7;
  * @return {!proto.api.FUOTADeploymentDeviceState}
  */
 proto.api.RemoteMulticastDeploymentDevice.prototype.getState = function() {
-  return /** @type {!proto.api.FUOTADeploymentDeviceState} */ (jspb.Message.getFieldProto3(this, 8, 0));
+  return /** @type {!proto.api.FUOTADeploymentDeviceState} */ (jspb.Message.getFieldProto3(this, 7, 0));
 };
 
 
 /** @param {!proto.api.FUOTADeploymentDeviceState} value  */
 proto.api.RemoteMulticastDeploymentDevice.prototype.setState = function(value) {
-  jspb.Message.setField(this, 8, value);
+  jspb.Message.setField(this, 7, value);
 };
 
 
 /**
- * optional string error_message = 9;
+ * optional string error_message = 8;
  * @return {string}
  */
 proto.api.RemoteMulticastDeploymentDevice.prototype.getErrorMessage = function() {
-  return /** @type {string} */ (jspb.Message.getFieldProto3(this, 9, ""));
+  return /** @type {string} */ (jspb.Message.getFieldProto3(this, 8, ""));
 };
 
 
 /** @param {string} value  */
 proto.api.RemoteMulticastDeploymentDevice.prototype.setErrorMessage = function(value) {
-  jspb.Message.setField(this, 9, value);
+  jspb.Message.setField(this, 8, value);
 };
 
 
@@ -1851,11 +1938,7 @@ proto.api.GetRemoteMulticastGroupResponse.toObject = function(includeInstance, m
   var f, obj = {
     remoteMulticastGroup: (f = msg.getRemoteMulticastGroup()) && proto.api.RemoteMulticastGroup.toObject(includeInstance, f),
     createdAt: (f = msg.getCreatedAt()) && google_protobuf_timestamp_pb.Timestamp.toObject(includeInstance, f),
-    updatedAt: (f = msg.getUpdatedAt()) && google_protobuf_timestamp_pb.Timestamp.toObject(includeInstance, f),
-    mcAddr: msg.getMcAddr(),
-    mcNwkSKey: msg.getMcNwkSKey(),
-    mcAppSKey: msg.getMcAppSKey(),
-    fCnt: msg.getFCnt()
+    updatedAt: (f = msg.getUpdatedAt()) && google_protobuf_timestamp_pb.Timestamp.toObject(includeInstance, f)
   };
 
   if (includeInstance) {
@@ -1906,22 +1989,6 @@ proto.api.GetRemoteMulticastGroupResponse.deserializeBinaryFromReader = function
       var value = new google_protobuf_timestamp_pb.Timestamp;
       reader.readMessage(value,google_protobuf_timestamp_pb.Timestamp.deserializeBinaryFromReader);
       msg.setUpdatedAt(value);
-      break;
-    case 4:
-      var value = /** @type {string} */ (reader.readString());
-      msg.setMcAddr(value);
-      break;
-    case 5:
-      var value = /** @type {string} */ (reader.readString());
-      msg.setMcNwkSKey(value);
-      break;
-    case 6:
-      var value = /** @type {string} */ (reader.readString());
-      msg.setMcAppSKey(value);
-      break;
-    case 7:
-      var value = /** @type {number} */ (reader.readUint32());
-      msg.setFCnt(value);
       break;
     default:
       reader.skipField();
@@ -1983,34 +2050,6 @@ proto.api.GetRemoteMulticastGroupResponse.prototype.serializeBinaryToWriter = fu
       3,
       f,
       google_protobuf_timestamp_pb.Timestamp.serializeBinaryToWriter
-    );
-  }
-  f = this.getMcAddr();
-  if (f.length > 0) {
-    writer.writeString(
-      4,
-      f
-    );
-  }
-  f = this.getMcNwkSKey();
-  if (f.length > 0) {
-    writer.writeString(
-      5,
-      f
-    );
-  }
-  f = this.getMcAppSKey();
-  if (f.length > 0) {
-    writer.writeString(
-      6,
-      f
-    );
-  }
-  f = this.getFCnt();
-  if (f !== 0) {
-    writer.writeUint32(
-      7,
-      f
     );
   }
 };
@@ -2112,66 +2151,6 @@ proto.api.GetRemoteMulticastGroupResponse.prototype.clearUpdatedAt = function() 
  */
 proto.api.GetRemoteMulticastGroupResponse.prototype.hasUpdatedAt = function() {
   return jspb.Message.getField(this, 3) != null;
-};
-
-
-/**
- * optional string mc_addr = 4;
- * @return {string}
- */
-proto.api.GetRemoteMulticastGroupResponse.prototype.getMcAddr = function() {
-  return /** @type {string} */ (jspb.Message.getFieldProto3(this, 4, ""));
-};
-
-
-/** @param {string} value  */
-proto.api.GetRemoteMulticastGroupResponse.prototype.setMcAddr = function(value) {
-  jspb.Message.setField(this, 4, value);
-};
-
-
-/**
- * optional string mc_nwk_s_key = 5;
- * @return {string}
- */
-proto.api.GetRemoteMulticastGroupResponse.prototype.getMcNwkSKey = function() {
-  return /** @type {string} */ (jspb.Message.getFieldProto3(this, 5, ""));
-};
-
-
-/** @param {string} value  */
-proto.api.GetRemoteMulticastGroupResponse.prototype.setMcNwkSKey = function(value) {
-  jspb.Message.setField(this, 5, value);
-};
-
-
-/**
- * optional string mc_app_s_key = 6;
- * @return {string}
- */
-proto.api.GetRemoteMulticastGroupResponse.prototype.getMcAppSKey = function() {
-  return /** @type {string} */ (jspb.Message.getFieldProto3(this, 6, ""));
-};
-
-
-/** @param {string} value  */
-proto.api.GetRemoteMulticastGroupResponse.prototype.setMcAppSKey = function(value) {
-  jspb.Message.setField(this, 6, value);
-};
-
-
-/**
- * optional uint32 f_cnt = 7;
- * @return {number}
- */
-proto.api.GetRemoteMulticastGroupResponse.prototype.getFCnt = function() {
-  return /** @type {number} */ (jspb.Message.getFieldProto3(this, 7, 0));
-};
-
-
-/** @param {number} value  */
-proto.api.GetRemoteMulticastGroupResponse.prototype.setFCnt = function(value) {
-  jspb.Message.setField(this, 7, value);
 };
 
 
@@ -4603,6 +4582,1101 @@ proto.api.GetRemoteMulticastDeploymentDeviceResponse.prototype.clearDeploymentDe
  */
 proto.api.GetRemoteMulticastDeploymentDeviceResponse.prototype.hasDeploymentDevice = function() {
   return jspb.Message.getField(this, 1) != null;
+};
+
+
+
+/**
+ * Generated by JsPbCodeGenerator.
+ * @param {Array=} opt_data Optional initial data array, typically from a
+ * server response, or constructed directly in Javascript. The array is used
+ * in place and becomes part of the constructed object. It is not cloned.
+ * If no data is provided, the constructed object will be empty, but still
+ * valid.
+ * @extends {jspb.Message}
+ * @constructor
+ */
+proto.api.RemoteMulticastQueueItem = function(opt_data) {
+  jspb.Message.initialize(this, opt_data, 0, -1, null, null);
+};
+goog.inherits(proto.api.RemoteMulticastQueueItem, jspb.Message);
+if (goog.DEBUG && !COMPILED) {
+  proto.api.RemoteMulticastQueueItem.displayName = 'proto.api.RemoteMulticastQueueItem';
+}
+
+
+if (jspb.Message.GENERATE_TO_OBJECT) {
+/**
+ * Creates an object representation of this proto suitable for use in Soy templates.
+ * Field names that are reserved in JavaScript and will be renamed to pb_name.
+ * To access a reserved field use, foo.pb_<name>, eg, foo.pb_default.
+ * For the list of reserved names please see:
+ *     com.google.apps.jspb.JsClassTemplate.JS_RESERVED_WORDS.
+ * @param {boolean=} opt_includeInstance Whether to include the JSPB instance
+ *     for transitional soy proto support: http://goto/soy-param-migration
+ * @return {!Object}
+ */
+proto.api.RemoteMulticastQueueItem.prototype.toObject = function(opt_includeInstance) {
+  return proto.api.RemoteMulticastQueueItem.toObject(opt_includeInstance, this);
+};
+
+
+/**
+ * Static version of the {@see toObject} method.
+ * @param {boolean|undefined} includeInstance Whether to include the JSPB
+ *     instance for transitional soy proto support:
+ *     http://goto/soy-param-migration
+ * @param {!proto.api.RemoteMulticastQueueItem} msg The msg instance to transform.
+ * @return {!Object}
+ */
+proto.api.RemoteMulticastQueueItem.toObject = function(includeInstance, msg) {
+  var f, obj = {
+    remoteMulticastGroupId: msg.getRemoteMulticastGroupId(),
+    fCnt: msg.getFCnt(),
+    fPort: msg.getFPort(),
+    data: msg.getData_asB64()
+  };
+
+  if (includeInstance) {
+    obj.$jspbMessageInstance = msg;
+  }
+  return obj;
+};
+}
+
+
+/**
+ * Deserializes binary data (in protobuf wire format).
+ * @param {jspb.ByteSource} bytes The bytes to deserialize.
+ * @return {!proto.api.RemoteMulticastQueueItem}
+ */
+proto.api.RemoteMulticastQueueItem.deserializeBinary = function(bytes) {
+  var reader = new jspb.BinaryReader(bytes);
+  var msg = new proto.api.RemoteMulticastQueueItem;
+  return proto.api.RemoteMulticastQueueItem.deserializeBinaryFromReader(msg, reader);
+};
+
+
+/**
+ * Deserializes binary data (in protobuf wire format) from the
+ * given reader into the given message object.
+ * @param {!proto.api.RemoteMulticastQueueItem} msg The message object to deserialize into.
+ * @param {!jspb.BinaryReader} reader The BinaryReader to use.
+ * @return {!proto.api.RemoteMulticastQueueItem}
+ */
+proto.api.RemoteMulticastQueueItem.deserializeBinaryFromReader = function(msg, reader) {
+  while (reader.nextField()) {
+    if (reader.isEndGroup()) {
+      break;
+    }
+    var field = reader.getFieldNumber();
+    switch (field) {
+    case 1:
+      var value = /** @type {string} */ (reader.readString());
+      msg.setRemoteMulticastGroupId(value);
+      break;
+    case 2:
+      var value = /** @type {number} */ (reader.readUint32());
+      msg.setFCnt(value);
+      break;
+    case 3:
+      var value = /** @type {number} */ (reader.readUint32());
+      msg.setFPort(value);
+      break;
+    case 4:
+      var value = /** @type {!Uint8Array} */ (reader.readBytes());
+      msg.setData(value);
+      break;
+    default:
+      reader.skipField();
+      break;
+    }
+  }
+  return msg;
+};
+
+
+/**
+ * Class method variant: serializes the given message to binary data
+ * (in protobuf wire format), writing to the given BinaryWriter.
+ * @param {!proto.api.RemoteMulticastQueueItem} message
+ * @param {!jspb.BinaryWriter} writer
+ */
+proto.api.RemoteMulticastQueueItem.serializeBinaryToWriter = function(message, writer) {
+  message.serializeBinaryToWriter(writer);
+};
+
+
+/**
+ * Serializes the message to binary data (in protobuf wire format).
+ * @return {!Uint8Array}
+ */
+proto.api.RemoteMulticastQueueItem.prototype.serializeBinary = function() {
+  var writer = new jspb.BinaryWriter();
+  this.serializeBinaryToWriter(writer);
+  return writer.getResultBuffer();
+};
+
+
+/**
+ * Serializes the message to binary data (in protobuf wire format),
+ * writing to the given BinaryWriter.
+ * @param {!jspb.BinaryWriter} writer
+ */
+proto.api.RemoteMulticastQueueItem.prototype.serializeBinaryToWriter = function (writer) {
+  var f = undefined;
+  f = this.getRemoteMulticastGroupId();
+  if (f.length > 0) {
+    writer.writeString(
+      1,
+      f
+    );
+  }
+  f = this.getFCnt();
+  if (f !== 0) {
+    writer.writeUint32(
+      2,
+      f
+    );
+  }
+  f = this.getFPort();
+  if (f !== 0) {
+    writer.writeUint32(
+      3,
+      f
+    );
+  }
+  f = this.getData_asU8();
+  if (f.length > 0) {
+    writer.writeBytes(
+      4,
+      f
+    );
+  }
+};
+
+
+/**
+ * Creates a deep clone of this proto. No data is shared with the original.
+ * @return {!proto.api.RemoteMulticastQueueItem} The clone.
+ */
+proto.api.RemoteMulticastQueueItem.prototype.cloneMessage = function() {
+  return /** @type {!proto.api.RemoteMulticastQueueItem} */ (jspb.Message.cloneMessage(this));
+};
+
+
+/**
+ * optional string remote_multicast_group_id = 1;
+ * @return {string}
+ */
+proto.api.RemoteMulticastQueueItem.prototype.getRemoteMulticastGroupId = function() {
+  return /** @type {string} */ (jspb.Message.getFieldProto3(this, 1, ""));
+};
+
+
+/** @param {string} value  */
+proto.api.RemoteMulticastQueueItem.prototype.setRemoteMulticastGroupId = function(value) {
+  jspb.Message.setField(this, 1, value);
+};
+
+
+/**
+ * optional uint32 f_cnt = 2;
+ * @return {number}
+ */
+proto.api.RemoteMulticastQueueItem.prototype.getFCnt = function() {
+  return /** @type {number} */ (jspb.Message.getFieldProto3(this, 2, 0));
+};
+
+
+/** @param {number} value  */
+proto.api.RemoteMulticastQueueItem.prototype.setFCnt = function(value) {
+  jspb.Message.setField(this, 2, value);
+};
+
+
+/**
+ * optional uint32 f_port = 3;
+ * @return {number}
+ */
+proto.api.RemoteMulticastQueueItem.prototype.getFPort = function() {
+  return /** @type {number} */ (jspb.Message.getFieldProto3(this, 3, 0));
+};
+
+
+/** @param {number} value  */
+proto.api.RemoteMulticastQueueItem.prototype.setFPort = function(value) {
+  jspb.Message.setField(this, 3, value);
+};
+
+
+/**
+ * optional bytes data = 4;
+ * @return {!(string|Uint8Array)}
+ */
+proto.api.RemoteMulticastQueueItem.prototype.getData = function() {
+  return /** @type {!(string|Uint8Array)} */ (jspb.Message.getFieldProto3(this, 4, ""));
+};
+
+
+/**
+ * optional bytes data = 4;
+ * This is a type-conversion wrapper around `getData()`
+ * @return {string}
+ */
+proto.api.RemoteMulticastQueueItem.prototype.getData_asB64 = function() {
+  return /** @type {string} */ (jspb.Message.bytesAsB64(
+      this.getData()));
+};
+
+
+/**
+ * optional bytes data = 4;
+ * Note that Uint8Array is not supported on all browsers.
+ * @see http://caniuse.com/Uint8Array
+ * This is a type-conversion wrapper around `getData()`
+ * @return {!Uint8Array}
+ */
+proto.api.RemoteMulticastQueueItem.prototype.getData_asU8 = function() {
+  return /** @type {!Uint8Array} */ (jspb.Message.bytesAsU8(
+      this.getData()));
+};
+
+
+/** @param {!(string|Uint8Array)} value  */
+proto.api.RemoteMulticastQueueItem.prototype.setData = function(value) {
+  jspb.Message.setField(this, 4, value);
+};
+
+
+
+/**
+ * Generated by JsPbCodeGenerator.
+ * @param {Array=} opt_data Optional initial data array, typically from a
+ * server response, or constructed directly in Javascript. The array is used
+ * in place and becomes part of the constructed object. It is not cloned.
+ * If no data is provided, the constructed object will be empty, but still
+ * valid.
+ * @extends {jspb.Message}
+ * @constructor
+ */
+proto.api.EnqueueRemoteMulticastQueueItemRequest = function(opt_data) {
+  jspb.Message.initialize(this, opt_data, 0, -1, null, null);
+};
+goog.inherits(proto.api.EnqueueRemoteMulticastQueueItemRequest, jspb.Message);
+if (goog.DEBUG && !COMPILED) {
+  proto.api.EnqueueRemoteMulticastQueueItemRequest.displayName = 'proto.api.EnqueueRemoteMulticastQueueItemRequest';
+}
+
+
+if (jspb.Message.GENERATE_TO_OBJECT) {
+/**
+ * Creates an object representation of this proto suitable for use in Soy templates.
+ * Field names that are reserved in JavaScript and will be renamed to pb_name.
+ * To access a reserved field use, foo.pb_<name>, eg, foo.pb_default.
+ * For the list of reserved names please see:
+ *     com.google.apps.jspb.JsClassTemplate.JS_RESERVED_WORDS.
+ * @param {boolean=} opt_includeInstance Whether to include the JSPB instance
+ *     for transitional soy proto support: http://goto/soy-param-migration
+ * @return {!Object}
+ */
+proto.api.EnqueueRemoteMulticastQueueItemRequest.prototype.toObject = function(opt_includeInstance) {
+  return proto.api.EnqueueRemoteMulticastQueueItemRequest.toObject(opt_includeInstance, this);
+};
+
+
+/**
+ * Static version of the {@see toObject} method.
+ * @param {boolean|undefined} includeInstance Whether to include the JSPB
+ *     instance for transitional soy proto support:
+ *     http://goto/soy-param-migration
+ * @param {!proto.api.EnqueueRemoteMulticastQueueItemRequest} msg The msg instance to transform.
+ * @return {!Object}
+ */
+proto.api.EnqueueRemoteMulticastQueueItemRequest.toObject = function(includeInstance, msg) {
+  var f, obj = {
+    remoteMulticastQueueItem: (f = msg.getRemoteMulticastQueueItem()) && proto.api.RemoteMulticastQueueItem.toObject(includeInstance, f)
+  };
+
+  if (includeInstance) {
+    obj.$jspbMessageInstance = msg;
+  }
+  return obj;
+};
+}
+
+
+/**
+ * Deserializes binary data (in protobuf wire format).
+ * @param {jspb.ByteSource} bytes The bytes to deserialize.
+ * @return {!proto.api.EnqueueRemoteMulticastQueueItemRequest}
+ */
+proto.api.EnqueueRemoteMulticastQueueItemRequest.deserializeBinary = function(bytes) {
+  var reader = new jspb.BinaryReader(bytes);
+  var msg = new proto.api.EnqueueRemoteMulticastQueueItemRequest;
+  return proto.api.EnqueueRemoteMulticastQueueItemRequest.deserializeBinaryFromReader(msg, reader);
+};
+
+
+/**
+ * Deserializes binary data (in protobuf wire format) from the
+ * given reader into the given message object.
+ * @param {!proto.api.EnqueueRemoteMulticastQueueItemRequest} msg The message object to deserialize into.
+ * @param {!jspb.BinaryReader} reader The BinaryReader to use.
+ * @return {!proto.api.EnqueueRemoteMulticastQueueItemRequest}
+ */
+proto.api.EnqueueRemoteMulticastQueueItemRequest.deserializeBinaryFromReader = function(msg, reader) {
+  while (reader.nextField()) {
+    if (reader.isEndGroup()) {
+      break;
+    }
+    var field = reader.getFieldNumber();
+    switch (field) {
+    case 1:
+      var value = new proto.api.RemoteMulticastQueueItem;
+      reader.readMessage(value,proto.api.RemoteMulticastQueueItem.deserializeBinaryFromReader);
+      msg.setRemoteMulticastQueueItem(value);
+      break;
+    default:
+      reader.skipField();
+      break;
+    }
+  }
+  return msg;
+};
+
+
+/**
+ * Class method variant: serializes the given message to binary data
+ * (in protobuf wire format), writing to the given BinaryWriter.
+ * @param {!proto.api.EnqueueRemoteMulticastQueueItemRequest} message
+ * @param {!jspb.BinaryWriter} writer
+ */
+proto.api.EnqueueRemoteMulticastQueueItemRequest.serializeBinaryToWriter = function(message, writer) {
+  message.serializeBinaryToWriter(writer);
+};
+
+
+/**
+ * Serializes the message to binary data (in protobuf wire format).
+ * @return {!Uint8Array}
+ */
+proto.api.EnqueueRemoteMulticastQueueItemRequest.prototype.serializeBinary = function() {
+  var writer = new jspb.BinaryWriter();
+  this.serializeBinaryToWriter(writer);
+  return writer.getResultBuffer();
+};
+
+
+/**
+ * Serializes the message to binary data (in protobuf wire format),
+ * writing to the given BinaryWriter.
+ * @param {!jspb.BinaryWriter} writer
+ */
+proto.api.EnqueueRemoteMulticastQueueItemRequest.prototype.serializeBinaryToWriter = function (writer) {
+  var f = undefined;
+  f = this.getRemoteMulticastQueueItem();
+  if (f != null) {
+    writer.writeMessage(
+      1,
+      f,
+      proto.api.RemoteMulticastQueueItem.serializeBinaryToWriter
+    );
+  }
+};
+
+
+/**
+ * Creates a deep clone of this proto. No data is shared with the original.
+ * @return {!proto.api.EnqueueRemoteMulticastQueueItemRequest} The clone.
+ */
+proto.api.EnqueueRemoteMulticastQueueItemRequest.prototype.cloneMessage = function() {
+  return /** @type {!proto.api.EnqueueRemoteMulticastQueueItemRequest} */ (jspb.Message.cloneMessage(this));
+};
+
+
+/**
+ * optional RemoteMulticastQueueItem remote_multicast_queue_item = 1;
+ * @return {proto.api.RemoteMulticastQueueItem}
+ */
+proto.api.EnqueueRemoteMulticastQueueItemRequest.prototype.getRemoteMulticastQueueItem = function() {
+  return /** @type{proto.api.RemoteMulticastQueueItem} */ (
+    jspb.Message.getWrapperField(this, proto.api.RemoteMulticastQueueItem, 1));
+};
+
+
+/** @param {proto.api.RemoteMulticastQueueItem|undefined} value  */
+proto.api.EnqueueRemoteMulticastQueueItemRequest.prototype.setRemoteMulticastQueueItem = function(value) {
+  jspb.Message.setWrapperField(this, 1, value);
+};
+
+
+proto.api.EnqueueRemoteMulticastQueueItemRequest.prototype.clearRemoteMulticastQueueItem = function() {
+  this.setRemoteMulticastQueueItem(undefined);
+};
+
+
+/**
+ * Returns whether this field is set.
+ * @return{!boolean}
+ */
+proto.api.EnqueueRemoteMulticastQueueItemRequest.prototype.hasRemoteMulticastQueueItem = function() {
+  return jspb.Message.getField(this, 1) != null;
+};
+
+
+
+/**
+ * Generated by JsPbCodeGenerator.
+ * @param {Array=} opt_data Optional initial data array, typically from a
+ * server response, or constructed directly in Javascript. The array is used
+ * in place and becomes part of the constructed object. It is not cloned.
+ * If no data is provided, the constructed object will be empty, but still
+ * valid.
+ * @extends {jspb.Message}
+ * @constructor
+ */
+proto.api.EnqueueRemoteMulticastQueueItemResponse = function(opt_data) {
+  jspb.Message.initialize(this, opt_data, 0, -1, null, null);
+};
+goog.inherits(proto.api.EnqueueRemoteMulticastQueueItemResponse, jspb.Message);
+if (goog.DEBUG && !COMPILED) {
+  proto.api.EnqueueRemoteMulticastQueueItemResponse.displayName = 'proto.api.EnqueueRemoteMulticastQueueItemResponse';
+}
+
+
+if (jspb.Message.GENERATE_TO_OBJECT) {
+/**
+ * Creates an object representation of this proto suitable for use in Soy templates.
+ * Field names that are reserved in JavaScript and will be renamed to pb_name.
+ * To access a reserved field use, foo.pb_<name>, eg, foo.pb_default.
+ * For the list of reserved names please see:
+ *     com.google.apps.jspb.JsClassTemplate.JS_RESERVED_WORDS.
+ * @param {boolean=} opt_includeInstance Whether to include the JSPB instance
+ *     for transitional soy proto support: http://goto/soy-param-migration
+ * @return {!Object}
+ */
+proto.api.EnqueueRemoteMulticastQueueItemResponse.prototype.toObject = function(opt_includeInstance) {
+  return proto.api.EnqueueRemoteMulticastQueueItemResponse.toObject(opt_includeInstance, this);
+};
+
+
+/**
+ * Static version of the {@see toObject} method.
+ * @param {boolean|undefined} includeInstance Whether to include the JSPB
+ *     instance for transitional soy proto support:
+ *     http://goto/soy-param-migration
+ * @param {!proto.api.EnqueueRemoteMulticastQueueItemResponse} msg The msg instance to transform.
+ * @return {!Object}
+ */
+proto.api.EnqueueRemoteMulticastQueueItemResponse.toObject = function(includeInstance, msg) {
+  var f, obj = {
+    fCnt: msg.getFCnt()
+  };
+
+  if (includeInstance) {
+    obj.$jspbMessageInstance = msg;
+  }
+  return obj;
+};
+}
+
+
+/**
+ * Deserializes binary data (in protobuf wire format).
+ * @param {jspb.ByteSource} bytes The bytes to deserialize.
+ * @return {!proto.api.EnqueueRemoteMulticastQueueItemResponse}
+ */
+proto.api.EnqueueRemoteMulticastQueueItemResponse.deserializeBinary = function(bytes) {
+  var reader = new jspb.BinaryReader(bytes);
+  var msg = new proto.api.EnqueueRemoteMulticastQueueItemResponse;
+  return proto.api.EnqueueRemoteMulticastQueueItemResponse.deserializeBinaryFromReader(msg, reader);
+};
+
+
+/**
+ * Deserializes binary data (in protobuf wire format) from the
+ * given reader into the given message object.
+ * @param {!proto.api.EnqueueRemoteMulticastQueueItemResponse} msg The message object to deserialize into.
+ * @param {!jspb.BinaryReader} reader The BinaryReader to use.
+ * @return {!proto.api.EnqueueRemoteMulticastQueueItemResponse}
+ */
+proto.api.EnqueueRemoteMulticastQueueItemResponse.deserializeBinaryFromReader = function(msg, reader) {
+  while (reader.nextField()) {
+    if (reader.isEndGroup()) {
+      break;
+    }
+    var field = reader.getFieldNumber();
+    switch (field) {
+    case 1:
+      var value = /** @type {number} */ (reader.readUint32());
+      msg.setFCnt(value);
+      break;
+    default:
+      reader.skipField();
+      break;
+    }
+  }
+  return msg;
+};
+
+
+/**
+ * Class method variant: serializes the given message to binary data
+ * (in protobuf wire format), writing to the given BinaryWriter.
+ * @param {!proto.api.EnqueueRemoteMulticastQueueItemResponse} message
+ * @param {!jspb.BinaryWriter} writer
+ */
+proto.api.EnqueueRemoteMulticastQueueItemResponse.serializeBinaryToWriter = function(message, writer) {
+  message.serializeBinaryToWriter(writer);
+};
+
+
+/**
+ * Serializes the message to binary data (in protobuf wire format).
+ * @return {!Uint8Array}
+ */
+proto.api.EnqueueRemoteMulticastQueueItemResponse.prototype.serializeBinary = function() {
+  var writer = new jspb.BinaryWriter();
+  this.serializeBinaryToWriter(writer);
+  return writer.getResultBuffer();
+};
+
+
+/**
+ * Serializes the message to binary data (in protobuf wire format),
+ * writing to the given BinaryWriter.
+ * @param {!jspb.BinaryWriter} writer
+ */
+proto.api.EnqueueRemoteMulticastQueueItemResponse.prototype.serializeBinaryToWriter = function (writer) {
+  var f = undefined;
+  f = this.getFCnt();
+  if (f !== 0) {
+    writer.writeUint32(
+      1,
+      f
+    );
+  }
+};
+
+
+/**
+ * Creates a deep clone of this proto. No data is shared with the original.
+ * @return {!proto.api.EnqueueRemoteMulticastQueueItemResponse} The clone.
+ */
+proto.api.EnqueueRemoteMulticastQueueItemResponse.prototype.cloneMessage = function() {
+  return /** @type {!proto.api.EnqueueRemoteMulticastQueueItemResponse} */ (jspb.Message.cloneMessage(this));
+};
+
+
+/**
+ * optional uint32 f_cnt = 1;
+ * @return {number}
+ */
+proto.api.EnqueueRemoteMulticastQueueItemResponse.prototype.getFCnt = function() {
+  return /** @type {number} */ (jspb.Message.getFieldProto3(this, 1, 0));
+};
+
+
+/** @param {number} value  */
+proto.api.EnqueueRemoteMulticastQueueItemResponse.prototype.setFCnt = function(value) {
+  jspb.Message.setField(this, 1, value);
+};
+
+
+
+/**
+ * Generated by JsPbCodeGenerator.
+ * @param {Array=} opt_data Optional initial data array, typically from a
+ * server response, or constructed directly in Javascript. The array is used
+ * in place and becomes part of the constructed object. It is not cloned.
+ * If no data is provided, the constructed object will be empty, but still
+ * valid.
+ * @extends {jspb.Message}
+ * @constructor
+ */
+proto.api.FlushRemoteMulticastGroupQueueItemsRequest = function(opt_data) {
+  jspb.Message.initialize(this, opt_data, 0, -1, null, null);
+};
+goog.inherits(proto.api.FlushRemoteMulticastGroupQueueItemsRequest, jspb.Message);
+if (goog.DEBUG && !COMPILED) {
+  proto.api.FlushRemoteMulticastGroupQueueItemsRequest.displayName = 'proto.api.FlushRemoteMulticastGroupQueueItemsRequest';
+}
+
+
+if (jspb.Message.GENERATE_TO_OBJECT) {
+/**
+ * Creates an object representation of this proto suitable for use in Soy templates.
+ * Field names that are reserved in JavaScript and will be renamed to pb_name.
+ * To access a reserved field use, foo.pb_<name>, eg, foo.pb_default.
+ * For the list of reserved names please see:
+ *     com.google.apps.jspb.JsClassTemplate.JS_RESERVED_WORDS.
+ * @param {boolean=} opt_includeInstance Whether to include the JSPB instance
+ *     for transitional soy proto support: http://goto/soy-param-migration
+ * @return {!Object}
+ */
+proto.api.FlushRemoteMulticastGroupQueueItemsRequest.prototype.toObject = function(opt_includeInstance) {
+  return proto.api.FlushRemoteMulticastGroupQueueItemsRequest.toObject(opt_includeInstance, this);
+};
+
+
+/**
+ * Static version of the {@see toObject} method.
+ * @param {boolean|undefined} includeInstance Whether to include the JSPB
+ *     instance for transitional soy proto support:
+ *     http://goto/soy-param-migration
+ * @param {!proto.api.FlushRemoteMulticastGroupQueueItemsRequest} msg The msg instance to transform.
+ * @return {!Object}
+ */
+proto.api.FlushRemoteMulticastGroupQueueItemsRequest.toObject = function(includeInstance, msg) {
+  var f, obj = {
+    remoteMulticastGroupId: msg.getRemoteMulticastGroupId()
+  };
+
+  if (includeInstance) {
+    obj.$jspbMessageInstance = msg;
+  }
+  return obj;
+};
+}
+
+
+/**
+ * Deserializes binary data (in protobuf wire format).
+ * @param {jspb.ByteSource} bytes The bytes to deserialize.
+ * @return {!proto.api.FlushRemoteMulticastGroupQueueItemsRequest}
+ */
+proto.api.FlushRemoteMulticastGroupQueueItemsRequest.deserializeBinary = function(bytes) {
+  var reader = new jspb.BinaryReader(bytes);
+  var msg = new proto.api.FlushRemoteMulticastGroupQueueItemsRequest;
+  return proto.api.FlushRemoteMulticastGroupQueueItemsRequest.deserializeBinaryFromReader(msg, reader);
+};
+
+
+/**
+ * Deserializes binary data (in protobuf wire format) from the
+ * given reader into the given message object.
+ * @param {!proto.api.FlushRemoteMulticastGroupQueueItemsRequest} msg The message object to deserialize into.
+ * @param {!jspb.BinaryReader} reader The BinaryReader to use.
+ * @return {!proto.api.FlushRemoteMulticastGroupQueueItemsRequest}
+ */
+proto.api.FlushRemoteMulticastGroupQueueItemsRequest.deserializeBinaryFromReader = function(msg, reader) {
+  while (reader.nextField()) {
+    if (reader.isEndGroup()) {
+      break;
+    }
+    var field = reader.getFieldNumber();
+    switch (field) {
+    case 1:
+      var value = /** @type {string} */ (reader.readString());
+      msg.setRemoteMulticastGroupId(value);
+      break;
+    default:
+      reader.skipField();
+      break;
+    }
+  }
+  return msg;
+};
+
+
+/**
+ * Class method variant: serializes the given message to binary data
+ * (in protobuf wire format), writing to the given BinaryWriter.
+ * @param {!proto.api.FlushRemoteMulticastGroupQueueItemsRequest} message
+ * @param {!jspb.BinaryWriter} writer
+ */
+proto.api.FlushRemoteMulticastGroupQueueItemsRequest.serializeBinaryToWriter = function(message, writer) {
+  message.serializeBinaryToWriter(writer);
+};
+
+
+/**
+ * Serializes the message to binary data (in protobuf wire format).
+ * @return {!Uint8Array}
+ */
+proto.api.FlushRemoteMulticastGroupQueueItemsRequest.prototype.serializeBinary = function() {
+  var writer = new jspb.BinaryWriter();
+  this.serializeBinaryToWriter(writer);
+  return writer.getResultBuffer();
+};
+
+
+/**
+ * Serializes the message to binary data (in protobuf wire format),
+ * writing to the given BinaryWriter.
+ * @param {!jspb.BinaryWriter} writer
+ */
+proto.api.FlushRemoteMulticastGroupQueueItemsRequest.prototype.serializeBinaryToWriter = function (writer) {
+  var f = undefined;
+  f = this.getRemoteMulticastGroupId();
+  if (f.length > 0) {
+    writer.writeString(
+      1,
+      f
+    );
+  }
+};
+
+
+/**
+ * Creates a deep clone of this proto. No data is shared with the original.
+ * @return {!proto.api.FlushRemoteMulticastGroupQueueItemsRequest} The clone.
+ */
+proto.api.FlushRemoteMulticastGroupQueueItemsRequest.prototype.cloneMessage = function() {
+  return /** @type {!proto.api.FlushRemoteMulticastGroupQueueItemsRequest} */ (jspb.Message.cloneMessage(this));
+};
+
+
+/**
+ * optional string remote_multicast_group_id = 1;
+ * @return {string}
+ */
+proto.api.FlushRemoteMulticastGroupQueueItemsRequest.prototype.getRemoteMulticastGroupId = function() {
+  return /** @type {string} */ (jspb.Message.getFieldProto3(this, 1, ""));
+};
+
+
+/** @param {string} value  */
+proto.api.FlushRemoteMulticastGroupQueueItemsRequest.prototype.setRemoteMulticastGroupId = function(value) {
+  jspb.Message.setField(this, 1, value);
+};
+
+
+
+/**
+ * Generated by JsPbCodeGenerator.
+ * @param {Array=} opt_data Optional initial data array, typically from a
+ * server response, or constructed directly in Javascript. The array is used
+ * in place and becomes part of the constructed object. It is not cloned.
+ * If no data is provided, the constructed object will be empty, but still
+ * valid.
+ * @extends {jspb.Message}
+ * @constructor
+ */
+proto.api.ListRemoteMulticastGroupQueueItemsRequest = function(opt_data) {
+  jspb.Message.initialize(this, opt_data, 0, -1, null, null);
+};
+goog.inherits(proto.api.ListRemoteMulticastGroupQueueItemsRequest, jspb.Message);
+if (goog.DEBUG && !COMPILED) {
+  proto.api.ListRemoteMulticastGroupQueueItemsRequest.displayName = 'proto.api.ListRemoteMulticastGroupQueueItemsRequest';
+}
+
+
+if (jspb.Message.GENERATE_TO_OBJECT) {
+/**
+ * Creates an object representation of this proto suitable for use in Soy templates.
+ * Field names that are reserved in JavaScript and will be renamed to pb_name.
+ * To access a reserved field use, foo.pb_<name>, eg, foo.pb_default.
+ * For the list of reserved names please see:
+ *     com.google.apps.jspb.JsClassTemplate.JS_RESERVED_WORDS.
+ * @param {boolean=} opt_includeInstance Whether to include the JSPB instance
+ *     for transitional soy proto support: http://goto/soy-param-migration
+ * @return {!Object}
+ */
+proto.api.ListRemoteMulticastGroupQueueItemsRequest.prototype.toObject = function(opt_includeInstance) {
+  return proto.api.ListRemoteMulticastGroupQueueItemsRequest.toObject(opt_includeInstance, this);
+};
+
+
+/**
+ * Static version of the {@see toObject} method.
+ * @param {boolean|undefined} includeInstance Whether to include the JSPB
+ *     instance for transitional soy proto support:
+ *     http://goto/soy-param-migration
+ * @param {!proto.api.ListRemoteMulticastGroupQueueItemsRequest} msg The msg instance to transform.
+ * @return {!Object}
+ */
+proto.api.ListRemoteMulticastGroupQueueItemsRequest.toObject = function(includeInstance, msg) {
+  var f, obj = {
+    remoteMulticastGroupId: msg.getRemoteMulticastGroupId()
+  };
+
+  if (includeInstance) {
+    obj.$jspbMessageInstance = msg;
+  }
+  return obj;
+};
+}
+
+
+/**
+ * Deserializes binary data (in protobuf wire format).
+ * @param {jspb.ByteSource} bytes The bytes to deserialize.
+ * @return {!proto.api.ListRemoteMulticastGroupQueueItemsRequest}
+ */
+proto.api.ListRemoteMulticastGroupQueueItemsRequest.deserializeBinary = function(bytes) {
+  var reader = new jspb.BinaryReader(bytes);
+  var msg = new proto.api.ListRemoteMulticastGroupQueueItemsRequest;
+  return proto.api.ListRemoteMulticastGroupQueueItemsRequest.deserializeBinaryFromReader(msg, reader);
+};
+
+
+/**
+ * Deserializes binary data (in protobuf wire format) from the
+ * given reader into the given message object.
+ * @param {!proto.api.ListRemoteMulticastGroupQueueItemsRequest} msg The message object to deserialize into.
+ * @param {!jspb.BinaryReader} reader The BinaryReader to use.
+ * @return {!proto.api.ListRemoteMulticastGroupQueueItemsRequest}
+ */
+proto.api.ListRemoteMulticastGroupQueueItemsRequest.deserializeBinaryFromReader = function(msg, reader) {
+  while (reader.nextField()) {
+    if (reader.isEndGroup()) {
+      break;
+    }
+    var field = reader.getFieldNumber();
+    switch (field) {
+    case 1:
+      var value = /** @type {string} */ (reader.readString());
+      msg.setRemoteMulticastGroupId(value);
+      break;
+    default:
+      reader.skipField();
+      break;
+    }
+  }
+  return msg;
+};
+
+
+/**
+ * Class method variant: serializes the given message to binary data
+ * (in protobuf wire format), writing to the given BinaryWriter.
+ * @param {!proto.api.ListRemoteMulticastGroupQueueItemsRequest} message
+ * @param {!jspb.BinaryWriter} writer
+ */
+proto.api.ListRemoteMulticastGroupQueueItemsRequest.serializeBinaryToWriter = function(message, writer) {
+  message.serializeBinaryToWriter(writer);
+};
+
+
+/**
+ * Serializes the message to binary data (in protobuf wire format).
+ * @return {!Uint8Array}
+ */
+proto.api.ListRemoteMulticastGroupQueueItemsRequest.prototype.serializeBinary = function() {
+  var writer = new jspb.BinaryWriter();
+  this.serializeBinaryToWriter(writer);
+  return writer.getResultBuffer();
+};
+
+
+/**
+ * Serializes the message to binary data (in protobuf wire format),
+ * writing to the given BinaryWriter.
+ * @param {!jspb.BinaryWriter} writer
+ */
+proto.api.ListRemoteMulticastGroupQueueItemsRequest.prototype.serializeBinaryToWriter = function (writer) {
+  var f = undefined;
+  f = this.getRemoteMulticastGroupId();
+  if (f.length > 0) {
+    writer.writeString(
+      1,
+      f
+    );
+  }
+};
+
+
+/**
+ * Creates a deep clone of this proto. No data is shared with the original.
+ * @return {!proto.api.ListRemoteMulticastGroupQueueItemsRequest} The clone.
+ */
+proto.api.ListRemoteMulticastGroupQueueItemsRequest.prototype.cloneMessage = function() {
+  return /** @type {!proto.api.ListRemoteMulticastGroupQueueItemsRequest} */ (jspb.Message.cloneMessage(this));
+};
+
+
+/**
+ * optional string remote_multicast_group_id = 1;
+ * @return {string}
+ */
+proto.api.ListRemoteMulticastGroupQueueItemsRequest.prototype.getRemoteMulticastGroupId = function() {
+  return /** @type {string} */ (jspb.Message.getFieldProto3(this, 1, ""));
+};
+
+
+/** @param {string} value  */
+proto.api.ListRemoteMulticastGroupQueueItemsRequest.prototype.setRemoteMulticastGroupId = function(value) {
+  jspb.Message.setField(this, 1, value);
+};
+
+
+
+/**
+ * Generated by JsPbCodeGenerator.
+ * @param {Array=} opt_data Optional initial data array, typically from a
+ * server response, or constructed directly in Javascript. The array is used
+ * in place and becomes part of the constructed object. It is not cloned.
+ * If no data is provided, the constructed object will be empty, but still
+ * valid.
+ * @extends {jspb.Message}
+ * @constructor
+ */
+proto.api.ListRemoteMulticastGroupQueueItemsResponse = function(opt_data) {
+  jspb.Message.initialize(this, opt_data, 0, -1, proto.api.ListRemoteMulticastGroupQueueItemsResponse.repeatedFields_, null);
+};
+goog.inherits(proto.api.ListRemoteMulticastGroupQueueItemsResponse, jspb.Message);
+if (goog.DEBUG && !COMPILED) {
+  proto.api.ListRemoteMulticastGroupQueueItemsResponse.displayName = 'proto.api.ListRemoteMulticastGroupQueueItemsResponse';
+}
+/**
+ * List of repeated fields within this message type.
+ * @private {!Array<number>}
+ * @const
+ */
+proto.api.ListRemoteMulticastGroupQueueItemsResponse.repeatedFields_ = [1];
+
+
+
+if (jspb.Message.GENERATE_TO_OBJECT) {
+/**
+ * Creates an object representation of this proto suitable for use in Soy templates.
+ * Field names that are reserved in JavaScript and will be renamed to pb_name.
+ * To access a reserved field use, foo.pb_<name>, eg, foo.pb_default.
+ * For the list of reserved names please see:
+ *     com.google.apps.jspb.JsClassTemplate.JS_RESERVED_WORDS.
+ * @param {boolean=} opt_includeInstance Whether to include the JSPB instance
+ *     for transitional soy proto support: http://goto/soy-param-migration
+ * @return {!Object}
+ */
+proto.api.ListRemoteMulticastGroupQueueItemsResponse.prototype.toObject = function(opt_includeInstance) {
+  return proto.api.ListRemoteMulticastGroupQueueItemsResponse.toObject(opt_includeInstance, this);
+};
+
+
+/**
+ * Static version of the {@see toObject} method.
+ * @param {boolean|undefined} includeInstance Whether to include the JSPB
+ *     instance for transitional soy proto support:
+ *     http://goto/soy-param-migration
+ * @param {!proto.api.ListRemoteMulticastGroupQueueItemsResponse} msg The msg instance to transform.
+ * @return {!Object}
+ */
+proto.api.ListRemoteMulticastGroupQueueItemsResponse.toObject = function(includeInstance, msg) {
+  var f, obj = {
+    remoteMulticastQueueItemsList: jspb.Message.toObjectList(msg.getRemoteMulticastQueueItemsList(),
+    proto.api.RemoteMulticastQueueItem.toObject, includeInstance)
+  };
+
+  if (includeInstance) {
+    obj.$jspbMessageInstance = msg;
+  }
+  return obj;
+};
+}
+
+
+/**
+ * Deserializes binary data (in protobuf wire format).
+ * @param {jspb.ByteSource} bytes The bytes to deserialize.
+ * @return {!proto.api.ListRemoteMulticastGroupQueueItemsResponse}
+ */
+proto.api.ListRemoteMulticastGroupQueueItemsResponse.deserializeBinary = function(bytes) {
+  var reader = new jspb.BinaryReader(bytes);
+  var msg = new proto.api.ListRemoteMulticastGroupQueueItemsResponse;
+  return proto.api.ListRemoteMulticastGroupQueueItemsResponse.deserializeBinaryFromReader(msg, reader);
+};
+
+
+/**
+ * Deserializes binary data (in protobuf wire format) from the
+ * given reader into the given message object.
+ * @param {!proto.api.ListRemoteMulticastGroupQueueItemsResponse} msg The message object to deserialize into.
+ * @param {!jspb.BinaryReader} reader The BinaryReader to use.
+ * @return {!proto.api.ListRemoteMulticastGroupQueueItemsResponse}
+ */
+proto.api.ListRemoteMulticastGroupQueueItemsResponse.deserializeBinaryFromReader = function(msg, reader) {
+  while (reader.nextField()) {
+    if (reader.isEndGroup()) {
+      break;
+    }
+    var field = reader.getFieldNumber();
+    switch (field) {
+    case 1:
+      var value = new proto.api.RemoteMulticastQueueItem;
+      reader.readMessage(value,proto.api.RemoteMulticastQueueItem.deserializeBinaryFromReader);
+      msg.getRemoteMulticastQueueItemsList().push(value);
+      msg.setRemoteMulticastQueueItemsList(msg.getRemoteMulticastQueueItemsList());
+      break;
+    default:
+      reader.skipField();
+      break;
+    }
+  }
+  return msg;
+};
+
+
+/**
+ * Class method variant: serializes the given message to binary data
+ * (in protobuf wire format), writing to the given BinaryWriter.
+ * @param {!proto.api.ListRemoteMulticastGroupQueueItemsResponse} message
+ * @param {!jspb.BinaryWriter} writer
+ */
+proto.api.ListRemoteMulticastGroupQueueItemsResponse.serializeBinaryToWriter = function(message, writer) {
+  message.serializeBinaryToWriter(writer);
+};
+
+
+/**
+ * Serializes the message to binary data (in protobuf wire format).
+ * @return {!Uint8Array}
+ */
+proto.api.ListRemoteMulticastGroupQueueItemsResponse.prototype.serializeBinary = function() {
+  var writer = new jspb.BinaryWriter();
+  this.serializeBinaryToWriter(writer);
+  return writer.getResultBuffer();
+};
+
+
+/**
+ * Serializes the message to binary data (in protobuf wire format),
+ * writing to the given BinaryWriter.
+ * @param {!jspb.BinaryWriter} writer
+ */
+proto.api.ListRemoteMulticastGroupQueueItemsResponse.prototype.serializeBinaryToWriter = function (writer) {
+  var f = undefined;
+  f = this.getRemoteMulticastQueueItemsList();
+  if (f.length > 0) {
+    writer.writeRepeatedMessage(
+      1,
+      f,
+      proto.api.RemoteMulticastQueueItem.serializeBinaryToWriter
+    );
+  }
+};
+
+
+/**
+ * Creates a deep clone of this proto. No data is shared with the original.
+ * @return {!proto.api.ListRemoteMulticastGroupQueueItemsResponse} The clone.
+ */
+proto.api.ListRemoteMulticastGroupQueueItemsResponse.prototype.cloneMessage = function() {
+  return /** @type {!proto.api.ListRemoteMulticastGroupQueueItemsResponse} */ (jspb.Message.cloneMessage(this));
+};
+
+
+/**
+ * repeated RemoteMulticastQueueItem remote_multicast_queue_items = 1;
+ * If you change this array by adding, removing or replacing elements, or if you
+ * replace the array itself, then you must call the setter to update it.
+ * @return {!Array.<!proto.api.RemoteMulticastQueueItem>}
+ */
+proto.api.ListRemoteMulticastGroupQueueItemsResponse.prototype.getRemoteMulticastQueueItemsList = function() {
+  return /** @type{!Array.<!proto.api.RemoteMulticastQueueItem>} */ (
+    jspb.Message.getRepeatedWrapperField(this, proto.api.RemoteMulticastQueueItem, 1));
+};
+
+
+/** @param {Array.<!proto.api.RemoteMulticastQueueItem>} value  */
+proto.api.ListRemoteMulticastGroupQueueItemsResponse.prototype.setRemoteMulticastQueueItemsList = function(value) {
+  jspb.Message.setRepeatedWrapperField(this, 1, value);
+};
+
+
+proto.api.ListRemoteMulticastGroupQueueItemsResponse.prototype.clearRemoteMulticastQueueItemsList = function() {
+  this.setRemoteMulticastQueueItemsList([]);
 };
 
 

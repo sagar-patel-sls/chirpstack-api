@@ -17,9 +17,6 @@ export class RemoteMulticastGroup extends jspb.Message {
   getName(): string;
   setName(value: string): void;
 
-  getMulticastGroupId(): string;
-  setMulticastGroupId(value: string): void;
-
   getServiceProfileId(): string;
   setServiceProfileId(value: string): void;
 
@@ -37,6 +34,21 @@ export class RemoteMulticastGroup extends jspb.Message {
 
   getPingSlotPeriod(): number;
   setPingSlotPeriod(value: number): void;
+
+  getMcAddr(): string;
+  setMcAddr(value: string): void;
+
+  getMcNwkSKey(): string;
+  setMcNwkSKey(value: string): void;
+
+  getMcAppSKey(): string;
+  setMcAppSKey(value: string): void;
+
+  getFCnt(): number;
+  setFCnt(value: number): void;
+
+  getMcGroupId(): number;
+  setMcGroupId(value: number): void;
 
   getState(): string;
   setState(value: string): void;
@@ -65,13 +77,17 @@ export namespace RemoteMulticastGroup {
   export type AsObject = {
     id: string,
     name: string,
-    multicastGroupId: string,
     serviceProfileId: string,
     applicationId: number,
     groupType: as_external_api_multicastGroup_pb.MulticastGroupTypeMap[keyof as_external_api_multicastGroup_pb.MulticastGroupTypeMap],
     dr: number,
     frequency: number,
     pingSlotPeriod: number,
+    mcAddr: string,
+    mcNwkSKey: string,
+    mcAppSKey: string,
+    fCnt: number,
+    mcGroupId: number,
     state: string,
     unicastTimeout?: google_protobuf_duration_pb.Duration.AsObject,
     nextStepAfter?: google_protobuf_timestamp_pb.Timestamp.AsObject,
@@ -87,9 +103,6 @@ export class RemoteMulticastDeploymentDevice extends jspb.Message {
 
   getDeviceName(): string;
   setDeviceName(value: string): void;
-
-  getMulticastGroupId(): string;
-  setMulticastGroupId(value: string): void;
 
   getMulticastGroupName(): string;
   setMulticastGroupName(value: string): void;
@@ -125,7 +138,6 @@ export namespace RemoteMulticastDeploymentDevice {
     id: string,
     devEui: string,
     deviceName: string,
-    multicastGroupId: string,
     multicastGroupName: string,
     createdAt?: google_protobuf_timestamp_pb.Timestamp.AsObject,
     updatedAt?: google_protobuf_timestamp_pb.Timestamp.AsObject,
@@ -264,18 +276,6 @@ export class GetRemoteMulticastGroupResponse extends jspb.Message {
   getUpdatedAt(): google_protobuf_timestamp_pb.Timestamp | undefined;
   setUpdatedAt(value?: google_protobuf_timestamp_pb.Timestamp): void;
 
-  getMcAddr(): string;
-  setMcAddr(value: string): void;
-
-  getMcNwkSKey(): string;
-  setMcNwkSKey(value: string): void;
-
-  getMcAppSKey(): string;
-  setMcAppSKey(value: string): void;
-
-  getFCnt(): number;
-  setFCnt(value: number): void;
-
   serializeBinary(): Uint8Array;
   toObject(includeInstance?: boolean): GetRemoteMulticastGroupResponse.AsObject;
   static toObject(includeInstance: boolean, msg: GetRemoteMulticastGroupResponse): GetRemoteMulticastGroupResponse.AsObject;
@@ -291,10 +291,6 @@ export namespace GetRemoteMulticastGroupResponse {
     remoteMulticastGroup?: RemoteMulticastGroup.AsObject,
     createdAt?: google_protobuf_timestamp_pb.Timestamp.AsObject,
     updatedAt?: google_protobuf_timestamp_pb.Timestamp.AsObject,
-    mcAddr: string,
-    mcNwkSKey: string,
-    mcAppSKey: string,
-    fCnt: number,
   }
 }
 
@@ -609,6 +605,144 @@ export class GetRemoteMulticastDeploymentDeviceResponse extends jspb.Message {
 export namespace GetRemoteMulticastDeploymentDeviceResponse {
   export type AsObject = {
     deploymentDevice?: RemoteMulticastDeploymentDevice.AsObject,
+  }
+}
+
+export class RemoteMulticastQueueItem extends jspb.Message {
+  getRemoteMulticastGroupId(): string;
+  setRemoteMulticastGroupId(value: string): void;
+
+  getFCnt(): number;
+  setFCnt(value: number): void;
+
+  getFPort(): number;
+  setFPort(value: number): void;
+
+  getData(): Uint8Array | string;
+  getData_asU8(): Uint8Array;
+  getData_asB64(): string;
+  setData(value: Uint8Array | string): void;
+
+  serializeBinary(): Uint8Array;
+  toObject(includeInstance?: boolean): RemoteMulticastQueueItem.AsObject;
+  static toObject(includeInstance: boolean, msg: RemoteMulticastQueueItem): RemoteMulticastQueueItem.AsObject;
+  static extensions: {[key: number]: jspb.ExtensionFieldInfo<jspb.Message>};
+  static extensionsBinary: {[key: number]: jspb.ExtensionFieldBinaryInfo<jspb.Message>};
+  static serializeBinaryToWriter(message: RemoteMulticastQueueItem, writer: jspb.BinaryWriter): void;
+  static deserializeBinary(bytes: Uint8Array): RemoteMulticastQueueItem;
+  static deserializeBinaryFromReader(message: RemoteMulticastQueueItem, reader: jspb.BinaryReader): RemoteMulticastQueueItem;
+}
+
+export namespace RemoteMulticastQueueItem {
+  export type AsObject = {
+    remoteMulticastGroupId: string,
+    fCnt: number,
+    fPort: number,
+    data: Uint8Array | string,
+  }
+}
+
+export class EnqueueRemoteMulticastQueueItemRequest extends jspb.Message {
+  hasRemoteMulticastQueueItem(): boolean;
+  clearRemoteMulticastQueueItem(): void;
+  getRemoteMulticastQueueItem(): RemoteMulticastQueueItem | undefined;
+  setRemoteMulticastQueueItem(value?: RemoteMulticastQueueItem): void;
+
+  serializeBinary(): Uint8Array;
+  toObject(includeInstance?: boolean): EnqueueRemoteMulticastQueueItemRequest.AsObject;
+  static toObject(includeInstance: boolean, msg: EnqueueRemoteMulticastQueueItemRequest): EnqueueRemoteMulticastQueueItemRequest.AsObject;
+  static extensions: {[key: number]: jspb.ExtensionFieldInfo<jspb.Message>};
+  static extensionsBinary: {[key: number]: jspb.ExtensionFieldBinaryInfo<jspb.Message>};
+  static serializeBinaryToWriter(message: EnqueueRemoteMulticastQueueItemRequest, writer: jspb.BinaryWriter): void;
+  static deserializeBinary(bytes: Uint8Array): EnqueueRemoteMulticastQueueItemRequest;
+  static deserializeBinaryFromReader(message: EnqueueRemoteMulticastQueueItemRequest, reader: jspb.BinaryReader): EnqueueRemoteMulticastQueueItemRequest;
+}
+
+export namespace EnqueueRemoteMulticastQueueItemRequest {
+  export type AsObject = {
+    remoteMulticastQueueItem?: RemoteMulticastQueueItem.AsObject,
+  }
+}
+
+export class EnqueueRemoteMulticastQueueItemResponse extends jspb.Message {
+  getFCnt(): number;
+  setFCnt(value: number): void;
+
+  serializeBinary(): Uint8Array;
+  toObject(includeInstance?: boolean): EnqueueRemoteMulticastQueueItemResponse.AsObject;
+  static toObject(includeInstance: boolean, msg: EnqueueRemoteMulticastQueueItemResponse): EnqueueRemoteMulticastQueueItemResponse.AsObject;
+  static extensions: {[key: number]: jspb.ExtensionFieldInfo<jspb.Message>};
+  static extensionsBinary: {[key: number]: jspb.ExtensionFieldBinaryInfo<jspb.Message>};
+  static serializeBinaryToWriter(message: EnqueueRemoteMulticastQueueItemResponse, writer: jspb.BinaryWriter): void;
+  static deserializeBinary(bytes: Uint8Array): EnqueueRemoteMulticastQueueItemResponse;
+  static deserializeBinaryFromReader(message: EnqueueRemoteMulticastQueueItemResponse, reader: jspb.BinaryReader): EnqueueRemoteMulticastQueueItemResponse;
+}
+
+export namespace EnqueueRemoteMulticastQueueItemResponse {
+  export type AsObject = {
+    fCnt: number,
+  }
+}
+
+export class FlushRemoteMulticastGroupQueueItemsRequest extends jspb.Message {
+  getRemoteMulticastGroupId(): string;
+  setRemoteMulticastGroupId(value: string): void;
+
+  serializeBinary(): Uint8Array;
+  toObject(includeInstance?: boolean): FlushRemoteMulticastGroupQueueItemsRequest.AsObject;
+  static toObject(includeInstance: boolean, msg: FlushRemoteMulticastGroupQueueItemsRequest): FlushRemoteMulticastGroupQueueItemsRequest.AsObject;
+  static extensions: {[key: number]: jspb.ExtensionFieldInfo<jspb.Message>};
+  static extensionsBinary: {[key: number]: jspb.ExtensionFieldBinaryInfo<jspb.Message>};
+  static serializeBinaryToWriter(message: FlushRemoteMulticastGroupQueueItemsRequest, writer: jspb.BinaryWriter): void;
+  static deserializeBinary(bytes: Uint8Array): FlushRemoteMulticastGroupQueueItemsRequest;
+  static deserializeBinaryFromReader(message: FlushRemoteMulticastGroupQueueItemsRequest, reader: jspb.BinaryReader): FlushRemoteMulticastGroupQueueItemsRequest;
+}
+
+export namespace FlushRemoteMulticastGroupQueueItemsRequest {
+  export type AsObject = {
+    remoteMulticastGroupId: string,
+  }
+}
+
+export class ListRemoteMulticastGroupQueueItemsRequest extends jspb.Message {
+  getRemoteMulticastGroupId(): string;
+  setRemoteMulticastGroupId(value: string): void;
+
+  serializeBinary(): Uint8Array;
+  toObject(includeInstance?: boolean): ListRemoteMulticastGroupQueueItemsRequest.AsObject;
+  static toObject(includeInstance: boolean, msg: ListRemoteMulticastGroupQueueItemsRequest): ListRemoteMulticastGroupQueueItemsRequest.AsObject;
+  static extensions: {[key: number]: jspb.ExtensionFieldInfo<jspb.Message>};
+  static extensionsBinary: {[key: number]: jspb.ExtensionFieldBinaryInfo<jspb.Message>};
+  static serializeBinaryToWriter(message: ListRemoteMulticastGroupQueueItemsRequest, writer: jspb.BinaryWriter): void;
+  static deserializeBinary(bytes: Uint8Array): ListRemoteMulticastGroupQueueItemsRequest;
+  static deserializeBinaryFromReader(message: ListRemoteMulticastGroupQueueItemsRequest, reader: jspb.BinaryReader): ListRemoteMulticastGroupQueueItemsRequest;
+}
+
+export namespace ListRemoteMulticastGroupQueueItemsRequest {
+  export type AsObject = {
+    remoteMulticastGroupId: string,
+  }
+}
+
+export class ListRemoteMulticastGroupQueueItemsResponse extends jspb.Message {
+  clearRemoteMulticastQueueItemsList(): void;
+  getRemoteMulticastQueueItemsList(): Array<RemoteMulticastQueueItem>;
+  setRemoteMulticastQueueItemsList(value: Array<RemoteMulticastQueueItem>): void;
+  addRemoteMulticastQueueItems(value?: RemoteMulticastQueueItem, index?: number): RemoteMulticastQueueItem;
+
+  serializeBinary(): Uint8Array;
+  toObject(includeInstance?: boolean): ListRemoteMulticastGroupQueueItemsResponse.AsObject;
+  static toObject(includeInstance: boolean, msg: ListRemoteMulticastGroupQueueItemsResponse): ListRemoteMulticastGroupQueueItemsResponse.AsObject;
+  static extensions: {[key: number]: jspb.ExtensionFieldInfo<jspb.Message>};
+  static extensionsBinary: {[key: number]: jspb.ExtensionFieldBinaryInfo<jspb.Message>};
+  static serializeBinaryToWriter(message: ListRemoteMulticastGroupQueueItemsResponse, writer: jspb.BinaryWriter): void;
+  static deserializeBinary(bytes: Uint8Array): ListRemoteMulticastGroupQueueItemsResponse;
+  static deserializeBinaryFromReader(message: ListRemoteMulticastGroupQueueItemsResponse, reader: jspb.BinaryReader): ListRemoteMulticastGroupQueueItemsResponse;
+}
+
+export namespace ListRemoteMulticastGroupQueueItemsResponse {
+  export type AsObject = {
+    remoteMulticastQueueItemsList: Array<RemoteMulticastQueueItem.AsObject>,
   }
 }
 
