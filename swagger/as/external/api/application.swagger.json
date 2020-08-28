@@ -206,7 +206,7 @@
     },
     "/api/applications/{application_id}/integrations/azure-service-bus": {
       "get": {
-        "summary": "GetAzureServiceBusIntegration returns the Azure Service-Bus application-integration.",
+        "summary": "GetAzureServiceBusIntegration returns the Azure Service-Bus\napplication-integration.",
         "operationId": "GetAzureServiceBusIntegration",
         "responses": {
           "200": {
@@ -231,7 +231,7 @@
         ]
       },
       "delete": {
-        "summary": "DeleteAzureServiceBusIntegration deletes the Azure Service-Bus application-integration.",
+        "summary": "DeleteAzureServiceBusIntegration deletes the Azure Service-Bus\napplication-integration.",
         "operationId": "DeleteAzureServiceBusIntegration",
         "responses": {
           "200": {
@@ -595,7 +595,7 @@
         ]
       },
       "delete": {
-        "summary": "DeleteThingsBoardIntegration deletes the ThingsBoard application-integration.",
+        "summary": "DeleteThingsBoardIntegration deletes the ThingsBoard\napplication-integration.",
         "operationId": "DeleteThingsBoardIntegration",
         "responses": {
           "200": {
@@ -742,7 +742,7 @@
     },
     "/api/applications/{integration.application_id}/integrations/azure-service-bus": {
       "post": {
-        "summary": "CreateAzureServiceBusIntegration creates an Azure Service-Bus application-integration.",
+        "summary": "CreateAzureServiceBusIntegration creates an Azure Service-Bus\napplication-integration.",
         "operationId": "CreateAzureServiceBusIntegration",
         "responses": {
           "200": {
@@ -775,7 +775,7 @@
         ]
       },
       "put": {
-        "summary": "UpdateAzureServiceBusIntegration updates the Azure Service-Bus application-integration.",
+        "summary": "UpdateAzureServiceBusIntegration updates the Azure Service-Bus\napplication-integration.",
         "operationId": "UpdateAzureServiceBusIntegration",
         "responses": {
           "200": {
@@ -1251,7 +1251,7 @@
         ]
       },
       "put": {
-        "summary": "UpdateThingsBoardIntegration updates the ThingsBoard application-integration.",
+        "summary": "UpdateThingsBoardIntegration updates the ThingsBoard\napplication-integration.",
         "operationId": "UpdateThingsBoardIntegration",
         "responses": {
           "200": {
@@ -1522,7 +1522,7 @@
         },
         "credentialsFile": {
           "type": "string",
-          "title": "Credentials file.\nThis IAM service-account credentials file (JSON) must have the following Pub/Sub roles:\n* Pub/Sub Publisher"
+          "title": "Credentials file.\nThis IAM service-account credentials file (JSON) must have the following\nPub/Sub roles:\n* Pub/Sub Publisher"
         },
         "projectID": {
           "type": "string",
@@ -1665,7 +1665,7 @@
         },
         "txAckNotificationURL": {
           "type": "string",
-          "description": "The URL to call for tx ack notifications (downlink acknowledged by gateway for transmission).\nDeprecated: use event_endpoint_url."
+          "description": "The URL to call for tx ack notifications (downlink acknowledged by gateway\nfor transmission). Deprecated: use event_endpoint_url."
         },
         "integrationNotificationURL": {
           "type": "string",
@@ -1677,7 +1677,7 @@
         },
         "eventEndpointURL": {
           "type": "string",
-          "description": "Event endpoint URL.\nThe HTTP integration will POST all events to this enpoint. The request\nwill contain a query parameters \"eventType\" containing the type of the\nevent."
+          "description": "Event endpoint URL.\nThe HTTP integration will POST all events to this enpoint. The request\nwill contain a query parameters \"event\" containing the type of the\nevent."
         }
       }
     },

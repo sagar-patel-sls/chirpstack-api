@@ -764,8 +764,8 @@ type HTTPIntegration struct {
 	// The URL to call for location notifications.
 	// Deprecated: use event_endpoint_url.
 	LocationNotificationUrl string `protobuf:"bytes,8,opt,name=location_notification_url,json=locationNotificationURL,proto3" json:"location_notification_url,omitempty"`
-	// The URL to call for tx ack notifications (downlink acknowledged by gateway for transmission).
-	// Deprecated: use event_endpoint_url.
+	// The URL to call for tx ack notifications (downlink acknowledged by gateway
+	// for transmission). Deprecated: use event_endpoint_url.
 	TxAckNotificationUrl string `protobuf:"bytes,9,opt,name=tx_ack_notification_url,json=txAckNotificationURL,proto3" json:"tx_ack_notification_url,omitempty"`
 	// The URL to call for integration notifications.
 	// Deprecated: use event_endpoint_url.
@@ -775,7 +775,7 @@ type HTTPIntegration struct {
 	Marshaler Marshaler `protobuf:"varint,11,opt,name=marshaler,proto3,enum=api.Marshaler" json:"marshaler,omitempty"`
 	// Event endpoint URL.
 	// The HTTP integration will POST all events to this enpoint. The request
-	// will contain a query parameters "eventType" containing the type of the
+	// will contain a query parameters "event" containing the type of the
 	// event.
 	EventEndpointUrl     string   `protobuf:"bytes,12,opt,name=event_endpoint_url,json=eventEndpointURL,proto3" json:"event_endpoint_url,omitempty"`
 	XXX_NoUnkeyedLiteral struct{} `json:"-"`
@@ -2424,7 +2424,8 @@ type GCPPubSubIntegration struct {
 	// This defines the marshaler that is used to encode the event payload.
 	Marshaler Marshaler `protobuf:"varint,2,opt,name=marshaler,proto3,enum=api.Marshaler" json:"marshaler,omitempty"`
 	// Credentials file.
-	// This IAM service-account credentials file (JSON) must have the following Pub/Sub roles:
+	// This IAM service-account credentials file (JSON) must have the following
+	// Pub/Sub roles:
 	// * Pub/Sub Publisher
 	CredentialsFile string `protobuf:"bytes,3,opt,name=credentials_file,json=credentialsFile,proto3" json:"credentials_file,omitempty"`
 	// Project ID.
@@ -3258,7 +3259,7 @@ func (m *DeleteAzureServiceBusIntegrationRequest) GetApplicationId() int64 {
 	return 0
 }
 
-//LOCCARTO
+// LOCCARTO
 type LoccartoIntegration struct {
 	// Application ID.
 	ApplicationId int64 `protobuf:"varint,1,opt,name=application_id,json=applicationID,proto3" json:"application_id,omitempty"`
@@ -3849,9 +3850,11 @@ type ApplicationServiceClient interface {
 	CreateThingsBoardIntegration(ctx context.Context, in *CreateThingsBoardIntegrationRequest, opts ...grpc.CallOption) (*empty.Empty, error)
 	// GetThingsBoardIntegration returns the ThingsBoard application-integration.
 	GetThingsBoardIntegration(ctx context.Context, in *GetThingsBoardIntegrationRequest, opts ...grpc.CallOption) (*GetThingsBoardIntegrationResponse, error)
-	// UpdateThingsBoardIntegration updates the ThingsBoard application-integration.
+	// UpdateThingsBoardIntegration updates the ThingsBoard
+	// application-integration.
 	UpdateThingsBoardIntegration(ctx context.Context, in *UpdateThingsBoardIntegrationRequest, opts ...grpc.CallOption) (*empty.Empty, error)
-	// DeleteThingsBoardIntegration deletes the ThingsBoard application-integration.
+	// DeleteThingsBoardIntegration deletes the ThingsBoard
+	// application-integration.
 	DeleteThingsBoardIntegration(ctx context.Context, in *DeleteThingsBoardIntegrationRequest, opts ...grpc.CallOption) (*empty.Empty, error)
 	// CreateMyDevicesIntegration creates a MyDevices application-integration.
 	CreateMyDevicesIntegration(ctx context.Context, in *CreateMyDevicesIntegrationRequest, opts ...grpc.CallOption) (*empty.Empty, error)
@@ -3885,13 +3888,17 @@ type ApplicationServiceClient interface {
 	UpdateAWSSNSIntegration(ctx context.Context, in *UpdateAWSSNSIntegrationRequest, opts ...grpc.CallOption) (*empty.Empty, error)
 	// DeleteAWSSNSIntegration deletes the AWS SNS application-integration.
 	DeleteAWSSNSIntegration(ctx context.Context, in *DeleteAWSSNSIntegrationRequest, opts ...grpc.CallOption) (*empty.Empty, error)
-	// CreateAzureServiceBusIntegration creates an Azure Service-Bus application-integration.
+	// CreateAzureServiceBusIntegration creates an Azure Service-Bus
+	// application-integration.
 	CreateAzureServiceBusIntegration(ctx context.Context, in *CreateAzureServiceBusIntegrationRequest, opts ...grpc.CallOption) (*empty.Empty, error)
-	// GetAzureServiceBusIntegration returns the Azure Service-Bus application-integration.
+	// GetAzureServiceBusIntegration returns the Azure Service-Bus
+	// application-integration.
 	GetAzureServiceBusIntegration(ctx context.Context, in *GetAzureServiceBusIntegrationRequest, opts ...grpc.CallOption) (*GetAzureServiceBusIntegrationResponse, error)
-	// UpdateAzureServiceBusIntegration updates the Azure Service-Bus application-integration.
+	// UpdateAzureServiceBusIntegration updates the Azure Service-Bus
+	// application-integration.
 	UpdateAzureServiceBusIntegration(ctx context.Context, in *UpdateAzureServiceBusIntegrationRequest, opts ...grpc.CallOption) (*empty.Empty, error)
-	// DeleteAzureServiceBusIntegration deletes the Azure Service-Bus application-integration.
+	// DeleteAzureServiceBusIntegration deletes the Azure Service-Bus
+	// application-integration.
 	DeleteAzureServiceBusIntegration(ctx context.Context, in *DeleteAzureServiceBusIntegrationRequest, opts ...grpc.CallOption) (*empty.Empty, error)
 	// ListIntegrations lists all configured integrations.
 	ListIntegrations(ctx context.Context, in *ListIntegrationRequest, opts ...grpc.CallOption) (*ListIntegrationResponse, error)
@@ -4323,9 +4330,11 @@ type ApplicationServiceServer interface {
 	CreateThingsBoardIntegration(context.Context, *CreateThingsBoardIntegrationRequest) (*empty.Empty, error)
 	// GetThingsBoardIntegration returns the ThingsBoard application-integration.
 	GetThingsBoardIntegration(context.Context, *GetThingsBoardIntegrationRequest) (*GetThingsBoardIntegrationResponse, error)
-	// UpdateThingsBoardIntegration updates the ThingsBoard application-integration.
+	// UpdateThingsBoardIntegration updates the ThingsBoard
+	// application-integration.
 	UpdateThingsBoardIntegration(context.Context, *UpdateThingsBoardIntegrationRequest) (*empty.Empty, error)
-	// DeleteThingsBoardIntegration deletes the ThingsBoard application-integration.
+	// DeleteThingsBoardIntegration deletes the ThingsBoard
+	// application-integration.
 	DeleteThingsBoardIntegration(context.Context, *DeleteThingsBoardIntegrationRequest) (*empty.Empty, error)
 	// CreateMyDevicesIntegration creates a MyDevices application-integration.
 	CreateMyDevicesIntegration(context.Context, *CreateMyDevicesIntegrationRequest) (*empty.Empty, error)
@@ -4359,13 +4368,17 @@ type ApplicationServiceServer interface {
 	UpdateAWSSNSIntegration(context.Context, *UpdateAWSSNSIntegrationRequest) (*empty.Empty, error)
 	// DeleteAWSSNSIntegration deletes the AWS SNS application-integration.
 	DeleteAWSSNSIntegration(context.Context, *DeleteAWSSNSIntegrationRequest) (*empty.Empty, error)
-	// CreateAzureServiceBusIntegration creates an Azure Service-Bus application-integration.
+	// CreateAzureServiceBusIntegration creates an Azure Service-Bus
+	// application-integration.
 	CreateAzureServiceBusIntegration(context.Context, *CreateAzureServiceBusIntegrationRequest) (*empty.Empty, error)
-	// GetAzureServiceBusIntegration returns the Azure Service-Bus application-integration.
+	// GetAzureServiceBusIntegration returns the Azure Service-Bus
+	// application-integration.
 	GetAzureServiceBusIntegration(context.Context, *GetAzureServiceBusIntegrationRequest) (*GetAzureServiceBusIntegrationResponse, error)
-	// UpdateAzureServiceBusIntegration updates the Azure Service-Bus application-integration.
+	// UpdateAzureServiceBusIntegration updates the Azure Service-Bus
+	// application-integration.
 	UpdateAzureServiceBusIntegration(context.Context, *UpdateAzureServiceBusIntegrationRequest) (*empty.Empty, error)
-	// DeleteAzureServiceBusIntegration deletes the Azure Service-Bus application-integration.
+	// DeleteAzureServiceBusIntegration deletes the Azure Service-Bus
+	// application-integration.
 	DeleteAzureServiceBusIntegration(context.Context, *DeleteAzureServiceBusIntegrationRequest) (*empty.Empty, error)
 	// ListIntegrations lists all configured integrations.
 	ListIntegrations(context.Context, *ListIntegrationRequest) (*ListIntegrationResponse, error)

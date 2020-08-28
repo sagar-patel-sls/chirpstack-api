@@ -805,7 +805,8 @@ var ApplicationServiceService = exports.ApplicationServiceService = {
     responseSerialize: serialize_api_GetThingsBoardIntegrationResponse,
     responseDeserialize: deserialize_api_GetThingsBoardIntegrationResponse,
   },
-  // UpdateThingsBoardIntegration updates the ThingsBoard application-integration.
+  // UpdateThingsBoardIntegration updates the ThingsBoard
+  // application-integration.
   updateThingsBoardIntegration: {
     path: '/api.ApplicationService/UpdateThingsBoardIntegration',
     requestStream: false,
@@ -817,7 +818,8 @@ var ApplicationServiceService = exports.ApplicationServiceService = {
     responseSerialize: serialize_google_protobuf_Empty,
     responseDeserialize: deserialize_google_protobuf_Empty,
   },
-  // DeleteThingsBoardIntegration deletes the ThingsBoard application-integration.
+  // DeleteThingsBoardIntegration deletes the ThingsBoard
+  // application-integration.
   deleteThingsBoardIntegration: {
     path: '/api.ApplicationService/DeleteThingsBoardIntegration',
     requestStream: false,
@@ -1021,7 +1023,8 @@ var ApplicationServiceService = exports.ApplicationServiceService = {
     responseSerialize: serialize_google_protobuf_Empty,
     responseDeserialize: deserialize_google_protobuf_Empty,
   },
-  // CreateAzureServiceBusIntegration creates an Azure Service-Bus application-integration.
+  // CreateAzureServiceBusIntegration creates an Azure Service-Bus
+  // application-integration.
   createAzureServiceBusIntegration: {
     path: '/api.ApplicationService/CreateAzureServiceBusIntegration',
     requestStream: false,
@@ -1033,7 +1036,8 @@ var ApplicationServiceService = exports.ApplicationServiceService = {
     responseSerialize: serialize_google_protobuf_Empty,
     responseDeserialize: deserialize_google_protobuf_Empty,
   },
-  // GetAzureServiceBusIntegration returns the Azure Service-Bus application-integration.
+  // GetAzureServiceBusIntegration returns the Azure Service-Bus
+  // application-integration.
   getAzureServiceBusIntegration: {
     path: '/api.ApplicationService/GetAzureServiceBusIntegration',
     requestStream: false,
@@ -1045,7 +1049,8 @@ var ApplicationServiceService = exports.ApplicationServiceService = {
     responseSerialize: serialize_api_GetAzureServiceBusIntegrationResponse,
     responseDeserialize: deserialize_api_GetAzureServiceBusIntegrationResponse,
   },
-  // UpdateAzureServiceBusIntegration updates the Azure Service-Bus application-integration.
+  // UpdateAzureServiceBusIntegration updates the Azure Service-Bus
+  // application-integration.
   updateAzureServiceBusIntegration: {
     path: '/api.ApplicationService/UpdateAzureServiceBusIntegration',
     requestStream: false,
@@ -1057,7 +1062,8 @@ var ApplicationServiceService = exports.ApplicationServiceService = {
     responseSerialize: serialize_google_protobuf_Empty,
     responseDeserialize: deserialize_google_protobuf_Empty,
   },
-  // DeleteAzureServiceBusIntegration deletes the Azure Service-Bus application-integration.
+  // DeleteAzureServiceBusIntegration deletes the Azure Service-Bus
+  // application-integration.
   deleteAzureServiceBusIntegration: {
     path: '/api.ApplicationService/DeleteAzureServiceBusIntegration',
     requestStream: false,

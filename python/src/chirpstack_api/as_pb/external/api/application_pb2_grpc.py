@@ -338,14 +338,16 @@ class ApplicationServiceServicer(object):
         raise NotImplementedError('Method not implemented!')
 
     def UpdateThingsBoardIntegration(self, request, context):
-        """UpdateThingsBoardIntegration updates the ThingsBoard application-integration.
+        """UpdateThingsBoardIntegration updates the ThingsBoard
+        application-integration.
         """
         context.set_code(grpc.StatusCode.UNIMPLEMENTED)
         context.set_details('Method not implemented!')
         raise NotImplementedError('Method not implemented!')
 
     def DeleteThingsBoardIntegration(self, request, context):
-        """DeleteThingsBoardIntegration deletes the ThingsBoard application-integration.
+        """DeleteThingsBoardIntegration deletes the ThingsBoard
+        application-integration.
         """
         context.set_code(grpc.StatusCode.UNIMPLEMENTED)
         context.set_details('Method not implemented!')
@@ -464,28 +466,32 @@ class ApplicationServiceServicer(object):
         raise NotImplementedError('Method not implemented!')
 
     def CreateAzureServiceBusIntegration(self, request, context):
-        """CreateAzureServiceBusIntegration creates an Azure Service-Bus application-integration.
+        """CreateAzureServiceBusIntegration creates an Azure Service-Bus
+        application-integration.
         """
         context.set_code(grpc.StatusCode.UNIMPLEMENTED)
         context.set_details('Method not implemented!')
         raise NotImplementedError('Method not implemented!')
 
     def GetAzureServiceBusIntegration(self, request, context):
-        """GetAzureServiceBusIntegration returns the Azure Service-Bus application-integration.
+        """GetAzureServiceBusIntegration returns the Azure Service-Bus
+        application-integration.
         """
         context.set_code(grpc.StatusCode.UNIMPLEMENTED)
         context.set_details('Method not implemented!')
         raise NotImplementedError('Method not implemented!')
 
     def UpdateAzureServiceBusIntegration(self, request, context):
-        """UpdateAzureServiceBusIntegration updates the Azure Service-Bus application-integration.
+        """UpdateAzureServiceBusIntegration updates the Azure Service-Bus
+        application-integration.
         """
         context.set_code(grpc.StatusCode.UNIMPLEMENTED)
         context.set_details('Method not implemented!')
         raise NotImplementedError('Method not implemented!')
 
     def DeleteAzureServiceBusIntegration(self, request, context):
-        """DeleteAzureServiceBusIntegration deletes the Azure Service-Bus application-integration.
+        """DeleteAzureServiceBusIntegration deletes the Azure Service-Bus
+        application-integration.
         """
         context.set_code(grpc.StatusCode.UNIMPLEMENTED)
         context.set_details('Method not implemented!')
