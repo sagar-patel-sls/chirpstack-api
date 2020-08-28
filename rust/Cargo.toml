@@ -1,12 +1,12 @@
 [package]
-name = "chirpstack_api"
-description = "ChirpStack Protobuf / gRPC API definitions."
-version = "3.7.5"
 authors = ["Orne Brocaar <info@brocaar.com>"]
-license = "MIT"
-homepage = "https://www.chirpstack.io"
-repository = "https://github.com/brocaar/chirpstack-api"
+description = "ChirpStack Protobuf / gRPC API definitions."
 edition = "2018"
+homepage = "https://www.chirpstack.io"
+license = "MIT"
+name = "chirpstack_api"
+repository = "https://github.com/brocaar/chirpstack-api"
+version = "3.7.6"
 
 [features]
 default = ["grpc_support", "rustfmt"]
@@ -17,8 +17,8 @@ rustfmt = ["tonic-build/rustfmt"]
 prost = "0.6"
 prost-types = "0.6.1"
 
-tonic = { version = "0.1", features = ["codegen"], default-features = false }
-tokio = { version = "0.2", features = ["macros"], optional = true }
+tokio = {version = "0.2", features = ["macros"], optional = true}
+tonic = {version = "0.1", features = ["codegen"], default-features = false}
 
 [build-dependencies]
-tonic-build = { version = "0.1", default-features = false }
+tonic-build = {version = "0.1", default-features = false}
