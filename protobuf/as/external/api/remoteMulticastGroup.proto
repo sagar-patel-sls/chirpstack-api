@@ -15,8 +15,7 @@ import "as/external/api/fuotaDeployment.proto";
 // RemoteMulticastGroupService is the service managing multicast-groups.
 service RemoteMulticastGroupService {
   // Create creates the given remote multicast-group.
-  rpc Create(CreateRemoteMulticastGroupRequest)
-      returns (CreateRemoteMulticastGroupResponse) {
+  rpc Create(CreateRemoteMulticastGroupRequest) returns (CreateRemoteMulticastGroupResponse) {
     option (google.api.http) = {
       post : "/api/remote-multicast-groups"
       body : "*"
@@ -24,16 +23,14 @@ service RemoteMulticastGroupService {
   }
 
   // Get returns a remote multicast-group given an ID.
-  rpc Get(GetRemoteMulticastGroupRequest)
-      returns (GetRemoteMulticastGroupResponse) {
+  rpc Get(GetRemoteMulticastGroupRequest) returns (GetRemoteMulticastGroupResponse) {
     option (google.api.http) = {
       get : "/api/remote-multicast-groups/{id}"
     };
   }
 
   // Update updates the given remote multicast-group.
-  rpc Update(UpdateRemoteMulticastGroupRequest)
-      returns (google.protobuf.Empty) {
+  rpc Update(UpdateRemoteMulticastGroupRequest) returns (google.protobuf.Empty) {
     option (google.api.http) = {
       put : "/api/remote-multicast-groups/{remote_multicast_group.id}"
       body : "*"
@@ -41,24 +38,21 @@ service RemoteMulticastGroupService {
   }
 
   // Delete deletes a remote multicast-group given an ID.
-  rpc Delete(DeleteRemoteMulticastGroupRequest)
-      returns (google.protobuf.Empty) {
+  rpc Delete(DeleteRemoteMulticastGroupRequest) returns (google.protobuf.Empty) {
     option (google.api.http) = {
       delete : "/api/remote-multicast-groups/{id}"
     };
   }
 
   // List lists the available remote multicast-groups.
-  rpc List(ListRemoteMulticastGroupRequest)
-      returns (ListRemoteMulticastGroupResponse) {
+  rpc List(ListRemoteMulticastGroupRequest) returns (ListRemoteMulticastGroupResponse) {
     option (google.api.http) = {
       get : "/api/remote-multicast-groups"
     };
   }
 
-  // AddDevice adds the given device to the remote multicast-group.
-  rpc AddDevice(AddDeviceToRemoteMulticastGroupRequest)
-      returns (google.protobuf.Empty) {
+  // AddDevice adds the given devices to the remote multicast-group.
+  rpc AddDevice(AddDeviceToRemoteMulticastGroupRequest) returns (google.protobuf.Empty) {
     option (google.api.http) = {
       post : "/api/remote-multicast-groups/{remote_multicast_group_id}/devices"
       body : "*"
@@ -66,72 +60,58 @@ service RemoteMulticastGroupService {
   }
 
   // ResetDevice Restart the remote multicast process of given device.
-  rpc ResetDevice(ResetRemoteMulticastDeviceRequest)
-      returns (google.protobuf.Empty) {
+  rpc ResetDevice(ResetRemoteMulticastDeviceRequest) returns (google.protobuf.Empty) {
     option (google.api.http) = {
-      put : "/api/remote-multicast-groups/{remote_multicast_group_id}/devices/"
-            "{dev_eui}/reset"
-      // body: "*"
+      put : "/api/remote-multicast-groups/{remote_multicast_group_id}/devices/{dev_eui}/reset"
     };
   }
 
   // RemoveDevice removes the given device from the remote multicast-group.
-  rpc RemoveDevice(RemoveDeviceFromRemoteMulticastGroupRequest)
-      returns (google.protobuf.Empty) {
+  rpc RemoveDevice(RemoveDeviceFromRemoteMulticastGroupRequest) returns (google.protobuf.Empty) {
     option (google.api.http) = {
-      delete : "/api/remote-multicast-groups/{remote_multicast_group_id}/"
-               "devices/{dev_eui}"
+      delete : "/api/remote-multicast-groups/{remote_multicast_group_id}/devices/{dev_eui}"
     };
   }
 
-  // ListDevicesForRemoteMulticast Lists the available devices for joining to
+  // ListDevicesForRemoteMulticast Lists the available pending devices for joining to
   // remote multicast-group for given application id.
-  rpc ListDevicesForRemoteMulticast(ListRemoteMulticastDeviceRequest)
-      returns (ListRemoteMulticastDeviceResponse) {
+  rpc ListDevicesForRemoteMulticast(ListRemoteMulticastDeviceRequest) returns (ListRemoteMulticastDeviceResponse) {
     option (google.api.http) = {
-      get : "/api/remote-multicast-groups/{remote_multicast_group_id}/"
-            "application/{application_id}/devices"
+      get : "/api/remote-multicast-groups/{remote_multicast_group_id}/application/{application_id}/devices"
     };
   }
 
   // GetDevicesList Lists the available devices in remote multicast-groups.
-  rpc GetDevicesList(ListRemoteMulticastDeviceRequest)
-      returns (ListRemoteMulticastDevicesResponse) {
+  rpc GetDevicesList(ListRemoteMulticastDeviceRequest) returns (ListRemoteMulticastDevicesResponse) {
     option (google.api.http) = {
       get : "/api/remote-multicast-groups/{remote_multicast_group_id}/devices"
     };
   }
 
   // GetDeploymentDevice returns the deployment device.
-  rpc GetDeploymentDevice(GetRemoteMulticastDeploymentDeviceRequest)
-      returns (GetRemoteMulticastDeploymentDeviceResponse) {
+  rpc GetDeploymentDevice(GetRemoteMulticastDeploymentDeviceRequest) returns (GetRemoteMulticastDeploymentDeviceResponse) {
     option (google.api.http) = {
-      get : "/api/remote-multicast-groups/{remote_multicast_group_id}/devices/"
-            "{dev_eui}"
+      get : "/api/remote-multicast-groups/{remote_multicast_group_id}/devices/{dev_eui}"
     };
   }
 
   // Enqueue adds the given item to the remote multicast-queue.
-  rpc Enqueue(EnqueueRemoteMulticastQueueItemRequest)
-      returns (EnqueueRemoteMulticastQueueItemResponse) {
+  rpc Enqueue(EnqueueRemoteMulticastQueueItemRequest) returns (EnqueueRemoteMulticastQueueItemResponse) {
     option (google.api.http) = {
-      post : "/api/remote-multicast-groups/"
-             "{remote_multicast_queue_item.remote_multicast_group_id}/queue"
+      post : "/api/remote-multicast-groups/{remote_multicast_queue_item.remote_multicast_group_id}/queue"
       body : "*"
     };
   }
 
   // FlushQueue flushes the remote multicast-group queue.
-  rpc FlushQueue(FlushRemoteMulticastGroupQueueItemsRequest)
-      returns (google.protobuf.Empty) {
+  rpc FlushQueue(FlushRemoteMulticastGroupQueueItemsRequest) returns (google.protobuf.Empty) {
     option (google.api.http) = {
       delete : "/api/remote-multicast-groups/{remote_multicast_group_id}/queue"
     };
   }
 
   // ListQueue lists the items in the remote multicast-group queue.
-  rpc ListQueue(ListRemoteMulticastGroupQueueItemsRequest)
-      returns (ListRemoteMulticastGroupQueueItemsResponse) {
+  rpc ListQueue(ListRemoteMulticastGroupQueueItemsRequest) returns (ListRemoteMulticastGroupQueueItemsResponse) {
     option (google.api.http) = {
       get : "/api/remote-multicast-groups/{remote_multicast_group_id}/queue"
     };
@@ -151,56 +131,48 @@ message RemoteMulticastGroup {
   // After creation, this can not be updated.
   string service_profile_id = 3 [ json_name = "serviceProfileID" ];
 
-  // Application ID
-  // After creation, this can not be updated.
-  int64 application_id = 4 [ json_name = "applicationID" ];
-
   // Remote Multicast type.
-  MulticastGroupType group_type = 5;
+  MulticastGroupType group_type = 4;
 
   // Data-rate.
-  uint32 dr = 6;
+  uint32 dr = 5;
 
   // Frequency (Hz).
-  uint32 frequency = 7;
+  uint32 frequency = 6;
 
   // Ping-slot period.
   // Mandatory for Class-B remote multicast groups.
-  uint32 ping_slot_period = 8;
+  uint32 ping_slot_period = 7;
 
   // Multicast address (HEX encoded DevAddr).
   // This value will be automatically set on create.
-  string mc_addr = 9;
+  string mc_addr = 8;
 
   // Multicast network session key (HEX encoded AES128 key).
   // This value will be automatically set on create.
-  string mc_nwk_s_key = 10;
+  string mc_nwk_s_key = 9;
 
   // Multicast application session key (HEX encoded AES128 key).
   // This value will be automatically set on create.
-  string mc_app_s_key = 11;
+  string mc_app_s_key = 10;
 
   // Frame-counter.
   // This value will be automatically set on create.
-  uint32 f_cnt = 12;
-
-  // Mc Group id
-  // This value will be automatically set on create.
-  uint32 mc_group_id = 13;
+  uint32 f_cnt = 11;
 
   // Remote Multicast Deployment state.
   // This value will be automatically set on create.
-  string state = 14;
+  string state = 12;
 
   // Unicast time-out.
   // Set this to the value in which you at least expect an uplink frame from the
   // device. The Remote Multicast deployment engine will wait at least for the
   // given time before proceeding with the next steps.
-  google.protobuf.Duration unicast_timeout = 15;
+  google.protobuf.Duration unicast_timeout = 13;
 
   // Next step after.
   // This value will be automatically set on create.
-  google.protobuf.Timestamp next_step_after = 16;
+  google.protobuf.Timestamp next_step_after = 14;
 }
 
 message RemoteMulticastDeploymentDevice {
@@ -213,20 +185,32 @@ message RemoteMulticastDeploymentDevice {
 
   string device_name = 3;
 
-  string multicast_group_name = 4;
+  // Application ID.
+  int64 application_id = 4 [json_name = "applicationID"];
+
+  string application_name = 5;
+
+  // The last time the application-server received any data from the device,
+  // or an empty string when the device never sent any data.
+  google.protobuf.Timestamp last_seen_at = 6 [json_name = "lastSeenAt"];
+
+  // Mc Group id
+  // This value will be automatically set on create.
+  // Between 0 to 3
+  uint32 mc_group_id = 7;
 
   // Created at timestamp.
-  google.protobuf.Timestamp created_at = 5;
+  google.protobuf.Timestamp created_at = 8;
 
   // Last update timestamp.
-  google.protobuf.Timestamp updated_at = 6;
+  google.protobuf.Timestamp updated_at = 9;
 
   // Remote Multicast Deployment Device state.
   // This value will be automatically set on create.
-  FUOTADeploymentDeviceState state = 7;
+  FUOTADeploymentDeviceState state = 10;
 
   // Error message (in case of error state).
-  string error_message = 8;
+  string error_message = 11;
 }
 
 message RemoteMulticastGroupListItem {
@@ -242,17 +226,8 @@ message RemoteMulticastGroupListItem {
   // Service-profile name.
   string service_profile_name = 4;
 
-  int64 application_id = 5 [ json_name = "applicationID" ];
-
-  string application_name = 6;
-
-  // Multicast-group ID (string formatted UUID).
-  string multicast_group_id = 7 [ json_name = "multicastGroupID" ];
-
-  string multicast_group_name = 8;
-
   // Deployment state.
-  string state = 9;
+  string state = 5;
 }
 
 message CreateRemoteMulticastGroupRequest {
@@ -291,14 +266,11 @@ message ListRemoteMulticastGroupRequest {
   // Organization id to filter on.
   int64 organization_id = 3 [ json_name = "organizationID" ];
 
-  // Application ID to filter on.
-  int64 application_id = 4 [ json_name = "applicationID" ];
-
   // Service-profile ID to filter on.
-  string service_profile_id = 5 [ json_name = "serviceProfileID" ];
+  string service_profile_id = 4 [ json_name = "serviceProfileID" ];
 
   // Search can be used to search on the remote multicast-group name.
-  string search = 6;
+  string search = 5;
 }
 
 message ListRemoteMulticastGroupResponse {
@@ -320,19 +292,17 @@ message DeleteRemoteMulticastGroupRequest {
 
 message AddDeviceToRemoteMulticastGroupRequest {
   // Remote Multicast deployment ID (string formatted UUID).
-  string remote_multicast_group_id = 1
-      [ json_name = "remoteMulticastDeploymentID" ];
+  string remote_multicast_group_id = 1 [ json_name = "remoteMulticastDeploymentID" ];
 
-  // Device EUI (HEX encoded string).
-  // Note that the device must be under the same service-profile as the
+  // Device EUIs (HEX encoded string).
+  // Note that the devices must be under the same service-profile as the
   // remote multicast-group.
-  string dev_eui = 2 [ json_name = "devEUI" ];
+  repeated string dev_euis = 2 [ json_name = "devEUIs" ];
 }
 
 message RemoveDeviceFromRemoteMulticastGroupRequest {
   // Remote Multicast deployment ID (string formatted UUID).
-  string remote_multicast_group_id = 1
-      [ json_name = "remoteMulticastDeploymentID" ];
+  string remote_multicast_group_id = 1 [ json_name = "remoteMulticastDeploymentID" ];
 
   // Device EUI (HEX encoded string).
   string dev_eui = 2 [ json_name = "devEUI" ];
@@ -346,14 +316,13 @@ message ListRemoteMulticastDeviceRequest {
   int64 offset = 2;
 
   // Remote Multicast deployment ID (string formatted UUID).
-  string remote_multicast_group_id = 5
-      [ json_name = "remoteMulticastDeploymentID" ];
+  string remote_multicast_group_id = 3 [ json_name = "remoteMulticastDeploymentID" ];
 
   // Application ID to filter on.
-  int64 application_id = 3 [ json_name = "applicationID" ];
+  int64 application_id = 4 [ json_name = "applicationID" ];
 
   // Search on name or DevEUI.
-  string search = 4;
+  string search = 5;
 }
 
 message ListRemoteMulticastDeviceResponse {
@@ -370,8 +339,7 @@ message ResetRemoteMulticastDeviceRequest {
 
   // ID of the deployment (string formatted UUID).
   // This value will be automatically assigned on create.
-  string remote_multicast_group_id = 2
-      [ json_name = "remoteMulticastDeploymentID" ];
+  string remote_multicast_group_id = 2 [ json_name = "remoteMulticastDeploymentID" ];
 }
 
 message ListRemoteMulticastDevicesResponse {
@@ -384,8 +352,7 @@ message ListRemoteMulticastDevicesResponse {
 message GetRemoteMulticastDeploymentDeviceRequest {
   // ID of the deployment (string formatted UUID).
   // This value will be automatically assigned on create.
-  string remote_multicast_group_id = 1
-      [ json_name = "remoteMulticastDeploymentID" ];
+  string remote_multicast_group_id = 1 [ json_name = "remoteMulticastDeploymentID" ];
 
   // Device EUI (HEX encoded).
   string dev_eui = 2 [ json_name = "devEUI" ];

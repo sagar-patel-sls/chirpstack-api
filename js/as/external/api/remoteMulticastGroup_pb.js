@@ -90,7 +90,6 @@ proto.api.RemoteMulticastGroup.toObject = function(includeInstance, msg) {
     id: msg.getId(),
     name: msg.getName(),
     serviceProfileId: msg.getServiceProfileId(),
-    applicationId: msg.getApplicationId(),
     groupType: msg.getGroupType(),
     dr: msg.getDr(),
     frequency: msg.getFrequency(),
@@ -99,7 +98,6 @@ proto.api.RemoteMulticastGroup.toObject = function(includeInstance, msg) {
     mcNwkSKey: msg.getMcNwkSKey(),
     mcAppSKey: msg.getMcAppSKey(),
     fCnt: msg.getFCnt(),
-    mcGroupId: msg.getMcGroupId(),
     state: msg.getState(),
     unicastTimeout: (f = msg.getUnicastTimeout()) && google_protobuf_duration_pb.Duration.toObject(includeInstance, f),
     nextStepAfter: (f = msg.getNextStepAfter()) && google_protobuf_timestamp_pb.Timestamp.toObject(includeInstance, f)
@@ -152,55 +150,47 @@ proto.api.RemoteMulticastGroup.deserializeBinaryFromReader = function(msg, reade
       msg.setServiceProfileId(value);
       break;
     case 4:
-      var value = /** @type {number} */ (reader.readInt64());
-      msg.setApplicationId(value);
-      break;
-    case 5:
       var value = /** @type {!proto.api.MulticastGroupType} */ (reader.readEnum());
       msg.setGroupType(value);
       break;
-    case 6:
+    case 5:
       var value = /** @type {number} */ (reader.readUint32());
       msg.setDr(value);
       break;
-    case 7:
+    case 6:
       var value = /** @type {number} */ (reader.readUint32());
       msg.setFrequency(value);
       break;
-    case 8:
+    case 7:
       var value = /** @type {number} */ (reader.readUint32());
       msg.setPingSlotPeriod(value);
       break;
-    case 9:
+    case 8:
       var value = /** @type {string} */ (reader.readString());
       msg.setMcAddr(value);
       break;
-    case 10:
+    case 9:
       var value = /** @type {string} */ (reader.readString());
       msg.setMcNwkSKey(value);
       break;
-    case 11:
+    case 10:
       var value = /** @type {string} */ (reader.readString());
       msg.setMcAppSKey(value);
       break;
-    case 12:
+    case 11:
       var value = /** @type {number} */ (reader.readUint32());
       msg.setFCnt(value);
       break;
-    case 13:
-      var value = /** @type {number} */ (reader.readUint32());
-      msg.setMcGroupId(value);
-      break;
-    case 14:
+    case 12:
       var value = /** @type {string} */ (reader.readString());
       msg.setState(value);
       break;
-    case 15:
+    case 13:
       var value = new google_protobuf_duration_pb.Duration;
       reader.readMessage(value,google_protobuf_duration_pb.Duration.deserializeBinaryFromReader);
       msg.setUnicastTimeout(value);
       break;
-    case 16:
+    case 14:
       var value = new google_protobuf_timestamp_pb.Timestamp;
       reader.readMessage(value,google_protobuf_timestamp_pb.Timestamp.deserializeBinaryFromReader);
       msg.setNextStepAfter(value);
@@ -264,87 +254,73 @@ proto.api.RemoteMulticastGroup.prototype.serializeBinaryToWriter = function (wri
       f
     );
   }
-  f = this.getApplicationId();
-  if (f !== 0) {
-    writer.writeInt64(
-      4,
-      f
-    );
-  }
   f = this.getGroupType();
   if (f !== 0.0) {
     writer.writeEnum(
-      5,
+      4,
       f
     );
   }
   f = this.getDr();
   if (f !== 0) {
     writer.writeUint32(
-      6,
+      5,
       f
     );
   }
   f = this.getFrequency();
   if (f !== 0) {
     writer.writeUint32(
-      7,
+      6,
       f
     );
   }
   f = this.getPingSlotPeriod();
   if (f !== 0) {
     writer.writeUint32(
-      8,
+      7,
       f
     );
   }
   f = this.getMcAddr();
   if (f.length > 0) {
     writer.writeString(
-      9,
+      8,
       f
     );
   }
   f = this.getMcNwkSKey();
   if (f.length > 0) {
     writer.writeString(
-      10,
+      9,
       f
     );
   }
   f = this.getMcAppSKey();
   if (f.length > 0) {
     writer.writeString(
-      11,
+      10,
       f
     );
   }
   f = this.getFCnt();
   if (f !== 0) {
     writer.writeUint32(
-      12,
-      f
-    );
-  }
-  f = this.getMcGroupId();
-  if (f !== 0) {
-    writer.writeUint32(
-      13,
+      11,
       f
     );
   }
   f = this.getState();
   if (f.length > 0) {
     writer.writeString(
-      14,
+      12,
       f
     );
   }
   f = this.getUnicastTimeout();
   if (f != null) {
     writer.writeMessage(
-      15,
+      13,
       f,
       google_protobuf_duration_pb.Duration.serializeBinaryToWriter
     );
@@ -352,7 +328,7 @@ proto.api.RemoteMulticastGroup.prototype.serializeBinaryToWriter = function (wri
   f = this.getNextStepAfter();
   if (f != null) {
     writer.writeMessage(
-      16,
+      14,
       f,
       google_protobuf_timestamp_pb.Timestamp.serializeBinaryToWriter
     );
@@ -415,183 +391,153 @@ proto.api.RemoteMulticastGroup.prototype.setServiceProfileId = function(value) {
 
 
 /**
- * optional int64 application_id = 4;
- * @return {number}
- */
-proto.api.RemoteMulticastGroup.prototype.getApplicationId = function() {
-  return /** @type {number} */ (jspb.Message.getFieldProto3(this, 4, 0));
-};
-
-
-/** @param {number} value  */
-proto.api.RemoteMulticastGroup.prototype.setApplicationId = function(value) {
-  jspb.Message.setField(this, 4, value);
-};
-
-
-/**
- * optional MulticastGroupType group_type = 5;
+ * optional MulticastGroupType group_type = 4;
  * @return {!proto.api.MulticastGroupType}
  */
 proto.api.RemoteMulticastGroup.prototype.getGroupType = function() {
-  return /** @type {!proto.api.MulticastGroupType} */ (jspb.Message.getFieldProto3(this, 5, 0));
+  return /** @type {!proto.api.MulticastGroupType} */ (jspb.Message.getFieldProto3(this, 4, 0));
 };
 
 
 /** @param {!proto.api.MulticastGroupType} value  */
 proto.api.RemoteMulticastGroup.prototype.setGroupType = function(value) {
-  jspb.Message.setField(this, 5, value);
+  jspb.Message.setField(this, 4, value);
 };
 
 
 /**
- * optional uint32 dr = 6;
+ * optional uint32 dr = 5;
  * @return {number}
  */
 proto.api.RemoteMulticastGroup.prototype.getDr = function() {
-  return /** @type {number} */ (jspb.Message.getFieldProto3(this, 6, 0));
+  return /** @type {number} */ (jspb.Message.getFieldProto3(this, 5, 0));
 };
 
 
 /** @param {number} value  */
 proto.api.RemoteMulticastGroup.prototype.setDr = function(value) {
-  jspb.Message.setField(this, 6, value);
+  jspb.Message.setField(this, 5, value);
 };
 
 
 /**
- * optional uint32 frequency = 7;
+ * optional uint32 frequency = 6;
  * @return {number}
  */
 proto.api.RemoteMulticastGroup.prototype.getFrequency = function() {
-  return /** @type {number} */ (jspb.Message.getFieldProto3(this, 7, 0));
+  return /** @type {number} */ (jspb.Message.getFieldProto3(this, 6, 0));
 };
 
 
 /** @param {number} value  */
 proto.api.RemoteMulticastGroup.prototype.setFrequency = function(value) {
-  jspb.Message.setField(this, 7, value);
+  jspb.Message.setField(this, 6, value);
 };
 
 
 /**
- * optional uint32 ping_slot_period = 8;
+ * optional uint32 ping_slot_period = 7;
  * @return {number}
  */
 proto.api.RemoteMulticastGroup.prototype.getPingSlotPeriod = function() {
-  return /** @type {number} */ (jspb.Message.getFieldProto3(this, 8, 0));
+  return /** @type {number} */ (jspb.Message.getFieldProto3(this, 7, 0));
 };
 
 
 /** @param {number} value  */
 proto.api.RemoteMulticastGroup.prototype.setPingSlotPeriod = function(value) {
-  jspb.Message.setField(this, 8, value);
+  jspb.Message.setField(this, 7, value);
 };
 
 
 /**
- * optional string mc_addr = 9;
+ * optional string mc_addr = 8;
  * @return {string}
  */
 proto.api.RemoteMulticastGroup.prototype.getMcAddr = function() {
-  return /** @type {string} */ (jspb.Message.getFieldProto3(this, 9, ""));
+  return /** @type {string} */ (jspb.Message.getFieldProto3(this, 8, ""));
 };
 
 
 /** @param {string} value  */
 proto.api.RemoteMulticastGroup.prototype.setMcAddr = function(value) {
-  jspb.Message.setField(this, 9, value);
+  jspb.Message.setField(this, 8, value);
 };
 
 
 /**
- * optional string mc_nwk_s_key = 10;
+ * optional string mc_nwk_s_key = 9;
  * @return {string}
  */
 proto.api.RemoteMulticastGroup.prototype.getMcNwkSKey = function() {
-  return /** @type {string} */ (jspb.Message.getFieldProto3(this, 10, ""));
+  return /** @type {string} */ (jspb.Message.getFieldProto3(this, 9, ""));
 };
 
 
 /** @param {string} value  */
 proto.api.RemoteMulticastGroup.prototype.setMcNwkSKey = function(value) {
-  jspb.Message.setField(this, 10, value);
+  jspb.Message.setField(this, 9, value);
 };
 
 
 /**
- * optional string mc_app_s_key = 11;
+ * optional string mc_app_s_key = 10;
  * @return {string}
  */
 proto.api.RemoteMulticastGroup.prototype.getMcAppSKey = function() {
-  return /** @type {string} */ (jspb.Message.getFieldProto3(this, 11, ""));
+  return /** @type {string} */ (jspb.Message.getFieldProto3(this, 10, ""));
 };
 
 
 /** @param {string} value  */
 proto.api.RemoteMulticastGroup.prototype.setMcAppSKey = function(value) {
-  jspb.Message.setField(this, 11, value);
+  jspb.Message.setField(this, 10, value);
 };
 
 
 /**
- * optional uint32 f_cnt = 12;
+ * optional uint32 f_cnt = 11;
  * @return {number}
  */
 proto.api.RemoteMulticastGroup.prototype.getFCnt = function() {
-  return /** @type {number} */ (jspb.Message.getFieldProto3(this, 12, 0));
+  return /** @type {number} */ (jspb.Message.getFieldProto3(this, 11, 0));
 };
 
 
 /** @param {number} value  */
 proto.api.RemoteMulticastGroup.prototype.setFCnt = function(value) {
-  jspb.Message.setField(this, 12, value);
+  jspb.Message.setField(this, 11, value);
 };
 
 
 /**
- * optional uint32 mc_group_id = 13;
- * @return {number}
- */
-proto.api.RemoteMulticastGroup.prototype.getMcGroupId = function() {
-  return /** @type {number} */ (jspb.Message.getFieldProto3(this, 13, 0));
-};
-
-
-/** @param {number} value  */
-proto.api.RemoteMulticastGroup.prototype.setMcGroupId = function(value) {
-  jspb.Message.setField(this, 13, value);
-};
-
-
-/**
- * optional string state = 14;
+ * optional string state = 12;
  * @return {string}
  */
 proto.api.RemoteMulticastGroup.prototype.getState = function() {
-  return /** @type {string} */ (jspb.Message.getFieldProto3(this, 14, ""));
+  return /** @type {string} */ (jspb.Message.getFieldProto3(this, 12, ""));
 };
 
 
 /** @param {string} value  */
 proto.api.RemoteMulticastGroup.prototype.setState = function(value) {
-  jspb.Message.setField(this, 14, value);
+  jspb.Message.setField(this, 12, value);
 };
 
 
 /**
- * optional google.protobuf.Duration unicast_timeout = 15;
+ * optional google.protobuf.Duration unicast_timeout = 13;
  * @return {proto.google.protobuf.Duration}
  */
 proto.api.RemoteMulticastGroup.prototype.getUnicastTimeout = function() {
   return /** @type{proto.google.protobuf.Duration} */ (
-    jspb.Message.getWrapperField(this, google_protobuf_duration_pb.Duration, 15));
+    jspb.Message.getWrapperField(this, google_protobuf_duration_pb.Duration, 13));
 };
 
 
 /** @param {proto.google.protobuf.Duration|undefined} value  */
 proto.api.RemoteMulticastGroup.prototype.setUnicastTimeout = function(value) {
-  jspb.Message.setWrapperField(this, 15, value);
+  jspb.Message.setWrapperField(this, 13, value);
 };
 
 
@@ -605,23 +551,23 @@ proto.api.RemoteMulticastGroup.prototype.clearUnicastTimeout = function() {
  * @return{!boolean}
  */
 proto.api.RemoteMulticastGroup.prototype.hasUnicastTimeout = function() {
-  return jspb.Message.getField(this, 15) != null;
+  return jspb.Message.getField(this, 13) != null;
 };
 
 
 /**
- * optional google.protobuf.Timestamp next_step_after = 16;
+ * optional google.protobuf.Timestamp next_step_after = 14;
  * @return {proto.google.protobuf.Timestamp}
  */
 proto.api.RemoteMulticastGroup.prototype.getNextStepAfter = function() {
   return /** @type{proto.google.protobuf.Timestamp} */ (
-    jspb.Message.getWrapperField(this, google_protobuf_timestamp_pb.Timestamp, 16));
+    jspb.Message.getWrapperField(this, google_protobuf_timestamp_pb.Timestamp, 14));
 };
 
 
 /** @param {proto.google.protobuf.Timestamp|undefined} value  */
 proto.api.RemoteMulticastGroup.prototype.setNextStepAfter = function(value) {
-  jspb.Message.setWrapperField(this, 16, value);
+  jspb.Message.setWrapperField(this, 14, value);
 };
 
 
@@ -635,7 +581,7 @@ proto.api.RemoteMulticastGroup.prototype.clearNextStepAfter = function() {
  * @return{!boolean}
  */
 proto.api.RemoteMulticastGroup.prototype.hasNextStepAfter = function() {
-  return jspb.Message.getField(this, 16) != null;
+  return jspb.Message.getField(this, 14) != null;
 };
 
 
@@ -688,7 +634,10 @@ proto.api.RemoteMulticastDeploymentDevice.toObject = function(includeInstance, m
     id: msg.getId(),
     devEui: msg.getDevEui(),
     deviceName: msg.getDeviceName(),
-    multicastGroupName: msg.getMulticastGroupName(),
+    applicationId: msg.getApplicationId(),
+    applicationName: msg.getApplicationName(),
+    lastSeenAt: (f = msg.getLastSeenAt()) && google_protobuf_timestamp_pb.Timestamp.toObject(includeInstance, f),
+    mcGroupId: msg.getMcGroupId(),
     createdAt: (f = msg.getCreatedAt()) && google_protobuf_timestamp_pb.Timestamp.toObject(includeInstance, f),
     updatedAt: (f = msg.getUpdatedAt()) && google_protobuf_timestamp_pb.Timestamp.toObject(includeInstance, f),
     state: msg.getState(),
@@ -742,24 +691,37 @@ proto.api.RemoteMulticastDeploymentDevice.deserializeBinaryFromReader = function
       msg.setDeviceName(value);
       break;
     case 4:
-      var value = /** @type {string} */ (reader.readString());
-      msg.setMulticastGroupName(value);
+      var value = /** @type {number} */ (reader.readInt64());
+      msg.setApplicationId(value);
       break;
     case 5:
-      var value = new google_protobuf_timestamp_pb.Timestamp;
-      reader.readMessage(value,google_protobuf_timestamp_pb.Timestamp.deserializeBinaryFromReader);
-      msg.setCreatedAt(value);
+      var value = /** @type {string} */ (reader.readString());
+      msg.setApplicationName(value);
       break;
     case 6:
       var value = new google_protobuf_timestamp_pb.Timestamp;
       reader.readMessage(value,google_protobuf_timestamp_pb.Timestamp.deserializeBinaryFromReader);
-      msg.setUpdatedAt(value);
+      msg.setLastSeenAt(value);
       break;
     case 7:
+      var value = /** @type {number} */ (reader.readUint32());
+      msg.setMcGroupId(value);
+      break;
+    case 8:
+      var value = new google_protobuf_timestamp_pb.Timestamp;
+      reader.readMessage(value,google_protobuf_timestamp_pb.Timestamp.deserializeBinaryFromReader);
+      msg.setCreatedAt(value);
+      break;
+    case 9:
+      var value = new google_protobuf_timestamp_pb.Timestamp;
+      reader.readMessage(value,google_protobuf_timestamp_pb.Timestamp.deserializeBinaryFromReader);
+      msg.setUpdatedAt(value);
+      break;
+    case 10:
       var value = /** @type {!proto.api.FUOTADeploymentDeviceState} */ (reader.readEnum());
       msg.setState(value);
       break;
-    case 8:
+    case 11:
       var value = /** @type {string} */ (reader.readString());
       msg.setErrorMessage(value);
       break;
@@ -822,22 +784,21 @@ proto.api.RemoteMulticastDeploymentDevice.prototype.serializeBinaryToWriter = fu
       f
     );
   }
-  f = this.getMulticastGroupName();
-  if (f.length > 0) {
-    writer.writeString(
+  f = this.getApplicationId();
+  if (f !== 0) {
+    writer.writeInt64(
       4,
       f
     );
   }
-  f = this.getCreatedAt();
-  if (f != null) {
-    writer.writeMessage(
+  f = this.getApplicationName();
+  if (f.length > 0) {
+    writer.writeString(
       5,
-      f,
-      google_protobuf_timestamp_pb.Timestamp.serializeBinaryToWriter
+      f
     );
   }
-  f = this.getUpdatedAt();
+  f = this.getLastSeenAt();
   if (f != null) {
     writer.writeMessage(
       6,
@@ -845,17 +806,40 @@ proto.api.RemoteMulticastDeploymentDevice.prototype.serializeBinaryToWriter = fu
       google_protobuf_timestamp_pb.Timestamp.serializeBinaryToWriter
     );
   }
+  f = this.getMcGroupId();
+  if (f !== 0) {
+    writer.writeUint32(
+      7,
+      f
+    );
+  }
+  f = this.getCreatedAt();
+  if (f != null) {
+    writer.writeMessage(
+      8,
+      f,
+      google_protobuf_timestamp_pb.Timestamp.serializeBinaryToWriter
+    );
+  }
+  f = this.getUpdatedAt();
+  if (f != null) {
+    writer.writeMessage(
+      9,
+      f,
+      google_protobuf_timestamp_pb.Timestamp.serializeBinaryToWriter
+    );
+  }
   f = this.getState();
   if (f !== 0.0) {
     writer.writeEnum(
-      7,
+      10,
       f
     );
   }
   f = this.getErrorMessage();
   if (f.length > 0) {
     writer.writeString(
-      8,
+      11,
       f
     );
   }
@@ -917,33 +901,93 @@ proto.api.RemoteMulticastDeploymentDevice.prototype.setDeviceName = function(val
 
 
 /**
- * optional string multicast_group_name = 4;
- * @return {string}
+ * optional int64 application_id = 4;
+ * @return {number}
  */
-proto.api.RemoteMulticastDeploymentDevice.prototype.getMulticastGroupName = function() {
-  return /** @type {string} */ (jspb.Message.getFieldProto3(this, 4, ""));
+proto.api.RemoteMulticastDeploymentDevice.prototype.getApplicationId = function() {
+  return /** @type {number} */ (jspb.Message.getFieldProto3(this, 4, 0));
 };
 
 
-/** @param {string} value  */
-proto.api.RemoteMulticastDeploymentDevice.prototype.setMulticastGroupName = function(value) {
+/** @param {number} value  */
+proto.api.RemoteMulticastDeploymentDevice.prototype.setApplicationId = function(value) {
   jspb.Message.setField(this, 4, value);
 };
 
 
 /**
- * optional google.protobuf.Timestamp created_at = 5;
+ * optional string application_name = 5;
+ * @return {string}
+ */
+proto.api.RemoteMulticastDeploymentDevice.prototype.getApplicationName = function() {
+  return /** @type {string} */ (jspb.Message.getFieldProto3(this, 5, ""));
+};
+
+
+/** @param {string} value  */
+proto.api.RemoteMulticastDeploymentDevice.prototype.setApplicationName = function(value) {
+  jspb.Message.setField(this, 5, value);
+};
+
+
+/**
+ * optional google.protobuf.Timestamp last_seen_at = 6;
+ * @return {proto.google.protobuf.Timestamp}
+ */
+proto.api.RemoteMulticastDeploymentDevice.prototype.getLastSeenAt = function() {
+  return /** @type{proto.google.protobuf.Timestamp} */ (
+    jspb.Message.getWrapperField(this, google_protobuf_timestamp_pb.Timestamp, 6));
+};
+
+
+/** @param {proto.google.protobuf.Timestamp|undefined} value  */
+proto.api.RemoteMulticastDeploymentDevice.prototype.setLastSeenAt = function(value) {
+  jspb.Message.setWrapperField(this, 6, value);
+};
+
+
+proto.api.RemoteMulticastDeploymentDevice.prototype.clearLastSeenAt = function() {
+  this.setLastSeenAt(undefined);
+};
+
+
+/**
+ * Returns whether this field is set.
+ * @return{!boolean}
+ */
+proto.api.RemoteMulticastDeploymentDevice.prototype.hasLastSeenAt = function() {
+  return jspb.Message.getField(this, 6) != null;
+};
+
+
+/**
+ * optional uint32 mc_group_id = 7;
+ * @return {number}
+ */
+proto.api.RemoteMulticastDeploymentDevice.prototype.getMcGroupId = function() {
+  return /** @type {number} */ (jspb.Message.getFieldProto3(this, 7, 0));
+};
+
+
+/** @param {number} value  */
+proto.api.RemoteMulticastDeploymentDevice.prototype.setMcGroupId = function(value) {
+  jspb.Message.setField(this, 7, value);
+};
+
+
+/**
+ * optional google.protobuf.Timestamp created_at = 8;
  * @return {proto.google.protobuf.Timestamp}
  */
 proto.api.RemoteMulticastDeploymentDevice.prototype.getCreatedAt = function() {
   return /** @type{proto.google.protobuf.Timestamp} */ (
-    jspb.Message.getWrapperField(this, google_protobuf_timestamp_pb.Timestamp, 5));
+    jspb.Message.getWrapperField(this, google_protobuf_timestamp_pb.Timestamp, 8));
 };
 
 
 /** @param {proto.google.protobuf.Timestamp|undefined} value  */
 proto.api.RemoteMulticastDeploymentDevice.prototype.setCreatedAt = function(value) {
-  jspb.Message.setWrapperField(this, 5, value);
+  jspb.Message.setWrapperField(this, 8, value);
 };
 
 
@@ -957,23 +1001,23 @@ proto.api.RemoteMulticastDeploymentDevice.prototype.clearCreatedAt = function() 
  * @return{!boolean}
  */
 proto.api.RemoteMulticastDeploymentDevice.prototype.hasCreatedAt = function() {
-  return jspb.Message.getField(this, 5) != null;
+  return jspb.Message.getField(this, 8) != null;
 };
 
 
 /**
- * optional google.protobuf.Timestamp updated_at = 6;
+ * optional google.protobuf.Timestamp updated_at = 9;
  * @return {proto.google.protobuf.Timestamp}
  */
 proto.api.RemoteMulticastDeploymentDevice.prototype.getUpdatedAt = function() {
   return /** @type{proto.google.protobuf.Timestamp} */ (
-    jspb.Message.getWrapperField(this, google_protobuf_timestamp_pb.Timestamp, 6));
+    jspb.Message.getWrapperField(this, google_protobuf_timestamp_pb.Timestamp, 9));
 };
 
 
 /** @param {proto.google.protobuf.Timestamp|undefined} value  */
 proto.api.RemoteMulticastDeploymentDevice.prototype.setUpdatedAt = function(value) {
-  jspb.Message.setWrapperField(this, 6, value);
+  jspb.Message.setWrapperField(this, 9, value);
 };
 
 
@@ -987,37 +1031,37 @@ proto.api.RemoteMulticastDeploymentDevice.prototype.clearUpdatedAt = function() 
  * @return{!boolean}
  */
 proto.api.RemoteMulticastDeploymentDevice.prototype.hasUpdatedAt = function() {
-  return jspb.Message.getField(this, 6) != null;
+  return jspb.Message.getField(this, 9) != null;
 };
 
 
 /**
- * optional FUOTADeploymentDeviceState state = 7;
+ * optional FUOTADeploymentDeviceState state = 10;
  * @return {!proto.api.FUOTADeploymentDeviceState}
  */
 proto.api.RemoteMulticastDeploymentDevice.prototype.getState = function() {
-  return /** @type {!proto.api.FUOTADeploymentDeviceState} */ (jspb.Message.getFieldProto3(this, 7, 0));
+  return /** @type {!proto.api.FUOTADeploymentDeviceState} */ (jspb.Message.getFieldProto3(this, 10, 0));
 };
 
 
 /** @param {!proto.api.FUOTADeploymentDeviceState} value  */
 proto.api.RemoteMulticastDeploymentDevice.prototype.setState = function(value) {
-  jspb.Message.setField(this, 7, value);
+  jspb.Message.setField(this, 10, value);
 };
 
 
 /**
- * optional string error_message = 8;
+ * optional string error_message = 11;
  * @return {string}
  */
 proto.api.RemoteMulticastDeploymentDevice.prototype.getErrorMessage = function() {
-  return /** @type {string} */ (jspb.Message.getFieldProto3(this, 8, ""));
+  return /** @type {string} */ (jspb.Message.getFieldProto3(this, 11, ""));
 };
 
 
 /** @param {string} value  */
 proto.api.RemoteMulticastDeploymentDevice.prototype.setErrorMessage = function(value) {
-  jspb.Message.setField(this, 8, value);
+  jspb.Message.setField(this, 11, value);
 };
 
 
@@ -1071,10 +1115,6 @@ proto.api.RemoteMulticastGroupListItem.toObject = function(includeInstance, msg)
     name: msg.getName(),
     serviceProfileId: msg.getServiceProfileId(),
     serviceProfileName: msg.getServiceProfileName(),
-    applicationId: msg.getApplicationId(),
-    applicationName: msg.getApplicationName(),
-    multicastGroupId: msg.getMulticastGroupId(),
-    multicastGroupName: msg.getMulticastGroupName(),
     state: msg.getState()
   };
 
@@ -1129,22 +1169,6 @@ proto.api.RemoteMulticastGroupListItem.deserializeBinaryFromReader = function(ms
       msg.setServiceProfileName(value);
       break;
     case 5:
-      var value = /** @type {number} */ (reader.readInt64());
-      msg.setApplicationId(value);
-      break;
-    case 6:
-      var value = /** @type {string} */ (reader.readString());
-      msg.setApplicationName(value);
-      break;
-    case 7:
-      var value = /** @type {string} */ (reader.readString());
-      msg.setMulticastGroupId(value);
-      break;
-    case 8:
-      var value = /** @type {string} */ (reader.readString());
-      msg.setMulticastGroupName(value);
-      break;
-    case 9:
       var value = /** @type {string} */ (reader.readString());
       msg.setState(value);
       break;
@@ -1214,38 +1238,10 @@ proto.api.RemoteMulticastGroupListItem.prototype.serializeBinaryToWriter = funct
       f
     );
   }
-  f = this.getApplicationId();
-  if (f !== 0) {
-    writer.writeInt64(
-      5,
-      f
-    );
-  }
-  f = this.getApplicationName();
-  if (f.length > 0) {
-    writer.writeString(
-      6,
-      f
-    );
-  }
-  f = this.getMulticastGroupId();
-  if (f.length > 0) {
-    writer.writeString(
-      7,
-      f
-    );
-  }
-  f = this.getMulticastGroupName();
-  if (f.length > 0) {
-    writer.writeString(
-      8,
-      f
-    );
-  }
   f = this.getState();
   if (f.length > 0) {
     writer.writeString(
-      9,
+      5,
       f
     );
   }
@@ -1322,77 +1318,17 @@ proto.api.RemoteMulticastGroupListItem.prototype.setServiceProfileName = functio
 
 
 /**
- * optional int64 application_id = 5;
- * @return {number}
- */
-proto.api.RemoteMulticastGroupListItem.prototype.getApplicationId = function() {
-  return /** @type {number} */ (jspb.Message.getFieldProto3(this, 5, 0));
-};
-
-
-/** @param {number} value  */
-proto.api.RemoteMulticastGroupListItem.prototype.setApplicationId = function(value) {
-  jspb.Message.setField(this, 5, value);
-};
-
-
-/**
- * optional string application_name = 6;
- * @return {string}
- */
-proto.api.RemoteMulticastGroupListItem.prototype.getApplicationName = function() {
-  return /** @type {string} */ (jspb.Message.getFieldProto3(this, 6, ""));
-};
-
-
-/** @param {string} value  */
-proto.api.RemoteMulticastGroupListItem.prototype.setApplicationName = function(value) {
-  jspb.Message.setField(this, 6, value);
-};
-
-
-/**
- * optional string multicast_group_id = 7;
- * @return {string}
- */
-proto.api.RemoteMulticastGroupListItem.prototype.getMulticastGroupId = function() {
-  return /** @type {string} */ (jspb.Message.getFieldProto3(this, 7, ""));
-};
-
-
-/** @param {string} value  */
-proto.api.RemoteMulticastGroupListItem.prototype.setMulticastGroupId = function(value) {
-  jspb.Message.setField(this, 7, value);
-};
-
-
-/**
- * optional string multicast_group_name = 8;
- * @return {string}
- */
-proto.api.RemoteMulticastGroupListItem.prototype.getMulticastGroupName = function() {
-  return /** @type {string} */ (jspb.Message.getFieldProto3(this, 8, ""));
-};
-
-
-/** @param {string} value  */
-proto.api.RemoteMulticastGroupListItem.prototype.setMulticastGroupName = function(value) {
-  jspb.Message.setField(this, 8, value);
-};
-
-
-/**
- * optional string state = 9;
+ * optional string state = 5;
  * @return {string}
  */
 proto.api.RemoteMulticastGroupListItem.prototype.getState = function() {
-  return /** @type {string} */ (jspb.Message.getFieldProto3(this, 9, ""));
+  return /** @type {string} */ (jspb.Message.getFieldProto3(this, 5, ""));
 };
 
 
 /** @param {string} value  */
 proto.api.RemoteMulticastGroupListItem.prototype.setState = function(value) {
-  jspb.Message.setField(this, 9, value);
+  jspb.Message.setField(this, 5, value);
 };
 
 
@@ -2203,7 +2139,6 @@ proto.api.ListRemoteMulticastGroupRequest.toObject = function(includeInstance, m
     limit: msg.getLimit(),
     offset: msg.getOffset(),
     organizationId: msg.getOrganizationId(),
-    applicationId: msg.getApplicationId(),
     serviceProfileId: msg.getServiceProfileId(),
     search: msg.getSearch()
   };
@@ -2255,14 +2190,10 @@ proto.api.ListRemoteMulticastGroupRequest.deserializeBinaryFromReader = function
       msg.setOrganizationId(value);
       break;
     case 4:
-      var value = /** @type {number} */ (reader.readInt64());
-      msg.setApplicationId(value);
-      break;
-    case 5:
       var value = /** @type {string} */ (reader.readString());
       msg.setServiceProfileId(value);
       break;
-    case 6:
+    case 5:
       var value = /** @type {string} */ (reader.readString());
       msg.setSearch(value);
       break;
@@ -2325,24 +2256,17 @@ proto.api.ListRemoteMulticastGroupRequest.prototype.serializeBinaryToWriter = fu
       f
     );
   }
-  f = this.getApplicationId();
-  if (f !== 0) {
-    writer.writeInt64(
-      4,
-      f
-    );
-  }
   f = this.getServiceProfileId();
   if (f.length > 0) {
     writer.writeString(
-      5,
+      4,
       f
     );
   }
   f = this.getSearch();
   if (f.length > 0) {
     writer.writeString(
-      6,
+      5,
       f
     );
   }
@@ -2404,47 +2328,32 @@ proto.api.ListRemoteMulticastGroupRequest.prototype.setOrganizationId = function
 
 
 /**
- * optional int64 application_id = 4;
- * @return {number}
- */
-proto.api.ListRemoteMulticastGroupRequest.prototype.getApplicationId = function() {
-  return /** @type {number} */ (jspb.Message.getFieldProto3(this, 4, 0));
-};
-
-
-/** @param {number} value  */
-proto.api.ListRemoteMulticastGroupRequest.prototype.setApplicationId = function(value) {
-  jspb.Message.setField(this, 4, value);
-};
-
-
-/**
- * optional string service_profile_id = 5;
+ * optional string service_profile_id = 4;
  * @return {string}
  */
 proto.api.ListRemoteMulticastGroupRequest.prototype.getServiceProfileId = function() {
-  return /** @type {string} */ (jspb.Message.getFieldProto3(this, 5, ""));
+  return /** @type {string} */ (jspb.Message.getFieldProto3(this, 4, ""));
 };
 
 
 /** @param {string} value  */
 proto.api.ListRemoteMulticastGroupRequest.prototype.setServiceProfileId = function(value) {
-  jspb.Message.setField(this, 5, value);
+  jspb.Message.setField(this, 4, value);
 };
 
 
 /**
- * optional string search = 6;
+ * optional string search = 5;
  * @return {string}
  */
 proto.api.ListRemoteMulticastGroupRequest.prototype.getSearch = function() {
-  return /** @type {string} */ (jspb.Message.getFieldProto3(this, 6, ""));
+  return /** @type {string} */ (jspb.Message.getFieldProto3(this, 5, ""));
 };
 
 
 /** @param {string} value  */
 proto.api.ListRemoteMulticastGroupRequest.prototype.setSearch = function(value) {
-  jspb.Message.setField(this, 6, value);
+  jspb.Message.setField(this, 5, value);
 };
 
 
@@ -3000,12 +2909,19 @@ proto.api.DeleteRemoteMulticastGroupRequest.prototype.setId = function(value) {
  * @constructor
  */
 proto.api.AddDeviceToRemoteMulticastGroupRequest = function(opt_data) {
-  jspb.Message.initialize(this, opt_data, 0, -1, null, null);
+  jspb.Message.initialize(this, opt_data, 0, -1, proto.api.AddDeviceToRemoteMulticastGroupRequest.repeatedFields_, null);
 };
 goog.inherits(proto.api.AddDeviceToRemoteMulticastGroupRequest, jspb.Message);
 if (goog.DEBUG && !COMPILED) {
   proto.api.AddDeviceToRemoteMulticastGroupRequest.displayName = 'proto.api.AddDeviceToRemoteMulticastGroupRequest';
 }
+/**
+ * List of repeated fields within this message type.
+ * @private {!Array<number>}
+ * @const
+ */
+proto.api.AddDeviceToRemoteMulticastGroupRequest.repeatedFields_ = [2];
+
 
 
 if (jspb.Message.GENERATE_TO_OBJECT) {
@@ -3035,7 +2951,7 @@ proto.api.AddDeviceToRemoteMulticastGroupRequest.prototype.toObject = function(o
 proto.api.AddDeviceToRemoteMulticastGroupRequest.toObject = function(includeInstance, msg) {
   var f, obj = {
     remoteMulticastGroupId: msg.getRemoteMulticastGroupId(),
-    devEui: msg.getDevEui()
+    devEuisList: jspb.Message.getField(msg, 2)
   };
 
   if (includeInstance) {
@@ -3078,7 +2994,8 @@ proto.api.AddDeviceToRemoteMulticastGroupRequest.deserializeBinaryFromReader = f
       break;
     case 2:
       var value = /** @type {string} */ (reader.readString());
-      msg.setDevEui(value);
+      msg.getDevEuisList().push(value);
+      msg.setDevEuisList(msg.getDevEuisList());
       break;
     default:
       reader.skipField();
@@ -3125,9 +3042,9 @@ proto.api.AddDeviceToRemoteMulticastGroupRequest.prototype.serializeBinaryToWrit
       f
     );
   }
-  f = this.getDevEui();
+  f = this.getDevEuisList();
   if (f.length > 0) {
-    writer.writeString(
+    writer.writeRepeatedString(
       2,
       f
     );
@@ -3160,17 +3077,24 @@ proto.api.AddDeviceToRemoteMulticastGroupRequest.prototype.setRemoteMulticastGro
 
 
 /**
- * optional string dev_eui = 2;
- * @return {string}
+ * repeated string dev_euis = 2;
+ * If you change this array by adding, removing or replacing elements, or if you
+ * replace the array itself, then you must call the setter to update it.
+ * @return {!Array.<string>}
  */
-proto.api.AddDeviceToRemoteMulticastGroupRequest.prototype.getDevEui = function() {
-  return /** @type {string} */ (jspb.Message.getFieldProto3(this, 2, ""));
+proto.api.AddDeviceToRemoteMulticastGroupRequest.prototype.getDevEuisList = function() {
+  return /** @type {!Array.<string>} */ (jspb.Message.getField(this, 2));
 };
 
 
-/** @param {string} value  */
-proto.api.AddDeviceToRemoteMulticastGroupRequest.prototype.setDevEui = function(value) {
-  jspb.Message.setField(this, 2, value);
+/** @param {Array.<string>} value  */
+proto.api.AddDeviceToRemoteMulticastGroupRequest.prototype.setDevEuisList = function(value) {
+  jspb.Message.setField(this, 2, value || []);
+};
+
+
+proto.api.AddDeviceToRemoteMulticastGroupRequest.prototype.clearDevEuisList = function() {
+  jspb.Message.setField(this, 2, []);
 };
 
 
@@ -3455,15 +3379,15 @@ proto.api.ListRemoteMulticastDeviceRequest.deserializeBinaryFromReader = functio
       var value = /** @type {number} */ (reader.readInt64());
       msg.setOffset(value);
       break;
-    case 5:
+    case 3:
       var value = /** @type {string} */ (reader.readString());
       msg.setRemoteMulticastGroupId(value);
       break;
-    case 3:
+    case 4:
       var value = /** @type {number} */ (reader.readInt64());
       msg.setApplicationId(value);
       break;
-    case 4:
+    case 5:
       var value = /** @type {string} */ (reader.readString());
       msg.setSearch(value);
       break;
@@ -3522,21 +3446,21 @@ proto.api.ListRemoteMulticastDeviceRequest.prototype.serializeBinaryToWriter = f
   f = this.getRemoteMulticastGroupId();
   if (f.length > 0) {
     writer.writeString(
-      5,
+      3,
       f
     );
   }
   f = this.getApplicationId();
   if (f !== 0) {
     writer.writeInt64(
-      3,
+      4,
       f
     );
   }
   f = this.getSearch();
   if (f.length > 0) {
     writer.writeString(
-      4,
+      5,
       f
     );
   }
@@ -3583,47 +3507,47 @@ proto.api.ListRemoteMulticastDeviceRequest.prototype.setOffset = function(value)
 
 
 /**
- * optional string remote_multicast_group_id = 5;
+ * optional string remote_multicast_group_id = 3;
  * @return {string}
  */
 proto.api.ListRemoteMulticastDeviceRequest.prototype.getRemoteMulticastGroupId = function() {
-  return /** @type {string} */ (jspb.Message.getFieldProto3(this, 5, ""));
+  return /** @type {string} */ (jspb.Message.getFieldProto3(this, 3, ""));
 };
 
 
 /** @param {string} value  */
 proto.api.ListRemoteMulticastDeviceRequest.prototype.setRemoteMulticastGroupId = function(value) {
-  jspb.Message.setField(this, 5, value);
-};
-
-
-/**
- * optional int64 application_id = 3;
- * @return {number}
- */
-proto.api.ListRemoteMulticastDeviceRequest.prototype.getApplicationId = function() {
-  return /** @type {number} */ (jspb.Message.getFieldProto3(this, 3, 0));
-};
-
-
-/** @param {number} value  */
-proto.api.ListRemoteMulticastDeviceRequest.prototype.setApplicationId = function(value) {
   jspb.Message.setField(this, 3, value);
 };
 
 
 /**
- * optional string search = 4;
+ * optional int64 application_id = 4;
+ * @return {number}
+ */
+proto.api.ListRemoteMulticastDeviceRequest.prototype.getApplicationId = function() {
+  return /** @type {number} */ (jspb.Message.getFieldProto3(this, 4, 0));
+};
+
+
+/** @param {number} value  */
+proto.api.ListRemoteMulticastDeviceRequest.prototype.setApplicationId = function(value) {
+  jspb.Message.setField(this, 4, value);
+};
+
+
+/**
+ * optional string search = 5;
  * @return {string}
  */
 proto.api.ListRemoteMulticastDeviceRequest.prototype.getSearch = function() {
-  return /** @type {string} */ (jspb.Message.getFieldProto3(this, 4, ""));
+  return /** @type {string} */ (jspb.Message.getFieldProto3(this, 5, ""));
 };
 
 
 /** @param {string} value  */
 proto.api.ListRemoteMulticastDeviceRequest.prototype.setSearch = function(value) {
-  jspb.Message.setField(this, 4, value);
+  jspb.Message.setField(this, 5, value);
 };
 
 

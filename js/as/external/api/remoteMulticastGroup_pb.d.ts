@@ -20,9 +20,6 @@ export class RemoteMulticastGroup extends jspb.Message {
   getServiceProfileId(): string;
   setServiceProfileId(value: string): void;
 
-  getApplicationId(): number;
-  setApplicationId(value: number): void;
-
   getGroupType(): as_external_api_multicastGroup_pb.MulticastGroupTypeMap[keyof as_external_api_multicastGroup_pb.MulticastGroupTypeMap];
   setGroupType(value: as_external_api_multicastGroup_pb.MulticastGroupTypeMap[keyof as_external_api_multicastGroup_pb.MulticastGroupTypeMap]): void;
 
@@ -46,9 +43,6 @@ export class RemoteMulticastGroup extends jspb.Message {
 
   getFCnt(): number;
   setFCnt(value: number): void;
-
-  getMcGroupId(): number;
-  setMcGroupId(value: number): void;
 
   getState(): string;
   setState(value: string): void;
@@ -78,7 +72,6 @@ export namespace RemoteMulticastGroup {
     id: string,
     name: string,
     serviceProfileId: string,
-    applicationId: number,
     groupType: as_external_api_multicastGroup_pb.MulticastGroupTypeMap[keyof as_external_api_multicastGroup_pb.MulticastGroupTypeMap],
     dr: number,
     frequency: number,
@@ -87,7 +80,6 @@ export namespace RemoteMulticastGroup {
     mcNwkSKey: string,
     mcAppSKey: string,
     fCnt: number,
-    mcGroupId: number,
     state: string,
     unicastTimeout?: google_protobuf_duration_pb.Duration.AsObject,
     nextStepAfter?: google_protobuf_timestamp_pb.Timestamp.AsObject,
@@ -104,8 +96,19 @@ export class RemoteMulticastDeploymentDevice extends jspb.Message {
   getDeviceName(): string;
   setDeviceName(value: string): void;
 
-  getMulticastGroupName(): string;
-  setMulticastGroupName(value: string): void;
+  getApplicationId(): number;
+  setApplicationId(value: number): void;
+
+  getApplicationName(): string;
+  setApplicationName(value: string): void;
+
+  hasLastSeenAt(): boolean;
+  clearLastSeenAt(): void;
+  getLastSeenAt(): google_protobuf_timestamp_pb.Timestamp | undefined;
+  setLastSeenAt(value?: google_protobuf_timestamp_pb.Timestamp): void;
+
+  getMcGroupId(): number;
+  setMcGroupId(value: number): void;
 
   hasCreatedAt(): boolean;
   clearCreatedAt(): void;
@@ -138,7 +141,10 @@ export namespace RemoteMulticastDeploymentDevice {
     id: string,
     devEui: string,
     deviceName: string,
-    multicastGroupName: string,
+    applicationId: number,
+    applicationName: string,
+    lastSeenAt?: google_protobuf_timestamp_pb.Timestamp.AsObject,
+    mcGroupId: number,
     createdAt?: google_protobuf_timestamp_pb.Timestamp.AsObject,
     updatedAt?: google_protobuf_timestamp_pb.Timestamp.AsObject,
     state: as_external_api_fuotaDeployment_pb.FUOTADeploymentDeviceStateMap[keyof as_external_api_fuotaDeployment_pb.FUOTADeploymentDeviceStateMap],
@@ -159,18 +165,6 @@ export class RemoteMulticastGroupListItem extends jspb.Message {
   getServiceProfileName(): string;
   setServiceProfileName(value: string): void;
 
-  getApplicationId(): number;
-  setApplicationId(value: number): void;
-
-  getApplicationName(): string;
-  setApplicationName(value: string): void;
-
-  getMulticastGroupId(): string;
-  setMulticastGroupId(value: string): void;
-
-  getMulticastGroupName(): string;
-  setMulticastGroupName(value: string): void;
-
   getState(): string;
   setState(value: string): void;
 
@@ -190,10 +184,6 @@ export namespace RemoteMulticastGroupListItem {
     name: string,
     serviceProfileId: string,
     serviceProfileName: string,
-    applicationId: number,
-    applicationName: string,
-    multicastGroupId: string,
-    multicastGroupName: string,
     state: string,
   }
 }
@@ -304,9 +294,6 @@ export class ListRemoteMulticastGroupRequest extends jspb.Message {
   getOrganizationId(): number;
   setOrganizationId(value: number): void;
 
-  getApplicationId(): number;
-  setApplicationId(value: number): void;
-
   getServiceProfileId(): string;
   setServiceProfileId(value: string): void;
 
@@ -328,7 +315,6 @@ export namespace ListRemoteMulticastGroupRequest {
     limit: number,
     offset: number,
     organizationId: number,
-    applicationId: number,
     serviceProfileId: string,
     search: string,
   }
@@ -406,8 +392,10 @@ export class AddDeviceToRemoteMulticastGroupRequest extends jspb.Message {
   getRemoteMulticastGroupId(): string;
   setRemoteMulticastGroupId(value: string): void;
 
-  getDevEui(): string;
-  setDevEui(value: string): void;
+  clearDevEuisList(): void;
+  getDevEuisList(): Array<string>;
+  setDevEuisList(value: Array<string>): void;
+  addDevEuis(value: string, index?: number): string;
 
   serializeBinary(): Uint8Array;
   toObject(includeInstance?: boolean): AddDeviceToRemoteMulticastGroupRequest.AsObject;
@@ -422,7 +410,7 @@ export class AddDeviceToRemoteMulticastGroupRequest extends jspb.Message {
 export namespace AddDeviceToRemoteMulticastGroupRequest {
   export type AsObject = {
     remoteMulticastGroupId: string,
-    devEui: string,
+    devEuisList: Array<string>,
   }
 }
 

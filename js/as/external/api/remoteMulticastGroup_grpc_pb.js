@@ -316,7 +316,7 @@ var RemoteMulticastGroupServiceService = exports.RemoteMulticastGroupServiceServ
     responseSerialize: serialize_api_ListRemoteMulticastGroupResponse,
     responseDeserialize: deserialize_api_ListRemoteMulticastGroupResponse,
   },
-  // AddDevice adds the given device to the remote multicast-group.
+  // AddDevice adds the given devices to the remote multicast-group.
   addDevice: {
     path: '/api.RemoteMulticastGroupService/AddDevice',
     requestStream: false,
@@ -352,7 +352,7 @@ var RemoteMulticastGroupServiceService = exports.RemoteMulticastGroupServiceServ
     responseSerialize: serialize_google_protobuf_Empty,
     responseDeserialize: deserialize_google_protobuf_Empty,
   },
-  // ListDevicesForRemoteMulticast Lists the available devices for joining to
+  // ListDevicesForRemoteMulticast Lists the available pending devices for joining to
   // remote multicast-group for given application id.
   listDevicesForRemoteMulticast: {
     path: '/api.RemoteMulticastGroupService/ListDevicesForRemoteMulticast',

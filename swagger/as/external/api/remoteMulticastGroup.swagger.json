@@ -53,14 +53,6 @@
             "format": "int64"
           },
           {
-            "name": "applicationID",
-            "description": "Application ID to filter on.",
-            "in": "query",
-            "required": false,
-            "type": "string",
-            "format": "int64"
-          },
-          {
             "name": "serviceProfileID",
             "description": "Service-profile ID to filter on.",
             "in": "query",
@@ -191,7 +183,7 @@
     },
     "/api/remote-multicast-groups/{remote_multicast_group_id}/application/{application_id}/devices": {
       "get": {
-        "summary": "ListDevicesForRemoteMulticast Lists the available devices for joining to\nremote multicast-group for given application id.",
+        "summary": "ListDevicesForRemoteMulticast Lists the available pending devices for joining to\nremote multicast-group for given application id.",
         "operationId": "ListDevicesForRemoteMulticast",
         "responses": {
           "200": {
@@ -303,7 +295,7 @@
         ]
       },
       "post": {
-        "summary": "AddDevice adds the given device to the remote multicast-group.",
+        "summary": "AddDevice adds the given devices to the remote multicast-group.",
         "operationId": "AddDevice",
         "responses": {
           "200": {
@@ -525,9 +517,12 @@
           "type": "string",
           "description": "Remote Multicast deployment ID (string formatted UUID)."
         },
-        "devEUI": {
-          "type": "string",
-          "description": "Device EUI (HEX encoded string).\nNote that the device must be under the same service-profile as the\nremote multicast-group."
+        "devEUIs": {
+          "type": "array",
+          "items": {
+            "type": "string"
+          },
+          "description": "Device EUIs (HEX encoded string).\nNote that the devices must be under the same service-profile as the\nremote multicast-group."
         }
       }
     },
@@ -748,8 +743,23 @@
         "deviceName": {
           "type": "string"
         },
-        "multicastGroupName": {
+        "applicationID": {
+          "type": "string",
+          "format": "int64",
+          "description": "Application ID."
+        },
+        "applicationName": {
           "type": "string"
+        },
+        "lastSeenAt": {
+          "type": "string",
+          "format": "date-time",
+          "description": "The last time the application-server received any data from the device,\nor an empty string when the device never sent any data."
+        },
+        "mcGroupId": {
+          "type": "integer",
+          "format": "int64",
+          "title": "Mc Group id\nThis value will be automatically set on create.\nBetween 0 to 3"
         },
         "createdAt": {
           "type": "string",
@@ -785,11 +795,6 @@
         "serviceProfileID": {
           "type": "string",
           "description": "Service-profile ID.\nThis value will be automatically set on create.\nAfter creation, this can not be updated."
-        },
-        "applicationID": {
-          "type": "string",
-          "format": "int64",
-          "description": "Application ID\nAfter creation, this can not be updated."
         },
         "groupType": {
           "$ref": "#/definitions/apiMulticastGroupType",
@@ -827,11 +832,6 @@
           "format": "int64",
           "description": "Frame-counter.\nThis value will be automatically set on create."
         },
-        "mcGroupId": {
-          "type": "integer",
-          "format": "int64",
-          "description": "Mc Group id\nThis value will be automatically set on create."
-        },
         "state": {
           "type": "string",
           "description": "Remote Multicast Deployment state.\nThis value will be automatically set on create."
@@ -865,20 +865,6 @@
         "serviceProfileName": {
           "type": "string",
           "description": "Service-profile name."
-        },
-        "applicationID": {
-          "type": "string",
-          "format": "int64"
-        },
-        "applicationName": {
-          "type": "string"
-        },
-        "multicastGroupID": {
-          "type": "string",
-          "description": "Multicast-group ID (string formatted UUID)."
-        },
-        "multicastGroupName": {
-          "type": "string"
         },
         "state": {
           "type": "string",
