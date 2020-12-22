@@ -11,3 +11,6 @@
 /python/src/build/
 /python/src/dist/
 /*.code-workspace
+
+# java
+/java/build/
