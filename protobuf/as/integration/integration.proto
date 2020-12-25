@@ -7,6 +7,7 @@ option java_package = "io.chirpstack.api.as";
 
 import "common/common.proto";
 import "gw/gw.proto";
+import "google/protobuf/timestamp.proto";
 
 enum ErrorType {
     // Unknown type.
@@ -286,4 +287,42 @@ message IntegrationEvent {
 
     // JSON string containing the event object.
     string object_json = 8 [json_name = "objectJSON"];
+}
+
+// GatewayStatsEvent is the message sent gateway stats.
+message GatewayStatsEvent {
+    // Gateway ID.
+    bytes gateway_id = 1 [json_name = "gatewayID"];
+
+    // Gateway IP.
+    string ip = 9;
+
+    // Gateway time.
+    google.protobuf.Timestamp time = 2;
+
+    // Gateway location.
+    common.Location location = 3;
+
+    // Gateway configuration version (this maps to the config_version sent
+    // by LoRa Server to the gateway).
+    string config_version = 4;
+
+    // Number of radio packets received.
+    uint32 rx_packets_received = 5;
+
+    // Number of radio packets received with valid PHY CRC.
+    uint32 rx_packets_received_ok = 6 [json_name = "rxPacketsReceivedOK"];
+
+    // Number of downlink packets received for transmission.
+    uint32 tx_packets_received = 7;
+
+    // Number of downlink packets emitted.
+    uint32 tx_packets_emitted = 8;
+
+    // Additional gateway meta-data.
+    map<string, string> meta_data = 10;
+
+    // Stats ID (UUID).
+    // Unique identifier for the gateway stats.
+    bytes stats_id = 11 [json_name = "statsID"];
 }

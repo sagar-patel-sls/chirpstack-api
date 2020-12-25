@@ -33,9 +33,6 @@ ns:
 	protoc -I=${BASE_PATH} -I=${BASE_PATH}/ns $(PROTOC_ARGS) ${BASE_PATH}/ns/profiles.proto
 	protoc -I=${BASE_PATH} -I=${BASE_PATH}/ns $(PROTOC_ARGS) ${BASE_PATH}/ns/ns.proto
 
-fuota:
-	protoc -I=${BASE_PATH} -I=${BASE_PATH}/fuota $(PROTOC_ARGS) ${BASE_PATH}/fuota/fuota.proto
-
 as:
 	protoc -I=${BASE_PATH} -I=${BASE_PATH}/as $(PROTOC_ARGS) ${BASE_PATH}/as/as.proto
 

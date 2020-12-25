@@ -14,6 +14,7 @@ _sym_db = _symbol_database.Default()
 
 from chirpstack_api.common import common_pb2 as chirpstack__api_dot_common_dot_common__pb2
 from chirpstack_api.gw import gw_pb2 as chirpstack__api_dot_gw_dot_gw__pb2
+from google.protobuf import timestamp_pb2 as google_dot_protobuf_dot_timestamp__pb2
 
 
 DESCRIPTOR = _descriptor.FileDescriptor(
@@ -22,9 +23,9 @@ DESCRIPTOR = _descriptor.FileDescriptor(
   syntax='proto3',
   serialized_options=b'\n\024io.chirpstack.api.asZ6github.com/brocaar/chirpstack-api/go/v3/as/integration',
   create_key=_descriptor._internal_create_key,
-  serialized_pb=b'\n2chirpstack-api/as_pb/integration/integration.proto\x12\x0bintegration\x1a\"chirpstack-api/common/common.proto\x1a\x1a\x63hirpstack-api/gw/gw.proto\"\xb4\x03\n\x0bUplinkEvent\x12%\n\x0e\x61pplication_id\x18\x01 \x01(\x04R\rapplicationID\x12\x18\n\x10\x61pplication_name\x18\x02 \x01(\t\x12\x13\n\x0b\x64\x65vice_name\x18\x03 \x01(\t\x12\x17\n\x07\x64\x65v_eui\x18\x04 \x01(\x0cR\x06\x64\x65vEUI\x12!\n\x07rx_info\x18\x05 \x03(\x0b\x32\x10.gw.UplinkRXInfo\x12!\n\x07tx_info\x18\x06 \x01(\x0b\x32\x10.gw.UplinkTXInfo\x12\x0b\n\x03\x61\x64r\x18\x07 \x01(\x08\x12\n\n\x02\x64r\x18\x08 \x01(\r\x12\r\n\x05\x66_cnt\x18\t \x01(\r\x12\x0e\n\x06\x66_port\x18\n \x01(\r\x12\x0c\n\x04\x64\x61ta\x18\x0b \x01(\x0c\x12\x1f\n\x0bobject_json\x18\x0c \x01(\tR\nobjectJSON\x12\x30\n\x04tags\x18\r \x03(\x0b\x32\".integration.UplinkEvent.TagsEntry\x12\x18\n\x10\x63onfirmed_uplink\x18\x0e \x01(\x08\x12\x10\n\x08\x64\x65v_addr\x18\x0f \x01(\x0c\x1a+\n\tTagsEntry\x12\x0b\n\x03key\x18\x01 \x01(\t\x12\r\n\x05value\x18\x02 \x01(\t:\x02\x38\x01\"\xbb\x02\n\tJoinEvent\x12%\n\x0e\x61pplication_id\x18\x01 \x01(\x04R\rapplicationID\x12\x18\n\x10\x61pplication_name\x18\x02 \x01(\t\x12\x13\n\x0b\x64\x65vice_name\x18\x03 \x01(\t\x12\x17\n\x07\x64\x65v_eui\x18\x04 \x01(\x0cR\x06\x64\x65vEUI\x12\x10\n\x08\x64\x65v_addr\x18\x05 \x01(\x0c\x12!\n\x07rx_info\x18\x06 \x03(\x0b\x32\x10.gw.UplinkRXInfo\x12!\n\x07tx_info\x18\x07 \x01(\x0b\x32\x10.gw.UplinkTXInfo\x12\n\n\x02\x64r\x18\x08 \x01(\r\x12.\n\x04tags\x18\t \x03(\x0b\x32 .integration.JoinEvent.TagsEntry\x1a+\n\tTagsEntry\x12\x0b\n\x03key\x18\x01 \x01(\t\x12\r\n\x05value\x18\x02 \x01(\t:\x02\x38\x01\"\xfa\x01\n\x08\x41\x63kEvent\x12%\n\x0e\x61pplication_id\x18\x01 \x01(\x04R\rapplicationID\x12\x18\n\x10\x61pplication_name\x18\x02 \x01(\t\x12\x13\n\x0b\x64\x65vice_name\x18\x03 \x01(\t\x12\x17\n\x07\x64\x65v_eui\x18\x04 \x01(\x0cR\x06\x64\x65vEUI\x12\x14\n\x0c\x61\x63knowledged\x18\x05 \x01(\x08\x12\r\n\x05\x66_cnt\x18\x06 \x01(\r\x12-\n\x04tags\x18\x07 \x03(\x0b\x32\x1f.integration.AckEvent.TagsEntry\x1a+\n\tTagsEntry\x12\x0b\n\x03key\x18\x01 \x01(\t\x12\r\n\x05value\x18\x02 \x01(\t:\x02\x38\x01\"\xe8\x01\n\nTxAckEvent\x12%\n\x0e\x61pplication_id\x18\x01 \x01(\x04R\rapplicationID\x12\x18\n\x10\x61pplication_name\x18\x02 \x01(\t\x12\x13\n\x0b\x64\x65vice_name\x18\x03 \x01(\t\x12\x17\n\x07\x64\x65v_eui\x18\x04 \x01(\x0cR\x06\x64\x65vEUI\x12\r\n\x05\x66_cnt\x18\x05 \x01(\r\x12/\n\x04tags\x18\x06 \x03(\x0b\x32!.integration.TxAckEvent.TagsEntry\x1a+\n\tTagsEntry\x12\x0b\n\x03key\x18\x01 \x01(\t\x12\r\n\x05value\x18\x02 \x01(\t:\x02\x38\x01\"\x9d\x02\n\nErrorEvent\x12%\n\x0e\x61pplication_id\x18\x01 \x01(\x04R\rapplicationID\x12\x18\n\x10\x61pplication_name\x18\x02 \x01(\t\x12\x13\n\x0b\x64\x65vice_name\x18\x03 \x01(\t\x12\x17\n\x07\x64\x65v_eui\x18\x04 \x01(\x0cR\x06\x64\x65vEUI\x12$\n\x04type\x18\x05 \x01(\x0e\x32\x16.integration.ErrorType\x12\r\n\x05\x65rror\x18\x06 \x01(\t\x12\r\n\x05\x66_cnt\x18\x07 \x01(\r\x12/\n\x04tags\x18\x08 \x03(\x0b\x32!.integration.ErrorEvent.TagsEntry\x1a+\n\tTagsEntry\x12\x0b\n\x03key\x18\x01 \x01(\t\x12\r\n\x05value\x18\x02 \x01(\t:\x02\x38\x01\"\xc4\x02\n\x0bStatusEvent\x12%\n\x0e\x61pplication_id\x18\x01 \x01(\x04R\rapplicationID\x12\x18\n\x10\x61pplication_name\x18\x02 \x01(\t\x12\x13\n\x0b\x64\x65vice_name\x18\x03 \x01(\t\x12\x17\n\x07\x64\x65v_eui\x18\x04 \x01(\x0cR\x06\x64\x65vEUI\x12\x0e\n\x06margin\x18\x05 \x01(\x05\x12\x1d\n\x15\x65xternal_power_source\x18\x06 \x01(\x08\x12!\n\x19\x62\x61ttery_level_unavailable\x18\x07 \x01(\x08\x12\x15\n\rbattery_level\x18\x08 \x01(\x02\x12\x30\n\x04tags\x18\t \x03(\x0b\x32\".integration.StatusEvent.TagsEntry\x1a+\n\tTagsEntry\x12\x0b\n\x03key\x18\x01 \x01(\t\x12\r\n\x05value\x18\x02 \x01(\t:\x02\x38\x01\"\xb1\x02\n\rLocationEvent\x12%\n\x0e\x61pplication_id\x18\x01 \x01(\x04R\rapplicationID\x12\x18\n\x10\x61pplication_name\x18\x02 \x01(\t\x12\x13\n\x0b\x64\x65vice_name\x18\x03 \x01(\t\x12\x17\n\x07\x64\x65v_eui\x18\x04 \x01(\x0cR\x06\x64\x65vEUI\x12\"\n\x08location\x18\x05 \x01(\x0b\x32\x10.common.Location\x12\x32\n\x04tags\x18\x06 \x03(\x0b\x32$.integration.LocationEvent.TagsEntry\x12\x1d\n\nuplink_ids\x18\x07 \x03(\x0cR\tuplinkIDs\x12\r\n\x05\x66_cnt\x18\x08 \x01(\r\x1a+\n\tTagsEntry\x12\x0b\n\x03key\x18\x01 \x01(\t\x12\r\n\x05value\x18\x02 \x01(\t:\x02\x38\x01\"\xb4\x02\n\x10IntegrationEvent\x12%\n\x0e\x61pplication_id\x18\x01 \x01(\x04R\rapplicationID\x12\x18\n\x10\x61pplication_name\x18\x02 \x01(\t\x12\x13\n\x0b\x64\x65vice_name\x18\x03 \x01(\t\x12\x17\n\x07\x64\x65v_eui\x18\x04 \x01(\x0cR\x06\x64\x65vEUI\x12\x35\n\x04tags\x18\x05 \x03(\x0b\x32\'.integration.IntegrationEvent.TagsEntry\x12\x18\n\x10integration_name\x18\x06 \x01(\t\x12\x12\n\nevent_type\x18\x07 \x01(\t\x12\x1f\n\x0bobject_json\x18\x08 \x01(\tR\nobjectJSON\x1a+\n\tTagsEntry\x12\x0b\n\x03key\x18\x01 \x01(\t\x12\r\n\x05value\x18\x02 \x01(\t:\x02\x38\x01*\xd3\x01\n\tErrorType\x12\x0b\n\x07UNKNOWN\x10\x00\x12\x19\n\x15\x44OWNLINK_PAYLOAD_SIZE\x10\x01\x12\x11\n\rDOWNLINK_FCNT\x10\x02\x12\x10\n\x0cUPLINK_CODEC\x10\x03\x12\x12\n\x0e\x44OWNLINK_CODEC\x10\x04\x12\x08\n\x04OTAA\x10\x05\x12\x15\n\x11UPLINK_FCNT_RESET\x10\x06\x12\x0e\n\nUPLINK_MIC\x10\x07\x12\x1e\n\x1aUPLINK_FCNT_RETRANSMISSION\x10\x08\x12\x14\n\x10\x44OWNLINK_GATEWAY\x10\tBN\n\x14io.chirpstack.api.asZ6github.com/brocaar/chirpstack-api/go/v3/as/integrationb\x06proto3'
+  serialized_pb=b'\n2chirpstack-api/as_pb/integration/integration.proto\x12\x0bintegration\x1a\"chirpstack-api/common/common.proto\x1a\x1a\x63hirpstack-api/gw/gw.proto\x1a\x1fgoogle/protobuf/timestamp.proto\"\xb4\x03\n\x0bUplinkEvent\x12%\n\x0e\x61pplication_id\x18\x01 \x01(\x04R\rapplicationID\x12\x18\n\x10\x61pplication_name\x18\x02 \x01(\t\x12\x13\n\x0b\x64\x65vice_name\x18\x03 \x01(\t\x12\x17\n\x07\x64\x65v_eui\x18\x04 \x01(\x0cR\x06\x64\x65vEUI\x12!\n\x07rx_info\x18\x05 \x03(\x0b\x32\x10.gw.UplinkRXInfo\x12!\n\x07tx_info\x18\x06 \x01(\x0b\x32\x10.gw.UplinkTXInfo\x12\x0b\n\x03\x61\x64r\x18\x07 \x01(\x08\x12\n\n\x02\x64r\x18\x08 \x01(\r\x12\r\n\x05\x66_cnt\x18\t \x01(\r\x12\x0e\n\x06\x66_port\x18\n \x01(\r\x12\x0c\n\x04\x64\x61ta\x18\x0b \x01(\x0c\x12\x1f\n\x0bobject_json\x18\x0c \x01(\tR\nobjectJSON\x12\x30\n\x04tags\x18\r \x03(\x0b\x32\".integration.UplinkEvent.TagsEntry\x12\x18\n\x10\x63onfirmed_uplink\x18\x0e \x01(\x08\x12\x10\n\x08\x64\x65v_addr\x18\x0f \x01(\x0c\x1a+\n\tTagsEntry\x12\x0b\n\x03key\x18\x01 \x01(\t\x12\r\n\x05value\x18\x02 \x01(\t:\x02\x38\x01\"\xbb\x02\n\tJoinEvent\x12%\n\x0e\x61pplication_id\x18\x01 \x01(\x04R\rapplicationID\x12\x18\n\x10\x61pplication_name\x18\x02 \x01(\t\x12\x13\n\x0b\x64\x65vice_name\x18\x03 \x01(\t\x12\x17\n\x07\x64\x65v_eui\x18\x04 \x01(\x0cR\x06\x64\x65vEUI\x12\x10\n\x08\x64\x65v_addr\x18\x05 \x01(\x0c\x12!\n\x07rx_info\x18\x06 \x03(\x0b\x32\x10.gw.UplinkRXInfo\x12!\n\x07tx_info\x18\x07 \x01(\x0b\x32\x10.gw.UplinkTXInfo\x12\n\n\x02\x64r\x18\x08 \x01(\r\x12.\n\x04tags\x18\t \x03(\x0b\x32 .integration.JoinEvent.TagsEntry\x1a+\n\tTagsEntry\x12\x0b\n\x03key\x18\x01 \x01(\t\x12\r\n\x05value\x18\x02 \x01(\t:\x02\x38\x01\"\xfa\x01\n\x08\x41\x63kEvent\x12%\n\x0e\x61pplication_id\x18\x01 \x01(\x04R\rapplicationID\x12\x18\n\x10\x61pplication_name\x18\x02 \x01(\t\x12\x13\n\x0b\x64\x65vice_name\x18\x03 \x01(\t\x12\x17\n\x07\x64\x65v_eui\x18\x04 \x01(\x0cR\x06\x64\x65vEUI\x12\x14\n\x0c\x61\x63knowledged\x18\x05 \x01(\x08\x12\r\n\x05\x66_cnt\x18\x06 \x01(\r\x12-\n\x04tags\x18\x07 \x03(\x0b\x32\x1f.integration.AckEvent.TagsEntry\x1a+\n\tTagsEntry\x12\x0b\n\x03key\x18\x01 \x01(\t\x12\r\n\x05value\x18\x02 \x01(\t:\x02\x38\x01\"\xe8\x01\n\nTxAckEvent\x12%\n\x0e\x61pplication_id\x18\x01 \x01(\x04R\rapplicationID\x12\x18\n\x10\x61pplication_name\x18\x02 \x01(\t\x12\x13\n\x0b\x64\x65vice_name\x18\x03 \x01(\t\x12\x17\n\x07\x64\x65v_eui\x18\x04 \x01(\x0cR\x06\x64\x65vEUI\x12\r\n\x05\x66_cnt\x18\x05 \x01(\r\x12/\n\x04tags\x18\x06 \x03(\x0b\x32!.integration.TxAckEvent.TagsEntry\x1a+\n\tTagsEntry\x12\x0b\n\x03key\x18\x01 \x01(\t\x12\r\n\x05value\x18\x02 \x01(\t:\x02\x38\x01\"\x9d\x02\n\nErrorEvent\x12%\n\x0e\x61pplication_id\x18\x01 \x01(\x04R\rapplicationID\x12\x18\n\x10\x61pplication_name\x18\x02 \x01(\t\x12\x13\n\x0b\x64\x65vice_name\x18\x03 \x01(\t\x12\x17\n\x07\x64\x65v_eui\x18\x04 \x01(\x0cR\x06\x64\x65vEUI\x12$\n\x04type\x18\x05 \x01(\x0e\x32\x16.integration.ErrorType\x12\r\n\x05\x65rror\x18\x06 \x01(\t\x12\r\n\x05\x66_cnt\x18\x07 \x01(\r\x12/\n\x04tags\x18\x08 \x03(\x0b\x32!.integration.ErrorEvent.TagsEntry\x1a+\n\tTagsEntry\x12\x0b\n\x03key\x18\x01 \x01(\t\x12\r\n\x05value\x18\x02 \x01(\t:\x02\x38\x01\"\xc4\x02\n\x0bStatusEvent\x12%\n\x0e\x61pplication_id\x18\x01 \x01(\x04R\rapplicationID\x12\x18\n\x10\x61pplication_name\x18\x02 \x01(\t\x12\x13\n\x0b\x64\x65vice_name\x18\x03 \x01(\t\x12\x17\n\x07\x64\x65v_eui\x18\x04 \x01(\x0cR\x06\x64\x65vEUI\x12\x0e\n\x06margin\x18\x05 \x01(\x05\x12\x1d\n\x15\x65xternal_power_source\x18\x06 \x01(\x08\x12!\n\x19\x62\x61ttery_level_unavailable\x18\x07 \x01(\x08\x12\x15\n\rbattery_level\x18\x08 \x01(\x02\x12\x30\n\x04tags\x18\t \x03(\x0b\x32\".integration.StatusEvent.TagsEntry\x1a+\n\tTagsEntry\x12\x0b\n\x03key\x18\x01 \x01(\t\x12\r\n\x05value\x18\x02 \x01(\t:\x02\x38\x01\"\xb1\x02\n\rLocationEvent\x12%\n\x0e\x61pplication_id\x18\x01 \x01(\x04R\rapplicationID\x12\x18\n\x10\x61pplication_name\x18\x02 \x01(\t\x12\x13\n\x0b\x64\x65vice_name\x18\x03 \x01(\t\x12\x17\n\x07\x64\x65v_eui\x18\x04 \x01(\x0cR\x06\x64\x65vEUI\x12\"\n\x08location\x18\x05 \x01(\x0b\x32\x10.common.Location\x12\x32\n\x04tags\x18\x06 \x03(\x0b\x32$.integration.LocationEvent.TagsEntry\x12\x1d\n\nuplink_ids\x18\x07 \x03(\x0cR\tuplinkIDs\x12\r\n\x05\x66_cnt\x18\x08 \x01(\r\x1a+\n\tTagsEntry\x12\x0b\n\x03key\x18\x01 \x01(\t\x12\r\n\x05value\x18\x02 \x01(\t:\x02\x38\x01\"\xb4\x02\n\x10IntegrationEvent\x12%\n\x0e\x61pplication_id\x18\x01 \x01(\x04R\rapplicationID\x12\x18\n\x10\x61pplication_name\x18\x02 \x01(\t\x12\x13\n\x0b\x64\x65vice_name\x18\x03 \x01(\t\x12\x17\n\x07\x64\x65v_eui\x18\x04 \x01(\x0cR\x06\x64\x65vEUI\x12\x35\n\x04tags\x18\x05 \x03(\x0b\x32\'.integration.IntegrationEvent.TagsEntry\x12\x18\n\x10integration_name\x18\x06 \x01(\t\x12\x12\n\nevent_type\x18\x07 \x01(\t\x12\x1f\n\x0bobject_json\x18\x08 \x01(\tR\nobjectJSON\x1a+\n\tTagsEntry\x12\x0b\n\x03key\x18\x01 \x01(\t\x12\r\n\x05value\x18\x02 \x01(\t:\x02\x38\x01\"\xbc\x03\n\x11GatewayStatsEvent\x12\x1d\n\ngateway_id\x18\x01 \x01(\x0cR\tgatewayID\x12\n\n\x02ip\x18\t \x01(\t\x12(\n\x04time\x18\x02 \x01(\x0b\x32\x1a.google.protobuf.Timestamp\x12\"\n\x08location\x18\x03 \x01(\x0b\x32\x10.common.Location\x12\x16\n\x0e\x63onfig_version\x18\x04 \x01(\t\x12\x1b\n\x13rx_packets_received\x18\x05 \x01(\r\x12\x33\n\x16rx_packets_received_ok\x18\x06 \x01(\rR\x13rxPacketsReceivedOK\x12\x1b\n\x13tx_packets_received\x18\x07 \x01(\r\x12\x1a\n\x12tx_packets_emitted\x18\x08 \x01(\r\x12?\n\tmeta_data\x18\n \x03(\x0b\x32,.integration.GatewayStatsEvent.MetaDataEntry\x12\x19\n\x08stats_id\x18\x0b \x01(\x0cR\x07statsID\x1a/\n\rMetaDataEntry\x12\x0b\n\x03key\x18\x01 \x01(\t\x12\r\n\x05value\x18\x02 \x01(\t:\x02\x38\x01*\xd3\x01\n\tErrorType\x12\x0b\n\x07UNKNOWN\x10\x00\x12\x19\n\x15\x44OWNLINK_PAYLOAD_SIZE\x10\x01\x12\x11\n\rDOWNLINK_FCNT\x10\x02\x12\x10\n\x0cUPLINK_CODEC\x10\x03\x12\x12\n\x0e\x44OWNLINK_CODEC\x10\x04\x12\x08\n\x04OTAA\x10\x05\x12\x15\n\x11UPLINK_FCNT_RESET\x10\x06\x12\x0e\n\nUPLINK_MIC\x10\x07\x12\x1e\n\x1aUPLINK_FCNT_RETRANSMISSION\x10\x08\x12\x14\n\x10\x44OWNLINK_GATEWAY\x10\tBN\n\x14io.chirpstack.api.asZ6github.com/brocaar/chirpstack-api/go/v3/as/integrationb\x06proto3'
   ,
-  dependencies=[chirpstack__api_dot_common_dot_common__pb2.DESCRIPTOR,chirpstack__api_dot_gw_dot_gw__pb2.DESCRIPTOR,])
+  dependencies=[chirpstack__api_dot_common_dot_common__pb2.DESCRIPTOR,chirpstack__api_dot_gw_dot_gw__pb2.DESCRIPTOR,google_dot_protobuf_dot_timestamp__pb2.DESCRIPTOR,])
 
 _ERRORTYPE = _descriptor.EnumDescriptor(
   name='ErrorType',
@@ -86,8 +87,8 @@ _ERRORTYPE = _descriptor.EnumDescriptor(
   ],
   containing_type=None,
   serialized_options=None,
-  serialized_start=2611,
-  serialized_end=2822,
+  serialized_start=3091,
+  serialized_end=3302,
 )
 _sym_db.RegisterEnumDescriptor(_ERRORTYPE)
 
@@ -139,8 +140,8 @@ _UPLINKEVENT_TAGSENTRY = _descriptor.Descriptor(
   extension_ranges=[],
   oneofs=[
   ],
-  serialized_start=525,
-  serialized_end=568,
+  serialized_start=558,
+  serialized_end=601,
 )
 
 _UPLINKEVENT = _descriptor.Descriptor(
@@ -268,8 +269,8 @@ _UPLINKEVENT = _descriptor.Descriptor(
   extension_ranges=[],
   oneofs=[
   ],
-  serialized_start=132,
-  serialized_end=568,
+  serialized_start=165,
+  serialized_end=601,
 )
 
 
@@ -307,8 +308,8 @@ _JOINEVENT_TAGSENTRY = _descriptor.Descriptor(
   extension_ranges=[],
   oneofs=[
   ],
-  serialized_start=525,
-  serialized_end=568,
+  serialized_start=558,
+  serialized_end=601,
 )
 
 _JOINEVENT = _descriptor.Descriptor(
@@ -394,8 +395,8 @@ _JOINEVENT = _descriptor.Descriptor(
   extension_ranges=[],
   oneofs=[
   ],
-  serialized_start=571,
-  serialized_end=886,
+  serialized_start=604,
+  serialized_end=919,
 )
 
 
@@ -433,8 +434,8 @@ _ACKEVENT_TAGSENTRY = _descriptor.Descriptor(
   extension_ranges=[],
   oneofs=[
   ],
-  serialized_start=525,
-  serialized_end=568,
+  serialized_start=558,
+  serialized_end=601,
 )
 
 _ACKEVENT = _descriptor.Descriptor(
@@ -506,8 +507,8 @@ _ACKEVENT = _descriptor.Descriptor(
   extension_ranges=[],
   oneofs=[
   ],
-  serialized_start=889,
-  serialized_end=1139,
+  serialized_start=922,
+  serialized_end=1172,
 )
 
 
@@ -545,8 +546,8 @@ _TXACKEVENT_TAGSENTRY = _descriptor.Descriptor(
   extension_ranges=[],
   oneofs=[
   ],
-  serialized_start=525,
-  serialized_end=568,
+  serialized_start=558,
+  serialized_end=601,
 )
 
 _TXACKEVENT = _descriptor.Descriptor(
@@ -611,8 +612,8 @@ _TXACKEVENT = _descriptor.Descriptor(
   extension_ranges=[],
   oneofs=[
   ],
-  serialized_start=1142,
-  serialized_end=1374,
+  serialized_start=1175,
+  serialized_end=1407,
 )
 
 
@@ -650,8 +651,8 @@ _ERROREVENT_TAGSENTRY = _descriptor.Descriptor(
   extension_ranges=[],
   oneofs=[
   ],
-  serialized_start=525,
-  serialized_end=568,
+  serialized_start=558,
+  serialized_end=601,
 )
 
 _ERROREVENT = _descriptor.Descriptor(
@@ -730,8 +731,8 @@ _ERROREVENT = _descriptor.Descriptor(
   extension_ranges=[],
   oneofs=[
   ],
-  serialized_start=1377,
-  serialized_end=1662,
+  serialized_start=1410,
+  serialized_end=1695,
 )
 
 
@@ -769,8 +770,8 @@ _STATUSEVENT_TAGSENTRY = _descriptor.Descriptor(
   extension_ranges=[],
   oneofs=[
   ],
-  serialized_start=525,
-  serialized_end=568,
+  serialized_start=558,
+  serialized_end=601,
 )
 
 _STATUSEVENT = _descriptor.Descriptor(
@@ -856,8 +857,8 @@ _STATUSEVENT = _descriptor.Descriptor(
   extension_ranges=[],
   oneofs=[
   ],
-  serialized_start=1665,
-  serialized_end=1989,
+  serialized_start=1698,
+  serialized_end=2022,
 )
 
 
@@ -895,8 +896,8 @@ _LOCATIONEVENT_TAGSENTRY = _descriptor.Descriptor(
   extension_ranges=[],
   oneofs=[
   ],
-  serialized_start=525,
-  serialized_end=568,
+  serialized_start=558,
+  serialized_end=601,
 )
 
 _LOCATIONEVENT = _descriptor.Descriptor(
@@ -975,8 +976,8 @@ _LOCATIONEVENT = _descriptor.Descriptor(
   extension_ranges=[],
   oneofs=[
   ],
-  serialized_start=1992,
-  serialized_end=2297,
+  serialized_start=2025,
+  serialized_end=2330,
 )
 
 
@@ -1014,8 +1015,8 @@ _INTEGRATIONEVENT_TAGSENTRY = _descriptor.Descriptor(
   extension_ranges=[],
   oneofs=[
   ],
-  serialized_start=525,
-  serialized_end=568,
+  serialized_start=558,
+  serialized_end=601,
 )
 
 _INTEGRATIONEVENT = _descriptor.Descriptor(
@@ -1094,8 +1095,148 @@ _INTEGRATIONEVENT = _descriptor.Descriptor(
   extension_ranges=[],
   oneofs=[
   ],
-  serialized_start=2300,
-  serialized_end=2608,
+  serialized_start=2333,
+  serialized_end=2641,
+)
+
+
+_GATEWAYSTATSEVENT_METADATAENTRY = _descriptor.Descriptor(
+  name='MetaDataEntry',
+  full_name='integration.GatewayStatsEvent.MetaDataEntry',
+  filename=None,
+  file=DESCRIPTOR,
+  containing_type=None,
+  create_key=_descriptor._internal_create_key,
+  fields=[
+    _descriptor.FieldDescriptor(
+      name='key', full_name='integration.GatewayStatsEvent.MetaDataEntry.key', index=0,
+      number=1, type=9, cpp_type=9, label=1,
+      has_default_value=False, default_value=b"".decode('utf-8'),
+      message_type=None, enum_type=None, containing_type=None,
+      is_extension=False, extension_scope=None,
+      serialized_options=None, file=DESCRIPTOR,  create_key=_descriptor._internal_create_key),
+    _descriptor.FieldDescriptor(
+      name='value', full_name='integration.GatewayStatsEvent.MetaDataEntry.value', index=1,
+      number=2, type=9, cpp_type=9, label=1,
+      has_default_value=False, default_value=b"".decode('utf-8'),
+      message_type=None, enum_type=None, containing_type=None,
+      is_extension=False, extension_scope=None,
+      serialized_options=None, file=DESCRIPTOR,  create_key=_descriptor._internal_create_key),
+  ],
+  extensions=[
+  ],
+  nested_types=[],
+  enum_types=[
+  ],
+  serialized_options=b'8\001',
+  is_extendable=False,
+  syntax='proto3',
+  extension_ranges=[],
+  oneofs=[
+  ],
+  serialized_start=3041,
+  serialized_end=3088,
+)
+
+_GATEWAYSTATSEVENT = _descriptor.Descriptor(
+  name='GatewayStatsEvent',
+  full_name='integration.GatewayStatsEvent',
+  filename=None,
+  file=DESCRIPTOR,
+  containing_type=None,
+  create_key=_descriptor._internal_create_key,
+  fields=[
+    _descriptor.FieldDescriptor(
+      name='gateway_id', full_name='integration.GatewayStatsEvent.gateway_id', index=0,
+      number=1, type=12, cpp_type=9, label=1,
+      has_default_value=False, default_value=b"",
+      message_type=None, enum_type=None, containing_type=None,
+      is_extension=False, extension_scope=None,
+      serialized_options=None, json_name='gatewayID', file=DESCRIPTOR,  create_key=_descriptor._internal_create_key),
+    _descriptor.FieldDescriptor(
+      name='ip', full_name='integration.GatewayStatsEvent.ip', index=1,
+      number=9, type=9, cpp_type=9, label=1,
+      has_default_value=False, default_value=b"".decode('utf-8'),
+      message_type=None, enum_type=None, containing_type=None,
+      is_extension=False, extension_scope=None,
+      serialized_options=None, file=DESCRIPTOR,  create_key=_descriptor._internal_create_key),
+    _descriptor.FieldDescriptor(
+      name='time', full_name='integration.GatewayStatsEvent.time', index=2,
+      number=2, type=11, cpp_type=10, label=1,
+      has_default_value=False, default_value=None,
+      message_type=None, enum_type=None, containing_type=None,
+      is_extension=False, extension_scope=None,
+      serialized_options=None, file=DESCRIPTOR,  create_key=_descriptor._internal_create_key),
+    _descriptor.FieldDescriptor(
+      name='location', full_name='integration.GatewayStatsEvent.location', index=3,
+      number=3, type=11, cpp_type=10, label=1,
+      has_default_value=False, default_value=None,
+      message_type=None, enum_type=None, containing_type=None,
+      is_extension=False, extension_scope=None,
+      serialized_options=None, file=DESCRIPTOR,  create_key=_descriptor._internal_create_key),
+    _descriptor.FieldDescriptor(
+      name='config_version', full_name='integration.GatewayStatsEvent.config_version', index=4,
+      number=4, type=9, cpp_type=9, label=1,
+      has_default_value=False, default_value=b"".decode('utf-8'),
+      message_type=None, enum_type=None, containing_type=None,
+      is_extension=False, extension_scope=None,
+      serialized_options=None, file=DESCRIPTOR,  create_key=_descriptor._internal_create_key),
+    _descriptor.FieldDescriptor(
+      name='rx_packets_received', full_name='integration.GatewayStatsEvent.rx_packets_received', index=5,
+      number=5, type=13, cpp_type=3, label=1,
+      has_default_value=False, default_value=0,
+      message_type=None, enum_type=None, containing_type=None,
+      is_extension=False, extension_scope=None,
+      serialized_options=None, file=DESCRIPTOR,  create_key=_descriptor._internal_create_key),
+    _descriptor.FieldDescriptor(
+      name='rx_packets_received_ok', full_name='integration.GatewayStatsEvent.rx_packets_received_ok', index=6,
+      number=6, type=13, cpp_type=3, label=1,
+      has_default_value=False, default_value=0,
+      message_type=None, enum_type=None, containing_type=None,
+      is_extension=False, extension_scope=None,
+      serialized_options=None, json_name='rxPacketsReceivedOK', file=DESCRIPTOR,  create_key=_descriptor._internal_create_key),
+    _descriptor.FieldDescriptor(
+      name='tx_packets_received', full_name='integration.GatewayStatsEvent.tx_packets_received', index=7,
+      number=7, type=13, cpp_type=3, label=1,
+      has_default_value=False, default_value=0,
+      message_type=None, enum_type=None, containing_type=None,
+      is_extension=False, extension_scope=None,
+      serialized_options=None, file=DESCRIPTOR,  create_key=_descriptor._internal_create_key),
+    _descriptor.FieldDescriptor(
+      name='tx_packets_emitted', full_name='integration.GatewayStatsEvent.tx_packets_emitted', index=8,
+      number=8, type=13, cpp_type=3, label=1,
+      has_default_value=False, default_value=0,
+      message_type=None, enum_type=None, containing_type=None,
+      is_extension=False, extension_scope=None,
+      serialized_options=None, file=DESCRIPTOR,  create_key=_descriptor._internal_create_key),
+    _descriptor.FieldDescriptor(
+      name='meta_data', full_name='integration.GatewayStatsEvent.meta_data', index=9,
+      number=10, type=11, cpp_type=10, label=3,
+      has_default_value=False, default_value=[],
+      message_type=None, enum_type=None, containing_type=None,
+      is_extension=False, extension_scope=None,
+      serialized_options=None, file=DESCRIPTOR,  create_key=_descriptor._internal_create_key),
+    _descriptor.FieldDescriptor(
+      name='stats_id', full_name='integration.GatewayStatsEvent.stats_id', index=10,
+      number=11, type=12, cpp_type=9, label=1,
+      has_default_value=False, default_value=b"",
+      message_type=None, enum_type=None, containing_type=None,
+      is_extension=False, extension_scope=None,
+      serialized_options=None, json_name='statsID', file=DESCRIPTOR,  create_key=_descriptor._internal_create_key),
+  ],
+  extensions=[
+  ],
+  nested_types=[_GATEWAYSTATSEVENT_METADATAENTRY, ],
+  enum_types=[
+  ],
+  serialized_options=None,
+  is_extendable=False,
+  syntax='proto3',
+  extension_ranges=[],
+  oneofs=[
+  ],
+  serialized_start=2644,
+  serialized_end=3088,
 )
 
 _UPLINKEVENT_TAGSENTRY.containing_type = _UPLINKEVENT
@@ -1120,6 +1261,10 @@ _LOCATIONEVENT.fields_by_name['location'].message_type = chirpstack__api_dot_com
 _LOCATIONEVENT.fields_by_name['tags'].message_type = _LOCATIONEVENT_TAGSENTRY
 _INTEGRATIONEVENT_TAGSENTRY.containing_type = _INTEGRATIONEVENT
 _INTEGRATIONEVENT.fields_by_name['tags'].message_type = _INTEGRATIONEVENT_TAGSENTRY
+_GATEWAYSTATSEVENT_METADATAENTRY.containing_type = _GATEWAYSTATSEVENT
+_GATEWAYSTATSEVENT.fields_by_name['time'].message_type = google_dot_protobuf_dot_timestamp__pb2._TIMESTAMP
+_GATEWAYSTATSEVENT.fields_by_name['location'].message_type = chirpstack__api_dot_common_dot_common__pb2._LOCATION
+_GATEWAYSTATSEVENT.fields_by_name['meta_data'].message_type = _GATEWAYSTATSEVENT_METADATAENTRY
 DESCRIPTOR.message_types_by_name['UplinkEvent'] = _UPLINKEVENT
 DESCRIPTOR.message_types_by_name['JoinEvent'] = _JOINEVENT
 DESCRIPTOR.message_types_by_name['AckEvent'] = _ACKEVENT
@@ -1128,6 +1273,7 @@ DESCRIPTOR.message_types_by_name['ErrorEvent'] = _ERROREVENT
 DESCRIPTOR.message_types_by_name['StatusEvent'] = _STATUSEVENT
 DESCRIPTOR.message_types_by_name['LocationEvent'] = _LOCATIONEVENT
 DESCRIPTOR.message_types_by_name['IntegrationEvent'] = _INTEGRATIONEVENT
+DESCRIPTOR.message_types_by_name['GatewayStatsEvent'] = _GATEWAYSTATSEVENT
 DESCRIPTOR.enum_types_by_name['ErrorType'] = _ERRORTYPE
 _sym_db.RegisterFileDescriptor(DESCRIPTOR)
 
@@ -1251,6 +1397,21 @@ IntegrationEvent = _reflection.GeneratedProtocolMessageType('IntegrationEvent', 
 _sym_db.RegisterMessage(IntegrationEvent)
 _sym_db.RegisterMessage(IntegrationEvent.TagsEntry)
 
+GatewayStatsEvent = _reflection.GeneratedProtocolMessageType('GatewayStatsEvent', (_message.Message,), {
+
+  'MetaDataEntry' : _reflection.GeneratedProtocolMessageType('MetaDataEntry', (_message.Message,), {
+    'DESCRIPTOR' : _GATEWAYSTATSEVENT_METADATAENTRY,
+    '__module__' : 'chirpstack_api.as_pb.integration.integration_pb2'
+    # @@protoc_insertion_point(class_scope:integration.GatewayStatsEvent.MetaDataEntry)
+    })
+  ,
+  'DESCRIPTOR' : _GATEWAYSTATSEVENT,
+  '__module__' : 'chirpstack_api.as_pb.integration.integration_pb2'
+  # @@protoc_insertion_point(class_scope:integration.GatewayStatsEvent)
+  })
+_sym_db.RegisterMessage(GatewayStatsEvent)
+_sym_db.RegisterMessage(GatewayStatsEvent.MetaDataEntry)
+
 
 DESCRIPTOR._options = None
 _UPLINKEVENT_TAGSENTRY._options = None
@@ -1261,4 +1422,5 @@ _ERROREVENT_TAGSENTRY._options = None
 _STATUSEVENT_TAGSENTRY._options = None
 _LOCATIONEVENT_TAGSENTRY._options = None
 _INTEGRATIONEVENT_TAGSENTRY._options = None
+_GATEWAYSTATSEVENT_METADATAENTRY._options = None
 # @@protoc_insertion_point(module_scope)
