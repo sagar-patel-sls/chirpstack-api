@@ -778,6 +778,13 @@
         "errorMessage": {
           "type": "string",
           "description": "Error message (in case of error state)."
+        },
+        "error": {
+          "type": "object",
+          "additionalProperties": {
+            "type": "string"
+          },
+          "description": "error (Detailed error provided by the server)."
         }
       }
     },

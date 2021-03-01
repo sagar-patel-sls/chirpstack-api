@@ -212,6 +212,9 @@ message RemoteMulticastDeploymentDevice {
 
   // Error message (in case of error state).
   string error_message = 11;
+
+  // error (Detailed error provided by the server).
+  map<string, string> error = 12;
 }
 
 message RemoteMulticastGroupListItem {
