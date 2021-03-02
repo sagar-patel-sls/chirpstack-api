@@ -1,6 +1,6 @@
 module github.com/brocaar/chirpstack-api/swagger
 
-go 1.13
+go 1.16
 
 require (
 	github.com/grpc-ecosystem/grpc-gateway v1.9.5
