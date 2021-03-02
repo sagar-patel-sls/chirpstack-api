@@ -641,7 +641,8 @@ proto.api.RemoteMulticastDeploymentDevice.toObject = function(includeInstance, m
     createdAt: (f = msg.getCreatedAt()) && google_protobuf_timestamp_pb.Timestamp.toObject(includeInstance, f),
     updatedAt: (f = msg.getUpdatedAt()) && google_protobuf_timestamp_pb.Timestamp.toObject(includeInstance, f),
     state: msg.getState(),
-    errorMessage: msg.getErrorMessage()
+    errorMessage: msg.getErrorMessage(),
+    errorMap: (f = msg.getErrorMap(true)) ? f.toArray() : []
   };
 
   if (includeInstance) {
@@ -724,6 +725,12 @@ proto.api.RemoteMulticastDeploymentDevice.deserializeBinaryFromReader = function
     case 11:
       var value = /** @type {string} */ (reader.readString());
       msg.setErrorMessage(value);
+      break;
+    case 12:
+      var value = msg.getErrorMap();
+      reader.readMessage(value, function(message, reader) {
+        jspb.Map.deserializeBinary(message, reader, jspb.BinaryReader.prototype.readString, jspb.BinaryReader.prototype.readString);
+         });
       break;
     default:
       reader.skipField();
@@ -842,6 +849,10 @@ proto.api.RemoteMulticastDeploymentDevice.prototype.serializeBinaryToWriter = fu
       11,
       f
     );
+  }
+  f = this.getErrorMap(true);
+  if (f && f.getLength() > 0) {
+    f.serializeBinary(12, writer, jspb.BinaryWriter.prototype.writeString, jspb.BinaryWriter.prototype.writeString);
   }
 };
 
@@ -1062,6 +1073,19 @@ proto.api.RemoteMulticastDeploymentDevice.prototype.getErrorMessage = function()
 /** @param {string} value  */
 proto.api.RemoteMulticastDeploymentDevice.prototype.setErrorMessage = function(value) {
   jspb.Message.setField(this, 11, value);
+};
+
+
+/**
+ * map<string, string> error = 12;
+ * @param {boolean=} opt_noLazyCreate Do not create the map if
+ * empty, instead returning `undefined`
+ * @return {!jspb.Map<string,string>}
+ */
+proto.api.RemoteMulticastDeploymentDevice.prototype.getErrorMap = function(opt_noLazyCreate) {
+  return /** @type {!jspb.Map<string,string>} */ (
+      jspb.Message.getMapField(this, 12, opt_noLazyCreate,
+      null));
 };
 
 

@@ -126,6 +126,8 @@ export class RemoteMulticastDeploymentDevice extends jspb.Message {
   getErrorMessage(): string;
   setErrorMessage(value: string): void;
 
+  getErrorMap(): jspb.Map<string, string>;
+  clearErrorMap(): void;
   serializeBinary(): Uint8Array;
   toObject(includeInstance?: boolean): RemoteMulticastDeploymentDevice.AsObject;
   static toObject(includeInstance: boolean, msg: RemoteMulticastDeploymentDevice): RemoteMulticastDeploymentDevice.AsObject;
@@ -149,6 +151,7 @@ export namespace RemoteMulticastDeploymentDevice {
     updatedAt?: google_protobuf_timestamp_pb.Timestamp.AsObject,
     state: as_external_api_fuotaDeployment_pb.FUOTADeploymentDeviceStateMap[keyof as_external_api_fuotaDeployment_pb.FUOTADeploymentDeviceStateMap],
     errorMessage: string,
+    errorMap: Array<[string, string]>,
   }
 }
 
