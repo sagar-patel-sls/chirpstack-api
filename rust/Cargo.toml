@@ -6,7 +6,7 @@ homepage = "https://www.chirpstack.io"
 license = "MIT"
 name = "chirpstack_api"
 repository = "https://github.com/brocaar/chirpstack-api"
-version = "3.8.1"
+version = "3.8.3"
 
 [features]
 default = ["grpc_support", "rustfmt"]
