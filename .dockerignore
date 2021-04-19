@@ -1,0 +1,7 @@
+  
+# do not exclude /go, it is used by Dockerfile-js
+/java/*
+/js/*
+/python/*
+/rust/*
+/swagger/*
