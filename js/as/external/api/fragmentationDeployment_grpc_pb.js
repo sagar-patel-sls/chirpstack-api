@@ -112,7 +112,7 @@ function deserialize_google_protobuf_Empty(buffer_arg) {
 // FragmentationDeploymentService is the service managing fragmentation.
 var FragmentationDeploymentServiceService = exports.FragmentationDeploymentServiceService = {
   // Create creates the given fragmentation deployment for given DevEUI.
-  create: {
+create: {
     path: '/api.FragmentationDeploymentService/Create',
     requestStream: false,
     responseStream: false,
@@ -124,7 +124,7 @@ var FragmentationDeploymentServiceService = exports.FragmentationDeploymentServi
     responseDeserialize: deserialize_api_FragmentationDeploymentResponse,
   },
   // Get returns a fragmentation deployment given an ID.
-  get: {
+get: {
     path: '/api.FragmentationDeploymentService/Get',
     requestStream: false,
     responseStream: false,
@@ -136,7 +136,7 @@ var FragmentationDeploymentServiceService = exports.FragmentationDeploymentServi
     responseDeserialize: deserialize_api_GetFragmentationDeploymentResponse,
   },
   // Update updates the given fragmentation deployment.
-  update: {
+update: {
     path: '/api.FragmentationDeploymentService/Update',
     requestStream: false,
     responseStream: false,
@@ -148,7 +148,7 @@ var FragmentationDeploymentServiceService = exports.FragmentationDeploymentServi
     responseDeserialize: deserialize_google_protobuf_Empty,
   },
   // Delete deletes a fragmentation deployment given an ID.
-  delete: {
+delete: {
     path: '/api.FragmentationDeploymentService/Delete',
     requestStream: false,
     responseStream: false,
@@ -160,7 +160,7 @@ var FragmentationDeploymentServiceService = exports.FragmentationDeploymentServi
     responseDeserialize: deserialize_google_protobuf_Empty,
   },
   // List lists the available fragmentation deployment.
-  list: {
+list: {
     path: '/api.FragmentationDeploymentService/List',
     requestStream: false,
     responseStream: false,

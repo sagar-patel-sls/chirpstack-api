@@ -17,6 +17,15 @@ interface IFUOTADeploymentServiceService extends grpc.ServiceDefinition<grpc.Unt
 
 export const FUOTADeploymentServiceService: IFUOTADeploymentServiceService;
 
+export interface IFUOTADeploymentServiceServer extends grpc.UntypedServiceImplementation {
+  createForDevice: grpc.handleUnaryCall<as_external_api_fuotaDeployment_pb.CreateFUOTADeploymentForDeviceRequest, as_external_api_fuotaDeployment_pb.CreateFUOTADeploymentForDeviceResponse>;
+  createForApplication: grpc.handleUnaryCall<as_external_api_fuotaDeployment_pb.CreateFUOTADeploymentForApplicationRequest, as_external_api_fuotaDeployment_pb.CreateFUOTADeploymentForApplicationResponse>;
+  get: grpc.handleUnaryCall<as_external_api_fuotaDeployment_pb.GetFUOTADeploymentRequest, as_external_api_fuotaDeployment_pb.GetFUOTADeploymentResponse>;
+  list: grpc.handleUnaryCall<as_external_api_fuotaDeployment_pb.ListFUOTADeploymentRequest, as_external_api_fuotaDeployment_pb.ListFUOTADeploymentResponse>;
+  getDeploymentDevice: grpc.handleUnaryCall<as_external_api_fuotaDeployment_pb.GetFUOTADeploymentDeviceRequest, as_external_api_fuotaDeployment_pb.GetFUOTADeploymentDeviceResponse>;
+  listDeploymentDevices: grpc.handleUnaryCall<as_external_api_fuotaDeployment_pb.ListFUOTADeploymentDevicesRequest, as_external_api_fuotaDeployment_pb.ListFUOTADeploymentDevicesResponse>;
+}
+
 export class FUOTADeploymentServiceClient extends grpc.Client {
   constructor(address: string, credentials: grpc.ChannelCredentials, options?: object);
   createForDevice(argument: as_external_api_fuotaDeployment_pb.CreateFUOTADeploymentForDeviceRequest, callback: grpc.requestCallback<as_external_api_fuotaDeployment_pb.CreateFUOTADeploymentForDeviceResponse>): grpc.ClientUnaryCall;

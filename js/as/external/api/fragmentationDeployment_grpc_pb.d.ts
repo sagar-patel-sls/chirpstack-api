@@ -17,6 +17,14 @@ interface IFragmentationDeploymentServiceService extends grpc.ServiceDefinition<
 
 export const FragmentationDeploymentServiceService: IFragmentationDeploymentServiceService;
 
+export interface IFragmentationDeploymentServiceServer extends grpc.UntypedServiceImplementation {
+  create: grpc.handleUnaryCall<as_external_api_fragmentationDeployment_pb.FragmentationDeploymentRequest, as_external_api_fragmentationDeployment_pb.FragmentationDeploymentResponse>;
+  get: grpc.handleUnaryCall<as_external_api_fragmentationDeployment_pb.GetFragmentationDeploymentRequest, as_external_api_fragmentationDeployment_pb.GetFragmentationDeploymentResponse>;
+  update: grpc.handleUnaryCall<as_external_api_fragmentationDeployment_pb.UpdateFragmentationDeploymentRequest, google_protobuf_empty_pb.Empty>;
+  delete: grpc.handleUnaryCall<as_external_api_fragmentationDeployment_pb.DeleteFragmentationDeploymentRequest, google_protobuf_empty_pb.Empty>;
+  list: grpc.handleUnaryCall<as_external_api_fragmentationDeployment_pb.ListFragmentationDeploymentRequest, as_external_api_fragmentationDeployment_pb.ListFragmentationDeploymentResponse>;
+}
+
 export class FragmentationDeploymentServiceClient extends grpc.Client {
   constructor(address: string, credentials: grpc.ChannelCredentials, options?: object);
   create(argument: as_external_api_fragmentationDeployment_pb.FragmentationDeploymentRequest, callback: grpc.requestCallback<as_external_api_fragmentationDeployment_pb.FragmentationDeploymentResponse>): grpc.ClientUnaryCall;

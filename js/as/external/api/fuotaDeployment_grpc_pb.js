@@ -144,7 +144,7 @@ function deserialize_api_ListFUOTADeploymentResponse(buffer_arg) {
 // FUOTADeploymentService is the service managing FUOTA deployments.
 var FUOTADeploymentServiceService = exports.FUOTADeploymentServiceService = {
   // CreateForDevice creates a deployment for the given DevEUI.
-  createForDevice: {
+createForDevice: {
     path: '/api.FUOTADeploymentService/CreateForDevice',
     requestStream: false,
     responseStream: false,
@@ -156,7 +156,7 @@ var FUOTADeploymentServiceService = exports.FUOTADeploymentServiceService = {
     responseDeserialize: deserialize_api_CreateFUOTADeploymentForDeviceResponse,
   },
   // CreateForApplication creates a deployment for the given Application.
-  createForApplication: {
+createForApplication: {
     path: '/api.FUOTADeploymentService/CreateForApplication',
     requestStream: false,
     responseStream: false,
@@ -168,7 +168,7 @@ var FUOTADeploymentServiceService = exports.FUOTADeploymentServiceService = {
     responseDeserialize: deserialize_api_CreateFUOTADeploymentForApplicationResponse,
   },
   // Get returns the fuota deployment for the given id.
-  get: {
+get: {
     path: '/api.FUOTADeploymentService/Get',
     requestStream: false,
     responseStream: false,
@@ -180,7 +180,7 @@ var FUOTADeploymentServiceService = exports.FUOTADeploymentServiceService = {
     responseDeserialize: deserialize_api_GetFUOTADeploymentResponse,
   },
   // List lists the fuota deployments.
-  list: {
+list: {
     path: '/api.FUOTADeploymentService/List',
     requestStream: false,
     responseStream: false,
@@ -192,7 +192,7 @@ var FUOTADeploymentServiceService = exports.FUOTADeploymentServiceService = {
     responseDeserialize: deserialize_api_ListFUOTADeploymentResponse,
   },
   // GetDeploymentDevice returns the deployment device.
-  getDeploymentDevice: {
+getDeploymentDevice: {
     path: '/api.FUOTADeploymentService/GetDeploymentDevice',
     requestStream: false,
     responseStream: false,
@@ -204,7 +204,7 @@ var FUOTADeploymentServiceService = exports.FUOTADeploymentServiceService = {
     responseDeserialize: deserialize_api_GetFUOTADeploymentDeviceResponse,
   },
   // ListDeploymentDevices lists the devices (and status) for the given fuota deployment ID.
-  listDeploymentDevices: {
+listDeploymentDevices: {
     path: '/api.FUOTADeploymentService/ListDeploymentDevices',
     requestStream: false,
     responseStream: false,

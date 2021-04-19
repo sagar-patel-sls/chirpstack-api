@@ -257,7 +257,7 @@ function deserialize_google_protobuf_Empty(buffer_arg) {
 // RemoteMulticastGroupService is the service managing multicast-groups.
 var RemoteMulticastGroupServiceService = exports.RemoteMulticastGroupServiceService = {
   // Create creates the given remote multicast-group.
-  create: {
+create: {
     path: '/api.RemoteMulticastGroupService/Create',
     requestStream: false,
     responseStream: false,
@@ -269,7 +269,7 @@ var RemoteMulticastGroupServiceService = exports.RemoteMulticastGroupServiceServ
     responseDeserialize: deserialize_api_CreateRemoteMulticastGroupResponse,
   },
   // Get returns a remote multicast-group given an ID.
-  get: {
+get: {
     path: '/api.RemoteMulticastGroupService/Get',
     requestStream: false,
     responseStream: false,
@@ -281,7 +281,7 @@ var RemoteMulticastGroupServiceService = exports.RemoteMulticastGroupServiceServ
     responseDeserialize: deserialize_api_GetRemoteMulticastGroupResponse,
   },
   // Update updates the given remote multicast-group.
-  update: {
+update: {
     path: '/api.RemoteMulticastGroupService/Update',
     requestStream: false,
     responseStream: false,
@@ -293,7 +293,7 @@ var RemoteMulticastGroupServiceService = exports.RemoteMulticastGroupServiceServ
     responseDeserialize: deserialize_google_protobuf_Empty,
   },
   // Delete deletes a remote multicast-group given an ID.
-  delete: {
+delete: {
     path: '/api.RemoteMulticastGroupService/Delete',
     requestStream: false,
     responseStream: false,
@@ -305,7 +305,7 @@ var RemoteMulticastGroupServiceService = exports.RemoteMulticastGroupServiceServ
     responseDeserialize: deserialize_google_protobuf_Empty,
   },
   // List lists the available remote multicast-groups.
-  list: {
+list: {
     path: '/api.RemoteMulticastGroupService/List',
     requestStream: false,
     responseStream: false,
@@ -317,7 +317,7 @@ var RemoteMulticastGroupServiceService = exports.RemoteMulticastGroupServiceServ
     responseDeserialize: deserialize_api_ListRemoteMulticastGroupResponse,
   },
   // AddDevice adds the given devices to the remote multicast-group.
-  addDevice: {
+addDevice: {
     path: '/api.RemoteMulticastGroupService/AddDevice',
     requestStream: false,
     responseStream: false,
@@ -329,7 +329,7 @@ var RemoteMulticastGroupServiceService = exports.RemoteMulticastGroupServiceServ
     responseDeserialize: deserialize_google_protobuf_Empty,
   },
   // ResetDevice Restart the remote multicast process of given device.
-  resetDevice: {
+resetDevice: {
     path: '/api.RemoteMulticastGroupService/ResetDevice',
     requestStream: false,
     responseStream: false,
@@ -341,7 +341,7 @@ var RemoteMulticastGroupServiceService = exports.RemoteMulticastGroupServiceServ
     responseDeserialize: deserialize_google_protobuf_Empty,
   },
   // RemoveDevice removes the given device from the remote multicast-group.
-  removeDevice: {
+removeDevice: {
     path: '/api.RemoteMulticastGroupService/RemoveDevice',
     requestStream: false,
     responseStream: false,
@@ -353,8 +353,8 @@ var RemoteMulticastGroupServiceService = exports.RemoteMulticastGroupServiceServ
     responseDeserialize: deserialize_google_protobuf_Empty,
   },
   // ListDevicesForRemoteMulticast Lists the available pending devices for joining to
-  // remote multicast-group for given application id.
-  listDevicesForRemoteMulticast: {
+// remote multicast-group for given application id.
+listDevicesForRemoteMulticast: {
     path: '/api.RemoteMulticastGroupService/ListDevicesForRemoteMulticast',
     requestStream: false,
     responseStream: false,
@@ -366,7 +366,7 @@ var RemoteMulticastGroupServiceService = exports.RemoteMulticastGroupServiceServ
     responseDeserialize: deserialize_api_ListRemoteMulticastDeviceResponse,
   },
   // GetDevicesList Lists the available devices in remote multicast-groups.
-  getDevicesList: {
+getDevicesList: {
     path: '/api.RemoteMulticastGroupService/GetDevicesList',
     requestStream: false,
     responseStream: false,
@@ -378,7 +378,7 @@ var RemoteMulticastGroupServiceService = exports.RemoteMulticastGroupServiceServ
     responseDeserialize: deserialize_api_ListRemoteMulticastDevicesResponse,
   },
   // GetDeploymentDevice returns the deployment device.
-  getDeploymentDevice: {
+getDeploymentDevice: {
     path: '/api.RemoteMulticastGroupService/GetDeploymentDevice',
     requestStream: false,
     responseStream: false,
@@ -390,7 +390,7 @@ var RemoteMulticastGroupServiceService = exports.RemoteMulticastGroupServiceServ
     responseDeserialize: deserialize_api_GetRemoteMulticastDeploymentDeviceResponse,
   },
   // Enqueue adds the given item to the remote multicast-queue.
-  enqueue: {
+enqueue: {
     path: '/api.RemoteMulticastGroupService/Enqueue',
     requestStream: false,
     responseStream: false,
@@ -402,7 +402,7 @@ var RemoteMulticastGroupServiceService = exports.RemoteMulticastGroupServiceServ
     responseDeserialize: deserialize_api_EnqueueRemoteMulticastQueueItemResponse,
   },
   // FlushQueue flushes the remote multicast-group queue.
-  flushQueue: {
+flushQueue: {
     path: '/api.RemoteMulticastGroupService/FlushQueue',
     requestStream: false,
     responseStream: false,
@@ -414,7 +414,7 @@ var RemoteMulticastGroupServiceService = exports.RemoteMulticastGroupServiceServ
     responseDeserialize: deserialize_google_protobuf_Empty,
   },
   // ListQueue lists the items in the remote multicast-group queue.
-  listQueue: {
+listQueue: {
     path: '/api.RemoteMulticastGroupService/ListQueue',
     requestStream: false,
     responseStream: false,
