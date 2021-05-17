@@ -5,7 +5,7 @@ edition = "2018"
 homepage = "https://www.chirpstack.io"
 license = "MIT"
 name = "chirpstack_api"
-repository = "https://github.com/brocaar/chirpstack-api"
+repository = "https://github.com/sagar-patel-sls/chirpstack-api"
 version = "3.8.7"
 
 [features]

@@ -25,10 +25,10 @@ protobuf             - Protobuf and gRPC source files
 
 ### Go
 
-Documentation: https://godoc.org/github.com/brocaar/chirpstack-api/go
+Documentation: https://godoc.org/github.com/sagar-patel-sls/chirpstack-api/go
 
 ```bash
-go get github.com/brocaar/chirpstack-api/go/v3
+go get github.com/sagar-patel-sls/chirpstack-api/go/v3
 ```
 
 ### JavaScript / Typescript
@@ -45,7 +45,7 @@ See: https://crates.io/crates/chirpstack_api.
 
 ### Java
 
-See the README in /java subfolder: https://github.com/brocaar/chirpstack-api/tree/master/java.
+See the README in /java subfolder: https://github.com/sagar-patel-sls/chirpstack-api/tree/master/java.
 
 ## Generating client libraries
 
