@@ -355,6 +355,10 @@
         "footer": {
           "type": "string",
           "description": "Footer html."
+        },
+        "version": {
+          "type": "string",
+          "title": "Application Server version"
         }
       }
     },

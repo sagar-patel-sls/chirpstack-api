@@ -3287,7 +3287,8 @@ proto.api.Branding.prototype.toObject = function(opt_includeInstance) {
 proto.api.Branding.toObject = function(includeInstance, msg) {
   var f, obj = {
     registration: msg.getRegistration(),
-    footer: msg.getFooter()
+    footer: msg.getFooter(),
+    version: msg.getVersion()
   };
 
   if (includeInstance) {
@@ -3331,6 +3332,10 @@ proto.api.Branding.deserializeBinaryFromReader = function(msg, reader) {
     case 2:
       var value = /** @type {string} */ (reader.readString());
       msg.setFooter(value);
+      break;
+    case 3:
+      var value = /** @type {string} */ (reader.readString());
+      msg.setVersion(value);
       break;
     default:
       reader.skipField();
@@ -3384,6 +3389,13 @@ proto.api.Branding.prototype.serializeBinaryToWriter = function (writer) {
       f
     );
   }
+  f = this.getVersion();
+  if (f.length > 0) {
+    writer.writeString(
+      3,
+      f
+    );
+  }
 };
 
 
@@ -3423,6 +3435,21 @@ proto.api.Branding.prototype.getFooter = function() {
 /** @param {string} value  */
 proto.api.Branding.prototype.setFooter = function(value) {
   jspb.Message.setField(this, 2, value);
+};
+
+
+/**
+ * optional string version = 3;
+ * @return {string}
+ */
+proto.api.Branding.prototype.getVersion = function() {
+  return /** @type {string} */ (jspb.Message.getFieldProto3(this, 3, ""));
+};
+
+
+/** @param {string} value  */
+proto.api.Branding.prototype.setVersion = function(value) {
+  jspb.Message.setField(this, 3, value);
 };
 
 

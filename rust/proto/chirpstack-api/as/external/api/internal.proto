@@ -260,6 +260,9 @@ message Branding {
 
   // Footer html.
   string footer = 2;
+
+  // Application Server version
+  string version = 3;
 }
 
 message OpenIDConnect {

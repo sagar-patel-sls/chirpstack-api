@@ -432,6 +432,9 @@ export class Branding extends jspb.Message {
   getFooter(): string;
   setFooter(value: string): void;
 
+  getVersion(): string;
+  setVersion(value: string): void;
+
   serializeBinary(): Uint8Array;
   toObject(includeInstance?: boolean): Branding.AsObject;
   static toObject(includeInstance: boolean, msg: Branding): Branding.AsObject;
@@ -446,6 +449,7 @@ export namespace Branding {
   export type AsObject = {
     registration: string,
     footer: string,
+    version: string,
   }
 }
 
