@@ -217,6 +217,9 @@ message DeviceListItem {
     // The last time the application-server received any data from the device,
     // or an empty string when the device never sent any data.
     google.protobuf.Timestamp last_seen_at = 9 [json_name = "lastSeenAt"];
+
+    // Device is disabled.
+    bool is_disabled = 13;
 }
 
 message DeviceKeys {
@@ -427,4 +430,7 @@ message StreamDeviceEventLogsResponse {
 
     // The event payload in JSON encoding.
     string payload_json = 2 [json_name = "payloadJSON"];
+
+    // Published at timestamp.
+    google.protobuf.Timestamp published_at = 3;
 }

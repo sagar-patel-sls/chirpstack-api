@@ -671,6 +671,11 @@
           "type": "string",
           "format": "date-time",
           "description": "The last time the application-server received any data from the device,\nor an empty string when the device never sent any data."
+        },
+        "isDisabled": {
+          "type": "boolean",
+          "format": "boolean",
+          "description": "Device is disabled."
         }
       }
     },
@@ -688,6 +693,11 @@
         "gatewayID": {
           "type": "string",
           "description": "Gateway ID."
+        },
+        "publishedAt": {
+          "type": "string",
+          "format": "date-time",
+          "description": "Published at timestamp."
         }
       }
     },
@@ -773,6 +783,11 @@
         "payloadJSON": {
           "type": "string",
           "description": "The event payload in JSON encoding."
+        },
+        "publishedAt": {
+          "type": "string",
+          "format": "date-time",
+          "description": "Published at timestamp."
         }
       }
     },
@@ -824,6 +839,11 @@
         "phyPayloadJSON": {
           "type": "string",
           "description": "LoRaWAN PHYPayload."
+        },
+        "publishedAt": {
+          "type": "string",
+          "format": "date-time",
+          "description": "Published at timestamp."
         }
       }
     },

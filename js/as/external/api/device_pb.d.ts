@@ -101,6 +101,9 @@ export class DeviceListItem extends jspb.Message {
   getLastSeenAt(): google_protobuf_timestamp_pb.Timestamp | undefined;
   setLastSeenAt(value?: google_protobuf_timestamp_pb.Timestamp): void;
 
+  getIsDisabled(): boolean;
+  setIsDisabled(value: boolean): void;
+
   serializeBinary(): Uint8Array;
   toObject(includeInstance?: boolean): DeviceListItem.AsObject;
   static toObject(includeInstance: boolean, msg: DeviceListItem): DeviceListItem.AsObject;
@@ -125,6 +128,7 @@ export namespace DeviceListItem {
     deviceStatusBatteryLevelUnavailable: boolean,
     deviceStatusBatteryLevel: number,
     lastSeenAt?: google_protobuf_timestamp_pb.Timestamp.AsObject,
+    isDisabled: boolean,
   }
 }
 
@@ -719,6 +723,11 @@ export class StreamDeviceEventLogsResponse extends jspb.Message {
   getPayloadJson(): string;
   setPayloadJson(value: string): void;
 
+  hasPublishedAt(): boolean;
+  clearPublishedAt(): void;
+  getPublishedAt(): google_protobuf_timestamp_pb.Timestamp | undefined;
+  setPublishedAt(value?: google_protobuf_timestamp_pb.Timestamp): void;
+
   serializeBinary(): Uint8Array;
   toObject(includeInstance?: boolean): StreamDeviceEventLogsResponse.AsObject;
   static toObject(includeInstance: boolean, msg: StreamDeviceEventLogsResponse): StreamDeviceEventLogsResponse.AsObject;
@@ -733,6 +742,7 @@ export namespace StreamDeviceEventLogsResponse {
   export type AsObject = {
     type: string,
     payloadJson: string,
+    publishedAt?: google_protobuf_timestamp_pb.Timestamp.AsObject,
   }
 }
 

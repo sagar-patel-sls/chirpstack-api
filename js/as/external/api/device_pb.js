@@ -497,7 +497,8 @@ proto.api.DeviceListItem.toObject = function(includeInstance, msg) {
     deviceStatusExternalPowerSource: msg.getDeviceStatusExternalPowerSource(),
     deviceStatusBatteryLevelUnavailable: msg.getDeviceStatusBatteryLevelUnavailable(),
     deviceStatusBatteryLevel: msg.getDeviceStatusBatteryLevel(),
-    lastSeenAt: (f = msg.getLastSeenAt()) && google_protobuf_timestamp_pb.Timestamp.toObject(includeInstance, f)
+    lastSeenAt: (f = msg.getLastSeenAt()) && google_protobuf_timestamp_pb.Timestamp.toObject(includeInstance, f),
+    isDisabled: msg.getIsDisabled()
   };
 
   if (includeInstance) {
@@ -582,6 +583,10 @@ proto.api.DeviceListItem.deserializeBinaryFromReader = function(msg, reader) {
       var value = new google_protobuf_timestamp_pb.Timestamp;
       reader.readMessage(value,google_protobuf_timestamp_pb.Timestamp.deserializeBinaryFromReader);
       msg.setLastSeenAt(value);
+      break;
+    case 13:
+      var value = /** @type {boolean} */ (reader.readBool());
+      msg.setIsDisabled(value);
       break;
     default:
       reader.skipField();
@@ -704,6 +709,13 @@ proto.api.DeviceListItem.prototype.serializeBinaryToWriter = function (writer) {
       9,
       f,
       google_protobuf_timestamp_pb.Timestamp.serializeBinaryToWriter
+    );
+  }
+  f = this.getIsDisabled();
+  if (f) {
+    writer.writeBool(
+      13,
+      f
     );
   }
 };
@@ -914,6 +926,23 @@ proto.api.DeviceListItem.prototype.clearLastSeenAt = function() {
  */
 proto.api.DeviceListItem.prototype.hasLastSeenAt = function() {
   return jspb.Message.getField(this, 9) != null;
+};
+
+
+/**
+ * optional bool is_disabled = 13;
+ * Note that Boolean fields may be set to 0/1 when serialized from a Java server.
+ * You should avoid comparisons like {@code val === true/false} in those cases.
+ * @return {boolean}
+ */
+proto.api.DeviceListItem.prototype.getIsDisabled = function() {
+  return /** @type {boolean} */ (jspb.Message.getFieldProto3(this, 13, false));
+};
+
+
+/** @param {boolean} value  */
+proto.api.DeviceListItem.prototype.setIsDisabled = function(value) {
+  jspb.Message.setField(this, 13, value);
 };
 
 
@@ -5488,7 +5517,8 @@ proto.api.StreamDeviceEventLogsResponse.prototype.toObject = function(opt_includ
 proto.api.StreamDeviceEventLogsResponse.toObject = function(includeInstance, msg) {
   var f, obj = {
     type: msg.getType(),
-    payloadJson: msg.getPayloadJson()
+    payloadJson: msg.getPayloadJson(),
+    publishedAt: (f = msg.getPublishedAt()) && google_protobuf_timestamp_pb.Timestamp.toObject(includeInstance, f)
   };
 
   if (includeInstance) {
@@ -5532,6 +5562,11 @@ proto.api.StreamDeviceEventLogsResponse.deserializeBinaryFromReader = function(m
     case 2:
       var value = /** @type {string} */ (reader.readString());
       msg.setPayloadJson(value);
+      break;
+    case 3:
+      var value = new google_protobuf_timestamp_pb.Timestamp;
+      reader.readMessage(value,google_protobuf_timestamp_pb.Timestamp.deserializeBinaryFromReader);
+      msg.setPublishedAt(value);
       break;
     default:
       reader.skipField();
@@ -5585,6 +5620,14 @@ proto.api.StreamDeviceEventLogsResponse.prototype.serializeBinaryToWriter = func
       f
     );
   }
+  f = this.getPublishedAt();
+  if (f != null) {
+    writer.writeMessage(
+      3,
+      f,
+      google_protobuf_timestamp_pb.Timestamp.serializeBinaryToWriter
+    );
+  }
 };
 
 
@@ -5624,6 +5667,36 @@ proto.api.StreamDeviceEventLogsResponse.prototype.getPayloadJson = function() {
 /** @param {string} value  */
 proto.api.StreamDeviceEventLogsResponse.prototype.setPayloadJson = function(value) {
   jspb.Message.setField(this, 2, value);
+};
+
+
+/**
+ * optional google.protobuf.Timestamp published_at = 3;
+ * @return {proto.google.protobuf.Timestamp}
+ */
+proto.api.StreamDeviceEventLogsResponse.prototype.getPublishedAt = function() {
+  return /** @type{proto.google.protobuf.Timestamp} */ (
+    jspb.Message.getWrapperField(this, google_protobuf_timestamp_pb.Timestamp, 3));
+};
+
+
+/** @param {proto.google.protobuf.Timestamp|undefined} value  */
+proto.api.StreamDeviceEventLogsResponse.prototype.setPublishedAt = function(value) {
+  jspb.Message.setWrapperField(this, 3, value);
+};
+
+
+proto.api.StreamDeviceEventLogsResponse.prototype.clearPublishedAt = function() {
+  this.setPublishedAt(undefined);
+};
+
+
+/**
+ * Returns whether this field is set.
+ * @return{!boolean}
+ */
+proto.api.StreamDeviceEventLogsResponse.prototype.hasPublishedAt = function() {
+  return jspb.Message.getField(this, 3) != null;
 };
 
 
