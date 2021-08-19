@@ -128,6 +128,9 @@ message Gateway {
 
     // Service-profile ID (UUID string, optional).
     string service_profile_id = 12 [json_name = "serviceProfileID"];
+
+	// Set to true to enable gateway stat notification on global integration.
+	bool stat_notification = 13;
 }
 
 message GatewayBoard {

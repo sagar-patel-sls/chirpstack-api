@@ -47,6 +47,9 @@ export class Gateway extends jspb.Message {
   getServiceProfileId(): string;
   setServiceProfileId(value: string): void;
 
+  getStatNotification(): boolean;
+  setStatNotification(value: boolean): void;
+
   serializeBinary(): Uint8Array;
   toObject(includeInstance?: boolean): Gateway.AsObject;
   static toObject(includeInstance: boolean, msg: Gateway): Gateway.AsObject;
@@ -71,6 +74,7 @@ export namespace Gateway {
     tagsMap: Array<[string, string]>,
     metadataMap: Array<[string, string]>,
     serviceProfileId: string,
+    statNotification: boolean,
   }
 }
 

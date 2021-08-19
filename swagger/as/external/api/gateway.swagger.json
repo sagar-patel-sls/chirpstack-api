@@ -396,6 +396,11 @@
         "serviceProfileID": {
           "type": "string",
           "description": "Service-profile ID (UUID string, optional)."
+        },
+        "statNotification": {
+          "type": "boolean",
+          "format": "boolean",
+          "description": "Set to true to enable gateway stat notification on global integration."
         }
       }
     },

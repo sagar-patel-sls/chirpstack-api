@@ -99,7 +99,8 @@ proto.api.Gateway.toObject = function(includeInstance, msg) {
     proto.api.GatewayBoard.toObject, includeInstance),
     tagsMap: (f = msg.getTagsMap(true)) ? f.toArray() : [],
     metadataMap: (f = msg.getMetadataMap(true)) ? f.toArray() : [],
-    serviceProfileId: msg.getServiceProfileId()
+    serviceProfileId: msg.getServiceProfileId(),
+    statNotification: msg.getStatNotification()
   };
 
   if (includeInstance) {
@@ -190,6 +191,10 @@ proto.api.Gateway.deserializeBinaryFromReader = function(msg, reader) {
     case 12:
       var value = /** @type {string} */ (reader.readString());
       msg.setServiceProfileId(value);
+      break;
+    case 13:
+      var value = /** @type {boolean} */ (reader.readBool());
+      msg.setStatNotification(value);
       break;
     default:
       reader.skipField();
@@ -306,6 +311,13 @@ proto.api.Gateway.prototype.serializeBinaryToWriter = function (writer) {
   if (f.length > 0) {
     writer.writeString(
       12,
+      f
+    );
+  }
+  f = this.getStatNotification();
+  if (f) {
+    writer.writeBool(
+      13,
       f
     );
   }
@@ -519,6 +531,23 @@ proto.api.Gateway.prototype.getServiceProfileId = function() {
 /** @param {string} value  */
 proto.api.Gateway.prototype.setServiceProfileId = function(value) {
   jspb.Message.setField(this, 12, value);
+};
+
+
+/**
+ * optional bool stat_notification = 13;
+ * Note that Boolean fields may be set to 0/1 when serialized from a Java server.
+ * You should avoid comparisons like {@code val === true/false} in those cases.
+ * @return {boolean}
+ */
+proto.api.Gateway.prototype.getStatNotification = function() {
+  return /** @type {boolean} */ (jspb.Message.getFieldProto3(this, 13, false));
+};
+
+
+/** @param {boolean} value  */
+proto.api.Gateway.prototype.setStatNotification = function(value) {
+  jspb.Message.setField(this, 13, value);
 };
 
 
