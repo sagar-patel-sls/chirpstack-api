@@ -1,5 +1,6 @@
 # ChirpStack API
 
+[![Go Reference](https://pkg.go.dev/badge/github.com/sagar-patel-sls/chirpstack-api/go/v3.svg)](https://pkg.go.dev/github.com/sagar-patel-sls/chirpstack-api/go/v3)
 ![Tests](https://github.com/sagar-patel-sls/chirpstack-api/actions/workflows/main.yml/badge.svg?branch=master)
 
 This repository contains the [Protobuf](https://developers.google.com/protocol-buffers/)
