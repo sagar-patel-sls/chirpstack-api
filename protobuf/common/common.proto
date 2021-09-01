@@ -14,6 +14,9 @@ enum Modulation {
 
     // FSK
     FSK = 1;
+
+    // LR-FHSS
+    LR_FHSS = 2;
 }
 
 enum Region {
