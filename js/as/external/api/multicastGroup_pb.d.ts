@@ -37,8 +37,8 @@ export class MulticastGroup extends jspb.Message {
   getPingSlotPeriod(): number;
   setPingSlotPeriod(value: number): void;
 
-  getApplicationId(): number;
-  setApplicationId(value: number): void;
+  getServiceProfileId(): string;
+  setServiceProfileId(value: string): void;
 
   serializeBinary(): Uint8Array;
   toObject(includeInstance?: boolean): MulticastGroup.AsObject;
@@ -62,7 +62,7 @@ export namespace MulticastGroup {
     dr: number,
     frequency: number,
     pingSlotPeriod: number,
-    applicationId: number,
+    serviceProfileId: string,
   }
 }
 
@@ -73,11 +73,11 @@ export class MulticastGroupListItem extends jspb.Message {
   getName(): string;
   setName(value: string): void;
 
-  getApplicationId(): number;
-  setApplicationId(value: number): void;
+  getServiceProfileId(): string;
+  setServiceProfileId(value: string): void;
 
-  getApplicationName(): string;
-  setApplicationName(value: string): void;
+  getServiceProfileName(): string;
+  setServiceProfileName(value: string): void;
 
   serializeBinary(): Uint8Array;
   toObject(includeInstance?: boolean): MulticastGroupListItem.AsObject;
@@ -93,8 +93,8 @@ export namespace MulticastGroupListItem {
   export type AsObject = {
     id: string,
     name: string,
-    applicationId: number,
-    applicationName: string,
+    serviceProfileId: string,
+    serviceProfileName: string,
   }
 }
 
@@ -297,11 +297,11 @@ export class ListMulticastGroupRequest extends jspb.Message {
   getDevEui(): string;
   setDevEui(value: string): void;
 
+  getServiceProfileId(): string;
+  setServiceProfileId(value: string): void;
+
   getSearch(): string;
   setSearch(value: string): void;
-
-  getApplicationId(): number;
-  setApplicationId(value: number): void;
 
   serializeBinary(): Uint8Array;
   toObject(includeInstance?: boolean): ListMulticastGroupRequest.AsObject;
@@ -319,8 +319,8 @@ export namespace ListMulticastGroupRequest {
     offset: number,
     organizationId: number,
     devEui: string,
+    serviceProfileId: string,
     search: string,
-    applicationId: number,
   }
 }
 

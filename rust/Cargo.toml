@@ -6,7 +6,7 @@ homepage = "https://www.chirpstack.io"
 license = "MIT"
 name = "chirpstack_api"
 repository = "https://github.com/sagar-patel-sls/chirpstack-api"
-version = "3.9.7"
+version = "3.9.8"
 
 [features]
 default = ["grpc_support", "rustfmt"]
@@ -14,11 +14,11 @@ grpc_support = ["tonic/transport", "tonic-build/transport", "tokio"]
 rustfmt = ["tonic-build/rustfmt"]
 
 [dependencies]
-prost = "0.8"
-prost-types = "0.8"
+prost = "0.7"
+prost-types = "0.7"
 
-tokio = {version = "1.9", features = ["macros"], optional = true}
-tonic = {version = "0.5", features = ["codegen", "prost"], default-features = false}
+tokio = {version = "1.5", features = ["macros"], optional = true}
+tonic = {version = "0.4", features = ["codegen", "prost"], default-features = false}
 
 [build-dependencies]
-tonic-build = {version = "0.5", features = ["prost"], default-features = false}
+tonic-build = {version = "0.4", features = ["prost"], default-features = false}
