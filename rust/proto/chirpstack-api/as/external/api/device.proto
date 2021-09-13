@@ -174,6 +174,23 @@ message Device {
     bool is_disabled = 10;
 }
 
+message PacketSuccess {
+    // Packet Success Rate (%)
+    // PSR will show only for the last configurable amount of history results. 
+    // We are using only received non-error uplinks frame counter.
+    float PacketSuccessRate = 1 [json_name = "packetSuccessRate"];
+
+    // No. of Lost Packets
+    // Based on frame counter history summation of missing frame counter
+    int32 LostPackets = 2 [json_name = "lostPackets"];
+
+    // Total Packets History
+    // Total No. of packets history used in PSR calculation
+    // Configurable amount of frame counter-history of uplink events (per device)
+    // A configuration setting is available in the Application Server configuration file and its global settings for all devices.
+    int32 TotalPackets = 3 [json_name = "totalPackets"];
+}
+
 message DeviceListItem {
     // Device EUI (HEX encoded).
     string dev_eui = 1 [json_name = "devEUI"]; 
@@ -277,6 +294,11 @@ message GetDeviceResponse {
     // This will set when the network-server was able to resolve the location
     // using the geolocation-server.
     common.Location location = 21;
+
+    // Packet Success Rate (%)
+    // PSR calculation based on the missing frame counter from the history of uplink events (per device).
+    // Returns Packet Success Rate(%), No. of Lost Packets and Total Packets History
+    PacketSuccess packet_success_rate = 22;
 }
 
 message ListDeviceRequest {

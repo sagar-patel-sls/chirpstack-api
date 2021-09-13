@@ -62,6 +62,34 @@ export namespace Device {
   }
 }
 
+export class PacketSuccess extends jspb.Message {
+  getPacketsuccessrate(): number;
+  setPacketsuccessrate(value: number): void;
+
+  getLostpackets(): number;
+  setLostpackets(value: number): void;
+
+  getTotalpackets(): number;
+  setTotalpackets(value: number): void;
+
+  serializeBinary(): Uint8Array;
+  toObject(includeInstance?: boolean): PacketSuccess.AsObject;
+  static toObject(includeInstance: boolean, msg: PacketSuccess): PacketSuccess.AsObject;
+  static extensions: {[key: number]: jspb.ExtensionFieldInfo<jspb.Message>};
+  static extensionsBinary: {[key: number]: jspb.ExtensionFieldBinaryInfo<jspb.Message>};
+  static serializeBinaryToWriter(message: PacketSuccess, writer: jspb.BinaryWriter): void;
+  static deserializeBinary(bytes: Uint8Array): PacketSuccess;
+  static deserializeBinaryFromReader(message: PacketSuccess, reader: jspb.BinaryReader): PacketSuccess;
+}
+
+export namespace PacketSuccess {
+  export type AsObject = {
+    packetsuccessrate: number,
+    lostpackets: number,
+    totalpackets: number,
+  }
+}
+
 export class DeviceListItem extends jspb.Message {
   getDevEui(): string;
   setDevEui(value: string): void;
@@ -228,6 +256,11 @@ export class GetDeviceResponse extends jspb.Message {
   getLocation(): common_common_pb.Location | undefined;
   setLocation(value?: common_common_pb.Location): void;
 
+  hasPacketSuccessRate(): boolean;
+  clearPacketSuccessRate(): void;
+  getPacketSuccessRate(): PacketSuccess | undefined;
+  setPacketSuccessRate(value?: PacketSuccess): void;
+
   serializeBinary(): Uint8Array;
   toObject(includeInstance?: boolean): GetDeviceResponse.AsObject;
   static toObject(includeInstance: boolean, msg: GetDeviceResponse): GetDeviceResponse.AsObject;
@@ -245,6 +278,7 @@ export namespace GetDeviceResponse {
     deviceStatusBattery: number,
     deviceStatusMargin: number,
     location?: common_common_pb.Location.AsObject,
+    packetSuccessRate?: PacketSuccess.AsObject,
   }
 }
 

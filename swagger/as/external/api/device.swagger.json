@@ -744,6 +744,10 @@
         "location": {
           "$ref": "#/definitions/commonLocation",
           "description": "Device location.\nThis will set when the network-server was able to resolve the location\nusing the geolocation-server."
+        },
+        "packetSuccessRate": {
+          "$ref": "#/definitions/apiPacketSuccess",
+          "title": "Packet Success Rate (%)\nPSR calculation based on the missing frame counter from the history of uplink events (per device).\nReturns Packet Success Rate(%), No. of Lost Packets and Total Packets History"
         }
       }
     },
@@ -770,6 +774,26 @@
             "$ref": "#/definitions/apiDeviceListItem"
           },
           "description": "Devices within this result-set."
+        }
+      }
+    },
+    "apiPacketSuccess": {
+      "type": "object",
+      "properties": {
+        "packetSuccessRate": {
+          "type": "number",
+          "format": "float",
+          "description": "Packet Success Rate (%)\nPSR will show only for the last configurable amount of history results. \nWe are using only received non-error uplinks frame counter."
+        },
+        "lostPackets": {
+          "type": "integer",
+          "format": "int32",
+          "title": "No. of Lost Packets\nBased on frame counter history summation of missing frame counter"
+        },
+        "totalPackets": {
+          "type": "integer",
+          "format": "int32",
+          "description": "Total Packets History\nTotal No. of packets history used in PSR calculation\nConfigurable amount of frame counter-history of uplink events (per device)\nA configuration setting is available in the Application Server configuration file and its global settings for all devices."
         }
       }
     },
