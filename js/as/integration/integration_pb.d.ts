@@ -543,6 +543,8 @@ export class GatewayStatsEvent extends jspb.Message {
   getStatsId_asB64(): string;
   setStatsId(value: Uint8Array | string): void;
 
+  getTagsMap(): jspb.Map<string, string>;
+  clearTagsMap(): void;
   serializeBinary(): Uint8Array;
   toObject(includeInstance?: boolean): GatewayStatsEvent.AsObject;
   static toObject(includeInstance: boolean, msg: GatewayStatsEvent): GatewayStatsEvent.AsObject;
@@ -566,6 +568,7 @@ export namespace GatewayStatsEvent {
     txPacketsEmitted: number,
     metaDataMap: Array<[string, string]>,
     statsId: Uint8Array | string,
+    tagsMap: Array<[string, string]>,
   }
 }
 

@@ -3853,7 +3853,8 @@ proto.integration.GatewayStatsEvent.toObject = function(includeInstance, msg) {
     txPacketsReceived: msg.getTxPacketsReceived(),
     txPacketsEmitted: msg.getTxPacketsEmitted(),
     metaDataMap: (f = msg.getMetaDataMap(true)) ? f.toArray() : [],
-    statsId: msg.getStatsId_asB64()
+    statsId: msg.getStatsId_asB64(),
+    tagsMap: (f = msg.getTagsMap(true)) ? f.toArray() : []
   };
 
   if (includeInstance) {
@@ -3937,6 +3938,12 @@ proto.integration.GatewayStatsEvent.deserializeBinaryFromReader = function(msg, 
     case 11:
       var value = /** @type {!Uint8Array} */ (reader.readBytes());
       msg.setStatsId(value);
+      break;
+    case 12:
+      var value = msg.getTagsMap();
+      reader.readMessage(value, function(message, reader) {
+        jspb.Map.deserializeBinary(message, reader, jspb.BinaryReader.prototype.readString, jspb.BinaryReader.prototype.readString);
+         });
       break;
     default:
       reader.skipField();
@@ -4051,6 +4058,10 @@ proto.integration.GatewayStatsEvent.prototype.serializeBinaryToWriter = function
       11,
       f
     );
+  }
+  f = this.getTagsMap(true);
+  if (f && f.getLength() > 0) {
+    f.serializeBinary(12, writer, jspb.BinaryWriter.prototype.writeString, jspb.BinaryWriter.prototype.writeString);
   }
 };
 
@@ -4302,6 +4313,19 @@ proto.integration.GatewayStatsEvent.prototype.getStatsId_asU8 = function() {
 /** @param {!(string|Uint8Array)} value  */
 proto.integration.GatewayStatsEvent.prototype.setStatsId = function(value) {
   jspb.Message.setField(this, 11, value);
+};
+
+
+/**
+ * map<string, string> tags = 12;
+ * @param {boolean=} opt_noLazyCreate Do not create the map if
+ * empty, instead returning `undefined`
+ * @return {!jspb.Map<string,string>}
+ */
+proto.integration.GatewayStatsEvent.prototype.getTagsMap = function(opt_noLazyCreate) {
+  return /** @type {!jspb.Map<string,string>} */ (
+      jspb.Message.getMapField(this, 12, opt_noLazyCreate,
+      null));
 };
 
 

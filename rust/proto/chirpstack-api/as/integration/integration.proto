@@ -357,4 +357,9 @@ message GatewayStatsEvent {
     // Stats ID (UUID).
     // Unique identifier for the gateway stats.
     bytes stats_id = 11 [json_name = "statsID"];
+
+    // Tags (user defined).
+    // These tags are exposed in the stat event payloads or to integration. Tags are
+    // intended for aggregation and filtering.
+    map<string, string> tags = 12;
 }
