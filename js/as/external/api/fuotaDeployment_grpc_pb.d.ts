@@ -4,7 +4,7 @@
 // file: as/external/api/fuotaDeployment.proto
 
 import * as as_external_api_fuotaDeployment_pb from "../../../as/external/api/fuotaDeployment_pb";
-import * as grpc from "grpc";
+import * as grpc from "@grpc/grpc-js";
 
 interface IFUOTADeploymentServiceService extends grpc.ServiceDefinition<grpc.UntypedServiceImplementation> {
   createForDevice: grpc.MethodDefinition<as_external_api_fuotaDeployment_pb.CreateFUOTADeploymentForDeviceRequest, as_external_api_fuotaDeployment_pb.CreateFUOTADeploymentForDeviceResponse>;

@@ -5,7 +5,7 @@
 
 import * as as_external_api_fragmentationDeployment_pb from "../../../as/external/api/fragmentationDeployment_pb";
 import * as google_protobuf_empty_pb from "google-protobuf/google/protobuf/empty_pb";
-import * as grpc from "grpc";
+import * as grpc from "@grpc/grpc-js";
 
 interface IFragmentationDeploymentServiceService extends grpc.ServiceDefinition<grpc.UntypedServiceImplementation> {
   create: grpc.MethodDefinition<as_external_api_fragmentationDeployment_pb.FragmentationDeploymentRequest, as_external_api_fragmentationDeployment_pb.FragmentationDeploymentResponse>;
