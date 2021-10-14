@@ -163,6 +163,28 @@ function deserialize_api_StreamGatewayFrameLogsResponse(buffer_arg) {
   return as_external_api_gateway_pb.StreamGatewayFrameLogsResponse.deserializeBinary(new Uint8Array(buffer_arg));
 }
 
+function serialize_api_StreamGlobalGatewayFrameLogsRequest(arg) {
+  if (!(arg instanceof as_external_api_gateway_pb.StreamGlobalGatewayFrameLogsRequest)) {
+    throw new Error('Expected argument of type api.StreamGlobalGatewayFrameLogsRequest');
+  }
+  return Buffer.from(arg.serializeBinary());
+}
+
+function deserialize_api_StreamGlobalGatewayFrameLogsRequest(buffer_arg) {
+  return as_external_api_gateway_pb.StreamGlobalGatewayFrameLogsRequest.deserializeBinary(new Uint8Array(buffer_arg));
+}
+
+function serialize_api_StreamGlobalGatewayFrameLogsResponse(arg) {
+  if (!(arg instanceof as_external_api_gateway_pb.StreamGlobalGatewayFrameLogsResponse)) {
+    throw new Error('Expected argument of type api.StreamGlobalGatewayFrameLogsResponse');
+  }
+  return Buffer.from(arg.serializeBinary());
+}
+
+function deserialize_api_StreamGlobalGatewayFrameLogsResponse(buffer_arg) {
+  return as_external_api_gateway_pb.StreamGlobalGatewayFrameLogsResponse.deserializeBinary(new Uint8Array(buffer_arg));
+}
+
 function serialize_api_UpdateGatewayRequest(arg) {
   if (!(arg instanceof as_external_api_gateway_pb.UpdateGatewayRequest)) {
     throw new Error('Expected argument of type api.UpdateGatewayRequest');
@@ -301,6 +323,21 @@ streamFrameLogs: {
     requestDeserialize: deserialize_api_StreamGatewayFrameLogsRequest,
     responseSerialize: serialize_api_StreamGatewayFrameLogsResponse,
     responseDeserialize: deserialize_api_StreamGatewayFrameLogsResponse,
+  },
+  // StreamGlobalFrameLogs streams the uplink and downlink frame-logs for all gateways of given organization.
+// Notes:
+//   * These are the raw LoRaWAN frames and this endpoint is intended for debugging only.
+//   * This endpoint does not work from a web-browser.
+streamGlobalFrameLogs: {
+    path: '/api.GatewayService/StreamGlobalFrameLogs',
+    requestStream: false,
+    responseStream: true,
+    requestType: as_external_api_gateway_pb.StreamGlobalGatewayFrameLogsRequest,
+    responseType: as_external_api_gateway_pb.StreamGlobalGatewayFrameLogsResponse,
+    requestSerialize: serialize_api_StreamGlobalGatewayFrameLogsRequest,
+    requestDeserialize: deserialize_api_StreamGlobalGatewayFrameLogsRequest,
+    responseSerialize: serialize_api_StreamGlobalGatewayFrameLogsResponse,
+    responseDeserialize: deserialize_api_StreamGlobalGatewayFrameLogsResponse,
   },
 };
 

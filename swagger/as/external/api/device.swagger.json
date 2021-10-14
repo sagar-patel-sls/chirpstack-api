@@ -15,6 +15,33 @@
     "application/json"
   ],
   "paths": {
+    "/api/applications/{application_id}/devices/frames": {
+      "get": {
+        "summary": "StreamGlobalFrameLogs streams the uplink and downlink frame-logs for all devices of given Application.\n  * These are the raw LoRaWAN frames and this endpoint is intended for debugging only.\n  * This endpoint does not work from a web-browser.",
+        "operationId": "StreamGlobalFrameLogs",
+        "responses": {
+          "200": {
+            "description": "A successful response.(streaming responses)",
+            "schema": {
+              "$ref": "#/x-stream-definitions/apiStreamGlobalDeviceFrameLogsResponse"
+            }
+          }
+        },
+        "parameters": [
+          {
+            "name": "application_id",
+            "description": "Application ID.",
+            "in": "path",
+            "required": true,
+            "type": "string",
+            "format": "int64"
+          }
+        ],
+        "tags": [
+          "DeviceService"
+        ]
+      }
+    },
     "/api/devices": {
       "get": {
         "summary": "List returns the available devices.",
@@ -937,6 +964,23 @@
         }
       }
     },
+    "apiStreamGlobalDeviceFrameLogsResponse": {
+      "type": "object",
+      "properties": {
+        "devEUI": {
+          "type": "string",
+          "description": "Device EUI (HEX encoded)."
+        },
+        "uplinkFrame": {
+          "$ref": "#/definitions/apiUplinkFrameLog",
+          "description": "Contains an uplink frame."
+        },
+        "downlinkFrame": {
+          "$ref": "#/definitions/apiDownlinkFrameLog",
+          "description": "Contains a downlink frame."
+        }
+      }
+    },
     "apiUpdateDeviceKeysRequest": {
       "type": "object",
       "properties": {
@@ -1402,6 +1446,18 @@
         }
       },
       "title": "Stream result of apiStreamDeviceFrameLogsResponse"
+    },
+    "apiStreamGlobalDeviceFrameLogsResponse": {
+      "type": "object",
+      "properties": {
+        "result": {
+          "$ref": "#/definitions/apiStreamGlobalDeviceFrameLogsResponse"
+        },
+        "error": {
+          "$ref": "#/definitions/runtimeStreamError"
+        }
+      },
+      "title": "Stream result of apiStreamGlobalDeviceFrameLogsResponse"
     }
   }
 }

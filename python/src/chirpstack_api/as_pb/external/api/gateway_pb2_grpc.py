@@ -61,6 +61,11 @@ class GatewayServiceStub(object):
                 request_serializer=chirpstack__api_dot_as__pb_dot_external_dot_api_dot_gateway__pb2.StreamGatewayFrameLogsRequest.SerializeToString,
                 response_deserializer=chirpstack__api_dot_as__pb_dot_external_dot_api_dot_gateway__pb2.StreamGatewayFrameLogsResponse.FromString,
                 )
+        self.StreamGlobalFrameLogs = channel.unary_stream(
+                '/api.GatewayService/StreamGlobalFrameLogs',
+                request_serializer=chirpstack__api_dot_as__pb_dot_external_dot_api_dot_gateway__pb2.StreamGlobalGatewayFrameLogsRequest.SerializeToString,
+                response_deserializer=chirpstack__api_dot_as__pb_dot_external_dot_api_dot_gateway__pb2.StreamGlobalGatewayFrameLogsResponse.FromString,
+                )
 
 
 class GatewayServiceServicer(object):
@@ -136,6 +141,16 @@ class GatewayServiceServicer(object):
         context.set_details('Method not implemented!')
         raise NotImplementedError('Method not implemented!')
 
+    def StreamGlobalFrameLogs(self, request, context):
+        """StreamGlobalFrameLogs streams the uplink and downlink frame-logs for all gateways of given organization.
+        Notes:
+        * These are the raw LoRaWAN frames and this endpoint is intended for debugging only.
+        * This endpoint does not work from a web-browser.
+        """
+        context.set_code(grpc.StatusCode.UNIMPLEMENTED)
+        context.set_details('Method not implemented!')
+        raise NotImplementedError('Method not implemented!')
+
 
 def add_GatewayServiceServicer_to_server(servicer, server):
     rpc_method_handlers = {
@@ -183,6 +198,11 @@ def add_GatewayServiceServicer_to_server(servicer, server):
                     servicer.StreamFrameLogs,
                     request_deserializer=chirpstack__api_dot_as__pb_dot_external_dot_api_dot_gateway__pb2.StreamGatewayFrameLogsRequest.FromString,
                     response_serializer=chirpstack__api_dot_as__pb_dot_external_dot_api_dot_gateway__pb2.StreamGatewayFrameLogsResponse.SerializeToString,
+            ),
+            'StreamGlobalFrameLogs': grpc.unary_stream_rpc_method_handler(
+                    servicer.StreamGlobalFrameLogs,
+                    request_deserializer=chirpstack__api_dot_as__pb_dot_external_dot_api_dot_gateway__pb2.StreamGlobalGatewayFrameLogsRequest.FromString,
+                    response_serializer=chirpstack__api_dot_as__pb_dot_external_dot_api_dot_gateway__pb2.StreamGlobalGatewayFrameLogsResponse.SerializeToString,
             ),
     }
     generic_handler = grpc.method_handlers_generic_handler(
@@ -345,5 +365,22 @@ class GatewayService(object):
         return grpc.experimental.unary_stream(request, target, '/api.GatewayService/StreamFrameLogs',
             chirpstack__api_dot_as__pb_dot_external_dot_api_dot_gateway__pb2.StreamGatewayFrameLogsRequest.SerializeToString,
             chirpstack__api_dot_as__pb_dot_external_dot_api_dot_gateway__pb2.StreamGatewayFrameLogsResponse.FromString,
+            options, channel_credentials,
+            insecure, call_credentials, compression, wait_for_ready, timeout, metadata)
+
+    @staticmethod
+    def StreamGlobalFrameLogs(request,
+            target,
+            options=(),
+            channel_credentials=None,
+            call_credentials=None,
+            insecure=False,
+            compression=None,
+            wait_for_ready=None,
+            timeout=None,
+            metadata=None):
+        return grpc.experimental.unary_stream(request, target, '/api.GatewayService/StreamGlobalFrameLogs',
+            chirpstack__api_dot_as__pb_dot_external_dot_api_dot_gateway__pb2.StreamGlobalGatewayFrameLogsRequest.SerializeToString,
+            chirpstack__api_dot_as__pb_dot_external_dot_api_dot_gateway__pb2.StreamGlobalGatewayFrameLogsResponse.FromString,
             options, channel_credentials,
             insecure, call_credentials, compression, wait_for_ready, timeout, metadata)

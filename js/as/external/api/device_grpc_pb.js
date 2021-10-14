@@ -251,6 +251,28 @@ function deserialize_api_StreamDeviceFrameLogsResponse(buffer_arg) {
   return as_external_api_device_pb.StreamDeviceFrameLogsResponse.deserializeBinary(new Uint8Array(buffer_arg));
 }
 
+function serialize_api_StreamGlobalDeviceEventLogsRequest(arg) {
+  if (!(arg instanceof as_external_api_device_pb.StreamGlobalDeviceEventLogsRequest)) {
+    throw new Error('Expected argument of type api.StreamGlobalDeviceEventLogsRequest');
+  }
+  return Buffer.from(arg.serializeBinary());
+}
+
+function deserialize_api_StreamGlobalDeviceEventLogsRequest(buffer_arg) {
+  return as_external_api_device_pb.StreamGlobalDeviceEventLogsRequest.deserializeBinary(new Uint8Array(buffer_arg));
+}
+
+function serialize_api_StreamGlobalDeviceFrameLogsResponse(arg) {
+  if (!(arg instanceof as_external_api_device_pb.StreamGlobalDeviceFrameLogsResponse)) {
+    throw new Error('Expected argument of type api.StreamGlobalDeviceFrameLogsResponse');
+  }
+  return Buffer.from(arg.serializeBinary());
+}
+
+function deserialize_api_StreamGlobalDeviceFrameLogsResponse(buffer_arg) {
+  return as_external_api_device_pb.StreamGlobalDeviceFrameLogsResponse.deserializeBinary(new Uint8Array(buffer_arg));
+}
+
 function serialize_api_UpdateDeviceKeysRequest(arg) {
   if (!(arg instanceof as_external_api_device_pb.UpdateDeviceKeysRequest)) {
     throw new Error('Expected argument of type api.UpdateDeviceKeysRequest');
@@ -482,6 +504,20 @@ streamEventLogs: {
     requestDeserialize: deserialize_api_StreamDeviceEventLogsRequest,
     responseSerialize: serialize_api_StreamDeviceEventLogsResponse,
     responseDeserialize: deserialize_api_StreamDeviceEventLogsResponse,
+  },
+  // StreamGlobalFrameLogs streams the uplink and downlink frame-logs for all devices of given Application.
+//   * These are the raw LoRaWAN frames and this endpoint is intended for debugging only.
+//   * This endpoint does not work from a web-browser.
+streamGlobalFrameLogs: {
+    path: '/api.DeviceService/StreamGlobalFrameLogs',
+    requestStream: false,
+    responseStream: true,
+    requestType: as_external_api_device_pb.StreamGlobalDeviceEventLogsRequest,
+    responseType: as_external_api_device_pb.StreamGlobalDeviceFrameLogsResponse,
+    requestSerialize: serialize_api_StreamGlobalDeviceEventLogsRequest,
+    requestDeserialize: deserialize_api_StreamGlobalDeviceEventLogsRequest,
+    responseSerialize: serialize_api_StreamGlobalDeviceFrameLogsResponse,
+    responseDeserialize: deserialize_api_StreamGlobalDeviceFrameLogsResponse,
   },
 };
 

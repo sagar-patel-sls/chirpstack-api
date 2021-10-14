@@ -38,7 +38,7 @@ service GatewayService {
 			body: "*"
 		};
 	}
-	
+
 	// Delete deletes the gateway matching the given mac address.
 	rpc Delete(DeleteGatewayRequest) returns (google.protobuf.Empty) {
 		option (google.api.http) = {
@@ -86,6 +86,16 @@ service GatewayService {
             get: "/api/gateways/{gateway_id}/frames"
         };
 	}
+
+    // StreamGlobalFrameLogs streams the uplink and downlink frame-logs for all gateways of given organization.
+	// Notes:
+	//   * These are the raw LoRaWAN frames and this endpoint is intended for debugging only.
+	//   * This endpoint does not work from a web-browser.
+    rpc StreamGlobalFrameLogs(StreamGlobalGatewayFrameLogsRequest) returns (stream StreamGlobalGatewayFrameLogsResponse) {
+        option (google.api.http) = {
+            get: "/api/organizations/{organization_id}/gateways/frames"
+        };
+	}
 }
 
 message Gateway {
@@ -94,7 +104,7 @@ message Gateway {
 
 	// Gateway name.
 	string name = 2;
-	
+
 	// Gateway description.
 	string description = 3;
 
@@ -154,16 +164,16 @@ message GetGatewayRequest {
 message GetGatewayResponse {
 	// Gateway object.
 	Gateway gateway = 1;
-	
+
 	// Created at timestamp.
 	google.protobuf.Timestamp created_at = 2;
-	
+
 	// Last update timestamp.
 	google.protobuf.Timestamp updated_at = 3;
-	
+
 	// First seen at timestamp.
 	google.protobuf.Timestamp first_seen_at = 4;
-	
+
 	// Last seen at timestamp.
 	google.protobuf.Timestamp last_seen_at = 5;
 };
@@ -211,16 +221,16 @@ message ListGatewayRequest {
 message GatewayListItem {
 	// Gateway ID (HEX encoded).
 	string id = 1;
-	
+
 	// A name for the gateway
 	string name = 2;
-	
+
 	// A description for the gateway
 	string description = 3;
 
 	// Create timestamp.
 	google.protobuf.Timestamp created_at = 4;
-	
+
 	// Last update timestamp.
 	google.protobuf.Timestamp updated_at = 5;
 
@@ -273,20 +283,20 @@ message GatewayStats {
 	// Packets transmitted by the gateway.
 	int32 tx_packets_emitted = 5;
 
-	// Tx packets per frequency.
-	map<uint32, uint32> tx_packets_per_frequency = 6;
+    // Tx packets per frequency.
+    map<uint32, uint32> tx_packets_per_frequency = 6;
 
-	// Rx packets per frequency.
-	map<uint32, uint32> rx_packets_per_frequency = 7;
-	
-	// Tx packets per DR.
-	map<uint32, uint32> tx_packets_per_dr = 8;
-	
-	// Rx packets per DR.
-	map<uint32, uint32> rx_packets_per_dr = 9;
-	
-	// Tx packets per status.
-	map<string, uint32> tx_packets_per_status = 10;
+    // Rx packets per frequency.
+    map<uint32, uint32> rx_packets_per_frequency = 7;
+
+    // Tx packets per DR.
+    map<uint32, uint32> tx_packets_per_dr = 8;
+
+    // Rx packets per DR.
+    map<uint32, uint32> rx_packets_per_dr = 9;
+
+    // Tx packets per status.
+    map<string, uint32> tx_packets_per_status = 10;
 }
 
 message GetGatewayStatsRequest {
@@ -320,10 +330,10 @@ message PingRX {
 
 	// Latitude of the gateway -90.0 to 90.0.
 	double latitude = 4;
-	
+
 	// Longitude of the gateway -180.0 to 180.0.
 	double longitude = 5;
-	
+
 	// Altitude of the gateway in meters.
 	double altitude = 6;
 }
@@ -359,5 +369,23 @@ message StreamGatewayFrameLogsResponse {
 
         // Contains a downlink frame.
         DownlinkFrameLog downlink_frame = 2;
+    }
+}
+
+message StreamGlobalGatewayFrameLogsRequest {
+	// Organization ID.
+	int64 organization_id = 1 [json_name = "organizationID"];
+}
+
+message StreamGlobalGatewayFrameLogsResponse {
+	// Gateway ID (HEX encoded).
+	string gateway_eui = 1 [json_name = "gatewayEUI"];
+
+    oneof frame {
+        // Contains an uplink frame.
+        UplinkFrameLog uplink_frame = 2;
+
+        // Contains a downlink frame.
+        DownlinkFrameLog downlink_frame = 3;
     }
 }

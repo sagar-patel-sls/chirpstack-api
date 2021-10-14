@@ -96,6 +96,11 @@ class DeviceServiceStub(object):
                 request_serializer=chirpstack__api_dot_as__pb_dot_external_dot_api_dot_device__pb2.StreamDeviceEventLogsRequest.SerializeToString,
                 response_deserializer=chirpstack__api_dot_as__pb_dot_external_dot_api_dot_device__pb2.StreamDeviceEventLogsResponse.FromString,
                 )
+        self.StreamGlobalFrameLogs = channel.unary_stream(
+                '/api.DeviceService/StreamGlobalFrameLogs',
+                request_serializer=chirpstack__api_dot_as__pb_dot_external_dot_api_dot_device__pb2.StreamGlobalDeviceEventLogsRequest.SerializeToString,
+                response_deserializer=chirpstack__api_dot_as__pb_dot_external_dot_api_dot_device__pb2.StreamGlobalDeviceFrameLogsResponse.FromString,
+                )
 
 
 class DeviceServiceServicer(object):
@@ -218,6 +223,15 @@ class DeviceServiceServicer(object):
         context.set_details('Method not implemented!')
         raise NotImplementedError('Method not implemented!')
 
+    def StreamGlobalFrameLogs(self, request, context):
+        """StreamGlobalFrameLogs streams the uplink and downlink frame-logs for all devices of given Application.
+        * These are the raw LoRaWAN frames and this endpoint is intended for debugging only.
+        * This endpoint does not work from a web-browser.
+        """
+        context.set_code(grpc.StatusCode.UNIMPLEMENTED)
+        context.set_details('Method not implemented!')
+        raise NotImplementedError('Method not implemented!')
+
 
 def add_DeviceServiceServicer_to_server(servicer, server):
     rpc_method_handlers = {
@@ -300,6 +314,11 @@ def add_DeviceServiceServicer_to_server(servicer, server):
                     servicer.StreamEventLogs,
                     request_deserializer=chirpstack__api_dot_as__pb_dot_external_dot_api_dot_device__pb2.StreamDeviceEventLogsRequest.FromString,
                     response_serializer=chirpstack__api_dot_as__pb_dot_external_dot_api_dot_device__pb2.StreamDeviceEventLogsResponse.SerializeToString,
+            ),
+            'StreamGlobalFrameLogs': grpc.unary_stream_rpc_method_handler(
+                    servicer.StreamGlobalFrameLogs,
+                    request_deserializer=chirpstack__api_dot_as__pb_dot_external_dot_api_dot_device__pb2.StreamGlobalDeviceEventLogsRequest.FromString,
+                    response_serializer=chirpstack__api_dot_as__pb_dot_external_dot_api_dot_device__pb2.StreamGlobalDeviceFrameLogsResponse.SerializeToString,
             ),
     }
     generic_handler = grpc.method_handlers_generic_handler(
@@ -581,5 +600,22 @@ class DeviceService(object):
         return grpc.experimental.unary_stream(request, target, '/api.DeviceService/StreamEventLogs',
             chirpstack__api_dot_as__pb_dot_external_dot_api_dot_device__pb2.StreamDeviceEventLogsRequest.SerializeToString,
             chirpstack__api_dot_as__pb_dot_external_dot_api_dot_device__pb2.StreamDeviceEventLogsResponse.FromString,
+            options, channel_credentials,
+            insecure, call_credentials, compression, wait_for_ready, timeout, metadata)
+
+    @staticmethod
+    def StreamGlobalFrameLogs(request,
+            target,
+            options=(),
+            channel_credentials=None,
+            call_credentials=None,
+            insecure=False,
+            compression=None,
+            wait_for_ready=None,
+            timeout=None,
+            metadata=None):
+        return grpc.experimental.unary_stream(request, target, '/api.DeviceService/StreamGlobalFrameLogs',
+            chirpstack__api_dot_as__pb_dot_external_dot_api_dot_device__pb2.StreamGlobalDeviceEventLogsRequest.SerializeToString,
+            chirpstack__api_dot_as__pb_dot_external_dot_api_dot_device__pb2.StreamGlobalDeviceFrameLogsResponse.FromString,
             options, channel_credentials,
             insecure, call_credentials, compression, wait_for_ready, timeout, metadata)

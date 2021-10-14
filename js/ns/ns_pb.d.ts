@@ -1606,6 +1606,47 @@ export namespace StreamFrameLogsForGatewayResponse {
   }
 }
 
+export class StreamGlobalFrameLogsForGatewayResponse extends jspb.Message {
+  hasUplinkFrameSet(): boolean;
+  clearUplinkFrameSet(): void;
+  getUplinkFrameSet(): UplinkFrameLog | undefined;
+  setUplinkFrameSet(value?: UplinkFrameLog): void;
+
+  hasDownlinkFrame(): boolean;
+  clearDownlinkFrame(): void;
+  getDownlinkFrame(): DownlinkFrameLog | undefined;
+  setDownlinkFrame(value?: DownlinkFrameLog): void;
+
+  getGatewayEui(): Uint8Array | string;
+  getGatewayEui_asU8(): Uint8Array;
+  getGatewayEui_asB64(): string;
+  setGatewayEui(value: Uint8Array | string): void;
+
+  getFrameCase(): StreamGlobalFrameLogsForGatewayResponse.FrameCase;
+  serializeBinary(): Uint8Array;
+  toObject(includeInstance?: boolean): StreamGlobalFrameLogsForGatewayResponse.AsObject;
+  static toObject(includeInstance: boolean, msg: StreamGlobalFrameLogsForGatewayResponse): StreamGlobalFrameLogsForGatewayResponse.AsObject;
+  static extensions: {[key: number]: jspb.ExtensionFieldInfo<jspb.Message>};
+  static extensionsBinary: {[key: number]: jspb.ExtensionFieldBinaryInfo<jspb.Message>};
+  static serializeBinaryToWriter(message: StreamGlobalFrameLogsForGatewayResponse, writer: jspb.BinaryWriter): void;
+  static deserializeBinary(bytes: Uint8Array): StreamGlobalFrameLogsForGatewayResponse;
+  static deserializeBinaryFromReader(message: StreamGlobalFrameLogsForGatewayResponse, reader: jspb.BinaryReader): StreamGlobalFrameLogsForGatewayResponse;
+}
+
+export namespace StreamGlobalFrameLogsForGatewayResponse {
+  export type AsObject = {
+    uplinkFrameSet?: UplinkFrameLog.AsObject,
+    downlinkFrame?: DownlinkFrameLog.AsObject,
+    gatewayEui: Uint8Array | string,
+  }
+
+  export enum FrameCase {
+    FRAME_NOT_SET = 0,
+    UPLINK_FRAME_SET = 1,
+    DOWNLINK_FRAME = 2,
+  }
+}
+
 export class StreamFrameLogsForDeviceRequest extends jspb.Message {
   getDevEui(): Uint8Array | string;
   getDevEui_asU8(): Uint8Array;
@@ -1654,6 +1695,47 @@ export namespace StreamFrameLogsForDeviceResponse {
   export type AsObject = {
     uplinkFrameSet?: UplinkFrameLog.AsObject,
     downlinkFrame?: DownlinkFrameLog.AsObject,
+  }
+
+  export enum FrameCase {
+    FRAME_NOT_SET = 0,
+    UPLINK_FRAME_SET = 1,
+    DOWNLINK_FRAME = 2,
+  }
+}
+
+export class StreamGlobalFrameLogsForDeviceResponse extends jspb.Message {
+  hasUplinkFrameSet(): boolean;
+  clearUplinkFrameSet(): void;
+  getUplinkFrameSet(): UplinkFrameLog | undefined;
+  setUplinkFrameSet(value?: UplinkFrameLog): void;
+
+  hasDownlinkFrame(): boolean;
+  clearDownlinkFrame(): void;
+  getDownlinkFrame(): DownlinkFrameLog | undefined;
+  setDownlinkFrame(value?: DownlinkFrameLog): void;
+
+  getDevEui(): Uint8Array | string;
+  getDevEui_asU8(): Uint8Array;
+  getDevEui_asB64(): string;
+  setDevEui(value: Uint8Array | string): void;
+
+  getFrameCase(): StreamGlobalFrameLogsForDeviceResponse.FrameCase;
+  serializeBinary(): Uint8Array;
+  toObject(includeInstance?: boolean): StreamGlobalFrameLogsForDeviceResponse.AsObject;
+  static toObject(includeInstance: boolean, msg: StreamGlobalFrameLogsForDeviceResponse): StreamGlobalFrameLogsForDeviceResponse.AsObject;
+  static extensions: {[key: number]: jspb.ExtensionFieldInfo<jspb.Message>};
+  static extensionsBinary: {[key: number]: jspb.ExtensionFieldBinaryInfo<jspb.Message>};
+  static serializeBinaryToWriter(message: StreamGlobalFrameLogsForDeviceResponse, writer: jspb.BinaryWriter): void;
+  static deserializeBinary(bytes: Uint8Array): StreamGlobalFrameLogsForDeviceResponse;
+  static deserializeBinaryFromReader(message: StreamGlobalFrameLogsForDeviceResponse, reader: jspb.BinaryReader): StreamGlobalFrameLogsForDeviceResponse;
+}
+
+export namespace StreamGlobalFrameLogsForDeviceResponse {
+  export type AsObject = {
+    uplinkFrameSet?: UplinkFrameLog.AsObject,
+    downlinkFrame?: DownlinkFrameLog.AsObject,
+    devEui: Uint8Array | string,
   }
 
   export enum FrameCase {

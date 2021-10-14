@@ -92,6 +92,8 @@ goog.exportSymbol('proto.ns.StreamFrameLogsForDeviceRequest', null, global);
 goog.exportSymbol('proto.ns.StreamFrameLogsForDeviceResponse', null, global);
 goog.exportSymbol('proto.ns.StreamFrameLogsForGatewayRequest', null, global);
 goog.exportSymbol('proto.ns.StreamFrameLogsForGatewayResponse', null, global);
+goog.exportSymbol('proto.ns.StreamGlobalFrameLogsForDeviceResponse', null, global);
+goog.exportSymbol('proto.ns.StreamGlobalFrameLogsForGatewayResponse', null, global);
 goog.exportSymbol('proto.ns.UpdateDeviceProfileRequest', null, global);
 goog.exportSymbol('proto.ns.UpdateDeviceRequest', null, global);
 goog.exportSymbol('proto.ns.UpdateGatewayProfileRequest', null, global);
@@ -12966,6 +12968,303 @@ proto.ns.StreamFrameLogsForGatewayResponse.prototype.hasDownlinkFrame = function
  * @extends {jspb.Message}
  * @constructor
  */
+proto.ns.StreamGlobalFrameLogsForGatewayResponse = function(opt_data) {
+  jspb.Message.initialize(this, opt_data, 0, -1, null, proto.ns.StreamGlobalFrameLogsForGatewayResponse.oneofGroups_);
+};
+goog.inherits(proto.ns.StreamGlobalFrameLogsForGatewayResponse, jspb.Message);
+if (goog.DEBUG && !COMPILED) {
+  proto.ns.StreamGlobalFrameLogsForGatewayResponse.displayName = 'proto.ns.StreamGlobalFrameLogsForGatewayResponse';
+}
+/**
+ * Oneof group definitions for this message. Each group defines the field
+ * numbers belonging to that group. When of these fields' value is set, all
+ * other fields in the group are cleared. During deserialization, if multiple
+ * fields are encountered for a group, only the last value seen will be kept.
+ * @private {!Array<!Array<number>>}
+ * @const
+ */
+proto.ns.StreamGlobalFrameLogsForGatewayResponse.oneofGroups_ = [[1,2]];
+
+/**
+ * @enum {number}
+ */
+proto.ns.StreamGlobalFrameLogsForGatewayResponse.FrameCase = {
+  FRAME_NOT_SET: 0,
+  UPLINK_FRAME_SET: 1,
+  DOWNLINK_FRAME: 2
+};
+
+/**
+ * @return {proto.ns.StreamGlobalFrameLogsForGatewayResponse.FrameCase}
+ */
+proto.ns.StreamGlobalFrameLogsForGatewayResponse.prototype.getFrameCase = function() {
+  return /** @type {proto.ns.StreamGlobalFrameLogsForGatewayResponse.FrameCase} */(jspb.Message.computeOneofCase(this, proto.ns.StreamGlobalFrameLogsForGatewayResponse.oneofGroups_[0]));
+};
+
+
+
+if (jspb.Message.GENERATE_TO_OBJECT) {
+/**
+ * Creates an object representation of this proto suitable for use in Soy templates.
+ * Field names that are reserved in JavaScript and will be renamed to pb_name.
+ * To access a reserved field use, foo.pb_<name>, eg, foo.pb_default.
+ * For the list of reserved names please see:
+ *     com.google.apps.jspb.JsClassTemplate.JS_RESERVED_WORDS.
+ * @param {boolean=} opt_includeInstance Whether to include the JSPB instance
+ *     for transitional soy proto support: http://goto/soy-param-migration
+ * @return {!Object}
+ */
+proto.ns.StreamGlobalFrameLogsForGatewayResponse.prototype.toObject = function(opt_includeInstance) {
+  return proto.ns.StreamGlobalFrameLogsForGatewayResponse.toObject(opt_includeInstance, this);
+};
+
+
+/**
+ * Static version of the {@see toObject} method.
+ * @param {boolean|undefined} includeInstance Whether to include the JSPB
+ *     instance for transitional soy proto support:
+ *     http://goto/soy-param-migration
+ * @param {!proto.ns.StreamGlobalFrameLogsForGatewayResponse} msg The msg instance to transform.
+ * @return {!Object}
+ */
+proto.ns.StreamGlobalFrameLogsForGatewayResponse.toObject = function(includeInstance, msg) {
+  var f, obj = {
+    uplinkFrameSet: (f = msg.getUplinkFrameSet()) && proto.ns.UplinkFrameLog.toObject(includeInstance, f),
+    downlinkFrame: (f = msg.getDownlinkFrame()) && proto.ns.DownlinkFrameLog.toObject(includeInstance, f),
+    gatewayEui: msg.getGatewayEui_asB64()
+  };
+
+  if (includeInstance) {
+    obj.$jspbMessageInstance = msg;
+  }
+  return obj;
+};
+}
+
+
+/**
+ * Deserializes binary data (in protobuf wire format).
+ * @param {jspb.ByteSource} bytes The bytes to deserialize.
+ * @return {!proto.ns.StreamGlobalFrameLogsForGatewayResponse}
+ */
+proto.ns.StreamGlobalFrameLogsForGatewayResponse.deserializeBinary = function(bytes) {
+  var reader = new jspb.BinaryReader(bytes);
+  var msg = new proto.ns.StreamGlobalFrameLogsForGatewayResponse;
+  return proto.ns.StreamGlobalFrameLogsForGatewayResponse.deserializeBinaryFromReader(msg, reader);
+};
+
+
+/**
+ * Deserializes binary data (in protobuf wire format) from the
+ * given reader into the given message object.
+ * @param {!proto.ns.StreamGlobalFrameLogsForGatewayResponse} msg The message object to deserialize into.
+ * @param {!jspb.BinaryReader} reader The BinaryReader to use.
+ * @return {!proto.ns.StreamGlobalFrameLogsForGatewayResponse}
+ */
+proto.ns.StreamGlobalFrameLogsForGatewayResponse.deserializeBinaryFromReader = function(msg, reader) {
+  while (reader.nextField()) {
+    if (reader.isEndGroup()) {
+      break;
+    }
+    var field = reader.getFieldNumber();
+    switch (field) {
+    case 1:
+      var value = new proto.ns.UplinkFrameLog;
+      reader.readMessage(value,proto.ns.UplinkFrameLog.deserializeBinaryFromReader);
+      msg.setUplinkFrameSet(value);
+      break;
+    case 2:
+      var value = new proto.ns.DownlinkFrameLog;
+      reader.readMessage(value,proto.ns.DownlinkFrameLog.deserializeBinaryFromReader);
+      msg.setDownlinkFrame(value);
+      break;
+    case 3:
+      var value = /** @type {!Uint8Array} */ (reader.readBytes());
+      msg.setGatewayEui(value);
+      break;
+    default:
+      reader.skipField();
+      break;
+    }
+  }
+  return msg;
+};
+
+
+/**
+ * Class method variant: serializes the given message to binary data
+ * (in protobuf wire format), writing to the given BinaryWriter.
+ * @param {!proto.ns.StreamGlobalFrameLogsForGatewayResponse} message
+ * @param {!jspb.BinaryWriter} writer
+ */
+proto.ns.StreamGlobalFrameLogsForGatewayResponse.serializeBinaryToWriter = function(message, writer) {
+  message.serializeBinaryToWriter(writer);
+};
+
+
+/**
+ * Serializes the message to binary data (in protobuf wire format).
+ * @return {!Uint8Array}
+ */
+proto.ns.StreamGlobalFrameLogsForGatewayResponse.prototype.serializeBinary = function() {
+  var writer = new jspb.BinaryWriter();
+  this.serializeBinaryToWriter(writer);
+  return writer.getResultBuffer();
+};
+
+
+/**
+ * Serializes the message to binary data (in protobuf wire format),
+ * writing to the given BinaryWriter.
+ * @param {!jspb.BinaryWriter} writer
+ */
+proto.ns.StreamGlobalFrameLogsForGatewayResponse.prototype.serializeBinaryToWriter = function (writer) {
+  var f = undefined;
+  f = this.getUplinkFrameSet();
+  if (f != null) {
+    writer.writeMessage(
+      1,
+      f,
+      proto.ns.UplinkFrameLog.serializeBinaryToWriter
+    );
+  }
+  f = this.getDownlinkFrame();
+  if (f != null) {
+    writer.writeMessage(
+      2,
+      f,
+      proto.ns.DownlinkFrameLog.serializeBinaryToWriter
+    );
+  }
+  f = this.getGatewayEui_asU8();
+  if (f.length > 0) {
+    writer.writeBytes(
+      3,
+      f
+    );
+  }
+};
+
+
+/**
+ * Creates a deep clone of this proto. No data is shared with the original.
+ * @return {!proto.ns.StreamGlobalFrameLogsForGatewayResponse} The clone.
+ */
+proto.ns.StreamGlobalFrameLogsForGatewayResponse.prototype.cloneMessage = function() {
+  return /** @type {!proto.ns.StreamGlobalFrameLogsForGatewayResponse} */ (jspb.Message.cloneMessage(this));
+};
+
+
+/**
+ * optional UplinkFrameLog uplink_frame_set = 1;
+ * @return {proto.ns.UplinkFrameLog}
+ */
+proto.ns.StreamGlobalFrameLogsForGatewayResponse.prototype.getUplinkFrameSet = function() {
+  return /** @type{proto.ns.UplinkFrameLog} */ (
+    jspb.Message.getWrapperField(this, proto.ns.UplinkFrameLog, 1));
+};
+
+
+/** @param {proto.ns.UplinkFrameLog|undefined} value  */
+proto.ns.StreamGlobalFrameLogsForGatewayResponse.prototype.setUplinkFrameSet = function(value) {
+  jspb.Message.setOneofWrapperField(this, 1, proto.ns.StreamGlobalFrameLogsForGatewayResponse.oneofGroups_[0], value);
+};
+
+
+proto.ns.StreamGlobalFrameLogsForGatewayResponse.prototype.clearUplinkFrameSet = function() {
+  this.setUplinkFrameSet(undefined);
+};
+
+
+/**
+ * Returns whether this field is set.
+ * @return{!boolean}
+ */
+proto.ns.StreamGlobalFrameLogsForGatewayResponse.prototype.hasUplinkFrameSet = function() {
+  return jspb.Message.getField(this, 1) != null;
+};
+
+
+/**
+ * optional DownlinkFrameLog downlink_frame = 2;
+ * @return {proto.ns.DownlinkFrameLog}
+ */
+proto.ns.StreamGlobalFrameLogsForGatewayResponse.prototype.getDownlinkFrame = function() {
+  return /** @type{proto.ns.DownlinkFrameLog} */ (
+    jspb.Message.getWrapperField(this, proto.ns.DownlinkFrameLog, 2));
+};
+
+
+/** @param {proto.ns.DownlinkFrameLog|undefined} value  */
+proto.ns.StreamGlobalFrameLogsForGatewayResponse.prototype.setDownlinkFrame = function(value) {
+  jspb.Message.setOneofWrapperField(this, 2, proto.ns.StreamGlobalFrameLogsForGatewayResponse.oneofGroups_[0], value);
+};
+
+
+proto.ns.StreamGlobalFrameLogsForGatewayResponse.prototype.clearDownlinkFrame = function() {
+  this.setDownlinkFrame(undefined);
+};
+
+
+/**
+ * Returns whether this field is set.
+ * @return{!boolean}
+ */
+proto.ns.StreamGlobalFrameLogsForGatewayResponse.prototype.hasDownlinkFrame = function() {
+  return jspb.Message.getField(this, 2) != null;
+};
+
+
+/**
+ * optional bytes gateway_eui = 3;
+ * @return {!(string|Uint8Array)}
+ */
+proto.ns.StreamGlobalFrameLogsForGatewayResponse.prototype.getGatewayEui = function() {
+  return /** @type {!(string|Uint8Array)} */ (jspb.Message.getFieldProto3(this, 3, ""));
+};
+
+
+/**
+ * optional bytes gateway_eui = 3;
+ * This is a type-conversion wrapper around `getGatewayEui()`
+ * @return {string}
+ */
+proto.ns.StreamGlobalFrameLogsForGatewayResponse.prototype.getGatewayEui_asB64 = function() {
+  return /** @type {string} */ (jspb.Message.bytesAsB64(
+      this.getGatewayEui()));
+};
+
+
+/**
+ * optional bytes gateway_eui = 3;
+ * Note that Uint8Array is not supported on all browsers.
+ * @see http://caniuse.com/Uint8Array
+ * This is a type-conversion wrapper around `getGatewayEui()`
+ * @return {!Uint8Array}
+ */
+proto.ns.StreamGlobalFrameLogsForGatewayResponse.prototype.getGatewayEui_asU8 = function() {
+  return /** @type {!Uint8Array} */ (jspb.Message.bytesAsU8(
+      this.getGatewayEui()));
+};
+
+
+/** @param {!(string|Uint8Array)} value  */
+proto.ns.StreamGlobalFrameLogsForGatewayResponse.prototype.setGatewayEui = function(value) {
+  jspb.Message.setField(this, 3, value);
+};
+
+
+
+/**
+ * Generated by JsPbCodeGenerator.
+ * @param {Array=} opt_data Optional initial data array, typically from a
+ * server response, or constructed directly in Javascript. The array is used
+ * in place and becomes part of the constructed object. It is not cloned.
+ * If no data is provided, the constructed object will be empty, but still
+ * valid.
+ * @extends {jspb.Message}
+ * @constructor
+ */
 proto.ns.StreamFrameLogsForDeviceRequest = function(opt_data) {
   jspb.Message.initialize(this, opt_data, 0, -1, null, null);
 };
@@ -13381,6 +13680,303 @@ proto.ns.StreamFrameLogsForDeviceResponse.prototype.clearDownlinkFrame = functio
  */
 proto.ns.StreamFrameLogsForDeviceResponse.prototype.hasDownlinkFrame = function() {
   return jspb.Message.getField(this, 2) != null;
+};
+
+
+
+/**
+ * Generated by JsPbCodeGenerator.
+ * @param {Array=} opt_data Optional initial data array, typically from a
+ * server response, or constructed directly in Javascript. The array is used
+ * in place and becomes part of the constructed object. It is not cloned.
+ * If no data is provided, the constructed object will be empty, but still
+ * valid.
+ * @extends {jspb.Message}
+ * @constructor
+ */
+proto.ns.StreamGlobalFrameLogsForDeviceResponse = function(opt_data) {
+  jspb.Message.initialize(this, opt_data, 0, -1, null, proto.ns.StreamGlobalFrameLogsForDeviceResponse.oneofGroups_);
+};
+goog.inherits(proto.ns.StreamGlobalFrameLogsForDeviceResponse, jspb.Message);
+if (goog.DEBUG && !COMPILED) {
+  proto.ns.StreamGlobalFrameLogsForDeviceResponse.displayName = 'proto.ns.StreamGlobalFrameLogsForDeviceResponse';
+}
+/**
+ * Oneof group definitions for this message. Each group defines the field
+ * numbers belonging to that group. When of these fields' value is set, all
+ * other fields in the group are cleared. During deserialization, if multiple
+ * fields are encountered for a group, only the last value seen will be kept.
+ * @private {!Array<!Array<number>>}
+ * @const
+ */
+proto.ns.StreamGlobalFrameLogsForDeviceResponse.oneofGroups_ = [[1,2]];
+
+/**
+ * @enum {number}
+ */
+proto.ns.StreamGlobalFrameLogsForDeviceResponse.FrameCase = {
+  FRAME_NOT_SET: 0,
+  UPLINK_FRAME_SET: 1,
+  DOWNLINK_FRAME: 2
+};
+
+/**
+ * @return {proto.ns.StreamGlobalFrameLogsForDeviceResponse.FrameCase}
+ */
+proto.ns.StreamGlobalFrameLogsForDeviceResponse.prototype.getFrameCase = function() {
+  return /** @type {proto.ns.StreamGlobalFrameLogsForDeviceResponse.FrameCase} */(jspb.Message.computeOneofCase(this, proto.ns.StreamGlobalFrameLogsForDeviceResponse.oneofGroups_[0]));
+};
+
+
+
+if (jspb.Message.GENERATE_TO_OBJECT) {
+/**
+ * Creates an object representation of this proto suitable for use in Soy templates.
+ * Field names that are reserved in JavaScript and will be renamed to pb_name.
+ * To access a reserved field use, foo.pb_<name>, eg, foo.pb_default.
+ * For the list of reserved names please see:
+ *     com.google.apps.jspb.JsClassTemplate.JS_RESERVED_WORDS.
+ * @param {boolean=} opt_includeInstance Whether to include the JSPB instance
+ *     for transitional soy proto support: http://goto/soy-param-migration
+ * @return {!Object}
+ */
+proto.ns.StreamGlobalFrameLogsForDeviceResponse.prototype.toObject = function(opt_includeInstance) {
+  return proto.ns.StreamGlobalFrameLogsForDeviceResponse.toObject(opt_includeInstance, this);
+};
+
+
+/**
+ * Static version of the {@see toObject} method.
+ * @param {boolean|undefined} includeInstance Whether to include the JSPB
+ *     instance for transitional soy proto support:
+ *     http://goto/soy-param-migration
+ * @param {!proto.ns.StreamGlobalFrameLogsForDeviceResponse} msg The msg instance to transform.
+ * @return {!Object}
+ */
+proto.ns.StreamGlobalFrameLogsForDeviceResponse.toObject = function(includeInstance, msg) {
+  var f, obj = {
+    uplinkFrameSet: (f = msg.getUplinkFrameSet()) && proto.ns.UplinkFrameLog.toObject(includeInstance, f),
+    downlinkFrame: (f = msg.getDownlinkFrame()) && proto.ns.DownlinkFrameLog.toObject(includeInstance, f),
+    devEui: msg.getDevEui_asB64()
+  };
+
+  if (includeInstance) {
+    obj.$jspbMessageInstance = msg;
+  }
+  return obj;
+};
+}
+
+
+/**
+ * Deserializes binary data (in protobuf wire format).
+ * @param {jspb.ByteSource} bytes The bytes to deserialize.
+ * @return {!proto.ns.StreamGlobalFrameLogsForDeviceResponse}
+ */
+proto.ns.StreamGlobalFrameLogsForDeviceResponse.deserializeBinary = function(bytes) {
+  var reader = new jspb.BinaryReader(bytes);
+  var msg = new proto.ns.StreamGlobalFrameLogsForDeviceResponse;
+  return proto.ns.StreamGlobalFrameLogsForDeviceResponse.deserializeBinaryFromReader(msg, reader);
+};
+
+
+/**
+ * Deserializes binary data (in protobuf wire format) from the
+ * given reader into the given message object.
+ * @param {!proto.ns.StreamGlobalFrameLogsForDeviceResponse} msg The message object to deserialize into.
+ * @param {!jspb.BinaryReader} reader The BinaryReader to use.
+ * @return {!proto.ns.StreamGlobalFrameLogsForDeviceResponse}
+ */
+proto.ns.StreamGlobalFrameLogsForDeviceResponse.deserializeBinaryFromReader = function(msg, reader) {
+  while (reader.nextField()) {
+    if (reader.isEndGroup()) {
+      break;
+    }
+    var field = reader.getFieldNumber();
+    switch (field) {
+    case 1:
+      var value = new proto.ns.UplinkFrameLog;
+      reader.readMessage(value,proto.ns.UplinkFrameLog.deserializeBinaryFromReader);
+      msg.setUplinkFrameSet(value);
+      break;
+    case 2:
+      var value = new proto.ns.DownlinkFrameLog;
+      reader.readMessage(value,proto.ns.DownlinkFrameLog.deserializeBinaryFromReader);
+      msg.setDownlinkFrame(value);
+      break;
+    case 3:
+      var value = /** @type {!Uint8Array} */ (reader.readBytes());
+      msg.setDevEui(value);
+      break;
+    default:
+      reader.skipField();
+      break;
+    }
+  }
+  return msg;
+};
+
+
+/**
+ * Class method variant: serializes the given message to binary data
+ * (in protobuf wire format), writing to the given BinaryWriter.
+ * @param {!proto.ns.StreamGlobalFrameLogsForDeviceResponse} message
+ * @param {!jspb.BinaryWriter} writer
+ */
+proto.ns.StreamGlobalFrameLogsForDeviceResponse.serializeBinaryToWriter = function(message, writer) {
+  message.serializeBinaryToWriter(writer);
+};
+
+
+/**
+ * Serializes the message to binary data (in protobuf wire format).
+ * @return {!Uint8Array}
+ */
+proto.ns.StreamGlobalFrameLogsForDeviceResponse.prototype.serializeBinary = function() {
+  var writer = new jspb.BinaryWriter();
+  this.serializeBinaryToWriter(writer);
+  return writer.getResultBuffer();
+};
+
+
+/**
+ * Serializes the message to binary data (in protobuf wire format),
+ * writing to the given BinaryWriter.
+ * @param {!jspb.BinaryWriter} writer
+ */
+proto.ns.StreamGlobalFrameLogsForDeviceResponse.prototype.serializeBinaryToWriter = function (writer) {
+  var f = undefined;
+  f = this.getUplinkFrameSet();
+  if (f != null) {
+    writer.writeMessage(
+      1,
+      f,
+      proto.ns.UplinkFrameLog.serializeBinaryToWriter
+    );
+  }
+  f = this.getDownlinkFrame();
+  if (f != null) {
+    writer.writeMessage(
+      2,
+      f,
+      proto.ns.DownlinkFrameLog.serializeBinaryToWriter
+    );
+  }
+  f = this.getDevEui_asU8();
+  if (f.length > 0) {
+    writer.writeBytes(
+      3,
+      f
+    );
+  }
+};
+
+
+/**
+ * Creates a deep clone of this proto. No data is shared with the original.
+ * @return {!proto.ns.StreamGlobalFrameLogsForDeviceResponse} The clone.
+ */
+proto.ns.StreamGlobalFrameLogsForDeviceResponse.prototype.cloneMessage = function() {
+  return /** @type {!proto.ns.StreamGlobalFrameLogsForDeviceResponse} */ (jspb.Message.cloneMessage(this));
+};
+
+
+/**
+ * optional UplinkFrameLog uplink_frame_set = 1;
+ * @return {proto.ns.UplinkFrameLog}
+ */
+proto.ns.StreamGlobalFrameLogsForDeviceResponse.prototype.getUplinkFrameSet = function() {
+  return /** @type{proto.ns.UplinkFrameLog} */ (
+    jspb.Message.getWrapperField(this, proto.ns.UplinkFrameLog, 1));
+};
+
+
+/** @param {proto.ns.UplinkFrameLog|undefined} value  */
+proto.ns.StreamGlobalFrameLogsForDeviceResponse.prototype.setUplinkFrameSet = function(value) {
+  jspb.Message.setOneofWrapperField(this, 1, proto.ns.StreamGlobalFrameLogsForDeviceResponse.oneofGroups_[0], value);
+};
+
+
+proto.ns.StreamGlobalFrameLogsForDeviceResponse.prototype.clearUplinkFrameSet = function() {
+  this.setUplinkFrameSet(undefined);
+};
+
+
+/**
+ * Returns whether this field is set.
+ * @return{!boolean}
+ */
+proto.ns.StreamGlobalFrameLogsForDeviceResponse.prototype.hasUplinkFrameSet = function() {
+  return jspb.Message.getField(this, 1) != null;
+};
+
+
+/**
+ * optional DownlinkFrameLog downlink_frame = 2;
+ * @return {proto.ns.DownlinkFrameLog}
+ */
+proto.ns.StreamGlobalFrameLogsForDeviceResponse.prototype.getDownlinkFrame = function() {
+  return /** @type{proto.ns.DownlinkFrameLog} */ (
+    jspb.Message.getWrapperField(this, proto.ns.DownlinkFrameLog, 2));
+};
+
+
+/** @param {proto.ns.DownlinkFrameLog|undefined} value  */
+proto.ns.StreamGlobalFrameLogsForDeviceResponse.prototype.setDownlinkFrame = function(value) {
+  jspb.Message.setOneofWrapperField(this, 2, proto.ns.StreamGlobalFrameLogsForDeviceResponse.oneofGroups_[0], value);
+};
+
+
+proto.ns.StreamGlobalFrameLogsForDeviceResponse.prototype.clearDownlinkFrame = function() {
+  this.setDownlinkFrame(undefined);
+};
+
+
+/**
+ * Returns whether this field is set.
+ * @return{!boolean}
+ */
+proto.ns.StreamGlobalFrameLogsForDeviceResponse.prototype.hasDownlinkFrame = function() {
+  return jspb.Message.getField(this, 2) != null;
+};
+
+
+/**
+ * optional bytes dev_eui = 3;
+ * @return {!(string|Uint8Array)}
+ */
+proto.ns.StreamGlobalFrameLogsForDeviceResponse.prototype.getDevEui = function() {
+  return /** @type {!(string|Uint8Array)} */ (jspb.Message.getFieldProto3(this, 3, ""));
+};
+
+
+/**
+ * optional bytes dev_eui = 3;
+ * This is a type-conversion wrapper around `getDevEui()`
+ * @return {string}
+ */
+proto.ns.StreamGlobalFrameLogsForDeviceResponse.prototype.getDevEui_asB64 = function() {
+  return /** @type {string} */ (jspb.Message.bytesAsB64(
+      this.getDevEui()));
+};
+
+
+/**
+ * optional bytes dev_eui = 3;
+ * Note that Uint8Array is not supported on all browsers.
+ * @see http://caniuse.com/Uint8Array
+ * This is a type-conversion wrapper around `getDevEui()`
+ * @return {!Uint8Array}
+ */
+proto.ns.StreamGlobalFrameLogsForDeviceResponse.prototype.getDevEui_asU8 = function() {
+  return /** @type {!Uint8Array} */ (jspb.Message.bytesAsU8(
+      this.getDevEui()));
+};
+
+
+/** @param {!(string|Uint8Array)} value  */
+proto.ns.StreamGlobalFrameLogsForDeviceResponse.prototype.setDevEui = function(value) {
+  jspb.Message.setField(this, 3, value);
 };
 
 

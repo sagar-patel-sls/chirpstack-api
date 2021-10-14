@@ -136,12 +136,21 @@ service DeviceService {
             get: "/api/devices/{dev_eui}/events"
         };
     }
+
+    // StreamGlobalFrameLogs streams the uplink and downlink frame-logs for all devices of given Application.
+	//   * These are the raw LoRaWAN frames and this endpoint is intended for debugging only.
+	//   * This endpoint does not work from a web-browser.
+    rpc StreamGlobalFrameLogs(StreamGlobalDeviceEventLogsRequest) returns (stream StreamGlobalDeviceFrameLogsResponse) {
+        option (google.api.http) = {
+            get: "/api/applications/{application_id}/devices/frames"
+        };
+    }
 }
 
 message Device {
     // Device EUI (HEX encoded).
-    string dev_eui = 1 [json_name = "devEUI"]; 
-    
+    string dev_eui = 1 [json_name = "devEUI"];
+
     // Name of the device (if left blank, it will be set to the DevEUI).
     string name = 2;
 
@@ -200,8 +209,8 @@ message PacketSuccess {
 
 message DeviceListItem {
     // Device EUI (HEX encoded).
-    string dev_eui = 1 [json_name = "devEUI"]; 
-    
+    string dev_eui = 1 [json_name = "devEUI"];
+
     // Name of the device.
     string name = 2;
 
@@ -504,4 +513,22 @@ message StreamDeviceEventLogsResponse {
 
     // Published at timestamp.
     google.protobuf.Timestamp published_at = 3;
+}
+
+message StreamGlobalDeviceEventLogsRequest {
+    // Application ID.
+	int64 application_id = 1 [json_name = "applicationID"];
+}
+
+message StreamGlobalDeviceFrameLogsResponse {
+    // Device EUI (HEX encoded).
+    string dev_eui = 1 [json_name = "devEUI"];
+
+    oneof frame {
+        // Contains an uplink frame.
+        UplinkFrameLog uplink_frame = 2;
+
+        // Contains a downlink frame.
+        DownlinkFrameLog downlink_frame = 3;
+    }
 }

@@ -300,6 +300,33 @@
           "GatewayService"
         ]
       }
+    },
+    "/api/organizations/{organization_id}/gateways/frames": {
+      "get": {
+        "summary": "StreamGlobalFrameLogs streams the uplink and downlink frame-logs for all gateways of given organization.\nNotes:\n  * These are the raw LoRaWAN frames and this endpoint is intended for debugging only.\n  * This endpoint does not work from a web-browser.",
+        "operationId": "StreamGlobalFrameLogs",
+        "responses": {
+          "200": {
+            "description": "A successful response.(streaming responses)",
+            "schema": {
+              "$ref": "#/x-stream-definitions/apiStreamGlobalGatewayFrameLogsResponse"
+            }
+          }
+        },
+        "parameters": [
+          {
+            "name": "organization_id",
+            "description": "Organization ID.",
+            "in": "path",
+            "required": true,
+            "type": "string",
+            "format": "int64"
+          }
+        ],
+        "tags": [
+          "GatewayService"
+        ]
+      }
     }
   },
   "definitions": {
@@ -685,6 +712,23 @@
     "apiStreamGatewayFrameLogsResponse": {
       "type": "object",
       "properties": {
+        "uplinkFrame": {
+          "$ref": "#/definitions/apiUplinkFrameLog",
+          "description": "Contains an uplink frame."
+        },
+        "downlinkFrame": {
+          "$ref": "#/definitions/apiDownlinkFrameLog",
+          "description": "Contains a downlink frame."
+        }
+      }
+    },
+    "apiStreamGlobalGatewayFrameLogsResponse": {
+      "type": "object",
+      "properties": {
+        "gatewayEUI": {
+          "type": "string",
+          "description": "Gateway ID (HEX encoded)."
+        },
         "uplinkFrame": {
           "$ref": "#/definitions/apiUplinkFrameLog",
           "description": "Contains an uplink frame."
@@ -1139,6 +1183,18 @@
         }
       },
       "title": "Stream result of apiStreamGatewayFrameLogsResponse"
+    },
+    "apiStreamGlobalGatewayFrameLogsResponse": {
+      "type": "object",
+      "properties": {
+        "result": {
+          "$ref": "#/definitions/apiStreamGlobalGatewayFrameLogsResponse"
+        },
+        "error": {
+          "$ref": "#/definitions/runtimeStreamError"
+        }
+      },
+      "title": "Stream result of apiStreamGlobalGatewayFrameLogsResponse"
     }
   }
 }

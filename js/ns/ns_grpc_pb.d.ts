@@ -57,6 +57,8 @@ interface INetworkServerServiceService extends grpc.ServiceDefinition<grpc.Untyp
   getMulticastQueueItemsForMulticastGroup: grpc.MethodDefinition<ns_ns_pb.GetMulticastQueueItemsForMulticastGroupRequest, ns_ns_pb.GetMulticastQueueItemsForMulticastGroupResponse>;
   getVersion: grpc.MethodDefinition<google_protobuf_empty_pb.Empty, ns_ns_pb.GetVersionResponse>;
   getADRAlgorithms: grpc.MethodDefinition<google_protobuf_empty_pb.Empty, ns_ns_pb.GetADRAlgorithmsResponse>;
+  streamGlobalFrameLogsForGateway: grpc.MethodDefinition<google_protobuf_empty_pb.Empty, ns_ns_pb.StreamGlobalFrameLogsForGatewayResponse>;
+  streamGlobalFrameLogsForDevice: grpc.MethodDefinition<google_protobuf_empty_pb.Empty, ns_ns_pb.StreamGlobalFrameLogsForDeviceResponse>;
 }
 
 export const NetworkServerServiceService: INetworkServerServiceService;
@@ -111,6 +113,8 @@ export interface INetworkServerServiceServer extends grpc.UntypedServiceImplemen
   getMulticastQueueItemsForMulticastGroup: grpc.handleUnaryCall<ns_ns_pb.GetMulticastQueueItemsForMulticastGroupRequest, ns_ns_pb.GetMulticastQueueItemsForMulticastGroupResponse>;
   getVersion: grpc.handleUnaryCall<google_protobuf_empty_pb.Empty, ns_ns_pb.GetVersionResponse>;
   getADRAlgorithms: grpc.handleUnaryCall<google_protobuf_empty_pb.Empty, ns_ns_pb.GetADRAlgorithmsResponse>;
+  streamGlobalFrameLogsForGateway: grpc.handleServerStreamingCall<google_protobuf_empty_pb.Empty, ns_ns_pb.StreamGlobalFrameLogsForGatewayResponse>;
+  streamGlobalFrameLogsForDevice: grpc.handleServerStreamingCall<google_protobuf_empty_pb.Empty, ns_ns_pb.StreamGlobalFrameLogsForDeviceResponse>;
 }
 
 export class NetworkServerServiceClient extends grpc.Client {
@@ -260,4 +264,8 @@ export class NetworkServerServiceClient extends grpc.Client {
   getADRAlgorithms(argument: google_protobuf_empty_pb.Empty, callback: grpc.requestCallback<ns_ns_pb.GetADRAlgorithmsResponse>): grpc.ClientUnaryCall;
   getADRAlgorithms(argument: google_protobuf_empty_pb.Empty, metadataOrOptions: grpc.Metadata | grpc.CallOptions | null, callback: grpc.requestCallback<ns_ns_pb.GetADRAlgorithmsResponse>): grpc.ClientUnaryCall;
   getADRAlgorithms(argument: google_protobuf_empty_pb.Empty, metadata: grpc.Metadata | null, options: grpc.CallOptions | null, callback: grpc.requestCallback<ns_ns_pb.GetADRAlgorithmsResponse>): grpc.ClientUnaryCall;
+  streamGlobalFrameLogsForGateway(argument: google_protobuf_empty_pb.Empty, metadataOrOptions?: grpc.Metadata | grpc.CallOptions | null): grpc.ClientReadableStream<ns_ns_pb.StreamGlobalFrameLogsForGatewayResponse>;
+  streamGlobalFrameLogsForGateway(argument: google_protobuf_empty_pb.Empty, metadata?: grpc.Metadata | null, options?: grpc.CallOptions | null): grpc.ClientReadableStream<ns_ns_pb.StreamGlobalFrameLogsForGatewayResponse>;
+  streamGlobalFrameLogsForDevice(argument: google_protobuf_empty_pb.Empty, metadataOrOptions?: grpc.Metadata | grpc.CallOptions | null): grpc.ClientReadableStream<ns_ns_pb.StreamGlobalFrameLogsForDeviceResponse>;
+  streamGlobalFrameLogsForDevice(argument: google_protobuf_empty_pb.Empty, metadata?: grpc.Metadata | null, options?: grpc.CallOptions | null): grpc.ClientReadableStream<ns_ns_pb.StreamGlobalFrameLogsForDeviceResponse>;
 }

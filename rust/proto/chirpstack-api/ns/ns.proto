@@ -169,6 +169,14 @@ service NetworkServerService {
 
     // GetADRAlgorithms returns the available ADR algorithms.
     rpc GetADRAlgorithms(google.protobuf.Empty) returns (GetADRAlgorithmsResponse) {}
+
+    // StreamGlobalFrameLogsForGateway returns a stream of frames seen by the gateways.
+    // logging of uplink and downlink frames for gateways to a Redis Stream for external logging and monitoring purposes.
+    rpc StreamGlobalFrameLogsForGateway(google.protobuf.Empty) returns (stream StreamGlobalFrameLogsForGatewayResponse) {}
+
+    // StreamGlobalFrameLogsForDevice returns a stream of frames seen by the devices.
+    // logging of uplink and downlink frames for devices to a Redis Stream for external logging and monitoring purposes.
+    rpc StreamGlobalFrameLogsForDevice(google.protobuf.Empty) returns (stream StreamGlobalFrameLogsForDeviceResponse) {}
 }
 
 enum RXWindow {
@@ -699,6 +707,19 @@ message StreamFrameLogsForGatewayResponse {
     }
 }
 
+message StreamGlobalFrameLogsForGatewayResponse {
+    oneof frame {
+        // Contains an uplink frame.
+        UplinkFrameLog uplink_frame_set = 1;
+
+        // Contains a downlink frame.
+        DownlinkFrameLog downlink_frame = 2;
+    }
+
+    // MAC address of the gateway.
+    bytes gateway_eui = 3;
+}
+
 message StreamFrameLogsForDeviceRequest {
     // DevEUI of the device.
     bytes dev_eui = 1;
@@ -712,6 +733,19 @@ message StreamFrameLogsForDeviceResponse {
         // Contains a downlink frame.
         DownlinkFrameLog downlink_frame = 2;
     }
+}
+
+message StreamGlobalFrameLogsForDeviceResponse {
+    oneof frame {
+        // Contains an uplink frame.
+        UplinkFrameLog uplink_frame_set = 1;
+
+        // Contains a downlink frame.
+        DownlinkFrameLog downlink_frame = 2;
+    }
+
+    // DevEUI of the device.
+    bytes dev_eui = 3;
 }
 
 message GetVersionResponse {

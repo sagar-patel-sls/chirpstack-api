@@ -703,6 +703,28 @@ function deserialize_ns_StreamFrameLogsForGatewayResponse(buffer_arg) {
   return ns_ns_pb.StreamFrameLogsForGatewayResponse.deserializeBinary(new Uint8Array(buffer_arg));
 }
 
+function serialize_ns_StreamGlobalFrameLogsForDeviceResponse(arg) {
+  if (!(arg instanceof ns_ns_pb.StreamGlobalFrameLogsForDeviceResponse)) {
+    throw new Error('Expected argument of type ns.StreamGlobalFrameLogsForDeviceResponse');
+  }
+  return Buffer.from(arg.serializeBinary());
+}
+
+function deserialize_ns_StreamGlobalFrameLogsForDeviceResponse(buffer_arg) {
+  return ns_ns_pb.StreamGlobalFrameLogsForDeviceResponse.deserializeBinary(new Uint8Array(buffer_arg));
+}
+
+function serialize_ns_StreamGlobalFrameLogsForGatewayResponse(arg) {
+  if (!(arg instanceof ns_ns_pb.StreamGlobalFrameLogsForGatewayResponse)) {
+    throw new Error('Expected argument of type ns.StreamGlobalFrameLogsForGatewayResponse');
+  }
+  return Buffer.from(arg.serializeBinary());
+}
+
+function deserialize_ns_StreamGlobalFrameLogsForGatewayResponse(buffer_arg) {
+  return ns_ns_pb.StreamGlobalFrameLogsForGatewayResponse.deserializeBinary(new Uint8Array(buffer_arg));
+}
+
 function serialize_ns_UpdateDeviceProfileRequest(arg) {
   if (!(arg instanceof ns_ns_pb.UpdateDeviceProfileRequest)) {
     throw new Error('Expected argument of type ns.UpdateDeviceProfileRequest');
@@ -1376,6 +1398,32 @@ getADRAlgorithms: {
     requestDeserialize: deserialize_google_protobuf_Empty,
     responseSerialize: serialize_ns_GetADRAlgorithmsResponse,
     responseDeserialize: deserialize_ns_GetADRAlgorithmsResponse,
+  },
+  // StreamGlobalFrameLogsForGateway returns a stream of frames seen by the gateways.
+// logging of uplink and downlink frames for gateways to a Redis Stream for external logging and monitoring purposes.
+streamGlobalFrameLogsForGateway: {
+    path: '/ns.NetworkServerService/StreamGlobalFrameLogsForGateway',
+    requestStream: false,
+    responseStream: true,
+    requestType: google_protobuf_empty_pb.Empty,
+    responseType: ns_ns_pb.StreamGlobalFrameLogsForGatewayResponse,
+    requestSerialize: serialize_google_protobuf_Empty,
+    requestDeserialize: deserialize_google_protobuf_Empty,
+    responseSerialize: serialize_ns_StreamGlobalFrameLogsForGatewayResponse,
+    responseDeserialize: deserialize_ns_StreamGlobalFrameLogsForGatewayResponse,
+  },
+  // StreamGlobalFrameLogsForDevice returns a stream of frames seen by the devices.
+// logging of uplink and downlink frames for devices to a Redis Stream for external logging and monitoring purposes.
+streamGlobalFrameLogsForDevice: {
+    path: '/ns.NetworkServerService/StreamGlobalFrameLogsForDevice',
+    requestStream: false,
+    responseStream: true,
+    requestType: google_protobuf_empty_pb.Empty,
+    responseType: ns_ns_pb.StreamGlobalFrameLogsForDeviceResponse,
+    requestSerialize: serialize_google_protobuf_Empty,
+    requestDeserialize: deserialize_google_protobuf_Empty,
+    responseSerialize: serialize_ns_StreamGlobalFrameLogsForDeviceResponse,
+    responseDeserialize: deserialize_ns_StreamGlobalFrameLogsForDeviceResponse,
   },
 };
 
