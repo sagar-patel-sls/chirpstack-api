@@ -170,6 +170,9 @@ export class GetGatewayResponse extends jspb.Message {
   getLastSeenAt(): google_protobuf_timestamp_pb.Timestamp | undefined;
   setLastSeenAt(value?: google_protobuf_timestamp_pb.Timestamp): void;
 
+  getConnStat(): string;
+  setConnStat(value: string): void;
+
   serializeBinary(): Uint8Array;
   toObject(includeInstance?: boolean): GetGatewayResponse.AsObject;
   static toObject(includeInstance: boolean, msg: GetGatewayResponse): GetGatewayResponse.AsObject;
@@ -187,6 +190,7 @@ export namespace GetGatewayResponse {
     updatedAt?: google_protobuf_timestamp_pb.Timestamp.AsObject,
     firstSeenAt?: google_protobuf_timestamp_pb.Timestamp.AsObject,
     lastSeenAt?: google_protobuf_timestamp_pb.Timestamp.AsObject,
+    connStat: string,
   }
 }
 
@@ -340,6 +344,9 @@ export class GatewayListItem extends jspb.Message {
   getNetworkServerName(): string;
   setNetworkServerName(value: string): void;
 
+  getConnStat(): string;
+  setConnStat(value: string): void;
+
   serializeBinary(): Uint8Array;
   toObject(includeInstance?: boolean): GatewayListItem.AsObject;
   static toObject(includeInstance: boolean, msg: GatewayListItem): GatewayListItem.AsObject;
@@ -363,6 +370,7 @@ export namespace GatewayListItem {
     networkServerId: number,
     location?: common_common_pb.Location.AsObject,
     networkServerName: string,
+    connStat: string,
   }
 }
 

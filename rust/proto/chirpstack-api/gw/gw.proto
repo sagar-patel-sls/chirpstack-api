@@ -81,6 +81,11 @@ enum TxAckStatus {
     INTERNAL_ERROR = 10;
 }
 
+enum State {
+    OFFLINE = 0;
+    ONLINE = 1;
+}
+
 message Modulation {
     oneof parameters {
         // LoRa modulation information.
@@ -544,11 +549,6 @@ message RawPacketForwarderCommand {
 message ConnState {
     // Gateway ID.
     bytes gateway_id = 1 [json_name = "gatewayID"];
-
-    enum State {
-        OFFLINE = 0;
-        ONLINE = 1;
-    }
 
     State state = 2;
 }

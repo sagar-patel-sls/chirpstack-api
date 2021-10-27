@@ -1116,8 +1116,8 @@ export class ConnState extends jspb.Message {
   getGatewayId_asB64(): string;
   setGatewayId(value: Uint8Array | string): void;
 
-  getState(): ConnState.StateMap[keyof ConnState.StateMap];
-  setState(value: ConnState.StateMap[keyof ConnState.StateMap]): void;
+  getState(): StateMap[keyof StateMap];
+  setState(value: StateMap[keyof StateMap]): void;
 
   serializeBinary(): Uint8Array;
   toObject(includeInstance?: boolean): ConnState.AsObject;
@@ -1132,15 +1132,8 @@ export class ConnState extends jspb.Message {
 export namespace ConnState {
   export type AsObject = {
     gatewayId: Uint8Array | string,
-    state: ConnState.StateMap[keyof ConnState.StateMap],
+    state: StateMap[keyof StateMap],
   }
-
-  export interface StateMap {
-    OFFLINE: 0;
-    ONLINE: 1;
-  }
-
-  export const State: StateMap;
 }
 
 export interface DownlinkTimingMap {
@@ -1182,4 +1175,11 @@ export interface TxAckStatusMap {
 }
 
 export const TxAckStatus: TxAckStatusMap;
+
+export interface StateMap {
+  OFFLINE: 0;
+  ONLINE: 1;
+}
+
+export const State: StateMap;
 

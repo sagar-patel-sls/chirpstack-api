@@ -496,6 +496,10 @@
         "networkServerName": {
           "type": "string",
           "description": "Network-server name."
+        },
+        "connStat": {
+          "type": "string",
+          "description": "Gateway Connection Stat."
         }
       }
     },
@@ -617,6 +621,10 @@
           "type": "string",
           "format": "date-time",
           "description": "Last seen at timestamp."
+        },
+        "connStat": {
+          "type": "string",
+          "description": "Gateway Connection Stat."
         }
       }
     },

@@ -15,7 +15,6 @@ var google_protobuf_duration_pb = require('google-protobuf/google/protobuf/durat
 goog.exportSymbol('proto.gw.CRCStatus', null, global);
 goog.exportSymbol('proto.gw.ChannelConfiguration', null, global);
 goog.exportSymbol('proto.gw.ConnState', null, global);
-goog.exportSymbol('proto.gw.ConnState.State', null, global);
 goog.exportSymbol('proto.gw.DelayTimingInfo', null, global);
 goog.exportSymbol('proto.gw.DownlinkFrame', null, global);
 goog.exportSymbol('proto.gw.DownlinkFrameItem', null, global);
@@ -41,6 +40,7 @@ goog.exportSymbol('proto.gw.PerModulationCount', null, global);
 goog.exportSymbol('proto.gw.PlainFineTimestamp', null, global);
 goog.exportSymbol('proto.gw.RawPacketForwarderCommand', null, global);
 goog.exportSymbol('proto.gw.RawPacketForwarderEvent', null, global);
+goog.exportSymbol('proto.gw.State', null, global);
 goog.exportSymbol('proto.gw.TxAckStatus', null, global);
 goog.exportSymbol('proto.gw.UplinkFrame', null, global);
 goog.exportSymbol('proto.gw.UplinkFrameSet', null, global);
@@ -8583,7 +8583,7 @@ proto.gw.ConnState.deserializeBinaryFromReader = function(msg, reader) {
       msg.setGatewayId(value);
       break;
     case 2:
-      var value = /** @type {!proto.gw.ConnState.State} */ (reader.readEnum());
+      var value = /** @type {!proto.gw.State} */ (reader.readEnum());
       msg.setState(value);
       break;
     default:
@@ -8691,26 +8691,18 @@ proto.gw.ConnState.prototype.setGatewayId = function(value) {
 
 /**
  * optional State state = 2;
- * @return {!proto.gw.ConnState.State}
+ * @return {!proto.gw.State}
  */
 proto.gw.ConnState.prototype.getState = function() {
-  return /** @type {!proto.gw.ConnState.State} */ (jspb.Message.getFieldProto3(this, 2, 0));
+  return /** @type {!proto.gw.State} */ (jspb.Message.getFieldProto3(this, 2, 0));
 };
 
 
-/** @param {!proto.gw.ConnState.State} value  */
+/** @param {!proto.gw.State} value  */
 proto.gw.ConnState.prototype.setState = function(value) {
   jspb.Message.setField(this, 2, value);
 };
 
-
-/**
- * @enum {number}
- */
-proto.gw.ConnState.State = {
-  OFFLINE: 0,
-  ONLINE: 1
-};
 
 /**
  * @enum {number}
@@ -8754,6 +8746,14 @@ proto.gw.TxAckStatus = {
   GPS_UNLOCKED: 8,
   QUEUE_FULL: 9,
   INTERNAL_ERROR: 10
+};
+
+/**
+ * @enum {number}
+ */
+proto.gw.State = {
+  OFFLINE: 0,
+  ONLINE: 1
 };
 
 goog.object.extend(exports, proto.gw);

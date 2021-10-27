@@ -48,6 +48,9 @@ service ApplicationServerService {
     // Note there is no requirement that the number of returned items must be
     // equal to the number of requested items.
     rpc ReEncryptDeviceQueueItems(ReEncryptDeviceQueueItemsRequest) returns (ReEncryptDeviceQueueItemsResponse) {}
+
+    // HandleGatewayConnStats handles the connection state of a gateway.
+    rpc HandleGatewayConnStats(HandleConnStateRequest) returns (google.protobuf.Empty) {}
 }
 
 enum RXWindow {
@@ -309,4 +312,15 @@ message ReEncryptedDeviceQueueItem {
 
     // Payload is of type confirmed.
     bool confirmed = 4;
+}
+
+message HandleConnStateRequest {
+    // Gateway ID.
+    bytes gateway_id = 1 [json_name = "gatewayID"];
+
+    // Stat contains Gateway connection status ONLINE/OFFLINE
+    gw.State state = 2;
+
+    // Stats ID (UUID).
+    bytes stats_id = 3;
 }

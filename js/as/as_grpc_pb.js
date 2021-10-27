@@ -8,6 +8,17 @@ var google_protobuf_timestamp_pb = require('google-protobuf/google/protobuf/time
 var common_common_pb = require('../common/common_pb.js');
 var gw_gw_pb = require('../gw/gw_pb.js');
 
+function serialize_as_HandleConnStateRequest(arg) {
+  if (!(arg instanceof as_as_pb.HandleConnStateRequest)) {
+    throw new Error('Expected argument of type as.HandleConnStateRequest');
+  }
+  return Buffer.from(arg.serializeBinary());
+}
+
+function deserialize_as_HandleConnStateRequest(buffer_arg) {
+  return as_as_pb.HandleConnStateRequest.deserializeBinary(new Uint8Array(buffer_arg));
+}
+
 function serialize_as_HandleDownlinkACKRequest(arg) {
   if (!(arg instanceof as_as_pb.HandleDownlinkACKRequest)) {
     throw new Error('Expected argument of type as.HandleDownlinkACKRequest');
@@ -246,6 +257,18 @@ reEncryptDeviceQueueItems: {
     requestDeserialize: deserialize_as_ReEncryptDeviceQueueItemsRequest,
     responseSerialize: serialize_as_ReEncryptDeviceQueueItemsResponse,
     responseDeserialize: deserialize_as_ReEncryptDeviceQueueItemsResponse,
+  },
+  // HandleGatewayConnStats handles the connection state of a gateway.
+handleGatewayConnStats: {
+    path: '/as.ApplicationServerService/HandleGatewayConnStats',
+    requestStream: false,
+    responseStream: false,
+    requestType: as_as_pb.HandleConnStateRequest,
+    responseType: google_protobuf_empty_pb.Empty,
+    requestSerialize: serialize_as_HandleConnStateRequest,
+    requestDeserialize: deserialize_as_HandleConnStateRequest,
+    responseSerialize: serialize_google_protobuf_Empty,
+    responseDeserialize: deserialize_google_protobuf_Empty,
   },
 };
 

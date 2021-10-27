@@ -529,6 +529,38 @@ export namespace ReEncryptedDeviceQueueItem {
   }
 }
 
+export class HandleConnStateRequest extends jspb.Message {
+  getGatewayId(): Uint8Array | string;
+  getGatewayId_asU8(): Uint8Array;
+  getGatewayId_asB64(): string;
+  setGatewayId(value: Uint8Array | string): void;
+
+  getState(): gw_gw_pb.StateMap[keyof gw_gw_pb.StateMap];
+  setState(value: gw_gw_pb.StateMap[keyof gw_gw_pb.StateMap]): void;
+
+  getStatsId(): Uint8Array | string;
+  getStatsId_asU8(): Uint8Array;
+  getStatsId_asB64(): string;
+  setStatsId(value: Uint8Array | string): void;
+
+  serializeBinary(): Uint8Array;
+  toObject(includeInstance?: boolean): HandleConnStateRequest.AsObject;
+  static toObject(includeInstance: boolean, msg: HandleConnStateRequest): HandleConnStateRequest.AsObject;
+  static extensions: {[key: number]: jspb.ExtensionFieldInfo<jspb.Message>};
+  static extensionsBinary: {[key: number]: jspb.ExtensionFieldBinaryInfo<jspb.Message>};
+  static serializeBinaryToWriter(message: HandleConnStateRequest, writer: jspb.BinaryWriter): void;
+  static deserializeBinary(bytes: Uint8Array): HandleConnStateRequest;
+  static deserializeBinaryFromReader(message: HandleConnStateRequest, reader: jspb.BinaryReader): HandleConnStateRequest;
+}
+
+export namespace HandleConnStateRequest {
+  export type AsObject = {
+    gatewayId: Uint8Array | string,
+    state: gw_gw_pb.StateMap[keyof gw_gw_pb.StateMap],
+    statsId: Uint8Array | string,
+  }
+}
+
 export interface RXWindowMap {
   RX1: 0;
   RX2: 1;

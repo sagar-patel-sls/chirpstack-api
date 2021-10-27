@@ -176,6 +176,9 @@ message GetGatewayResponse {
 
 	// Last seen at timestamp.
 	google.protobuf.Timestamp last_seen_at = 5;
+
+	// Gateway Connection Stat.
+    string conn_stat = 6;
 };
 
 message DeleteGatewayRequest {
@@ -251,6 +254,9 @@ message GatewayListItem {
 
     // Network-server name.
     string network_server_name = 11;
+
+	// Gateway Connection Stat.
+    string conn_stat = 12;
 }
 
 message ListGatewayResponse {

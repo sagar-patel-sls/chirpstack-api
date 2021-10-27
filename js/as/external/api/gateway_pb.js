@@ -1124,7 +1124,8 @@ proto.api.GetGatewayResponse.toObject = function(includeInstance, msg) {
     createdAt: (f = msg.getCreatedAt()) && google_protobuf_timestamp_pb.Timestamp.toObject(includeInstance, f),
     updatedAt: (f = msg.getUpdatedAt()) && google_protobuf_timestamp_pb.Timestamp.toObject(includeInstance, f),
     firstSeenAt: (f = msg.getFirstSeenAt()) && google_protobuf_timestamp_pb.Timestamp.toObject(includeInstance, f),
-    lastSeenAt: (f = msg.getLastSeenAt()) && google_protobuf_timestamp_pb.Timestamp.toObject(includeInstance, f)
+    lastSeenAt: (f = msg.getLastSeenAt()) && google_protobuf_timestamp_pb.Timestamp.toObject(includeInstance, f),
+    connStat: msg.getConnStat()
   };
 
   if (includeInstance) {
@@ -1185,6 +1186,10 @@ proto.api.GetGatewayResponse.deserializeBinaryFromReader = function(msg, reader)
       var value = new google_protobuf_timestamp_pb.Timestamp;
       reader.readMessage(value,google_protobuf_timestamp_pb.Timestamp.deserializeBinaryFromReader);
       msg.setLastSeenAt(value);
+      break;
+    case 6:
+      var value = /** @type {string} */ (reader.readString());
+      msg.setConnStat(value);
       break;
     default:
       reader.skipField();
@@ -1262,6 +1267,13 @@ proto.api.GetGatewayResponse.prototype.serializeBinaryToWriter = function (write
       5,
       f,
       google_protobuf_timestamp_pb.Timestamp.serializeBinaryToWriter
+    );
+  }
+  f = this.getConnStat();
+  if (f.length > 0) {
+    writer.writeString(
+      6,
+      f
     );
   }
 };
@@ -1423,6 +1435,21 @@ proto.api.GetGatewayResponse.prototype.clearLastSeenAt = function() {
  */
 proto.api.GetGatewayResponse.prototype.hasLastSeenAt = function() {
   return jspb.Message.getField(this, 5) != null;
+};
+
+
+/**
+ * optional string conn_stat = 6;
+ * @return {string}
+ */
+proto.api.GetGatewayResponse.prototype.getConnStat = function() {
+  return /** @type {string} */ (jspb.Message.getFieldProto3(this, 6, ""));
+};
+
+
+/** @param {string} value  */
+proto.api.GetGatewayResponse.prototype.setConnStat = function(value) {
+  jspb.Message.setField(this, 6, value);
 };
 
 
@@ -2297,7 +2324,8 @@ proto.api.GatewayListItem.toObject = function(includeInstance, msg) {
     organizationId: msg.getOrganizationId(),
     networkServerId: msg.getNetworkServerId(),
     location: (f = msg.getLocation()) && common_common_pb.Location.toObject(includeInstance, f),
-    networkServerName: msg.getNetworkServerName()
+    networkServerName: msg.getNetworkServerName(),
+    connStat: msg.getConnStat()
   };
 
   if (includeInstance) {
@@ -2382,6 +2410,10 @@ proto.api.GatewayListItem.deserializeBinaryFromReader = function(msg, reader) {
     case 11:
       var value = /** @type {string} */ (reader.readString());
       msg.setNetworkServerName(value);
+      break;
+    case 12:
+      var value = /** @type {string} */ (reader.readString());
+      msg.setConnStat(value);
       break;
     default:
       reader.skipField();
@@ -2500,6 +2532,13 @@ proto.api.GatewayListItem.prototype.serializeBinaryToWriter = function (writer) 
   if (f.length > 0) {
     writer.writeString(
       11,
+      f
+    );
+  }
+  f = this.getConnStat();
+  if (f.length > 0) {
+    writer.writeString(
+      12,
       f
     );
   }
@@ -2752,6 +2791,21 @@ proto.api.GatewayListItem.prototype.getNetworkServerName = function() {
 /** @param {string} value  */
 proto.api.GatewayListItem.prototype.setNetworkServerName = function(value) {
   jspb.Message.setField(this, 11, value);
+};
+
+
+/**
+ * optional string conn_stat = 12;
+ * @return {string}
+ */
+proto.api.GatewayListItem.prototype.getConnStat = function() {
+  return /** @type {string} */ (jspb.Message.getFieldProto3(this, 12, ""));
+};
+
+
+/** @param {string} value  */
+proto.api.GatewayListItem.prototype.setConnStat = function(value) {
+  jspb.Message.setField(this, 12, value);
 };
 
 
