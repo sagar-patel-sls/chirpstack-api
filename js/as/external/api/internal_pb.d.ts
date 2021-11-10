@@ -372,6 +372,18 @@ export class GlobalSearchResult extends jspb.Message {
   getGatewayName(): string;
   setGatewayName(value: string): void;
 
+  getRemoteMulticastId(): string;
+  setRemoteMulticastId(value: string): void;
+
+  getRemoteMulticastName(): string;
+  setRemoteMulticastName(value: string): void;
+
+  getMulticastId(): string;
+  setMulticastId(value: string): void;
+
+  getMulticastName(): string;
+  setMulticastName(value: string): void;
+
   serializeBinary(): Uint8Array;
   toObject(includeInstance?: boolean): GlobalSearchResult.AsObject;
   static toObject(includeInstance: boolean, msg: GlobalSearchResult): GlobalSearchResult.AsObject;
@@ -394,6 +406,10 @@ export namespace GlobalSearchResult {
     deviceName: string,
     gatewayMac: string,
     gatewayName: string,
+    remoteMulticastId: string,
+    remoteMulticastName: string,
+    multicastId: string,
+    multicastName: string,
   }
 }
 

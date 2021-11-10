@@ -488,6 +488,22 @@
         "gatewayName": {
           "type": "string",
           "description": "Gateway name."
+        },
+        "remoteMulticastID": {
+          "type": "string",
+          "description": "Remote Multicast ID (UUID)."
+        },
+        "remoteMulticastName": {
+          "type": "string",
+          "description": "Remote Multicast name."
+        },
+        "multicastID": {
+          "type": "string",
+          "description": "Local Multicast ID (UUID)."
+        },
+        "multicastName": {
+          "type": "string",
+          "description": "Local Multicast name."
         }
       }
     },

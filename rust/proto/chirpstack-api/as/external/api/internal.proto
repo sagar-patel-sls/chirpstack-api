@@ -244,6 +244,18 @@ message GlobalSearchResult {
 
   // Gateway name.
   string gateway_name = 10;
+
+  // Remote Multicast ID (UUID).
+  string remote_multicast_id = 11 [ json_name = "remoteMulticastID" ];
+
+  // Remote Multicast name.
+  string remote_multicast_name = 12;
+  
+  // Local Multicast ID (UUID).
+  string multicast_id = 13 [ json_name = "multicastID" ];
+  
+  // Local Multicast name.
+  string multicast_name = 14;
 }
 
 message SettingsResponse {

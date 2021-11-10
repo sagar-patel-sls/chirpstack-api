@@ -2673,7 +2673,11 @@ proto.api.GlobalSearchResult.toObject = function(includeInstance, msg) {
     deviceDevEui: msg.getDeviceDevEui(),
     deviceName: msg.getDeviceName(),
     gatewayMac: msg.getGatewayMac(),
-    gatewayName: msg.getGatewayName()
+    gatewayName: msg.getGatewayName(),
+    remoteMulticastId: msg.getRemoteMulticastId(),
+    remoteMulticastName: msg.getRemoteMulticastName(),
+    multicastId: msg.getMulticastId(),
+    multicastName: msg.getMulticastName()
   };
 
   if (includeInstance) {
@@ -2749,6 +2753,22 @@ proto.api.GlobalSearchResult.deserializeBinaryFromReader = function(msg, reader)
     case 10:
       var value = /** @type {string} */ (reader.readString());
       msg.setGatewayName(value);
+      break;
+    case 11:
+      var value = /** @type {string} */ (reader.readString());
+      msg.setRemoteMulticastId(value);
+      break;
+    case 12:
+      var value = /** @type {string} */ (reader.readString());
+      msg.setRemoteMulticastName(value);
+      break;
+    case 13:
+      var value = /** @type {string} */ (reader.readString());
+      msg.setMulticastId(value);
+      break;
+    case 14:
+      var value = /** @type {string} */ (reader.readString());
+      msg.setMulticastName(value);
       break;
     default:
       reader.skipField();
@@ -2855,6 +2875,34 @@ proto.api.GlobalSearchResult.prototype.serializeBinaryToWriter = function (write
   if (f.length > 0) {
     writer.writeString(
       10,
+      f
+    );
+  }
+  f = this.getRemoteMulticastId();
+  if (f.length > 0) {
+    writer.writeString(
+      11,
+      f
+    );
+  }
+  f = this.getRemoteMulticastName();
+  if (f.length > 0) {
+    writer.writeString(
+      12,
+      f
+    );
+  }
+  f = this.getMulticastId();
+  if (f.length > 0) {
+    writer.writeString(
+      13,
+      f
+    );
+  }
+  f = this.getMulticastName();
+  if (f.length > 0) {
+    writer.writeString(
+      14,
       f
     );
   }
@@ -3017,6 +3065,66 @@ proto.api.GlobalSearchResult.prototype.getGatewayName = function() {
 /** @param {string} value  */
 proto.api.GlobalSearchResult.prototype.setGatewayName = function(value) {
   jspb.Message.setField(this, 10, value);
+};
+
+
+/**
+ * optional string remote_multicast_id = 11;
+ * @return {string}
+ */
+proto.api.GlobalSearchResult.prototype.getRemoteMulticastId = function() {
+  return /** @type {string} */ (jspb.Message.getFieldProto3(this, 11, ""));
+};
+
+
+/** @param {string} value  */
+proto.api.GlobalSearchResult.prototype.setRemoteMulticastId = function(value) {
+  jspb.Message.setField(this, 11, value);
+};
+
+
+/**
+ * optional string remote_multicast_name = 12;
+ * @return {string}
+ */
+proto.api.GlobalSearchResult.prototype.getRemoteMulticastName = function() {
+  return /** @type {string} */ (jspb.Message.getFieldProto3(this, 12, ""));
+};
+
+
+/** @param {string} value  */
+proto.api.GlobalSearchResult.prototype.setRemoteMulticastName = function(value) {
+  jspb.Message.setField(this, 12, value);
+};
+
+
+/**
+ * optional string multicast_id = 13;
+ * @return {string}
+ */
+proto.api.GlobalSearchResult.prototype.getMulticastId = function() {
+  return /** @type {string} */ (jspb.Message.getFieldProto3(this, 13, ""));
+};
+
+
+/** @param {string} value  */
+proto.api.GlobalSearchResult.prototype.setMulticastId = function(value) {
+  jspb.Message.setField(this, 13, value);
+};
+
+
+/**
+ * optional string multicast_name = 14;
+ * @return {string}
+ */
+proto.api.GlobalSearchResult.prototype.getMulticastName = function() {
+  return /** @type {string} */ (jspb.Message.getFieldProto3(this, 14, ""));
+};
+
+
+/** @param {string} value  */
+proto.api.GlobalSearchResult.prototype.setMulticastName = function(value) {
+  jspb.Message.setField(this, 14, value);
 };
 
 
