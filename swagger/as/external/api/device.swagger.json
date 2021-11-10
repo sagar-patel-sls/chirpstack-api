@@ -948,6 +948,10 @@
           "type": "string",
           "format": "date-time",
           "description": "Published at timestamp."
+        },
+        "streamID": {
+          "type": "string",
+          "description": "Stream ID."
         }
       }
     },
