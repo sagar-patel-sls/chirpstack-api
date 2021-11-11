@@ -25,6 +25,7 @@ interface IDeviceServiceService extends grpc.ServiceDefinition<grpc.UntypedServi
   streamFrameLogs: grpc.MethodDefinition<as_external_api_device_pb.StreamDeviceFrameLogsRequest, as_external_api_device_pb.StreamDeviceFrameLogsResponse>;
   streamEventLogs: grpc.MethodDefinition<as_external_api_device_pb.StreamDeviceEventLogsRequest, as_external_api_device_pb.StreamDeviceEventLogsResponse>;
   streamGlobalFrameLogs: grpc.MethodDefinition<as_external_api_device_pb.StreamGlobalDeviceEventLogsRequest, as_external_api_device_pb.StreamGlobalDeviceFrameLogsResponse>;
+  clearDeviceDevNonce: grpc.MethodDefinition<as_external_api_device_pb.ClearDevNonceRequest, google_protobuf_empty_pb.Empty>;
 }
 
 export const DeviceServiceService: IDeviceServiceService;
@@ -47,6 +48,7 @@ export interface IDeviceServiceServer extends grpc.UntypedServiceImplementation 
   streamFrameLogs: grpc.handleServerStreamingCall<as_external_api_device_pb.StreamDeviceFrameLogsRequest, as_external_api_device_pb.StreamDeviceFrameLogsResponse>;
   streamEventLogs: grpc.handleServerStreamingCall<as_external_api_device_pb.StreamDeviceEventLogsRequest, as_external_api_device_pb.StreamDeviceEventLogsResponse>;
   streamGlobalFrameLogs: grpc.handleServerStreamingCall<as_external_api_device_pb.StreamGlobalDeviceEventLogsRequest, as_external_api_device_pb.StreamGlobalDeviceFrameLogsResponse>;
+  clearDeviceDevNonce: grpc.handleUnaryCall<as_external_api_device_pb.ClearDevNonceRequest, google_protobuf_empty_pb.Empty>;
 }
 
 export class DeviceServiceClient extends grpc.Client {
@@ -99,4 +101,7 @@ export class DeviceServiceClient extends grpc.Client {
   streamEventLogs(argument: as_external_api_device_pb.StreamDeviceEventLogsRequest, metadata?: grpc.Metadata | null, options?: grpc.CallOptions | null): grpc.ClientReadableStream<as_external_api_device_pb.StreamDeviceEventLogsResponse>;
   streamGlobalFrameLogs(argument: as_external_api_device_pb.StreamGlobalDeviceEventLogsRequest, metadataOrOptions?: grpc.Metadata | grpc.CallOptions | null): grpc.ClientReadableStream<as_external_api_device_pb.StreamGlobalDeviceFrameLogsResponse>;
   streamGlobalFrameLogs(argument: as_external_api_device_pb.StreamGlobalDeviceEventLogsRequest, metadata?: grpc.Metadata | null, options?: grpc.CallOptions | null): grpc.ClientReadableStream<as_external_api_device_pb.StreamGlobalDeviceFrameLogsResponse>;
+  clearDeviceDevNonce(argument: as_external_api_device_pb.ClearDevNonceRequest, callback: grpc.requestCallback<google_protobuf_empty_pb.Empty>): grpc.ClientUnaryCall;
+  clearDeviceDevNonce(argument: as_external_api_device_pb.ClearDevNonceRequest, metadataOrOptions: grpc.Metadata | grpc.CallOptions | null, callback: grpc.requestCallback<google_protobuf_empty_pb.Empty>): grpc.ClientUnaryCall;
+  clearDeviceDevNonce(argument: as_external_api_device_pb.ClearDevNonceRequest, metadata: grpc.Metadata | null, options: grpc.CallOptions | null, callback: grpc.requestCallback<google_protobuf_empty_pb.Empty>): grpc.ClientUnaryCall;
 }

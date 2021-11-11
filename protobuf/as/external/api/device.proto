@@ -145,6 +145,15 @@ service DeviceService {
             get: "/api/applications/{application_id}/devices/frames"
         };
     }
+
+    // ClearDeviceDevNonce deletes the device older activation records for the given DevEUI.
+    //   * These are clear older DevNonce records from device activation records in Network Server
+    //   * These clears all DevNonce records but keeps latest 20 records for maintain device activation status
+    rpc ClearDeviceDevNonce(ClearDevNonceRequest) returns (google.protobuf.Empty) {
+        option (google.api.http) = {
+            delete: "/api/devices/{dev_eui}/devnonce"
+        };
+    }
 }
 
 message Device {
@@ -534,4 +543,9 @@ message StreamGlobalDeviceFrameLogsResponse {
         // Contains a downlink frame.
         DownlinkFrameLog downlink_frame = 3;
     }
+}
+
+message ClearDevNonceRequest {
+    // Device EUI (HEX encoded).
+    string dev_eui = 1 [json_name = "devEUI"];
 }

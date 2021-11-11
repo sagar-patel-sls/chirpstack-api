@@ -43,6 +43,17 @@ function deserialize_ns_AddDeviceToMulticastGroupRequest(buffer_arg) {
   return ns_ns_pb.AddDeviceToMulticastGroupRequest.deserializeBinary(new Uint8Array(buffer_arg));
 }
 
+function serialize_ns_ClearDeviceDevNonceRequest(arg) {
+  if (!(arg instanceof ns_ns_pb.ClearDeviceDevNonceRequest)) {
+    throw new Error('Expected argument of type ns.ClearDeviceDevNonceRequest');
+  }
+  return Buffer.from(arg.serializeBinary());
+}
+
+function deserialize_ns_ClearDeviceDevNonceRequest(buffer_arg) {
+  return ns_ns_pb.ClearDeviceDevNonceRequest.deserializeBinary(new Uint8Array(buffer_arg));
+}
+
 function serialize_ns_CreateDeviceProfileRequest(arg) {
   if (!(arg instanceof ns_ns_pb.CreateDeviceProfileRequest)) {
     throw new Error('Expected argument of type ns.CreateDeviceProfileRequest');
@@ -1424,6 +1435,18 @@ streamGlobalFrameLogsForDevice: {
     requestDeserialize: deserialize_google_protobuf_Empty,
     responseSerialize: serialize_ns_StreamGlobalFrameLogsForDeviceResponse,
     responseDeserialize: deserialize_ns_StreamGlobalFrameLogsForDeviceResponse,
+  },
+  // ClearDeviceDevNonce clear device devnonce from activation records.
+clearDeviceDevNonce: {
+    path: '/ns.NetworkServerService/ClearDeviceDevNonce',
+    requestStream: false,
+    responseStream: false,
+    requestType: ns_ns_pb.ClearDeviceDevNonceRequest,
+    responseType: google_protobuf_empty_pb.Empty,
+    requestSerialize: serialize_ns_ClearDeviceDevNonceRequest,
+    requestDeserialize: deserialize_ns_ClearDeviceDevNonceRequest,
+    responseSerialize: serialize_google_protobuf_Empty,
+    responseDeserialize: deserialize_google_protobuf_Empty,
   },
 };
 

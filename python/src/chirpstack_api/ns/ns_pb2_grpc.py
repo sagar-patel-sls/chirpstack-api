@@ -271,6 +271,11 @@ class NetworkServerServiceStub(object):
                 request_serializer=google_dot_protobuf_dot_empty__pb2.Empty.SerializeToString,
                 response_deserializer=chirpstack__api_dot_ns_dot_ns__pb2.StreamGlobalFrameLogsForDeviceResponse.FromString,
                 )
+        self.ClearDeviceDevNonce = channel.unary_unary(
+                '/ns.NetworkServerService/ClearDeviceDevNonce',
+                request_serializer=chirpstack__api_dot_ns_dot_ns__pb2.ClearDeviceDevNonceRequest.SerializeToString,
+                response_deserializer=google_dot_protobuf_dot_empty__pb2.Empty.FromString,
+                )
 
 
 class NetworkServerServiceServicer(object):
@@ -642,6 +647,13 @@ class NetworkServerServiceServicer(object):
         context.set_details('Method not implemented!')
         raise NotImplementedError('Method not implemented!')
 
+    def ClearDeviceDevNonce(self, request, context):
+        """ClearDeviceDevNonce clear device devnonce from activation records.
+        """
+        context.set_code(grpc.StatusCode.UNIMPLEMENTED)
+        context.set_details('Method not implemented!')
+        raise NotImplementedError('Method not implemented!')
+
 
 def add_NetworkServerServiceServicer_to_server(servicer, server):
     rpc_method_handlers = {
@@ -899,6 +911,11 @@ def add_NetworkServerServiceServicer_to_server(servicer, server):
                     servicer.StreamGlobalFrameLogsForDevice,
                     request_deserializer=google_dot_protobuf_dot_empty__pb2.Empty.FromString,
                     response_serializer=chirpstack__api_dot_ns_dot_ns__pb2.StreamGlobalFrameLogsForDeviceResponse.SerializeToString,
+            ),
+            'ClearDeviceDevNonce': grpc.unary_unary_rpc_method_handler(
+                    servicer.ClearDeviceDevNonce,
+                    request_deserializer=chirpstack__api_dot_ns_dot_ns__pb2.ClearDeviceDevNonceRequest.FromString,
+                    response_serializer=google_dot_protobuf_dot_empty__pb2.Empty.SerializeToString,
             ),
     }
     generic_handler = grpc.method_handlers_generic_handler(
@@ -1775,5 +1792,22 @@ class NetworkServerService(object):
         return grpc.experimental.unary_stream(request, target, '/ns.NetworkServerService/StreamGlobalFrameLogsForDevice',
             google_dot_protobuf_dot_empty__pb2.Empty.SerializeToString,
             chirpstack__api_dot_ns_dot_ns__pb2.StreamGlobalFrameLogsForDeviceResponse.FromString,
+            options, channel_credentials,
+            insecure, call_credentials, compression, wait_for_ready, timeout, metadata)
+
+    @staticmethod
+    def ClearDeviceDevNonce(request,
+            target,
+            options=(),
+            channel_credentials=None,
+            call_credentials=None,
+            insecure=False,
+            compression=None,
+            wait_for_ready=None,
+            timeout=None,
+            metadata=None):
+        return grpc.experimental.unary_unary(request, target, '/ns.NetworkServerService/ClearDeviceDevNonce',
+            chirpstack__api_dot_ns_dot_ns__pb2.ClearDeviceDevNonceRequest.SerializeToString,
+            google_dot_protobuf_dot_empty__pb2.Empty.FromString,
             options, channel_credentials,
             insecure, call_credentials, compression, wait_for_ready, timeout, metadata)

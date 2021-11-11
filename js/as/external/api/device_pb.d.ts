@@ -944,3 +944,23 @@ export namespace StreamGlobalDeviceFrameLogsResponse {
   }
 }
 
+export class ClearDevNonceRequest extends jspb.Message {
+  getDevEui(): string;
+  setDevEui(value: string): void;
+
+  serializeBinary(): Uint8Array;
+  toObject(includeInstance?: boolean): ClearDevNonceRequest.AsObject;
+  static toObject(includeInstance: boolean, msg: ClearDevNonceRequest): ClearDevNonceRequest.AsObject;
+  static extensions: {[key: number]: jspb.ExtensionFieldInfo<jspb.Message>};
+  static extensionsBinary: {[key: number]: jspb.ExtensionFieldBinaryInfo<jspb.Message>};
+  static serializeBinaryToWriter(message: ClearDevNonceRequest, writer: jspb.BinaryWriter): void;
+  static deserializeBinary(bytes: Uint8Array): ClearDevNonceRequest;
+  static deserializeBinaryFromReader(message: ClearDevNonceRequest, reader: jspb.BinaryReader): ClearDevNonceRequest;
+}
+
+export namespace ClearDevNonceRequest {
+  export type AsObject = {
+    devEui: string,
+  }
+}
+

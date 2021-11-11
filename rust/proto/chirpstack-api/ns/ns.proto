@@ -177,6 +177,9 @@ service NetworkServerService {
     // StreamGlobalFrameLogsForDevice returns a stream of frames seen by the devices.
     // logging of uplink and downlink frames for devices to a Redis Stream for external logging and monitoring purposes.
     rpc StreamGlobalFrameLogsForDevice(google.protobuf.Empty) returns (stream StreamGlobalFrameLogsForDeviceResponse) {}
+
+    // ClearDeviceDevNonce clear device devnonce from activation records.
+    rpc ClearDeviceDevNonce(ClearDeviceDevNonceRequest) returns (google.protobuf.Empty) {}
 }
 
 enum RXWindow {
@@ -965,4 +968,9 @@ message ADRAlgorithm {
 
     // ADR algorithm name.
     string name = 2;
+}
+
+message ClearDeviceDevNonceRequest {
+    // Device EUI (8 bytes).
+    bytes dev_eui = 1;
 }

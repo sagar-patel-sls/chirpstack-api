@@ -20,6 +20,17 @@ function deserialize_api_ActivateDeviceRequest(buffer_arg) {
   return as_external_api_device_pb.ActivateDeviceRequest.deserializeBinary(new Uint8Array(buffer_arg));
 }
 
+function serialize_api_ClearDevNonceRequest(arg) {
+  if (!(arg instanceof as_external_api_device_pb.ClearDevNonceRequest)) {
+    throw new Error('Expected argument of type api.ClearDevNonceRequest');
+  }
+  return Buffer.from(arg.serializeBinary());
+}
+
+function deserialize_api_ClearDevNonceRequest(buffer_arg) {
+  return as_external_api_device_pb.ClearDevNonceRequest.deserializeBinary(new Uint8Array(buffer_arg));
+}
+
 function serialize_api_CreateDeviceKeysRequest(arg) {
   if (!(arg instanceof as_external_api_device_pb.CreateDeviceKeysRequest)) {
     throw new Error('Expected argument of type api.CreateDeviceKeysRequest');
@@ -518,6 +529,20 @@ streamGlobalFrameLogs: {
     requestDeserialize: deserialize_api_StreamGlobalDeviceEventLogsRequest,
     responseSerialize: serialize_api_StreamGlobalDeviceFrameLogsResponse,
     responseDeserialize: deserialize_api_StreamGlobalDeviceFrameLogsResponse,
+  },
+  // ClearDeviceDevNonce deletes the device older activation records for the given DevEUI.
+//   * These are clear older DevNonce records from device activation records in Network Server
+//   * These clears all DevNonce records but keeps latest 20 records for maintain device activation status
+clearDeviceDevNonce: {
+    path: '/api.DeviceService/ClearDeviceDevNonce',
+    requestStream: false,
+    responseStream: false,
+    requestType: as_external_api_device_pb.ClearDevNonceRequest,
+    responseType: google_protobuf_empty_pb.Empty,
+    requestSerialize: serialize_api_ClearDevNonceRequest,
+    requestDeserialize: deserialize_api_ClearDevNonceRequest,
+    responseSerialize: serialize_google_protobuf_Empty,
+    responseDeserialize: deserialize_google_protobuf_Empty,
   },
 };
 
