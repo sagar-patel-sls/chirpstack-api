@@ -55,6 +55,10 @@ interface IApplicationServiceService extends grpc.ServiceDefinition<grpc.Untyped
   deletePilotThingsIntegration: grpc.MethodDefinition<as_external_api_application_pb.DeletePilotThingsIntegrationRequest, google_protobuf_empty_pb.Empty>;
   listIntegrations: grpc.MethodDefinition<as_external_api_application_pb.ListIntegrationRequest, as_external_api_application_pb.ListIntegrationResponse>;
   generateMQTTIntegrationClientCertificate: grpc.MethodDefinition<as_external_api_application_pb.GenerateMQTTIntegrationClientCertificateRequest, as_external_api_application_pb.GenerateMQTTIntegrationClientCertificateResponse>;
+  createQubitroIntegration: grpc.MethodDefinition<as_external_api_application_pb.CreateQubitroIntegrationRequest, google_protobuf_empty_pb.Empty>;
+  getQubitroIntegration: grpc.MethodDefinition<as_external_api_application_pb.GetQubitroIntegrationRequest, as_external_api_application_pb.GetQubitroIntegrationResponse>;
+  updateQubitroIntegration: grpc.MethodDefinition<as_external_api_application_pb.UpdateQubitroIntegrationRequest, google_protobuf_empty_pb.Empty>;
+  deleteQubitroIntegration: grpc.MethodDefinition<as_external_api_application_pb.DeleteQubitroIntegrationRequest, google_protobuf_empty_pb.Empty>;
 }
 
 export const ApplicationServiceService: IApplicationServiceService;
@@ -107,6 +111,10 @@ export interface IApplicationServiceServer extends grpc.UntypedServiceImplementa
   deletePilotThingsIntegration: grpc.handleUnaryCall<as_external_api_application_pb.DeletePilotThingsIntegrationRequest, google_protobuf_empty_pb.Empty>;
   listIntegrations: grpc.handleUnaryCall<as_external_api_application_pb.ListIntegrationRequest, as_external_api_application_pb.ListIntegrationResponse>;
   generateMQTTIntegrationClientCertificate: grpc.handleUnaryCall<as_external_api_application_pb.GenerateMQTTIntegrationClientCertificateRequest, as_external_api_application_pb.GenerateMQTTIntegrationClientCertificateResponse>;
+  createQubitroIntegration: grpc.handleUnaryCall<as_external_api_application_pb.CreateQubitroIntegrationRequest, google_protobuf_empty_pb.Empty>;
+  getQubitroIntegration: grpc.handleUnaryCall<as_external_api_application_pb.GetQubitroIntegrationRequest, as_external_api_application_pb.GetQubitroIntegrationResponse>;
+  updateQubitroIntegration: grpc.handleUnaryCall<as_external_api_application_pb.UpdateQubitroIntegrationRequest, google_protobuf_empty_pb.Empty>;
+  deleteQubitroIntegration: grpc.handleUnaryCall<as_external_api_application_pb.DeleteQubitroIntegrationRequest, google_protobuf_empty_pb.Empty>;
 }
 
 export class ApplicationServiceClient extends grpc.Client {
@@ -252,4 +260,16 @@ export class ApplicationServiceClient extends grpc.Client {
   generateMQTTIntegrationClientCertificate(argument: as_external_api_application_pb.GenerateMQTTIntegrationClientCertificateRequest, callback: grpc.requestCallback<as_external_api_application_pb.GenerateMQTTIntegrationClientCertificateResponse>): grpc.ClientUnaryCall;
   generateMQTTIntegrationClientCertificate(argument: as_external_api_application_pb.GenerateMQTTIntegrationClientCertificateRequest, metadataOrOptions: grpc.Metadata | grpc.CallOptions | null, callback: grpc.requestCallback<as_external_api_application_pb.GenerateMQTTIntegrationClientCertificateResponse>): grpc.ClientUnaryCall;
   generateMQTTIntegrationClientCertificate(argument: as_external_api_application_pb.GenerateMQTTIntegrationClientCertificateRequest, metadata: grpc.Metadata | null, options: grpc.CallOptions | null, callback: grpc.requestCallback<as_external_api_application_pb.GenerateMQTTIntegrationClientCertificateResponse>): grpc.ClientUnaryCall;
+  createQubitroIntegration(argument: as_external_api_application_pb.CreateQubitroIntegrationRequest, callback: grpc.requestCallback<google_protobuf_empty_pb.Empty>): grpc.ClientUnaryCall;
+  createQubitroIntegration(argument: as_external_api_application_pb.CreateQubitroIntegrationRequest, metadataOrOptions: grpc.Metadata | grpc.CallOptions | null, callback: grpc.requestCallback<google_protobuf_empty_pb.Empty>): grpc.ClientUnaryCall;
+  createQubitroIntegration(argument: as_external_api_application_pb.CreateQubitroIntegrationRequest, metadata: grpc.Metadata | null, options: grpc.CallOptions | null, callback: grpc.requestCallback<google_protobuf_empty_pb.Empty>): grpc.ClientUnaryCall;
+  getQubitroIntegration(argument: as_external_api_application_pb.GetQubitroIntegrationRequest, callback: grpc.requestCallback<as_external_api_application_pb.GetQubitroIntegrationResponse>): grpc.ClientUnaryCall;
+  getQubitroIntegration(argument: as_external_api_application_pb.GetQubitroIntegrationRequest, metadataOrOptions: grpc.Metadata | grpc.CallOptions | null, callback: grpc.requestCallback<as_external_api_application_pb.GetQubitroIntegrationResponse>): grpc.ClientUnaryCall;
+  getQubitroIntegration(argument: as_external_api_application_pb.GetQubitroIntegrationRequest, metadata: grpc.Metadata | null, options: grpc.CallOptions | null, callback: grpc.requestCallback<as_external_api_application_pb.GetQubitroIntegrationResponse>): grpc.ClientUnaryCall;
+  updateQubitroIntegration(argument: as_external_api_application_pb.UpdateQubitroIntegrationRequest, callback: grpc.requestCallback<google_protobuf_empty_pb.Empty>): grpc.ClientUnaryCall;
+  updateQubitroIntegration(argument: as_external_api_application_pb.UpdateQubitroIntegrationRequest, metadataOrOptions: grpc.Metadata | grpc.CallOptions | null, callback: grpc.requestCallback<google_protobuf_empty_pb.Empty>): grpc.ClientUnaryCall;
+  updateQubitroIntegration(argument: as_external_api_application_pb.UpdateQubitroIntegrationRequest, metadata: grpc.Metadata | null, options: grpc.CallOptions | null, callback: grpc.requestCallback<google_protobuf_empty_pb.Empty>): grpc.ClientUnaryCall;
+  deleteQubitroIntegration(argument: as_external_api_application_pb.DeleteQubitroIntegrationRequest, callback: grpc.requestCallback<google_protobuf_empty_pb.Empty>): grpc.ClientUnaryCall;
+  deleteQubitroIntegration(argument: as_external_api_application_pb.DeleteQubitroIntegrationRequest, metadataOrOptions: grpc.Metadata | grpc.CallOptions | null, callback: grpc.requestCallback<google_protobuf_empty_pb.Empty>): grpc.ClientUnaryCall;
+  deleteQubitroIntegration(argument: as_external_api_application_pb.DeleteQubitroIntegrationRequest, metadata: grpc.Metadata | null, options: grpc.CallOptions | null, callback: grpc.requestCallback<google_protobuf_empty_pb.Empty>): grpc.ClientUnaryCall;
 }

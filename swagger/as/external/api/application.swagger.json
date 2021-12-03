@@ -647,6 +647,58 @@
         ]
       }
     },
+    "/api/applications/{application_id}/integrations/qubitro": {
+      "get": {
+        "summary": "GetQubitroIntegration returns the Qubitro \napplication-integration.",
+        "operationId": "GetQubitroIntegration",
+        "responses": {
+          "200": {
+            "description": "A successful response.",
+            "schema": {
+              "$ref": "#/definitions/apiGetQubitroIntegrationResponse"
+            }
+          }
+        },
+        "parameters": [
+          {
+            "name": "application_id",
+            "description": "Application ID.",
+            "in": "path",
+            "required": true,
+            "type": "string",
+            "format": "int64"
+          }
+        ],
+        "tags": [
+          "ApplicationService"
+        ]
+      },
+      "delete": {
+        "summary": "DeleteQubitroIntegration deletes the Qubitro \napplication-integration.",
+        "operationId": "DeleteQubitroIntegration",
+        "responses": {
+          "200": {
+            "description": "A successful response.",
+            "schema": {
+              "properties": {}
+            }
+          }
+        },
+        "parameters": [
+          {
+            "name": "application_id",
+            "description": "Application ID.",
+            "in": "path",
+            "required": true,
+            "type": "string",
+            "format": "int64"
+          }
+        ],
+        "tags": [
+          "ApplicationService"
+        ]
+      }
+    },
     "/api/applications/{application_id}/integrations/thingsboard": {
       "get": {
         "summary": "GetThingsBoardIntegration returns the ThingsBoard application-integration.",
@@ -1363,6 +1415,74 @@
         ]
       }
     },
+    "/api/applications/{integration.application_id}/integrations/qubitro": {
+      "post": {
+        "summary": "CreateQubitroIntegration creates a Qubitro\napplication-integration.",
+        "operationId": "CreateQubitroIntegration",
+        "responses": {
+          "200": {
+            "description": "A successful response.",
+            "schema": {
+              "properties": {}
+            }
+          }
+        },
+        "parameters": [
+          {
+            "name": "integration.application_id",
+            "description": "Application ID.",
+            "in": "path",
+            "required": true,
+            "type": "string",
+            "format": "int64"
+          },
+          {
+            "name": "body",
+            "in": "body",
+            "required": true,
+            "schema": {
+              "$ref": "#/definitions/apiCreateQubitroIntegrationRequest"
+            }
+          }
+        ],
+        "tags": [
+          "ApplicationService"
+        ]
+      },
+      "put": {
+        "summary": "UpdateQubitroIntegration updates the Qubitro \napplication-integration.",
+        "operationId": "UpdateQubitroIntegration",
+        "responses": {
+          "200": {
+            "description": "A successful response.",
+            "schema": {
+              "properties": {}
+            }
+          }
+        },
+        "parameters": [
+          {
+            "name": "integration.application_id",
+            "description": "Application ID.",
+            "in": "path",
+            "required": true,
+            "type": "string",
+            "format": "int64"
+          },
+          {
+            "name": "body",
+            "in": "body",
+            "required": true,
+            "schema": {
+              "$ref": "#/definitions/apiUpdateQubitroIntegrationRequest"
+            }
+          }
+        ],
+        "tags": [
+          "ApplicationService"
+        ]
+      }
+    },
     "/api/applications/{integration.application_id}/integrations/thingsboard": {
       "post": {
         "summary": "CreateThingsBoardIntegration creates a ThingsBoard application-integration.",
@@ -1655,6 +1775,15 @@
         }
       }
     },
+    "apiCreateQubitroIntegrationRequest": {
+      "type": "object",
+      "properties": {
+        "integration": {
+          "$ref": "#/definitions/apiQubitroIntegration",
+          "description": "Integration object to create."
+        }
+      }
+    },
     "apiCreateThingsBoardIntegrationRequest": {
       "type": "object",
       "properties": {
@@ -1798,6 +1927,15 @@
       "properties": {
         "integration": {
           "$ref": "#/definitions/apiPilotThingsIntegration",
+          "description": "Integration object."
+        }
+      }
+    },
+    "apiGetQubitroIntegrationResponse": {
+      "type": "object",
+      "properties": {
+        "integration": {
+          "$ref": "#/definitions/apiQubitroIntegration",
           "description": "Integration object."
         }
       }
@@ -1964,7 +2102,8 @@
         "AZURE_SERVICE_BUS",
         "LOCCARTO",
         "PILOT_THINGS",
-        "MQTT_GLOBAL"
+        "MQTT_GLOBAL",
+        "QUBITRO"
       ],
       "default": "HTTP"
     },
@@ -2168,6 +2307,25 @@
         }
       }
     },
+    "apiQubitroIntegration": {
+      "type": "object",
+      "properties": {
+        "applicationID": {
+          "type": "string",
+          "format": "int64",
+          "description": "Application ID."
+        },
+        "projectId": {
+          "type": "string",
+          "description": "Qubitro ProjectId.\nProjectID can be obtained from the Qubitro portal."
+        },
+        "webhookSigningKey": {
+          "type": "string",
+          "description": "Qubitro WebhookSigningKey.\nWebhookSigningKey can be obtained from the Qubitro portal."
+        }
+      },
+      "title": "QUBITRO"
+    },
     "apiThingsBoardIntegration": {
       "type": "object",
       "properties": {
@@ -2269,6 +2427,15 @@
         "integration": {
           "$ref": "#/definitions/apiPilotThingsIntegration",
           "description": "Integration object to update."
+        }
+      }
+    },
+    "apiUpdateQubitroIntegrationRequest": {
+      "type": "object",
+      "properties": {
+        "integration": {
+          "$ref": "#/definitions/apiQubitroIntegration",
+          "description": "Integration object."
         }
       }
     },

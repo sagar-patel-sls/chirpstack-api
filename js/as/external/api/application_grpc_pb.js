@@ -128,6 +128,17 @@ function deserialize_api_CreatePilotThingsIntegrationRequest(buffer_arg) {
   return as_external_api_application_pb.CreatePilotThingsIntegrationRequest.deserializeBinary(new Uint8Array(buffer_arg));
 }
 
+function serialize_api_CreateQubitroIntegrationRequest(arg) {
+  if (!(arg instanceof as_external_api_application_pb.CreateQubitroIntegrationRequest)) {
+    throw new Error('Expected argument of type api.CreateQubitroIntegrationRequest');
+  }
+  return Buffer.from(arg.serializeBinary());
+}
+
+function deserialize_api_CreateQubitroIntegrationRequest(buffer_arg) {
+  return as_external_api_application_pb.CreateQubitroIntegrationRequest.deserializeBinary(new Uint8Array(buffer_arg));
+}
+
 function serialize_api_CreateThingsBoardIntegrationRequest(arg) {
   if (!(arg instanceof as_external_api_application_pb.CreateThingsBoardIntegrationRequest)) {
     throw new Error('Expected argument of type api.CreateThingsBoardIntegrationRequest');
@@ -247,6 +258,17 @@ function serialize_api_DeletePilotThingsIntegrationRequest(arg) {
 
 function deserialize_api_DeletePilotThingsIntegrationRequest(buffer_arg) {
   return as_external_api_application_pb.DeletePilotThingsIntegrationRequest.deserializeBinary(new Uint8Array(buffer_arg));
+}
+
+function serialize_api_DeleteQubitroIntegrationRequest(arg) {
+  if (!(arg instanceof as_external_api_application_pb.DeleteQubitroIntegrationRequest)) {
+    throw new Error('Expected argument of type api.DeleteQubitroIntegrationRequest');
+  }
+  return Buffer.from(arg.serializeBinary());
+}
+
+function deserialize_api_DeleteQubitroIntegrationRequest(buffer_arg) {
+  return as_external_api_application_pb.DeleteQubitroIntegrationRequest.deserializeBinary(new Uint8Array(buffer_arg));
 }
 
 function serialize_api_DeleteThingsBoardIntegrationRequest(arg) {
@@ -502,6 +524,28 @@ function deserialize_api_GetPilotThingsIntegrationResponse(buffer_arg) {
   return as_external_api_application_pb.GetPilotThingsIntegrationResponse.deserializeBinary(new Uint8Array(buffer_arg));
 }
 
+function serialize_api_GetQubitroIntegrationRequest(arg) {
+  if (!(arg instanceof as_external_api_application_pb.GetQubitroIntegrationRequest)) {
+    throw new Error('Expected argument of type api.GetQubitroIntegrationRequest');
+  }
+  return Buffer.from(arg.serializeBinary());
+}
+
+function deserialize_api_GetQubitroIntegrationRequest(buffer_arg) {
+  return as_external_api_application_pb.GetQubitroIntegrationRequest.deserializeBinary(new Uint8Array(buffer_arg));
+}
+
+function serialize_api_GetQubitroIntegrationResponse(arg) {
+  if (!(arg instanceof as_external_api_application_pb.GetQubitroIntegrationResponse)) {
+    throw new Error('Expected argument of type api.GetQubitroIntegrationResponse');
+  }
+  return Buffer.from(arg.serializeBinary());
+}
+
+function deserialize_api_GetQubitroIntegrationResponse(buffer_arg) {
+  return as_external_api_application_pb.GetQubitroIntegrationResponse.deserializeBinary(new Uint8Array(buffer_arg));
+}
+
 function serialize_api_GetThingsBoardIntegrationRequest(arg) {
   if (!(arg instanceof as_external_api_application_pb.GetThingsBoardIntegrationRequest)) {
     throw new Error('Expected argument of type api.GetThingsBoardIntegrationRequest');
@@ -676,6 +720,17 @@ function serialize_api_UpdatePilotThingsIntegrationRequest(arg) {
 
 function deserialize_api_UpdatePilotThingsIntegrationRequest(buffer_arg) {
   return as_external_api_application_pb.UpdatePilotThingsIntegrationRequest.deserializeBinary(new Uint8Array(buffer_arg));
+}
+
+function serialize_api_UpdateQubitroIntegrationRequest(arg) {
+  if (!(arg instanceof as_external_api_application_pb.UpdateQubitroIntegrationRequest)) {
+    throw new Error('Expected argument of type api.UpdateQubitroIntegrationRequest');
+  }
+  return Buffer.from(arg.serializeBinary());
+}
+
+function deserialize_api_UpdateQubitroIntegrationRequest(buffer_arg) {
+  return as_external_api_application_pb.UpdateQubitroIntegrationRequest.deserializeBinary(new Uint8Array(buffer_arg));
 }
 
 function serialize_api_UpdateThingsBoardIntegrationRequest(arg) {
@@ -1276,6 +1331,58 @@ generateMQTTIntegrationClientCertificate: {
     requestDeserialize: deserialize_api_GenerateMQTTIntegrationClientCertificateRequest,
     responseSerialize: serialize_api_GenerateMQTTIntegrationClientCertificateResponse,
     responseDeserialize: deserialize_api_GenerateMQTTIntegrationClientCertificateResponse,
+  },
+  // CreateQubitroIntegration creates a Qubitro
+// application-integration.
+createQubitroIntegration: {
+    path: '/api.ApplicationService/CreateQubitroIntegration',
+    requestStream: false,
+    responseStream: false,
+    requestType: as_external_api_application_pb.CreateQubitroIntegrationRequest,
+    responseType: google_protobuf_empty_pb.Empty,
+    requestSerialize: serialize_api_CreateQubitroIntegrationRequest,
+    requestDeserialize: deserialize_api_CreateQubitroIntegrationRequest,
+    responseSerialize: serialize_google_protobuf_Empty,
+    responseDeserialize: deserialize_google_protobuf_Empty,
+  },
+  // GetQubitroIntegration returns the Qubitro 
+// application-integration.
+getQubitroIntegration: {
+    path: '/api.ApplicationService/GetQubitroIntegration',
+    requestStream: false,
+    responseStream: false,
+    requestType: as_external_api_application_pb.GetQubitroIntegrationRequest,
+    responseType: as_external_api_application_pb.GetQubitroIntegrationResponse,
+    requestSerialize: serialize_api_GetQubitroIntegrationRequest,
+    requestDeserialize: deserialize_api_GetQubitroIntegrationRequest,
+    responseSerialize: serialize_api_GetQubitroIntegrationResponse,
+    responseDeserialize: deserialize_api_GetQubitroIntegrationResponse,
+  },
+  // UpdateQubitroIntegration updates the Qubitro 
+// application-integration.
+updateQubitroIntegration: {
+    path: '/api.ApplicationService/UpdateQubitroIntegration',
+    requestStream: false,
+    responseStream: false,
+    requestType: as_external_api_application_pb.UpdateQubitroIntegrationRequest,
+    responseType: google_protobuf_empty_pb.Empty,
+    requestSerialize: serialize_api_UpdateQubitroIntegrationRequest,
+    requestDeserialize: deserialize_api_UpdateQubitroIntegrationRequest,
+    responseSerialize: serialize_google_protobuf_Empty,
+    responseDeserialize: deserialize_google_protobuf_Empty,
+  },
+  // DeleteQubitroIntegration deletes the Qubitro 
+// application-integration.
+deleteQubitroIntegration: {
+    path: '/api.ApplicationService/DeleteQubitroIntegration',
+    requestStream: false,
+    responseStream: false,
+    requestType: as_external_api_application_pb.DeleteQubitroIntegrationRequest,
+    responseType: google_protobuf_empty_pb.Empty,
+    requestSerialize: serialize_api_DeleteQubitroIntegrationRequest,
+    requestDeserialize: deserialize_api_DeleteQubitroIntegrationRequest,
+    responseSerialize: serialize_google_protobuf_Empty,
+    responseDeserialize: deserialize_google_protobuf_Empty,
   },
 };
 

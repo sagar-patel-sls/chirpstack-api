@@ -1912,6 +1912,140 @@ export namespace GenerateMQTTIntegrationClientCertificateResponse {
   }
 }
 
+export class QubitroIntegration extends jspb.Message {
+  getApplicationId(): number;
+  setApplicationId(value: number): void;
+
+  getProjectid(): string;
+  setProjectid(value: string): void;
+
+  getWebhookSigningKey(): string;
+  setWebhookSigningKey(value: string): void;
+
+  serializeBinary(): Uint8Array;
+  toObject(includeInstance?: boolean): QubitroIntegration.AsObject;
+  static toObject(includeInstance: boolean, msg: QubitroIntegration): QubitroIntegration.AsObject;
+  static extensions: {[key: number]: jspb.ExtensionFieldInfo<jspb.Message>};
+  static extensionsBinary: {[key: number]: jspb.ExtensionFieldBinaryInfo<jspb.Message>};
+  static serializeBinaryToWriter(message: QubitroIntegration, writer: jspb.BinaryWriter): void;
+  static deserializeBinary(bytes: Uint8Array): QubitroIntegration;
+  static deserializeBinaryFromReader(message: QubitroIntegration, reader: jspb.BinaryReader): QubitroIntegration;
+}
+
+export namespace QubitroIntegration {
+  export type AsObject = {
+    applicationId: number,
+    projectid: string,
+    webhookSigningKey: string,
+  }
+}
+
+export class CreateQubitroIntegrationRequest extends jspb.Message {
+  hasIntegration(): boolean;
+  clearIntegration(): void;
+  getIntegration(): QubitroIntegration | undefined;
+  setIntegration(value?: QubitroIntegration): void;
+
+  serializeBinary(): Uint8Array;
+  toObject(includeInstance?: boolean): CreateQubitroIntegrationRequest.AsObject;
+  static toObject(includeInstance: boolean, msg: CreateQubitroIntegrationRequest): CreateQubitroIntegrationRequest.AsObject;
+  static extensions: {[key: number]: jspb.ExtensionFieldInfo<jspb.Message>};
+  static extensionsBinary: {[key: number]: jspb.ExtensionFieldBinaryInfo<jspb.Message>};
+  static serializeBinaryToWriter(message: CreateQubitroIntegrationRequest, writer: jspb.BinaryWriter): void;
+  static deserializeBinary(bytes: Uint8Array): CreateQubitroIntegrationRequest;
+  static deserializeBinaryFromReader(message: CreateQubitroIntegrationRequest, reader: jspb.BinaryReader): CreateQubitroIntegrationRequest;
+}
+
+export namespace CreateQubitroIntegrationRequest {
+  export type AsObject = {
+    integration?: QubitroIntegration.AsObject,
+  }
+}
+
+export class GetQubitroIntegrationRequest extends jspb.Message {
+  getApplicationId(): number;
+  setApplicationId(value: number): void;
+
+  serializeBinary(): Uint8Array;
+  toObject(includeInstance?: boolean): GetQubitroIntegrationRequest.AsObject;
+  static toObject(includeInstance: boolean, msg: GetQubitroIntegrationRequest): GetQubitroIntegrationRequest.AsObject;
+  static extensions: {[key: number]: jspb.ExtensionFieldInfo<jspb.Message>};
+  static extensionsBinary: {[key: number]: jspb.ExtensionFieldBinaryInfo<jspb.Message>};
+  static serializeBinaryToWriter(message: GetQubitroIntegrationRequest, writer: jspb.BinaryWriter): void;
+  static deserializeBinary(bytes: Uint8Array): GetQubitroIntegrationRequest;
+  static deserializeBinaryFromReader(message: GetQubitroIntegrationRequest, reader: jspb.BinaryReader): GetQubitroIntegrationRequest;
+}
+
+export namespace GetQubitroIntegrationRequest {
+  export type AsObject = {
+    applicationId: number,
+  }
+}
+
+export class GetQubitroIntegrationResponse extends jspb.Message {
+  hasIntegration(): boolean;
+  clearIntegration(): void;
+  getIntegration(): QubitroIntegration | undefined;
+  setIntegration(value?: QubitroIntegration): void;
+
+  serializeBinary(): Uint8Array;
+  toObject(includeInstance?: boolean): GetQubitroIntegrationResponse.AsObject;
+  static toObject(includeInstance: boolean, msg: GetQubitroIntegrationResponse): GetQubitroIntegrationResponse.AsObject;
+  static extensions: {[key: number]: jspb.ExtensionFieldInfo<jspb.Message>};
+  static extensionsBinary: {[key: number]: jspb.ExtensionFieldBinaryInfo<jspb.Message>};
+  static serializeBinaryToWriter(message: GetQubitroIntegrationResponse, writer: jspb.BinaryWriter): void;
+  static deserializeBinary(bytes: Uint8Array): GetQubitroIntegrationResponse;
+  static deserializeBinaryFromReader(message: GetQubitroIntegrationResponse, reader: jspb.BinaryReader): GetQubitroIntegrationResponse;
+}
+
+export namespace GetQubitroIntegrationResponse {
+  export type AsObject = {
+    integration?: QubitroIntegration.AsObject,
+  }
+}
+
+export class UpdateQubitroIntegrationRequest extends jspb.Message {
+  hasIntegration(): boolean;
+  clearIntegration(): void;
+  getIntegration(): QubitroIntegration | undefined;
+  setIntegration(value?: QubitroIntegration): void;
+
+  serializeBinary(): Uint8Array;
+  toObject(includeInstance?: boolean): UpdateQubitroIntegrationRequest.AsObject;
+  static toObject(includeInstance: boolean, msg: UpdateQubitroIntegrationRequest): UpdateQubitroIntegrationRequest.AsObject;
+  static extensions: {[key: number]: jspb.ExtensionFieldInfo<jspb.Message>};
+  static extensionsBinary: {[key: number]: jspb.ExtensionFieldBinaryInfo<jspb.Message>};
+  static serializeBinaryToWriter(message: UpdateQubitroIntegrationRequest, writer: jspb.BinaryWriter): void;
+  static deserializeBinary(bytes: Uint8Array): UpdateQubitroIntegrationRequest;
+  static deserializeBinaryFromReader(message: UpdateQubitroIntegrationRequest, reader: jspb.BinaryReader): UpdateQubitroIntegrationRequest;
+}
+
+export namespace UpdateQubitroIntegrationRequest {
+  export type AsObject = {
+    integration?: QubitroIntegration.AsObject,
+  }
+}
+
+export class DeleteQubitroIntegrationRequest extends jspb.Message {
+  getApplicationId(): number;
+  setApplicationId(value: number): void;
+
+  serializeBinary(): Uint8Array;
+  toObject(includeInstance?: boolean): DeleteQubitroIntegrationRequest.AsObject;
+  static toObject(includeInstance: boolean, msg: DeleteQubitroIntegrationRequest): DeleteQubitroIntegrationRequest.AsObject;
+  static extensions: {[key: number]: jspb.ExtensionFieldInfo<jspb.Message>};
+  static extensionsBinary: {[key: number]: jspb.ExtensionFieldBinaryInfo<jspb.Message>};
+  static serializeBinaryToWriter(message: DeleteQubitroIntegrationRequest, writer: jspb.BinaryWriter): void;
+  static deserializeBinary(bytes: Uint8Array): DeleteQubitroIntegrationRequest;
+  static deserializeBinaryFromReader(message: DeleteQubitroIntegrationRequest, reader: jspb.BinaryReader): DeleteQubitroIntegrationRequest;
+}
+
+export namespace DeleteQubitroIntegrationRequest {
+  export type AsObject = {
+    applicationId: number,
+  }
+}
+
 export interface IntegrationKindMap {
   HTTP: 0;
   INFLUXDB: 1;
@@ -1924,6 +2058,7 @@ export interface IntegrationKindMap {
   LOCCARTO: 8;
   PILOT_THINGS: 9;
   MQTT_GLOBAL: 10;
+  QUBITRO: 11;
 }
 
 export const IntegrationKind: IntegrationKindMap;

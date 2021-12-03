@@ -251,6 +251,26 @@ class ApplicationServiceStub(object):
                 request_serializer=chirpstack__api_dot_as__pb_dot_external_dot_api_dot_application__pb2.GenerateMQTTIntegrationClientCertificateRequest.SerializeToString,
                 response_deserializer=chirpstack__api_dot_as__pb_dot_external_dot_api_dot_application__pb2.GenerateMQTTIntegrationClientCertificateResponse.FromString,
                 )
+        self.CreateQubitroIntegration = channel.unary_unary(
+                '/api.ApplicationService/CreateQubitroIntegration',
+                request_serializer=chirpstack__api_dot_as__pb_dot_external_dot_api_dot_application__pb2.CreateQubitroIntegrationRequest.SerializeToString,
+                response_deserializer=google_dot_protobuf_dot_empty__pb2.Empty.FromString,
+                )
+        self.GetQubitroIntegration = channel.unary_unary(
+                '/api.ApplicationService/GetQubitroIntegration',
+                request_serializer=chirpstack__api_dot_as__pb_dot_external_dot_api_dot_application__pb2.GetQubitroIntegrationRequest.SerializeToString,
+                response_deserializer=chirpstack__api_dot_as__pb_dot_external_dot_api_dot_application__pb2.GetQubitroIntegrationResponse.FromString,
+                )
+        self.UpdateQubitroIntegration = channel.unary_unary(
+                '/api.ApplicationService/UpdateQubitroIntegration',
+                request_serializer=chirpstack__api_dot_as__pb_dot_external_dot_api_dot_application__pb2.UpdateQubitroIntegrationRequest.SerializeToString,
+                response_deserializer=google_dot_protobuf_dot_empty__pb2.Empty.FromString,
+                )
+        self.DeleteQubitroIntegration = channel.unary_unary(
+                '/api.ApplicationService/DeleteQubitroIntegration',
+                request_serializer=chirpstack__api_dot_as__pb_dot_external_dot_api_dot_application__pb2.DeleteQubitroIntegrationRequest.SerializeToString,
+                response_deserializer=google_dot_protobuf_dot_empty__pb2.Empty.FromString,
+                )
 
 
 class ApplicationServiceServicer(object):
@@ -596,6 +616,38 @@ class ApplicationServiceServicer(object):
         context.set_details('Method not implemented!')
         raise NotImplementedError('Method not implemented!')
 
+    def CreateQubitroIntegration(self, request, context):
+        """CreateQubitroIntegration creates a Qubitro
+        application-integration.
+        """
+        context.set_code(grpc.StatusCode.UNIMPLEMENTED)
+        context.set_details('Method not implemented!')
+        raise NotImplementedError('Method not implemented!')
+
+    def GetQubitroIntegration(self, request, context):
+        """GetQubitroIntegration returns the Qubitro 
+        application-integration.
+        """
+        context.set_code(grpc.StatusCode.UNIMPLEMENTED)
+        context.set_details('Method not implemented!')
+        raise NotImplementedError('Method not implemented!')
+
+    def UpdateQubitroIntegration(self, request, context):
+        """UpdateQubitroIntegration updates the Qubitro 
+        application-integration.
+        """
+        context.set_code(grpc.StatusCode.UNIMPLEMENTED)
+        context.set_details('Method not implemented!')
+        raise NotImplementedError('Method not implemented!')
+
+    def DeleteQubitroIntegration(self, request, context):
+        """DeleteQubitroIntegration deletes the Qubitro 
+        application-integration.
+        """
+        context.set_code(grpc.StatusCode.UNIMPLEMENTED)
+        context.set_details('Method not implemented!')
+        raise NotImplementedError('Method not implemented!')
+
 
 def add_ApplicationServiceServicer_to_server(servicer, server):
     rpc_method_handlers = {
@@ -833,6 +885,26 @@ def add_ApplicationServiceServicer_to_server(servicer, server):
                     servicer.GenerateMQTTIntegrationClientCertificate,
                     request_deserializer=chirpstack__api_dot_as__pb_dot_external_dot_api_dot_application__pb2.GenerateMQTTIntegrationClientCertificateRequest.FromString,
                     response_serializer=chirpstack__api_dot_as__pb_dot_external_dot_api_dot_application__pb2.GenerateMQTTIntegrationClientCertificateResponse.SerializeToString,
+            ),
+            'CreateQubitroIntegration': grpc.unary_unary_rpc_method_handler(
+                    servicer.CreateQubitroIntegration,
+                    request_deserializer=chirpstack__api_dot_as__pb_dot_external_dot_api_dot_application__pb2.CreateQubitroIntegrationRequest.FromString,
+                    response_serializer=google_dot_protobuf_dot_empty__pb2.Empty.SerializeToString,
+            ),
+            'GetQubitroIntegration': grpc.unary_unary_rpc_method_handler(
+                    servicer.GetQubitroIntegration,
+                    request_deserializer=chirpstack__api_dot_as__pb_dot_external_dot_api_dot_application__pb2.GetQubitroIntegrationRequest.FromString,
+                    response_serializer=chirpstack__api_dot_as__pb_dot_external_dot_api_dot_application__pb2.GetQubitroIntegrationResponse.SerializeToString,
+            ),
+            'UpdateQubitroIntegration': grpc.unary_unary_rpc_method_handler(
+                    servicer.UpdateQubitroIntegration,
+                    request_deserializer=chirpstack__api_dot_as__pb_dot_external_dot_api_dot_application__pb2.UpdateQubitroIntegrationRequest.FromString,
+                    response_serializer=google_dot_protobuf_dot_empty__pb2.Empty.SerializeToString,
+            ),
+            'DeleteQubitroIntegration': grpc.unary_unary_rpc_method_handler(
+                    servicer.DeleteQubitroIntegration,
+                    request_deserializer=chirpstack__api_dot_as__pb_dot_external_dot_api_dot_application__pb2.DeleteQubitroIntegrationRequest.FromString,
+                    response_serializer=google_dot_protobuf_dot_empty__pb2.Empty.SerializeToString,
             ),
     }
     generic_handler = grpc.method_handlers_generic_handler(
@@ -1641,5 +1713,73 @@ class ApplicationService(object):
         return grpc.experimental.unary_unary(request, target, '/api.ApplicationService/GenerateMQTTIntegrationClientCertificate',
             chirpstack__api_dot_as__pb_dot_external_dot_api_dot_application__pb2.GenerateMQTTIntegrationClientCertificateRequest.SerializeToString,
             chirpstack__api_dot_as__pb_dot_external_dot_api_dot_application__pb2.GenerateMQTTIntegrationClientCertificateResponse.FromString,
+            options, channel_credentials,
+            insecure, call_credentials, compression, wait_for_ready, timeout, metadata)
+
+    @staticmethod
+    def CreateQubitroIntegration(request,
+            target,
+            options=(),
+            channel_credentials=None,
+            call_credentials=None,
+            insecure=False,
+            compression=None,
+            wait_for_ready=None,
+            timeout=None,
+            metadata=None):
+        return grpc.experimental.unary_unary(request, target, '/api.ApplicationService/CreateQubitroIntegration',
+            chirpstack__api_dot_as__pb_dot_external_dot_api_dot_application__pb2.CreateQubitroIntegrationRequest.SerializeToString,
+            google_dot_protobuf_dot_empty__pb2.Empty.FromString,
+            options, channel_credentials,
+            insecure, call_credentials, compression, wait_for_ready, timeout, metadata)
+
+    @staticmethod
+    def GetQubitroIntegration(request,
+            target,
+            options=(),
+            channel_credentials=None,
+            call_credentials=None,
+            insecure=False,
+            compression=None,
+            wait_for_ready=None,
+            timeout=None,
+            metadata=None):
+        return grpc.experimental.unary_unary(request, target, '/api.ApplicationService/GetQubitroIntegration',
+            chirpstack__api_dot_as__pb_dot_external_dot_api_dot_application__pb2.GetQubitroIntegrationRequest.SerializeToString,
+            chirpstack__api_dot_as__pb_dot_external_dot_api_dot_application__pb2.GetQubitroIntegrationResponse.FromString,
+            options, channel_credentials,
+            insecure, call_credentials, compression, wait_for_ready, timeout, metadata)
+
+    @staticmethod
+    def UpdateQubitroIntegration(request,
+            target,
+            options=(),
+            channel_credentials=None,
+            call_credentials=None,
+            insecure=False,
+            compression=None,
+            wait_for_ready=None,
+            timeout=None,
+            metadata=None):
+        return grpc.experimental.unary_unary(request, target, '/api.ApplicationService/UpdateQubitroIntegration',
+            chirpstack__api_dot_as__pb_dot_external_dot_api_dot_application__pb2.UpdateQubitroIntegrationRequest.SerializeToString,
+            google_dot_protobuf_dot_empty__pb2.Empty.FromString,
+            options, channel_credentials,
+            insecure, call_credentials, compression, wait_for_ready, timeout, metadata)
+
+    @staticmethod
+    def DeleteQubitroIntegration(request,
+            target,
+            options=(),
+            channel_credentials=None,
+            call_credentials=None,
+            insecure=False,
+            compression=None,
+            wait_for_ready=None,
+            timeout=None,
+            metadata=None):
+        return grpc.experimental.unary_unary(request, target, '/api.ApplicationService/DeleteQubitroIntegration',
+            chirpstack__api_dot_as__pb_dot_external_dot_api_dot_application__pb2.DeleteQubitroIntegrationRequest.SerializeToString,
+            google_dot_protobuf_dot_empty__pb2.Empty.FromString,
             options, channel_credentials,
             insecure, call_credentials, compression, wait_for_ready, timeout, metadata)
