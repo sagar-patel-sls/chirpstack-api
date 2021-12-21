@@ -321,6 +321,30 @@
             "required": true,
             "type": "string",
             "format": "int64"
+          },
+          {
+            "name": "region",
+            "description": "LoRaWAN ISM Band (Regions).",
+            "in": "query",
+            "required": false,
+            "type": "string",
+            "enum": [
+              "IN865",
+              "EU868",
+              "US915",
+              "CN779",
+              "EU433",
+              "AU915",
+              "CN470",
+              "AS923",
+              "AS923_2",
+              "AS923_3",
+              "AS923_4",
+              "KR920",
+              "RU864",
+              "ISM2400"
+            ],
+            "default": "IN865"
           }
         ],
         "tags": [
@@ -665,6 +689,26 @@
           "description": "Gateways and meta-data of reception."
         }
       }
+    },
+    "apiISMBand": {
+      "type": "string",
+      "enum": [
+        "IN865",
+        "EU868",
+        "US915",
+        "CN779",
+        "EU433",
+        "AU915",
+        "CN470",
+        "AS923",
+        "AS923_2",
+        "AS923_3",
+        "AS923_4",
+        "KR920",
+        "RU864",
+        "ISM2400"
+      ],
+      "default": "IN865"
     },
     "apiListGatewayResponse": {
       "type": "object",

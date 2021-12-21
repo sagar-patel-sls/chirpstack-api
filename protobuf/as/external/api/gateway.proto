@@ -98,6 +98,23 @@ service GatewayService {
 	}
 }
 
+enum ISMBand {
+	IN865 = 0;
+	EU868 = 1;   
+	US915 = 2;
+	CN779 = 3;
+	EU433 = 4;
+	AU915 = 5; 
+	CN470 = 6; 
+	AS923 = 7;    // 0 MHz frequency offset
+	AS923_2 = 8;  // -1.80 MHz frequency offset
+	AS923_3 = 9;  // -6.60 MHz frequency offset
+	AS923_4 = 10; // -5.90 MHz frequency offset
+	KR920 = 11;
+	RU864 = 12;
+	ISM2400 = 13;
+}
+
 message Gateway {
 	// Gateway ID (HEX encoded).
 	string id = 1;
@@ -381,6 +398,9 @@ message StreamGatewayFrameLogsResponse {
 message StreamGlobalGatewayFrameLogsRequest {
 	// Organization ID.
 	int64 organization_id = 1 [json_name = "organizationID"];
+
+	//LoRaWAN ISM Band (Regions).
+	ISMBand region = 2;
 }
 
 message StreamGlobalGatewayFrameLogsResponse {

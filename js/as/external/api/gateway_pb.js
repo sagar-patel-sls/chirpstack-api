@@ -28,6 +28,7 @@ goog.exportSymbol('proto.api.GetGatewayStatsRequest', null, global);
 goog.exportSymbol('proto.api.GetGatewayStatsResponse', null, global);
 goog.exportSymbol('proto.api.GetLastPingRequest', null, global);
 goog.exportSymbol('proto.api.GetLastPingResponse', null, global);
+goog.exportSymbol('proto.api.ISMBand', null, global);
 goog.exportSymbol('proto.api.ListGatewayRequest', null, global);
 goog.exportSymbol('proto.api.ListGatewayResponse', null, global);
 goog.exportSymbol('proto.api.PingRX', null, global);
@@ -5226,7 +5227,8 @@ proto.api.StreamGlobalGatewayFrameLogsRequest.prototype.toObject = function(opt_
  */
 proto.api.StreamGlobalGatewayFrameLogsRequest.toObject = function(includeInstance, msg) {
   var f, obj = {
-    organizationId: msg.getOrganizationId()
+    organizationId: msg.getOrganizationId(),
+    region: msg.getRegion()
   };
 
   if (includeInstance) {
@@ -5266,6 +5268,10 @@ proto.api.StreamGlobalGatewayFrameLogsRequest.deserializeBinaryFromReader = func
     case 1:
       var value = /** @type {number} */ (reader.readInt64());
       msg.setOrganizationId(value);
+      break;
+    case 2:
+      var value = /** @type {!proto.api.ISMBand} */ (reader.readEnum());
+      msg.setRegion(value);
       break;
     default:
       reader.skipField();
@@ -5312,6 +5318,13 @@ proto.api.StreamGlobalGatewayFrameLogsRequest.prototype.serializeBinaryToWriter 
       f
     );
   }
+  f = this.getRegion();
+  if (f !== 0.0) {
+    writer.writeEnum(
+      2,
+      f
+    );
+  }
 };
 
 
@@ -5336,6 +5349,21 @@ proto.api.StreamGlobalGatewayFrameLogsRequest.prototype.getOrganizationId = func
 /** @param {number} value  */
 proto.api.StreamGlobalGatewayFrameLogsRequest.prototype.setOrganizationId = function(value) {
   jspb.Message.setField(this, 1, value);
+};
+
+
+/**
+ * optional ISMBand region = 2;
+ * @return {!proto.api.ISMBand}
+ */
+proto.api.StreamGlobalGatewayFrameLogsRequest.prototype.getRegion = function() {
+  return /** @type {!proto.api.ISMBand} */ (jspb.Message.getFieldProto3(this, 2, 0));
+};
+
+
+/** @param {!proto.api.ISMBand} value  */
+proto.api.StreamGlobalGatewayFrameLogsRequest.prototype.setRegion = function(value) {
+  jspb.Message.setField(this, 2, value);
 };
 
 
@@ -5611,5 +5639,25 @@ proto.api.StreamGlobalGatewayFrameLogsResponse.prototype.hasDownlinkFrame = func
   return jspb.Message.getField(this, 3) != null;
 };
 
+
+/**
+ * @enum {number}
+ */
+proto.api.ISMBand = {
+  IN865: 0,
+  EU868: 1,
+  US915: 2,
+  CN779: 3,
+  EU433: 4,
+  AU915: 5,
+  CN470: 6,
+  AS923: 7,
+  AS923_2: 8,
+  AS923_3: 9,
+  AS923_4: 10,
+  KR920: 11,
+  RU864: 12,
+  ISM2400: 13
+};
 
 goog.object.extend(exports, proto.api);

@@ -688,6 +688,9 @@ export class StreamGlobalGatewayFrameLogsRequest extends jspb.Message {
   getOrganizationId(): number;
   setOrganizationId(value: number): void;
 
+  getRegion(): ISMBandMap[keyof ISMBandMap];
+  setRegion(value: ISMBandMap[keyof ISMBandMap]): void;
+
   serializeBinary(): Uint8Array;
   toObject(includeInstance?: boolean): StreamGlobalGatewayFrameLogsRequest.AsObject;
   static toObject(includeInstance: boolean, msg: StreamGlobalGatewayFrameLogsRequest): StreamGlobalGatewayFrameLogsRequest.AsObject;
@@ -701,6 +704,7 @@ export class StreamGlobalGatewayFrameLogsRequest extends jspb.Message {
 export namespace StreamGlobalGatewayFrameLogsRequest {
   export type AsObject = {
     organizationId: number,
+    region: ISMBandMap[keyof ISMBandMap],
   }
 }
 
@@ -742,4 +746,23 @@ export namespace StreamGlobalGatewayFrameLogsResponse {
     DOWNLINK_FRAME = 3,
   }
 }
+
+export interface ISMBandMap {
+  IN865: 0;
+  EU868: 1;
+  US915: 2;
+  CN779: 3;
+  EU433: 4;
+  AU915: 5;
+  CN470: 6;
+  AS923: 7;
+  AS923_2: 8;
+  AS923_3: 9;
+  AS923_4: 10;
+  KR920: 11;
+  RU864: 12;
+  ISM2400: 13;
+}
+
+export const ISMBand: ISMBandMap;
 
