@@ -334,6 +334,8 @@ export class HandleGatewayStatsRequest extends jspb.Message {
   clearRxPacketsPerDrMap(): void;
   getTxPacketsPerStatusMap(): jspb.Map<string, number>;
   clearTxPacketsPerStatusMap(): void;
+  getMtypeCountMap(): jspb.Map<string, number>;
+  clearMtypeCountMap(): void;
   serializeBinary(): Uint8Array;
   toObject(includeInstance?: boolean): HandleGatewayStatsRequest.AsObject;
   static toObject(includeInstance: boolean, msg: HandleGatewayStatsRequest): HandleGatewayStatsRequest.AsObject;
@@ -360,6 +362,7 @@ export namespace HandleGatewayStatsRequest {
     txPacketsPerDrMap: Array<[number, number]>,
     rxPacketsPerDrMap: Array<[number, number]>,
     txPacketsPerStatusMap: Array<[string, number]>,
+    mtypeCountMap: Array<[string, number]>,
   }
 }
 

@@ -594,6 +594,14 @@
             "format": "int64"
           },
           "description": "Tx packets per status."
+        },
+        "mtypeCount": {
+          "type": "object",
+          "additionalProperties": {
+            "type": "integer",
+            "format": "int64"
+          },
+          "title": "Packets count per MType (JoinRequest, JoinAccept, Confirm/UnConfirm)"
         }
       }
     },

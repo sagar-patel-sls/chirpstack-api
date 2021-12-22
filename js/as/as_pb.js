@@ -2319,7 +2319,8 @@ proto.as.HandleGatewayStatsRequest.toObject = function(includeInstance, msg) {
     rxPacketsPerFrequencyMap: (f = msg.getRxPacketsPerFrequencyMap(true)) ? f.toArray() : [],
     txPacketsPerDrMap: (f = msg.getTxPacketsPerDrMap(true)) ? f.toArray() : [],
     rxPacketsPerDrMap: (f = msg.getRxPacketsPerDrMap(true)) ? f.toArray() : [],
-    txPacketsPerStatusMap: (f = msg.getTxPacketsPerStatusMap(true)) ? f.toArray() : []
+    txPacketsPerStatusMap: (f = msg.getTxPacketsPerStatusMap(true)) ? f.toArray() : [],
+    mtypeCountMap: (f = msg.getMtypeCountMap(true)) ? f.toArray() : []
   };
 
   if (includeInstance) {
@@ -2422,6 +2423,12 @@ proto.as.HandleGatewayStatsRequest.deserializeBinaryFromReader = function(msg, r
       break;
     case 14:
       var value = msg.getTxPacketsPerStatusMap();
+      reader.readMessage(value, function(message, reader) {
+        jspb.Map.deserializeBinary(message, reader, jspb.BinaryReader.prototype.readString, jspb.BinaryReader.prototype.readUint32);
+         });
+      break;
+    case 15:
+      var value = msg.getMtypeCountMap();
       reader.readMessage(value, function(message, reader) {
         jspb.Map.deserializeBinary(message, reader, jspb.BinaryReader.prototype.readString, jspb.BinaryReader.prototype.readUint32);
          });
@@ -2545,6 +2552,10 @@ proto.as.HandleGatewayStatsRequest.prototype.serializeBinaryToWriter = function 
   f = this.getTxPacketsPerStatusMap(true);
   if (f && f.getLength() > 0) {
     f.serializeBinary(14, writer, jspb.BinaryWriter.prototype.writeString, jspb.BinaryWriter.prototype.writeUint32);
+  }
+  f = this.getMtypeCountMap(true);
+  if (f && f.getLength() > 0) {
+    f.serializeBinary(15, writer, jspb.BinaryWriter.prototype.writeString, jspb.BinaryWriter.prototype.writeUint32);
   }
 };
 
@@ -2830,6 +2841,19 @@ proto.as.HandleGatewayStatsRequest.prototype.getRxPacketsPerDrMap = function(opt
 proto.as.HandleGatewayStatsRequest.prototype.getTxPacketsPerStatusMap = function(opt_noLazyCreate) {
   return /** @type {!jspb.Map<string,number>} */ (
       jspb.Message.getMapField(this, 14, opt_noLazyCreate,
+      null));
+};
+
+
+/**
+ * map<string, uint32> mtype_count = 15;
+ * @param {boolean=} opt_noLazyCreate Do not create the map if
+ * empty, instead returning `undefined`
+ * @return {!jspb.Map<string,number>}
+ */
+proto.as.HandleGatewayStatsRequest.prototype.getMtypeCountMap = function(opt_noLazyCreate) {
+  return /** @type {!jspb.Map<string,number>} */ (
+      jspb.Message.getMapField(this, 15, opt_noLazyCreate,
       null));
 };
 

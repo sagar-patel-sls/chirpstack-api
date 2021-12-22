@@ -248,6 +248,9 @@ message HandleGatewayStatsRequest {
 
     // Tx packets per status.
     map<string, uint32> tx_packets_per_status = 14;
+
+    // Packets count per MType (JoinRequest, JoinAccept, Confirm/UnConfirm)
+    map<string, uint32> mtype_count = 15;
 }
 
 message HandleTxAckRequest {

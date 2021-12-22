@@ -217,6 +217,9 @@ message GatewayStats {
 
     // Tx packets per status.
     map<string, uint32> tx_packets_per_status = 16;
+
+    // Packets count per MType (JoinRequest, JoinAccept, Confirm/UnConfirm)
+    map<string, uint32> mtype_count = 17;
 }
 
 message PerModulationCount {
