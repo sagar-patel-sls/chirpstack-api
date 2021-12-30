@@ -240,6 +240,16 @@ export class GetDeviceResponse extends jspb.Message {
   getDevice(): Device | undefined;
   setDevice(value?: Device): void;
 
+  hasCreatedAt(): boolean;
+  clearCreatedAt(): void;
+  getCreatedAt(): google_protobuf_timestamp_pb.Timestamp | undefined;
+  setCreatedAt(value?: google_protobuf_timestamp_pb.Timestamp): void;
+
+  hasUpdatedAt(): boolean;
+  clearUpdatedAt(): void;
+  getUpdatedAt(): google_protobuf_timestamp_pb.Timestamp | undefined;
+  setUpdatedAt(value?: google_protobuf_timestamp_pb.Timestamp): void;
+
   hasLastSeenAt(): boolean;
   clearLastSeenAt(): void;
   getLastSeenAt(): google_protobuf_timestamp_pb.Timestamp | undefined;
@@ -247,6 +257,22 @@ export class GetDeviceResponse extends jspb.Message {
 
   getDeviceStatusBattery(): number;
   setDeviceStatusBattery(value: number): void;
+
+  getCurrentDr(): string;
+  setCurrentDr(value: string): void;
+
+  hasFirstJoinAt(): boolean;
+  clearFirstJoinAt(): void;
+  getFirstJoinAt(): google_protobuf_timestamp_pb.Timestamp | undefined;
+  setFirstJoinAt(value?: google_protobuf_timestamp_pb.Timestamp): void;
+
+  hasLastJoinAt(): boolean;
+  clearLastJoinAt(): void;
+  getLastJoinAt(): google_protobuf_timestamp_pb.Timestamp | undefined;
+  setLastJoinAt(value?: google_protobuf_timestamp_pb.Timestamp): void;
+
+  getJoinSessionCounter(): number;
+  setJoinSessionCounter(value: number): void;
 
   getDeviceStatusMargin(): number;
   setDeviceStatusMargin(value: number): void;
@@ -274,8 +300,14 @@ export class GetDeviceResponse extends jspb.Message {
 export namespace GetDeviceResponse {
   export type AsObject = {
     device?: Device.AsObject,
+    createdAt?: google_protobuf_timestamp_pb.Timestamp.AsObject,
+    updatedAt?: google_protobuf_timestamp_pb.Timestamp.AsObject,
     lastSeenAt?: google_protobuf_timestamp_pb.Timestamp.AsObject,
     deviceStatusBattery: number,
+    currentDr: string,
+    firstJoinAt?: google_protobuf_timestamp_pb.Timestamp.AsObject,
+    lastJoinAt?: google_protobuf_timestamp_pb.Timestamp.AsObject,
+    joinSessionCounter: number,
     deviceStatusMargin: number,
     location?: common_common_pb.Location.AsObject,
     packetSuccessRate?: PacketSuccess.AsObject,
@@ -696,6 +728,15 @@ export class DeviceStats extends jspb.Message {
   clearRxPacketsPerDrMap(): void;
   getErrorsMap(): jspb.Map<string, number>;
   clearErrorsMap(): void;
+  getTxPackets(): number;
+  setTxPackets(value: number): void;
+
+  getTxPacketsAckMap(): jspb.Map<string, number>;
+  clearTxPacketsAckMap(): void;
+  getRssiPerGatewayMap(): jspb.Map<string, number>;
+  clearRssiPerGatewayMap(): void;
+  getSnrPerGatewayMap(): jspb.Map<string, number>;
+  clearSnrPerGatewayMap(): void;
   serializeBinary(): Uint8Array;
   toObject(includeInstance?: boolean): DeviceStats.AsObject;
   static toObject(includeInstance: boolean, msg: DeviceStats): DeviceStats.AsObject;
@@ -715,6 +756,10 @@ export namespace DeviceStats {
     rxPacketsPerFrequencyMap: Array<[number, number]>,
     rxPacketsPerDrMap: Array<[number, number]>,
     errorsMap: Array<[string, number]>,
+    txPackets: number,
+    txPacketsAckMap: Array<[string, number]>,
+    rssiPerGatewayMap: Array<[string, number]>,
+    snrPerGatewayMap: Array<[string, number]>,
   }
 }
 

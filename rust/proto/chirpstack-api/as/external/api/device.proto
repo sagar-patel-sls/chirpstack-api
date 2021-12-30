@@ -296,8 +296,12 @@ message GetDeviceResponse {
     // Device object.
     Device device = 1;
 
-    // Created at 2
-    // Updated at 3
+    // Created at timestamp.
+    google.protobuf.Timestamp created_at = 2 [json_name = "createdAt"];
+
+    // Updated at timestamp.
+    google.protobuf.Timestamp updated_at = 3 [json_name = "updatedAt"];
+
     // First seen at 4
 
     // Last seen timestamp.
@@ -309,6 +313,19 @@ message GetDeviceResponse {
     // 255:    The end-device was not able to measure the battery level
     // 256:    The device-status is not available.
     uint32 device_status_battery = 6;
+
+    // Device Current DataRate with Spreading factor and Bandwidth
+    string current_dr = 7 [json_name = "currentDR"];
+
+    // First Join at timestamp.
+    google.protobuf.Timestamp first_join_at = 8 [json_name = "firstJoinAt"];
+
+    // Last Join at timestamp.
+    google.protobuf.Timestamp last_join_at = 9 [json_name = "lastJoinAt"];
+
+    // The device Join Session Counter
+    // The number of times a device has successfully joined the network today.
+    int32  join_session_counter = 10 [json_name = "joinSessionCounter"];
 
     // The device margin status
     // -32..32: The demodulation SNR ration in dB
@@ -472,6 +489,18 @@ message DeviceStats {
 
     // Error count.
     map<string, uint32> errors = 7;
+
+    // Packets transmitted from the server to device.
+    uint32 tx_packets = 8;
+
+    // Confirmed downlink ACK Event count.
+    map<string, uint32> tx_packets_ack = 9;
+
+    // Average RSSI per Gateway (reported by the gateway).
+    map<string, float> rssi_per_gateway = 10;
+
+    // Average SNR per Gateway (reported by the gateway).
+    map<string, float> snr_per_gateway = 11;
 }
 
 message GetDeviceStatsRequest {

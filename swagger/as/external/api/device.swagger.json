@@ -827,6 +827,35 @@
             "format": "int64"
           },
           "description": "Error count."
+        },
+        "txPackets": {
+          "type": "integer",
+          "format": "int64",
+          "description": "Packets transmitted from the server to device."
+        },
+        "txPacketsAck": {
+          "type": "object",
+          "additionalProperties": {
+            "type": "integer",
+            "format": "int64"
+          },
+          "description": "Confirmed downlink ACK Event count."
+        },
+        "rssiPerGateway": {
+          "type": "object",
+          "additionalProperties": {
+            "type": "number",
+            "format": "float"
+          },
+          "description": "Average RSSI per Gateway (reported by the gateway)."
+        },
+        "snrPerGateway": {
+          "type": "object",
+          "additionalProperties": {
+            "type": "number",
+            "format": "float"
+          },
+          "description": "Average SNR per Gateway (reported by the gateway)."
         }
       }
     },
@@ -877,6 +906,16 @@
           "$ref": "#/definitions/apiDevice",
           "description": "Device object."
         },
+        "createdAt": {
+          "type": "string",
+          "format": "date-time",
+          "description": "Created at timestamp."
+        },
+        "updatedAt": {
+          "type": "string",
+          "format": "date-time",
+          "description": "Updated at timestamp."
+        },
         "lastSeenAt": {
           "type": "string",
           "format": "date-time",
@@ -886,6 +925,25 @@
           "type": "integer",
           "format": "int64",
           "description": "The device battery status\n0:      The end-device is connected to an external power source\n1..254: The battery level, 1 being at minimum and 254 being at maximum\n255:    The end-device was not able to measure the battery level\n256:    The device-status is not available."
+        },
+        "currentDR": {
+          "type": "string",
+          "title": "Device Current DataRate with Spreading factor and Bandwidth"
+        },
+        "firstJoinAt": {
+          "type": "string",
+          "format": "date-time",
+          "description": "First Join at timestamp."
+        },
+        "lastJoinAt": {
+          "type": "string",
+          "format": "date-time",
+          "description": "Last Join at timestamp."
+        },
+        "joinSessionCounter": {
+          "type": "integer",
+          "format": "int32",
+          "description": "The device Join Session Counter\nThe number of times a device has successfully joined the network today."
         },
         "deviceStatusMargin": {
           "type": "integer",
