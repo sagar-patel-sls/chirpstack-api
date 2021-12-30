@@ -92,7 +92,9 @@ proto.integration.UplinkEvent.toObject = function(includeInstance, msg) {
     tagsMap: (f = msg.getTagsMap(true)) ? f.toArray() : [],
     confirmedUplink: msg.getConfirmedUplink(),
     devAddr: msg.getDevAddr_asB64(),
-    publishedAt: (f = msg.getPublishedAt()) && google_protobuf_timestamp_pb.Timestamp.toObject(includeInstance, f)
+    publishedAt: (f = msg.getPublishedAt()) && google_protobuf_timestamp_pb.Timestamp.toObject(includeInstance, f),
+    deviceProfileId: msg.getDeviceProfileId(),
+    deviceProfileName: msg.getDeviceProfileName()
   };
 
   if (includeInstance) {
@@ -198,6 +200,14 @@ proto.integration.UplinkEvent.deserializeBinaryFromReader = function(msg, reader
       var value = new google_protobuf_timestamp_pb.Timestamp;
       reader.readMessage(value,google_protobuf_timestamp_pb.Timestamp.deserializeBinaryFromReader);
       msg.setPublishedAt(value);
+      break;
+    case 17:
+      var value = /** @type {string} */ (reader.readString());
+      msg.setDeviceProfileId(value);
+      break;
+    case 18:
+      var value = /** @type {string} */ (reader.readString());
+      msg.setDeviceProfileName(value);
       break;
     default:
       reader.skipField();
@@ -347,6 +357,20 @@ proto.integration.UplinkEvent.prototype.serializeBinaryToWriter = function (writ
       16,
       f,
       google_protobuf_timestamp_pb.Timestamp.serializeBinaryToWriter
+    );
+  }
+  f = this.getDeviceProfileId();
+  if (f.length > 0) {
+    writer.writeString(
+      17,
+      f
+    );
+  }
+  f = this.getDeviceProfileName();
+  if (f.length > 0) {
+    writer.writeString(
+      18,
+      f
     );
   }
 };
@@ -710,6 +734,36 @@ proto.integration.UplinkEvent.prototype.clearPublishedAt = function() {
  */
 proto.integration.UplinkEvent.prototype.hasPublishedAt = function() {
   return jspb.Message.getField(this, 16) != null;
+};
+
+
+/**
+ * optional string device_profile_id = 17;
+ * @return {string}
+ */
+proto.integration.UplinkEvent.prototype.getDeviceProfileId = function() {
+  return /** @type {string} */ (jspb.Message.getFieldProto3(this, 17, ""));
+};
+
+
+/** @param {string} value  */
+proto.integration.UplinkEvent.prototype.setDeviceProfileId = function(value) {
+  jspb.Message.setField(this, 17, value);
+};
+
+
+/**
+ * optional string device_profile_name = 18;
+ * @return {string}
+ */
+proto.integration.UplinkEvent.prototype.getDeviceProfileName = function() {
+  return /** @type {string} */ (jspb.Message.getFieldProto3(this, 18, ""));
+};
+
+
+/** @param {string} value  */
+proto.integration.UplinkEvent.prototype.setDeviceProfileName = function(value) {
+  jspb.Message.setField(this, 18, value);
 };
 
 
