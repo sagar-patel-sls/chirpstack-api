@@ -7,12 +7,12 @@ import (
 	context "context"
 	fmt "fmt"
 	proto "github.com/golang/protobuf/proto"
-	empty "github.com/golang/protobuf/ptypes/empty"
-	timestamp "github.com/golang/protobuf/ptypes/timestamp"
 	_ "google.golang.org/genproto/googleapis/api/annotations"
 	grpc "google.golang.org/grpc"
 	codes "google.golang.org/grpc/codes"
 	status "google.golang.org/grpc/status"
+	emptypb "google.golang.org/protobuf/types/known/emptypb"
+	timestamppb "google.golang.org/protobuf/types/known/timestamppb"
 	math "math"
 )
 
@@ -151,12 +151,12 @@ type GetDeviceProfileResponse struct {
 	// Device-profile object.
 	DeviceProfile *DeviceProfile `protobuf:"bytes,1,opt,name=device_profile,json=deviceProfile,proto3" json:"device_profile,omitempty"`
 	// Created at timestamp.
-	CreatedAt *timestamp.Timestamp `protobuf:"bytes,2,opt,name=created_at,json=createdAt,proto3" json:"created_at,omitempty"`
+	CreatedAt *timestamppb.Timestamp `protobuf:"bytes,2,opt,name=created_at,json=createdAt,proto3" json:"created_at,omitempty"`
 	// Last update timestamp.
-	UpdatedAt            *timestamp.Timestamp `protobuf:"bytes,3,opt,name=updated_at,json=updatedAt,proto3" json:"updated_at,omitempty"`
-	XXX_NoUnkeyedLiteral struct{}             `json:"-"`
-	XXX_unrecognized     []byte               `json:"-"`
-	XXX_sizecache        int32                `json:"-"`
+	UpdatedAt            *timestamppb.Timestamp `protobuf:"bytes,3,opt,name=updated_at,json=updatedAt,proto3" json:"updated_at,omitempty"`
+	XXX_NoUnkeyedLiteral struct{}               `json:"-"`
+	XXX_unrecognized     []byte                 `json:"-"`
+	XXX_sizecache        int32                  `json:"-"`
 }
 
 func (m *GetDeviceProfileResponse) Reset()         { *m = GetDeviceProfileResponse{} }
@@ -191,14 +191,14 @@ func (m *GetDeviceProfileResponse) GetDeviceProfile() *DeviceProfile {
 	return nil
 }
 
-func (m *GetDeviceProfileResponse) GetCreatedAt() *timestamp.Timestamp {
+func (m *GetDeviceProfileResponse) GetCreatedAt() *timestamppb.Timestamp {
 	if m != nil {
 		return m.CreatedAt
 	}
 	return nil
 }
 
-func (m *GetDeviceProfileResponse) GetUpdatedAt() *timestamp.Timestamp {
+func (m *GetDeviceProfileResponse) GetUpdatedAt() *timestamppb.Timestamp {
 	if m != nil {
 		return m.UpdatedAt
 	}
@@ -295,9 +295,9 @@ type DeviceProfileListItem struct {
 	// Network-server ID.
 	NetworkServerId int64 `protobuf:"varint,4,opt,name=network_server_id,json=networkServerID,proto3" json:"network_server_id,omitempty"`
 	// Created at timestamp.
-	CreatedAt *timestamp.Timestamp `protobuf:"bytes,5,opt,name=created_at,json=createdAt,proto3" json:"created_at,omitempty"`
+	CreatedAt *timestamppb.Timestamp `protobuf:"bytes,5,opt,name=created_at,json=createdAt,proto3" json:"created_at,omitempty"`
 	// Last update timestamp.
-	UpdatedAt *timestamp.Timestamp `protobuf:"bytes,6,opt,name=updated_at,json=updatedAt,proto3" json:"updated_at,omitempty"`
+	UpdatedAt *timestamppb.Timestamp `protobuf:"bytes,6,opt,name=updated_at,json=updatedAt,proto3" json:"updated_at,omitempty"`
 	// Network-server name.
 	NetworkServerName    string   `protobuf:"bytes,7,opt,name=network_server_name,json=networkServerName,proto3" json:"network_server_name,omitempty"`
 	XXX_NoUnkeyedLiteral struct{} `json:"-"`
@@ -358,14 +358,14 @@ func (m *DeviceProfileListItem) GetNetworkServerId() int64 {
 	return 0
 }
 
-func (m *DeviceProfileListItem) GetCreatedAt() *timestamp.Timestamp {
+func (m *DeviceProfileListItem) GetCreatedAt() *timestamppb.Timestamp {
 	if m != nil {
 		return m.CreatedAt
 	}
 	return nil
 }
 
-func (m *DeviceProfileListItem) GetUpdatedAt() *timestamp.Timestamp {
+func (m *DeviceProfileListItem) GetUpdatedAt() *timestamppb.Timestamp {
 	if m != nil {
 		return m.UpdatedAt
 	}
@@ -576,9 +576,9 @@ type DeviceProfileServiceClient interface {
 	// Get returns the device-profile matching the given id.
 	Get(ctx context.Context, in *GetDeviceProfileRequest, opts ...grpc.CallOption) (*GetDeviceProfileResponse, error)
 	// Update updates the given device-profile.
-	Update(ctx context.Context, in *UpdateDeviceProfileRequest, opts ...grpc.CallOption) (*empty.Empty, error)
+	Update(ctx context.Context, in *UpdateDeviceProfileRequest, opts ...grpc.CallOption) (*emptypb.Empty, error)
 	// Delete deletes the device-profile matching the given id.
-	Delete(ctx context.Context, in *DeleteDeviceProfileRequest, opts ...grpc.CallOption) (*empty.Empty, error)
+	Delete(ctx context.Context, in *DeleteDeviceProfileRequest, opts ...grpc.CallOption) (*emptypb.Empty, error)
 	// List lists the available device-profiles.
 	List(ctx context.Context, in *ListDeviceProfileRequest, opts ...grpc.CallOption) (*ListDeviceProfileResponse, error)
 }
@@ -609,8 +609,8 @@ func (c *deviceProfileServiceClient) Get(ctx context.Context, in *GetDeviceProfi
 	return out, nil
 }
 
-func (c *deviceProfileServiceClient) Update(ctx context.Context, in *UpdateDeviceProfileRequest, opts ...grpc.CallOption) (*empty.Empty, error) {
-	out := new(empty.Empty)
+func (c *deviceProfileServiceClient) Update(ctx context.Context, in *UpdateDeviceProfileRequest, opts ...grpc.CallOption) (*emptypb.Empty, error) {
+	out := new(emptypb.Empty)
 	err := c.cc.Invoke(ctx, "/api.DeviceProfileService/Update", in, out, opts...)
 	if err != nil {
 		return nil, err
@@ -618,8 +618,8 @@ func (c *deviceProfileServiceClient) Update(ctx context.Context, in *UpdateDevic
 	return out, nil
 }
 
-func (c *deviceProfileServiceClient) Delete(ctx context.Context, in *DeleteDeviceProfileRequest, opts ...grpc.CallOption) (*empty.Empty, error) {
-	out := new(empty.Empty)
+func (c *deviceProfileServiceClient) Delete(ctx context.Context, in *DeleteDeviceProfileRequest, opts ...grpc.CallOption) (*emptypb.Empty, error) {
+	out := new(emptypb.Empty)
 	err := c.cc.Invoke(ctx, "/api.DeviceProfileService/Delete", in, out, opts...)
 	if err != nil {
 		return nil, err
@@ -643,9 +643,9 @@ type DeviceProfileServiceServer interface {
 	// Get returns the device-profile matching the given id.
 	Get(context.Context, *GetDeviceProfileRequest) (*GetDeviceProfileResponse, error)
 	// Update updates the given device-profile.
-	Update(context.Context, *UpdateDeviceProfileRequest) (*empty.Empty, error)
+	Update(context.Context, *UpdateDeviceProfileRequest) (*emptypb.Empty, error)
 	// Delete deletes the device-profile matching the given id.
-	Delete(context.Context, *DeleteDeviceProfileRequest) (*empty.Empty, error)
+	Delete(context.Context, *DeleteDeviceProfileRequest) (*emptypb.Empty, error)
 	// List lists the available device-profiles.
 	List(context.Context, *ListDeviceProfileRequest) (*ListDeviceProfileResponse, error)
 }
@@ -660,10 +660,10 @@ func (*UnimplementedDeviceProfileServiceServer) Create(ctx context.Context, req 
 func (*UnimplementedDeviceProfileServiceServer) Get(ctx context.Context, req *GetDeviceProfileRequest) (*GetDeviceProfileResponse, error) {
 	return nil, status.Errorf(codes.Unimplemented, "method Get not implemented")
 }
-func (*UnimplementedDeviceProfileServiceServer) Update(ctx context.Context, req *UpdateDeviceProfileRequest) (*empty.Empty, error) {
+func (*UnimplementedDeviceProfileServiceServer) Update(ctx context.Context, req *UpdateDeviceProfileRequest) (*emptypb.Empty, error) {
 	return nil, status.Errorf(codes.Unimplemented, "method Update not implemented")
 }
-func (*UnimplementedDeviceProfileServiceServer) Delete(ctx context.Context, req *DeleteDeviceProfileRequest) (*empty.Empty, error) {
+func (*UnimplementedDeviceProfileServiceServer) Delete(ctx context.Context, req *DeleteDeviceProfileRequest) (*emptypb.Empty, error) {
 	return nil, status.Errorf(codes.Unimplemented, "method Delete not implemented")
 }
 func (*UnimplementedDeviceProfileServiceServer) List(ctx context.Context, req *ListDeviceProfileRequest) (*ListDeviceProfileResponse, error) {

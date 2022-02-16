@@ -7,11 +7,11 @@ import (
 	context "context"
 	fmt "fmt"
 	proto "github.com/golang/protobuf/proto"
-	empty "github.com/golang/protobuf/ptypes/empty"
 	gw "github.com/sagar-patel-sls/chirpstack-api/go/v3/gw"
 	grpc "google.golang.org/grpc"
 	codes "google.golang.org/grpc/codes"
 	status "google.golang.org/grpc/status"
+	emptypb "google.golang.org/protobuf/types/known/emptypb"
 	math "math"
 )
 
@@ -437,18 +437,18 @@ const _ = grpc.SupportPackageIsVersion6
 // For semantics around ctx use and closing/ending streaming RPCs, please refer to https://godoc.org/google.golang.org/grpc#ClientConn.NewStream.
 type NetworkControllerServiceClient interface {
 	// HandleUplinkMetaData handles uplink meta-rata.
-	HandleUplinkMetaData(ctx context.Context, in *HandleUplinkMetaDataRequest, opts ...grpc.CallOption) (*empty.Empty, error)
+	HandleUplinkMetaData(ctx context.Context, in *HandleUplinkMetaDataRequest, opts ...grpc.CallOption) (*emptypb.Empty, error)
 	// HandleDownlinkMetaData handles downlink meta-data.
-	HandleDownlinkMetaData(ctx context.Context, in *HandleDownlinkMetaDataRequest, opts ...grpc.CallOption) (*empty.Empty, error)
+	HandleDownlinkMetaData(ctx context.Context, in *HandleDownlinkMetaDataRequest, opts ...grpc.CallOption) (*emptypb.Empty, error)
 	// HandleUplinkMACCommand handles an uplink mac-command.
 	// This method will only be called in case the mac-command request was
 	// enqueued throught the API or when the CID is >= 0x80 (proprietary
 	// mac-command range).
-	HandleUplinkMACCommand(ctx context.Context, in *HandleUplinkMACCommandRequest, opts ...grpc.CallOption) (*empty.Empty, error)
+	HandleUplinkMACCommand(ctx context.Context, in *HandleUplinkMACCommandRequest, opts ...grpc.CallOption) (*emptypb.Empty, error)
 	// HandleRejectedUplinkFrameSet handles a rejected uplink.
 	// And uplink can be rejected in the case the device has not (yet) been
 	// provisioned, because of invalid frame-counter, MIC, ...
-	HandleRejectedUplinkFrameSet(ctx context.Context, in *HandleRejectedUplinkFrameSetRequest, opts ...grpc.CallOption) (*empty.Empty, error)
+	HandleRejectedUplinkFrameSet(ctx context.Context, in *HandleRejectedUplinkFrameSetRequest, opts ...grpc.CallOption) (*emptypb.Empty, error)
 }
 
 type networkControllerServiceClient struct {
@@ -459,8 +459,8 @@ func NewNetworkControllerServiceClient(cc grpc.ClientConnInterface) NetworkContr
 	return &networkControllerServiceClient{cc}
 }
 
-func (c *networkControllerServiceClient) HandleUplinkMetaData(ctx context.Context, in *HandleUplinkMetaDataRequest, opts ...grpc.CallOption) (*empty.Empty, error) {
-	out := new(empty.Empty)
+func (c *networkControllerServiceClient) HandleUplinkMetaData(ctx context.Context, in *HandleUplinkMetaDataRequest, opts ...grpc.CallOption) (*emptypb.Empty, error) {
+	out := new(emptypb.Empty)
 	err := c.cc.Invoke(ctx, "/nc.NetworkControllerService/HandleUplinkMetaData", in, out, opts...)
 	if err != nil {
 		return nil, err
@@ -468,8 +468,8 @@ func (c *networkControllerServiceClient) HandleUplinkMetaData(ctx context.Contex
 	return out, nil
 }
 
-func (c *networkControllerServiceClient) HandleDownlinkMetaData(ctx context.Context, in *HandleDownlinkMetaDataRequest, opts ...grpc.CallOption) (*empty.Empty, error) {
-	out := new(empty.Empty)
+func (c *networkControllerServiceClient) HandleDownlinkMetaData(ctx context.Context, in *HandleDownlinkMetaDataRequest, opts ...grpc.CallOption) (*emptypb.Empty, error) {
+	out := new(emptypb.Empty)
 	err := c.cc.Invoke(ctx, "/nc.NetworkControllerService/HandleDownlinkMetaData", in, out, opts...)
 	if err != nil {
 		return nil, err
@@ -477,8 +477,8 @@ func (c *networkControllerServiceClient) HandleDownlinkMetaData(ctx context.Cont
 	return out, nil
 }
 
-func (c *networkControllerServiceClient) HandleUplinkMACCommand(ctx context.Context, in *HandleUplinkMACCommandRequest, opts ...grpc.CallOption) (*empty.Empty, error) {
-	out := new(empty.Empty)
+func (c *networkControllerServiceClient) HandleUplinkMACCommand(ctx context.Context, in *HandleUplinkMACCommandRequest, opts ...grpc.CallOption) (*emptypb.Empty, error) {
+	out := new(emptypb.Empty)
 	err := c.cc.Invoke(ctx, "/nc.NetworkControllerService/HandleUplinkMACCommand", in, out, opts...)
 	if err != nil {
 		return nil, err
@@ -486,8 +486,8 @@ func (c *networkControllerServiceClient) HandleUplinkMACCommand(ctx context.Cont
 	return out, nil
 }
 
-func (c *networkControllerServiceClient) HandleRejectedUplinkFrameSet(ctx context.Context, in *HandleRejectedUplinkFrameSetRequest, opts ...grpc.CallOption) (*empty.Empty, error) {
-	out := new(empty.Empty)
+func (c *networkControllerServiceClient) HandleRejectedUplinkFrameSet(ctx context.Context, in *HandleRejectedUplinkFrameSetRequest, opts ...grpc.CallOption) (*emptypb.Empty, error) {
+	out := new(emptypb.Empty)
 	err := c.cc.Invoke(ctx, "/nc.NetworkControllerService/HandleRejectedUplinkFrameSet", in, out, opts...)
 	if err != nil {
 		return nil, err
@@ -498,34 +498,34 @@ func (c *networkControllerServiceClient) HandleRejectedUplinkFrameSet(ctx contex
 // NetworkControllerServiceServer is the server API for NetworkControllerService service.
 type NetworkControllerServiceServer interface {
 	// HandleUplinkMetaData handles uplink meta-rata.
-	HandleUplinkMetaData(context.Context, *HandleUplinkMetaDataRequest) (*empty.Empty, error)
+	HandleUplinkMetaData(context.Context, *HandleUplinkMetaDataRequest) (*emptypb.Empty, error)
 	// HandleDownlinkMetaData handles downlink meta-data.
-	HandleDownlinkMetaData(context.Context, *HandleDownlinkMetaDataRequest) (*empty.Empty, error)
+	HandleDownlinkMetaData(context.Context, *HandleDownlinkMetaDataRequest) (*emptypb.Empty, error)
 	// HandleUplinkMACCommand handles an uplink mac-command.
 	// This method will only be called in case the mac-command request was
 	// enqueued throught the API or when the CID is >= 0x80 (proprietary
 	// mac-command range).
-	HandleUplinkMACCommand(context.Context, *HandleUplinkMACCommandRequest) (*empty.Empty, error)
+	HandleUplinkMACCommand(context.Context, *HandleUplinkMACCommandRequest) (*emptypb.Empty, error)
 	// HandleRejectedUplinkFrameSet handles a rejected uplink.
 	// And uplink can be rejected in the case the device has not (yet) been
 	// provisioned, because of invalid frame-counter, MIC, ...
-	HandleRejectedUplinkFrameSet(context.Context, *HandleRejectedUplinkFrameSetRequest) (*empty.Empty, error)
+	HandleRejectedUplinkFrameSet(context.Context, *HandleRejectedUplinkFrameSetRequest) (*emptypb.Empty, error)
 }
 
 // UnimplementedNetworkControllerServiceServer can be embedded to have forward compatible implementations.
 type UnimplementedNetworkControllerServiceServer struct {
 }
 
-func (*UnimplementedNetworkControllerServiceServer) HandleUplinkMetaData(ctx context.Context, req *HandleUplinkMetaDataRequest) (*empty.Empty, error) {
+func (*UnimplementedNetworkControllerServiceServer) HandleUplinkMetaData(ctx context.Context, req *HandleUplinkMetaDataRequest) (*emptypb.Empty, error) {
 	return nil, status.Errorf(codes.Unimplemented, "method HandleUplinkMetaData not implemented")
 }
-func (*UnimplementedNetworkControllerServiceServer) HandleDownlinkMetaData(ctx context.Context, req *HandleDownlinkMetaDataRequest) (*empty.Empty, error) {
+func (*UnimplementedNetworkControllerServiceServer) HandleDownlinkMetaData(ctx context.Context, req *HandleDownlinkMetaDataRequest) (*emptypb.Empty, error) {
 	return nil, status.Errorf(codes.Unimplemented, "method HandleDownlinkMetaData not implemented")
 }
-func (*UnimplementedNetworkControllerServiceServer) HandleUplinkMACCommand(ctx context.Context, req *HandleUplinkMACCommandRequest) (*empty.Empty, error) {
+func (*UnimplementedNetworkControllerServiceServer) HandleUplinkMACCommand(ctx context.Context, req *HandleUplinkMACCommandRequest) (*emptypb.Empty, error) {
 	return nil, status.Errorf(codes.Unimplemented, "method HandleUplinkMACCommand not implemented")
 }
-func (*UnimplementedNetworkControllerServiceServer) HandleRejectedUplinkFrameSet(ctx context.Context, req *HandleRejectedUplinkFrameSetRequest) (*empty.Empty, error) {
+func (*UnimplementedNetworkControllerServiceServer) HandleRejectedUplinkFrameSet(ctx context.Context, req *HandleRejectedUplinkFrameSetRequest) (*emptypb.Empty, error) {
 	return nil, status.Errorf(codes.Unimplemented, "method HandleRejectedUplinkFrameSet not implemented")
 }
 

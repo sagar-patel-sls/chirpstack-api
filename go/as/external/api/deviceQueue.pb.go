@@ -7,11 +7,11 @@ import (
 	context "context"
 	fmt "fmt"
 	proto "github.com/golang/protobuf/proto"
-	empty "github.com/golang/protobuf/ptypes/empty"
 	_ "google.golang.org/genproto/googleapis/api/annotations"
 	grpc "google.golang.org/grpc"
 	codes "google.golang.org/grpc/codes"
 	status "google.golang.org/grpc/status"
+	emptypb "google.golang.org/protobuf/types/known/emptypb"
 	math "math"
 )
 
@@ -403,7 +403,7 @@ type DeviceQueueServiceClient interface {
 	// Enqueue adds the given item to the device-queue.
 	Enqueue(ctx context.Context, in *EnqueueDeviceQueueItemRequest, opts ...grpc.CallOption) (*EnqueueDeviceQueueItemResponse, error)
 	// Flush flushes the downlink device-queue.
-	Flush(ctx context.Context, in *FlushDeviceQueueRequest, opts ...grpc.CallOption) (*empty.Empty, error)
+	Flush(ctx context.Context, in *FlushDeviceQueueRequest, opts ...grpc.CallOption) (*emptypb.Empty, error)
 	// List lists the items in the device-queue.
 	List(ctx context.Context, in *ListDeviceQueueItemsRequest, opts ...grpc.CallOption) (*ListDeviceQueueItemsResponse, error)
 }
@@ -425,8 +425,8 @@ func (c *deviceQueueServiceClient) Enqueue(ctx context.Context, in *EnqueueDevic
 	return out, nil
 }
 
-func (c *deviceQueueServiceClient) Flush(ctx context.Context, in *FlushDeviceQueueRequest, opts ...grpc.CallOption) (*empty.Empty, error) {
-	out := new(empty.Empty)
+func (c *deviceQueueServiceClient) Flush(ctx context.Context, in *FlushDeviceQueueRequest, opts ...grpc.CallOption) (*emptypb.Empty, error) {
+	out := new(emptypb.Empty)
 	err := c.cc.Invoke(ctx, "/api.DeviceQueueService/Flush", in, out, opts...)
 	if err != nil {
 		return nil, err
@@ -448,7 +448,7 @@ type DeviceQueueServiceServer interface {
 	// Enqueue adds the given item to the device-queue.
 	Enqueue(context.Context, *EnqueueDeviceQueueItemRequest) (*EnqueueDeviceQueueItemResponse, error)
 	// Flush flushes the downlink device-queue.
-	Flush(context.Context, *FlushDeviceQueueRequest) (*empty.Empty, error)
+	Flush(context.Context, *FlushDeviceQueueRequest) (*emptypb.Empty, error)
 	// List lists the items in the device-queue.
 	List(context.Context, *ListDeviceQueueItemsRequest) (*ListDeviceQueueItemsResponse, error)
 }
@@ -460,7 +460,7 @@ type UnimplementedDeviceQueueServiceServer struct {
 func (*UnimplementedDeviceQueueServiceServer) Enqueue(ctx context.Context, req *EnqueueDeviceQueueItemRequest) (*EnqueueDeviceQueueItemResponse, error) {
 	return nil, status.Errorf(codes.Unimplemented, "method Enqueue not implemented")
 }
-func (*UnimplementedDeviceQueueServiceServer) Flush(ctx context.Context, req *FlushDeviceQueueRequest) (*empty.Empty, error) {
+func (*UnimplementedDeviceQueueServiceServer) Flush(ctx context.Context, req *FlushDeviceQueueRequest) (*emptypb.Empty, error) {
 	return nil, status.Errorf(codes.Unimplemented, "method Flush not implemented")
 }
 func (*UnimplementedDeviceQueueServiceServer) List(ctx context.Context, req *ListDeviceQueueItemsRequest) (*ListDeviceQueueItemsResponse, error) {

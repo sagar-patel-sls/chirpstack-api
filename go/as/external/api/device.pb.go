@@ -7,13 +7,13 @@ import (
 	context "context"
 	fmt "fmt"
 	proto "github.com/golang/protobuf/proto"
-	empty "github.com/golang/protobuf/ptypes/empty"
-	timestamp "github.com/golang/protobuf/ptypes/timestamp"
 	common "github.com/sagar-patel-sls/chirpstack-api/go/v3/common"
 	_ "google.golang.org/genproto/googleapis/api/annotations"
 	grpc "google.golang.org/grpc"
 	codes "google.golang.org/grpc/codes"
 	status "google.golang.org/grpc/status"
+	emptypb "google.golang.org/protobuf/types/known/emptypb"
+	timestamppb "google.golang.org/protobuf/types/known/timestamppb"
 	math "math"
 )
 
@@ -255,7 +255,7 @@ type DeviceListItem struct {
 	DeviceStatusBatteryLevel float32 `protobuf:"fixed32,12,opt,name=device_status_battery_level,json=deviceStatusBatteryLevel,proto3" json:"device_status_battery_level,omitempty"`
 	// The last time the application-server received any data from the device,
 	// or an empty string when the device never sent any data.
-	LastSeenAt *timestamp.Timestamp `protobuf:"bytes,9,opt,name=last_seen_at,json=lastSeenAt,proto3" json:"last_seen_at,omitempty"`
+	LastSeenAt *timestamppb.Timestamp `protobuf:"bytes,9,opt,name=last_seen_at,json=lastSeenAt,proto3" json:"last_seen_at,omitempty"`
 	// Device is disabled.
 	IsDisabled           bool     `protobuf:"varint,13,opt,name=is_disabled,json=isDisabled,proto3" json:"is_disabled,omitempty"`
 	XXX_NoUnkeyedLiteral struct{} `json:"-"`
@@ -365,7 +365,7 @@ func (m *DeviceListItem) GetDeviceStatusBatteryLevel() float32 {
 	return 0
 }
 
-func (m *DeviceListItem) GetLastSeenAt() *timestamp.Timestamp {
+func (m *DeviceListItem) GetLastSeenAt() *timestamppb.Timestamp {
 	if m != nil {
 		return m.LastSeenAt
 	}
@@ -534,11 +534,11 @@ type GetDeviceResponse struct {
 	// Device object.
 	Device *Device `protobuf:"bytes,1,opt,name=device,proto3" json:"device,omitempty"`
 	// Created at timestamp.
-	CreatedAt *timestamp.Timestamp `protobuf:"bytes,2,opt,name=created_at,json=createdAt,proto3" json:"created_at,omitempty"`
+	CreatedAt *timestamppb.Timestamp `protobuf:"bytes,2,opt,name=created_at,json=createdAt,proto3" json:"created_at,omitempty"`
 	// Updated at timestamp.
-	UpdatedAt *timestamp.Timestamp `protobuf:"bytes,3,opt,name=updated_at,json=updatedAt,proto3" json:"updated_at,omitempty"`
+	UpdatedAt *timestamppb.Timestamp `protobuf:"bytes,3,opt,name=updated_at,json=updatedAt,proto3" json:"updated_at,omitempty"`
 	// Last seen timestamp.
-	LastSeenAt *timestamp.Timestamp `protobuf:"bytes,5,opt,name=last_seen_at,json=lastSeenAt,proto3" json:"last_seen_at,omitempty"`
+	LastSeenAt *timestamppb.Timestamp `protobuf:"bytes,5,opt,name=last_seen_at,json=lastSeenAt,proto3" json:"last_seen_at,omitempty"`
 	// The device battery status
 	// 0:      The end-device is connected to an external power source
 	// 1..254: The battery level, 1 being at minimum and 254 being at maximum
@@ -548,9 +548,9 @@ type GetDeviceResponse struct {
 	// Device Current DataRate with Spreading factor and Bandwidth
 	CurrentDr string `protobuf:"bytes,7,opt,name=current_dr,json=currentDR,proto3" json:"current_dr,omitempty"`
 	// First Join at timestamp.
-	FirstJoinAt *timestamp.Timestamp `protobuf:"bytes,8,opt,name=first_join_at,json=firstJoinAt,proto3" json:"first_join_at,omitempty"`
+	FirstJoinAt *timestamppb.Timestamp `protobuf:"bytes,8,opt,name=first_join_at,json=firstJoinAt,proto3" json:"first_join_at,omitempty"`
 	// Last Join at timestamp.
-	LastJoinAt *timestamp.Timestamp `protobuf:"bytes,9,opt,name=last_join_at,json=lastJoinAt,proto3" json:"last_join_at,omitempty"`
+	LastJoinAt *timestamppb.Timestamp `protobuf:"bytes,9,opt,name=last_join_at,json=lastJoinAt,proto3" json:"last_join_at,omitempty"`
 	// The device Join Session Counter
 	// The number of times a device has successfully joined the network today.
 	JoinSessionCounter int32 `protobuf:"varint,10,opt,name=join_session_counter,json=joinSessionCounter,proto3" json:"join_session_counter,omitempty"`
@@ -603,21 +603,21 @@ func (m *GetDeviceResponse) GetDevice() *Device {
 	return nil
 }
 
-func (m *GetDeviceResponse) GetCreatedAt() *timestamp.Timestamp {
+func (m *GetDeviceResponse) GetCreatedAt() *timestamppb.Timestamp {
 	if m != nil {
 		return m.CreatedAt
 	}
 	return nil
 }
 
-func (m *GetDeviceResponse) GetUpdatedAt() *timestamp.Timestamp {
+func (m *GetDeviceResponse) GetUpdatedAt() *timestamppb.Timestamp {
 	if m != nil {
 		return m.UpdatedAt
 	}
 	return nil
 }
 
-func (m *GetDeviceResponse) GetLastSeenAt() *timestamp.Timestamp {
+func (m *GetDeviceResponse) GetLastSeenAt() *timestamppb.Timestamp {
 	if m != nil {
 		return m.LastSeenAt
 	}
@@ -638,14 +638,14 @@ func (m *GetDeviceResponse) GetCurrentDr() string {
 	return ""
 }
 
-func (m *GetDeviceResponse) GetFirstJoinAt() *timestamp.Timestamp {
+func (m *GetDeviceResponse) GetFirstJoinAt() *timestamppb.Timestamp {
 	if m != nil {
 		return m.FirstJoinAt
 	}
 	return nil
 }
 
-func (m *GetDeviceResponse) GetLastJoinAt() *timestamp.Timestamp {
+func (m *GetDeviceResponse) GetLastJoinAt() *timestamppb.Timestamp {
 	if m != nil {
 		return m.LastJoinAt
 	}
@@ -1456,7 +1456,7 @@ func (m *GetRandomDevAddrResponse) GetDevAddr() string {
 
 type DeviceStats struct {
 	// Timestamp of the (aggregated) measurement.
-	Timestamp *timestamp.Timestamp `protobuf:"bytes,1,opt,name=timestamp,proto3" json:"timestamp,omitempty"`
+	Timestamp *timestamppb.Timestamp `protobuf:"bytes,1,opt,name=timestamp,proto3" json:"timestamp,omitempty"`
 	// Packets received from the device.
 	RxPackets uint32 `protobuf:"varint,2,opt,name=rx_packets,json=rxPackets,proto3" json:"rx_packets,omitempty"`
 	// Average RSSI (as reported by the gateway(s)).
@@ -1507,7 +1507,7 @@ func (m *DeviceStats) XXX_DiscardUnknown() {
 
 var xxx_messageInfo_DeviceStats proto.InternalMessageInfo
 
-func (m *DeviceStats) GetTimestamp() *timestamp.Timestamp {
+func (m *DeviceStats) GetTimestamp() *timestamppb.Timestamp {
 	if m != nil {
 		return m.Timestamp
 	}
@@ -1591,12 +1591,12 @@ type GetDeviceStatsRequest struct {
 	// "month", "quarter", "year".  Case insensitive.
 	Interval string `protobuf:"bytes,2,opt,name=interval,proto3" json:"interval,omitempty"`
 	// Timestamp to start from.
-	StartTimestamp *timestamp.Timestamp `protobuf:"bytes,3,opt,name=start_timestamp,json=startTimestamp,proto3" json:"start_timestamp,omitempty"`
+	StartTimestamp *timestamppb.Timestamp `protobuf:"bytes,3,opt,name=start_timestamp,json=startTimestamp,proto3" json:"start_timestamp,omitempty"`
 	// Timestamp until to get from.
-	EndTimestamp         *timestamp.Timestamp `protobuf:"bytes,4,opt,name=end_timestamp,json=endTimestamp,proto3" json:"end_timestamp,omitempty"`
-	XXX_NoUnkeyedLiteral struct{}             `json:"-"`
-	XXX_unrecognized     []byte               `json:"-"`
-	XXX_sizecache        int32                `json:"-"`
+	EndTimestamp         *timestamppb.Timestamp `protobuf:"bytes,4,opt,name=end_timestamp,json=endTimestamp,proto3" json:"end_timestamp,omitempty"`
+	XXX_NoUnkeyedLiteral struct{}               `json:"-"`
+	XXX_unrecognized     []byte                 `json:"-"`
+	XXX_sizecache        int32                  `json:"-"`
 }
 
 func (m *GetDeviceStatsRequest) Reset()         { *m = GetDeviceStatsRequest{} }
@@ -1638,14 +1638,14 @@ func (m *GetDeviceStatsRequest) GetInterval() string {
 	return ""
 }
 
-func (m *GetDeviceStatsRequest) GetStartTimestamp() *timestamp.Timestamp {
+func (m *GetDeviceStatsRequest) GetStartTimestamp() *timestamppb.Timestamp {
 	if m != nil {
 		return m.StartTimestamp
 	}
 	return nil
 }
 
-func (m *GetDeviceStatsRequest) GetEndTimestamp() *timestamp.Timestamp {
+func (m *GetDeviceStatsRequest) GetEndTimestamp() *timestamppb.Timestamp {
 	if m != nil {
 		return m.EndTimestamp
 	}
@@ -1857,7 +1857,7 @@ type StreamDeviceEventLogsResponse struct {
 	// The event payload in JSON encoding.
 	PayloadJson string `protobuf:"bytes,2,opt,name=payload_json,json=payloadJSON,proto3" json:"payload_json,omitempty"`
 	// Published at timestamp.
-	PublishedAt *timestamp.Timestamp `protobuf:"bytes,3,opt,name=published_at,json=publishedAt,proto3" json:"published_at,omitempty"`
+	PublishedAt *timestamppb.Timestamp `protobuf:"bytes,3,opt,name=published_at,json=publishedAt,proto3" json:"published_at,omitempty"`
 	// Stream ID.
 	StreamId             string   `protobuf:"bytes,4,opt,name=stream_id,json=streamID,proto3" json:"stream_id,omitempty"`
 	XXX_NoUnkeyedLiteral struct{} `json:"-"`
@@ -1904,7 +1904,7 @@ func (m *StreamDeviceEventLogsResponse) GetPayloadJson() string {
 	return ""
 }
 
-func (m *StreamDeviceEventLogsResponse) GetPublishedAt() *timestamp.Timestamp {
+func (m *StreamDeviceEventLogsResponse) GetPublishedAt() *timestamppb.Timestamp {
 	if m != nil {
 		return m.PublishedAt
 	}
@@ -2314,27 +2314,27 @@ const _ = grpc.SupportPackageIsVersion6
 // For semantics around ctx use and closing/ending streaming RPCs, please refer to https://godoc.org/google.golang.org/grpc#ClientConn.NewStream.
 type DeviceServiceClient interface {
 	// Create creates the given device.
-	Create(ctx context.Context, in *CreateDeviceRequest, opts ...grpc.CallOption) (*empty.Empty, error)
+	Create(ctx context.Context, in *CreateDeviceRequest, opts ...grpc.CallOption) (*emptypb.Empty, error)
 	// Get returns the device matching the given DevEUI.
 	Get(ctx context.Context, in *GetDeviceRequest, opts ...grpc.CallOption) (*GetDeviceResponse, error)
 	// List returns the available devices.
 	List(ctx context.Context, in *ListDeviceRequest, opts ...grpc.CallOption) (*ListDeviceResponse, error)
 	// Delete deletes the device matching the given DevEUI.
-	Delete(ctx context.Context, in *DeleteDeviceRequest, opts ...grpc.CallOption) (*empty.Empty, error)
+	Delete(ctx context.Context, in *DeleteDeviceRequest, opts ...grpc.CallOption) (*emptypb.Empty, error)
 	// Update updates the device matching the given DevEUI.
-	Update(ctx context.Context, in *UpdateDeviceRequest, opts ...grpc.CallOption) (*empty.Empty, error)
+	Update(ctx context.Context, in *UpdateDeviceRequest, opts ...grpc.CallOption) (*emptypb.Empty, error)
 	// CreateKeys creates the given device-keys.
-	CreateKeys(ctx context.Context, in *CreateDeviceKeysRequest, opts ...grpc.CallOption) (*empty.Empty, error)
+	CreateKeys(ctx context.Context, in *CreateDeviceKeysRequest, opts ...grpc.CallOption) (*emptypb.Empty, error)
 	// GetKeys returns the device-keys for the given DevEUI.
 	GetKeys(ctx context.Context, in *GetDeviceKeysRequest, opts ...grpc.CallOption) (*GetDeviceKeysResponse, error)
 	// UpdateKeys updates the device-keys.
-	UpdateKeys(ctx context.Context, in *UpdateDeviceKeysRequest, opts ...grpc.CallOption) (*empty.Empty, error)
+	UpdateKeys(ctx context.Context, in *UpdateDeviceKeysRequest, opts ...grpc.CallOption) (*emptypb.Empty, error)
 	// DeleteKeys deletes the device-keys for the given DevEUI.
-	DeleteKeys(ctx context.Context, in *DeleteDeviceKeysRequest, opts ...grpc.CallOption) (*empty.Empty, error)
+	DeleteKeys(ctx context.Context, in *DeleteDeviceKeysRequest, opts ...grpc.CallOption) (*emptypb.Empty, error)
 	// Activate (re)activates the device with the given parameters (for ABP or for importing OTAA activations).
-	Activate(ctx context.Context, in *ActivateDeviceRequest, opts ...grpc.CallOption) (*empty.Empty, error)
+	Activate(ctx context.Context, in *ActivateDeviceRequest, opts ...grpc.CallOption) (*emptypb.Empty, error)
 	// Deactivate de-activates the device.
-	Deactivate(ctx context.Context, in *DeactivateDeviceRequest, opts ...grpc.CallOption) (*empty.Empty, error)
+	Deactivate(ctx context.Context, in *DeactivateDeviceRequest, opts ...grpc.CallOption) (*emptypb.Empty, error)
 	// GetActivation returns the current activation details of the device (OTAA and ABP).
 	GetActivation(ctx context.Context, in *GetDeviceActivationRequest, opts ...grpc.CallOption) (*GetDeviceActivationResponse, error)
 	// GetRandomDevAddr returns a random DevAddr taking the NwkID prefix into account.
@@ -2356,7 +2356,7 @@ type DeviceServiceClient interface {
 	// ClearDeviceDevNonce deletes the device older activation records for the given DevEUI.
 	//   * These are clear older DevNonce records from device activation records in Network Server
 	//   * These clears all DevNonce records but keeps latest 20 records for maintain device activation status
-	ClearDeviceDevNonce(ctx context.Context, in *ClearDevNonceRequest, opts ...grpc.CallOption) (*empty.Empty, error)
+	ClearDeviceDevNonce(ctx context.Context, in *ClearDevNonceRequest, opts ...grpc.CallOption) (*emptypb.Empty, error)
 }
 
 type deviceServiceClient struct {
@@ -2367,8 +2367,8 @@ func NewDeviceServiceClient(cc grpc.ClientConnInterface) DeviceServiceClient {
 	return &deviceServiceClient{cc}
 }
 
-func (c *deviceServiceClient) Create(ctx context.Context, in *CreateDeviceRequest, opts ...grpc.CallOption) (*empty.Empty, error) {
-	out := new(empty.Empty)
+func (c *deviceServiceClient) Create(ctx context.Context, in *CreateDeviceRequest, opts ...grpc.CallOption) (*emptypb.Empty, error) {
+	out := new(emptypb.Empty)
 	err := c.cc.Invoke(ctx, "/api.DeviceService/Create", in, out, opts...)
 	if err != nil {
 		return nil, err
@@ -2394,8 +2394,8 @@ func (c *deviceServiceClient) List(ctx context.Context, in *ListDeviceRequest, o
 	return out, nil
 }
 
-func (c *deviceServiceClient) Delete(ctx context.Context, in *DeleteDeviceRequest, opts ...grpc.CallOption) (*empty.Empty, error) {
-	out := new(empty.Empty)
+func (c *deviceServiceClient) Delete(ctx context.Context, in *DeleteDeviceRequest, opts ...grpc.CallOption) (*emptypb.Empty, error) {
+	out := new(emptypb.Empty)
 	err := c.cc.Invoke(ctx, "/api.DeviceService/Delete", in, out, opts...)
 	if err != nil {
 		return nil, err
@@ -2403,8 +2403,8 @@ func (c *deviceServiceClient) Delete(ctx context.Context, in *DeleteDeviceReques
 	return out, nil
 }
 
-func (c *deviceServiceClient) Update(ctx context.Context, in *UpdateDeviceRequest, opts ...grpc.CallOption) (*empty.Empty, error) {
-	out := new(empty.Empty)
+func (c *deviceServiceClient) Update(ctx context.Context, in *UpdateDeviceRequest, opts ...grpc.CallOption) (*emptypb.Empty, error) {
+	out := new(emptypb.Empty)
 	err := c.cc.Invoke(ctx, "/api.DeviceService/Update", in, out, opts...)
 	if err != nil {
 		return nil, err
@@ -2412,8 +2412,8 @@ func (c *deviceServiceClient) Update(ctx context.Context, in *UpdateDeviceReques
 	return out, nil
 }
 
-func (c *deviceServiceClient) CreateKeys(ctx context.Context, in *CreateDeviceKeysRequest, opts ...grpc.CallOption) (*empty.Empty, error) {
-	out := new(empty.Empty)
+func (c *deviceServiceClient) CreateKeys(ctx context.Context, in *CreateDeviceKeysRequest, opts ...grpc.CallOption) (*emptypb.Empty, error) {
+	out := new(emptypb.Empty)
 	err := c.cc.Invoke(ctx, "/api.DeviceService/CreateKeys", in, out, opts...)
 	if err != nil {
 		return nil, err
@@ -2430,8 +2430,8 @@ func (c *deviceServiceClient) GetKeys(ctx context.Context, in *GetDeviceKeysRequ
 	return out, nil
 }
 
-func (c *deviceServiceClient) UpdateKeys(ctx context.Context, in *UpdateDeviceKeysRequest, opts ...grpc.CallOption) (*empty.Empty, error) {
-	out := new(empty.Empty)
+func (c *deviceServiceClient) UpdateKeys(ctx context.Context, in *UpdateDeviceKeysRequest, opts ...grpc.CallOption) (*emptypb.Empty, error) {
+	out := new(emptypb.Empty)
 	err := c.cc.Invoke(ctx, "/api.DeviceService/UpdateKeys", in, out, opts...)
 	if err != nil {
 		return nil, err
@@ -2439,8 +2439,8 @@ func (c *deviceServiceClient) UpdateKeys(ctx context.Context, in *UpdateDeviceKe
 	return out, nil
 }
 
-func (c *deviceServiceClient) DeleteKeys(ctx context.Context, in *DeleteDeviceKeysRequest, opts ...grpc.CallOption) (*empty.Empty, error) {
-	out := new(empty.Empty)
+func (c *deviceServiceClient) DeleteKeys(ctx context.Context, in *DeleteDeviceKeysRequest, opts ...grpc.CallOption) (*emptypb.Empty, error) {
+	out := new(emptypb.Empty)
 	err := c.cc.Invoke(ctx, "/api.DeviceService/DeleteKeys", in, out, opts...)
 	if err != nil {
 		return nil, err
@@ -2448,8 +2448,8 @@ func (c *deviceServiceClient) DeleteKeys(ctx context.Context, in *DeleteDeviceKe
 	return out, nil
 }
 
-func (c *deviceServiceClient) Activate(ctx context.Context, in *ActivateDeviceRequest, opts ...grpc.CallOption) (*empty.Empty, error) {
-	out := new(empty.Empty)
+func (c *deviceServiceClient) Activate(ctx context.Context, in *ActivateDeviceRequest, opts ...grpc.CallOption) (*emptypb.Empty, error) {
+	out := new(emptypb.Empty)
 	err := c.cc.Invoke(ctx, "/api.DeviceService/Activate", in, out, opts...)
 	if err != nil {
 		return nil, err
@@ -2457,8 +2457,8 @@ func (c *deviceServiceClient) Activate(ctx context.Context, in *ActivateDeviceRe
 	return out, nil
 }
 
-func (c *deviceServiceClient) Deactivate(ctx context.Context, in *DeactivateDeviceRequest, opts ...grpc.CallOption) (*empty.Empty, error) {
-	out := new(empty.Empty)
+func (c *deviceServiceClient) Deactivate(ctx context.Context, in *DeactivateDeviceRequest, opts ...grpc.CallOption) (*emptypb.Empty, error) {
+	out := new(emptypb.Empty)
 	err := c.cc.Invoke(ctx, "/api.DeviceService/Deactivate", in, out, opts...)
 	if err != nil {
 		return nil, err
@@ -2589,8 +2589,8 @@ func (x *deviceServiceStreamGlobalFrameLogsClient) Recv() (*StreamGlobalDeviceFr
 	return m, nil
 }
 
-func (c *deviceServiceClient) ClearDeviceDevNonce(ctx context.Context, in *ClearDevNonceRequest, opts ...grpc.CallOption) (*empty.Empty, error) {
-	out := new(empty.Empty)
+func (c *deviceServiceClient) ClearDeviceDevNonce(ctx context.Context, in *ClearDevNonceRequest, opts ...grpc.CallOption) (*emptypb.Empty, error) {
+	out := new(emptypb.Empty)
 	err := c.cc.Invoke(ctx, "/api.DeviceService/ClearDeviceDevNonce", in, out, opts...)
 	if err != nil {
 		return nil, err
@@ -2601,27 +2601,27 @@ func (c *deviceServiceClient) ClearDeviceDevNonce(ctx context.Context, in *Clear
 // DeviceServiceServer is the server API for DeviceService service.
 type DeviceServiceServer interface {
 	// Create creates the given device.
-	Create(context.Context, *CreateDeviceRequest) (*empty.Empty, error)
+	Create(context.Context, *CreateDeviceRequest) (*emptypb.Empty, error)
 	// Get returns the device matching the given DevEUI.
 	Get(context.Context, *GetDeviceRequest) (*GetDeviceResponse, error)
 	// List returns the available devices.
 	List(context.Context, *ListDeviceRequest) (*ListDeviceResponse, error)
 	// Delete deletes the device matching the given DevEUI.
-	Delete(context.Context, *DeleteDeviceRequest) (*empty.Empty, error)
+	Delete(context.Context, *DeleteDeviceRequest) (*emptypb.Empty, error)
 	// Update updates the device matching the given DevEUI.
-	Update(context.Context, *UpdateDeviceRequest) (*empty.Empty, error)
+	Update(context.Context, *UpdateDeviceRequest) (*emptypb.Empty, error)
 	// CreateKeys creates the given device-keys.
-	CreateKeys(context.Context, *CreateDeviceKeysRequest) (*empty.Empty, error)
+	CreateKeys(context.Context, *CreateDeviceKeysRequest) (*emptypb.Empty, error)
 	// GetKeys returns the device-keys for the given DevEUI.
 	GetKeys(context.Context, *GetDeviceKeysRequest) (*GetDeviceKeysResponse, error)
 	// UpdateKeys updates the device-keys.
-	UpdateKeys(context.Context, *UpdateDeviceKeysRequest) (*empty.Empty, error)
+	UpdateKeys(context.Context, *UpdateDeviceKeysRequest) (*emptypb.Empty, error)
 	// DeleteKeys deletes the device-keys for the given DevEUI.
-	DeleteKeys(context.Context, *DeleteDeviceKeysRequest) (*empty.Empty, error)
+	DeleteKeys(context.Context, *DeleteDeviceKeysRequest) (*emptypb.Empty, error)
 	// Activate (re)activates the device with the given parameters (for ABP or for importing OTAA activations).
-	Activate(context.Context, *ActivateDeviceRequest) (*empty.Empty, error)
+	Activate(context.Context, *ActivateDeviceRequest) (*emptypb.Empty, error)
 	// Deactivate de-activates the device.
-	Deactivate(context.Context, *DeactivateDeviceRequest) (*empty.Empty, error)
+	Deactivate(context.Context, *DeactivateDeviceRequest) (*emptypb.Empty, error)
 	// GetActivation returns the current activation details of the device (OTAA and ABP).
 	GetActivation(context.Context, *GetDeviceActivationRequest) (*GetDeviceActivationResponse, error)
 	// GetRandomDevAddr returns a random DevAddr taking the NwkID prefix into account.
@@ -2643,14 +2643,14 @@ type DeviceServiceServer interface {
 	// ClearDeviceDevNonce deletes the device older activation records for the given DevEUI.
 	//   * These are clear older DevNonce records from device activation records in Network Server
 	//   * These clears all DevNonce records but keeps latest 20 records for maintain device activation status
-	ClearDeviceDevNonce(context.Context, *ClearDevNonceRequest) (*empty.Empty, error)
+	ClearDeviceDevNonce(context.Context, *ClearDevNonceRequest) (*emptypb.Empty, error)
 }
 
 // UnimplementedDeviceServiceServer can be embedded to have forward compatible implementations.
 type UnimplementedDeviceServiceServer struct {
 }
 
-func (*UnimplementedDeviceServiceServer) Create(ctx context.Context, req *CreateDeviceRequest) (*empty.Empty, error) {
+func (*UnimplementedDeviceServiceServer) Create(ctx context.Context, req *CreateDeviceRequest) (*emptypb.Empty, error) {
 	return nil, status.Errorf(codes.Unimplemented, "method Create not implemented")
 }
 func (*UnimplementedDeviceServiceServer) Get(ctx context.Context, req *GetDeviceRequest) (*GetDeviceResponse, error) {
@@ -2659,28 +2659,28 @@ func (*UnimplementedDeviceServiceServer) Get(ctx context.Context, req *GetDevice
 func (*UnimplementedDeviceServiceServer) List(ctx context.Context, req *ListDeviceRequest) (*ListDeviceResponse, error) {
 	return nil, status.Errorf(codes.Unimplemented, "method List not implemented")
 }
-func (*UnimplementedDeviceServiceServer) Delete(ctx context.Context, req *DeleteDeviceRequest) (*empty.Empty, error) {
+func (*UnimplementedDeviceServiceServer) Delete(ctx context.Context, req *DeleteDeviceRequest) (*emptypb.Empty, error) {
 	return nil, status.Errorf(codes.Unimplemented, "method Delete not implemented")
 }
-func (*UnimplementedDeviceServiceServer) Update(ctx context.Context, req *UpdateDeviceRequest) (*empty.Empty, error) {
+func (*UnimplementedDeviceServiceServer) Update(ctx context.Context, req *UpdateDeviceRequest) (*emptypb.Empty, error) {
 	return nil, status.Errorf(codes.Unimplemented, "method Update not implemented")
 }
-func (*UnimplementedDeviceServiceServer) CreateKeys(ctx context.Context, req *CreateDeviceKeysRequest) (*empty.Empty, error) {
+func (*UnimplementedDeviceServiceServer) CreateKeys(ctx context.Context, req *CreateDeviceKeysRequest) (*emptypb.Empty, error) {
 	return nil, status.Errorf(codes.Unimplemented, "method CreateKeys not implemented")
 }
 func (*UnimplementedDeviceServiceServer) GetKeys(ctx context.Context, req *GetDeviceKeysRequest) (*GetDeviceKeysResponse, error) {
 	return nil, status.Errorf(codes.Unimplemented, "method GetKeys not implemented")
 }
-func (*UnimplementedDeviceServiceServer) UpdateKeys(ctx context.Context, req *UpdateDeviceKeysRequest) (*empty.Empty, error) {
+func (*UnimplementedDeviceServiceServer) UpdateKeys(ctx context.Context, req *UpdateDeviceKeysRequest) (*emptypb.Empty, error) {
 	return nil, status.Errorf(codes.Unimplemented, "method UpdateKeys not implemented")
 }
-func (*UnimplementedDeviceServiceServer) DeleteKeys(ctx context.Context, req *DeleteDeviceKeysRequest) (*empty.Empty, error) {
+func (*UnimplementedDeviceServiceServer) DeleteKeys(ctx context.Context, req *DeleteDeviceKeysRequest) (*emptypb.Empty, error) {
 	return nil, status.Errorf(codes.Unimplemented, "method DeleteKeys not implemented")
 }
-func (*UnimplementedDeviceServiceServer) Activate(ctx context.Context, req *ActivateDeviceRequest) (*empty.Empty, error) {
+func (*UnimplementedDeviceServiceServer) Activate(ctx context.Context, req *ActivateDeviceRequest) (*emptypb.Empty, error) {
 	return nil, status.Errorf(codes.Unimplemented, "method Activate not implemented")
 }
-func (*UnimplementedDeviceServiceServer) Deactivate(ctx context.Context, req *DeactivateDeviceRequest) (*empty.Empty, error) {
+func (*UnimplementedDeviceServiceServer) Deactivate(ctx context.Context, req *DeactivateDeviceRequest) (*emptypb.Empty, error) {
 	return nil, status.Errorf(codes.Unimplemented, "method Deactivate not implemented")
 }
 func (*UnimplementedDeviceServiceServer) GetActivation(ctx context.Context, req *GetDeviceActivationRequest) (*GetDeviceActivationResponse, error) {
@@ -2701,7 +2701,7 @@ func (*UnimplementedDeviceServiceServer) StreamEventLogs(req *StreamDeviceEventL
 func (*UnimplementedDeviceServiceServer) StreamGlobalFrameLogs(req *StreamGlobalDeviceEventLogsRequest, srv DeviceService_StreamGlobalFrameLogsServer) error {
 	return status.Errorf(codes.Unimplemented, "method StreamGlobalFrameLogs not implemented")
 }
-func (*UnimplementedDeviceServiceServer) ClearDeviceDevNonce(ctx context.Context, req *ClearDevNonceRequest) (*empty.Empty, error) {
+func (*UnimplementedDeviceServiceServer) ClearDeviceDevNonce(ctx context.Context, req *ClearDevNonceRequest) (*emptypb.Empty, error) {
 	return nil, status.Errorf(codes.Unimplemented, "method ClearDeviceDevNonce not implemented")
 }
 

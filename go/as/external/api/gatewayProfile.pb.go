@@ -7,14 +7,14 @@ import (
 	context "context"
 	fmt "fmt"
 	proto "github.com/golang/protobuf/proto"
-	duration "github.com/golang/protobuf/ptypes/duration"
-	empty "github.com/golang/protobuf/ptypes/empty"
-	timestamp "github.com/golang/protobuf/ptypes/timestamp"
 	common "github.com/sagar-patel-sls/chirpstack-api/go/v3/common"
 	_ "google.golang.org/genproto/googleapis/api/annotations"
 	grpc "google.golang.org/grpc"
 	codes "google.golang.org/grpc/codes"
 	status "google.golang.org/grpc/status"
+	durationpb "google.golang.org/protobuf/types/known/durationpb"
+	emptypb "google.golang.org/protobuf/types/known/emptypb"
+	timestamppb "google.golang.org/protobuf/types/known/timestamppb"
 	math "math"
 )
 
@@ -45,10 +45,10 @@ type GatewayProfile struct {
 	// Stats interval.
 	// This defines the (expected) stats interval which the gateways using this
 	// gateway-profile are using.
-	StatsInterval        *duration.Duration `protobuf:"bytes,6,opt,name=stats_interval,json=statsInterval,proto3" json:"stats_interval,omitempty"`
-	XXX_NoUnkeyedLiteral struct{}           `json:"-"`
-	XXX_unrecognized     []byte             `json:"-"`
-	XXX_sizecache        int32              `json:"-"`
+	StatsInterval        *durationpb.Duration `protobuf:"bytes,6,opt,name=stats_interval,json=statsInterval,proto3" json:"stats_interval,omitempty"`
+	XXX_NoUnkeyedLiteral struct{}             `json:"-"`
+	XXX_unrecognized     []byte               `json:"-"`
+	XXX_sizecache        int32                `json:"-"`
 }
 
 func (m *GatewayProfile) Reset()         { *m = GatewayProfile{} }
@@ -111,7 +111,7 @@ func (m *GatewayProfile) GetExtraChannels() []*GatewayProfileExtraChannel {
 	return nil
 }
 
-func (m *GatewayProfile) GetStatsInterval() *duration.Duration {
+func (m *GatewayProfile) GetStatsInterval() *durationpb.Duration {
 	if m != nil {
 		return m.StatsInterval
 	}
@@ -128,12 +128,12 @@ type GatewayProfileListItem struct {
 	// Network-server name.
 	NetworkServerName string `protobuf:"bytes,7,opt,name=network_server_name,json=networkServerName,proto3" json:"network_server_name,omitempty"`
 	// Created at timestamp.
-	CreatedAt *timestamp.Timestamp `protobuf:"bytes,5,opt,name=created_at,json=createdAt,proto3" json:"created_at,omitempty"`
+	CreatedAt *timestamppb.Timestamp `protobuf:"bytes,5,opt,name=created_at,json=createdAt,proto3" json:"created_at,omitempty"`
 	// Last update timestamp.
-	UpdatedAt            *timestamp.Timestamp `protobuf:"bytes,6,opt,name=updated_at,json=updatedAt,proto3" json:"updated_at,omitempty"`
-	XXX_NoUnkeyedLiteral struct{}             `json:"-"`
-	XXX_unrecognized     []byte               `json:"-"`
-	XXX_sizecache        int32                `json:"-"`
+	UpdatedAt            *timestamppb.Timestamp `protobuf:"bytes,6,opt,name=updated_at,json=updatedAt,proto3" json:"updated_at,omitempty"`
+	XXX_NoUnkeyedLiteral struct{}               `json:"-"`
+	XXX_unrecognized     []byte                 `json:"-"`
+	XXX_sizecache        int32                  `json:"-"`
 }
 
 func (m *GatewayProfileListItem) Reset()         { *m = GatewayProfileListItem{} }
@@ -189,14 +189,14 @@ func (m *GatewayProfileListItem) GetNetworkServerName() string {
 	return ""
 }
 
-func (m *GatewayProfileListItem) GetCreatedAt() *timestamp.Timestamp {
+func (m *GatewayProfileListItem) GetCreatedAt() *timestamppb.Timestamp {
 	if m != nil {
 		return m.CreatedAt
 	}
 	return nil
 }
 
-func (m *GatewayProfileListItem) GetUpdatedAt() *timestamp.Timestamp {
+func (m *GatewayProfileListItem) GetUpdatedAt() *timestamppb.Timestamp {
 	if m != nil {
 		return m.UpdatedAt
 	}
@@ -403,12 +403,12 @@ type GetGatewayProfileResponse struct {
 	// Gateway-profile object.
 	GatewayProfile *GatewayProfile `protobuf:"bytes,1,opt,name=gateway_profile,json=gatewayProfile,proto3" json:"gateway_profile,omitempty"`
 	// Created at timestamp.
-	CreatedAt *timestamp.Timestamp `protobuf:"bytes,2,opt,name=created_at,json=createdAt,proto3" json:"created_at,omitempty"`
+	CreatedAt *timestamppb.Timestamp `protobuf:"bytes,2,opt,name=created_at,json=createdAt,proto3" json:"created_at,omitempty"`
 	// Last update timestamp.
-	UpdatedAt            *timestamp.Timestamp `protobuf:"bytes,3,opt,name=updated_at,json=updatedAt,proto3" json:"updated_at,omitempty"`
-	XXX_NoUnkeyedLiteral struct{}             `json:"-"`
-	XXX_unrecognized     []byte               `json:"-"`
-	XXX_sizecache        int32                `json:"-"`
+	UpdatedAt            *timestamppb.Timestamp `protobuf:"bytes,3,opt,name=updated_at,json=updatedAt,proto3" json:"updated_at,omitempty"`
+	XXX_NoUnkeyedLiteral struct{}               `json:"-"`
+	XXX_unrecognized     []byte                 `json:"-"`
+	XXX_sizecache        int32                  `json:"-"`
 }
 
 func (m *GetGatewayProfileResponse) Reset()         { *m = GetGatewayProfileResponse{} }
@@ -443,14 +443,14 @@ func (m *GetGatewayProfileResponse) GetGatewayProfile() *GatewayProfile {
 	return nil
 }
 
-func (m *GetGatewayProfileResponse) GetCreatedAt() *timestamp.Timestamp {
+func (m *GetGatewayProfileResponse) GetCreatedAt() *timestamppb.Timestamp {
 	if m != nil {
 		return m.CreatedAt
 	}
 	return nil
 }
 
-func (m *GetGatewayProfileResponse) GetUpdatedAt() *timestamp.Timestamp {
+func (m *GetGatewayProfileResponse) GetUpdatedAt() *timestamppb.Timestamp {
 	if m != nil {
 		return m.UpdatedAt
 	}
@@ -738,9 +738,9 @@ type GatewayProfileServiceClient interface {
 	// Get returns the gateway-profile matching the given id.
 	Get(ctx context.Context, in *GetGatewayProfileRequest, opts ...grpc.CallOption) (*GetGatewayProfileResponse, error)
 	// Update updates the given gateway-profile.
-	Update(ctx context.Context, in *UpdateGatewayProfileRequest, opts ...grpc.CallOption) (*empty.Empty, error)
+	Update(ctx context.Context, in *UpdateGatewayProfileRequest, opts ...grpc.CallOption) (*emptypb.Empty, error)
 	// Delete deletes the gateway-profile matching the given id.
-	Delete(ctx context.Context, in *DeleteGatewayProfileRequest, opts ...grpc.CallOption) (*empty.Empty, error)
+	Delete(ctx context.Context, in *DeleteGatewayProfileRequest, opts ...grpc.CallOption) (*emptypb.Empty, error)
 	// List returns the existing gateway-profiles.
 	List(ctx context.Context, in *ListGatewayProfilesRequest, opts ...grpc.CallOption) (*ListGatewayProfilesResponse, error)
 }
@@ -771,8 +771,8 @@ func (c *gatewayProfileServiceClient) Get(ctx context.Context, in *GetGatewayPro
 	return out, nil
 }
 
-func (c *gatewayProfileServiceClient) Update(ctx context.Context, in *UpdateGatewayProfileRequest, opts ...grpc.CallOption) (*empty.Empty, error) {
-	out := new(empty.Empty)
+func (c *gatewayProfileServiceClient) Update(ctx context.Context, in *UpdateGatewayProfileRequest, opts ...grpc.CallOption) (*emptypb.Empty, error) {
+	out := new(emptypb.Empty)
 	err := c.cc.Invoke(ctx, "/api.GatewayProfileService/Update", in, out, opts...)
 	if err != nil {
 		return nil, err
@@ -780,8 +780,8 @@ func (c *gatewayProfileServiceClient) Update(ctx context.Context, in *UpdateGate
 	return out, nil
 }
 
-func (c *gatewayProfileServiceClient) Delete(ctx context.Context, in *DeleteGatewayProfileRequest, opts ...grpc.CallOption) (*empty.Empty, error) {
-	out := new(empty.Empty)
+func (c *gatewayProfileServiceClient) Delete(ctx context.Context, in *DeleteGatewayProfileRequest, opts ...grpc.CallOption) (*emptypb.Empty, error) {
+	out := new(emptypb.Empty)
 	err := c.cc.Invoke(ctx, "/api.GatewayProfileService/Delete", in, out, opts...)
 	if err != nil {
 		return nil, err
@@ -805,9 +805,9 @@ type GatewayProfileServiceServer interface {
 	// Get returns the gateway-profile matching the given id.
 	Get(context.Context, *GetGatewayProfileRequest) (*GetGatewayProfileResponse, error)
 	// Update updates the given gateway-profile.
-	Update(context.Context, *UpdateGatewayProfileRequest) (*empty.Empty, error)
+	Update(context.Context, *UpdateGatewayProfileRequest) (*emptypb.Empty, error)
 	// Delete deletes the gateway-profile matching the given id.
-	Delete(context.Context, *DeleteGatewayProfileRequest) (*empty.Empty, error)
+	Delete(context.Context, *DeleteGatewayProfileRequest) (*emptypb.Empty, error)
 	// List returns the existing gateway-profiles.
 	List(context.Context, *ListGatewayProfilesRequest) (*ListGatewayProfilesResponse, error)
 }
@@ -822,10 +822,10 @@ func (*UnimplementedGatewayProfileServiceServer) Create(ctx context.Context, req
 func (*UnimplementedGatewayProfileServiceServer) Get(ctx context.Context, req *GetGatewayProfileRequest) (*GetGatewayProfileResponse, error) {
 	return nil, status.Errorf(codes.Unimplemented, "method Get not implemented")
 }
-func (*UnimplementedGatewayProfileServiceServer) Update(ctx context.Context, req *UpdateGatewayProfileRequest) (*empty.Empty, error) {
+func (*UnimplementedGatewayProfileServiceServer) Update(ctx context.Context, req *UpdateGatewayProfileRequest) (*emptypb.Empty, error) {
 	return nil, status.Errorf(codes.Unimplemented, "method Update not implemented")
 }
-func (*UnimplementedGatewayProfileServiceServer) Delete(ctx context.Context, req *DeleteGatewayProfileRequest) (*empty.Empty, error) {
+func (*UnimplementedGatewayProfileServiceServer) Delete(ctx context.Context, req *DeleteGatewayProfileRequest) (*emptypb.Empty, error) {
 	return nil, status.Errorf(codes.Unimplemented, "method Delete not implemented")
 }
 func (*UnimplementedGatewayProfileServiceServer) List(ctx context.Context, req *ListGatewayProfilesRequest) (*ListGatewayProfilesResponse, error) {

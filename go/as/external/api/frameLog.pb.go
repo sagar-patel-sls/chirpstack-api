@@ -6,8 +6,8 @@ package api
 import (
 	fmt "fmt"
 	proto "github.com/golang/protobuf/proto"
-	timestamp "github.com/golang/protobuf/ptypes/timestamp"
 	gw "github.com/sagar-patel-sls/chirpstack-api/go/v3/gw"
+	timestamppb "google.golang.org/protobuf/types/known/timestamppb"
 	math "math"
 )
 
@@ -55,10 +55,10 @@ type UplinkFrameLog struct {
 	// LoRaWAN PHYPayload.
 	PhyPayloadJson string `protobuf:"bytes,3,opt,name=phy_payload_json,json=phyPayloadJSON,proto3" json:"phy_payload_json,omitempty"`
 	// Published at timestamp.
-	PublishedAt          *timestamp.Timestamp `protobuf:"bytes,4,opt,name=published_at,json=publishedAt,proto3" json:"published_at,omitempty"`
-	XXX_NoUnkeyedLiteral struct{}             `json:"-"`
-	XXX_unrecognized     []byte               `json:"-"`
-	XXX_sizecache        int32                `json:"-"`
+	PublishedAt          *timestamppb.Timestamp `protobuf:"bytes,4,opt,name=published_at,json=publishedAt,proto3" json:"published_at,omitempty"`
+	XXX_NoUnkeyedLiteral struct{}               `json:"-"`
+	XXX_unrecognized     []byte                 `json:"-"`
+	XXX_sizecache        int32                  `json:"-"`
 }
 
 func (m *UplinkFrameLog) Reset()         { *m = UplinkFrameLog{} }
@@ -107,7 +107,7 @@ func (m *UplinkFrameLog) GetPhyPayloadJson() string {
 	return ""
 }
 
-func (m *UplinkFrameLog) GetPublishedAt() *timestamp.Timestamp {
+func (m *UplinkFrameLog) GetPublishedAt() *timestamppb.Timestamp {
 	if m != nil {
 		return m.PublishedAt
 	}
@@ -122,10 +122,10 @@ type DownlinkFrameLog struct {
 	// Gateway ID.
 	GatewayId string `protobuf:"bytes,3,opt,name=gateway_id,json=gatewayID,proto3" json:"gateway_id,omitempty"`
 	// Published at timestamp.
-	PublishedAt          *timestamp.Timestamp `protobuf:"bytes,4,opt,name=published_at,json=publishedAt,proto3" json:"published_at,omitempty"`
-	XXX_NoUnkeyedLiteral struct{}             `json:"-"`
-	XXX_unrecognized     []byte               `json:"-"`
-	XXX_sizecache        int32                `json:"-"`
+	PublishedAt          *timestamppb.Timestamp `protobuf:"bytes,4,opt,name=published_at,json=publishedAt,proto3" json:"published_at,omitempty"`
+	XXX_NoUnkeyedLiteral struct{}               `json:"-"`
+	XXX_unrecognized     []byte                 `json:"-"`
+	XXX_sizecache        int32                  `json:"-"`
 }
 
 func (m *DownlinkFrameLog) Reset()         { *m = DownlinkFrameLog{} }
@@ -174,7 +174,7 @@ func (m *DownlinkFrameLog) GetGatewayId() string {
 	return ""
 }
 
-func (m *DownlinkFrameLog) GetPublishedAt() *timestamp.Timestamp {
+func (m *DownlinkFrameLog) GetPublishedAt() *timestamppb.Timestamp {
 	if m != nil {
 		return m.PublishedAt
 	}

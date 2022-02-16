@@ -6,9 +6,9 @@ package integration
 import (
 	fmt "fmt"
 	proto "github.com/golang/protobuf/proto"
-	timestamp "github.com/golang/protobuf/ptypes/timestamp"
 	common "github.com/sagar-patel-sls/chirpstack-api/go/v3/common"
 	gw "github.com/sagar-patel-sls/chirpstack-api/go/v3/gw"
+	timestamppb "google.golang.org/protobuf/types/known/timestamppb"
 	math "math"
 )
 
@@ -118,7 +118,7 @@ type UplinkEvent struct {
 	// Device address.
 	DevAddr []byte `protobuf:"bytes,15,opt,name=dev_addr,json=devAddr,proto3" json:"dev_addr,omitempty"`
 	// Published at timestamp.
-	PublishedAt *timestamp.Timestamp `protobuf:"bytes,16,opt,name=published_at,json=publishedAt,proto3" json:"published_at,omitempty"`
+	PublishedAt *timestamppb.Timestamp `protobuf:"bytes,16,opt,name=published_at,json=publishedAt,proto3" json:"published_at,omitempty"`
 	// Device Profile UUID as string
 	DeviceProfileId string `protobuf:"bytes,17,opt,name=device_profile_id,json=deviceProfileID,proto3" json:"device_profile_id,omitempty"`
 	// Device Profile name
@@ -258,7 +258,7 @@ func (m *UplinkEvent) GetDevAddr() []byte {
 	return nil
 }
 
-func (m *UplinkEvent) GetPublishedAt() *timestamp.Timestamp {
+func (m *UplinkEvent) GetPublishedAt() *timestamppb.Timestamp {
 	if m != nil {
 		return m.PublishedAt
 	}
@@ -302,10 +302,10 @@ type JoinEvent struct {
 	// User-defined device tags.
 	Tags map[string]string `protobuf:"bytes,9,rep,name=tags,proto3" json:"tags,omitempty" protobuf_key:"bytes,1,opt,name=key,proto3" protobuf_val:"bytes,2,opt,name=value,proto3"`
 	// Published at timestamp.
-	PublishedAt          *timestamp.Timestamp `protobuf:"bytes,10,opt,name=published_at,json=publishedAt,proto3" json:"published_at,omitempty"`
-	XXX_NoUnkeyedLiteral struct{}             `json:"-"`
-	XXX_unrecognized     []byte               `json:"-"`
-	XXX_sizecache        int32                `json:"-"`
+	PublishedAt          *timestamppb.Timestamp `protobuf:"bytes,10,opt,name=published_at,json=publishedAt,proto3" json:"published_at,omitempty"`
+	XXX_NoUnkeyedLiteral struct{}               `json:"-"`
+	XXX_unrecognized     []byte                 `json:"-"`
+	XXX_sizecache        int32                  `json:"-"`
 }
 
 func (m *JoinEvent) Reset()         { *m = JoinEvent{} }
@@ -396,7 +396,7 @@ func (m *JoinEvent) GetTags() map[string]string {
 	return nil
 }
 
-func (m *JoinEvent) GetPublishedAt() *timestamp.Timestamp {
+func (m *JoinEvent) GetPublishedAt() *timestamppb.Timestamp {
 	if m != nil {
 		return m.PublishedAt
 	}
@@ -421,10 +421,10 @@ type AckEvent struct {
 	// User-defined device tags.
 	Tags map[string]string `protobuf:"bytes,7,rep,name=tags,proto3" json:"tags,omitempty" protobuf_key:"bytes,1,opt,name=key,proto3" protobuf_val:"bytes,2,opt,name=value,proto3"`
 	// Published at timestamp.
-	PublishedAt          *timestamp.Timestamp `protobuf:"bytes,8,opt,name=published_at,json=publishedAt,proto3" json:"published_at,omitempty"`
-	XXX_NoUnkeyedLiteral struct{}             `json:"-"`
-	XXX_unrecognized     []byte               `json:"-"`
-	XXX_sizecache        int32                `json:"-"`
+	PublishedAt          *timestamppb.Timestamp `protobuf:"bytes,8,opt,name=published_at,json=publishedAt,proto3" json:"published_at,omitempty"`
+	XXX_NoUnkeyedLiteral struct{}               `json:"-"`
+	XXX_unrecognized     []byte                 `json:"-"`
+	XXX_sizecache        int32                  `json:"-"`
 }
 
 func (m *AckEvent) Reset()         { *m = AckEvent{} }
@@ -501,7 +501,7 @@ func (m *AckEvent) GetTags() map[string]string {
 	return nil
 }
 
-func (m *AckEvent) GetPublishedAt() *timestamp.Timestamp {
+func (m *AckEvent) GetPublishedAt() *timestamppb.Timestamp {
 	if m != nil {
 		return m.PublishedAt
 	}
@@ -529,10 +529,10 @@ type TxAckEvent struct {
 	// TX info.
 	TxInfo *gw.DownlinkTXInfo `protobuf:"bytes,8,opt,name=tx_info,json=txInfo,proto3" json:"tx_info,omitempty"`
 	// Published at timestamp.
-	PublishedAt          *timestamp.Timestamp `protobuf:"bytes,9,opt,name=published_at,json=publishedAt,proto3" json:"published_at,omitempty"`
-	XXX_NoUnkeyedLiteral struct{}             `json:"-"`
-	XXX_unrecognized     []byte               `json:"-"`
-	XXX_sizecache        int32                `json:"-"`
+	PublishedAt          *timestamppb.Timestamp `protobuf:"bytes,9,opt,name=published_at,json=publishedAt,proto3" json:"published_at,omitempty"`
+	XXX_NoUnkeyedLiteral struct{}               `json:"-"`
+	XXX_unrecognized     []byte                 `json:"-"`
+	XXX_sizecache        int32                  `json:"-"`
 }
 
 func (m *TxAckEvent) Reset()         { *m = TxAckEvent{} }
@@ -616,7 +616,7 @@ func (m *TxAckEvent) GetTxInfo() *gw.DownlinkTXInfo {
 	return nil
 }
 
-func (m *TxAckEvent) GetPublishedAt() *timestamp.Timestamp {
+func (m *TxAckEvent) GetPublishedAt() *timestamppb.Timestamp {
 	if m != nil {
 		return m.PublishedAt
 	}
@@ -642,10 +642,10 @@ type ErrorEvent struct {
 	// User-defined device tags.
 	Tags map[string]string `protobuf:"bytes,8,rep,name=tags,proto3" json:"tags,omitempty" protobuf_key:"bytes,1,opt,name=key,proto3" protobuf_val:"bytes,2,opt,name=value,proto3"`
 	// Published at timestamp.
-	PublishedAt          *timestamp.Timestamp `protobuf:"bytes,9,opt,name=published_at,json=publishedAt,proto3" json:"published_at,omitempty"`
-	XXX_NoUnkeyedLiteral struct{}             `json:"-"`
-	XXX_unrecognized     []byte               `json:"-"`
-	XXX_sizecache        int32                `json:"-"`
+	PublishedAt          *timestamppb.Timestamp `protobuf:"bytes,9,opt,name=published_at,json=publishedAt,proto3" json:"published_at,omitempty"`
+	XXX_NoUnkeyedLiteral struct{}               `json:"-"`
+	XXX_unrecognized     []byte                 `json:"-"`
+	XXX_sizecache        int32                  `json:"-"`
 }
 
 func (m *ErrorEvent) Reset()         { *m = ErrorEvent{} }
@@ -729,7 +729,7 @@ func (m *ErrorEvent) GetTags() map[string]string {
 	return nil
 }
 
-func (m *ErrorEvent) GetPublishedAt() *timestamp.Timestamp {
+func (m *ErrorEvent) GetPublishedAt() *timestamppb.Timestamp {
 	if m != nil {
 		return m.PublishedAt
 	}
@@ -759,10 +759,10 @@ type StatusEvent struct {
 	// User-defined device tags.
 	Tags map[string]string `protobuf:"bytes,9,rep,name=tags,proto3" json:"tags,omitempty" protobuf_key:"bytes,1,opt,name=key,proto3" protobuf_val:"bytes,2,opt,name=value,proto3"`
 	// Published at timestamp.
-	PublishedAt          *timestamp.Timestamp `protobuf:"bytes,10,opt,name=published_at,json=publishedAt,proto3" json:"published_at,omitempty"`
-	XXX_NoUnkeyedLiteral struct{}             `json:"-"`
-	XXX_unrecognized     []byte               `json:"-"`
-	XXX_sizecache        int32                `json:"-"`
+	PublishedAt          *timestamppb.Timestamp `protobuf:"bytes,10,opt,name=published_at,json=publishedAt,proto3" json:"published_at,omitempty"`
+	XXX_NoUnkeyedLiteral struct{}               `json:"-"`
+	XXX_unrecognized     []byte                 `json:"-"`
+	XXX_sizecache        int32                  `json:"-"`
 }
 
 func (m *StatusEvent) Reset()         { *m = StatusEvent{} }
@@ -853,7 +853,7 @@ func (m *StatusEvent) GetTags() map[string]string {
 	return nil
 }
 
-func (m *StatusEvent) GetPublishedAt() *timestamp.Timestamp {
+func (m *StatusEvent) GetPublishedAt() *timestamppb.Timestamp {
 	if m != nil {
 		return m.PublishedAt
 	}
@@ -881,10 +881,10 @@ type LocationEvent struct {
 	// This is set in case the geolocation is based on the uplink payload content.
 	FCnt uint32 `protobuf:"varint,8,opt,name=f_cnt,json=fCnt,proto3" json:"f_cnt,omitempty"`
 	// Published at timestamp.
-	PublishedAt          *timestamp.Timestamp `protobuf:"bytes,9,opt,name=published_at,json=publishedAt,proto3" json:"published_at,omitempty"`
-	XXX_NoUnkeyedLiteral struct{}             `json:"-"`
-	XXX_unrecognized     []byte               `json:"-"`
-	XXX_sizecache        int32                `json:"-"`
+	PublishedAt          *timestamppb.Timestamp `protobuf:"bytes,9,opt,name=published_at,json=publishedAt,proto3" json:"published_at,omitempty"`
+	XXX_NoUnkeyedLiteral struct{}               `json:"-"`
+	XXX_unrecognized     []byte                 `json:"-"`
+	XXX_sizecache        int32                  `json:"-"`
 }
 
 func (m *LocationEvent) Reset()         { *m = LocationEvent{} }
@@ -968,7 +968,7 @@ func (m *LocationEvent) GetFCnt() uint32 {
 	return 0
 }
 
-func (m *LocationEvent) GetPublishedAt() *timestamp.Timestamp {
+func (m *LocationEvent) GetPublishedAt() *timestamppb.Timestamp {
 	if m != nil {
 		return m.PublishedAt
 	}
@@ -996,10 +996,10 @@ type IntegrationEvent struct {
 	// JSON string containing the event object.
 	ObjectJson string `protobuf:"bytes,8,opt,name=object_json,json=objectJSON,proto3" json:"object_json,omitempty"`
 	// Published at timestamp.
-	PublishedAt          *timestamp.Timestamp `protobuf:"bytes,9,opt,name=published_at,json=publishedAt,proto3" json:"published_at,omitempty"`
-	XXX_NoUnkeyedLiteral struct{}             `json:"-"`
-	XXX_unrecognized     []byte               `json:"-"`
-	XXX_sizecache        int32                `json:"-"`
+	PublishedAt          *timestamppb.Timestamp `protobuf:"bytes,9,opt,name=published_at,json=publishedAt,proto3" json:"published_at,omitempty"`
+	XXX_NoUnkeyedLiteral struct{}               `json:"-"`
+	XXX_unrecognized     []byte                 `json:"-"`
+	XXX_sizecache        int32                  `json:"-"`
 }
 
 func (m *IntegrationEvent) Reset()         { *m = IntegrationEvent{} }
@@ -1083,7 +1083,7 @@ func (m *IntegrationEvent) GetObjectJson() string {
 	return ""
 }
 
-func (m *IntegrationEvent) GetPublishedAt() *timestamp.Timestamp {
+func (m *IntegrationEvent) GetPublishedAt() *timestamppb.Timestamp {
 	if m != nil {
 		return m.PublishedAt
 	}
@@ -1097,7 +1097,7 @@ type GatewayStatsEvent struct {
 	// Gateway IP.
 	Ip string `protobuf:"bytes,9,opt,name=ip,proto3" json:"ip,omitempty"`
 	// Gateway time.
-	Time *timestamp.Timestamp `protobuf:"bytes,2,opt,name=time,proto3" json:"time,omitempty"`
+	Time *timestamppb.Timestamp `protobuf:"bytes,2,opt,name=time,proto3" json:"time,omitempty"`
 	// Gateway location.
 	Location *common.Location `protobuf:"bytes,3,opt,name=location,proto3" json:"location,omitempty"`
 	// Gateway configuration version (this maps to the config_version sent
@@ -1164,7 +1164,7 @@ func (m *GatewayStatsEvent) GetIp() string {
 	return ""
 }
 
-func (m *GatewayStatsEvent) GetTime() *timestamp.Timestamp {
+func (m *GatewayStatsEvent) GetTime() *timestamppb.Timestamp {
 	if m != nil {
 		return m.Time
 	}

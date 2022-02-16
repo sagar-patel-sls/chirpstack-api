@@ -7,12 +7,12 @@ import (
 	context "context"
 	fmt "fmt"
 	proto "github.com/golang/protobuf/proto"
-	empty "github.com/golang/protobuf/ptypes/empty"
-	timestamp "github.com/golang/protobuf/ptypes/timestamp"
 	_ "google.golang.org/genproto/googleapis/api/annotations"
 	grpc "google.golang.org/grpc"
 	codes "google.golang.org/grpc/codes"
 	status "google.golang.org/grpc/status"
+	emptypb "google.golang.org/protobuf/types/known/emptypb"
+	timestamppb "google.golang.org/protobuf/types/known/timestamppb"
 	math "math"
 )
 
@@ -124,12 +124,12 @@ type OrganizationListItem struct {
 	// Can the organization create and "own" Gateways?
 	CanHaveGateways bool `protobuf:"varint,4,opt,name=can_have_gateways,json=canHaveGateways,proto3" json:"can_have_gateways,omitempty"`
 	// Created at timestamp.
-	CreatedAt *timestamp.Timestamp `protobuf:"bytes,5,opt,name=created_at,json=createdAt,proto3" json:"created_at,omitempty"`
+	CreatedAt *timestamppb.Timestamp `protobuf:"bytes,5,opt,name=created_at,json=createdAt,proto3" json:"created_at,omitempty"`
 	// Last update timestamp.
-	UpdatedAt            *timestamp.Timestamp `protobuf:"bytes,6,opt,name=updated_at,json=updatedAt,proto3" json:"updated_at,omitempty"`
-	XXX_NoUnkeyedLiteral struct{}             `json:"-"`
-	XXX_unrecognized     []byte               `json:"-"`
-	XXX_sizecache        int32                `json:"-"`
+	UpdatedAt            *timestamppb.Timestamp `protobuf:"bytes,6,opt,name=updated_at,json=updatedAt,proto3" json:"updated_at,omitempty"`
+	XXX_NoUnkeyedLiteral struct{}               `json:"-"`
+	XXX_unrecognized     []byte                 `json:"-"`
+	XXX_sizecache        int32                  `json:"-"`
 }
 
 func (m *OrganizationListItem) Reset()         { *m = OrganizationListItem{} }
@@ -185,14 +185,14 @@ func (m *OrganizationListItem) GetCanHaveGateways() bool {
 	return false
 }
 
-func (m *OrganizationListItem) GetCreatedAt() *timestamp.Timestamp {
+func (m *OrganizationListItem) GetCreatedAt() *timestamppb.Timestamp {
 	if m != nil {
 		return m.CreatedAt
 	}
 	return nil
 }
 
-func (m *OrganizationListItem) GetUpdatedAt() *timestamp.Timestamp {
+func (m *OrganizationListItem) GetUpdatedAt() *timestamppb.Timestamp {
 	if m != nil {
 		return m.UpdatedAt
 	}
@@ -243,12 +243,12 @@ type GetOrganizationResponse struct {
 	// Organization object.
 	Organization *Organization `protobuf:"bytes,1,opt,name=organization,proto3" json:"organization,omitempty"`
 	// Created at timestamp.
-	CreatedAt *timestamp.Timestamp `protobuf:"bytes,2,opt,name=created_at,json=createdAt,proto3" json:"created_at,omitempty"`
+	CreatedAt *timestamppb.Timestamp `protobuf:"bytes,2,opt,name=created_at,json=createdAt,proto3" json:"created_at,omitempty"`
 	// Last update timestamp.
-	UpdatedAt            *timestamp.Timestamp `protobuf:"bytes,3,opt,name=updated_at,json=updatedAt,proto3" json:"updated_at,omitempty"`
-	XXX_NoUnkeyedLiteral struct{}             `json:"-"`
-	XXX_unrecognized     []byte               `json:"-"`
-	XXX_sizecache        int32                `json:"-"`
+	UpdatedAt            *timestamppb.Timestamp `protobuf:"bytes,3,opt,name=updated_at,json=updatedAt,proto3" json:"updated_at,omitempty"`
+	XXX_NoUnkeyedLiteral struct{}               `json:"-"`
+	XXX_unrecognized     []byte                 `json:"-"`
+	XXX_sizecache        int32                  `json:"-"`
 }
 
 func (m *GetOrganizationResponse) Reset()         { *m = GetOrganizationResponse{} }
@@ -283,14 +283,14 @@ func (m *GetOrganizationResponse) GetOrganization() *Organization {
 	return nil
 }
 
-func (m *GetOrganizationResponse) GetCreatedAt() *timestamp.Timestamp {
+func (m *GetOrganizationResponse) GetCreatedAt() *timestamppb.Timestamp {
 	if m != nil {
 		return m.CreatedAt
 	}
 	return nil
 }
 
-func (m *GetOrganizationResponse) GetUpdatedAt() *timestamp.Timestamp {
+func (m *GetOrganizationResponse) GetUpdatedAt() *timestamppb.Timestamp {
 	if m != nil {
 		return m.UpdatedAt
 	}
@@ -667,12 +667,12 @@ type OrganizationUserListItem struct {
 	// User is able to modify gateways.
 	IsGatewayAdmin bool `protobuf:"varint,7,opt,name=is_gateway_admin,json=isGatewayAdmin,proto3" json:"is_gateway_admin,omitempty"`
 	// Created at timestamp.
-	CreatedAt *timestamp.Timestamp `protobuf:"bytes,4,opt,name=created_at,json=createdAt,proto3" json:"created_at,omitempty"`
+	CreatedAt *timestamppb.Timestamp `protobuf:"bytes,4,opt,name=created_at,json=createdAt,proto3" json:"created_at,omitempty"`
 	// Last update timestamp.
-	UpdatedAt            *timestamp.Timestamp `protobuf:"bytes,5,opt,name=updated_at,json=updatedAt,proto3" json:"updated_at,omitempty"`
-	XXX_NoUnkeyedLiteral struct{}             `json:"-"`
-	XXX_unrecognized     []byte               `json:"-"`
-	XXX_sizecache        int32                `json:"-"`
+	UpdatedAt            *timestamppb.Timestamp `protobuf:"bytes,5,opt,name=updated_at,json=updatedAt,proto3" json:"updated_at,omitempty"`
+	XXX_NoUnkeyedLiteral struct{}               `json:"-"`
+	XXX_unrecognized     []byte                 `json:"-"`
+	XXX_sizecache        int32                  `json:"-"`
 }
 
 func (m *OrganizationUserListItem) Reset()         { *m = OrganizationUserListItem{} }
@@ -735,14 +735,14 @@ func (m *OrganizationUserListItem) GetIsGatewayAdmin() bool {
 	return false
 }
 
-func (m *OrganizationUserListItem) GetCreatedAt() *timestamp.Timestamp {
+func (m *OrganizationUserListItem) GetCreatedAt() *timestamppb.Timestamp {
 	if m != nil {
 		return m.CreatedAt
 	}
 	return nil
 }
 
-func (m *OrganizationUserListItem) GetUpdatedAt() *timestamp.Timestamp {
+func (m *OrganizationUserListItem) GetUpdatedAt() *timestamppb.Timestamp {
 	if m != nil {
 		return m.UpdatedAt
 	}
@@ -1038,12 +1038,12 @@ type GetOrganizationUserResponse struct {
 	// Organization-user object.
 	OrganizationUser *OrganizationUser `protobuf:"bytes,1,opt,name=organization_user,json=organizationUser,proto3" json:"organization_user,omitempty"`
 	// Created at timestamp.
-	CreatedAt *timestamp.Timestamp `protobuf:"bytes,2,opt,name=created_at,json=createdAt,proto3" json:"created_at,omitempty"`
+	CreatedAt *timestamppb.Timestamp `protobuf:"bytes,2,opt,name=created_at,json=createdAt,proto3" json:"created_at,omitempty"`
 	// Last update timestamp.
-	UpdatedAt            *timestamp.Timestamp `protobuf:"bytes,3,opt,name=updated_at,json=updatedAt,proto3" json:"updated_at,omitempty"`
-	XXX_NoUnkeyedLiteral struct{}             `json:"-"`
-	XXX_unrecognized     []byte               `json:"-"`
-	XXX_sizecache        int32                `json:"-"`
+	UpdatedAt            *timestamppb.Timestamp `protobuf:"bytes,3,opt,name=updated_at,json=updatedAt,proto3" json:"updated_at,omitempty"`
+	XXX_NoUnkeyedLiteral struct{}               `json:"-"`
+	XXX_unrecognized     []byte                 `json:"-"`
+	XXX_sizecache        int32                  `json:"-"`
 }
 
 func (m *GetOrganizationUserResponse) Reset()         { *m = GetOrganizationUserResponse{} }
@@ -1078,14 +1078,14 @@ func (m *GetOrganizationUserResponse) GetOrganizationUser() *OrganizationUser {
 	return nil
 }
 
-func (m *GetOrganizationUserResponse) GetCreatedAt() *timestamp.Timestamp {
+func (m *GetOrganizationUserResponse) GetCreatedAt() *timestamppb.Timestamp {
 	if m != nil {
 		return m.CreatedAt
 	}
 	return nil
 }
 
-func (m *GetOrganizationUserResponse) GetUpdatedAt() *timestamp.Timestamp {
+func (m *GetOrganizationUserResponse) GetUpdatedAt() *timestamppb.Timestamp {
 	if m != nil {
 		return m.UpdatedAt
 	}
@@ -1212,19 +1212,19 @@ type OrganizationServiceClient interface {
 	// Create a new organization.
 	Create(ctx context.Context, in *CreateOrganizationRequest, opts ...grpc.CallOption) (*CreateOrganizationResponse, error)
 	// Update an existing organization.
-	Update(ctx context.Context, in *UpdateOrganizationRequest, opts ...grpc.CallOption) (*empty.Empty, error)
+	Update(ctx context.Context, in *UpdateOrganizationRequest, opts ...grpc.CallOption) (*emptypb.Empty, error)
 	// Delete an organization.
-	Delete(ctx context.Context, in *DeleteOrganizationRequest, opts ...grpc.CallOption) (*empty.Empty, error)
+	Delete(ctx context.Context, in *DeleteOrganizationRequest, opts ...grpc.CallOption) (*emptypb.Empty, error)
 	// Get organization's user list.
 	ListUsers(ctx context.Context, in *ListOrganizationUsersRequest, opts ...grpc.CallOption) (*ListOrganizationUsersResponse, error)
 	// Get data for a particular organization user.
 	GetUser(ctx context.Context, in *GetOrganizationUserRequest, opts ...grpc.CallOption) (*GetOrganizationUserResponse, error)
 	// Add a new user to an organization. The user is matched based on email, not user id.
-	AddUser(ctx context.Context, in *AddOrganizationUserRequest, opts ...grpc.CallOption) (*empty.Empty, error)
+	AddUser(ctx context.Context, in *AddOrganizationUserRequest, opts ...grpc.CallOption) (*emptypb.Empty, error)
 	// Update a user in an organization.
-	UpdateUser(ctx context.Context, in *UpdateOrganizationUserRequest, opts ...grpc.CallOption) (*empty.Empty, error)
+	UpdateUser(ctx context.Context, in *UpdateOrganizationUserRequest, opts ...grpc.CallOption) (*emptypb.Empty, error)
 	// Delete a user from an organization.
-	DeleteUser(ctx context.Context, in *DeleteOrganizationUserRequest, opts ...grpc.CallOption) (*empty.Empty, error)
+	DeleteUser(ctx context.Context, in *DeleteOrganizationUserRequest, opts ...grpc.CallOption) (*emptypb.Empty, error)
 }
 
 type organizationServiceClient struct {
@@ -1262,8 +1262,8 @@ func (c *organizationServiceClient) Create(ctx context.Context, in *CreateOrgani
 	return out, nil
 }
 
-func (c *organizationServiceClient) Update(ctx context.Context, in *UpdateOrganizationRequest, opts ...grpc.CallOption) (*empty.Empty, error) {
-	out := new(empty.Empty)
+func (c *organizationServiceClient) Update(ctx context.Context, in *UpdateOrganizationRequest, opts ...grpc.CallOption) (*emptypb.Empty, error) {
+	out := new(emptypb.Empty)
 	err := c.cc.Invoke(ctx, "/api.OrganizationService/Update", in, out, opts...)
 	if err != nil {
 		return nil, err
@@ -1271,8 +1271,8 @@ func (c *organizationServiceClient) Update(ctx context.Context, in *UpdateOrgani
 	return out, nil
 }
 
-func (c *organizationServiceClient) Delete(ctx context.Context, in *DeleteOrganizationRequest, opts ...grpc.CallOption) (*empty.Empty, error) {
-	out := new(empty.Empty)
+func (c *organizationServiceClient) Delete(ctx context.Context, in *DeleteOrganizationRequest, opts ...grpc.CallOption) (*emptypb.Empty, error) {
+	out := new(emptypb.Empty)
 	err := c.cc.Invoke(ctx, "/api.OrganizationService/Delete", in, out, opts...)
 	if err != nil {
 		return nil, err
@@ -1298,8 +1298,8 @@ func (c *organizationServiceClient) GetUser(ctx context.Context, in *GetOrganiza
 	return out, nil
 }
 
-func (c *organizationServiceClient) AddUser(ctx context.Context, in *AddOrganizationUserRequest, opts ...grpc.CallOption) (*empty.Empty, error) {
-	out := new(empty.Empty)
+func (c *organizationServiceClient) AddUser(ctx context.Context, in *AddOrganizationUserRequest, opts ...grpc.CallOption) (*emptypb.Empty, error) {
+	out := new(emptypb.Empty)
 	err := c.cc.Invoke(ctx, "/api.OrganizationService/AddUser", in, out, opts...)
 	if err != nil {
 		return nil, err
@@ -1307,8 +1307,8 @@ func (c *organizationServiceClient) AddUser(ctx context.Context, in *AddOrganiza
 	return out, nil
 }
 
-func (c *organizationServiceClient) UpdateUser(ctx context.Context, in *UpdateOrganizationUserRequest, opts ...grpc.CallOption) (*empty.Empty, error) {
-	out := new(empty.Empty)
+func (c *organizationServiceClient) UpdateUser(ctx context.Context, in *UpdateOrganizationUserRequest, opts ...grpc.CallOption) (*emptypb.Empty, error) {
+	out := new(emptypb.Empty)
 	err := c.cc.Invoke(ctx, "/api.OrganizationService/UpdateUser", in, out, opts...)
 	if err != nil {
 		return nil, err
@@ -1316,8 +1316,8 @@ func (c *organizationServiceClient) UpdateUser(ctx context.Context, in *UpdateOr
 	return out, nil
 }
 
-func (c *organizationServiceClient) DeleteUser(ctx context.Context, in *DeleteOrganizationUserRequest, opts ...grpc.CallOption) (*empty.Empty, error) {
-	out := new(empty.Empty)
+func (c *organizationServiceClient) DeleteUser(ctx context.Context, in *DeleteOrganizationUserRequest, opts ...grpc.CallOption) (*emptypb.Empty, error) {
+	out := new(emptypb.Empty)
 	err := c.cc.Invoke(ctx, "/api.OrganizationService/DeleteUser", in, out, opts...)
 	if err != nil {
 		return nil, err
@@ -1334,19 +1334,19 @@ type OrganizationServiceServer interface {
 	// Create a new organization.
 	Create(context.Context, *CreateOrganizationRequest) (*CreateOrganizationResponse, error)
 	// Update an existing organization.
-	Update(context.Context, *UpdateOrganizationRequest) (*empty.Empty, error)
+	Update(context.Context, *UpdateOrganizationRequest) (*emptypb.Empty, error)
 	// Delete an organization.
-	Delete(context.Context, *DeleteOrganizationRequest) (*empty.Empty, error)
+	Delete(context.Context, *DeleteOrganizationRequest) (*emptypb.Empty, error)
 	// Get organization's user list.
 	ListUsers(context.Context, *ListOrganizationUsersRequest) (*ListOrganizationUsersResponse, error)
 	// Get data for a particular organization user.
 	GetUser(context.Context, *GetOrganizationUserRequest) (*GetOrganizationUserResponse, error)
 	// Add a new user to an organization. The user is matched based on email, not user id.
-	AddUser(context.Context, *AddOrganizationUserRequest) (*empty.Empty, error)
+	AddUser(context.Context, *AddOrganizationUserRequest) (*emptypb.Empty, error)
 	// Update a user in an organization.
-	UpdateUser(context.Context, *UpdateOrganizationUserRequest) (*empty.Empty, error)
+	UpdateUser(context.Context, *UpdateOrganizationUserRequest) (*emptypb.Empty, error)
 	// Delete a user from an organization.
-	DeleteUser(context.Context, *DeleteOrganizationUserRequest) (*empty.Empty, error)
+	DeleteUser(context.Context, *DeleteOrganizationUserRequest) (*emptypb.Empty, error)
 }
 
 // UnimplementedOrganizationServiceServer can be embedded to have forward compatible implementations.
@@ -1362,10 +1362,10 @@ func (*UnimplementedOrganizationServiceServer) Get(ctx context.Context, req *Get
 func (*UnimplementedOrganizationServiceServer) Create(ctx context.Context, req *CreateOrganizationRequest) (*CreateOrganizationResponse, error) {
 	return nil, status.Errorf(codes.Unimplemented, "method Create not implemented")
 }
-func (*UnimplementedOrganizationServiceServer) Update(ctx context.Context, req *UpdateOrganizationRequest) (*empty.Empty, error) {
+func (*UnimplementedOrganizationServiceServer) Update(ctx context.Context, req *UpdateOrganizationRequest) (*emptypb.Empty, error) {
 	return nil, status.Errorf(codes.Unimplemented, "method Update not implemented")
 }
-func (*UnimplementedOrganizationServiceServer) Delete(ctx context.Context, req *DeleteOrganizationRequest) (*empty.Empty, error) {
+func (*UnimplementedOrganizationServiceServer) Delete(ctx context.Context, req *DeleteOrganizationRequest) (*emptypb.Empty, error) {
 	return nil, status.Errorf(codes.Unimplemented, "method Delete not implemented")
 }
 func (*UnimplementedOrganizationServiceServer) ListUsers(ctx context.Context, req *ListOrganizationUsersRequest) (*ListOrganizationUsersResponse, error) {
@@ -1374,13 +1374,13 @@ func (*UnimplementedOrganizationServiceServer) ListUsers(ctx context.Context, re
 func (*UnimplementedOrganizationServiceServer) GetUser(ctx context.Context, req *GetOrganizationUserRequest) (*GetOrganizationUserResponse, error) {
 	return nil, status.Errorf(codes.Unimplemented, "method GetUser not implemented")
 }
-func (*UnimplementedOrganizationServiceServer) AddUser(ctx context.Context, req *AddOrganizationUserRequest) (*empty.Empty, error) {
+func (*UnimplementedOrganizationServiceServer) AddUser(ctx context.Context, req *AddOrganizationUserRequest) (*emptypb.Empty, error) {
 	return nil, status.Errorf(codes.Unimplemented, "method AddUser not implemented")
 }
-func (*UnimplementedOrganizationServiceServer) UpdateUser(ctx context.Context, req *UpdateOrganizationUserRequest) (*empty.Empty, error) {
+func (*UnimplementedOrganizationServiceServer) UpdateUser(ctx context.Context, req *UpdateOrganizationUserRequest) (*emptypb.Empty, error) {
 	return nil, status.Errorf(codes.Unimplemented, "method UpdateUser not implemented")
 }
-func (*UnimplementedOrganizationServiceServer) DeleteUser(ctx context.Context, req *DeleteOrganizationUserRequest) (*empty.Empty, error) {
+func (*UnimplementedOrganizationServiceServer) DeleteUser(ctx context.Context, req *DeleteOrganizationUserRequest) (*emptypb.Empty, error) {
 	return nil, status.Errorf(codes.Unimplemented, "method DeleteUser not implemented")
 }
 

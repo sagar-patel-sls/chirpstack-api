@@ -7,12 +7,12 @@ import (
 	context "context"
 	fmt "fmt"
 	proto "github.com/golang/protobuf/proto"
-	empty "github.com/golang/protobuf/ptypes/empty"
-	timestamp "github.com/golang/protobuf/ptypes/timestamp"
 	_ "google.golang.org/genproto/googleapis/api/annotations"
 	grpc "google.golang.org/grpc"
 	codes "google.golang.org/grpc/codes"
 	status "google.golang.org/grpc/status"
+	emptypb "google.golang.org/protobuf/types/known/emptypb"
+	timestamppb "google.golang.org/protobuf/types/known/timestamppb"
 	math "math"
 )
 
@@ -189,12 +189,12 @@ type NetworkServerListItem struct {
 	// Format: hostname:ip (e.g. localhost:8000).
 	Server string `protobuf:"bytes,3,opt,name=server,proto3" json:"server,omitempty"`
 	// Created at timestamp.
-	CreatedAt *timestamp.Timestamp `protobuf:"bytes,4,opt,name=created_at,json=createdAt,proto3" json:"created_at,omitempty"`
+	CreatedAt *timestamppb.Timestamp `protobuf:"bytes,4,opt,name=created_at,json=createdAt,proto3" json:"created_at,omitempty"`
 	// Last update timestamp.
-	UpdatedAt            *timestamp.Timestamp `protobuf:"bytes,5,opt,name=updated_at,json=updatedAt,proto3" json:"updated_at,omitempty"`
-	XXX_NoUnkeyedLiteral struct{}             `json:"-"`
-	XXX_unrecognized     []byte               `json:"-"`
-	XXX_sizecache        int32                `json:"-"`
+	UpdatedAt            *timestamppb.Timestamp `protobuf:"bytes,5,opt,name=updated_at,json=updatedAt,proto3" json:"updated_at,omitempty"`
+	XXX_NoUnkeyedLiteral struct{}               `json:"-"`
+	XXX_unrecognized     []byte                 `json:"-"`
+	XXX_sizecache        int32                  `json:"-"`
 }
 
 func (m *NetworkServerListItem) Reset()         { *m = NetworkServerListItem{} }
@@ -243,14 +243,14 @@ func (m *NetworkServerListItem) GetServer() string {
 	return ""
 }
 
-func (m *NetworkServerListItem) GetCreatedAt() *timestamp.Timestamp {
+func (m *NetworkServerListItem) GetCreatedAt() *timestamppb.Timestamp {
 	if m != nil {
 		return m.CreatedAt
 	}
 	return nil
 }
 
-func (m *NetworkServerListItem) GetUpdatedAt() *timestamp.Timestamp {
+func (m *NetworkServerListItem) GetUpdatedAt() *timestamppb.Timestamp {
 	if m != nil {
 		return m.UpdatedAt
 	}
@@ -381,9 +381,9 @@ type GetNetworkServerResponse struct {
 	// Network-server object.
 	NetworkServer *NetworkServer `protobuf:"bytes,1,opt,name=network_server,json=networkServer,proto3" json:"network_server,omitempty"`
 	// Created at timestamp.
-	CreatedAt *timestamp.Timestamp `protobuf:"bytes,2,opt,name=created_at,json=createdAt,proto3" json:"created_at,omitempty"`
+	CreatedAt *timestamppb.Timestamp `protobuf:"bytes,2,opt,name=created_at,json=createdAt,proto3" json:"created_at,omitempty"`
 	// Last update timestamp.
-	UpdatedAt *timestamp.Timestamp `protobuf:"bytes,3,opt,name=updated_at,json=updatedAt,proto3" json:"updated_at,omitempty"`
+	UpdatedAt *timestamppb.Timestamp `protobuf:"bytes,3,opt,name=updated_at,json=updatedAt,proto3" json:"updated_at,omitempty"`
 	// The ChirpStack Network Server version.
 	Version string `protobuf:"bytes,4,opt,name=version,proto3" json:"version,omitempty"`
 	// The ChirpStack Network Server region configured.
@@ -425,14 +425,14 @@ func (m *GetNetworkServerResponse) GetNetworkServer() *NetworkServer {
 	return nil
 }
 
-func (m *GetNetworkServerResponse) GetCreatedAt() *timestamp.Timestamp {
+func (m *GetNetworkServerResponse) GetCreatedAt() *timestamppb.Timestamp {
 	if m != nil {
 		return m.CreatedAt
 	}
 	return nil
 }
 
-func (m *GetNetworkServerResponse) GetUpdatedAt() *timestamp.Timestamp {
+func (m *GetNetworkServerResponse) GetUpdatedAt() *timestamppb.Timestamp {
 	if m != nil {
 		return m.UpdatedAt
 	}
@@ -872,9 +872,9 @@ type NetworkServerServiceClient interface {
 	// Get returns the network-server matching the given id.
 	Get(ctx context.Context, in *GetNetworkServerRequest, opts ...grpc.CallOption) (*GetNetworkServerResponse, error)
 	// Update updates the given network-server.
-	Update(ctx context.Context, in *UpdateNetworkServerRequest, opts ...grpc.CallOption) (*empty.Empty, error)
+	Update(ctx context.Context, in *UpdateNetworkServerRequest, opts ...grpc.CallOption) (*emptypb.Empty, error)
 	// Delete deletes the network-server matching the given id.
-	Delete(ctx context.Context, in *DeleteNetworkServerRequest, opts ...grpc.CallOption) (*empty.Empty, error)
+	Delete(ctx context.Context, in *DeleteNetworkServerRequest, opts ...grpc.CallOption) (*emptypb.Empty, error)
 	// List lists the available network-servers.
 	List(ctx context.Context, in *ListNetworkServerRequest, opts ...grpc.CallOption) (*ListNetworkServerResponse, error)
 	// GetADRAlgorithms returns the available ADR algorithms.
@@ -907,8 +907,8 @@ func (c *networkServerServiceClient) Get(ctx context.Context, in *GetNetworkServ
 	return out, nil
 }
 
-func (c *networkServerServiceClient) Update(ctx context.Context, in *UpdateNetworkServerRequest, opts ...grpc.CallOption) (*empty.Empty, error) {
-	out := new(empty.Empty)
+func (c *networkServerServiceClient) Update(ctx context.Context, in *UpdateNetworkServerRequest, opts ...grpc.CallOption) (*emptypb.Empty, error) {
+	out := new(emptypb.Empty)
 	err := c.cc.Invoke(ctx, "/api.NetworkServerService/Update", in, out, opts...)
 	if err != nil {
 		return nil, err
@@ -916,8 +916,8 @@ func (c *networkServerServiceClient) Update(ctx context.Context, in *UpdateNetwo
 	return out, nil
 }
 
-func (c *networkServerServiceClient) Delete(ctx context.Context, in *DeleteNetworkServerRequest, opts ...grpc.CallOption) (*empty.Empty, error) {
-	out := new(empty.Empty)
+func (c *networkServerServiceClient) Delete(ctx context.Context, in *DeleteNetworkServerRequest, opts ...grpc.CallOption) (*emptypb.Empty, error) {
+	out := new(emptypb.Empty)
 	err := c.cc.Invoke(ctx, "/api.NetworkServerService/Delete", in, out, opts...)
 	if err != nil {
 		return nil, err
@@ -950,9 +950,9 @@ type NetworkServerServiceServer interface {
 	// Get returns the network-server matching the given id.
 	Get(context.Context, *GetNetworkServerRequest) (*GetNetworkServerResponse, error)
 	// Update updates the given network-server.
-	Update(context.Context, *UpdateNetworkServerRequest) (*empty.Empty, error)
+	Update(context.Context, *UpdateNetworkServerRequest) (*emptypb.Empty, error)
 	// Delete deletes the network-server matching the given id.
-	Delete(context.Context, *DeleteNetworkServerRequest) (*empty.Empty, error)
+	Delete(context.Context, *DeleteNetworkServerRequest) (*emptypb.Empty, error)
 	// List lists the available network-servers.
 	List(context.Context, *ListNetworkServerRequest) (*ListNetworkServerResponse, error)
 	// GetADRAlgorithms returns the available ADR algorithms.
@@ -969,10 +969,10 @@ func (*UnimplementedNetworkServerServiceServer) Create(ctx context.Context, req 
 func (*UnimplementedNetworkServerServiceServer) Get(ctx context.Context, req *GetNetworkServerRequest) (*GetNetworkServerResponse, error) {
 	return nil, status.Errorf(codes.Unimplemented, "method Get not implemented")
 }
-func (*UnimplementedNetworkServerServiceServer) Update(ctx context.Context, req *UpdateNetworkServerRequest) (*empty.Empty, error) {
+func (*UnimplementedNetworkServerServiceServer) Update(ctx context.Context, req *UpdateNetworkServerRequest) (*emptypb.Empty, error) {
 	return nil, status.Errorf(codes.Unimplemented, "method Update not implemented")
 }
-func (*UnimplementedNetworkServerServiceServer) Delete(ctx context.Context, req *DeleteNetworkServerRequest) (*empty.Empty, error) {
+func (*UnimplementedNetworkServerServiceServer) Delete(ctx context.Context, req *DeleteNetworkServerRequest) (*emptypb.Empty, error) {
 	return nil, status.Errorf(codes.Unimplemented, "method Delete not implemented")
 }
 func (*UnimplementedNetworkServerServiceServer) List(ctx context.Context, req *ListNetworkServerRequest) (*ListNetworkServerResponse, error) {

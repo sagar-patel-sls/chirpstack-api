@@ -7,12 +7,12 @@ import (
 	context "context"
 	fmt "fmt"
 	proto "github.com/golang/protobuf/proto"
-	empty "github.com/golang/protobuf/ptypes/empty"
-	timestamp "github.com/golang/protobuf/ptypes/timestamp"
 	_ "google.golang.org/genproto/googleapis/api/annotations"
 	grpc "google.golang.org/grpc"
 	codes "google.golang.org/grpc/codes"
 	status "google.golang.org/grpc/status"
+	emptypb "google.golang.org/protobuf/types/known/emptypb"
+	timestamppb "google.golang.org/protobuf/types/known/timestamppb"
 	math "math"
 )
 
@@ -3923,10 +3923,10 @@ type GenerateMQTTIntegrationClientCertificateResponse struct {
 	// CA certificate.
 	CaCert string `protobuf:"bytes,3,opt,name=ca_cert,json=caCert,proto3" json:"ca_cert,omitempty"`
 	// Expires at defines the expiration date of the certificate.
-	ExpiresAt            *timestamp.Timestamp `protobuf:"bytes,4,opt,name=expires_at,json=expiresAt,proto3" json:"expires_at,omitempty"`
-	XXX_NoUnkeyedLiteral struct{}             `json:"-"`
-	XXX_unrecognized     []byte               `json:"-"`
-	XXX_sizecache        int32                `json:"-"`
+	ExpiresAt            *timestamppb.Timestamp `protobuf:"bytes,4,opt,name=expires_at,json=expiresAt,proto3" json:"expires_at,omitempty"`
+	XXX_NoUnkeyedLiteral struct{}               `json:"-"`
+	XXX_unrecognized     []byte                 `json:"-"`
+	XXX_sizecache        int32                  `json:"-"`
 }
 
 func (m *GenerateMQTTIntegrationClientCertificateResponse) Reset() {
@@ -3979,7 +3979,7 @@ func (m *GenerateMQTTIntegrationClientCertificateResponse) GetCaCert() string {
 	return ""
 }
 
-func (m *GenerateMQTTIntegrationClientCertificateResponse) GetExpiresAt() *timestamp.Timestamp {
+func (m *GenerateMQTTIntegrationClientCertificateResponse) GetExpiresAt() *timestamppb.Timestamp {
 	if m != nil {
 		return m.ExpiresAt
 	}
@@ -4601,100 +4601,100 @@ type ApplicationServiceClient interface {
 	// Get returns the requested application.
 	Get(ctx context.Context, in *GetApplicationRequest, opts ...grpc.CallOption) (*GetApplicationResponse, error)
 	// Update updates the given application.
-	Update(ctx context.Context, in *UpdateApplicationRequest, opts ...grpc.CallOption) (*empty.Empty, error)
+	Update(ctx context.Context, in *UpdateApplicationRequest, opts ...grpc.CallOption) (*emptypb.Empty, error)
 	// Delete deletes the given application.
-	Delete(ctx context.Context, in *DeleteApplicationRequest, opts ...grpc.CallOption) (*empty.Empty, error)
+	Delete(ctx context.Context, in *DeleteApplicationRequest, opts ...grpc.CallOption) (*emptypb.Empty, error)
 	// List lists the available applications.
 	List(ctx context.Context, in *ListApplicationRequest, opts ...grpc.CallOption) (*ListApplicationResponse, error)
 	// CreateHTTPIntegration creates a HTTP application-integration.
-	CreateHTTPIntegration(ctx context.Context, in *CreateHTTPIntegrationRequest, opts ...grpc.CallOption) (*empty.Empty, error)
+	CreateHTTPIntegration(ctx context.Context, in *CreateHTTPIntegrationRequest, opts ...grpc.CallOption) (*emptypb.Empty, error)
 	// GetHTTPIntegration returns the HTTP application-integration.
 	GetHTTPIntegration(ctx context.Context, in *GetHTTPIntegrationRequest, opts ...grpc.CallOption) (*GetHTTPIntegrationResponse, error)
 	// UpdateHTTPIntegration updates the HTTP application-integration.
-	UpdateHTTPIntegration(ctx context.Context, in *UpdateHTTPIntegrationRequest, opts ...grpc.CallOption) (*empty.Empty, error)
+	UpdateHTTPIntegration(ctx context.Context, in *UpdateHTTPIntegrationRequest, opts ...grpc.CallOption) (*emptypb.Empty, error)
 	// DeleteIntegration deletes the HTTP application-integration.
-	DeleteHTTPIntegration(ctx context.Context, in *DeleteHTTPIntegrationRequest, opts ...grpc.CallOption) (*empty.Empty, error)
+	DeleteHTTPIntegration(ctx context.Context, in *DeleteHTTPIntegrationRequest, opts ...grpc.CallOption) (*emptypb.Empty, error)
 	// CreateInfluxDBIntegration create an InfluxDB application-integration.
-	CreateInfluxDBIntegration(ctx context.Context, in *CreateInfluxDBIntegrationRequest, opts ...grpc.CallOption) (*empty.Empty, error)
+	CreateInfluxDBIntegration(ctx context.Context, in *CreateInfluxDBIntegrationRequest, opts ...grpc.CallOption) (*emptypb.Empty, error)
 	// GetInfluxDBIntegration returns the InfluxDB application-integration.
 	GetInfluxDBIntegration(ctx context.Context, in *GetInfluxDBIntegrationRequest, opts ...grpc.CallOption) (*GetInfluxDBIntegrationResponse, error)
 	// UpdateInfluxDBIntegration updates the InfluxDB application-integration.
-	UpdateInfluxDBIntegration(ctx context.Context, in *UpdateInfluxDBIntegrationRequest, opts ...grpc.CallOption) (*empty.Empty, error)
+	UpdateInfluxDBIntegration(ctx context.Context, in *UpdateInfluxDBIntegrationRequest, opts ...grpc.CallOption) (*emptypb.Empty, error)
 	// DeleteInfluxDBIntegration deletes the InfluxDB application-integration.
-	DeleteInfluxDBIntegration(ctx context.Context, in *DeleteInfluxDBIntegrationRequest, opts ...grpc.CallOption) (*empty.Empty, error)
+	DeleteInfluxDBIntegration(ctx context.Context, in *DeleteInfluxDBIntegrationRequest, opts ...grpc.CallOption) (*emptypb.Empty, error)
 	// CreateThingsBoardIntegration creates a ThingsBoard application-integration.
-	CreateThingsBoardIntegration(ctx context.Context, in *CreateThingsBoardIntegrationRequest, opts ...grpc.CallOption) (*empty.Empty, error)
+	CreateThingsBoardIntegration(ctx context.Context, in *CreateThingsBoardIntegrationRequest, opts ...grpc.CallOption) (*emptypb.Empty, error)
 	// GetThingsBoardIntegration returns the ThingsBoard application-integration.
 	GetThingsBoardIntegration(ctx context.Context, in *GetThingsBoardIntegrationRequest, opts ...grpc.CallOption) (*GetThingsBoardIntegrationResponse, error)
 	// UpdateThingsBoardIntegration updates the ThingsBoard
 	// application-integration.
-	UpdateThingsBoardIntegration(ctx context.Context, in *UpdateThingsBoardIntegrationRequest, opts ...grpc.CallOption) (*empty.Empty, error)
+	UpdateThingsBoardIntegration(ctx context.Context, in *UpdateThingsBoardIntegrationRequest, opts ...grpc.CallOption) (*emptypb.Empty, error)
 	// DeleteThingsBoardIntegration deletes the ThingsBoard
 	// application-integration.
-	DeleteThingsBoardIntegration(ctx context.Context, in *DeleteThingsBoardIntegrationRequest, opts ...grpc.CallOption) (*empty.Empty, error)
+	DeleteThingsBoardIntegration(ctx context.Context, in *DeleteThingsBoardIntegrationRequest, opts ...grpc.CallOption) (*emptypb.Empty, error)
 	// CreateMyDevicesIntegration creates a MyDevices application-integration.
-	CreateMyDevicesIntegration(ctx context.Context, in *CreateMyDevicesIntegrationRequest, opts ...grpc.CallOption) (*empty.Empty, error)
+	CreateMyDevicesIntegration(ctx context.Context, in *CreateMyDevicesIntegrationRequest, opts ...grpc.CallOption) (*emptypb.Empty, error)
 	// GetMyDevicesIntegration returns the MyDevices application-integration.
 	GetMyDevicesIntegration(ctx context.Context, in *GetMyDevicesIntegrationRequest, opts ...grpc.CallOption) (*GetMyDevicesIntegrationResponse, error)
 	// UpdateMyDevicesIntegration updates the MyDevices application-integration.
-	UpdateMyDevicesIntegration(ctx context.Context, in *UpdateMyDevicesIntegrationRequest, opts ...grpc.CallOption) (*empty.Empty, error)
+	UpdateMyDevicesIntegration(ctx context.Context, in *UpdateMyDevicesIntegrationRequest, opts ...grpc.CallOption) (*emptypb.Empty, error)
 	// DeleteMyDevicesIntegration deletes the MyDevices application-integration.
-	DeleteMyDevicesIntegration(ctx context.Context, in *DeleteMyDevicesIntegrationRequest, opts ...grpc.CallOption) (*empty.Empty, error)
+	DeleteMyDevicesIntegration(ctx context.Context, in *DeleteMyDevicesIntegrationRequest, opts ...grpc.CallOption) (*emptypb.Empty, error)
 	// CreateLoRaCloudIntegration creates A LoRaCloud application-integration.
-	CreateLoRaCloudIntegration(ctx context.Context, in *CreateLoRaCloudIntegrationRequest, opts ...grpc.CallOption) (*empty.Empty, error)
+	CreateLoRaCloudIntegration(ctx context.Context, in *CreateLoRaCloudIntegrationRequest, opts ...grpc.CallOption) (*emptypb.Empty, error)
 	// GetLoRaCloudIntegration returns the LoRaCloud application-integration.
 	GetLoRaCloudIntegration(ctx context.Context, in *GetLoRaCloudIntegrationRequest, opts ...grpc.CallOption) (*GetLoRaCloudIntegrationResponse, error)
 	// UpdateLoRaCloudIntegration updates the LoRaCloud application-integration.
-	UpdateLoRaCloudIntegration(ctx context.Context, in *UpdateLoRaCloudIntegrationRequest, opts ...grpc.CallOption) (*empty.Empty, error)
+	UpdateLoRaCloudIntegration(ctx context.Context, in *UpdateLoRaCloudIntegrationRequest, opts ...grpc.CallOption) (*emptypb.Empty, error)
 	// DeleteLoRaCloudIntegration deletes the LoRaCloud application-integration.
-	DeleteLoRaCloudIntegration(ctx context.Context, in *DeleteLoRaCloudIntegrationRequest, opts ...grpc.CallOption) (*empty.Empty, error)
+	DeleteLoRaCloudIntegration(ctx context.Context, in *DeleteLoRaCloudIntegrationRequest, opts ...grpc.CallOption) (*emptypb.Empty, error)
 	// CreateGCPPubSubIntegration creates a GCP PubSub application-integration.
-	CreateGCPPubSubIntegration(ctx context.Context, in *CreateGCPPubSubIntegrationRequest, opts ...grpc.CallOption) (*empty.Empty, error)
+	CreateGCPPubSubIntegration(ctx context.Context, in *CreateGCPPubSubIntegrationRequest, opts ...grpc.CallOption) (*emptypb.Empty, error)
 	// GetGCPPubSubIntegration returns the GCP PubSub application-integration.
 	GetGCPPubSubIntegration(ctx context.Context, in *GetGCPPubSubIntegrationRequest, opts ...grpc.CallOption) (*GetGCPPubSubIntegrationResponse, error)
 	// UpdateGCPPubSubIntegration updates the GCP PubSub application-integration.
-	UpdateGCPPubSubIntegration(ctx context.Context, in *UpdateGCPPubSubIntegrationRequest, opts ...grpc.CallOption) (*empty.Empty, error)
+	UpdateGCPPubSubIntegration(ctx context.Context, in *UpdateGCPPubSubIntegrationRequest, opts ...grpc.CallOption) (*emptypb.Empty, error)
 	// DeleteGCPPubSubIntegration deletes the GCP PubSub application-integration.
-	DeleteGCPPubSubIntegration(ctx context.Context, in *DeleteGCPPubSubIntegrationRequest, opts ...grpc.CallOption) (*empty.Empty, error)
+	DeleteGCPPubSubIntegration(ctx context.Context, in *DeleteGCPPubSubIntegrationRequest, opts ...grpc.CallOption) (*emptypb.Empty, error)
 	// CreateAWSSNSIntegration creates a AWS SNS application-integration.
-	CreateAWSSNSIntegration(ctx context.Context, in *CreateAWSSNSIntegrationRequest, opts ...grpc.CallOption) (*empty.Empty, error)
+	CreateAWSSNSIntegration(ctx context.Context, in *CreateAWSSNSIntegrationRequest, opts ...grpc.CallOption) (*emptypb.Empty, error)
 	// GetAWSSNSIntegration returns the AWS SNS application-integration.
 	GetAWSSNSIntegration(ctx context.Context, in *GetAWSSNSIntegrationRequest, opts ...grpc.CallOption) (*GetAWSSNSIntegrationResponse, error)
 	// UpdateAWSSNSIntegration updates the AWS SNS application-integration.
-	UpdateAWSSNSIntegration(ctx context.Context, in *UpdateAWSSNSIntegrationRequest, opts ...grpc.CallOption) (*empty.Empty, error)
+	UpdateAWSSNSIntegration(ctx context.Context, in *UpdateAWSSNSIntegrationRequest, opts ...grpc.CallOption) (*emptypb.Empty, error)
 	// DeleteAWSSNSIntegration deletes the AWS SNS application-integration.
-	DeleteAWSSNSIntegration(ctx context.Context, in *DeleteAWSSNSIntegrationRequest, opts ...grpc.CallOption) (*empty.Empty, error)
+	DeleteAWSSNSIntegration(ctx context.Context, in *DeleteAWSSNSIntegrationRequest, opts ...grpc.CallOption) (*emptypb.Empty, error)
 	// CreateAzureServiceBusIntegration creates an Azure Service-Bus
 	// application-integration.
-	CreateAzureServiceBusIntegration(ctx context.Context, in *CreateAzureServiceBusIntegrationRequest, opts ...grpc.CallOption) (*empty.Empty, error)
+	CreateAzureServiceBusIntegration(ctx context.Context, in *CreateAzureServiceBusIntegrationRequest, opts ...grpc.CallOption) (*emptypb.Empty, error)
 	// GetAzureServiceBusIntegration returns the Azure Service-Bus
 	// application-integration.
 	GetAzureServiceBusIntegration(ctx context.Context, in *GetAzureServiceBusIntegrationRequest, opts ...grpc.CallOption) (*GetAzureServiceBusIntegrationResponse, error)
 	// UpdateAzureServiceBusIntegration updates the Azure Service-Bus
 	// application-integration.
-	UpdateAzureServiceBusIntegration(ctx context.Context, in *UpdateAzureServiceBusIntegrationRequest, opts ...grpc.CallOption) (*empty.Empty, error)
+	UpdateAzureServiceBusIntegration(ctx context.Context, in *UpdateAzureServiceBusIntegrationRequest, opts ...grpc.CallOption) (*emptypb.Empty, error)
 	// DeleteAzureServiceBusIntegration deletes the Azure Service-Bus
 	// application-integration.
-	DeleteAzureServiceBusIntegration(ctx context.Context, in *DeleteAzureServiceBusIntegrationRequest, opts ...grpc.CallOption) (*empty.Empty, error)
+	DeleteAzureServiceBusIntegration(ctx context.Context, in *DeleteAzureServiceBusIntegrationRequest, opts ...grpc.CallOption) (*emptypb.Empty, error)
 	// CreateLoccartoIntegration creates A Loccarto application-integration.
-	CreateLoccartoIntegration(ctx context.Context, in *CreateLoccartoIntegrationRequest, opts ...grpc.CallOption) (*empty.Empty, error)
+	CreateLoccartoIntegration(ctx context.Context, in *CreateLoccartoIntegrationRequest, opts ...grpc.CallOption) (*emptypb.Empty, error)
 	// GetLoccartoIntegration returns the Loccarto application-integration.
 	GetLoccartoIntegration(ctx context.Context, in *GetLoccartoIntegrationRequest, opts ...grpc.CallOption) (*GetLoccartoIntegrationResponse, error)
 	// UpdateLoccartoIntegration updates the Loccarto application-integration.
-	UpdateLoccartoIntegration(ctx context.Context, in *UpdateLoccartoIntegrationRequest, opts ...grpc.CallOption) (*empty.Empty, error)
+	UpdateLoccartoIntegration(ctx context.Context, in *UpdateLoccartoIntegrationRequest, opts ...grpc.CallOption) (*emptypb.Empty, error)
 	// DeleteLoccartoIntegration deletes the Loccarto application-integration.
-	DeleteLoccartoIntegration(ctx context.Context, in *DeleteLoccartoIntegrationRequest, opts ...grpc.CallOption) (*empty.Empty, error)
+	DeleteLoccartoIntegration(ctx context.Context, in *DeleteLoccartoIntegrationRequest, opts ...grpc.CallOption) (*emptypb.Empty, error)
 	// CreatePilotThingsIntegration creates an Pilot Things
 	// application-integration.
-	CreatePilotThingsIntegration(ctx context.Context, in *CreatePilotThingsIntegrationRequest, opts ...grpc.CallOption) (*empty.Empty, error)
+	CreatePilotThingsIntegration(ctx context.Context, in *CreatePilotThingsIntegrationRequest, opts ...grpc.CallOption) (*emptypb.Empty, error)
 	// GetPilotThingsIntegration returns the Pilot Things application-integration.
 	GetPilotThingsIntegration(ctx context.Context, in *GetPilotThingsIntegrationRequest, opts ...grpc.CallOption) (*GetPilotThingsIntegrationResponse, error)
 	// UpdatePilotThingsIntegration updates the Pilot Things
 	// application-integration.
-	UpdatePilotThingsIntegration(ctx context.Context, in *UpdatePilotThingsIntegrationRequest, opts ...grpc.CallOption) (*empty.Empty, error)
+	UpdatePilotThingsIntegration(ctx context.Context, in *UpdatePilotThingsIntegrationRequest, opts ...grpc.CallOption) (*emptypb.Empty, error)
 	// DeletePilotThingsIntegration deletes the Pilot Things
 	// application-integration.
-	DeletePilotThingsIntegration(ctx context.Context, in *DeletePilotThingsIntegrationRequest, opts ...grpc.CallOption) (*empty.Empty, error)
+	DeletePilotThingsIntegration(ctx context.Context, in *DeletePilotThingsIntegrationRequest, opts ...grpc.CallOption) (*emptypb.Empty, error)
 	// ListIntegrations lists all configured integrations.
 	ListIntegrations(ctx context.Context, in *ListIntegrationRequest, opts ...grpc.CallOption) (*ListIntegrationResponse, error)
 	// GenerateMQTTIntegrationClientCertificate generates an application ID specific TLS certificate
@@ -4702,16 +4702,16 @@ type ApplicationServiceClient interface {
 	GenerateMQTTIntegrationClientCertificate(ctx context.Context, in *GenerateMQTTIntegrationClientCertificateRequest, opts ...grpc.CallOption) (*GenerateMQTTIntegrationClientCertificateResponse, error)
 	// CreateQubitroIntegration creates a Qubitro
 	// application-integration.
-	CreateQubitroIntegration(ctx context.Context, in *CreateQubitroIntegrationRequest, opts ...grpc.CallOption) (*empty.Empty, error)
+	CreateQubitroIntegration(ctx context.Context, in *CreateQubitroIntegrationRequest, opts ...grpc.CallOption) (*emptypb.Empty, error)
 	// GetQubitroIntegration returns the Qubitro
 	// application-integration.
 	GetQubitroIntegration(ctx context.Context, in *GetQubitroIntegrationRequest, opts ...grpc.CallOption) (*GetQubitroIntegrationResponse, error)
 	// UpdateQubitroIntegration updates the Qubitro
 	// application-integration.
-	UpdateQubitroIntegration(ctx context.Context, in *UpdateQubitroIntegrationRequest, opts ...grpc.CallOption) (*empty.Empty, error)
+	UpdateQubitroIntegration(ctx context.Context, in *UpdateQubitroIntegrationRequest, opts ...grpc.CallOption) (*emptypb.Empty, error)
 	// DeleteQubitroIntegration deletes the Qubitro
 	// application-integration.
-	DeleteQubitroIntegration(ctx context.Context, in *DeleteQubitroIntegrationRequest, opts ...grpc.CallOption) (*empty.Empty, error)
+	DeleteQubitroIntegration(ctx context.Context, in *DeleteQubitroIntegrationRequest, opts ...grpc.CallOption) (*emptypb.Empty, error)
 }
 
 type applicationServiceClient struct {
@@ -4740,8 +4740,8 @@ func (c *applicationServiceClient) Get(ctx context.Context, in *GetApplicationRe
 	return out, nil
 }
 
-func (c *applicationServiceClient) Update(ctx context.Context, in *UpdateApplicationRequest, opts ...grpc.CallOption) (*empty.Empty, error) {
-	out := new(empty.Empty)
+func (c *applicationServiceClient) Update(ctx context.Context, in *UpdateApplicationRequest, opts ...grpc.CallOption) (*emptypb.Empty, error) {
+	out := new(emptypb.Empty)
 	err := c.cc.Invoke(ctx, "/api.ApplicationService/Update", in, out, opts...)
 	if err != nil {
 		return nil, err
@@ -4749,8 +4749,8 @@ func (c *applicationServiceClient) Update(ctx context.Context, in *UpdateApplica
 	return out, nil
 }
 
-func (c *applicationServiceClient) Delete(ctx context.Context, in *DeleteApplicationRequest, opts ...grpc.CallOption) (*empty.Empty, error) {
-	out := new(empty.Empty)
+func (c *applicationServiceClient) Delete(ctx context.Context, in *DeleteApplicationRequest, opts ...grpc.CallOption) (*emptypb.Empty, error) {
+	out := new(emptypb.Empty)
 	err := c.cc.Invoke(ctx, "/api.ApplicationService/Delete", in, out, opts...)
 	if err != nil {
 		return nil, err
@@ -4767,8 +4767,8 @@ func (c *applicationServiceClient) List(ctx context.Context, in *ListApplication
 	return out, nil
 }
 
-func (c *applicationServiceClient) CreateHTTPIntegration(ctx context.Context, in *CreateHTTPIntegrationRequest, opts ...grpc.CallOption) (*empty.Empty, error) {
-	out := new(empty.Empty)
+func (c *applicationServiceClient) CreateHTTPIntegration(ctx context.Context, in *CreateHTTPIntegrationRequest, opts ...grpc.CallOption) (*emptypb.Empty, error) {
+	out := new(emptypb.Empty)
 	err := c.cc.Invoke(ctx, "/api.ApplicationService/CreateHTTPIntegration", in, out, opts...)
 	if err != nil {
 		return nil, err
@@ -4785,8 +4785,8 @@ func (c *applicationServiceClient) GetHTTPIntegration(ctx context.Context, in *G
 	return out, nil
 }
 
-func (c *applicationServiceClient) UpdateHTTPIntegration(ctx context.Context, in *UpdateHTTPIntegrationRequest, opts ...grpc.CallOption) (*empty.Empty, error) {
-	out := new(empty.Empty)
+func (c *applicationServiceClient) UpdateHTTPIntegration(ctx context.Context, in *UpdateHTTPIntegrationRequest, opts ...grpc.CallOption) (*emptypb.Empty, error) {
+	out := new(emptypb.Empty)
 	err := c.cc.Invoke(ctx, "/api.ApplicationService/UpdateHTTPIntegration", in, out, opts...)
 	if err != nil {
 		return nil, err
@@ -4794,8 +4794,8 @@ func (c *applicationServiceClient) UpdateHTTPIntegration(ctx context.Context, in
 	return out, nil
 }
 
-func (c *applicationServiceClient) DeleteHTTPIntegration(ctx context.Context, in *DeleteHTTPIntegrationRequest, opts ...grpc.CallOption) (*empty.Empty, error) {
-	out := new(empty.Empty)
+func (c *applicationServiceClient) DeleteHTTPIntegration(ctx context.Context, in *DeleteHTTPIntegrationRequest, opts ...grpc.CallOption) (*emptypb.Empty, error) {
+	out := new(emptypb.Empty)
 	err := c.cc.Invoke(ctx, "/api.ApplicationService/DeleteHTTPIntegration", in, out, opts...)
 	if err != nil {
 		return nil, err
@@ -4803,8 +4803,8 @@ func (c *applicationServiceClient) DeleteHTTPIntegration(ctx context.Context, in
 	return out, nil
 }
 
-func (c *applicationServiceClient) CreateInfluxDBIntegration(ctx context.Context, in *CreateInfluxDBIntegrationRequest, opts ...grpc.CallOption) (*empty.Empty, error) {
-	out := new(empty.Empty)
+func (c *applicationServiceClient) CreateInfluxDBIntegration(ctx context.Context, in *CreateInfluxDBIntegrationRequest, opts ...grpc.CallOption) (*emptypb.Empty, error) {
+	out := new(emptypb.Empty)
 	err := c.cc.Invoke(ctx, "/api.ApplicationService/CreateInfluxDBIntegration", in, out, opts...)
 	if err != nil {
 		return nil, err
@@ -4821,8 +4821,8 @@ func (c *applicationServiceClient) GetInfluxDBIntegration(ctx context.Context, i
 	return out, nil
 }
 
-func (c *applicationServiceClient) UpdateInfluxDBIntegration(ctx context.Context, in *UpdateInfluxDBIntegrationRequest, opts ...grpc.CallOption) (*empty.Empty, error) {
-	out := new(empty.Empty)
+func (c *applicationServiceClient) UpdateInfluxDBIntegration(ctx context.Context, in *UpdateInfluxDBIntegrationRequest, opts ...grpc.CallOption) (*emptypb.Empty, error) {
+	out := new(emptypb.Empty)
 	err := c.cc.Invoke(ctx, "/api.ApplicationService/UpdateInfluxDBIntegration", in, out, opts...)
 	if err != nil {
 		return nil, err
@@ -4830,8 +4830,8 @@ func (c *applicationServiceClient) UpdateInfluxDBIntegration(ctx context.Context
 	return out, nil
 }
 
-func (c *applicationServiceClient) DeleteInfluxDBIntegration(ctx context.Context, in *DeleteInfluxDBIntegrationRequest, opts ...grpc.CallOption) (*empty.Empty, error) {
-	out := new(empty.Empty)
+func (c *applicationServiceClient) DeleteInfluxDBIntegration(ctx context.Context, in *DeleteInfluxDBIntegrationRequest, opts ...grpc.CallOption) (*emptypb.Empty, error) {
+	out := new(emptypb.Empty)
 	err := c.cc.Invoke(ctx, "/api.ApplicationService/DeleteInfluxDBIntegration", in, out, opts...)
 	if err != nil {
 		return nil, err
@@ -4839,8 +4839,8 @@ func (c *applicationServiceClient) DeleteInfluxDBIntegration(ctx context.Context
 	return out, nil
 }
 
-func (c *applicationServiceClient) CreateThingsBoardIntegration(ctx context.Context, in *CreateThingsBoardIntegrationRequest, opts ...grpc.CallOption) (*empty.Empty, error) {
-	out := new(empty.Empty)
+func (c *applicationServiceClient) CreateThingsBoardIntegration(ctx context.Context, in *CreateThingsBoardIntegrationRequest, opts ...grpc.CallOption) (*emptypb.Empty, error) {
+	out := new(emptypb.Empty)
 	err := c.cc.Invoke(ctx, "/api.ApplicationService/CreateThingsBoardIntegration", in, out, opts...)
 	if err != nil {
 		return nil, err
@@ -4857,8 +4857,8 @@ func (c *applicationServiceClient) GetThingsBoardIntegration(ctx context.Context
 	return out, nil
 }
 
-func (c *applicationServiceClient) UpdateThingsBoardIntegration(ctx context.Context, in *UpdateThingsBoardIntegrationRequest, opts ...grpc.CallOption) (*empty.Empty, error) {
-	out := new(empty.Empty)
+func (c *applicationServiceClient) UpdateThingsBoardIntegration(ctx context.Context, in *UpdateThingsBoardIntegrationRequest, opts ...grpc.CallOption) (*emptypb.Empty, error) {
+	out := new(emptypb.Empty)
 	err := c.cc.Invoke(ctx, "/api.ApplicationService/UpdateThingsBoardIntegration", in, out, opts...)
 	if err != nil {
 		return nil, err
@@ -4866,8 +4866,8 @@ func (c *applicationServiceClient) UpdateThingsBoardIntegration(ctx context.Cont
 	return out, nil
 }
 
-func (c *applicationServiceClient) DeleteThingsBoardIntegration(ctx context.Context, in *DeleteThingsBoardIntegrationRequest, opts ...grpc.CallOption) (*empty.Empty, error) {
-	out := new(empty.Empty)
+func (c *applicationServiceClient) DeleteThingsBoardIntegration(ctx context.Context, in *DeleteThingsBoardIntegrationRequest, opts ...grpc.CallOption) (*emptypb.Empty, error) {
+	out := new(emptypb.Empty)
 	err := c.cc.Invoke(ctx, "/api.ApplicationService/DeleteThingsBoardIntegration", in, out, opts...)
 	if err != nil {
 		return nil, err
@@ -4875,8 +4875,8 @@ func (c *applicationServiceClient) DeleteThingsBoardIntegration(ctx context.Cont
 	return out, nil
 }
 
-func (c *applicationServiceClient) CreateMyDevicesIntegration(ctx context.Context, in *CreateMyDevicesIntegrationRequest, opts ...grpc.CallOption) (*empty.Empty, error) {
-	out := new(empty.Empty)
+func (c *applicationServiceClient) CreateMyDevicesIntegration(ctx context.Context, in *CreateMyDevicesIntegrationRequest, opts ...grpc.CallOption) (*emptypb.Empty, error) {
+	out := new(emptypb.Empty)
 	err := c.cc.Invoke(ctx, "/api.ApplicationService/CreateMyDevicesIntegration", in, out, opts...)
 	if err != nil {
 		return nil, err
@@ -4893,8 +4893,8 @@ func (c *applicationServiceClient) GetMyDevicesIntegration(ctx context.Context, 
 	return out, nil
 }
 
-func (c *applicationServiceClient) UpdateMyDevicesIntegration(ctx context.Context, in *UpdateMyDevicesIntegrationRequest, opts ...grpc.CallOption) (*empty.Empty, error) {
-	out := new(empty.Empty)
+func (c *applicationServiceClient) UpdateMyDevicesIntegration(ctx context.Context, in *UpdateMyDevicesIntegrationRequest, opts ...grpc.CallOption) (*emptypb.Empty, error) {
+	out := new(emptypb.Empty)
 	err := c.cc.Invoke(ctx, "/api.ApplicationService/UpdateMyDevicesIntegration", in, out, opts...)
 	if err != nil {
 		return nil, err
@@ -4902,8 +4902,8 @@ func (c *applicationServiceClient) UpdateMyDevicesIntegration(ctx context.Contex
 	return out, nil
 }
 
-func (c *applicationServiceClient) DeleteMyDevicesIntegration(ctx context.Context, in *DeleteMyDevicesIntegrationRequest, opts ...grpc.CallOption) (*empty.Empty, error) {
-	out := new(empty.Empty)
+func (c *applicationServiceClient) DeleteMyDevicesIntegration(ctx context.Context, in *DeleteMyDevicesIntegrationRequest, opts ...grpc.CallOption) (*emptypb.Empty, error) {
+	out := new(emptypb.Empty)
 	err := c.cc.Invoke(ctx, "/api.ApplicationService/DeleteMyDevicesIntegration", in, out, opts...)
 	if err != nil {
 		return nil, err
@@ -4911,8 +4911,8 @@ func (c *applicationServiceClient) DeleteMyDevicesIntegration(ctx context.Contex
 	return out, nil
 }
 
-func (c *applicationServiceClient) CreateLoRaCloudIntegration(ctx context.Context, in *CreateLoRaCloudIntegrationRequest, opts ...grpc.CallOption) (*empty.Empty, error) {
-	out := new(empty.Empty)
+func (c *applicationServiceClient) CreateLoRaCloudIntegration(ctx context.Context, in *CreateLoRaCloudIntegrationRequest, opts ...grpc.CallOption) (*emptypb.Empty, error) {
+	out := new(emptypb.Empty)
 	err := c.cc.Invoke(ctx, "/api.ApplicationService/CreateLoRaCloudIntegration", in, out, opts...)
 	if err != nil {
 		return nil, err
@@ -4929,8 +4929,8 @@ func (c *applicationServiceClient) GetLoRaCloudIntegration(ctx context.Context, 
 	return out, nil
 }
 
-func (c *applicationServiceClient) UpdateLoRaCloudIntegration(ctx context.Context, in *UpdateLoRaCloudIntegrationRequest, opts ...grpc.CallOption) (*empty.Empty, error) {
-	out := new(empty.Empty)
+func (c *applicationServiceClient) UpdateLoRaCloudIntegration(ctx context.Context, in *UpdateLoRaCloudIntegrationRequest, opts ...grpc.CallOption) (*emptypb.Empty, error) {
+	out := new(emptypb.Empty)
 	err := c.cc.Invoke(ctx, "/api.ApplicationService/UpdateLoRaCloudIntegration", in, out, opts...)
 	if err != nil {
 		return nil, err
@@ -4938,8 +4938,8 @@ func (c *applicationServiceClient) UpdateLoRaCloudIntegration(ctx context.Contex
 	return out, nil
 }
 
-func (c *applicationServiceClient) DeleteLoRaCloudIntegration(ctx context.Context, in *DeleteLoRaCloudIntegrationRequest, opts ...grpc.CallOption) (*empty.Empty, error) {
-	out := new(empty.Empty)
+func (c *applicationServiceClient) DeleteLoRaCloudIntegration(ctx context.Context, in *DeleteLoRaCloudIntegrationRequest, opts ...grpc.CallOption) (*emptypb.Empty, error) {
+	out := new(emptypb.Empty)
 	err := c.cc.Invoke(ctx, "/api.ApplicationService/DeleteLoRaCloudIntegration", in, out, opts...)
 	if err != nil {
 		return nil, err
@@ -4947,8 +4947,8 @@ func (c *applicationServiceClient) DeleteLoRaCloudIntegration(ctx context.Contex
 	return out, nil
 }
 
-func (c *applicationServiceClient) CreateGCPPubSubIntegration(ctx context.Context, in *CreateGCPPubSubIntegrationRequest, opts ...grpc.CallOption) (*empty.Empty, error) {
-	out := new(empty.Empty)
+func (c *applicationServiceClient) CreateGCPPubSubIntegration(ctx context.Context, in *CreateGCPPubSubIntegrationRequest, opts ...grpc.CallOption) (*emptypb.Empty, error) {
+	out := new(emptypb.Empty)
 	err := c.cc.Invoke(ctx, "/api.ApplicationService/CreateGCPPubSubIntegration", in, out, opts...)
 	if err != nil {
 		return nil, err
@@ -4965,8 +4965,8 @@ func (c *applicationServiceClient) GetGCPPubSubIntegration(ctx context.Context, 
 	return out, nil
 }
 
-func (c *applicationServiceClient) UpdateGCPPubSubIntegration(ctx context.Context, in *UpdateGCPPubSubIntegrationRequest, opts ...grpc.CallOption) (*empty.Empty, error) {
-	out := new(empty.Empty)
+func (c *applicationServiceClient) UpdateGCPPubSubIntegration(ctx context.Context, in *UpdateGCPPubSubIntegrationRequest, opts ...grpc.CallOption) (*emptypb.Empty, error) {
+	out := new(emptypb.Empty)
 	err := c.cc.Invoke(ctx, "/api.ApplicationService/UpdateGCPPubSubIntegration", in, out, opts...)
 	if err != nil {
 		return nil, err
@@ -4974,8 +4974,8 @@ func (c *applicationServiceClient) UpdateGCPPubSubIntegration(ctx context.Contex
 	return out, nil
 }
 
-func (c *applicationServiceClient) DeleteGCPPubSubIntegration(ctx context.Context, in *DeleteGCPPubSubIntegrationRequest, opts ...grpc.CallOption) (*empty.Empty, error) {
-	out := new(empty.Empty)
+func (c *applicationServiceClient) DeleteGCPPubSubIntegration(ctx context.Context, in *DeleteGCPPubSubIntegrationRequest, opts ...grpc.CallOption) (*emptypb.Empty, error) {
+	out := new(emptypb.Empty)
 	err := c.cc.Invoke(ctx, "/api.ApplicationService/DeleteGCPPubSubIntegration", in, out, opts...)
 	if err != nil {
 		return nil, err
@@ -4983,8 +4983,8 @@ func (c *applicationServiceClient) DeleteGCPPubSubIntegration(ctx context.Contex
 	return out, nil
 }
 
-func (c *applicationServiceClient) CreateAWSSNSIntegration(ctx context.Context, in *CreateAWSSNSIntegrationRequest, opts ...grpc.CallOption) (*empty.Empty, error) {
-	out := new(empty.Empty)
+func (c *applicationServiceClient) CreateAWSSNSIntegration(ctx context.Context, in *CreateAWSSNSIntegrationRequest, opts ...grpc.CallOption) (*emptypb.Empty, error) {
+	out := new(emptypb.Empty)
 	err := c.cc.Invoke(ctx, "/api.ApplicationService/CreateAWSSNSIntegration", in, out, opts...)
 	if err != nil {
 		return nil, err
@@ -5001,8 +5001,8 @@ func (c *applicationServiceClient) GetAWSSNSIntegration(ctx context.Context, in 
 	return out, nil
 }
 
-func (c *applicationServiceClient) UpdateAWSSNSIntegration(ctx context.Context, in *UpdateAWSSNSIntegrationRequest, opts ...grpc.CallOption) (*empty.Empty, error) {
-	out := new(empty.Empty)
+func (c *applicationServiceClient) UpdateAWSSNSIntegration(ctx context.Context, in *UpdateAWSSNSIntegrationRequest, opts ...grpc.CallOption) (*emptypb.Empty, error) {
+	out := new(emptypb.Empty)
 	err := c.cc.Invoke(ctx, "/api.ApplicationService/UpdateAWSSNSIntegration", in, out, opts...)
 	if err != nil {
 		return nil, err
@@ -5010,8 +5010,8 @@ func (c *applicationServiceClient) UpdateAWSSNSIntegration(ctx context.Context, 
 	return out, nil
 }
 
-func (c *applicationServiceClient) DeleteAWSSNSIntegration(ctx context.Context, in *DeleteAWSSNSIntegrationRequest, opts ...grpc.CallOption) (*empty.Empty, error) {
-	out := new(empty.Empty)
+func (c *applicationServiceClient) DeleteAWSSNSIntegration(ctx context.Context, in *DeleteAWSSNSIntegrationRequest, opts ...grpc.CallOption) (*emptypb.Empty, error) {
+	out := new(emptypb.Empty)
 	err := c.cc.Invoke(ctx, "/api.ApplicationService/DeleteAWSSNSIntegration", in, out, opts...)
 	if err != nil {
 		return nil, err
@@ -5019,8 +5019,8 @@ func (c *applicationServiceClient) DeleteAWSSNSIntegration(ctx context.Context, 
 	return out, nil
 }
 
-func (c *applicationServiceClient) CreateAzureServiceBusIntegration(ctx context.Context, in *CreateAzureServiceBusIntegrationRequest, opts ...grpc.CallOption) (*empty.Empty, error) {
-	out := new(empty.Empty)
+func (c *applicationServiceClient) CreateAzureServiceBusIntegration(ctx context.Context, in *CreateAzureServiceBusIntegrationRequest, opts ...grpc.CallOption) (*emptypb.Empty, error) {
+	out := new(emptypb.Empty)
 	err := c.cc.Invoke(ctx, "/api.ApplicationService/CreateAzureServiceBusIntegration", in, out, opts...)
 	if err != nil {
 		return nil, err
@@ -5037,8 +5037,8 @@ func (c *applicationServiceClient) GetAzureServiceBusIntegration(ctx context.Con
 	return out, nil
 }
 
-func (c *applicationServiceClient) UpdateAzureServiceBusIntegration(ctx context.Context, in *UpdateAzureServiceBusIntegrationRequest, opts ...grpc.CallOption) (*empty.Empty, error) {
-	out := new(empty.Empty)
+func (c *applicationServiceClient) UpdateAzureServiceBusIntegration(ctx context.Context, in *UpdateAzureServiceBusIntegrationRequest, opts ...grpc.CallOption) (*emptypb.Empty, error) {
+	out := new(emptypb.Empty)
 	err := c.cc.Invoke(ctx, "/api.ApplicationService/UpdateAzureServiceBusIntegration", in, out, opts...)
 	if err != nil {
 		return nil, err
@@ -5046,8 +5046,8 @@ func (c *applicationServiceClient) UpdateAzureServiceBusIntegration(ctx context.
 	return out, nil
 }
 
-func (c *applicationServiceClient) DeleteAzureServiceBusIntegration(ctx context.Context, in *DeleteAzureServiceBusIntegrationRequest, opts ...grpc.CallOption) (*empty.Empty, error) {
-	out := new(empty.Empty)
+func (c *applicationServiceClient) DeleteAzureServiceBusIntegration(ctx context.Context, in *DeleteAzureServiceBusIntegrationRequest, opts ...grpc.CallOption) (*emptypb.Empty, error) {
+	out := new(emptypb.Empty)
 	err := c.cc.Invoke(ctx, "/api.ApplicationService/DeleteAzureServiceBusIntegration", in, out, opts...)
 	if err != nil {
 		return nil, err
@@ -5055,8 +5055,8 @@ func (c *applicationServiceClient) DeleteAzureServiceBusIntegration(ctx context.
 	return out, nil
 }
 
-func (c *applicationServiceClient) CreateLoccartoIntegration(ctx context.Context, in *CreateLoccartoIntegrationRequest, opts ...grpc.CallOption) (*empty.Empty, error) {
-	out := new(empty.Empty)
+func (c *applicationServiceClient) CreateLoccartoIntegration(ctx context.Context, in *CreateLoccartoIntegrationRequest, opts ...grpc.CallOption) (*emptypb.Empty, error) {
+	out := new(emptypb.Empty)
 	err := c.cc.Invoke(ctx, "/api.ApplicationService/CreateLoccartoIntegration", in, out, opts...)
 	if err != nil {
 		return nil, err
@@ -5073,8 +5073,8 @@ func (c *applicationServiceClient) GetLoccartoIntegration(ctx context.Context, i
 	return out, nil
 }
 
-func (c *applicationServiceClient) UpdateLoccartoIntegration(ctx context.Context, in *UpdateLoccartoIntegrationRequest, opts ...grpc.CallOption) (*empty.Empty, error) {
-	out := new(empty.Empty)
+func (c *applicationServiceClient) UpdateLoccartoIntegration(ctx context.Context, in *UpdateLoccartoIntegrationRequest, opts ...grpc.CallOption) (*emptypb.Empty, error) {
+	out := new(emptypb.Empty)
 	err := c.cc.Invoke(ctx, "/api.ApplicationService/UpdateLoccartoIntegration", in, out, opts...)
 	if err != nil {
 		return nil, err
@@ -5082,8 +5082,8 @@ func (c *applicationServiceClient) UpdateLoccartoIntegration(ctx context.Context
 	return out, nil
 }
 
-func (c *applicationServiceClient) DeleteLoccartoIntegration(ctx context.Context, in *DeleteLoccartoIntegrationRequest, opts ...grpc.CallOption) (*empty.Empty, error) {
-	out := new(empty.Empty)
+func (c *applicationServiceClient) DeleteLoccartoIntegration(ctx context.Context, in *DeleteLoccartoIntegrationRequest, opts ...grpc.CallOption) (*emptypb.Empty, error) {
+	out := new(emptypb.Empty)
 	err := c.cc.Invoke(ctx, "/api.ApplicationService/DeleteLoccartoIntegration", in, out, opts...)
 	if err != nil {
 		return nil, err
@@ -5091,8 +5091,8 @@ func (c *applicationServiceClient) DeleteLoccartoIntegration(ctx context.Context
 	return out, nil
 }
 
-func (c *applicationServiceClient) CreatePilotThingsIntegration(ctx context.Context, in *CreatePilotThingsIntegrationRequest, opts ...grpc.CallOption) (*empty.Empty, error) {
-	out := new(empty.Empty)
+func (c *applicationServiceClient) CreatePilotThingsIntegration(ctx context.Context, in *CreatePilotThingsIntegrationRequest, opts ...grpc.CallOption) (*emptypb.Empty, error) {
+	out := new(emptypb.Empty)
 	err := c.cc.Invoke(ctx, "/api.ApplicationService/CreatePilotThingsIntegration", in, out, opts...)
 	if err != nil {
 		return nil, err
@@ -5109,8 +5109,8 @@ func (c *applicationServiceClient) GetPilotThingsIntegration(ctx context.Context
 	return out, nil
 }
 
-func (c *applicationServiceClient) UpdatePilotThingsIntegration(ctx context.Context, in *UpdatePilotThingsIntegrationRequest, opts ...grpc.CallOption) (*empty.Empty, error) {
-	out := new(empty.Empty)
+func (c *applicationServiceClient) UpdatePilotThingsIntegration(ctx context.Context, in *UpdatePilotThingsIntegrationRequest, opts ...grpc.CallOption) (*emptypb.Empty, error) {
+	out := new(emptypb.Empty)
 	err := c.cc.Invoke(ctx, "/api.ApplicationService/UpdatePilotThingsIntegration", in, out, opts...)
 	if err != nil {
 		return nil, err
@@ -5118,8 +5118,8 @@ func (c *applicationServiceClient) UpdatePilotThingsIntegration(ctx context.Cont
 	return out, nil
 }
 
-func (c *applicationServiceClient) DeletePilotThingsIntegration(ctx context.Context, in *DeletePilotThingsIntegrationRequest, opts ...grpc.CallOption) (*empty.Empty, error) {
-	out := new(empty.Empty)
+func (c *applicationServiceClient) DeletePilotThingsIntegration(ctx context.Context, in *DeletePilotThingsIntegrationRequest, opts ...grpc.CallOption) (*emptypb.Empty, error) {
+	out := new(emptypb.Empty)
 	err := c.cc.Invoke(ctx, "/api.ApplicationService/DeletePilotThingsIntegration", in, out, opts...)
 	if err != nil {
 		return nil, err
@@ -5145,8 +5145,8 @@ func (c *applicationServiceClient) GenerateMQTTIntegrationClientCertificate(ctx 
 	return out, nil
 }
 
-func (c *applicationServiceClient) CreateQubitroIntegration(ctx context.Context, in *CreateQubitroIntegrationRequest, opts ...grpc.CallOption) (*empty.Empty, error) {
-	out := new(empty.Empty)
+func (c *applicationServiceClient) CreateQubitroIntegration(ctx context.Context, in *CreateQubitroIntegrationRequest, opts ...grpc.CallOption) (*emptypb.Empty, error) {
+	out := new(emptypb.Empty)
 	err := c.cc.Invoke(ctx, "/api.ApplicationService/CreateQubitroIntegration", in, out, opts...)
 	if err != nil {
 		return nil, err
@@ -5163,8 +5163,8 @@ func (c *applicationServiceClient) GetQubitroIntegration(ctx context.Context, in
 	return out, nil
 }
 
-func (c *applicationServiceClient) UpdateQubitroIntegration(ctx context.Context, in *UpdateQubitroIntegrationRequest, opts ...grpc.CallOption) (*empty.Empty, error) {
-	out := new(empty.Empty)
+func (c *applicationServiceClient) UpdateQubitroIntegration(ctx context.Context, in *UpdateQubitroIntegrationRequest, opts ...grpc.CallOption) (*emptypb.Empty, error) {
+	out := new(emptypb.Empty)
 	err := c.cc.Invoke(ctx, "/api.ApplicationService/UpdateQubitroIntegration", in, out, opts...)
 	if err != nil {
 		return nil, err
@@ -5172,8 +5172,8 @@ func (c *applicationServiceClient) UpdateQubitroIntegration(ctx context.Context,
 	return out, nil
 }
 
-func (c *applicationServiceClient) DeleteQubitroIntegration(ctx context.Context, in *DeleteQubitroIntegrationRequest, opts ...grpc.CallOption) (*empty.Empty, error) {
-	out := new(empty.Empty)
+func (c *applicationServiceClient) DeleteQubitroIntegration(ctx context.Context, in *DeleteQubitroIntegrationRequest, opts ...grpc.CallOption) (*emptypb.Empty, error) {
+	out := new(emptypb.Empty)
 	err := c.cc.Invoke(ctx, "/api.ApplicationService/DeleteQubitroIntegration", in, out, opts...)
 	if err != nil {
 		return nil, err
@@ -5188,100 +5188,100 @@ type ApplicationServiceServer interface {
 	// Get returns the requested application.
 	Get(context.Context, *GetApplicationRequest) (*GetApplicationResponse, error)
 	// Update updates the given application.
-	Update(context.Context, *UpdateApplicationRequest) (*empty.Empty, error)
+	Update(context.Context, *UpdateApplicationRequest) (*emptypb.Empty, error)
 	// Delete deletes the given application.
-	Delete(context.Context, *DeleteApplicationRequest) (*empty.Empty, error)
+	Delete(context.Context, *DeleteApplicationRequest) (*emptypb.Empty, error)
 	// List lists the available applications.
 	List(context.Context, *ListApplicationRequest) (*ListApplicationResponse, error)
 	// CreateHTTPIntegration creates a HTTP application-integration.
-	CreateHTTPIntegration(context.Context, *CreateHTTPIntegrationRequest) (*empty.Empty, error)
+	CreateHTTPIntegration(context.Context, *CreateHTTPIntegrationRequest) (*emptypb.Empty, error)
 	// GetHTTPIntegration returns the HTTP application-integration.
 	GetHTTPIntegration(context.Context, *GetHTTPIntegrationRequest) (*GetHTTPIntegrationResponse, error)
 	// UpdateHTTPIntegration updates the HTTP application-integration.
-	UpdateHTTPIntegration(context.Context, *UpdateHTTPIntegrationRequest) (*empty.Empty, error)
+	UpdateHTTPIntegration(context.Context, *UpdateHTTPIntegrationRequest) (*emptypb.Empty, error)
 	// DeleteIntegration deletes the HTTP application-integration.
-	DeleteHTTPIntegration(context.Context, *DeleteHTTPIntegrationRequest) (*empty.Empty, error)
+	DeleteHTTPIntegration(context.Context, *DeleteHTTPIntegrationRequest) (*emptypb.Empty, error)
 	// CreateInfluxDBIntegration create an InfluxDB application-integration.
-	CreateInfluxDBIntegration(context.Context, *CreateInfluxDBIntegrationRequest) (*empty.Empty, error)
+	CreateInfluxDBIntegration(context.Context, *CreateInfluxDBIntegrationRequest) (*emptypb.Empty, error)
 	// GetInfluxDBIntegration returns the InfluxDB application-integration.
 	GetInfluxDBIntegration(context.Context, *GetInfluxDBIntegrationRequest) (*GetInfluxDBIntegrationResponse, error)
 	// UpdateInfluxDBIntegration updates the InfluxDB application-integration.
-	UpdateInfluxDBIntegration(context.Context, *UpdateInfluxDBIntegrationRequest) (*empty.Empty, error)
+	UpdateInfluxDBIntegration(context.Context, *UpdateInfluxDBIntegrationRequest) (*emptypb.Empty, error)
 	// DeleteInfluxDBIntegration deletes the InfluxDB application-integration.
-	DeleteInfluxDBIntegration(context.Context, *DeleteInfluxDBIntegrationRequest) (*empty.Empty, error)
+	DeleteInfluxDBIntegration(context.Context, *DeleteInfluxDBIntegrationRequest) (*emptypb.Empty, error)
 	// CreateThingsBoardIntegration creates a ThingsBoard application-integration.
-	CreateThingsBoardIntegration(context.Context, *CreateThingsBoardIntegrationRequest) (*empty.Empty, error)
+	CreateThingsBoardIntegration(context.Context, *CreateThingsBoardIntegrationRequest) (*emptypb.Empty, error)
 	// GetThingsBoardIntegration returns the ThingsBoard application-integration.
 	GetThingsBoardIntegration(context.Context, *GetThingsBoardIntegrationRequest) (*GetThingsBoardIntegrationResponse, error)
 	// UpdateThingsBoardIntegration updates the ThingsBoard
 	// application-integration.
-	UpdateThingsBoardIntegration(context.Context, *UpdateThingsBoardIntegrationRequest) (*empty.Empty, error)
+	UpdateThingsBoardIntegration(context.Context, *UpdateThingsBoardIntegrationRequest) (*emptypb.Empty, error)
 	// DeleteThingsBoardIntegration deletes the ThingsBoard
 	// application-integration.
-	DeleteThingsBoardIntegration(context.Context, *DeleteThingsBoardIntegrationRequest) (*empty.Empty, error)
+	DeleteThingsBoardIntegration(context.Context, *DeleteThingsBoardIntegrationRequest) (*emptypb.Empty, error)
 	// CreateMyDevicesIntegration creates a MyDevices application-integration.
-	CreateMyDevicesIntegration(context.Context, *CreateMyDevicesIntegrationRequest) (*empty.Empty, error)
+	CreateMyDevicesIntegration(context.Context, *CreateMyDevicesIntegrationRequest) (*emptypb.Empty, error)
 	// GetMyDevicesIntegration returns the MyDevices application-integration.
 	GetMyDevicesIntegration(context.Context, *GetMyDevicesIntegrationRequest) (*GetMyDevicesIntegrationResponse, error)
 	// UpdateMyDevicesIntegration updates the MyDevices application-integration.
-	UpdateMyDevicesIntegration(context.Context, *UpdateMyDevicesIntegrationRequest) (*empty.Empty, error)
+	UpdateMyDevicesIntegration(context.Context, *UpdateMyDevicesIntegrationRequest) (*emptypb.Empty, error)
 	// DeleteMyDevicesIntegration deletes the MyDevices application-integration.
-	DeleteMyDevicesIntegration(context.Context, *DeleteMyDevicesIntegrationRequest) (*empty.Empty, error)
+	DeleteMyDevicesIntegration(context.Context, *DeleteMyDevicesIntegrationRequest) (*emptypb.Empty, error)
 	// CreateLoRaCloudIntegration creates A LoRaCloud application-integration.
-	CreateLoRaCloudIntegration(context.Context, *CreateLoRaCloudIntegrationRequest) (*empty.Empty, error)
+	CreateLoRaCloudIntegration(context.Context, *CreateLoRaCloudIntegrationRequest) (*emptypb.Empty, error)
 	// GetLoRaCloudIntegration returns the LoRaCloud application-integration.
 	GetLoRaCloudIntegration(context.Context, *GetLoRaCloudIntegrationRequest) (*GetLoRaCloudIntegrationResponse, error)
 	// UpdateLoRaCloudIntegration updates the LoRaCloud application-integration.
-	UpdateLoRaCloudIntegration(context.Context, *UpdateLoRaCloudIntegrationRequest) (*empty.Empty, error)
+	UpdateLoRaCloudIntegration(context.Context, *UpdateLoRaCloudIntegrationRequest) (*emptypb.Empty, error)
 	// DeleteLoRaCloudIntegration deletes the LoRaCloud application-integration.
-	DeleteLoRaCloudIntegration(context.Context, *DeleteLoRaCloudIntegrationRequest) (*empty.Empty, error)
+	DeleteLoRaCloudIntegration(context.Context, *DeleteLoRaCloudIntegrationRequest) (*emptypb.Empty, error)
 	// CreateGCPPubSubIntegration creates a GCP PubSub application-integration.
-	CreateGCPPubSubIntegration(context.Context, *CreateGCPPubSubIntegrationRequest) (*empty.Empty, error)
+	CreateGCPPubSubIntegration(context.Context, *CreateGCPPubSubIntegrationRequest) (*emptypb.Empty, error)
 	// GetGCPPubSubIntegration returns the GCP PubSub application-integration.
 	GetGCPPubSubIntegration(context.Context, *GetGCPPubSubIntegrationRequest) (*GetGCPPubSubIntegrationResponse, error)
 	// UpdateGCPPubSubIntegration updates the GCP PubSub application-integration.
-	UpdateGCPPubSubIntegration(context.Context, *UpdateGCPPubSubIntegrationRequest) (*empty.Empty, error)
+	UpdateGCPPubSubIntegration(context.Context, *UpdateGCPPubSubIntegrationRequest) (*emptypb.Empty, error)
 	// DeleteGCPPubSubIntegration deletes the GCP PubSub application-integration.
-	DeleteGCPPubSubIntegration(context.Context, *DeleteGCPPubSubIntegrationRequest) (*empty.Empty, error)
+	DeleteGCPPubSubIntegration(context.Context, *DeleteGCPPubSubIntegrationRequest) (*emptypb.Empty, error)
 	// CreateAWSSNSIntegration creates a AWS SNS application-integration.
-	CreateAWSSNSIntegration(context.Context, *CreateAWSSNSIntegrationRequest) (*empty.Empty, error)
+	CreateAWSSNSIntegration(context.Context, *CreateAWSSNSIntegrationRequest) (*emptypb.Empty, error)
 	// GetAWSSNSIntegration returns the AWS SNS application-integration.
 	GetAWSSNSIntegration(context.Context, *GetAWSSNSIntegrationRequest) (*GetAWSSNSIntegrationResponse, error)
 	// UpdateAWSSNSIntegration updates the AWS SNS application-integration.
-	UpdateAWSSNSIntegration(context.Context, *UpdateAWSSNSIntegrationRequest) (*empty.Empty, error)
+	UpdateAWSSNSIntegration(context.Context, *UpdateAWSSNSIntegrationRequest) (*emptypb.Empty, error)
 	// DeleteAWSSNSIntegration deletes the AWS SNS application-integration.
-	DeleteAWSSNSIntegration(context.Context, *DeleteAWSSNSIntegrationRequest) (*empty.Empty, error)
+	DeleteAWSSNSIntegration(context.Context, *DeleteAWSSNSIntegrationRequest) (*emptypb.Empty, error)
 	// CreateAzureServiceBusIntegration creates an Azure Service-Bus
 	// application-integration.
-	CreateAzureServiceBusIntegration(context.Context, *CreateAzureServiceBusIntegrationRequest) (*empty.Empty, error)
+	CreateAzureServiceBusIntegration(context.Context, *CreateAzureServiceBusIntegrationRequest) (*emptypb.Empty, error)
 	// GetAzureServiceBusIntegration returns the Azure Service-Bus
 	// application-integration.
 	GetAzureServiceBusIntegration(context.Context, *GetAzureServiceBusIntegrationRequest) (*GetAzureServiceBusIntegrationResponse, error)
 	// UpdateAzureServiceBusIntegration updates the Azure Service-Bus
 	// application-integration.
-	UpdateAzureServiceBusIntegration(context.Context, *UpdateAzureServiceBusIntegrationRequest) (*empty.Empty, error)
+	UpdateAzureServiceBusIntegration(context.Context, *UpdateAzureServiceBusIntegrationRequest) (*emptypb.Empty, error)
 	// DeleteAzureServiceBusIntegration deletes the Azure Service-Bus
 	// application-integration.
-	DeleteAzureServiceBusIntegration(context.Context, *DeleteAzureServiceBusIntegrationRequest) (*empty.Empty, error)
+	DeleteAzureServiceBusIntegration(context.Context, *DeleteAzureServiceBusIntegrationRequest) (*emptypb.Empty, error)
 	// CreateLoccartoIntegration creates A Loccarto application-integration.
-	CreateLoccartoIntegration(context.Context, *CreateLoccartoIntegrationRequest) (*empty.Empty, error)
+	CreateLoccartoIntegration(context.Context, *CreateLoccartoIntegrationRequest) (*emptypb.Empty, error)
 	// GetLoccartoIntegration returns the Loccarto application-integration.
 	GetLoccartoIntegration(context.Context, *GetLoccartoIntegrationRequest) (*GetLoccartoIntegrationResponse, error)
 	// UpdateLoccartoIntegration updates the Loccarto application-integration.
-	UpdateLoccartoIntegration(context.Context, *UpdateLoccartoIntegrationRequest) (*empty.Empty, error)
+	UpdateLoccartoIntegration(context.Context, *UpdateLoccartoIntegrationRequest) (*emptypb.Empty, error)
 	// DeleteLoccartoIntegration deletes the Loccarto application-integration.
-	DeleteLoccartoIntegration(context.Context, *DeleteLoccartoIntegrationRequest) (*empty.Empty, error)
+	DeleteLoccartoIntegration(context.Context, *DeleteLoccartoIntegrationRequest) (*emptypb.Empty, error)
 	// CreatePilotThingsIntegration creates an Pilot Things
 	// application-integration.
-	CreatePilotThingsIntegration(context.Context, *CreatePilotThingsIntegrationRequest) (*empty.Empty, error)
+	CreatePilotThingsIntegration(context.Context, *CreatePilotThingsIntegrationRequest) (*emptypb.Empty, error)
 	// GetPilotThingsIntegration returns the Pilot Things application-integration.
 	GetPilotThingsIntegration(context.Context, *GetPilotThingsIntegrationRequest) (*GetPilotThingsIntegrationResponse, error)
 	// UpdatePilotThingsIntegration updates the Pilot Things
 	// application-integration.
-	UpdatePilotThingsIntegration(context.Context, *UpdatePilotThingsIntegrationRequest) (*empty.Empty, error)
+	UpdatePilotThingsIntegration(context.Context, *UpdatePilotThingsIntegrationRequest) (*emptypb.Empty, error)
 	// DeletePilotThingsIntegration deletes the Pilot Things
 	// application-integration.
-	DeletePilotThingsIntegration(context.Context, *DeletePilotThingsIntegrationRequest) (*empty.Empty, error)
+	DeletePilotThingsIntegration(context.Context, *DeletePilotThingsIntegrationRequest) (*emptypb.Empty, error)
 	// ListIntegrations lists all configured integrations.
 	ListIntegrations(context.Context, *ListIntegrationRequest) (*ListIntegrationResponse, error)
 	// GenerateMQTTIntegrationClientCertificate generates an application ID specific TLS certificate
@@ -5289,16 +5289,16 @@ type ApplicationServiceServer interface {
 	GenerateMQTTIntegrationClientCertificate(context.Context, *GenerateMQTTIntegrationClientCertificateRequest) (*GenerateMQTTIntegrationClientCertificateResponse, error)
 	// CreateQubitroIntegration creates a Qubitro
 	// application-integration.
-	CreateQubitroIntegration(context.Context, *CreateQubitroIntegrationRequest) (*empty.Empty, error)
+	CreateQubitroIntegration(context.Context, *CreateQubitroIntegrationRequest) (*emptypb.Empty, error)
 	// GetQubitroIntegration returns the Qubitro
 	// application-integration.
 	GetQubitroIntegration(context.Context, *GetQubitroIntegrationRequest) (*GetQubitroIntegrationResponse, error)
 	// UpdateQubitroIntegration updates the Qubitro
 	// application-integration.
-	UpdateQubitroIntegration(context.Context, *UpdateQubitroIntegrationRequest) (*empty.Empty, error)
+	UpdateQubitroIntegration(context.Context, *UpdateQubitroIntegrationRequest) (*emptypb.Empty, error)
 	// DeleteQubitroIntegration deletes the Qubitro
 	// application-integration.
-	DeleteQubitroIntegration(context.Context, *DeleteQubitroIntegrationRequest) (*empty.Empty, error)
+	DeleteQubitroIntegration(context.Context, *DeleteQubitroIntegrationRequest) (*emptypb.Empty, error)
 }
 
 // UnimplementedApplicationServiceServer can be embedded to have forward compatible implementations.
@@ -5311,133 +5311,133 @@ func (*UnimplementedApplicationServiceServer) Create(ctx context.Context, req *C
 func (*UnimplementedApplicationServiceServer) Get(ctx context.Context, req *GetApplicationRequest) (*GetApplicationResponse, error) {
 	return nil, status.Errorf(codes.Unimplemented, "method Get not implemented")
 }
-func (*UnimplementedApplicationServiceServer) Update(ctx context.Context, req *UpdateApplicationRequest) (*empty.Empty, error) {
+func (*UnimplementedApplicationServiceServer) Update(ctx context.Context, req *UpdateApplicationRequest) (*emptypb.Empty, error) {
 	return nil, status.Errorf(codes.Unimplemented, "method Update not implemented")
 }
-func (*UnimplementedApplicationServiceServer) Delete(ctx context.Context, req *DeleteApplicationRequest) (*empty.Empty, error) {
+func (*UnimplementedApplicationServiceServer) Delete(ctx context.Context, req *DeleteApplicationRequest) (*emptypb.Empty, error) {
 	return nil, status.Errorf(codes.Unimplemented, "method Delete not implemented")
 }
 func (*UnimplementedApplicationServiceServer) List(ctx context.Context, req *ListApplicationRequest) (*ListApplicationResponse, error) {
 	return nil, status.Errorf(codes.Unimplemented, "method List not implemented")
 }
-func (*UnimplementedApplicationServiceServer) CreateHTTPIntegration(ctx context.Context, req *CreateHTTPIntegrationRequest) (*empty.Empty, error) {
+func (*UnimplementedApplicationServiceServer) CreateHTTPIntegration(ctx context.Context, req *CreateHTTPIntegrationRequest) (*emptypb.Empty, error) {
 	return nil, status.Errorf(codes.Unimplemented, "method CreateHTTPIntegration not implemented")
 }
 func (*UnimplementedApplicationServiceServer) GetHTTPIntegration(ctx context.Context, req *GetHTTPIntegrationRequest) (*GetHTTPIntegrationResponse, error) {
 	return nil, status.Errorf(codes.Unimplemented, "method GetHTTPIntegration not implemented")
 }
-func (*UnimplementedApplicationServiceServer) UpdateHTTPIntegration(ctx context.Context, req *UpdateHTTPIntegrationRequest) (*empty.Empty, error) {
+func (*UnimplementedApplicationServiceServer) UpdateHTTPIntegration(ctx context.Context, req *UpdateHTTPIntegrationRequest) (*emptypb.Empty, error) {
 	return nil, status.Errorf(codes.Unimplemented, "method UpdateHTTPIntegration not implemented")
 }
-func (*UnimplementedApplicationServiceServer) DeleteHTTPIntegration(ctx context.Context, req *DeleteHTTPIntegrationRequest) (*empty.Empty, error) {
+func (*UnimplementedApplicationServiceServer) DeleteHTTPIntegration(ctx context.Context, req *DeleteHTTPIntegrationRequest) (*emptypb.Empty, error) {
 	return nil, status.Errorf(codes.Unimplemented, "method DeleteHTTPIntegration not implemented")
 }
-func (*UnimplementedApplicationServiceServer) CreateInfluxDBIntegration(ctx context.Context, req *CreateInfluxDBIntegrationRequest) (*empty.Empty, error) {
+func (*UnimplementedApplicationServiceServer) CreateInfluxDBIntegration(ctx context.Context, req *CreateInfluxDBIntegrationRequest) (*emptypb.Empty, error) {
 	return nil, status.Errorf(codes.Unimplemented, "method CreateInfluxDBIntegration not implemented")
 }
 func (*UnimplementedApplicationServiceServer) GetInfluxDBIntegration(ctx context.Context, req *GetInfluxDBIntegrationRequest) (*GetInfluxDBIntegrationResponse, error) {
 	return nil, status.Errorf(codes.Unimplemented, "method GetInfluxDBIntegration not implemented")
 }
-func (*UnimplementedApplicationServiceServer) UpdateInfluxDBIntegration(ctx context.Context, req *UpdateInfluxDBIntegrationRequest) (*empty.Empty, error) {
+func (*UnimplementedApplicationServiceServer) UpdateInfluxDBIntegration(ctx context.Context, req *UpdateInfluxDBIntegrationRequest) (*emptypb.Empty, error) {
 	return nil, status.Errorf(codes.Unimplemented, "method UpdateInfluxDBIntegration not implemented")
 }
-func (*UnimplementedApplicationServiceServer) DeleteInfluxDBIntegration(ctx context.Context, req *DeleteInfluxDBIntegrationRequest) (*empty.Empty, error) {
+func (*UnimplementedApplicationServiceServer) DeleteInfluxDBIntegration(ctx context.Context, req *DeleteInfluxDBIntegrationRequest) (*emptypb.Empty, error) {
 	return nil, status.Errorf(codes.Unimplemented, "method DeleteInfluxDBIntegration not implemented")
 }
-func (*UnimplementedApplicationServiceServer) CreateThingsBoardIntegration(ctx context.Context, req *CreateThingsBoardIntegrationRequest) (*empty.Empty, error) {
+func (*UnimplementedApplicationServiceServer) CreateThingsBoardIntegration(ctx context.Context, req *CreateThingsBoardIntegrationRequest) (*emptypb.Empty, error) {
 	return nil, status.Errorf(codes.Unimplemented, "method CreateThingsBoardIntegration not implemented")
 }
 func (*UnimplementedApplicationServiceServer) GetThingsBoardIntegration(ctx context.Context, req *GetThingsBoardIntegrationRequest) (*GetThingsBoardIntegrationResponse, error) {
 	return nil, status.Errorf(codes.Unimplemented, "method GetThingsBoardIntegration not implemented")
 }
-func (*UnimplementedApplicationServiceServer) UpdateThingsBoardIntegration(ctx context.Context, req *UpdateThingsBoardIntegrationRequest) (*empty.Empty, error) {
+func (*UnimplementedApplicationServiceServer) UpdateThingsBoardIntegration(ctx context.Context, req *UpdateThingsBoardIntegrationRequest) (*emptypb.Empty, error) {
 	return nil, status.Errorf(codes.Unimplemented, "method UpdateThingsBoardIntegration not implemented")
 }
-func (*UnimplementedApplicationServiceServer) DeleteThingsBoardIntegration(ctx context.Context, req *DeleteThingsBoardIntegrationRequest) (*empty.Empty, error) {
+func (*UnimplementedApplicationServiceServer) DeleteThingsBoardIntegration(ctx context.Context, req *DeleteThingsBoardIntegrationRequest) (*emptypb.Empty, error) {
 	return nil, status.Errorf(codes.Unimplemented, "method DeleteThingsBoardIntegration not implemented")
 }
-func (*UnimplementedApplicationServiceServer) CreateMyDevicesIntegration(ctx context.Context, req *CreateMyDevicesIntegrationRequest) (*empty.Empty, error) {
+func (*UnimplementedApplicationServiceServer) CreateMyDevicesIntegration(ctx context.Context, req *CreateMyDevicesIntegrationRequest) (*emptypb.Empty, error) {
 	return nil, status.Errorf(codes.Unimplemented, "method CreateMyDevicesIntegration not implemented")
 }
 func (*UnimplementedApplicationServiceServer) GetMyDevicesIntegration(ctx context.Context, req *GetMyDevicesIntegrationRequest) (*GetMyDevicesIntegrationResponse, error) {
 	return nil, status.Errorf(codes.Unimplemented, "method GetMyDevicesIntegration not implemented")
 }
-func (*UnimplementedApplicationServiceServer) UpdateMyDevicesIntegration(ctx context.Context, req *UpdateMyDevicesIntegrationRequest) (*empty.Empty, error) {
+func (*UnimplementedApplicationServiceServer) UpdateMyDevicesIntegration(ctx context.Context, req *UpdateMyDevicesIntegrationRequest) (*emptypb.Empty, error) {
 	return nil, status.Errorf(codes.Unimplemented, "method UpdateMyDevicesIntegration not implemented")
 }
-func (*UnimplementedApplicationServiceServer) DeleteMyDevicesIntegration(ctx context.Context, req *DeleteMyDevicesIntegrationRequest) (*empty.Empty, error) {
+func (*UnimplementedApplicationServiceServer) DeleteMyDevicesIntegration(ctx context.Context, req *DeleteMyDevicesIntegrationRequest) (*emptypb.Empty, error) {
 	return nil, status.Errorf(codes.Unimplemented, "method DeleteMyDevicesIntegration not implemented")
 }
-func (*UnimplementedApplicationServiceServer) CreateLoRaCloudIntegration(ctx context.Context, req *CreateLoRaCloudIntegrationRequest) (*empty.Empty, error) {
+func (*UnimplementedApplicationServiceServer) CreateLoRaCloudIntegration(ctx context.Context, req *CreateLoRaCloudIntegrationRequest) (*emptypb.Empty, error) {
 	return nil, status.Errorf(codes.Unimplemented, "method CreateLoRaCloudIntegration not implemented")
 }
 func (*UnimplementedApplicationServiceServer) GetLoRaCloudIntegration(ctx context.Context, req *GetLoRaCloudIntegrationRequest) (*GetLoRaCloudIntegrationResponse, error) {
 	return nil, status.Errorf(codes.Unimplemented, "method GetLoRaCloudIntegration not implemented")
 }
-func (*UnimplementedApplicationServiceServer) UpdateLoRaCloudIntegration(ctx context.Context, req *UpdateLoRaCloudIntegrationRequest) (*empty.Empty, error) {
+func (*UnimplementedApplicationServiceServer) UpdateLoRaCloudIntegration(ctx context.Context, req *UpdateLoRaCloudIntegrationRequest) (*emptypb.Empty, error) {
 	return nil, status.Errorf(codes.Unimplemented, "method UpdateLoRaCloudIntegration not implemented")
 }
-func (*UnimplementedApplicationServiceServer) DeleteLoRaCloudIntegration(ctx context.Context, req *DeleteLoRaCloudIntegrationRequest) (*empty.Empty, error) {
+func (*UnimplementedApplicationServiceServer) DeleteLoRaCloudIntegration(ctx context.Context, req *DeleteLoRaCloudIntegrationRequest) (*emptypb.Empty, error) {
 	return nil, status.Errorf(codes.Unimplemented, "method DeleteLoRaCloudIntegration not implemented")
 }
-func (*UnimplementedApplicationServiceServer) CreateGCPPubSubIntegration(ctx context.Context, req *CreateGCPPubSubIntegrationRequest) (*empty.Empty, error) {
+func (*UnimplementedApplicationServiceServer) CreateGCPPubSubIntegration(ctx context.Context, req *CreateGCPPubSubIntegrationRequest) (*emptypb.Empty, error) {
 	return nil, status.Errorf(codes.Unimplemented, "method CreateGCPPubSubIntegration not implemented")
 }
 func (*UnimplementedApplicationServiceServer) GetGCPPubSubIntegration(ctx context.Context, req *GetGCPPubSubIntegrationRequest) (*GetGCPPubSubIntegrationResponse, error) {
 	return nil, status.Errorf(codes.Unimplemented, "method GetGCPPubSubIntegration not implemented")
 }
-func (*UnimplementedApplicationServiceServer) UpdateGCPPubSubIntegration(ctx context.Context, req *UpdateGCPPubSubIntegrationRequest) (*empty.Empty, error) {
+func (*UnimplementedApplicationServiceServer) UpdateGCPPubSubIntegration(ctx context.Context, req *UpdateGCPPubSubIntegrationRequest) (*emptypb.Empty, error) {
 	return nil, status.Errorf(codes.Unimplemented, "method UpdateGCPPubSubIntegration not implemented")
 }
-func (*UnimplementedApplicationServiceServer) DeleteGCPPubSubIntegration(ctx context.Context, req *DeleteGCPPubSubIntegrationRequest) (*empty.Empty, error) {
+func (*UnimplementedApplicationServiceServer) DeleteGCPPubSubIntegration(ctx context.Context, req *DeleteGCPPubSubIntegrationRequest) (*emptypb.Empty, error) {
 	return nil, status.Errorf(codes.Unimplemented, "method DeleteGCPPubSubIntegration not implemented")
 }
-func (*UnimplementedApplicationServiceServer) CreateAWSSNSIntegration(ctx context.Context, req *CreateAWSSNSIntegrationRequest) (*empty.Empty, error) {
+func (*UnimplementedApplicationServiceServer) CreateAWSSNSIntegration(ctx context.Context, req *CreateAWSSNSIntegrationRequest) (*emptypb.Empty, error) {
 	return nil, status.Errorf(codes.Unimplemented, "method CreateAWSSNSIntegration not implemented")
 }
 func (*UnimplementedApplicationServiceServer) GetAWSSNSIntegration(ctx context.Context, req *GetAWSSNSIntegrationRequest) (*GetAWSSNSIntegrationResponse, error) {
 	return nil, status.Errorf(codes.Unimplemented, "method GetAWSSNSIntegration not implemented")
 }
-func (*UnimplementedApplicationServiceServer) UpdateAWSSNSIntegration(ctx context.Context, req *UpdateAWSSNSIntegrationRequest) (*empty.Empty, error) {
+func (*UnimplementedApplicationServiceServer) UpdateAWSSNSIntegration(ctx context.Context, req *UpdateAWSSNSIntegrationRequest) (*emptypb.Empty, error) {
 	return nil, status.Errorf(codes.Unimplemented, "method UpdateAWSSNSIntegration not implemented")
 }
-func (*UnimplementedApplicationServiceServer) DeleteAWSSNSIntegration(ctx context.Context, req *DeleteAWSSNSIntegrationRequest) (*empty.Empty, error) {
+func (*UnimplementedApplicationServiceServer) DeleteAWSSNSIntegration(ctx context.Context, req *DeleteAWSSNSIntegrationRequest) (*emptypb.Empty, error) {
 	return nil, status.Errorf(codes.Unimplemented, "method DeleteAWSSNSIntegration not implemented")
 }
-func (*UnimplementedApplicationServiceServer) CreateAzureServiceBusIntegration(ctx context.Context, req *CreateAzureServiceBusIntegrationRequest) (*empty.Empty, error) {
+func (*UnimplementedApplicationServiceServer) CreateAzureServiceBusIntegration(ctx context.Context, req *CreateAzureServiceBusIntegrationRequest) (*emptypb.Empty, error) {
 	return nil, status.Errorf(codes.Unimplemented, "method CreateAzureServiceBusIntegration not implemented")
 }
 func (*UnimplementedApplicationServiceServer) GetAzureServiceBusIntegration(ctx context.Context, req *GetAzureServiceBusIntegrationRequest) (*GetAzureServiceBusIntegrationResponse, error) {
 	return nil, status.Errorf(codes.Unimplemented, "method GetAzureServiceBusIntegration not implemented")
 }
-func (*UnimplementedApplicationServiceServer) UpdateAzureServiceBusIntegration(ctx context.Context, req *UpdateAzureServiceBusIntegrationRequest) (*empty.Empty, error) {
+func (*UnimplementedApplicationServiceServer) UpdateAzureServiceBusIntegration(ctx context.Context, req *UpdateAzureServiceBusIntegrationRequest) (*emptypb.Empty, error) {
 	return nil, status.Errorf(codes.Unimplemented, "method UpdateAzureServiceBusIntegration not implemented")
 }
-func (*UnimplementedApplicationServiceServer) DeleteAzureServiceBusIntegration(ctx context.Context, req *DeleteAzureServiceBusIntegrationRequest) (*empty.Empty, error) {
+func (*UnimplementedApplicationServiceServer) DeleteAzureServiceBusIntegration(ctx context.Context, req *DeleteAzureServiceBusIntegrationRequest) (*emptypb.Empty, error) {
 	return nil, status.Errorf(codes.Unimplemented, "method DeleteAzureServiceBusIntegration not implemented")
 }
-func (*UnimplementedApplicationServiceServer) CreateLoccartoIntegration(ctx context.Context, req *CreateLoccartoIntegrationRequest) (*empty.Empty, error) {
+func (*UnimplementedApplicationServiceServer) CreateLoccartoIntegration(ctx context.Context, req *CreateLoccartoIntegrationRequest) (*emptypb.Empty, error) {
 	return nil, status.Errorf(codes.Unimplemented, "method CreateLoccartoIntegration not implemented")
 }
 func (*UnimplementedApplicationServiceServer) GetLoccartoIntegration(ctx context.Context, req *GetLoccartoIntegrationRequest) (*GetLoccartoIntegrationResponse, error) {
 	return nil, status.Errorf(codes.Unimplemented, "method GetLoccartoIntegration not implemented")
 }
-func (*UnimplementedApplicationServiceServer) UpdateLoccartoIntegration(ctx context.Context, req *UpdateLoccartoIntegrationRequest) (*empty.Empty, error) {
+func (*UnimplementedApplicationServiceServer) UpdateLoccartoIntegration(ctx context.Context, req *UpdateLoccartoIntegrationRequest) (*emptypb.Empty, error) {
 	return nil, status.Errorf(codes.Unimplemented, "method UpdateLoccartoIntegration not implemented")
 }
-func (*UnimplementedApplicationServiceServer) DeleteLoccartoIntegration(ctx context.Context, req *DeleteLoccartoIntegrationRequest) (*empty.Empty, error) {
+func (*UnimplementedApplicationServiceServer) DeleteLoccartoIntegration(ctx context.Context, req *DeleteLoccartoIntegrationRequest) (*emptypb.Empty, error) {
 	return nil, status.Errorf(codes.Unimplemented, "method DeleteLoccartoIntegration not implemented")
 }
-func (*UnimplementedApplicationServiceServer) CreatePilotThingsIntegration(ctx context.Context, req *CreatePilotThingsIntegrationRequest) (*empty.Empty, error) {
+func (*UnimplementedApplicationServiceServer) CreatePilotThingsIntegration(ctx context.Context, req *CreatePilotThingsIntegrationRequest) (*emptypb.Empty, error) {
 	return nil, status.Errorf(codes.Unimplemented, "method CreatePilotThingsIntegration not implemented")
 }
 func (*UnimplementedApplicationServiceServer) GetPilotThingsIntegration(ctx context.Context, req *GetPilotThingsIntegrationRequest) (*GetPilotThingsIntegrationResponse, error) {
 	return nil, status.Errorf(codes.Unimplemented, "method GetPilotThingsIntegration not implemented")
 }
-func (*UnimplementedApplicationServiceServer) UpdatePilotThingsIntegration(ctx context.Context, req *UpdatePilotThingsIntegrationRequest) (*empty.Empty, error) {
+func (*UnimplementedApplicationServiceServer) UpdatePilotThingsIntegration(ctx context.Context, req *UpdatePilotThingsIntegrationRequest) (*emptypb.Empty, error) {
 	return nil, status.Errorf(codes.Unimplemented, "method UpdatePilotThingsIntegration not implemented")
 }
-func (*UnimplementedApplicationServiceServer) DeletePilotThingsIntegration(ctx context.Context, req *DeletePilotThingsIntegrationRequest) (*empty.Empty, error) {
+func (*UnimplementedApplicationServiceServer) DeletePilotThingsIntegration(ctx context.Context, req *DeletePilotThingsIntegrationRequest) (*emptypb.Empty, error) {
 	return nil, status.Errorf(codes.Unimplemented, "method DeletePilotThingsIntegration not implemented")
 }
 func (*UnimplementedApplicationServiceServer) ListIntegrations(ctx context.Context, req *ListIntegrationRequest) (*ListIntegrationResponse, error) {
@@ -5446,16 +5446,16 @@ func (*UnimplementedApplicationServiceServer) ListIntegrations(ctx context.Conte
 func (*UnimplementedApplicationServiceServer) GenerateMQTTIntegrationClientCertificate(ctx context.Context, req *GenerateMQTTIntegrationClientCertificateRequest) (*GenerateMQTTIntegrationClientCertificateResponse, error) {
 	return nil, status.Errorf(codes.Unimplemented, "method GenerateMQTTIntegrationClientCertificate not implemented")
 }
-func (*UnimplementedApplicationServiceServer) CreateQubitroIntegration(ctx context.Context, req *CreateQubitroIntegrationRequest) (*empty.Empty, error) {
+func (*UnimplementedApplicationServiceServer) CreateQubitroIntegration(ctx context.Context, req *CreateQubitroIntegrationRequest) (*emptypb.Empty, error) {
 	return nil, status.Errorf(codes.Unimplemented, "method CreateQubitroIntegration not implemented")
 }
 func (*UnimplementedApplicationServiceServer) GetQubitroIntegration(ctx context.Context, req *GetQubitroIntegrationRequest) (*GetQubitroIntegrationResponse, error) {
 	return nil, status.Errorf(codes.Unimplemented, "method GetQubitroIntegration not implemented")
 }
-func (*UnimplementedApplicationServiceServer) UpdateQubitroIntegration(ctx context.Context, req *UpdateQubitroIntegrationRequest) (*empty.Empty, error) {
+func (*UnimplementedApplicationServiceServer) UpdateQubitroIntegration(ctx context.Context, req *UpdateQubitroIntegrationRequest) (*emptypb.Empty, error) {
 	return nil, status.Errorf(codes.Unimplemented, "method UpdateQubitroIntegration not implemented")
 }
-func (*UnimplementedApplicationServiceServer) DeleteQubitroIntegration(ctx context.Context, req *DeleteQubitroIntegrationRequest) (*empty.Empty, error) {
+func (*UnimplementedApplicationServiceServer) DeleteQubitroIntegration(ctx context.Context, req *DeleteQubitroIntegrationRequest) (*emptypb.Empty, error) {
 	return nil, status.Errorf(codes.Unimplemented, "method DeleteQubitroIntegration not implemented")
 }
 

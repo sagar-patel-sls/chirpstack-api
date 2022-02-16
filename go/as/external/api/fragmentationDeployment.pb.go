@@ -7,13 +7,13 @@ import (
 	context "context"
 	fmt "fmt"
 	proto "github.com/golang/protobuf/proto"
-	duration "github.com/golang/protobuf/ptypes/duration"
-	empty "github.com/golang/protobuf/ptypes/empty"
-	timestamp "github.com/golang/protobuf/ptypes/timestamp"
 	_ "google.golang.org/genproto/googleapis/api/annotations"
 	grpc "google.golang.org/grpc"
 	codes "google.golang.org/grpc/codes"
 	status "google.golang.org/grpc/status"
+	durationpb "google.golang.org/protobuf/types/known/durationpb"
+	emptypb "google.golang.org/protobuf/types/known/emptypb"
+	timestamppb "google.golang.org/protobuf/types/known/timestamppb"
 	math "math"
 )
 
@@ -49,16 +49,16 @@ type FragmentationDeployment struct {
 	// Set this to the value in which you at least expect an uplink frame from the
 	// device. The FUOTA deployment engine will wait at least for the given time
 	// before proceeding with the next steps.
-	UnicastTimeout *duration.Duration `protobuf:"bytes,8,opt,name=unicast_timeout,json=unicastTimeout,proto3" json:"unicast_timeout,omitempty"`
+	UnicastTimeout *durationpb.Duration `protobuf:"bytes,8,opt,name=unicast_timeout,json=unicastTimeout,proto3" json:"unicast_timeout,omitempty"`
 	// Deployment state.
 	// This value will be automatically set on create.
 	State string `protobuf:"bytes,9,opt,name=state,proto3" json:"state,omitempty"`
 	// Next step after.
 	// This value will be automatically set on create.
-	NextStepAfter        *timestamp.Timestamp `protobuf:"bytes,10,opt,name=next_step_after,json=nextStepAfter,proto3" json:"next_step_after,omitempty"`
-	XXX_NoUnkeyedLiteral struct{}             `json:"-"`
-	XXX_unrecognized     []byte               `json:"-"`
-	XXX_sizecache        int32                `json:"-"`
+	NextStepAfter        *timestamppb.Timestamp `protobuf:"bytes,10,opt,name=next_step_after,json=nextStepAfter,proto3" json:"next_step_after,omitempty"`
+	XXX_NoUnkeyedLiteral struct{}               `json:"-"`
+	XXX_unrecognized     []byte                 `json:"-"`
+	XXX_sizecache        int32                  `json:"-"`
 }
 
 func (m *FragmentationDeployment) Reset()         { *m = FragmentationDeployment{} }
@@ -135,7 +135,7 @@ func (m *FragmentationDeployment) GetRedundancy() uint32 {
 	return 0
 }
 
-func (m *FragmentationDeployment) GetUnicastTimeout() *duration.Duration {
+func (m *FragmentationDeployment) GetUnicastTimeout() *durationpb.Duration {
 	if m != nil {
 		return m.UnicastTimeout
 	}
@@ -149,7 +149,7 @@ func (m *FragmentationDeployment) GetState() string {
 	return ""
 }
 
-func (m *FragmentationDeployment) GetNextStepAfter() *timestamp.Timestamp {
+func (m *FragmentationDeployment) GetNextStepAfter() *timestamppb.Timestamp {
 	if m != nil {
 		return m.NextStepAfter
 	}
@@ -181,7 +181,7 @@ type GetFragmentationDeployment struct {
 	// Set this to the value in which you at least expect an uplink frame from the
 	// device. The FUOTA deployment engine will wait at least for the given time
 	// before proceeding with the next steps.
-	UnicastTimeout *duration.Duration `protobuf:"bytes,10,opt,name=unicast_timeout,json=unicastTimeout,proto3" json:"unicast_timeout,omitempty"`
+	UnicastTimeout *durationpb.Duration `protobuf:"bytes,10,opt,name=unicast_timeout,json=unicastTimeout,proto3" json:"unicast_timeout,omitempty"`
 	// Deployment state.
 	// This value will be automatically set on create.
 	State string `protobuf:"bytes,11,opt,name=state,proto3" json:"state,omitempty"`
@@ -191,10 +191,10 @@ type GetFragmentationDeployment struct {
 	ErrorMessage string `protobuf:"bytes,13,opt,name=error_message,json=errorMessage,proto3" json:"error_message,omitempty"`
 	// Next step after.
 	// This value will be automatically set on create.
-	NextStepAfter        *timestamp.Timestamp `protobuf:"bytes,14,opt,name=next_step_after,json=nextStepAfter,proto3" json:"next_step_after,omitempty"`
-	XXX_NoUnkeyedLiteral struct{}             `json:"-"`
-	XXX_unrecognized     []byte               `json:"-"`
-	XXX_sizecache        int32                `json:"-"`
+	NextStepAfter        *timestamppb.Timestamp `protobuf:"bytes,14,opt,name=next_step_after,json=nextStepAfter,proto3" json:"next_step_after,omitempty"`
+	XXX_NoUnkeyedLiteral struct{}               `json:"-"`
+	XXX_unrecognized     []byte                 `json:"-"`
+	XXX_sizecache        int32                  `json:"-"`
 }
 
 func (m *GetFragmentationDeployment) Reset()         { *m = GetFragmentationDeployment{} }
@@ -285,7 +285,7 @@ func (m *GetFragmentationDeployment) GetRedundancy() uint32 {
 	return 0
 }
 
-func (m *GetFragmentationDeployment) GetUnicastTimeout() *duration.Duration {
+func (m *GetFragmentationDeployment) GetUnicastTimeout() *durationpb.Duration {
 	if m != nil {
 		return m.UnicastTimeout
 	}
@@ -313,7 +313,7 @@ func (m *GetFragmentationDeployment) GetErrorMessage() string {
 	return ""
 }
 
-func (m *GetFragmentationDeployment) GetNextStepAfter() *timestamp.Timestamp {
+func (m *GetFragmentationDeployment) GetNextStepAfter() *timestamppb.Timestamp {
 	if m != nil {
 		return m.NextStepAfter
 	}
@@ -444,12 +444,12 @@ type GetFragmentationDeploymentResponse struct {
 	// Fragmentation Deployment object to create.
 	FragmentationDeployment *GetFragmentationDeployment `protobuf:"bytes,1,opt,name=fragmentationDeployment,proto3" json:"fragmentationDeployment,omitempty"`
 	// Created at timestamp.
-	CreatedAt *timestamp.Timestamp `protobuf:"bytes,2,opt,name=created_at,json=createdAt,proto3" json:"created_at,omitempty"`
+	CreatedAt *timestamppb.Timestamp `protobuf:"bytes,2,opt,name=created_at,json=createdAt,proto3" json:"created_at,omitempty"`
 	// Last update timestamp.
-	UpdatedAt            *timestamp.Timestamp `protobuf:"bytes,3,opt,name=updated_at,json=updatedAt,proto3" json:"updated_at,omitempty"`
-	XXX_NoUnkeyedLiteral struct{}             `json:"-"`
-	XXX_unrecognized     []byte               `json:"-"`
-	XXX_sizecache        int32                `json:"-"`
+	UpdatedAt            *timestamppb.Timestamp `protobuf:"bytes,3,opt,name=updated_at,json=updatedAt,proto3" json:"updated_at,omitempty"`
+	XXX_NoUnkeyedLiteral struct{}               `json:"-"`
+	XXX_unrecognized     []byte                 `json:"-"`
+	XXX_sizecache        int32                  `json:"-"`
 }
 
 func (m *GetFragmentationDeploymentResponse) Reset()         { *m = GetFragmentationDeploymentResponse{} }
@@ -484,14 +484,14 @@ func (m *GetFragmentationDeploymentResponse) GetFragmentationDeployment() *GetFr
 	return nil
 }
 
-func (m *GetFragmentationDeploymentResponse) GetCreatedAt() *timestamp.Timestamp {
+func (m *GetFragmentationDeploymentResponse) GetCreatedAt() *timestamppb.Timestamp {
 	if m != nil {
 		return m.CreatedAt
 	}
 	return nil
 }
 
-func (m *GetFragmentationDeploymentResponse) GetUpdatedAt() *timestamp.Timestamp {
+func (m *GetFragmentationDeploymentResponse) GetUpdatedAt() *timestamppb.Timestamp {
 	if m != nil {
 		return m.UpdatedAt
 	}
@@ -791,9 +791,9 @@ type FragmentationDeploymentServiceClient interface {
 	// Get returns a fragmentation deployment given an ID.
 	Get(ctx context.Context, in *GetFragmentationDeploymentRequest, opts ...grpc.CallOption) (*GetFragmentationDeploymentResponse, error)
 	// Update updates the given fragmentation deployment.
-	Update(ctx context.Context, in *UpdateFragmentationDeploymentRequest, opts ...grpc.CallOption) (*empty.Empty, error)
+	Update(ctx context.Context, in *UpdateFragmentationDeploymentRequest, opts ...grpc.CallOption) (*emptypb.Empty, error)
 	// Delete deletes a fragmentation deployment given an ID.
-	Delete(ctx context.Context, in *DeleteFragmentationDeploymentRequest, opts ...grpc.CallOption) (*empty.Empty, error)
+	Delete(ctx context.Context, in *DeleteFragmentationDeploymentRequest, opts ...grpc.CallOption) (*emptypb.Empty, error)
 	// List lists the available fragmentation deployment.
 	List(ctx context.Context, in *ListFragmentationDeploymentRequest, opts ...grpc.CallOption) (*ListFragmentationDeploymentResponse, error)
 }
@@ -824,8 +824,8 @@ func (c *fragmentationDeploymentServiceClient) Get(ctx context.Context, in *GetF
 	return out, nil
 }
 
-func (c *fragmentationDeploymentServiceClient) Update(ctx context.Context, in *UpdateFragmentationDeploymentRequest, opts ...grpc.CallOption) (*empty.Empty, error) {
-	out := new(empty.Empty)
+func (c *fragmentationDeploymentServiceClient) Update(ctx context.Context, in *UpdateFragmentationDeploymentRequest, opts ...grpc.CallOption) (*emptypb.Empty, error) {
+	out := new(emptypb.Empty)
 	err := c.cc.Invoke(ctx, "/api.FragmentationDeploymentService/Update", in, out, opts...)
 	if err != nil {
 		return nil, err
@@ -833,8 +833,8 @@ func (c *fragmentationDeploymentServiceClient) Update(ctx context.Context, in *U
 	return out, nil
 }
 
-func (c *fragmentationDeploymentServiceClient) Delete(ctx context.Context, in *DeleteFragmentationDeploymentRequest, opts ...grpc.CallOption) (*empty.Empty, error) {
-	out := new(empty.Empty)
+func (c *fragmentationDeploymentServiceClient) Delete(ctx context.Context, in *DeleteFragmentationDeploymentRequest, opts ...grpc.CallOption) (*emptypb.Empty, error) {
+	out := new(emptypb.Empty)
 	err := c.cc.Invoke(ctx, "/api.FragmentationDeploymentService/Delete", in, out, opts...)
 	if err != nil {
 		return nil, err
@@ -858,9 +858,9 @@ type FragmentationDeploymentServiceServer interface {
 	// Get returns a fragmentation deployment given an ID.
 	Get(context.Context, *GetFragmentationDeploymentRequest) (*GetFragmentationDeploymentResponse, error)
 	// Update updates the given fragmentation deployment.
-	Update(context.Context, *UpdateFragmentationDeploymentRequest) (*empty.Empty, error)
+	Update(context.Context, *UpdateFragmentationDeploymentRequest) (*emptypb.Empty, error)
 	// Delete deletes a fragmentation deployment given an ID.
-	Delete(context.Context, *DeleteFragmentationDeploymentRequest) (*empty.Empty, error)
+	Delete(context.Context, *DeleteFragmentationDeploymentRequest) (*emptypb.Empty, error)
 	// List lists the available fragmentation deployment.
 	List(context.Context, *ListFragmentationDeploymentRequest) (*ListFragmentationDeploymentResponse, error)
 }
@@ -875,10 +875,10 @@ func (*UnimplementedFragmentationDeploymentServiceServer) Create(ctx context.Con
 func (*UnimplementedFragmentationDeploymentServiceServer) Get(ctx context.Context, req *GetFragmentationDeploymentRequest) (*GetFragmentationDeploymentResponse, error) {
 	return nil, status.Errorf(codes.Unimplemented, "method Get not implemented")
 }
-func (*UnimplementedFragmentationDeploymentServiceServer) Update(ctx context.Context, req *UpdateFragmentationDeploymentRequest) (*empty.Empty, error) {
+func (*UnimplementedFragmentationDeploymentServiceServer) Update(ctx context.Context, req *UpdateFragmentationDeploymentRequest) (*emptypb.Empty, error) {
 	return nil, status.Errorf(codes.Unimplemented, "method Update not implemented")
 }
-func (*UnimplementedFragmentationDeploymentServiceServer) Delete(ctx context.Context, req *DeleteFragmentationDeploymentRequest) (*empty.Empty, error) {
+func (*UnimplementedFragmentationDeploymentServiceServer) Delete(ctx context.Context, req *DeleteFragmentationDeploymentRequest) (*emptypb.Empty, error) {
 	return nil, status.Errorf(codes.Unimplemented, "method Delete not implemented")
 }
 func (*UnimplementedFragmentationDeploymentServiceServer) List(ctx context.Context, req *ListFragmentationDeploymentRequest) (*ListFragmentationDeploymentResponse, error) {

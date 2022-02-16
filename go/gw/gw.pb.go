@@ -6,9 +6,9 @@ package gw
 import (
 	fmt "fmt"
 	proto "github.com/golang/protobuf/proto"
-	duration "github.com/golang/protobuf/ptypes/duration"
-	timestamp "github.com/golang/protobuf/ptypes/timestamp"
 	common "github.com/sagar-patel-sls/chirpstack-api/go/v3/common"
+	durationpb "google.golang.org/protobuf/types/known/durationpb"
+	timestamppb "google.golang.org/protobuf/types/known/timestamppb"
 	math "math"
 )
 
@@ -646,10 +646,10 @@ func (m *EncryptedFineTimestamp) GetFpgaId() []byte {
 
 type PlainFineTimestamp struct {
 	// Full timestamp.
-	Time                 *timestamp.Timestamp `protobuf:"bytes,1,opt,name=time,proto3" json:"time,omitempty"`
-	XXX_NoUnkeyedLiteral struct{}             `json:"-"`
-	XXX_unrecognized     []byte               `json:"-"`
-	XXX_sizecache        int32                `json:"-"`
+	Time                 *timestamppb.Timestamp `protobuf:"bytes,1,opt,name=time,proto3" json:"time,omitempty"`
+	XXX_NoUnkeyedLiteral struct{}               `json:"-"`
+	XXX_unrecognized     []byte                 `json:"-"`
+	XXX_sizecache        int32                  `json:"-"`
 }
 
 func (m *PlainFineTimestamp) Reset()         { *m = PlainFineTimestamp{} }
@@ -677,7 +677,7 @@ func (m *PlainFineTimestamp) XXX_DiscardUnknown() {
 
 var xxx_messageInfo_PlainFineTimestamp proto.InternalMessageInfo
 
-func (m *PlainFineTimestamp) GetTime() *timestamp.Timestamp {
+func (m *PlainFineTimestamp) GetTime() *timestamppb.Timestamp {
 	if m != nil {
 		return m.Time
 	}
@@ -690,7 +690,7 @@ type GatewayStats struct {
 	// Gateway IP.
 	Ip string `protobuf:"bytes,9,opt,name=ip,proto3" json:"ip,omitempty"`
 	// Gateway time.
-	Time *timestamp.Timestamp `protobuf:"bytes,2,opt,name=time,proto3" json:"time,omitempty"`
+	Time *timestamppb.Timestamp `protobuf:"bytes,2,opt,name=time,proto3" json:"time,omitempty"`
 	// Gateway location.
 	Location *common.Location `protobuf:"bytes,3,opt,name=location,proto3" json:"location,omitempty"`
 	// Gateway configuration version (this maps to the config_version sent
@@ -765,7 +765,7 @@ func (m *GatewayStats) GetIp() string {
 	return ""
 }
 
-func (m *GatewayStats) GetTime() *timestamp.Timestamp {
+func (m *GatewayStats) GetTime() *timestamppb.Timestamp {
 	if m != nil {
 		return m.Time
 	}
@@ -923,9 +923,9 @@ type UplinkRXInfo struct {
 	// Gateway ID.
 	GatewayId []byte `protobuf:"bytes,1,opt,name=gateway_id,json=gatewayID,proto3" json:"gateway_id,omitempty"`
 	// RX time (only set when the gateway has a GPS module).
-	Time *timestamp.Timestamp `protobuf:"bytes,2,opt,name=time,proto3" json:"time,omitempty"`
+	Time *timestamppb.Timestamp `protobuf:"bytes,2,opt,name=time,proto3" json:"time,omitempty"`
 	// RX time since GPS epoch (only set when the gateway has a GPS module).
-	TimeSinceGpsEpoch *duration.Duration `protobuf:"bytes,3,opt,name=time_since_gps_epoch,json=timeSinceGPSEpoch,proto3" json:"time_since_gps_epoch,omitempty"`
+	TimeSinceGpsEpoch *durationpb.Duration `protobuf:"bytes,3,opt,name=time_since_gps_epoch,json=timeSinceGPSEpoch,proto3" json:"time_since_gps_epoch,omitempty"`
 	// RSSI.
 	Rssi int32 `protobuf:"varint,5,opt,name=rssi,proto3" json:"rssi,omitempty"`
 	// LoRa SNR.
@@ -992,14 +992,14 @@ func (m *UplinkRXInfo) GetGatewayId() []byte {
 	return nil
 }
 
-func (m *UplinkRXInfo) GetTime() *timestamp.Timestamp {
+func (m *UplinkRXInfo) GetTime() *timestamppb.Timestamp {
 	if m != nil {
 		return m.Time
 	}
 	return nil
 }
 
-func (m *UplinkRXInfo) GetTimeSinceGpsEpoch() *duration.Duration {
+func (m *UplinkRXInfo) GetTimeSinceGpsEpoch() *durationpb.Duration {
 	if m != nil {
 		return m.TimeSinceGpsEpoch
 	}
@@ -1374,10 +1374,10 @@ var xxx_messageInfo_ImmediatelyTimingInfo proto.InternalMessageInfo
 type DelayTimingInfo struct {
 	// Delay (duration).
 	// The delay will be added to the gateway internal timing, provided by the context object.
-	Delay                *duration.Duration `protobuf:"bytes,1,opt,name=delay,proto3" json:"delay,omitempty"`
-	XXX_NoUnkeyedLiteral struct{}           `json:"-"`
-	XXX_unrecognized     []byte             `json:"-"`
-	XXX_sizecache        int32              `json:"-"`
+	Delay                *durationpb.Duration `protobuf:"bytes,1,opt,name=delay,proto3" json:"delay,omitempty"`
+	XXX_NoUnkeyedLiteral struct{}             `json:"-"`
+	XXX_unrecognized     []byte               `json:"-"`
+	XXX_sizecache        int32                `json:"-"`
 }
 
 func (m *DelayTimingInfo) Reset()         { *m = DelayTimingInfo{} }
@@ -1405,7 +1405,7 @@ func (m *DelayTimingInfo) XXX_DiscardUnknown() {
 
 var xxx_messageInfo_DelayTimingInfo proto.InternalMessageInfo
 
-func (m *DelayTimingInfo) GetDelay() *duration.Duration {
+func (m *DelayTimingInfo) GetDelay() *durationpb.Duration {
 	if m != nil {
 		return m.Delay
 	}
@@ -1414,10 +1414,10 @@ func (m *DelayTimingInfo) GetDelay() *duration.Duration {
 
 type GPSEpochTimingInfo struct {
 	// Duration since GPS Epoch.
-	TimeSinceGpsEpoch    *duration.Duration `protobuf:"bytes,1,opt,name=time_since_gps_epoch,json=timeSinceGPSEpoch,proto3" json:"time_since_gps_epoch,omitempty"`
-	XXX_NoUnkeyedLiteral struct{}           `json:"-"`
-	XXX_unrecognized     []byte             `json:"-"`
-	XXX_sizecache        int32              `json:"-"`
+	TimeSinceGpsEpoch    *durationpb.Duration `protobuf:"bytes,1,opt,name=time_since_gps_epoch,json=timeSinceGPSEpoch,proto3" json:"time_since_gps_epoch,omitempty"`
+	XXX_NoUnkeyedLiteral struct{}             `json:"-"`
+	XXX_unrecognized     []byte               `json:"-"`
+	XXX_sizecache        int32                `json:"-"`
 }
 
 func (m *GPSEpochTimingInfo) Reset()         { *m = GPSEpochTimingInfo{} }
@@ -1445,7 +1445,7 @@ func (m *GPSEpochTimingInfo) XXX_DiscardUnknown() {
 
 var xxx_messageInfo_GPSEpochTimingInfo proto.InternalMessageInfo
 
-func (m *GPSEpochTimingInfo) GetTimeSinceGpsEpoch() *duration.Duration {
+func (m *GPSEpochTimingInfo) GetTimeSinceGpsEpoch() *durationpb.Duration {
 	if m != nil {
 		return m.TimeSinceGpsEpoch
 	}
@@ -1838,10 +1838,10 @@ type GatewayConfiguration struct {
 	// Channels.
 	Channels []*ChannelConfiguration `protobuf:"bytes,3,rep,name=channels,proto3" json:"channels,omitempty"`
 	// Stats interval.
-	StatsInterval        *duration.Duration `protobuf:"bytes,4,opt,name=stats_interval,json=statsInterval,proto3" json:"stats_interval,omitempty"`
-	XXX_NoUnkeyedLiteral struct{}           `json:"-"`
-	XXX_unrecognized     []byte             `json:"-"`
-	XXX_sizecache        int32              `json:"-"`
+	StatsInterval        *durationpb.Duration `protobuf:"bytes,4,opt,name=stats_interval,json=statsInterval,proto3" json:"stats_interval,omitempty"`
+	XXX_NoUnkeyedLiteral struct{}             `json:"-"`
+	XXX_unrecognized     []byte               `json:"-"`
+	XXX_sizecache        int32                `json:"-"`
 }
 
 func (m *GatewayConfiguration) Reset()         { *m = GatewayConfiguration{} }
@@ -1890,7 +1890,7 @@ func (m *GatewayConfiguration) GetChannels() []*ChannelConfiguration {
 	return nil
 }
 
-func (m *GatewayConfiguration) GetStatsInterval() *duration.Duration {
+func (m *GatewayConfiguration) GetStatsInterval() *durationpb.Duration {
 	if m != nil {
 		return m.StatsInterval
 	}

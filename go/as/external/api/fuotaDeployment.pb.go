@@ -7,12 +7,12 @@ import (
 	context "context"
 	fmt "fmt"
 	proto "github.com/golang/protobuf/proto"
-	duration "github.com/golang/protobuf/ptypes/duration"
-	timestamp "github.com/golang/protobuf/ptypes/timestamp"
 	_ "google.golang.org/genproto/googleapis/api/annotations"
 	grpc "google.golang.org/grpc"
 	codes "google.golang.org/grpc/codes"
 	status "google.golang.org/grpc/status"
+	durationpb "google.golang.org/protobuf/types/known/durationpb"
+	timestamppb "google.golang.org/protobuf/types/known/timestamppb"
 	math "math"
 )
 
@@ -83,16 +83,16 @@ type FUOTADeployment struct {
 	// Set this to the value in which you at least expect an uplink frame from the
 	// device. The FUOTA deployment engine will wait at least for the given time
 	// before proceeding with the next steps.
-	UnicastTimeout *duration.Duration `protobuf:"bytes,9,opt,name=unicast_timeout,json=unicastTimeout,proto3" json:"unicast_timeout,omitempty"`
+	UnicastTimeout *durationpb.Duration `protobuf:"bytes,9,opt,name=unicast_timeout,json=unicastTimeout,proto3" json:"unicast_timeout,omitempty"`
 	// Deployment state.
 	// This value will be automatically set on create.
 	State string `protobuf:"bytes,10,opt,name=state,proto3" json:"state,omitempty"`
 	// Next step after.
 	// This value will be automatically set on create.
-	NextStepAfter        *timestamp.Timestamp `protobuf:"bytes,11,opt,name=next_step_after,json=nextStepAfter,proto3" json:"next_step_after,omitempty"`
-	XXX_NoUnkeyedLiteral struct{}             `json:"-"`
-	XXX_unrecognized     []byte               `json:"-"`
-	XXX_sizecache        int32                `json:"-"`
+	NextStepAfter        *timestamppb.Timestamp `protobuf:"bytes,11,opt,name=next_step_after,json=nextStepAfter,proto3" json:"next_step_after,omitempty"`
+	XXX_NoUnkeyedLiteral struct{}               `json:"-"`
+	XXX_unrecognized     []byte                 `json:"-"`
+	XXX_sizecache        int32                  `json:"-"`
 }
 
 func (m *FUOTADeployment) Reset()         { *m = FUOTADeployment{} }
@@ -176,7 +176,7 @@ func (m *FUOTADeployment) GetMulticastTimeout() uint32 {
 	return 0
 }
 
-func (m *FUOTADeployment) GetUnicastTimeout() *duration.Duration {
+func (m *FUOTADeployment) GetUnicastTimeout() *durationpb.Duration {
 	if m != nil {
 		return m.UnicastTimeout
 	}
@@ -190,7 +190,7 @@ func (m *FUOTADeployment) GetState() string {
 	return ""
 }
 
-func (m *FUOTADeployment) GetNextStepAfter() *timestamp.Timestamp {
+func (m *FUOTADeployment) GetNextStepAfter() *timestamppb.Timestamp {
 	if m != nil {
 		return m.NextStepAfter
 	}
@@ -201,18 +201,18 @@ type FUOTADeploymentListItem struct {
 	// ID of the deployment (string formatted UUID).
 	Id string `protobuf:"bytes,1,opt,name=id,proto3" json:"id,omitempty"`
 	// Created at timestamp.
-	CreatedAt *timestamp.Timestamp `protobuf:"bytes,2,opt,name=created_at,json=createdAt,proto3" json:"created_at,omitempty"`
+	CreatedAt *timestamppb.Timestamp `protobuf:"bytes,2,opt,name=created_at,json=createdAt,proto3" json:"created_at,omitempty"`
 	// Last update timestamp.
-	UpdatedAt *timestamp.Timestamp `protobuf:"bytes,3,opt,name=updated_at,json=updatedAt,proto3" json:"updated_at,omitempty"`
+	UpdatedAt *timestamppb.Timestamp `protobuf:"bytes,3,opt,name=updated_at,json=updatedAt,proto3" json:"updated_at,omitempty"`
 	// Name of the deployment.
 	Name string `protobuf:"bytes,4,opt,name=name,proto3" json:"name,omitempty"`
 	// Deployment state.
 	State string `protobuf:"bytes,5,opt,name=state,proto3" json:"state,omitempty"`
 	// Next step after.
-	NextStepAfter        *timestamp.Timestamp `protobuf:"bytes,6,opt,name=next_step_after,json=nextStepAfter,proto3" json:"next_step_after,omitempty"`
-	XXX_NoUnkeyedLiteral struct{}             `json:"-"`
-	XXX_unrecognized     []byte               `json:"-"`
-	XXX_sizecache        int32                `json:"-"`
+	NextStepAfter        *timestamppb.Timestamp `protobuf:"bytes,6,opt,name=next_step_after,json=nextStepAfter,proto3" json:"next_step_after,omitempty"`
+	XXX_NoUnkeyedLiteral struct{}               `json:"-"`
+	XXX_unrecognized     []byte                 `json:"-"`
+	XXX_sizecache        int32                  `json:"-"`
 }
 
 func (m *FUOTADeploymentListItem) Reset()         { *m = FUOTADeploymentListItem{} }
@@ -247,14 +247,14 @@ func (m *FUOTADeploymentListItem) GetId() string {
 	return ""
 }
 
-func (m *FUOTADeploymentListItem) GetCreatedAt() *timestamp.Timestamp {
+func (m *FUOTADeploymentListItem) GetCreatedAt() *timestamppb.Timestamp {
 	if m != nil {
 		return m.CreatedAt
 	}
 	return nil
 }
 
-func (m *FUOTADeploymentListItem) GetUpdatedAt() *timestamp.Timestamp {
+func (m *FUOTADeploymentListItem) GetUpdatedAt() *timestamppb.Timestamp {
 	if m != nil {
 		return m.UpdatedAt
 	}
@@ -275,7 +275,7 @@ func (m *FUOTADeploymentListItem) GetState() string {
 	return ""
 }
 
-func (m *FUOTADeploymentListItem) GetNextStepAfter() *timestamp.Timestamp {
+func (m *FUOTADeploymentListItem) GetNextStepAfter() *timestamppb.Timestamp {
 	if m != nil {
 		return m.NextStepAfter
 	}
@@ -514,12 +514,12 @@ func (m *GetFUOTADeploymentRequest) GetId() string {
 type GetFUOTADeploymentResponse struct {
 	FuotaDeployment *FUOTADeployment `protobuf:"bytes,1,opt,name=fuota_deployment,json=fuotaDeployment,proto3" json:"fuota_deployment,omitempty"`
 	// Created at timestamp.
-	CreatedAt *timestamp.Timestamp `protobuf:"bytes,2,opt,name=created_at,json=createdAt,proto3" json:"created_at,omitempty"`
+	CreatedAt *timestamppb.Timestamp `protobuf:"bytes,2,opt,name=created_at,json=createdAt,proto3" json:"created_at,omitempty"`
 	// Last update timestamp.
-	UpdatedAt            *timestamp.Timestamp `protobuf:"bytes,3,opt,name=updated_at,json=updatedAt,proto3" json:"updated_at,omitempty"`
-	XXX_NoUnkeyedLiteral struct{}             `json:"-"`
-	XXX_unrecognized     []byte               `json:"-"`
-	XXX_sizecache        int32                `json:"-"`
+	UpdatedAt            *timestamppb.Timestamp `protobuf:"bytes,3,opt,name=updated_at,json=updatedAt,proto3" json:"updated_at,omitempty"`
+	XXX_NoUnkeyedLiteral struct{}               `json:"-"`
+	XXX_unrecognized     []byte                 `json:"-"`
+	XXX_sizecache        int32                  `json:"-"`
 }
 
 func (m *GetFUOTADeploymentResponse) Reset()         { *m = GetFUOTADeploymentResponse{} }
@@ -554,14 +554,14 @@ func (m *GetFUOTADeploymentResponse) GetFuotaDeployment() *FUOTADeployment {
 	return nil
 }
 
-func (m *GetFUOTADeploymentResponse) GetCreatedAt() *timestamp.Timestamp {
+func (m *GetFUOTADeploymentResponse) GetCreatedAt() *timestamppb.Timestamp {
 	if m != nil {
 		return m.CreatedAt
 	}
 	return nil
 }
 
-func (m *GetFUOTADeploymentResponse) GetUpdatedAt() *timestamp.Timestamp {
+func (m *GetFUOTADeploymentResponse) GetUpdatedAt() *timestamppb.Timestamp {
 	if m != nil {
 		return m.UpdatedAt
 	}
@@ -890,12 +890,12 @@ type FUOTADeploymentDeviceListItem struct {
 	// Error message (in case of error state).
 	ErrorMessage string `protobuf:"bytes,4,opt,name=error_message,json=errorMessage,proto3" json:"error_message,omitempty"`
 	// Created at timestamp.
-	CreatedAt *timestamp.Timestamp `protobuf:"bytes,5,opt,name=created_at,json=createdAt,proto3" json:"created_at,omitempty"`
+	CreatedAt *timestamppb.Timestamp `protobuf:"bytes,5,opt,name=created_at,json=createdAt,proto3" json:"created_at,omitempty"`
 	// Updated at timestamp.
-	UpdatedAt            *timestamp.Timestamp `protobuf:"bytes,6,opt,name=updated_at,json=updatedAt,proto3" json:"updated_at,omitempty"`
-	XXX_NoUnkeyedLiteral struct{}             `json:"-"`
-	XXX_unrecognized     []byte               `json:"-"`
-	XXX_sizecache        int32                `json:"-"`
+	UpdatedAt            *timestamppb.Timestamp `protobuf:"bytes,6,opt,name=updated_at,json=updatedAt,proto3" json:"updated_at,omitempty"`
+	XXX_NoUnkeyedLiteral struct{}               `json:"-"`
+	XXX_unrecognized     []byte                 `json:"-"`
+	XXX_sizecache        int32                  `json:"-"`
 }
 
 func (m *FUOTADeploymentDeviceListItem) Reset()         { *m = FUOTADeploymentDeviceListItem{} }
@@ -951,14 +951,14 @@ func (m *FUOTADeploymentDeviceListItem) GetErrorMessage() string {
 	return ""
 }
 
-func (m *FUOTADeploymentDeviceListItem) GetCreatedAt() *timestamp.Timestamp {
+func (m *FUOTADeploymentDeviceListItem) GetCreatedAt() *timestamppb.Timestamp {
 	if m != nil {
 		return m.CreatedAt
 	}
 	return nil
 }
 
-func (m *FUOTADeploymentDeviceListItem) GetUpdatedAt() *timestamp.Timestamp {
+func (m *FUOTADeploymentDeviceListItem) GetUpdatedAt() *timestamppb.Timestamp {
 	if m != nil {
 		return m.UpdatedAt
 	}

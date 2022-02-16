@@ -7,13 +7,13 @@ import (
 	context "context"
 	fmt "fmt"
 	proto "github.com/golang/protobuf/proto"
-	duration "github.com/golang/protobuf/ptypes/duration"
-	empty "github.com/golang/protobuf/ptypes/empty"
-	timestamp "github.com/golang/protobuf/ptypes/timestamp"
 	_ "google.golang.org/genproto/googleapis/api/annotations"
 	grpc "google.golang.org/grpc"
 	codes "google.golang.org/grpc/codes"
 	status "google.golang.org/grpc/status"
+	durationpb "google.golang.org/protobuf/types/known/durationpb"
+	emptypb "google.golang.org/protobuf/types/known/emptypb"
+	timestamppb "google.golang.org/protobuf/types/known/timestamppb"
 	math "math"
 )
 
@@ -66,13 +66,13 @@ type RemoteMulticastGroup struct {
 	// Set this to the value in which you at least expect an uplink frame from the
 	// device. The Remote Multicast deployment engine will wait at least for the
 	// given time before proceeding with the next steps.
-	UnicastTimeout *duration.Duration `protobuf:"bytes,13,opt,name=unicast_timeout,json=unicastTimeout,proto3" json:"unicast_timeout,omitempty"`
+	UnicastTimeout *durationpb.Duration `protobuf:"bytes,13,opt,name=unicast_timeout,json=unicastTimeout,proto3" json:"unicast_timeout,omitempty"`
 	// Next step after.
 	// This value will be automatically set on create.
-	NextStepAfter        *timestamp.Timestamp `protobuf:"bytes,14,opt,name=next_step_after,json=nextStepAfter,proto3" json:"next_step_after,omitempty"`
-	XXX_NoUnkeyedLiteral struct{}             `json:"-"`
-	XXX_unrecognized     []byte               `json:"-"`
-	XXX_sizecache        int32                `json:"-"`
+	NextStepAfter        *timestamppb.Timestamp `protobuf:"bytes,14,opt,name=next_step_after,json=nextStepAfter,proto3" json:"next_step_after,omitempty"`
+	XXX_NoUnkeyedLiteral struct{}               `json:"-"`
+	XXX_unrecognized     []byte                 `json:"-"`
+	XXX_sizecache        int32                  `json:"-"`
 }
 
 func (m *RemoteMulticastGroup) Reset()         { *m = RemoteMulticastGroup{} }
@@ -184,14 +184,14 @@ func (m *RemoteMulticastGroup) GetState() string {
 	return ""
 }
 
-func (m *RemoteMulticastGroup) GetUnicastTimeout() *duration.Duration {
+func (m *RemoteMulticastGroup) GetUnicastTimeout() *durationpb.Duration {
 	if m != nil {
 		return m.UnicastTimeout
 	}
 	return nil
 }
 
-func (m *RemoteMulticastGroup) GetNextStepAfter() *timestamp.Timestamp {
+func (m *RemoteMulticastGroup) GetNextStepAfter() *timestamppb.Timestamp {
 	if m != nil {
 		return m.NextStepAfter
 	}
@@ -210,15 +210,15 @@ type RemoteMulticastDeploymentDevice struct {
 	ApplicationName string `protobuf:"bytes,5,opt,name=application_name,json=applicationName,proto3" json:"application_name,omitempty"`
 	// The last time the application-server received any data from the device,
 	// or an empty string when the device never sent any data.
-	LastSeenAt *timestamp.Timestamp `protobuf:"bytes,6,opt,name=last_seen_at,json=lastSeenAt,proto3" json:"last_seen_at,omitempty"`
+	LastSeenAt *timestamppb.Timestamp `protobuf:"bytes,6,opt,name=last_seen_at,json=lastSeenAt,proto3" json:"last_seen_at,omitempty"`
 	// Mc Group id
 	// This value will be automatically set on create.
 	// Between 0 to 3
 	McGroupId uint32 `protobuf:"varint,7,opt,name=mc_group_id,json=mcGroupId,proto3" json:"mc_group_id,omitempty"`
 	// Created at timestamp.
-	CreatedAt *timestamp.Timestamp `protobuf:"bytes,8,opt,name=created_at,json=createdAt,proto3" json:"created_at,omitempty"`
+	CreatedAt *timestamppb.Timestamp `protobuf:"bytes,8,opt,name=created_at,json=createdAt,proto3" json:"created_at,omitempty"`
 	// Last update timestamp.
-	UpdatedAt *timestamp.Timestamp `protobuf:"bytes,9,opt,name=updated_at,json=updatedAt,proto3" json:"updated_at,omitempty"`
+	UpdatedAt *timestamppb.Timestamp `protobuf:"bytes,9,opt,name=updated_at,json=updatedAt,proto3" json:"updated_at,omitempty"`
 	// Remote Multicast Deployment Device state.
 	// This value will be automatically set on create.
 	State FUOTADeploymentDeviceState `protobuf:"varint,10,opt,name=state,proto3,enum=api.FUOTADeploymentDeviceState" json:"state,omitempty"`
@@ -291,7 +291,7 @@ func (m *RemoteMulticastDeploymentDevice) GetApplicationName() string {
 	return ""
 }
 
-func (m *RemoteMulticastDeploymentDevice) GetLastSeenAt() *timestamp.Timestamp {
+func (m *RemoteMulticastDeploymentDevice) GetLastSeenAt() *timestamppb.Timestamp {
 	if m != nil {
 		return m.LastSeenAt
 	}
@@ -305,14 +305,14 @@ func (m *RemoteMulticastDeploymentDevice) GetMcGroupId() uint32 {
 	return 0
 }
 
-func (m *RemoteMulticastDeploymentDevice) GetCreatedAt() *timestamp.Timestamp {
+func (m *RemoteMulticastDeploymentDevice) GetCreatedAt() *timestamppb.Timestamp {
 	if m != nil {
 		return m.CreatedAt
 	}
 	return nil
 }
 
-func (m *RemoteMulticastDeploymentDevice) GetUpdatedAt() *timestamp.Timestamp {
+func (m *RemoteMulticastDeploymentDevice) GetUpdatedAt() *timestamppb.Timestamp {
 	if m != nil {
 		return m.UpdatedAt
 	}
@@ -540,12 +540,12 @@ type GetRemoteMulticastGroupResponse struct {
 	// Remote Multicast-group object.
 	RemoteMulticastGroup *RemoteMulticastGroup `protobuf:"bytes,1,opt,name=remote_multicast_group,json=remoteMulticastGroup,proto3" json:"remote_multicast_group,omitempty"`
 	// Created at timestamp.
-	CreatedAt *timestamp.Timestamp `protobuf:"bytes,2,opt,name=created_at,json=createdAt,proto3" json:"created_at,omitempty"`
+	CreatedAt *timestamppb.Timestamp `protobuf:"bytes,2,opt,name=created_at,json=createdAt,proto3" json:"created_at,omitempty"`
 	// Last update timestamp.
-	UpdatedAt            *timestamp.Timestamp `protobuf:"bytes,3,opt,name=updated_at,json=updatedAt,proto3" json:"updated_at,omitempty"`
-	XXX_NoUnkeyedLiteral struct{}             `json:"-"`
-	XXX_unrecognized     []byte               `json:"-"`
-	XXX_sizecache        int32                `json:"-"`
+	UpdatedAt            *timestamppb.Timestamp `protobuf:"bytes,3,opt,name=updated_at,json=updatedAt,proto3" json:"updated_at,omitempty"`
+	XXX_NoUnkeyedLiteral struct{}               `json:"-"`
+	XXX_unrecognized     []byte                 `json:"-"`
+	XXX_sizecache        int32                  `json:"-"`
 }
 
 func (m *GetRemoteMulticastGroupResponse) Reset()         { *m = GetRemoteMulticastGroupResponse{} }
@@ -580,14 +580,14 @@ func (m *GetRemoteMulticastGroupResponse) GetRemoteMulticastGroup() *RemoteMulti
 	return nil
 }
 
-func (m *GetRemoteMulticastGroupResponse) GetCreatedAt() *timestamp.Timestamp {
+func (m *GetRemoteMulticastGroupResponse) GetCreatedAt() *timestamppb.Timestamp {
 	if m != nil {
 		return m.CreatedAt
 	}
 	return nil
 }
 
-func (m *GetRemoteMulticastGroupResponse) GetUpdatedAt() *timestamp.Timestamp {
+func (m *GetRemoteMulticastGroupResponse) GetUpdatedAt() *timestamppb.Timestamp {
 	if m != nil {
 		return m.UpdatedAt
 	}
@@ -1677,17 +1677,17 @@ type RemoteMulticastGroupServiceClient interface {
 	// Get returns a remote multicast-group given an ID.
 	Get(ctx context.Context, in *GetRemoteMulticastGroupRequest, opts ...grpc.CallOption) (*GetRemoteMulticastGroupResponse, error)
 	// Update updates the given remote multicast-group.
-	Update(ctx context.Context, in *UpdateRemoteMulticastGroupRequest, opts ...grpc.CallOption) (*empty.Empty, error)
+	Update(ctx context.Context, in *UpdateRemoteMulticastGroupRequest, opts ...grpc.CallOption) (*emptypb.Empty, error)
 	// Delete deletes a remote multicast-group given an ID.
-	Delete(ctx context.Context, in *DeleteRemoteMulticastGroupRequest, opts ...grpc.CallOption) (*empty.Empty, error)
+	Delete(ctx context.Context, in *DeleteRemoteMulticastGroupRequest, opts ...grpc.CallOption) (*emptypb.Empty, error)
 	// List lists the available remote multicast-groups.
 	List(ctx context.Context, in *ListRemoteMulticastGroupRequest, opts ...grpc.CallOption) (*ListRemoteMulticastGroupResponse, error)
 	// AddDevice adds the given devices to the remote multicast-group.
-	AddDevice(ctx context.Context, in *AddDeviceToRemoteMulticastGroupRequest, opts ...grpc.CallOption) (*empty.Empty, error)
+	AddDevice(ctx context.Context, in *AddDeviceToRemoteMulticastGroupRequest, opts ...grpc.CallOption) (*emptypb.Empty, error)
 	// ResetDevice Restart the remote multicast process of given device.
-	ResetDevice(ctx context.Context, in *ResetRemoteMulticastDeviceRequest, opts ...grpc.CallOption) (*empty.Empty, error)
+	ResetDevice(ctx context.Context, in *ResetRemoteMulticastDeviceRequest, opts ...grpc.CallOption) (*emptypb.Empty, error)
 	// RemoveDevice removes the given device from the remote multicast-group.
-	RemoveDevice(ctx context.Context, in *RemoveDeviceFromRemoteMulticastGroupRequest, opts ...grpc.CallOption) (*empty.Empty, error)
+	RemoveDevice(ctx context.Context, in *RemoveDeviceFromRemoteMulticastGroupRequest, opts ...grpc.CallOption) (*emptypb.Empty, error)
 	// ListDevicesForRemoteMulticast Lists the available pending devices for joining to
 	// remote multicast-group for given application id.
 	ListDevicesForRemoteMulticast(ctx context.Context, in *ListRemoteMulticastDeviceRequest, opts ...grpc.CallOption) (*ListRemoteMulticastDeviceResponse, error)
@@ -1698,7 +1698,7 @@ type RemoteMulticastGroupServiceClient interface {
 	// Enqueue adds the given item to the remote multicast-queue.
 	Enqueue(ctx context.Context, in *EnqueueRemoteMulticastQueueItemRequest, opts ...grpc.CallOption) (*EnqueueRemoteMulticastQueueItemResponse, error)
 	// FlushQueue flushes the remote multicast-group queue.
-	FlushQueue(ctx context.Context, in *FlushRemoteMulticastGroupQueueItemsRequest, opts ...grpc.CallOption) (*empty.Empty, error)
+	FlushQueue(ctx context.Context, in *FlushRemoteMulticastGroupQueueItemsRequest, opts ...grpc.CallOption) (*emptypb.Empty, error)
 	// ListQueue lists the items in the remote multicast-group queue.
 	ListQueue(ctx context.Context, in *ListRemoteMulticastGroupQueueItemsRequest, opts ...grpc.CallOption) (*ListRemoteMulticastGroupQueueItemsResponse, error)
 }
@@ -1729,8 +1729,8 @@ func (c *remoteMulticastGroupServiceClient) Get(ctx context.Context, in *GetRemo
 	return out, nil
 }
 
-func (c *remoteMulticastGroupServiceClient) Update(ctx context.Context, in *UpdateRemoteMulticastGroupRequest, opts ...grpc.CallOption) (*empty.Empty, error) {
-	out := new(empty.Empty)
+func (c *remoteMulticastGroupServiceClient) Update(ctx context.Context, in *UpdateRemoteMulticastGroupRequest, opts ...grpc.CallOption) (*emptypb.Empty, error) {
+	out := new(emptypb.Empty)
 	err := c.cc.Invoke(ctx, "/api.RemoteMulticastGroupService/Update", in, out, opts...)
 	if err != nil {
 		return nil, err
@@ -1738,8 +1738,8 @@ func (c *remoteMulticastGroupServiceClient) Update(ctx context.Context, in *Upda
 	return out, nil
 }
 
-func (c *remoteMulticastGroupServiceClient) Delete(ctx context.Context, in *DeleteRemoteMulticastGroupRequest, opts ...grpc.CallOption) (*empty.Empty, error) {
-	out := new(empty.Empty)
+func (c *remoteMulticastGroupServiceClient) Delete(ctx context.Context, in *DeleteRemoteMulticastGroupRequest, opts ...grpc.CallOption) (*emptypb.Empty, error) {
+	out := new(emptypb.Empty)
 	err := c.cc.Invoke(ctx, "/api.RemoteMulticastGroupService/Delete", in, out, opts...)
 	if err != nil {
 		return nil, err
@@ -1756,8 +1756,8 @@ func (c *remoteMulticastGroupServiceClient) List(ctx context.Context, in *ListRe
 	return out, nil
 }
 
-func (c *remoteMulticastGroupServiceClient) AddDevice(ctx context.Context, in *AddDeviceToRemoteMulticastGroupRequest, opts ...grpc.CallOption) (*empty.Empty, error) {
-	out := new(empty.Empty)
+func (c *remoteMulticastGroupServiceClient) AddDevice(ctx context.Context, in *AddDeviceToRemoteMulticastGroupRequest, opts ...grpc.CallOption) (*emptypb.Empty, error) {
+	out := new(emptypb.Empty)
 	err := c.cc.Invoke(ctx, "/api.RemoteMulticastGroupService/AddDevice", in, out, opts...)
 	if err != nil {
 		return nil, err
@@ -1765,8 +1765,8 @@ func (c *remoteMulticastGroupServiceClient) AddDevice(ctx context.Context, in *A
 	return out, nil
 }
 
-func (c *remoteMulticastGroupServiceClient) ResetDevice(ctx context.Context, in *ResetRemoteMulticastDeviceRequest, opts ...grpc.CallOption) (*empty.Empty, error) {
-	out := new(empty.Empty)
+func (c *remoteMulticastGroupServiceClient) ResetDevice(ctx context.Context, in *ResetRemoteMulticastDeviceRequest, opts ...grpc.CallOption) (*emptypb.Empty, error) {
+	out := new(emptypb.Empty)
 	err := c.cc.Invoke(ctx, "/api.RemoteMulticastGroupService/ResetDevice", in, out, opts...)
 	if err != nil {
 		return nil, err
@@ -1774,8 +1774,8 @@ func (c *remoteMulticastGroupServiceClient) ResetDevice(ctx context.Context, in 
 	return out, nil
 }
 
-func (c *remoteMulticastGroupServiceClient) RemoveDevice(ctx context.Context, in *RemoveDeviceFromRemoteMulticastGroupRequest, opts ...grpc.CallOption) (*empty.Empty, error) {
-	out := new(empty.Empty)
+func (c *remoteMulticastGroupServiceClient) RemoveDevice(ctx context.Context, in *RemoveDeviceFromRemoteMulticastGroupRequest, opts ...grpc.CallOption) (*emptypb.Empty, error) {
+	out := new(emptypb.Empty)
 	err := c.cc.Invoke(ctx, "/api.RemoteMulticastGroupService/RemoveDevice", in, out, opts...)
 	if err != nil {
 		return nil, err
@@ -1819,8 +1819,8 @@ func (c *remoteMulticastGroupServiceClient) Enqueue(ctx context.Context, in *Enq
 	return out, nil
 }
 
-func (c *remoteMulticastGroupServiceClient) FlushQueue(ctx context.Context, in *FlushRemoteMulticastGroupQueueItemsRequest, opts ...grpc.CallOption) (*empty.Empty, error) {
-	out := new(empty.Empty)
+func (c *remoteMulticastGroupServiceClient) FlushQueue(ctx context.Context, in *FlushRemoteMulticastGroupQueueItemsRequest, opts ...grpc.CallOption) (*emptypb.Empty, error) {
+	out := new(emptypb.Empty)
 	err := c.cc.Invoke(ctx, "/api.RemoteMulticastGroupService/FlushQueue", in, out, opts...)
 	if err != nil {
 		return nil, err
@@ -1844,17 +1844,17 @@ type RemoteMulticastGroupServiceServer interface {
 	// Get returns a remote multicast-group given an ID.
 	Get(context.Context, *GetRemoteMulticastGroupRequest) (*GetRemoteMulticastGroupResponse, error)
 	// Update updates the given remote multicast-group.
-	Update(context.Context, *UpdateRemoteMulticastGroupRequest) (*empty.Empty, error)
+	Update(context.Context, *UpdateRemoteMulticastGroupRequest) (*emptypb.Empty, error)
 	// Delete deletes a remote multicast-group given an ID.
-	Delete(context.Context, *DeleteRemoteMulticastGroupRequest) (*empty.Empty, error)
+	Delete(context.Context, *DeleteRemoteMulticastGroupRequest) (*emptypb.Empty, error)
 	// List lists the available remote multicast-groups.
 	List(context.Context, *ListRemoteMulticastGroupRequest) (*ListRemoteMulticastGroupResponse, error)
 	// AddDevice adds the given devices to the remote multicast-group.
-	AddDevice(context.Context, *AddDeviceToRemoteMulticastGroupRequest) (*empty.Empty, error)
+	AddDevice(context.Context, *AddDeviceToRemoteMulticastGroupRequest) (*emptypb.Empty, error)
 	// ResetDevice Restart the remote multicast process of given device.
-	ResetDevice(context.Context, *ResetRemoteMulticastDeviceRequest) (*empty.Empty, error)
+	ResetDevice(context.Context, *ResetRemoteMulticastDeviceRequest) (*emptypb.Empty, error)
 	// RemoveDevice removes the given device from the remote multicast-group.
-	RemoveDevice(context.Context, *RemoveDeviceFromRemoteMulticastGroupRequest) (*empty.Empty, error)
+	RemoveDevice(context.Context, *RemoveDeviceFromRemoteMulticastGroupRequest) (*emptypb.Empty, error)
 	// ListDevicesForRemoteMulticast Lists the available pending devices for joining to
 	// remote multicast-group for given application id.
 	ListDevicesForRemoteMulticast(context.Context, *ListRemoteMulticastDeviceRequest) (*ListRemoteMulticastDeviceResponse, error)
@@ -1865,7 +1865,7 @@ type RemoteMulticastGroupServiceServer interface {
 	// Enqueue adds the given item to the remote multicast-queue.
 	Enqueue(context.Context, *EnqueueRemoteMulticastQueueItemRequest) (*EnqueueRemoteMulticastQueueItemResponse, error)
 	// FlushQueue flushes the remote multicast-group queue.
-	FlushQueue(context.Context, *FlushRemoteMulticastGroupQueueItemsRequest) (*empty.Empty, error)
+	FlushQueue(context.Context, *FlushRemoteMulticastGroupQueueItemsRequest) (*emptypb.Empty, error)
 	// ListQueue lists the items in the remote multicast-group queue.
 	ListQueue(context.Context, *ListRemoteMulticastGroupQueueItemsRequest) (*ListRemoteMulticastGroupQueueItemsResponse, error)
 }
@@ -1880,22 +1880,22 @@ func (*UnimplementedRemoteMulticastGroupServiceServer) Create(ctx context.Contex
 func (*UnimplementedRemoteMulticastGroupServiceServer) Get(ctx context.Context, req *GetRemoteMulticastGroupRequest) (*GetRemoteMulticastGroupResponse, error) {
 	return nil, status.Errorf(codes.Unimplemented, "method Get not implemented")
 }
-func (*UnimplementedRemoteMulticastGroupServiceServer) Update(ctx context.Context, req *UpdateRemoteMulticastGroupRequest) (*empty.Empty, error) {
+func (*UnimplementedRemoteMulticastGroupServiceServer) Update(ctx context.Context, req *UpdateRemoteMulticastGroupRequest) (*emptypb.Empty, error) {
 	return nil, status.Errorf(codes.Unimplemented, "method Update not implemented")
 }
-func (*UnimplementedRemoteMulticastGroupServiceServer) Delete(ctx context.Context, req *DeleteRemoteMulticastGroupRequest) (*empty.Empty, error) {
+func (*UnimplementedRemoteMulticastGroupServiceServer) Delete(ctx context.Context, req *DeleteRemoteMulticastGroupRequest) (*emptypb.Empty, error) {
 	return nil, status.Errorf(codes.Unimplemented, "method Delete not implemented")
 }
 func (*UnimplementedRemoteMulticastGroupServiceServer) List(ctx context.Context, req *ListRemoteMulticastGroupRequest) (*ListRemoteMulticastGroupResponse, error) {
 	return nil, status.Errorf(codes.Unimplemented, "method List not implemented")
 }
-func (*UnimplementedRemoteMulticastGroupServiceServer) AddDevice(ctx context.Context, req *AddDeviceToRemoteMulticastGroupRequest) (*empty.Empty, error) {
+func (*UnimplementedRemoteMulticastGroupServiceServer) AddDevice(ctx context.Context, req *AddDeviceToRemoteMulticastGroupRequest) (*emptypb.Empty, error) {
 	return nil, status.Errorf(codes.Unimplemented, "method AddDevice not implemented")
 }
-func (*UnimplementedRemoteMulticastGroupServiceServer) ResetDevice(ctx context.Context, req *ResetRemoteMulticastDeviceRequest) (*empty.Empty, error) {
+func (*UnimplementedRemoteMulticastGroupServiceServer) ResetDevice(ctx context.Context, req *ResetRemoteMulticastDeviceRequest) (*emptypb.Empty, error) {
 	return nil, status.Errorf(codes.Unimplemented, "method ResetDevice not implemented")
 }
-func (*UnimplementedRemoteMulticastGroupServiceServer) RemoveDevice(ctx context.Context, req *RemoveDeviceFromRemoteMulticastGroupRequest) (*empty.Empty, error) {
+func (*UnimplementedRemoteMulticastGroupServiceServer) RemoveDevice(ctx context.Context, req *RemoveDeviceFromRemoteMulticastGroupRequest) (*emptypb.Empty, error) {
 	return nil, status.Errorf(codes.Unimplemented, "method RemoveDevice not implemented")
 }
 func (*UnimplementedRemoteMulticastGroupServiceServer) ListDevicesForRemoteMulticast(ctx context.Context, req *ListRemoteMulticastDeviceRequest) (*ListRemoteMulticastDeviceResponse, error) {
@@ -1910,7 +1910,7 @@ func (*UnimplementedRemoteMulticastGroupServiceServer) GetDeploymentDevice(ctx c
 func (*UnimplementedRemoteMulticastGroupServiceServer) Enqueue(ctx context.Context, req *EnqueueRemoteMulticastQueueItemRequest) (*EnqueueRemoteMulticastQueueItemResponse, error) {
 	return nil, status.Errorf(codes.Unimplemented, "method Enqueue not implemented")
 }
-func (*UnimplementedRemoteMulticastGroupServiceServer) FlushQueue(ctx context.Context, req *FlushRemoteMulticastGroupQueueItemsRequest) (*empty.Empty, error) {
+func (*UnimplementedRemoteMulticastGroupServiceServer) FlushQueue(ctx context.Context, req *FlushRemoteMulticastGroupQueueItemsRequest) (*emptypb.Empty, error) {
 	return nil, status.Errorf(codes.Unimplemented, "method FlushQueue not implemented")
 }
 func (*UnimplementedRemoteMulticastGroupServiceServer) ListQueue(ctx context.Context, req *ListRemoteMulticastGroupQueueItemsRequest) (*ListRemoteMulticastGroupQueueItemsResponse, error) {

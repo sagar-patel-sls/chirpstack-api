@@ -7,12 +7,12 @@ import (
 	context "context"
 	fmt "fmt"
 	proto "github.com/golang/protobuf/proto"
-	empty "github.com/golang/protobuf/ptypes/empty"
-	timestamp "github.com/golang/protobuf/ptypes/timestamp"
 	_ "google.golang.org/genproto/googleapis/api/annotations"
 	grpc "google.golang.org/grpc"
 	codes "google.golang.org/grpc/codes"
 	status "google.golang.org/grpc/status"
+	emptypb "google.golang.org/protobuf/types/known/emptypb"
+	timestamppb "google.golang.org/protobuf/types/known/timestamppb"
 	math "math"
 )
 
@@ -376,12 +376,12 @@ type OrganizationLink struct {
 	// User is able to modify gateways.
 	IsGatewayAdmin bool `protobuf:"varint,7,opt,name=is_gateway_admin,json=isGatewayAdmin,proto3" json:"is_gateway_admin,omitempty"`
 	// Created at timestamp.
-	CreatedAt *timestamp.Timestamp `protobuf:"bytes,4,opt,name=created_at,json=createdAt,proto3" json:"created_at,omitempty"`
+	CreatedAt *timestamppb.Timestamp `protobuf:"bytes,4,opt,name=created_at,json=createdAt,proto3" json:"created_at,omitempty"`
 	// Last update timestamp.
-	UpdatedAt            *timestamp.Timestamp `protobuf:"bytes,5,opt,name=updated_at,json=updatedAt,proto3" json:"updated_at,omitempty"`
-	XXX_NoUnkeyedLiteral struct{}             `json:"-"`
-	XXX_unrecognized     []byte               `json:"-"`
-	XXX_sizecache        int32                `json:"-"`
+	UpdatedAt            *timestamppb.Timestamp `protobuf:"bytes,5,opt,name=updated_at,json=updatedAt,proto3" json:"updated_at,omitempty"`
+	XXX_NoUnkeyedLiteral struct{}               `json:"-"`
+	XXX_unrecognized     []byte                 `json:"-"`
+	XXX_sizecache        int32                  `json:"-"`
 }
 
 func (m *OrganizationLink) Reset()         { *m = OrganizationLink{} }
@@ -444,14 +444,14 @@ func (m *OrganizationLink) GetIsGatewayAdmin() bool {
 	return false
 }
 
-func (m *OrganizationLink) GetCreatedAt() *timestamp.Timestamp {
+func (m *OrganizationLink) GetCreatedAt() *timestamppb.Timestamp {
 	if m != nil {
 		return m.CreatedAt
 	}
 	return nil
 }
 
-func (m *OrganizationLink) GetUpdatedAt() *timestamp.Timestamp {
+func (m *OrganizationLink) GetUpdatedAt() *timestamppb.Timestamp {
 	if m != nil {
 		return m.UpdatedAt
 	}
@@ -1466,17 +1466,17 @@ type InternalServiceClient interface {
 	// Log in a user
 	Login(ctx context.Context, in *LoginRequest, opts ...grpc.CallOption) (*LoginResponse, error)
 	// Get the current user's profile
-	Profile(ctx context.Context, in *empty.Empty, opts ...grpc.CallOption) (*ProfileResponse, error)
+	Profile(ctx context.Context, in *emptypb.Empty, opts ...grpc.CallOption) (*ProfileResponse, error)
 	// Perform a global search.
 	GlobalSearch(ctx context.Context, in *GlobalSearchRequest, opts ...grpc.CallOption) (*GlobalSearchResponse, error)
 	// CreateAPIKey creates the given API key.
 	CreateAPIKey(ctx context.Context, in *CreateAPIKeyRequest, opts ...grpc.CallOption) (*CreateAPIKeyResponse, error)
 	// DeleteAPIKey deletes the API key.
-	DeleteAPIKey(ctx context.Context, in *DeleteAPIKeyRequest, opts ...grpc.CallOption) (*empty.Empty, error)
+	DeleteAPIKey(ctx context.Context, in *DeleteAPIKeyRequest, opts ...grpc.CallOption) (*emptypb.Empty, error)
 	// ListAPIKeys lists the available API keys.
 	ListAPIKeys(ctx context.Context, in *ListAPIKeysRequest, opts ...grpc.CallOption) (*ListAPIKeysResponse, error)
 	// Get the global settings.
-	Settings(ctx context.Context, in *empty.Empty, opts ...grpc.CallOption) (*SettingsResponse, error)
+	Settings(ctx context.Context, in *emptypb.Empty, opts ...grpc.CallOption) (*SettingsResponse, error)
 	// OpenID Connect login.
 	OpenIDConnectLogin(ctx context.Context, in *OpenIDConnectLoginRequest, opts ...grpc.CallOption) (*OpenIDConnectLoginResponse, error)
 	// GetDevicesSummary returns an aggregated summary of the devices.
@@ -1502,7 +1502,7 @@ func (c *internalServiceClient) Login(ctx context.Context, in *LoginRequest, opt
 	return out, nil
 }
 
-func (c *internalServiceClient) Profile(ctx context.Context, in *empty.Empty, opts ...grpc.CallOption) (*ProfileResponse, error) {
+func (c *internalServiceClient) Profile(ctx context.Context, in *emptypb.Empty, opts ...grpc.CallOption) (*ProfileResponse, error) {
 	out := new(ProfileResponse)
 	err := c.cc.Invoke(ctx, "/api.InternalService/Profile", in, out, opts...)
 	if err != nil {
@@ -1529,8 +1529,8 @@ func (c *internalServiceClient) CreateAPIKey(ctx context.Context, in *CreateAPIK
 	return out, nil
 }
 
-func (c *internalServiceClient) DeleteAPIKey(ctx context.Context, in *DeleteAPIKeyRequest, opts ...grpc.CallOption) (*empty.Empty, error) {
-	out := new(empty.Empty)
+func (c *internalServiceClient) DeleteAPIKey(ctx context.Context, in *DeleteAPIKeyRequest, opts ...grpc.CallOption) (*emptypb.Empty, error) {
+	out := new(emptypb.Empty)
 	err := c.cc.Invoke(ctx, "/api.InternalService/DeleteAPIKey", in, out, opts...)
 	if err != nil {
 		return nil, err
@@ -1547,7 +1547,7 @@ func (c *internalServiceClient) ListAPIKeys(ctx context.Context, in *ListAPIKeys
 	return out, nil
 }
 
-func (c *internalServiceClient) Settings(ctx context.Context, in *empty.Empty, opts ...grpc.CallOption) (*SettingsResponse, error) {
+func (c *internalServiceClient) Settings(ctx context.Context, in *emptypb.Empty, opts ...grpc.CallOption) (*SettingsResponse, error) {
 	out := new(SettingsResponse)
 	err := c.cc.Invoke(ctx, "/api.InternalService/Settings", in, out, opts...)
 	if err != nil {
@@ -1588,17 +1588,17 @@ type InternalServiceServer interface {
 	// Log in a user
 	Login(context.Context, *LoginRequest) (*LoginResponse, error)
 	// Get the current user's profile
-	Profile(context.Context, *empty.Empty) (*ProfileResponse, error)
+	Profile(context.Context, *emptypb.Empty) (*ProfileResponse, error)
 	// Perform a global search.
 	GlobalSearch(context.Context, *GlobalSearchRequest) (*GlobalSearchResponse, error)
 	// CreateAPIKey creates the given API key.
 	CreateAPIKey(context.Context, *CreateAPIKeyRequest) (*CreateAPIKeyResponse, error)
 	// DeleteAPIKey deletes the API key.
-	DeleteAPIKey(context.Context, *DeleteAPIKeyRequest) (*empty.Empty, error)
+	DeleteAPIKey(context.Context, *DeleteAPIKeyRequest) (*emptypb.Empty, error)
 	// ListAPIKeys lists the available API keys.
 	ListAPIKeys(context.Context, *ListAPIKeysRequest) (*ListAPIKeysResponse, error)
 	// Get the global settings.
-	Settings(context.Context, *empty.Empty) (*SettingsResponse, error)
+	Settings(context.Context, *emptypb.Empty) (*SettingsResponse, error)
 	// OpenID Connect login.
 	OpenIDConnectLogin(context.Context, *OpenIDConnectLoginRequest) (*OpenIDConnectLoginResponse, error)
 	// GetDevicesSummary returns an aggregated summary of the devices.
@@ -1614,7 +1614,7 @@ type UnimplementedInternalServiceServer struct {
 func (*UnimplementedInternalServiceServer) Login(ctx context.Context, req *LoginRequest) (*LoginResponse, error) {
 	return nil, status.Errorf(codes.Unimplemented, "method Login not implemented")
 }
-func (*UnimplementedInternalServiceServer) Profile(ctx context.Context, req *empty.Empty) (*ProfileResponse, error) {
+func (*UnimplementedInternalServiceServer) Profile(ctx context.Context, req *emptypb.Empty) (*ProfileResponse, error) {
 	return nil, status.Errorf(codes.Unimplemented, "method Profile not implemented")
 }
 func (*UnimplementedInternalServiceServer) GlobalSearch(ctx context.Context, req *GlobalSearchRequest) (*GlobalSearchResponse, error) {
@@ -1623,13 +1623,13 @@ func (*UnimplementedInternalServiceServer) GlobalSearch(ctx context.Context, req
 func (*UnimplementedInternalServiceServer) CreateAPIKey(ctx context.Context, req *CreateAPIKeyRequest) (*CreateAPIKeyResponse, error) {
 	return nil, status.Errorf(codes.Unimplemented, "method CreateAPIKey not implemented")
 }
-func (*UnimplementedInternalServiceServer) DeleteAPIKey(ctx context.Context, req *DeleteAPIKeyRequest) (*empty.Empty, error) {
+func (*UnimplementedInternalServiceServer) DeleteAPIKey(ctx context.Context, req *DeleteAPIKeyRequest) (*emptypb.Empty, error) {
 	return nil, status.Errorf(codes.Unimplemented, "method DeleteAPIKey not implemented")
 }
 func (*UnimplementedInternalServiceServer) ListAPIKeys(ctx context.Context, req *ListAPIKeysRequest) (*ListAPIKeysResponse, error) {
 	return nil, status.Errorf(codes.Unimplemented, "method ListAPIKeys not implemented")
 }
-func (*UnimplementedInternalServiceServer) Settings(ctx context.Context, req *empty.Empty) (*SettingsResponse, error) {
+func (*UnimplementedInternalServiceServer) Settings(ctx context.Context, req *emptypb.Empty) (*SettingsResponse, error) {
 	return nil, status.Errorf(codes.Unimplemented, "method Settings not implemented")
 }
 func (*UnimplementedInternalServiceServer) OpenIDConnectLogin(ctx context.Context, req *OpenIDConnectLoginRequest) (*OpenIDConnectLoginResponse, error) {
@@ -1665,7 +1665,7 @@ func _InternalService_Login_Handler(srv interface{}, ctx context.Context, dec fu
 }
 
 func _InternalService_Profile_Handler(srv interface{}, ctx context.Context, dec func(interface{}) error, interceptor grpc.UnaryServerInterceptor) (interface{}, error) {
-	in := new(empty.Empty)
+	in := new(emptypb.Empty)
 	if err := dec(in); err != nil {
 		return nil, err
 	}
@@ -1677,7 +1677,7 @@ func _InternalService_Profile_Handler(srv interface{}, ctx context.Context, dec 
 		FullMethod: "/api.InternalService/Profile",
 	}
 	handler := func(ctx context.Context, req interface{}) (interface{}, error) {
-		return srv.(InternalServiceServer).Profile(ctx, req.(*empty.Empty))
+		return srv.(InternalServiceServer).Profile(ctx, req.(*emptypb.Empty))
 	}
 	return interceptor(ctx, in, info, handler)
 }
@@ -1755,7 +1755,7 @@ func _InternalService_ListAPIKeys_Handler(srv interface{}, ctx context.Context, 
 }
 
 func _InternalService_Settings_Handler(srv interface{}, ctx context.Context, dec func(interface{}) error, interceptor grpc.UnaryServerInterceptor) (interface{}, error) {
-	in := new(empty.Empty)
+	in := new(emptypb.Empty)
 	if err := dec(in); err != nil {
 		return nil, err
 	}
@@ -1767,7 +1767,7 @@ func _InternalService_Settings_Handler(srv interface{}, ctx context.Context, dec
 		FullMethod: "/api.InternalService/Settings",
 	}
 	handler := func(ctx context.Context, req interface{}) (interface{}, error) {
-		return srv.(InternalServiceServer).Settings(ctx, req.(*empty.Empty))
+		return srv.(InternalServiceServer).Settings(ctx, req.(*emptypb.Empty))
 	}
 	return interceptor(ctx, in, info, handler)
 }

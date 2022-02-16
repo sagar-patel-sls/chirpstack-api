@@ -7,13 +7,13 @@ import (
 	context "context"
 	fmt "fmt"
 	proto "github.com/golang/protobuf/proto"
-	empty "github.com/golang/protobuf/ptypes/empty"
-	timestamp "github.com/golang/protobuf/ptypes/timestamp"
 	common "github.com/sagar-patel-sls/chirpstack-api/go/v3/common"
 	gw "github.com/sagar-patel-sls/chirpstack-api/go/v3/gw"
 	grpc "google.golang.org/grpc"
 	codes "google.golang.org/grpc/codes"
 	status "google.golang.org/grpc/status"
+	emptypb "google.golang.org/protobuf/types/known/emptypb"
+	timestamppb "google.golang.org/protobuf/types/known/timestamppb"
 	math "math"
 )
 
@@ -631,7 +631,7 @@ type HandleGatewayStatsRequest struct {
 	// Stats ID (UUID).
 	StatsId []byte `protobuf:"bytes,2,opt,name=stats_id,json=statsId,proto3" json:"stats_id,omitempty"`
 	// Timestamp.
-	Time *timestamp.Timestamp `protobuf:"bytes,3,opt,name=time,proto3" json:"time,omitempty"`
+	Time *timestamppb.Timestamp `protobuf:"bytes,3,opt,name=time,proto3" json:"time,omitempty"`
 	// Gateway location.
 	Location *common.Location `protobuf:"bytes,4,opt,name=location,proto3" json:"location,omitempty"`
 	// Uplink frames received.
@@ -700,7 +700,7 @@ func (m *HandleGatewayStatsRequest) GetStatsId() []byte {
 	return nil
 }
 
-func (m *HandleGatewayStatsRequest) GetTime() *timestamp.Timestamp {
+func (m *HandleGatewayStatsRequest) GetTime() *timestamppb.Timestamp {
 	if m != nil {
 		return m.Time
 	}
@@ -1313,21 +1313,21 @@ const _ = grpc.SupportPackageIsVersion6
 // For semantics around ctx use and closing/ending streaming RPCs, please refer to https://godoc.org/google.golang.org/grpc#ClientConn.NewStream.
 type ApplicationServerServiceClient interface {
 	// HandleUplinkData handles uplink data received from an end-device.
-	HandleUplinkData(ctx context.Context, in *HandleUplinkDataRequest, opts ...grpc.CallOption) (*empty.Empty, error)
+	HandleUplinkData(ctx context.Context, in *HandleUplinkDataRequest, opts ...grpc.CallOption) (*emptypb.Empty, error)
 	// HandleProprietaryUplink handles proprietary uplink payloads.
-	HandleProprietaryUplink(ctx context.Context, in *HandleProprietaryUplinkRequest, opts ...grpc.CallOption) (*empty.Empty, error)
+	HandleProprietaryUplink(ctx context.Context, in *HandleProprietaryUplinkRequest, opts ...grpc.CallOption) (*emptypb.Empty, error)
 	// HandleError handles an error message.
-	HandleError(ctx context.Context, in *HandleErrorRequest, opts ...grpc.CallOption) (*empty.Empty, error)
+	HandleError(ctx context.Context, in *HandleErrorRequest, opts ...grpc.CallOption) (*emptypb.Empty, error)
 	// HandleDownlinkACK handles a downlink ACK or nACK response.
-	HandleDownlinkACK(ctx context.Context, in *HandleDownlinkACKRequest, opts ...grpc.CallOption) (*empty.Empty, error)
+	HandleDownlinkACK(ctx context.Context, in *HandleDownlinkACKRequest, opts ...grpc.CallOption) (*emptypb.Empty, error)
 	// HandleGatewayStats handles the given gateway stats.
-	HandleGatewayStats(ctx context.Context, in *HandleGatewayStatsRequest, opts ...grpc.CallOption) (*empty.Empty, error)
+	HandleGatewayStats(ctx context.Context, in *HandleGatewayStatsRequest, opts ...grpc.CallOption) (*emptypb.Empty, error)
 	// HandleTXACK handles the TX acknowledgement.
-	HandleTxAck(ctx context.Context, in *HandleTxAckRequest, opts ...grpc.CallOption) (*empty.Empty, error)
+	HandleTxAck(ctx context.Context, in *HandleTxAckRequest, opts ...grpc.CallOption) (*emptypb.Empty, error)
 	// SetDeviceStatus updates the device-status for a device.
-	SetDeviceStatus(ctx context.Context, in *SetDeviceStatusRequest, opts ...grpc.CallOption) (*empty.Empty, error)
+	SetDeviceStatus(ctx context.Context, in *SetDeviceStatusRequest, opts ...grpc.CallOption) (*emptypb.Empty, error)
 	// SetDeviceLocation updates the device-location for a device.
-	SetDeviceLocation(ctx context.Context, in *SetDeviceLocationRequest, opts ...grpc.CallOption) (*empty.Empty, error)
+	SetDeviceLocation(ctx context.Context, in *SetDeviceLocationRequest, opts ...grpc.CallOption) (*emptypb.Empty, error)
 	// ReEncryptDeviceQueueItems requests the application-server to re-encrypt
 	// the given payload items using the new parameters. This request is
 	// for example triggered when the associated frame-counter of a downlink
@@ -1338,7 +1338,7 @@ type ApplicationServerServiceClient interface {
 	// equal to the number of requested items.
 	ReEncryptDeviceQueueItems(ctx context.Context, in *ReEncryptDeviceQueueItemsRequest, opts ...grpc.CallOption) (*ReEncryptDeviceQueueItemsResponse, error)
 	// HandleGatewayConnStats handles the connection state of a gateway.
-	HandleGatewayConnStats(ctx context.Context, in *HandleConnStateRequest, opts ...grpc.CallOption) (*empty.Empty, error)
+	HandleGatewayConnStats(ctx context.Context, in *HandleConnStateRequest, opts ...grpc.CallOption) (*emptypb.Empty, error)
 }
 
 type applicationServerServiceClient struct {
@@ -1349,8 +1349,8 @@ func NewApplicationServerServiceClient(cc grpc.ClientConnInterface) ApplicationS
 	return &applicationServerServiceClient{cc}
 }
 
-func (c *applicationServerServiceClient) HandleUplinkData(ctx context.Context, in *HandleUplinkDataRequest, opts ...grpc.CallOption) (*empty.Empty, error) {
-	out := new(empty.Empty)
+func (c *applicationServerServiceClient) HandleUplinkData(ctx context.Context, in *HandleUplinkDataRequest, opts ...grpc.CallOption) (*emptypb.Empty, error) {
+	out := new(emptypb.Empty)
 	err := c.cc.Invoke(ctx, "/as.ApplicationServerService/HandleUplinkData", in, out, opts...)
 	if err != nil {
 		return nil, err
@@ -1358,8 +1358,8 @@ func (c *applicationServerServiceClient) HandleUplinkData(ctx context.Context, i
 	return out, nil
 }
 
-func (c *applicationServerServiceClient) HandleProprietaryUplink(ctx context.Context, in *HandleProprietaryUplinkRequest, opts ...grpc.CallOption) (*empty.Empty, error) {
-	out := new(empty.Empty)
+func (c *applicationServerServiceClient) HandleProprietaryUplink(ctx context.Context, in *HandleProprietaryUplinkRequest, opts ...grpc.CallOption) (*emptypb.Empty, error) {
+	out := new(emptypb.Empty)
 	err := c.cc.Invoke(ctx, "/as.ApplicationServerService/HandleProprietaryUplink", in, out, opts...)
 	if err != nil {
 		return nil, err
@@ -1367,8 +1367,8 @@ func (c *applicationServerServiceClient) HandleProprietaryUplink(ctx context.Con
 	return out, nil
 }
 
-func (c *applicationServerServiceClient) HandleError(ctx context.Context, in *HandleErrorRequest, opts ...grpc.CallOption) (*empty.Empty, error) {
-	out := new(empty.Empty)
+func (c *applicationServerServiceClient) HandleError(ctx context.Context, in *HandleErrorRequest, opts ...grpc.CallOption) (*emptypb.Empty, error) {
+	out := new(emptypb.Empty)
 	err := c.cc.Invoke(ctx, "/as.ApplicationServerService/HandleError", in, out, opts...)
 	if err != nil {
 		return nil, err
@@ -1376,8 +1376,8 @@ func (c *applicationServerServiceClient) HandleError(ctx context.Context, in *Ha
 	return out, nil
 }
 
-func (c *applicationServerServiceClient) HandleDownlinkACK(ctx context.Context, in *HandleDownlinkACKRequest, opts ...grpc.CallOption) (*empty.Empty, error) {
-	out := new(empty.Empty)
+func (c *applicationServerServiceClient) HandleDownlinkACK(ctx context.Context, in *HandleDownlinkACKRequest, opts ...grpc.CallOption) (*emptypb.Empty, error) {
+	out := new(emptypb.Empty)
 	err := c.cc.Invoke(ctx, "/as.ApplicationServerService/HandleDownlinkACK", in, out, opts...)
 	if err != nil {
 		return nil, err
@@ -1385,8 +1385,8 @@ func (c *applicationServerServiceClient) HandleDownlinkACK(ctx context.Context, 
 	return out, nil
 }
 
-func (c *applicationServerServiceClient) HandleGatewayStats(ctx context.Context, in *HandleGatewayStatsRequest, opts ...grpc.CallOption) (*empty.Empty, error) {
-	out := new(empty.Empty)
+func (c *applicationServerServiceClient) HandleGatewayStats(ctx context.Context, in *HandleGatewayStatsRequest, opts ...grpc.CallOption) (*emptypb.Empty, error) {
+	out := new(emptypb.Empty)
 	err := c.cc.Invoke(ctx, "/as.ApplicationServerService/HandleGatewayStats", in, out, opts...)
 	if err != nil {
 		return nil, err
@@ -1394,8 +1394,8 @@ func (c *applicationServerServiceClient) HandleGatewayStats(ctx context.Context,
 	return out, nil
 }
 
-func (c *applicationServerServiceClient) HandleTxAck(ctx context.Context, in *HandleTxAckRequest, opts ...grpc.CallOption) (*empty.Empty, error) {
-	out := new(empty.Empty)
+func (c *applicationServerServiceClient) HandleTxAck(ctx context.Context, in *HandleTxAckRequest, opts ...grpc.CallOption) (*emptypb.Empty, error) {
+	out := new(emptypb.Empty)
 	err := c.cc.Invoke(ctx, "/as.ApplicationServerService/HandleTxAck", in, out, opts...)
 	if err != nil {
 		return nil, err
@@ -1403,8 +1403,8 @@ func (c *applicationServerServiceClient) HandleTxAck(ctx context.Context, in *Ha
 	return out, nil
 }
 
-func (c *applicationServerServiceClient) SetDeviceStatus(ctx context.Context, in *SetDeviceStatusRequest, opts ...grpc.CallOption) (*empty.Empty, error) {
-	out := new(empty.Empty)
+func (c *applicationServerServiceClient) SetDeviceStatus(ctx context.Context, in *SetDeviceStatusRequest, opts ...grpc.CallOption) (*emptypb.Empty, error) {
+	out := new(emptypb.Empty)
 	err := c.cc.Invoke(ctx, "/as.ApplicationServerService/SetDeviceStatus", in, out, opts...)
 	if err != nil {
 		return nil, err
@@ -1412,8 +1412,8 @@ func (c *applicationServerServiceClient) SetDeviceStatus(ctx context.Context, in
 	return out, nil
 }
 
-func (c *applicationServerServiceClient) SetDeviceLocation(ctx context.Context, in *SetDeviceLocationRequest, opts ...grpc.CallOption) (*empty.Empty, error) {
-	out := new(empty.Empty)
+func (c *applicationServerServiceClient) SetDeviceLocation(ctx context.Context, in *SetDeviceLocationRequest, opts ...grpc.CallOption) (*emptypb.Empty, error) {
+	out := new(emptypb.Empty)
 	err := c.cc.Invoke(ctx, "/as.ApplicationServerService/SetDeviceLocation", in, out, opts...)
 	if err != nil {
 		return nil, err
@@ -1430,8 +1430,8 @@ func (c *applicationServerServiceClient) ReEncryptDeviceQueueItems(ctx context.C
 	return out, nil
 }
 
-func (c *applicationServerServiceClient) HandleGatewayConnStats(ctx context.Context, in *HandleConnStateRequest, opts ...grpc.CallOption) (*empty.Empty, error) {
-	out := new(empty.Empty)
+func (c *applicationServerServiceClient) HandleGatewayConnStats(ctx context.Context, in *HandleConnStateRequest, opts ...grpc.CallOption) (*emptypb.Empty, error) {
+	out := new(emptypb.Empty)
 	err := c.cc.Invoke(ctx, "/as.ApplicationServerService/HandleGatewayConnStats", in, out, opts...)
 	if err != nil {
 		return nil, err
@@ -1442,21 +1442,21 @@ func (c *applicationServerServiceClient) HandleGatewayConnStats(ctx context.Cont
 // ApplicationServerServiceServer is the server API for ApplicationServerService service.
 type ApplicationServerServiceServer interface {
 	// HandleUplinkData handles uplink data received from an end-device.
-	HandleUplinkData(context.Context, *HandleUplinkDataRequest) (*empty.Empty, error)
+	HandleUplinkData(context.Context, *HandleUplinkDataRequest) (*emptypb.Empty, error)
 	// HandleProprietaryUplink handles proprietary uplink payloads.
-	HandleProprietaryUplink(context.Context, *HandleProprietaryUplinkRequest) (*empty.Empty, error)
+	HandleProprietaryUplink(context.Context, *HandleProprietaryUplinkRequest) (*emptypb.Empty, error)
 	// HandleError handles an error message.
-	HandleError(context.Context, *HandleErrorRequest) (*empty.Empty, error)
+	HandleError(context.Context, *HandleErrorRequest) (*emptypb.Empty, error)
 	// HandleDownlinkACK handles a downlink ACK or nACK response.
-	HandleDownlinkACK(context.Context, *HandleDownlinkACKRequest) (*empty.Empty, error)
+	HandleDownlinkACK(context.Context, *HandleDownlinkACKRequest) (*emptypb.Empty, error)
 	// HandleGatewayStats handles the given gateway stats.
-	HandleGatewayStats(context.Context, *HandleGatewayStatsRequest) (*empty.Empty, error)
+	HandleGatewayStats(context.Context, *HandleGatewayStatsRequest) (*emptypb.Empty, error)
 	// HandleTXACK handles the TX acknowledgement.
-	HandleTxAck(context.Context, *HandleTxAckRequest) (*empty.Empty, error)
+	HandleTxAck(context.Context, *HandleTxAckRequest) (*emptypb.Empty, error)
 	// SetDeviceStatus updates the device-status for a device.
-	SetDeviceStatus(context.Context, *SetDeviceStatusRequest) (*empty.Empty, error)
+	SetDeviceStatus(context.Context, *SetDeviceStatusRequest) (*emptypb.Empty, error)
 	// SetDeviceLocation updates the device-location for a device.
-	SetDeviceLocation(context.Context, *SetDeviceLocationRequest) (*empty.Empty, error)
+	SetDeviceLocation(context.Context, *SetDeviceLocationRequest) (*emptypb.Empty, error)
 	// ReEncryptDeviceQueueItems requests the application-server to re-encrypt
 	// the given payload items using the new parameters. This request is
 	// for example triggered when the associated frame-counter of a downlink
@@ -1467,41 +1467,41 @@ type ApplicationServerServiceServer interface {
 	// equal to the number of requested items.
 	ReEncryptDeviceQueueItems(context.Context, *ReEncryptDeviceQueueItemsRequest) (*ReEncryptDeviceQueueItemsResponse, error)
 	// HandleGatewayConnStats handles the connection state of a gateway.
-	HandleGatewayConnStats(context.Context, *HandleConnStateRequest) (*empty.Empty, error)
+	HandleGatewayConnStats(context.Context, *HandleConnStateRequest) (*emptypb.Empty, error)
 }
 
 // UnimplementedApplicationServerServiceServer can be embedded to have forward compatible implementations.
 type UnimplementedApplicationServerServiceServer struct {
 }
 
-func (*UnimplementedApplicationServerServiceServer) HandleUplinkData(ctx context.Context, req *HandleUplinkDataRequest) (*empty.Empty, error) {
+func (*UnimplementedApplicationServerServiceServer) HandleUplinkData(ctx context.Context, req *HandleUplinkDataRequest) (*emptypb.Empty, error) {
 	return nil, status.Errorf(codes.Unimplemented, "method HandleUplinkData not implemented")
 }
-func (*UnimplementedApplicationServerServiceServer) HandleProprietaryUplink(ctx context.Context, req *HandleProprietaryUplinkRequest) (*empty.Empty, error) {
+func (*UnimplementedApplicationServerServiceServer) HandleProprietaryUplink(ctx context.Context, req *HandleProprietaryUplinkRequest) (*emptypb.Empty, error) {
 	return nil, status.Errorf(codes.Unimplemented, "method HandleProprietaryUplink not implemented")
 }
-func (*UnimplementedApplicationServerServiceServer) HandleError(ctx context.Context, req *HandleErrorRequest) (*empty.Empty, error) {
+func (*UnimplementedApplicationServerServiceServer) HandleError(ctx context.Context, req *HandleErrorRequest) (*emptypb.Empty, error) {
 	return nil, status.Errorf(codes.Unimplemented, "method HandleError not implemented")
 }
-func (*UnimplementedApplicationServerServiceServer) HandleDownlinkACK(ctx context.Context, req *HandleDownlinkACKRequest) (*empty.Empty, error) {
+func (*UnimplementedApplicationServerServiceServer) HandleDownlinkACK(ctx context.Context, req *HandleDownlinkACKRequest) (*emptypb.Empty, error) {
 	return nil, status.Errorf(codes.Unimplemented, "method HandleDownlinkACK not implemented")
 }
-func (*UnimplementedApplicationServerServiceServer) HandleGatewayStats(ctx context.Context, req *HandleGatewayStatsRequest) (*empty.Empty, error) {
+func (*UnimplementedApplicationServerServiceServer) HandleGatewayStats(ctx context.Context, req *HandleGatewayStatsRequest) (*emptypb.Empty, error) {
 	return nil, status.Errorf(codes.Unimplemented, "method HandleGatewayStats not implemented")
 }
-func (*UnimplementedApplicationServerServiceServer) HandleTxAck(ctx context.Context, req *HandleTxAckRequest) (*empty.Empty, error) {
+func (*UnimplementedApplicationServerServiceServer) HandleTxAck(ctx context.Context, req *HandleTxAckRequest) (*emptypb.Empty, error) {
 	return nil, status.Errorf(codes.Unimplemented, "method HandleTxAck not implemented")
 }
-func (*UnimplementedApplicationServerServiceServer) SetDeviceStatus(ctx context.Context, req *SetDeviceStatusRequest) (*empty.Empty, error) {
+func (*UnimplementedApplicationServerServiceServer) SetDeviceStatus(ctx context.Context, req *SetDeviceStatusRequest) (*emptypb.Empty, error) {
 	return nil, status.Errorf(codes.Unimplemented, "method SetDeviceStatus not implemented")
 }
-func (*UnimplementedApplicationServerServiceServer) SetDeviceLocation(ctx context.Context, req *SetDeviceLocationRequest) (*empty.Empty, error) {
+func (*UnimplementedApplicationServerServiceServer) SetDeviceLocation(ctx context.Context, req *SetDeviceLocationRequest) (*emptypb.Empty, error) {
 	return nil, status.Errorf(codes.Unimplemented, "method SetDeviceLocation not implemented")
 }
 func (*UnimplementedApplicationServerServiceServer) ReEncryptDeviceQueueItems(ctx context.Context, req *ReEncryptDeviceQueueItemsRequest) (*ReEncryptDeviceQueueItemsResponse, error) {
 	return nil, status.Errorf(codes.Unimplemented, "method ReEncryptDeviceQueueItems not implemented")
 }
-func (*UnimplementedApplicationServerServiceServer) HandleGatewayConnStats(ctx context.Context, req *HandleConnStateRequest) (*empty.Empty, error) {
+func (*UnimplementedApplicationServerServiceServer) HandleGatewayConnStats(ctx context.Context, req *HandleConnStateRequest) (*emptypb.Empty, error) {
 	return nil, status.Errorf(codes.Unimplemented, "method HandleGatewayConnStats not implemented")
 }
 

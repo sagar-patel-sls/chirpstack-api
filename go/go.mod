@@ -1,6 +1,6 @@
 module github.com/sagar-patel-sls/chirpstack-api/go/v3
 
-go 1.16
+go 1.17
 
 require (
 	github.com/golang/protobuf v1.3.5

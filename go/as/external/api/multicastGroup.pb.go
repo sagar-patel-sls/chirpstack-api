@@ -7,12 +7,12 @@ import (
 	context "context"
 	fmt "fmt"
 	proto "github.com/golang/protobuf/proto"
-	empty "github.com/golang/protobuf/ptypes/empty"
-	timestamp "github.com/golang/protobuf/ptypes/timestamp"
 	_ "google.golang.org/genproto/googleapis/api/annotations"
 	grpc "google.golang.org/grpc"
 	codes "google.golang.org/grpc/codes"
 	status "google.golang.org/grpc/status"
+	emptypb "google.golang.org/protobuf/types/known/emptypb"
+	timestamppb "google.golang.org/protobuf/types/known/timestamppb"
 	math "math"
 )
 
@@ -378,12 +378,12 @@ type GetMulticastGroupResponse struct {
 	// Multicast-group object.
 	MulticastGroup *MulticastGroup `protobuf:"bytes,1,opt,name=multicast_group,json=multicastGroup,proto3" json:"multicast_group,omitempty"`
 	// Created at timestamp.
-	CreatedAt *timestamp.Timestamp `protobuf:"bytes,2,opt,name=created_at,json=createdAt,proto3" json:"created_at,omitempty"`
+	CreatedAt *timestamppb.Timestamp `protobuf:"bytes,2,opt,name=created_at,json=createdAt,proto3" json:"created_at,omitempty"`
 	// Last update timestamp.
-	UpdatedAt            *timestamp.Timestamp `protobuf:"bytes,3,opt,name=updated_at,json=updatedAt,proto3" json:"updated_at,omitempty"`
-	XXX_NoUnkeyedLiteral struct{}             `json:"-"`
-	XXX_unrecognized     []byte               `json:"-"`
-	XXX_sizecache        int32                `json:"-"`
+	UpdatedAt            *timestamppb.Timestamp `protobuf:"bytes,3,opt,name=updated_at,json=updatedAt,proto3" json:"updated_at,omitempty"`
+	XXX_NoUnkeyedLiteral struct{}               `json:"-"`
+	XXX_unrecognized     []byte                 `json:"-"`
+	XXX_sizecache        int32                  `json:"-"`
 }
 
 func (m *GetMulticastGroupResponse) Reset()         { *m = GetMulticastGroupResponse{} }
@@ -418,14 +418,14 @@ func (m *GetMulticastGroupResponse) GetMulticastGroup() *MulticastGroup {
 	return nil
 }
 
-func (m *GetMulticastGroupResponse) GetCreatedAt() *timestamp.Timestamp {
+func (m *GetMulticastGroupResponse) GetCreatedAt() *timestamppb.Timestamp {
 	if m != nil {
 		return m.CreatedAt
 	}
 	return nil
 }
 
-func (m *GetMulticastGroupResponse) GetUpdatedAt() *timestamp.Timestamp {
+func (m *GetMulticastGroupResponse) GetUpdatedAt() *timestamppb.Timestamp {
 	if m != nil {
 		return m.UpdatedAt
 	}
@@ -1138,19 +1138,19 @@ type MulticastGroupServiceClient interface {
 	// Get returns a multicast-group given an ID.
 	Get(ctx context.Context, in *GetMulticastGroupRequest, opts ...grpc.CallOption) (*GetMulticastGroupResponse, error)
 	// Update updates the given multicast-group.
-	Update(ctx context.Context, in *UpdateMulticastGroupRequest, opts ...grpc.CallOption) (*empty.Empty, error)
+	Update(ctx context.Context, in *UpdateMulticastGroupRequest, opts ...grpc.CallOption) (*emptypb.Empty, error)
 	// Delete deletes a multicast-group given an ID.
-	Delete(ctx context.Context, in *DeleteMulticastGroupRequest, opts ...grpc.CallOption) (*empty.Empty, error)
+	Delete(ctx context.Context, in *DeleteMulticastGroupRequest, opts ...grpc.CallOption) (*emptypb.Empty, error)
 	// List lists the available multicast-groups.
 	List(ctx context.Context, in *ListMulticastGroupRequest, opts ...grpc.CallOption) (*ListMulticastGroupResponse, error)
 	// AddDevice adds the given device to the multicast-group.
-	AddDevice(ctx context.Context, in *AddDeviceToMulticastGroupRequest, opts ...grpc.CallOption) (*empty.Empty, error)
+	AddDevice(ctx context.Context, in *AddDeviceToMulticastGroupRequest, opts ...grpc.CallOption) (*emptypb.Empty, error)
 	// RemoveDevice removes the given device from the multicast-group.
-	RemoveDevice(ctx context.Context, in *RemoveDeviceFromMulticastGroupRequest, opts ...grpc.CallOption) (*empty.Empty, error)
+	RemoveDevice(ctx context.Context, in *RemoveDeviceFromMulticastGroupRequest, opts ...grpc.CallOption) (*emptypb.Empty, error)
 	// Enqueue adds the given item to the multicast-queue.
 	Enqueue(ctx context.Context, in *EnqueueMulticastQueueItemRequest, opts ...grpc.CallOption) (*EnqueueMulticastQueueItemResponse, error)
 	// FlushQueue flushes the multicast-group queue.
-	FlushQueue(ctx context.Context, in *FlushMulticastGroupQueueItemsRequest, opts ...grpc.CallOption) (*empty.Empty, error)
+	FlushQueue(ctx context.Context, in *FlushMulticastGroupQueueItemsRequest, opts ...grpc.CallOption) (*emptypb.Empty, error)
 	// ListQueue lists the items in the multicast-group queue.
 	ListQueue(ctx context.Context, in *ListMulticastGroupQueueItemsRequest, opts ...grpc.CallOption) (*ListMulticastGroupQueueItemsResponse, error)
 }
@@ -1181,8 +1181,8 @@ func (c *multicastGroupServiceClient) Get(ctx context.Context, in *GetMulticastG
 	return out, nil
 }
 
-func (c *multicastGroupServiceClient) Update(ctx context.Context, in *UpdateMulticastGroupRequest, opts ...grpc.CallOption) (*empty.Empty, error) {
-	out := new(empty.Empty)
+func (c *multicastGroupServiceClient) Update(ctx context.Context, in *UpdateMulticastGroupRequest, opts ...grpc.CallOption) (*emptypb.Empty, error) {
+	out := new(emptypb.Empty)
 	err := c.cc.Invoke(ctx, "/api.MulticastGroupService/Update", in, out, opts...)
 	if err != nil {
 		return nil, err
@@ -1190,8 +1190,8 @@ func (c *multicastGroupServiceClient) Update(ctx context.Context, in *UpdateMult
 	return out, nil
 }
 
-func (c *multicastGroupServiceClient) Delete(ctx context.Context, in *DeleteMulticastGroupRequest, opts ...grpc.CallOption) (*empty.Empty, error) {
-	out := new(empty.Empty)
+func (c *multicastGroupServiceClient) Delete(ctx context.Context, in *DeleteMulticastGroupRequest, opts ...grpc.CallOption) (*emptypb.Empty, error) {
+	out := new(emptypb.Empty)
 	err := c.cc.Invoke(ctx, "/api.MulticastGroupService/Delete", in, out, opts...)
 	if err != nil {
 		return nil, err
@@ -1208,8 +1208,8 @@ func (c *multicastGroupServiceClient) List(ctx context.Context, in *ListMulticas
 	return out, nil
 }
 
-func (c *multicastGroupServiceClient) AddDevice(ctx context.Context, in *AddDeviceToMulticastGroupRequest, opts ...grpc.CallOption) (*empty.Empty, error) {
-	out := new(empty.Empty)
+func (c *multicastGroupServiceClient) AddDevice(ctx context.Context, in *AddDeviceToMulticastGroupRequest, opts ...grpc.CallOption) (*emptypb.Empty, error) {
+	out := new(emptypb.Empty)
 	err := c.cc.Invoke(ctx, "/api.MulticastGroupService/AddDevice", in, out, opts...)
 	if err != nil {
 		return nil, err
@@ -1217,8 +1217,8 @@ func (c *multicastGroupServiceClient) AddDevice(ctx context.Context, in *AddDevi
 	return out, nil
 }
 
-func (c *multicastGroupServiceClient) RemoveDevice(ctx context.Context, in *RemoveDeviceFromMulticastGroupRequest, opts ...grpc.CallOption) (*empty.Empty, error) {
-	out := new(empty.Empty)
+func (c *multicastGroupServiceClient) RemoveDevice(ctx context.Context, in *RemoveDeviceFromMulticastGroupRequest, opts ...grpc.CallOption) (*emptypb.Empty, error) {
+	out := new(emptypb.Empty)
 	err := c.cc.Invoke(ctx, "/api.MulticastGroupService/RemoveDevice", in, out, opts...)
 	if err != nil {
 		return nil, err
@@ -1235,8 +1235,8 @@ func (c *multicastGroupServiceClient) Enqueue(ctx context.Context, in *EnqueueMu
 	return out, nil
 }
 
-func (c *multicastGroupServiceClient) FlushQueue(ctx context.Context, in *FlushMulticastGroupQueueItemsRequest, opts ...grpc.CallOption) (*empty.Empty, error) {
-	out := new(empty.Empty)
+func (c *multicastGroupServiceClient) FlushQueue(ctx context.Context, in *FlushMulticastGroupQueueItemsRequest, opts ...grpc.CallOption) (*emptypb.Empty, error) {
+	out := new(emptypb.Empty)
 	err := c.cc.Invoke(ctx, "/api.MulticastGroupService/FlushQueue", in, out, opts...)
 	if err != nil {
 		return nil, err
@@ -1260,19 +1260,19 @@ type MulticastGroupServiceServer interface {
 	// Get returns a multicast-group given an ID.
 	Get(context.Context, *GetMulticastGroupRequest) (*GetMulticastGroupResponse, error)
 	// Update updates the given multicast-group.
-	Update(context.Context, *UpdateMulticastGroupRequest) (*empty.Empty, error)
+	Update(context.Context, *UpdateMulticastGroupRequest) (*emptypb.Empty, error)
 	// Delete deletes a multicast-group given an ID.
-	Delete(context.Context, *DeleteMulticastGroupRequest) (*empty.Empty, error)
+	Delete(context.Context, *DeleteMulticastGroupRequest) (*emptypb.Empty, error)
 	// List lists the available multicast-groups.
 	List(context.Context, *ListMulticastGroupRequest) (*ListMulticastGroupResponse, error)
 	// AddDevice adds the given device to the multicast-group.
-	AddDevice(context.Context, *AddDeviceToMulticastGroupRequest) (*empty.Empty, error)
+	AddDevice(context.Context, *AddDeviceToMulticastGroupRequest) (*emptypb.Empty, error)
 	// RemoveDevice removes the given device from the multicast-group.
-	RemoveDevice(context.Context, *RemoveDeviceFromMulticastGroupRequest) (*empty.Empty, error)
+	RemoveDevice(context.Context, *RemoveDeviceFromMulticastGroupRequest) (*emptypb.Empty, error)
 	// Enqueue adds the given item to the multicast-queue.
 	Enqueue(context.Context, *EnqueueMulticastQueueItemRequest) (*EnqueueMulticastQueueItemResponse, error)
 	// FlushQueue flushes the multicast-group queue.
-	FlushQueue(context.Context, *FlushMulticastGroupQueueItemsRequest) (*empty.Empty, error)
+	FlushQueue(context.Context, *FlushMulticastGroupQueueItemsRequest) (*emptypb.Empty, error)
 	// ListQueue lists the items in the multicast-group queue.
 	ListQueue(context.Context, *ListMulticastGroupQueueItemsRequest) (*ListMulticastGroupQueueItemsResponse, error)
 }
@@ -1287,25 +1287,25 @@ func (*UnimplementedMulticastGroupServiceServer) Create(ctx context.Context, req
 func (*UnimplementedMulticastGroupServiceServer) Get(ctx context.Context, req *GetMulticastGroupRequest) (*GetMulticastGroupResponse, error) {
 	return nil, status.Errorf(codes.Unimplemented, "method Get not implemented")
 }
-func (*UnimplementedMulticastGroupServiceServer) Update(ctx context.Context, req *UpdateMulticastGroupRequest) (*empty.Empty, error) {
+func (*UnimplementedMulticastGroupServiceServer) Update(ctx context.Context, req *UpdateMulticastGroupRequest) (*emptypb.Empty, error) {
 	return nil, status.Errorf(codes.Unimplemented, "method Update not implemented")
 }
-func (*UnimplementedMulticastGroupServiceServer) Delete(ctx context.Context, req *DeleteMulticastGroupRequest) (*empty.Empty, error) {
+func (*UnimplementedMulticastGroupServiceServer) Delete(ctx context.Context, req *DeleteMulticastGroupRequest) (*emptypb.Empty, error) {
 	return nil, status.Errorf(codes.Unimplemented, "method Delete not implemented")
 }
 func (*UnimplementedMulticastGroupServiceServer) List(ctx context.Context, req *ListMulticastGroupRequest) (*ListMulticastGroupResponse, error) {
 	return nil, status.Errorf(codes.Unimplemented, "method List not implemented")
 }
-func (*UnimplementedMulticastGroupServiceServer) AddDevice(ctx context.Context, req *AddDeviceToMulticastGroupRequest) (*empty.Empty, error) {
+func (*UnimplementedMulticastGroupServiceServer) AddDevice(ctx context.Context, req *AddDeviceToMulticastGroupRequest) (*emptypb.Empty, error) {
 	return nil, status.Errorf(codes.Unimplemented, "method AddDevice not implemented")
 }
-func (*UnimplementedMulticastGroupServiceServer) RemoveDevice(ctx context.Context, req *RemoveDeviceFromMulticastGroupRequest) (*empty.Empty, error) {
+func (*UnimplementedMulticastGroupServiceServer) RemoveDevice(ctx context.Context, req *RemoveDeviceFromMulticastGroupRequest) (*emptypb.Empty, error) {
 	return nil, status.Errorf(codes.Unimplemented, "method RemoveDevice not implemented")
 }
 func (*UnimplementedMulticastGroupServiceServer) Enqueue(ctx context.Context, req *EnqueueMulticastQueueItemRequest) (*EnqueueMulticastQueueItemResponse, error) {
 	return nil, status.Errorf(codes.Unimplemented, "method Enqueue not implemented")
 }
-func (*UnimplementedMulticastGroupServiceServer) FlushQueue(ctx context.Context, req *FlushMulticastGroupQueueItemsRequest) (*empty.Empty, error) {
+func (*UnimplementedMulticastGroupServiceServer) FlushQueue(ctx context.Context, req *FlushMulticastGroupQueueItemsRequest) (*emptypb.Empty, error) {
 	return nil, status.Errorf(codes.Unimplemented, "method FlushQueue not implemented")
 }
 func (*UnimplementedMulticastGroupServiceServer) ListQueue(ctx context.Context, req *ListMulticastGroupQueueItemsRequest) (*ListMulticastGroupQueueItemsResponse, error) {

@@ -7,12 +7,12 @@ import (
 	context "context"
 	fmt "fmt"
 	proto "github.com/golang/protobuf/proto"
-	empty "github.com/golang/protobuf/ptypes/empty"
-	timestamp "github.com/golang/protobuf/ptypes/timestamp"
 	_ "google.golang.org/genproto/googleapis/api/annotations"
 	grpc "google.golang.org/grpc"
 	codes "google.golang.org/grpc/codes"
 	status "google.golang.org/grpc/status"
+	emptypb "google.golang.org/protobuf/types/known/emptypb"
+	timestamppb "google.golang.org/protobuf/types/known/timestamppb"
 	math "math"
 )
 
@@ -151,12 +151,12 @@ type GetServiceProfileResponse struct {
 	// Service-profile object.
 	ServiceProfile *ServiceProfile `protobuf:"bytes,1,opt,name=service_profile,json=serviceProfile,proto3" json:"service_profile,omitempty"`
 	// Created at timestamp.
-	CreatedAt *timestamp.Timestamp `protobuf:"bytes,2,opt,name=created_at,json=createdAt,proto3" json:"created_at,omitempty"`
+	CreatedAt *timestamppb.Timestamp `protobuf:"bytes,2,opt,name=created_at,json=createdAt,proto3" json:"created_at,omitempty"`
 	// Last update timestamp.
-	UpdatedAt            *timestamp.Timestamp `protobuf:"bytes,3,opt,name=updated_at,json=updatedAt,proto3" json:"updated_at,omitempty"`
-	XXX_NoUnkeyedLiteral struct{}             `json:"-"`
-	XXX_unrecognized     []byte               `json:"-"`
-	XXX_sizecache        int32                `json:"-"`
+	UpdatedAt            *timestamppb.Timestamp `protobuf:"bytes,3,opt,name=updated_at,json=updatedAt,proto3" json:"updated_at,omitempty"`
+	XXX_NoUnkeyedLiteral struct{}               `json:"-"`
+	XXX_unrecognized     []byte                 `json:"-"`
+	XXX_sizecache        int32                  `json:"-"`
 }
 
 func (m *GetServiceProfileResponse) Reset()         { *m = GetServiceProfileResponse{} }
@@ -191,14 +191,14 @@ func (m *GetServiceProfileResponse) GetServiceProfile() *ServiceProfile {
 	return nil
 }
 
-func (m *GetServiceProfileResponse) GetCreatedAt() *timestamp.Timestamp {
+func (m *GetServiceProfileResponse) GetCreatedAt() *timestamppb.Timestamp {
 	if m != nil {
 		return m.CreatedAt
 	}
 	return nil
 }
 
-func (m *GetServiceProfileResponse) GetUpdatedAt() *timestamp.Timestamp {
+func (m *GetServiceProfileResponse) GetUpdatedAt() *timestamppb.Timestamp {
 	if m != nil {
 		return m.UpdatedAt
 	}
@@ -362,9 +362,9 @@ type ServiceProfileListItem struct {
 	// Network-server ID of the service-profile.
 	NetworkServerId int64 `protobuf:"varint,4,opt,name=network_server_id,json=networkServerID,proto3" json:"network_server_id,omitempty"`
 	// Created at timestamp.
-	CreatedAt *timestamp.Timestamp `protobuf:"bytes,5,opt,name=created_at,json=createdAt,proto3" json:"created_at,omitempty"`
+	CreatedAt *timestamppb.Timestamp `protobuf:"bytes,5,opt,name=created_at,json=createdAt,proto3" json:"created_at,omitempty"`
 	// Last update timestamp.
-	UpdatedAt *timestamp.Timestamp `protobuf:"bytes,6,opt,name=updated_at,json=updatedAt,proto3" json:"updated_at,omitempty"`
+	UpdatedAt *timestamppb.Timestamp `protobuf:"bytes,6,opt,name=updated_at,json=updatedAt,proto3" json:"updated_at,omitempty"`
 	// Network-server name of the service-profile.
 	NetworkServerName    string   `protobuf:"bytes,7,opt,name=network_server_name,json=networkServerName,proto3" json:"network_server_name,omitempty"`
 	XXX_NoUnkeyedLiteral struct{} `json:"-"`
@@ -425,14 +425,14 @@ func (m *ServiceProfileListItem) GetNetworkServerId() int64 {
 	return 0
 }
 
-func (m *ServiceProfileListItem) GetCreatedAt() *timestamp.Timestamp {
+func (m *ServiceProfileListItem) GetCreatedAt() *timestamppb.Timestamp {
 	if m != nil {
 		return m.CreatedAt
 	}
 	return nil
 }
 
-func (m *ServiceProfileListItem) GetUpdatedAt() *timestamp.Timestamp {
+func (m *ServiceProfileListItem) GetUpdatedAt() *timestamppb.Timestamp {
 	if m != nil {
 		return m.UpdatedAt
 	}
@@ -575,9 +575,9 @@ type ServiceProfileServiceClient interface {
 	// Get returns the service-profile matching the given id.
 	Get(ctx context.Context, in *GetServiceProfileRequest, opts ...grpc.CallOption) (*GetServiceProfileResponse, error)
 	// Update updates the given serviceprofile.
-	Update(ctx context.Context, in *UpdateServiceProfileRequest, opts ...grpc.CallOption) (*empty.Empty, error)
+	Update(ctx context.Context, in *UpdateServiceProfileRequest, opts ...grpc.CallOption) (*emptypb.Empty, error)
 	// Delete deletes the service-profile matching the given id.
-	Delete(ctx context.Context, in *DeleteServiceProfileRequest, opts ...grpc.CallOption) (*empty.Empty, error)
+	Delete(ctx context.Context, in *DeleteServiceProfileRequest, opts ...grpc.CallOption) (*emptypb.Empty, error)
 	// List lists the available service-profiles.
 	List(ctx context.Context, in *ListServiceProfileRequest, opts ...grpc.CallOption) (*ListServiceProfileResponse, error)
 }
@@ -608,8 +608,8 @@ func (c *serviceProfileServiceClient) Get(ctx context.Context, in *GetServicePro
 	return out, nil
 }
 
-func (c *serviceProfileServiceClient) Update(ctx context.Context, in *UpdateServiceProfileRequest, opts ...grpc.CallOption) (*empty.Empty, error) {
-	out := new(empty.Empty)
+func (c *serviceProfileServiceClient) Update(ctx context.Context, in *UpdateServiceProfileRequest, opts ...grpc.CallOption) (*emptypb.Empty, error) {
+	out := new(emptypb.Empty)
 	err := c.cc.Invoke(ctx, "/api.ServiceProfileService/Update", in, out, opts...)
 	if err != nil {
 		return nil, err
@@ -617,8 +617,8 @@ func (c *serviceProfileServiceClient) Update(ctx context.Context, in *UpdateServ
 	return out, nil
 }
 
-func (c *serviceProfileServiceClient) Delete(ctx context.Context, in *DeleteServiceProfileRequest, opts ...grpc.CallOption) (*empty.Empty, error) {
-	out := new(empty.Empty)
+func (c *serviceProfileServiceClient) Delete(ctx context.Context, in *DeleteServiceProfileRequest, opts ...grpc.CallOption) (*emptypb.Empty, error) {
+	out := new(emptypb.Empty)
 	err := c.cc.Invoke(ctx, "/api.ServiceProfileService/Delete", in, out, opts...)
 	if err != nil {
 		return nil, err
@@ -642,9 +642,9 @@ type ServiceProfileServiceServer interface {
 	// Get returns the service-profile matching the given id.
 	Get(context.Context, *GetServiceProfileRequest) (*GetServiceProfileResponse, error)
 	// Update updates the given serviceprofile.
-	Update(context.Context, *UpdateServiceProfileRequest) (*empty.Empty, error)
+	Update(context.Context, *UpdateServiceProfileRequest) (*emptypb.Empty, error)
 	// Delete deletes the service-profile matching the given id.
-	Delete(context.Context, *DeleteServiceProfileRequest) (*empty.Empty, error)
+	Delete(context.Context, *DeleteServiceProfileRequest) (*emptypb.Empty, error)
 	// List lists the available service-profiles.
 	List(context.Context, *ListServiceProfileRequest) (*ListServiceProfileResponse, error)
 }
@@ -659,10 +659,10 @@ func (*UnimplementedServiceProfileServiceServer) Create(ctx context.Context, req
 func (*UnimplementedServiceProfileServiceServer) Get(ctx context.Context, req *GetServiceProfileRequest) (*GetServiceProfileResponse, error) {
 	return nil, status.Errorf(codes.Unimplemented, "method Get not implemented")
 }
-func (*UnimplementedServiceProfileServiceServer) Update(ctx context.Context, req *UpdateServiceProfileRequest) (*empty.Empty, error) {
+func (*UnimplementedServiceProfileServiceServer) Update(ctx context.Context, req *UpdateServiceProfileRequest) (*emptypb.Empty, error) {
 	return nil, status.Errorf(codes.Unimplemented, "method Update not implemented")
 }
-func (*UnimplementedServiceProfileServiceServer) Delete(ctx context.Context, req *DeleteServiceProfileRequest) (*empty.Empty, error) {
+func (*UnimplementedServiceProfileServiceServer) Delete(ctx context.Context, req *DeleteServiceProfileRequest) (*emptypb.Empty, error) {
 	return nil, status.Errorf(codes.Unimplemented, "method Delete not implemented")
 }
 func (*UnimplementedServiceProfileServiceServer) List(ctx context.Context, req *ListServiceProfileRequest) (*ListServiceProfileResponse, error) {
