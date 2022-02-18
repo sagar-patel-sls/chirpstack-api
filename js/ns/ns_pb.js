@@ -4426,7 +4426,8 @@ proto.ns.GetDeviceResponse.toObject = function(includeInstance, msg) {
   var f, obj = {
     device: (f = msg.getDevice()) && proto.ns.Device.toObject(includeInstance, f),
     createdAt: (f = msg.getCreatedAt()) && google_protobuf_timestamp_pb.Timestamp.toObject(includeInstance, f),
-    updatedAt: (f = msg.getUpdatedAt()) && google_protobuf_timestamp_pb.Timestamp.toObject(includeInstance, f)
+    updatedAt: (f = msg.getUpdatedAt()) && google_protobuf_timestamp_pb.Timestamp.toObject(includeInstance, f),
+    devicemode: msg.getDevicemode()
   };
 
   if (includeInstance) {
@@ -4477,6 +4478,10 @@ proto.ns.GetDeviceResponse.deserializeBinaryFromReader = function(msg, reader) {
       var value = new google_protobuf_timestamp_pb.Timestamp;
       reader.readMessage(value,google_protobuf_timestamp_pb.Timestamp.deserializeBinaryFromReader);
       msg.setUpdatedAt(value);
+      break;
+    case 4:
+      var value = /** @type {string} */ (reader.readString());
+      msg.setDevicemode(value);
       break;
     default:
       reader.skipField();
@@ -4538,6 +4543,13 @@ proto.ns.GetDeviceResponse.prototype.serializeBinaryToWriter = function (writer)
       3,
       f,
       google_protobuf_timestamp_pb.Timestamp.serializeBinaryToWriter
+    );
+  }
+  f = this.getDevicemode();
+  if (f.length > 0) {
+    writer.writeString(
+      4,
+      f
     );
   }
 };
@@ -4639,6 +4651,21 @@ proto.ns.GetDeviceResponse.prototype.clearUpdatedAt = function() {
  */
 proto.ns.GetDeviceResponse.prototype.hasUpdatedAt = function() {
   return jspb.Message.getField(this, 3) != null;
+};
+
+
+/**
+ * optional string DeviceMode = 4;
+ * @return {string}
+ */
+proto.ns.GetDeviceResponse.prototype.getDevicemode = function() {
+  return /** @type {string} */ (jspb.Message.getFieldProto3(this, 4, ""));
+};
+
+
+/** @param {string} value  */
+proto.ns.GetDeviceResponse.prototype.setDevicemode = function(value) {
+  jspb.Message.setField(this, 4, value);
 };
 
 

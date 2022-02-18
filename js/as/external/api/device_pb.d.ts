@@ -287,6 +287,11 @@ export class GetDeviceResponse extends jspb.Message {
   getPacketSuccessRate(): PacketSuccess | undefined;
   setPacketSuccessRate(value?: PacketSuccess): void;
 
+  getMetaDataMap(): jspb.Map<string, string>;
+  clearMetaDataMap(): void;
+  getDevicemode(): string;
+  setDevicemode(value: string): void;
+
   serializeBinary(): Uint8Array;
   toObject(includeInstance?: boolean): GetDeviceResponse.AsObject;
   static toObject(includeInstance: boolean, msg: GetDeviceResponse): GetDeviceResponse.AsObject;
@@ -311,6 +316,8 @@ export namespace GetDeviceResponse {
     deviceStatusMargin: number,
     location?: common_common_pb.Location.AsObject,
     packetSuccessRate?: PacketSuccess.AsObject,
+    metaDataMap: Array<[string, string]>,
+    devicemode: string,
   }
 }
 

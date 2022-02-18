@@ -553,6 +553,9 @@ export class GetDeviceResponse extends jspb.Message {
   getUpdatedAt(): google_protobuf_timestamp_pb.Timestamp | undefined;
   setUpdatedAt(value?: google_protobuf_timestamp_pb.Timestamp): void;
 
+  getDevicemode(): string;
+  setDevicemode(value: string): void;
+
   serializeBinary(): Uint8Array;
   toObject(includeInstance?: boolean): GetDeviceResponse.AsObject;
   static toObject(includeInstance: boolean, msg: GetDeviceResponse): GetDeviceResponse.AsObject;
@@ -568,6 +571,7 @@ export namespace GetDeviceResponse {
     device?: Device.AsObject,
     createdAt?: google_protobuf_timestamp_pb.Timestamp.AsObject,
     updatedAt?: google_protobuf_timestamp_pb.Timestamp.AsObject,
+    devicemode: string,
   }
 }
 

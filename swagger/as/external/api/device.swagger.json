@@ -957,6 +957,17 @@
         "packetSuccessRate": {
           "$ref": "#/definitions/apiPacketSuccess",
           "title": "Packet Success Rate (%)\nPSR calculation based on the missing frame counter from the history of uplink events (per device).\nReturns Packet Success Rate(%), No. of Lost Packets and Total Packets History"
+        },
+        "metaData": {
+          "type": "object",
+          "additionalProperties": {
+            "type": "string"
+          },
+          "title": "MetaData.\nThese metadata are exposed in the device details.\nStore Some Radio Info or Other Meta Information of Device"
+        },
+        "deviceMode": {
+          "type": "string",
+          "description": "DeviceMode defines the mode in which the device operates."
         }
       }
     },

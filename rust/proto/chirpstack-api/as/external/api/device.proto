@@ -341,6 +341,14 @@ message GetDeviceResponse {
     // PSR calculation based on the missing frame counter from the history of uplink events (per device).
     // Returns Packet Success Rate(%), No. of Lost Packets and Total Packets History
     PacketSuccess packet_success_rate = 22;
+
+    // MetaData.
+    // These metadata are exposed in the device details.
+    // Store Some Radio Info or Other Meta Information of Device
+    map<string, string> meta_data = 23;
+
+     // DeviceMode defines the mode in which the device operates.
+     string deviceMode = 24 [json_name = "deviceMode"];
 }
 
 message ListDeviceRequest {

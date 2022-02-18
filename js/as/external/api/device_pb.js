@@ -1798,7 +1798,9 @@ proto.api.GetDeviceResponse.toObject = function(includeInstance, msg) {
     joinSessionCounter: msg.getJoinSessionCounter(),
     deviceStatusMargin: msg.getDeviceStatusMargin(),
     location: (f = msg.getLocation()) && common_common_pb.Location.toObject(includeInstance, f),
-    packetSuccessRate: (f = msg.getPacketSuccessRate()) && proto.api.PacketSuccess.toObject(includeInstance, f)
+    packetSuccessRate: (f = msg.getPacketSuccessRate()) && proto.api.PacketSuccess.toObject(includeInstance, f),
+    metaDataMap: (f = msg.getMetaDataMap(true)) ? f.toArray() : [],
+    devicemode: msg.getDevicemode()
   };
 
   if (includeInstance) {
@@ -1890,6 +1892,16 @@ proto.api.GetDeviceResponse.deserializeBinaryFromReader = function(msg, reader) 
       var value = new proto.api.PacketSuccess;
       reader.readMessage(value,proto.api.PacketSuccess.deserializeBinaryFromReader);
       msg.setPacketSuccessRate(value);
+      break;
+    case 23:
+      var value = msg.getMetaDataMap();
+      reader.readMessage(value, function(message, reader) {
+        jspb.Map.deserializeBinary(message, reader, jspb.BinaryReader.prototype.readString, jspb.BinaryReader.prototype.readString);
+         });
+      break;
+    case 24:
+      var value = /** @type {string} */ (reader.readString());
+      msg.setDevicemode(value);
       break;
     default:
       reader.skipField();
@@ -2019,6 +2031,17 @@ proto.api.GetDeviceResponse.prototype.serializeBinaryToWriter = function (writer
       22,
       f,
       proto.api.PacketSuccess.serializeBinaryToWriter
+    );
+  }
+  f = this.getMetaDataMap(true);
+  if (f && f.getLength() > 0) {
+    f.serializeBinary(23, writer, jspb.BinaryWriter.prototype.writeString, jspb.BinaryWriter.prototype.writeString);
+  }
+  f = this.getDevicemode();
+  if (f.length > 0) {
+    writer.writeString(
+      24,
+      f
     );
   }
 };
@@ -2330,6 +2353,34 @@ proto.api.GetDeviceResponse.prototype.clearPacketSuccessRate = function() {
  */
 proto.api.GetDeviceResponse.prototype.hasPacketSuccessRate = function() {
   return jspb.Message.getField(this, 22) != null;
+};
+
+
+/**
+ * map<string, string> meta_data = 23;
+ * @param {boolean=} opt_noLazyCreate Do not create the map if
+ * empty, instead returning `undefined`
+ * @return {!jspb.Map<string,string>}
+ */
+proto.api.GetDeviceResponse.prototype.getMetaDataMap = function(opt_noLazyCreate) {
+  return /** @type {!jspb.Map<string,string>} */ (
+      jspb.Message.getMapField(this, 23, opt_noLazyCreate,
+      null));
+};
+
+
+/**
+ * optional string deviceMode = 24;
+ * @return {string}
+ */
+proto.api.GetDeviceResponse.prototype.getDevicemode = function() {
+  return /** @type {string} */ (jspb.Message.getFieldProto3(this, 24, ""));
+};
+
+
+/** @param {string} value  */
+proto.api.GetDeviceResponse.prototype.setDevicemode = function(value) {
+  jspb.Message.setField(this, 24, value);
 };
 
 

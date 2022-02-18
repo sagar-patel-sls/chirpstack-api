@@ -346,6 +346,9 @@ message GetDeviceResponse {
 
     // Last update timestamp.
     google.protobuf.Timestamp updated_at = 3;
+
+    // DeviceMode defines the mode in which the device operates.
+    string DeviceMode = 4;
 }
 
 message UpdateDeviceRequest {
