@@ -345,6 +345,10 @@
           "type": "integer",
           "format": "int64",
           "description": "The data-rate of the gateway discovery 'ping'."
+        },
+        "displayName": {
+          "type": "string",
+          "description": "Network Server display name."
         }
       }
     },
@@ -373,6 +377,10 @@
           "type": "string",
           "format": "date-time",
           "description": "Last update timestamp."
+        },
+        "displayName": {
+          "type": "string",
+          "description": "Network Server display name."
         }
       }
     },

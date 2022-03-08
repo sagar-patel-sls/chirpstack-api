@@ -103,6 +103,9 @@ message NetworkServer {
 
     // The data-rate of the gateway discovery 'ping'.
     uint32 gateway_discovery_dr = 13 [json_name = "gatewayDiscoveryDR"];
+
+    // Network Server display name.
+	string display_name = 14;
 }
 
 message NetworkServerListItem {
@@ -121,6 +124,9 @@ message NetworkServerListItem {
 
     // Last update timestamp.
     google.protobuf.Timestamp updated_at = 5;
+
+    // Network Server display name.
+	string display_name = 6;
 }
 
 message CreateNetworkServerRequest {

@@ -46,6 +46,9 @@ export class NetworkServer extends jspb.Message {
   getGatewayDiscoveryDr(): number;
   setGatewayDiscoveryDr(value: number): void;
 
+  getDisplayName(): string;
+  setDisplayName(value: string): void;
+
   serializeBinary(): Uint8Array;
   toObject(includeInstance?: boolean): NetworkServer.AsObject;
   static toObject(includeInstance: boolean, msg: NetworkServer): NetworkServer.AsObject;
@@ -71,6 +74,7 @@ export namespace NetworkServer {
     gatewayDiscoveryInterval: number,
     gatewayDiscoveryTxFrequency: number,
     gatewayDiscoveryDr: number,
+    displayName: string,
   }
 }
 
@@ -94,6 +98,9 @@ export class NetworkServerListItem extends jspb.Message {
   getUpdatedAt(): google_protobuf_timestamp_pb.Timestamp | undefined;
   setUpdatedAt(value?: google_protobuf_timestamp_pb.Timestamp): void;
 
+  getDisplayName(): string;
+  setDisplayName(value: string): void;
+
   serializeBinary(): Uint8Array;
   toObject(includeInstance?: boolean): NetworkServerListItem.AsObject;
   static toObject(includeInstance: boolean, msg: NetworkServerListItem): NetworkServerListItem.AsObject;
@@ -111,6 +118,7 @@ export namespace NetworkServerListItem {
     server: string,
     createdAt?: google_protobuf_timestamp_pb.Timestamp.AsObject,
     updatedAt?: google_protobuf_timestamp_pb.Timestamp.AsObject,
+    displayName: string,
   }
 }
 
