@@ -1964,38 +1964,6 @@
           },
           "description": "The headers to use when making HTTP callbacks."
         },
-        "uplinkDataURL": {
-          "type": "string",
-          "description": "The URL to call for uplink data.\nDeprecated: use event_endpoint_url."
-        },
-        "joinNotificationURL": {
-          "type": "string",
-          "description": "The URL to call for join notifications.\nDeprecated: use event_endpoint_url."
-        },
-        "ackNotificationURL": {
-          "type": "string",
-          "description": "The URL to call for ACK notifications (for confirmed downlink data).\nDeprecated: use event_endpoint_url."
-        },
-        "errorNotificationURL": {
-          "type": "string",
-          "description": "The URL to call for error notifications.\nDeprecated: use event_endpoint_url."
-        },
-        "statusNotificationURL": {
-          "type": "string",
-          "description": "The URL to call for device-status notifications.\nDeprecated: use event_endpoint_url."
-        },
-        "locationNotificationURL": {
-          "type": "string",
-          "description": "The URL to call for location notifications.\nDeprecated: use event_endpoint_url."
-        },
-        "txAckNotificationURL": {
-          "type": "string",
-          "description": "The URL to call for tx ack notifications (downlink acknowledged by gateway\nfor transmission). Deprecated: use event_endpoint_url."
-        },
-        "integrationNotificationURL": {
-          "type": "string",
-          "description": "The URL to call for integration notifications.\nDeprecated: use event_endpoint_url."
-        },
         "marshaler": {
           "$ref": "#/definitions/apiMarshaler",
           "description": "Marshaler.\nThis defines the marshaler that is used to encode the event payload."

@@ -2432,14 +2432,6 @@ proto.api.HTTPIntegration.toObject = function(includeInstance, msg) {
     applicationId: msg.getApplicationId(),
     headersList: jspb.Message.toObjectList(msg.getHeadersList(),
     proto.api.HTTPIntegrationHeader.toObject, includeInstance),
-    uplinkDataUrl: msg.getUplinkDataUrl(),
-    joinNotificationUrl: msg.getJoinNotificationUrl(),
-    ackNotificationUrl: msg.getAckNotificationUrl(),
-    errorNotificationUrl: msg.getErrorNotificationUrl(),
-    statusNotificationUrl: msg.getStatusNotificationUrl(),
-    locationNotificationUrl: msg.getLocationNotificationUrl(),
-    txAckNotificationUrl: msg.getTxAckNotificationUrl(),
-    integrationNotificationUrl: msg.getIntegrationNotificationUrl(),
     marshaler: msg.getMarshaler(),
     eventEndpointUrl: msg.getEventEndpointUrl()
   };
@@ -2489,42 +2481,10 @@ proto.api.HTTPIntegration.deserializeBinaryFromReader = function(msg, reader) {
       msg.setHeadersList(msg.getHeadersList());
       break;
     case 3:
-      var value = /** @type {string} */ (reader.readString());
-      msg.setUplinkDataUrl(value);
-      break;
-    case 4:
-      var value = /** @type {string} */ (reader.readString());
-      msg.setJoinNotificationUrl(value);
-      break;
-    case 5:
-      var value = /** @type {string} */ (reader.readString());
-      msg.setAckNotificationUrl(value);
-      break;
-    case 6:
-      var value = /** @type {string} */ (reader.readString());
-      msg.setErrorNotificationUrl(value);
-      break;
-    case 7:
-      var value = /** @type {string} */ (reader.readString());
-      msg.setStatusNotificationUrl(value);
-      break;
-    case 8:
-      var value = /** @type {string} */ (reader.readString());
-      msg.setLocationNotificationUrl(value);
-      break;
-    case 9:
-      var value = /** @type {string} */ (reader.readString());
-      msg.setTxAckNotificationUrl(value);
-      break;
-    case 10:
-      var value = /** @type {string} */ (reader.readString());
-      msg.setIntegrationNotificationUrl(value);
-      break;
-    case 11:
       var value = /** @type {!proto.api.Marshaler} */ (reader.readEnum());
       msg.setMarshaler(value);
       break;
-    case 12:
+    case 4:
       var value = /** @type {string} */ (reader.readString());
       msg.setEventEndpointUrl(value);
       break;
@@ -2581,73 +2541,17 @@ proto.api.HTTPIntegration.prototype.serializeBinaryToWriter = function (writer) 
       proto.api.HTTPIntegrationHeader.serializeBinaryToWriter
     );
   }
-  f = this.getUplinkDataUrl();
-  if (f.length > 0) {
-    writer.writeString(
-      3,
-      f
-    );
-  }
-  f = this.getJoinNotificationUrl();
-  if (f.length > 0) {
-    writer.writeString(
-      4,
-      f
-    );
-  }
-  f = this.getAckNotificationUrl();
-  if (f.length > 0) {
-    writer.writeString(
-      5,
-      f
-    );
-  }
-  f = this.getErrorNotificationUrl();
-  if (f.length > 0) {
-    writer.writeString(
-      6,
-      f
-    );
-  }
-  f = this.getStatusNotificationUrl();
-  if (f.length > 0) {
-    writer.writeString(
-      7,
-      f
-    );
-  }
-  f = this.getLocationNotificationUrl();
-  if (f.length > 0) {
-    writer.writeString(
-      8,
-      f
-    );
-  }
-  f = this.getTxAckNotificationUrl();
-  if (f.length > 0) {
-    writer.writeString(
-      9,
-      f
-    );
-  }
-  f = this.getIntegrationNotificationUrl();
-  if (f.length > 0) {
-    writer.writeString(
-      10,
-      f
-    );
-  }
   f = this.getMarshaler();
   if (f !== 0.0) {
     writer.writeEnum(
-      11,
+      3,
       f
     );
   }
   f = this.getEventEndpointUrl();
   if (f.length > 0) {
     writer.writeString(
-      12,
+      4,
       f
     );
   }
@@ -2702,152 +2606,32 @@ proto.api.HTTPIntegration.prototype.clearHeadersList = function() {
 
 
 /**
- * optional string uplink_data_url = 3;
- * @return {string}
- */
-proto.api.HTTPIntegration.prototype.getUplinkDataUrl = function() {
-  return /** @type {string} */ (jspb.Message.getFieldProto3(this, 3, ""));
-};
-
-
-/** @param {string} value  */
-proto.api.HTTPIntegration.prototype.setUplinkDataUrl = function(value) {
-  jspb.Message.setField(this, 3, value);
-};
-
-
-/**
- * optional string join_notification_url = 4;
- * @return {string}
- */
-proto.api.HTTPIntegration.prototype.getJoinNotificationUrl = function() {
-  return /** @type {string} */ (jspb.Message.getFieldProto3(this, 4, ""));
-};
-
-
-/** @param {string} value  */
-proto.api.HTTPIntegration.prototype.setJoinNotificationUrl = function(value) {
-  jspb.Message.setField(this, 4, value);
-};
-
-
-/**
- * optional string ack_notification_url = 5;
- * @return {string}
- */
-proto.api.HTTPIntegration.prototype.getAckNotificationUrl = function() {
-  return /** @type {string} */ (jspb.Message.getFieldProto3(this, 5, ""));
-};
-
-
-/** @param {string} value  */
-proto.api.HTTPIntegration.prototype.setAckNotificationUrl = function(value) {
-  jspb.Message.setField(this, 5, value);
-};
-
-
-/**
- * optional string error_notification_url = 6;
- * @return {string}
- */
-proto.api.HTTPIntegration.prototype.getErrorNotificationUrl = function() {
-  return /** @type {string} */ (jspb.Message.getFieldProto3(this, 6, ""));
-};
-
-
-/** @param {string} value  */
-proto.api.HTTPIntegration.prototype.setErrorNotificationUrl = function(value) {
-  jspb.Message.setField(this, 6, value);
-};
-
-
-/**
- * optional string status_notification_url = 7;
- * @return {string}
- */
-proto.api.HTTPIntegration.prototype.getStatusNotificationUrl = function() {
-  return /** @type {string} */ (jspb.Message.getFieldProto3(this, 7, ""));
-};
-
-
-/** @param {string} value  */
-proto.api.HTTPIntegration.prototype.setStatusNotificationUrl = function(value) {
-  jspb.Message.setField(this, 7, value);
-};
-
-
-/**
- * optional string location_notification_url = 8;
- * @return {string}
- */
-proto.api.HTTPIntegration.prototype.getLocationNotificationUrl = function() {
-  return /** @type {string} */ (jspb.Message.getFieldProto3(this, 8, ""));
-};
-
-
-/** @param {string} value  */
-proto.api.HTTPIntegration.prototype.setLocationNotificationUrl = function(value) {
-  jspb.Message.setField(this, 8, value);
-};
-
-
-/**
- * optional string tx_ack_notification_url = 9;
- * @return {string}
- */
-proto.api.HTTPIntegration.prototype.getTxAckNotificationUrl = function() {
-  return /** @type {string} */ (jspb.Message.getFieldProto3(this, 9, ""));
-};
-
-
-/** @param {string} value  */
-proto.api.HTTPIntegration.prototype.setTxAckNotificationUrl = function(value) {
-  jspb.Message.setField(this, 9, value);
-};
-
-
-/**
- * optional string integration_notification_url = 10;
- * @return {string}
- */
-proto.api.HTTPIntegration.prototype.getIntegrationNotificationUrl = function() {
-  return /** @type {string} */ (jspb.Message.getFieldProto3(this, 10, ""));
-};
-
-
-/** @param {string} value  */
-proto.api.HTTPIntegration.prototype.setIntegrationNotificationUrl = function(value) {
-  jspb.Message.setField(this, 10, value);
-};
-
-
-/**
- * optional Marshaler marshaler = 11;
+ * optional Marshaler marshaler = 3;
  * @return {!proto.api.Marshaler}
  */
 proto.api.HTTPIntegration.prototype.getMarshaler = function() {
-  return /** @type {!proto.api.Marshaler} */ (jspb.Message.getFieldProto3(this, 11, 0));
+  return /** @type {!proto.api.Marshaler} */ (jspb.Message.getFieldProto3(this, 3, 0));
 };
 
 
 /** @param {!proto.api.Marshaler} value  */
 proto.api.HTTPIntegration.prototype.setMarshaler = function(value) {
-  jspb.Message.setField(this, 11, value);
+  jspb.Message.setField(this, 3, value);
 };
 
 
 /**
- * optional string event_endpoint_url = 12;
+ * optional string event_endpoint_url = 4;
  * @return {string}
  */
 proto.api.HTTPIntegration.prototype.getEventEndpointUrl = function() {
-  return /** @type {string} */ (jspb.Message.getFieldProto3(this, 12, ""));
+  return /** @type {string} */ (jspb.Message.getFieldProto3(this, 4, ""));
 };
 
 
 /** @param {string} value  */
 proto.api.HTTPIntegration.prototype.setEventEndpointUrl = function(value) {
-  jspb.Message.setField(this, 12, value);
+  jspb.Message.setField(this, 4, value);
 };
 
 

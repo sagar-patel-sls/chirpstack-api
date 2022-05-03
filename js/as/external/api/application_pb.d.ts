@@ -311,30 +311,6 @@ export class HTTPIntegration extends jspb.Message {
   setHeadersList(value: Array<HTTPIntegrationHeader>): void;
   addHeaders(value?: HTTPIntegrationHeader, index?: number): HTTPIntegrationHeader;
 
-  getUplinkDataUrl(): string;
-  setUplinkDataUrl(value: string): void;
-
-  getJoinNotificationUrl(): string;
-  setJoinNotificationUrl(value: string): void;
-
-  getAckNotificationUrl(): string;
-  setAckNotificationUrl(value: string): void;
-
-  getErrorNotificationUrl(): string;
-  setErrorNotificationUrl(value: string): void;
-
-  getStatusNotificationUrl(): string;
-  setStatusNotificationUrl(value: string): void;
-
-  getLocationNotificationUrl(): string;
-  setLocationNotificationUrl(value: string): void;
-
-  getTxAckNotificationUrl(): string;
-  setTxAckNotificationUrl(value: string): void;
-
-  getIntegrationNotificationUrl(): string;
-  setIntegrationNotificationUrl(value: string): void;
-
   getMarshaler(): MarshalerMap[keyof MarshalerMap];
   setMarshaler(value: MarshalerMap[keyof MarshalerMap]): void;
 
@@ -355,14 +331,6 @@ export namespace HTTPIntegration {
   export type AsObject = {
     applicationId: number,
     headersList: Array<HTTPIntegrationHeader.AsObject>,
-    uplinkDataUrl: string,
-    joinNotificationUrl: string,
-    ackNotificationUrl: string,
-    errorNotificationUrl: string,
-    statusNotificationUrl: string,
-    locationNotificationUrl: string,
-    txAckNotificationUrl: string,
-    integrationNotificationUrl: string,
     marshaler: MarshalerMap[keyof MarshalerMap],
     eventEndpointUrl: string,
   }
