@@ -744,6 +744,11 @@ export class DeviceStats extends jspb.Message {
   clearRssiPerGatewayMap(): void;
   getSnrPerGatewayMap(): jspb.Map<string, number>;
   clearSnrPerGatewayMap(): void;
+  hasPacketSuccessRate(): boolean;
+  clearPacketSuccessRate(): void;
+  getPacketSuccessRate(): PacketSuccess | undefined;
+  setPacketSuccessRate(value?: PacketSuccess): void;
+
   serializeBinary(): Uint8Array;
   toObject(includeInstance?: boolean): DeviceStats.AsObject;
   static toObject(includeInstance: boolean, msg: DeviceStats): DeviceStats.AsObject;
@@ -767,6 +772,7 @@ export namespace DeviceStats {
     txPacketsAckMap: Array<[string, number]>,
     rssiPerGatewayMap: Array<[string, number]>,
     snrPerGatewayMap: Array<[string, number]>,
+    packetSuccessRate?: PacketSuccess.AsObject,
   }
 }
 

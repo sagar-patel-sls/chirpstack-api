@@ -5507,7 +5507,8 @@ proto.api.DeviceStats.toObject = function(includeInstance, msg) {
     txPackets: msg.getTxPackets(),
     txPacketsAckMap: (f = msg.getTxPacketsAckMap(true)) ? f.toArray() : [],
     rssiPerGatewayMap: (f = msg.getRssiPerGatewayMap(true)) ? f.toArray() : [],
-    snrPerGatewayMap: (f = msg.getSnrPerGatewayMap(true)) ? f.toArray() : []
+    snrPerGatewayMap: (f = msg.getSnrPerGatewayMap(true)) ? f.toArray() : [],
+    packetSuccessRate: (f = msg.getPacketSuccessRate()) && proto.api.PacketSuccess.toObject(includeInstance, f)
   };
 
   if (includeInstance) {
@@ -5600,6 +5601,11 @@ proto.api.DeviceStats.deserializeBinaryFromReader = function(msg, reader) {
       reader.readMessage(value, function(message, reader) {
         jspb.Map.deserializeBinary(message, reader, jspb.BinaryReader.prototype.readString, jspb.BinaryReader.prototype.readFloat);
          });
+      break;
+    case 12:
+      var value = new proto.api.PacketSuccess;
+      reader.readMessage(value,proto.api.PacketSuccess.deserializeBinaryFromReader);
+      msg.setPacketSuccessRate(value);
       break;
     default:
       reader.skipField();
@@ -5698,6 +5704,14 @@ proto.api.DeviceStats.prototype.serializeBinaryToWriter = function (writer) {
   f = this.getSnrPerGatewayMap(true);
   if (f && f.getLength() > 0) {
     f.serializeBinary(11, writer, jspb.BinaryWriter.prototype.writeString, jspb.BinaryWriter.prototype.writeFloat);
+  }
+  f = this.getPacketSuccessRate();
+  if (f != null) {
+    writer.writeMessage(
+      12,
+      f,
+      proto.api.PacketSuccess.serializeBinaryToWriter
+    );
   }
 };
 
@@ -5876,6 +5890,36 @@ proto.api.DeviceStats.prototype.getSnrPerGatewayMap = function(opt_noLazyCreate)
   return /** @type {!jspb.Map<string,number>} */ (
       jspb.Message.getMapField(this, 11, opt_noLazyCreate,
       null));
+};
+
+
+/**
+ * optional PacketSuccess packet_success_rate = 12;
+ * @return {proto.api.PacketSuccess}
+ */
+proto.api.DeviceStats.prototype.getPacketSuccessRate = function() {
+  return /** @type{proto.api.PacketSuccess} */ (
+    jspb.Message.getWrapperField(this, proto.api.PacketSuccess, 12));
+};
+
+
+/** @param {proto.api.PacketSuccess|undefined} value  */
+proto.api.DeviceStats.prototype.setPacketSuccessRate = function(value) {
+  jspb.Message.setWrapperField(this, 12, value);
+};
+
+
+proto.api.DeviceStats.prototype.clearPacketSuccessRate = function() {
+  this.setPacketSuccessRate(undefined);
+};
+
+
+/**
+ * Returns whether this field is set.
+ * @return{!boolean}
+ */
+proto.api.DeviceStats.prototype.hasPacketSuccessRate = function() {
+  return jspb.Message.getField(this, 12) != null;
 };
 
 

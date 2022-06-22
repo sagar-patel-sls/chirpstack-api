@@ -240,7 +240,7 @@ class DeviceServiceServicer(object):
     def ClearDeviceDevNonce(self, request, context):
         """ClearDeviceDevNonce deletes the device older activation records for the given DevEUI.
         * These are clear older DevNonce records from device activation records in Network Server
-        * These clears all DevNonce records but keeps latest 20 records for maintain device activation status
+        * These clears all DevNonce records but keeps latest 5 records for maintain device activation status
         """
         context.set_code(grpc.StatusCode.UNIMPLEMENTED)
         context.set_details('Method not implemented!')

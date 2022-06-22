@@ -532,7 +532,7 @@ streamGlobalFrameLogs: {
   },
   // ClearDeviceDevNonce deletes the device older activation records for the given DevEUI.
 //   * These are clear older DevNonce records from device activation records in Network Server
-//   * These clears all DevNonce records but keeps latest 20 records for maintain device activation status
+//   * These clears all DevNonce records but keeps latest 5 records for maintain device activation status
 clearDeviceDevNonce: {
     path: '/api.DeviceService/ClearDeviceDevNonce',
     requestStream: false,

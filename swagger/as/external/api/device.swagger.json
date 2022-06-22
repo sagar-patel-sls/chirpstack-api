@@ -233,7 +233,7 @@
     },
     "/api/devices/{dev_eui}/devnonce": {
       "delete": {
-        "summary": "ClearDeviceDevNonce deletes the device older activation records for the given DevEUI.\n  * These are clear older DevNonce records from device activation records in Network Server\n  * These clears all DevNonce records but keeps latest 20 records for maintain device activation status",
+        "summary": "ClearDeviceDevNonce deletes the device older activation records for the given DevEUI.\n  * These are clear older DevNonce records from device activation records in Network Server\n  * These clears all DevNonce records but keeps latest 5 records for maintain device activation status",
         "operationId": "ClearDeviceDevNonce",
         "responses": {
           "200": {
@@ -856,6 +856,10 @@
             "format": "float"
           },
           "description": "Average SNR per Gateway (reported by the gateway)."
+        },
+        "packetSuccessRate": {
+          "$ref": "#/definitions/apiPacketSuccess",
+          "description": "Packet Success Rate (%)\nPSR calculation based on the missing frame counter from the history of\nuplink events (per device). Returns Packet Success Rate(%), No. of Lost\nPackets and Total Packets History.\nThis Packet Success Rate metrics shows daily basis."
         }
       }
     },

@@ -148,7 +148,7 @@ service DeviceService {
 
     // ClearDeviceDevNonce deletes the device older activation records for the given DevEUI.
     //   * These are clear older DevNonce records from device activation records in Network Server
-    //   * These clears all DevNonce records but keeps latest 20 records for maintain device activation status
+    //   * These clears all DevNonce records but keeps latest 5 records for maintain device activation status
     rpc ClearDeviceDevNonce(ClearDevNonceRequest) returns (google.protobuf.Empty) {
         option (google.api.http) = {
             delete: "/api/devices/{dev_eui}/devnonce"
@@ -509,6 +509,13 @@ message DeviceStats {
 
     // Average SNR per Gateway (reported by the gateway).
     map<string, float> snr_per_gateway = 11;
+
+    // Packet Success Rate (%)
+    // PSR calculation based on the missing frame counter from the history of
+    // uplink events (per device). Returns Packet Success Rate(%), No. of Lost
+    // Packets and Total Packets History.
+    // This Packet Success Rate metrics shows daily basis.
+    PacketSuccess packet_success_rate = 12;
 }
 
 message GetDeviceStatsRequest {
