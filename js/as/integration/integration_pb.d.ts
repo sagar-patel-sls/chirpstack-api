@@ -5,6 +5,7 @@ import * as jspb from "google-protobuf";
 import * as common_common_pb from "../../common/common_pb";
 import * as gw_gw_pb from "../../gw/gw_pb";
 import * as google_protobuf_timestamp_pb from "google-protobuf/google/protobuf/timestamp_pb";
+import * as google_protobuf_duration_pb from "google-protobuf/google/protobuf/duration_pb";
 
 export class UplinkEvent extends jspb.Message {
   getApplicationId(): number;
@@ -72,6 +73,11 @@ export class UplinkEvent extends jspb.Message {
   getDeviceProfileName(): string;
   setDeviceProfileName(value: string): void;
 
+  hasConsumedAirtime(): boolean;
+  clearConsumedAirtime(): void;
+  getConsumedAirtime(): google_protobuf_duration_pb.Duration | undefined;
+  setConsumedAirtime(value?: google_protobuf_duration_pb.Duration): void;
+
   serializeBinary(): Uint8Array;
   toObject(includeInstance?: boolean): UplinkEvent.AsObject;
   static toObject(includeInstance: boolean, msg: UplinkEvent): UplinkEvent.AsObject;
@@ -102,6 +108,7 @@ export namespace UplinkEvent {
     publishedAt?: google_protobuf_timestamp_pb.Timestamp.AsObject,
     deviceProfileId: string,
     deviceProfileName: string,
+    consumedAirtime?: google_protobuf_duration_pb.Duration.AsObject,
   }
 }
 

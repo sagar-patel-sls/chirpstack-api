@@ -10,6 +10,7 @@ option java_outer_classname = "IntegrationProto";
 import "common/common.proto";
 import "gw/gw.proto";
 import "google/protobuf/timestamp.proto";
+import "google/protobuf/duration.proto";
 
 enum ErrorType {
     // Unknown type.
@@ -101,6 +102,11 @@ message UplinkEvent {
 
     // Device Profile name
     string device_profile_name = 18;
+
+    // Time-on-air, calculated by the Application Server using payload size and
+    // transmission settings
+    google.protobuf.Duration consumed_airtime = 19
+        [json_name = "consumed_airtime"];
 }
 
 // JoinEvent is the message sent when a device joined the network.

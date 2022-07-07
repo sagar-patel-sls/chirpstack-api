@@ -12,6 +12,7 @@ var global = Function('return this')();
 var common_common_pb = require('../../common/common_pb.js');
 var gw_gw_pb = require('../../gw/gw_pb.js');
 var google_protobuf_timestamp_pb = require('google-protobuf/google/protobuf/timestamp_pb.js');
+var google_protobuf_duration_pb = require('google-protobuf/google/protobuf/duration_pb.js');
 goog.exportSymbol('proto.integration.AckEvent', null, global);
 goog.exportSymbol('proto.integration.ErrorEvent', null, global);
 goog.exportSymbol('proto.integration.ErrorType', null, global);
@@ -94,7 +95,8 @@ proto.integration.UplinkEvent.toObject = function(includeInstance, msg) {
     devAddr: msg.getDevAddr_asB64(),
     publishedAt: (f = msg.getPublishedAt()) && google_protobuf_timestamp_pb.Timestamp.toObject(includeInstance, f),
     deviceProfileId: msg.getDeviceProfileId(),
-    deviceProfileName: msg.getDeviceProfileName()
+    deviceProfileName: msg.getDeviceProfileName(),
+    consumedAirtime: (f = msg.getConsumedAirtime()) && google_protobuf_duration_pb.Duration.toObject(includeInstance, f)
   };
 
   if (includeInstance) {
@@ -208,6 +210,11 @@ proto.integration.UplinkEvent.deserializeBinaryFromReader = function(msg, reader
     case 18:
       var value = /** @type {string} */ (reader.readString());
       msg.setDeviceProfileName(value);
+      break;
+    case 19:
+      var value = new google_protobuf_duration_pb.Duration;
+      reader.readMessage(value,google_protobuf_duration_pb.Duration.deserializeBinaryFromReader);
+      msg.setConsumedAirtime(value);
       break;
     default:
       reader.skipField();
@@ -371,6 +378,14 @@ proto.integration.UplinkEvent.prototype.serializeBinaryToWriter = function (writ
     writer.writeString(
       18,
       f
+    );
+  }
+  f = this.getConsumedAirtime();
+  if (f != null) {
+    writer.writeMessage(
+      19,
+      f,
+      google_protobuf_duration_pb.Duration.serializeBinaryToWriter
     );
   }
 };
@@ -764,6 +779,36 @@ proto.integration.UplinkEvent.prototype.getDeviceProfileName = function() {
 /** @param {string} value  */
 proto.integration.UplinkEvent.prototype.setDeviceProfileName = function(value) {
   jspb.Message.setField(this, 18, value);
+};
+
+
+/**
+ * optional google.protobuf.Duration consumed_airtime = 19;
+ * @return {proto.google.protobuf.Duration}
+ */
+proto.integration.UplinkEvent.prototype.getConsumedAirtime = function() {
+  return /** @type{proto.google.protobuf.Duration} */ (
+    jspb.Message.getWrapperField(this, google_protobuf_duration_pb.Duration, 19));
+};
+
+
+/** @param {proto.google.protobuf.Duration|undefined} value  */
+proto.integration.UplinkEvent.prototype.setConsumedAirtime = function(value) {
+  jspb.Message.setWrapperField(this, 19, value);
+};
+
+
+proto.integration.UplinkEvent.prototype.clearConsumedAirtime = function() {
+  this.setConsumedAirtime(undefined);
+};
+
+
+/**
+ * Returns whether this field is set.
+ * @return{!boolean}
+ */
+proto.integration.UplinkEvent.prototype.hasConsumedAirtime = function() {
+  return jspb.Message.getField(this, 19) != null;
 };
 
 
