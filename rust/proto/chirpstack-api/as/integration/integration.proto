@@ -106,7 +106,7 @@ message UplinkEvent {
     // Time-on-air, calculated by the Application Server using payload size and
     // transmission settings
     google.protobuf.Duration consumed_airtime = 19
-        [json_name = "consumed_airtime"];
+        [json_name = "consumedAirtime"];
 }
 
 // JoinEvent is the message sent when a device joined the network.

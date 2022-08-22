@@ -11,3 +11,10 @@ require (
 	google.golang.org/grpc v1.28.0
 	gopkg.in/yaml.v2 v2.2.8 // indirect
 )
+
+retract (
+	// Published accidentally. DO NOT USE
+	v3.12.0
+	// Published accidentally. DO NOT USE
+	v3.12.1
+)
