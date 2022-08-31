@@ -2326,7 +2326,8 @@ proto.api.GatewayListItem.toObject = function(includeInstance, msg) {
     networkServerId: msg.getNetworkServerId(),
     location: (f = msg.getLocation()) && common_common_pb.Location.toObject(includeInstance, f),
     networkServerName: msg.getNetworkServerName(),
-    connStat: msg.getConnStat()
+    connStat: msg.getConnStat(),
+    statNotification: msg.getStatNotification()
   };
 
   if (includeInstance) {
@@ -2415,6 +2416,10 @@ proto.api.GatewayListItem.deserializeBinaryFromReader = function(msg, reader) {
     case 12:
       var value = /** @type {string} */ (reader.readString());
       msg.setConnStat(value);
+      break;
+    case 13:
+      var value = /** @type {boolean} */ (reader.readBool());
+      msg.setStatNotification(value);
       break;
     default:
       reader.skipField();
@@ -2540,6 +2545,13 @@ proto.api.GatewayListItem.prototype.serializeBinaryToWriter = function (writer) 
   if (f.length > 0) {
     writer.writeString(
       12,
+      f
+    );
+  }
+  f = this.getStatNotification();
+  if (f) {
+    writer.writeBool(
+      13,
       f
     );
   }
@@ -2807,6 +2819,23 @@ proto.api.GatewayListItem.prototype.getConnStat = function() {
 /** @param {string} value  */
 proto.api.GatewayListItem.prototype.setConnStat = function(value) {
   jspb.Message.setField(this, 12, value);
+};
+
+
+/**
+ * optional bool stat_notification = 13;
+ * Note that Boolean fields may be set to 0/1 when serialized from a Java server.
+ * You should avoid comparisons like {@code val === true/false} in those cases.
+ * @return {boolean}
+ */
+proto.api.GatewayListItem.prototype.getStatNotification = function() {
+  return /** @type {boolean} */ (jspb.Message.getFieldProto3(this, 13, false));
+};
+
+
+/** @param {boolean} value  */
+proto.api.GatewayListItem.prototype.setStatNotification = function(value) {
+  jspb.Message.setField(this, 13, value);
 };
 
 

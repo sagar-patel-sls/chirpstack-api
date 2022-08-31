@@ -524,6 +524,11 @@
         "connStat": {
           "type": "string",
           "description": "Gateway Connection Stat."
+        },
+        "statNotification": {
+          "type": "boolean",
+          "format": "boolean",
+          "description": "Set to true to enable gateway stat notification on global integration."
         }
       }
     },

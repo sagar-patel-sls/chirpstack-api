@@ -274,6 +274,9 @@ message GatewayListItem {
 
 	// Gateway Connection Stat.
     string conn_stat = 12;
+
+    // Set to true to enable gateway stat notification on global integration.
+    bool stat_notification = 13;
 }
 
 message ListGatewayResponse {

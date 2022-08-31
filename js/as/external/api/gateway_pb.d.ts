@@ -347,6 +347,9 @@ export class GatewayListItem extends jspb.Message {
   getConnStat(): string;
   setConnStat(value: string): void;
 
+  getStatNotification(): boolean;
+  setStatNotification(value: boolean): void;
+
   serializeBinary(): Uint8Array;
   toObject(includeInstance?: boolean): GatewayListItem.AsObject;
   static toObject(includeInstance: boolean, msg: GatewayListItem): GatewayListItem.AsObject;
@@ -371,6 +374,7 @@ export namespace GatewayListItem {
     location?: common_common_pb.Location.AsObject,
     networkServerName: string,
     connStat: string,
+    statNotification: boolean,
   }
 }
 
