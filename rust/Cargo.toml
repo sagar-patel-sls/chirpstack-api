@@ -6,7 +6,7 @@ homepage = "https://www.chirpstack.io"
 license = "MIT"
 name = "chirpstack_api"
 repository = "https://github.com/sagar-patel-sls/chirpstack-api"
-version = "3.12.2"
+version = "3.12.3"
 
 [features]
 default = ["grpc_support"]
