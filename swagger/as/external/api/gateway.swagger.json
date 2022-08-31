@@ -607,6 +607,14 @@
             "format": "int64"
           },
           "title": "Packets count per MType (JoinRequest, JoinAccept, Confirm/UnConfirm)"
+        },
+        "rxFrequencyUtilization": {
+          "type": "object",
+          "additionalProperties": {
+            "type": "number",
+            "format": "float"
+          },
+          "description": "Rx packets frequency utilization."
         }
       }
     },

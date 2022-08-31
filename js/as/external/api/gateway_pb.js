@@ -3276,7 +3276,8 @@ proto.api.GatewayStats.toObject = function(includeInstance, msg) {
     txPacketsPerDrMap: (f = msg.getTxPacketsPerDrMap(true)) ? f.toArray() : [],
     rxPacketsPerDrMap: (f = msg.getRxPacketsPerDrMap(true)) ? f.toArray() : [],
     txPacketsPerStatusMap: (f = msg.getTxPacketsPerStatusMap(true)) ? f.toArray() : [],
-    mtypeCountMap: (f = msg.getMtypeCountMap(true)) ? f.toArray() : []
+    mtypeCountMap: (f = msg.getMtypeCountMap(true)) ? f.toArray() : [],
+    rxFrequencyUtilizationMap: (f = msg.getRxFrequencyUtilizationMap(true)) ? f.toArray() : []
   };
 
   if (includeInstance) {
@@ -3368,6 +3369,12 @@ proto.api.GatewayStats.deserializeBinaryFromReader = function(msg, reader) {
       var value = msg.getMtypeCountMap();
       reader.readMessage(value, function(message, reader) {
         jspb.Map.deserializeBinary(message, reader, jspb.BinaryReader.prototype.readString, jspb.BinaryReader.prototype.readUint32);
+         });
+      break;
+    case 12:
+      var value = msg.getRxFrequencyUtilizationMap();
+      reader.readMessage(value, function(message, reader) {
+        jspb.Map.deserializeBinary(message, reader, jspb.BinaryReader.prototype.readUint32, jspb.BinaryReader.prototype.readFloat);
          });
       break;
     default:
@@ -3467,6 +3474,10 @@ proto.api.GatewayStats.prototype.serializeBinaryToWriter = function (writer) {
   f = this.getMtypeCountMap(true);
   if (f && f.getLength() > 0) {
     f.serializeBinary(11, writer, jspb.BinaryWriter.prototype.writeString, jspb.BinaryWriter.prototype.writeUint32);
+  }
+  f = this.getRxFrequencyUtilizationMap(true);
+  if (f && f.getLength() > 0) {
+    f.serializeBinary(12, writer, jspb.BinaryWriter.prototype.writeUint32, jspb.BinaryWriter.prototype.writeFloat);
   }
 };
 
@@ -3644,6 +3655,19 @@ proto.api.GatewayStats.prototype.getTxPacketsPerStatusMap = function(opt_noLazyC
 proto.api.GatewayStats.prototype.getMtypeCountMap = function(opt_noLazyCreate) {
   return /** @type {!jspb.Map<string,number>} */ (
       jspb.Message.getMapField(this, 11, opt_noLazyCreate,
+      null));
+};
+
+
+/**
+ * map<uint32, float> rx_frequency_utilization = 12;
+ * @param {boolean=} opt_noLazyCreate Do not create the map if
+ * empty, instead returning `undefined`
+ * @return {!jspb.Map<number,number>}
+ */
+proto.api.GatewayStats.prototype.getRxFrequencyUtilizationMap = function(opt_noLazyCreate) {
+  return /** @type {!jspb.Map<number,number>} */ (
+      jspb.Message.getMapField(this, 12, opt_noLazyCreate,
       null));
 };
 

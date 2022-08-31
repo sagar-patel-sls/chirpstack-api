@@ -326,6 +326,9 @@ message GatewayStats {
 
 	// Packets count per MType (JoinRequest, JoinAccept, Confirm/UnConfirm)
     map<string, uint32> mtype_count = 11;
+
+    // Rx packets frequency utilization.
+    map<uint32, float> rx_frequency_utilization = 12;
 }
 
 message GetGatewayStatsRequest {
