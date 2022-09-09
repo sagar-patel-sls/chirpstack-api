@@ -614,7 +614,15 @@
             "type": "number",
             "format": "float"
           },
-          "description": "Rx packets frequency utilization."
+          "description": "Rx packets (Received) frequency utilization."
+        },
+        "txFrequencyUtilization": {
+          "type": "object",
+          "additionalProperties": {
+            "type": "number",
+            "format": "float"
+          },
+          "description": "Tx packets (Transmitted) frequency utilization."
         }
       }
     },
