@@ -698,6 +698,46 @@ message DownlinkFrameLog {
     google.protobuf.Timestamp published_at = 9;
 }
 
+message GatewayStatsFrameLog {
+    // Gateway ID.
+    bytes gateway_id = 1 [json_name = "gatewayID"];
+
+    // Gateway IP.
+    string ip = 9;
+
+    // Gateway time.
+    google.protobuf.Timestamp time = 2;
+
+    // Gateway location.
+    common.Location location = 3;
+
+    // Gateway configuration version (this maps to the config_version sent
+    // by LoRa Server to the gateway).
+    string config_version = 4;
+
+    // Number of radio packets received.
+    uint32 rx_packets_received = 5;
+
+    // Number of radio packets received with valid PHY CRC.
+    uint32 rx_packets_received_ok = 6 [json_name = "rxPacketsReceivedOK"];
+
+    // Number of downlink packets received for transmission.
+    uint32 tx_packets_received = 7;
+
+    // Number of downlink packets emitted.
+    uint32 tx_packets_emitted = 8;
+
+    // Additional gateway meta-data.
+    map<string, string> meta_data = 10;
+
+    // Stats ID (UUID).
+    // Unique identifier for the gateway stats.
+    bytes stats_id = 11 [json_name = "statsID"];
+
+    // Published at timestamp.
+    google.protobuf.Timestamp published_at = 12;
+}
+
 message StreamFrameLogsForGatewayRequest {
     // MAC address of the gateway.
     bytes gateway_id = 1;
@@ -710,6 +750,9 @@ message StreamFrameLogsForGatewayResponse {
 
         // Contains a downlink frame.
         DownlinkFrameLog downlink_frame = 2;
+
+        // Contains a stats frame.
+        GatewayStatsFrameLog stats_frame = 3;
     }
 }
 
@@ -720,10 +763,13 @@ message StreamGlobalFrameLogsForGatewayResponse {
 
         // Contains a downlink frame.
         DownlinkFrameLog downlink_frame = 2;
+
+        // Contains a stats frame.
+        GatewayStatsFrameLog stats_frame = 3;
     }
 
     // MAC address of the gateway.
-    bytes gateway_eui = 3;
+    bytes gateway_eui = 4;
 }
 
 message StreamFrameLogsForDeviceRequest {

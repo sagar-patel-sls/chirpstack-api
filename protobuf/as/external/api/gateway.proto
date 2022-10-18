@@ -404,6 +404,9 @@ message StreamGatewayFrameLogsResponse {
 
         // Contains a downlink frame.
         DownlinkFrameLog downlink_frame = 2;
+
+		// Contains a stats frame.
+        GatewayStatsFrameLog stats_frame = 3;
     }
 }
 
@@ -425,5 +428,8 @@ message StreamGlobalGatewayFrameLogsResponse {
 
         // Contains a downlink frame.
         DownlinkFrameLog downlink_frame = 3;
+
+		// Contains a stats frame.
+        GatewayStatsFrameLog stats_frame = 4;
     }
 }

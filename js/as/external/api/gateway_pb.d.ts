@@ -673,6 +673,11 @@ export class StreamGatewayFrameLogsResponse extends jspb.Message {
   getDownlinkFrame(): as_external_api_frameLog_pb.DownlinkFrameLog | undefined;
   setDownlinkFrame(value?: as_external_api_frameLog_pb.DownlinkFrameLog): void;
 
+  hasStatsFrame(): boolean;
+  clearStatsFrame(): void;
+  getStatsFrame(): as_external_api_frameLog_pb.GatewayStatsFrameLog | undefined;
+  setStatsFrame(value?: as_external_api_frameLog_pb.GatewayStatsFrameLog): void;
+
   getFrameCase(): StreamGatewayFrameLogsResponse.FrameCase;
   serializeBinary(): Uint8Array;
   toObject(includeInstance?: boolean): StreamGatewayFrameLogsResponse.AsObject;
@@ -688,12 +693,14 @@ export namespace StreamGatewayFrameLogsResponse {
   export type AsObject = {
     uplinkFrame?: as_external_api_frameLog_pb.UplinkFrameLog.AsObject,
     downlinkFrame?: as_external_api_frameLog_pb.DownlinkFrameLog.AsObject,
+    statsFrame?: as_external_api_frameLog_pb.GatewayStatsFrameLog.AsObject,
   }
 
   export enum FrameCase {
     FRAME_NOT_SET = 0,
     UPLINK_FRAME = 1,
     DOWNLINK_FRAME = 2,
+    STATS_FRAME = 3,
   }
 }
 
@@ -735,6 +742,11 @@ export class StreamGlobalGatewayFrameLogsResponse extends jspb.Message {
   getDownlinkFrame(): as_external_api_frameLog_pb.DownlinkFrameLog | undefined;
   setDownlinkFrame(value?: as_external_api_frameLog_pb.DownlinkFrameLog): void;
 
+  hasStatsFrame(): boolean;
+  clearStatsFrame(): void;
+  getStatsFrame(): as_external_api_frameLog_pb.GatewayStatsFrameLog | undefined;
+  setStatsFrame(value?: as_external_api_frameLog_pb.GatewayStatsFrameLog): void;
+
   getFrameCase(): StreamGlobalGatewayFrameLogsResponse.FrameCase;
   serializeBinary(): Uint8Array;
   toObject(includeInstance?: boolean): StreamGlobalGatewayFrameLogsResponse.AsObject;
@@ -751,12 +763,14 @@ export namespace StreamGlobalGatewayFrameLogsResponse {
     gatewayEui: string,
     uplinkFrame?: as_external_api_frameLog_pb.UplinkFrameLog.AsObject,
     downlinkFrame?: as_external_api_frameLog_pb.DownlinkFrameLog.AsObject,
+    statsFrame?: as_external_api_frameLog_pb.GatewayStatsFrameLog.AsObject,
   }
 
   export enum FrameCase {
     FRAME_NOT_SET = 0,
     UPLINK_FRAME = 2,
     DOWNLINK_FRAME = 3,
+    STATS_FRAME = 4,
   }
 }
 

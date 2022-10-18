@@ -626,6 +626,70 @@
         }
       }
     },
+    "apiGatewayStatsFrameLog": {
+      "type": "object",
+      "properties": {
+        "gatewayID": {
+          "type": "string",
+          "format": "byte",
+          "description": "Gateway ID."
+        },
+        "ip": {
+          "type": "string",
+          "description": "Gateway IP."
+        },
+        "time": {
+          "type": "string",
+          "format": "date-time",
+          "description": "Gateway time."
+        },
+        "location": {
+          "$ref": "#/definitions/commonLocation",
+          "description": "Gateway location."
+        },
+        "configVersion": {
+          "type": "string",
+          "description": "Gateway configuration version (this maps to the config_version sent\nby LoRa Server to the gateway)."
+        },
+        "rxPacketsReceived": {
+          "type": "integer",
+          "format": "int64",
+          "description": "Number of radio packets received."
+        },
+        "rxPacketsReceivedOK": {
+          "type": "integer",
+          "format": "int64",
+          "description": "Number of radio packets received with valid PHY CRC."
+        },
+        "txPacketsReceived": {
+          "type": "integer",
+          "format": "int64",
+          "description": "Number of downlink packets received for transmission."
+        },
+        "txPacketsEmitted": {
+          "type": "integer",
+          "format": "int64",
+          "description": "Number of downlink packets emitted."
+        },
+        "metaData": {
+          "type": "object",
+          "additionalProperties": {
+            "type": "string"
+          },
+          "description": "Additional gateway meta-data."
+        },
+        "statsID": {
+          "type": "string",
+          "format": "byte",
+          "description": "Stats ID (UUID).\nUnique identifier for the gateway stats."
+        },
+        "publishedAt": {
+          "type": "string",
+          "format": "date-time",
+          "description": "Published at timestamp."
+        }
+      }
+    },
     "apiGenerateGatewayClientCertificateResponse": {
       "type": "object",
       "properties": {
@@ -800,6 +864,10 @@
         "downlinkFrame": {
           "$ref": "#/definitions/apiDownlinkFrameLog",
           "description": "Contains a downlink frame."
+        },
+        "statsFrame": {
+          "$ref": "#/definitions/apiGatewayStatsFrameLog",
+          "description": "Contains a stats frame."
         }
       }
     },
@@ -817,6 +885,10 @@
         "downlinkFrame": {
           "$ref": "#/definitions/apiDownlinkFrameLog",
           "description": "Contains a downlink frame."
+        },
+        "statsFrame": {
+          "$ref": "#/definitions/apiGatewayStatsFrameLog",
+          "description": "Contains a stats frame."
         }
       }
     },

@@ -54,6 +54,7 @@ goog.exportSymbol('proto.ns.GatewayBoard', null, global);
 goog.exportSymbol('proto.ns.GatewayProfile', null, global);
 goog.exportSymbol('proto.ns.GatewayProfileExtraChannel', null, global);
 goog.exportSymbol('proto.ns.GatewayStats', null, global);
+goog.exportSymbol('proto.ns.GatewayStatsFrameLog', null, global);
 goog.exportSymbol('proto.ns.GenerateGatewayClientCertificateRequest', null, global);
 goog.exportSymbol('proto.ns.GenerateGatewayClientCertificateResponse', null, global);
 goog.exportSymbol('proto.ns.GetADRAlgorithmsResponse', null, global);
@@ -12567,6 +12568,558 @@ proto.ns.DownlinkFrameLog.prototype.hasPublishedAt = function() {
  * @extends {jspb.Message}
  * @constructor
  */
+proto.ns.GatewayStatsFrameLog = function(opt_data) {
+  jspb.Message.initialize(this, opt_data, 0, -1, null, null);
+};
+goog.inherits(proto.ns.GatewayStatsFrameLog, jspb.Message);
+if (goog.DEBUG && !COMPILED) {
+  proto.ns.GatewayStatsFrameLog.displayName = 'proto.ns.GatewayStatsFrameLog';
+}
+
+
+if (jspb.Message.GENERATE_TO_OBJECT) {
+/**
+ * Creates an object representation of this proto suitable for use in Soy templates.
+ * Field names that are reserved in JavaScript and will be renamed to pb_name.
+ * To access a reserved field use, foo.pb_<name>, eg, foo.pb_default.
+ * For the list of reserved names please see:
+ *     com.google.apps.jspb.JsClassTemplate.JS_RESERVED_WORDS.
+ * @param {boolean=} opt_includeInstance Whether to include the JSPB instance
+ *     for transitional soy proto support: http://goto/soy-param-migration
+ * @return {!Object}
+ */
+proto.ns.GatewayStatsFrameLog.prototype.toObject = function(opt_includeInstance) {
+  return proto.ns.GatewayStatsFrameLog.toObject(opt_includeInstance, this);
+};
+
+
+/**
+ * Static version of the {@see toObject} method.
+ * @param {boolean|undefined} includeInstance Whether to include the JSPB
+ *     instance for transitional soy proto support:
+ *     http://goto/soy-param-migration
+ * @param {!proto.ns.GatewayStatsFrameLog} msg The msg instance to transform.
+ * @return {!Object}
+ */
+proto.ns.GatewayStatsFrameLog.toObject = function(includeInstance, msg) {
+  var f, obj = {
+    gatewayId: msg.getGatewayId_asB64(),
+    ip: msg.getIp(),
+    time: (f = msg.getTime()) && google_protobuf_timestamp_pb.Timestamp.toObject(includeInstance, f),
+    location: (f = msg.getLocation()) && common_common_pb.Location.toObject(includeInstance, f),
+    configVersion: msg.getConfigVersion(),
+    rxPacketsReceived: msg.getRxPacketsReceived(),
+    rxPacketsReceivedOk: msg.getRxPacketsReceivedOk(),
+    txPacketsReceived: msg.getTxPacketsReceived(),
+    txPacketsEmitted: msg.getTxPacketsEmitted(),
+    metaDataMap: (f = msg.getMetaDataMap(true)) ? f.toArray() : [],
+    statsId: msg.getStatsId_asB64(),
+    publishedAt: (f = msg.getPublishedAt()) && google_protobuf_timestamp_pb.Timestamp.toObject(includeInstance, f)
+  };
+
+  if (includeInstance) {
+    obj.$jspbMessageInstance = msg;
+  }
+  return obj;
+};
+}
+
+
+/**
+ * Deserializes binary data (in protobuf wire format).
+ * @param {jspb.ByteSource} bytes The bytes to deserialize.
+ * @return {!proto.ns.GatewayStatsFrameLog}
+ */
+proto.ns.GatewayStatsFrameLog.deserializeBinary = function(bytes) {
+  var reader = new jspb.BinaryReader(bytes);
+  var msg = new proto.ns.GatewayStatsFrameLog;
+  return proto.ns.GatewayStatsFrameLog.deserializeBinaryFromReader(msg, reader);
+};
+
+
+/**
+ * Deserializes binary data (in protobuf wire format) from the
+ * given reader into the given message object.
+ * @param {!proto.ns.GatewayStatsFrameLog} msg The message object to deserialize into.
+ * @param {!jspb.BinaryReader} reader The BinaryReader to use.
+ * @return {!proto.ns.GatewayStatsFrameLog}
+ */
+proto.ns.GatewayStatsFrameLog.deserializeBinaryFromReader = function(msg, reader) {
+  while (reader.nextField()) {
+    if (reader.isEndGroup()) {
+      break;
+    }
+    var field = reader.getFieldNumber();
+    switch (field) {
+    case 1:
+      var value = /** @type {!Uint8Array} */ (reader.readBytes());
+      msg.setGatewayId(value);
+      break;
+    case 9:
+      var value = /** @type {string} */ (reader.readString());
+      msg.setIp(value);
+      break;
+    case 2:
+      var value = new google_protobuf_timestamp_pb.Timestamp;
+      reader.readMessage(value,google_protobuf_timestamp_pb.Timestamp.deserializeBinaryFromReader);
+      msg.setTime(value);
+      break;
+    case 3:
+      var value = new common_common_pb.Location;
+      reader.readMessage(value,common_common_pb.Location.deserializeBinaryFromReader);
+      msg.setLocation(value);
+      break;
+    case 4:
+      var value = /** @type {string} */ (reader.readString());
+      msg.setConfigVersion(value);
+      break;
+    case 5:
+      var value = /** @type {number} */ (reader.readUint32());
+      msg.setRxPacketsReceived(value);
+      break;
+    case 6:
+      var value = /** @type {number} */ (reader.readUint32());
+      msg.setRxPacketsReceivedOk(value);
+      break;
+    case 7:
+      var value = /** @type {number} */ (reader.readUint32());
+      msg.setTxPacketsReceived(value);
+      break;
+    case 8:
+      var value = /** @type {number} */ (reader.readUint32());
+      msg.setTxPacketsEmitted(value);
+      break;
+    case 10:
+      var value = msg.getMetaDataMap();
+      reader.readMessage(value, function(message, reader) {
+        jspb.Map.deserializeBinary(message, reader, jspb.BinaryReader.prototype.readString, jspb.BinaryReader.prototype.readString);
+         });
+      break;
+    case 11:
+      var value = /** @type {!Uint8Array} */ (reader.readBytes());
+      msg.setStatsId(value);
+      break;
+    case 12:
+      var value = new google_protobuf_timestamp_pb.Timestamp;
+      reader.readMessage(value,google_protobuf_timestamp_pb.Timestamp.deserializeBinaryFromReader);
+      msg.setPublishedAt(value);
+      break;
+    default:
+      reader.skipField();
+      break;
+    }
+  }
+  return msg;
+};
+
+
+/**
+ * Class method variant: serializes the given message to binary data
+ * (in protobuf wire format), writing to the given BinaryWriter.
+ * @param {!proto.ns.GatewayStatsFrameLog} message
+ * @param {!jspb.BinaryWriter} writer
+ */
+proto.ns.GatewayStatsFrameLog.serializeBinaryToWriter = function(message, writer) {
+  message.serializeBinaryToWriter(writer);
+};
+
+
+/**
+ * Serializes the message to binary data (in protobuf wire format).
+ * @return {!Uint8Array}
+ */
+proto.ns.GatewayStatsFrameLog.prototype.serializeBinary = function() {
+  var writer = new jspb.BinaryWriter();
+  this.serializeBinaryToWriter(writer);
+  return writer.getResultBuffer();
+};
+
+
+/**
+ * Serializes the message to binary data (in protobuf wire format),
+ * writing to the given BinaryWriter.
+ * @param {!jspb.BinaryWriter} writer
+ */
+proto.ns.GatewayStatsFrameLog.prototype.serializeBinaryToWriter = function (writer) {
+  var f = undefined;
+  f = this.getGatewayId_asU8();
+  if (f.length > 0) {
+    writer.writeBytes(
+      1,
+      f
+    );
+  }
+  f = this.getIp();
+  if (f.length > 0) {
+    writer.writeString(
+      9,
+      f
+    );
+  }
+  f = this.getTime();
+  if (f != null) {
+    writer.writeMessage(
+      2,
+      f,
+      google_protobuf_timestamp_pb.Timestamp.serializeBinaryToWriter
+    );
+  }
+  f = this.getLocation();
+  if (f != null) {
+    writer.writeMessage(
+      3,
+      f,
+      common_common_pb.Location.serializeBinaryToWriter
+    );
+  }
+  f = this.getConfigVersion();
+  if (f.length > 0) {
+    writer.writeString(
+      4,
+      f
+    );
+  }
+  f = this.getRxPacketsReceived();
+  if (f !== 0) {
+    writer.writeUint32(
+      5,
+      f
+    );
+  }
+  f = this.getRxPacketsReceivedOk();
+  if (f !== 0) {
+    writer.writeUint32(
+      6,
+      f
+    );
+  }
+  f = this.getTxPacketsReceived();
+  if (f !== 0) {
+    writer.writeUint32(
+      7,
+      f
+    );
+  }
+  f = this.getTxPacketsEmitted();
+  if (f !== 0) {
+    writer.writeUint32(
+      8,
+      f
+    );
+  }
+  f = this.getMetaDataMap(true);
+  if (f && f.getLength() > 0) {
+    f.serializeBinary(10, writer, jspb.BinaryWriter.prototype.writeString, jspb.BinaryWriter.prototype.writeString);
+  }
+  f = this.getStatsId_asU8();
+  if (f.length > 0) {
+    writer.writeBytes(
+      11,
+      f
+    );
+  }
+  f = this.getPublishedAt();
+  if (f != null) {
+    writer.writeMessage(
+      12,
+      f,
+      google_protobuf_timestamp_pb.Timestamp.serializeBinaryToWriter
+    );
+  }
+};
+
+
+/**
+ * Creates a deep clone of this proto. No data is shared with the original.
+ * @return {!proto.ns.GatewayStatsFrameLog} The clone.
+ */
+proto.ns.GatewayStatsFrameLog.prototype.cloneMessage = function() {
+  return /** @type {!proto.ns.GatewayStatsFrameLog} */ (jspb.Message.cloneMessage(this));
+};
+
+
+/**
+ * optional bytes gateway_id = 1;
+ * @return {!(string|Uint8Array)}
+ */
+proto.ns.GatewayStatsFrameLog.prototype.getGatewayId = function() {
+  return /** @type {!(string|Uint8Array)} */ (jspb.Message.getFieldProto3(this, 1, ""));
+};
+
+
+/**
+ * optional bytes gateway_id = 1;
+ * This is a type-conversion wrapper around `getGatewayId()`
+ * @return {string}
+ */
+proto.ns.GatewayStatsFrameLog.prototype.getGatewayId_asB64 = function() {
+  return /** @type {string} */ (jspb.Message.bytesAsB64(
+      this.getGatewayId()));
+};
+
+
+/**
+ * optional bytes gateway_id = 1;
+ * Note that Uint8Array is not supported on all browsers.
+ * @see http://caniuse.com/Uint8Array
+ * This is a type-conversion wrapper around `getGatewayId()`
+ * @return {!Uint8Array}
+ */
+proto.ns.GatewayStatsFrameLog.prototype.getGatewayId_asU8 = function() {
+  return /** @type {!Uint8Array} */ (jspb.Message.bytesAsU8(
+      this.getGatewayId()));
+};
+
+
+/** @param {!(string|Uint8Array)} value  */
+proto.ns.GatewayStatsFrameLog.prototype.setGatewayId = function(value) {
+  jspb.Message.setField(this, 1, value);
+};
+
+
+/**
+ * optional string ip = 9;
+ * @return {string}
+ */
+proto.ns.GatewayStatsFrameLog.prototype.getIp = function() {
+  return /** @type {string} */ (jspb.Message.getFieldProto3(this, 9, ""));
+};
+
+
+/** @param {string} value  */
+proto.ns.GatewayStatsFrameLog.prototype.setIp = function(value) {
+  jspb.Message.setField(this, 9, value);
+};
+
+
+/**
+ * optional google.protobuf.Timestamp time = 2;
+ * @return {proto.google.protobuf.Timestamp}
+ */
+proto.ns.GatewayStatsFrameLog.prototype.getTime = function() {
+  return /** @type{proto.google.protobuf.Timestamp} */ (
+    jspb.Message.getWrapperField(this, google_protobuf_timestamp_pb.Timestamp, 2));
+};
+
+
+/** @param {proto.google.protobuf.Timestamp|undefined} value  */
+proto.ns.GatewayStatsFrameLog.prototype.setTime = function(value) {
+  jspb.Message.setWrapperField(this, 2, value);
+};
+
+
+proto.ns.GatewayStatsFrameLog.prototype.clearTime = function() {
+  this.setTime(undefined);
+};
+
+
+/**
+ * Returns whether this field is set.
+ * @return{!boolean}
+ */
+proto.ns.GatewayStatsFrameLog.prototype.hasTime = function() {
+  return jspb.Message.getField(this, 2) != null;
+};
+
+
+/**
+ * optional common.Location location = 3;
+ * @return {proto.common.Location}
+ */
+proto.ns.GatewayStatsFrameLog.prototype.getLocation = function() {
+  return /** @type{proto.common.Location} */ (
+    jspb.Message.getWrapperField(this, common_common_pb.Location, 3));
+};
+
+
+/** @param {proto.common.Location|undefined} value  */
+proto.ns.GatewayStatsFrameLog.prototype.setLocation = function(value) {
+  jspb.Message.setWrapperField(this, 3, value);
+};
+
+
+proto.ns.GatewayStatsFrameLog.prototype.clearLocation = function() {
+  this.setLocation(undefined);
+};
+
+
+/**
+ * Returns whether this field is set.
+ * @return{!boolean}
+ */
+proto.ns.GatewayStatsFrameLog.prototype.hasLocation = function() {
+  return jspb.Message.getField(this, 3) != null;
+};
+
+
+/**
+ * optional string config_version = 4;
+ * @return {string}
+ */
+proto.ns.GatewayStatsFrameLog.prototype.getConfigVersion = function() {
+  return /** @type {string} */ (jspb.Message.getFieldProto3(this, 4, ""));
+};
+
+
+/** @param {string} value  */
+proto.ns.GatewayStatsFrameLog.prototype.setConfigVersion = function(value) {
+  jspb.Message.setField(this, 4, value);
+};
+
+
+/**
+ * optional uint32 rx_packets_received = 5;
+ * @return {number}
+ */
+proto.ns.GatewayStatsFrameLog.prototype.getRxPacketsReceived = function() {
+  return /** @type {number} */ (jspb.Message.getFieldProto3(this, 5, 0));
+};
+
+
+/** @param {number} value  */
+proto.ns.GatewayStatsFrameLog.prototype.setRxPacketsReceived = function(value) {
+  jspb.Message.setField(this, 5, value);
+};
+
+
+/**
+ * optional uint32 rx_packets_received_ok = 6;
+ * @return {number}
+ */
+proto.ns.GatewayStatsFrameLog.prototype.getRxPacketsReceivedOk = function() {
+  return /** @type {number} */ (jspb.Message.getFieldProto3(this, 6, 0));
+};
+
+
+/** @param {number} value  */
+proto.ns.GatewayStatsFrameLog.prototype.setRxPacketsReceivedOk = function(value) {
+  jspb.Message.setField(this, 6, value);
+};
+
+
+/**
+ * optional uint32 tx_packets_received = 7;
+ * @return {number}
+ */
+proto.ns.GatewayStatsFrameLog.prototype.getTxPacketsReceived = function() {
+  return /** @type {number} */ (jspb.Message.getFieldProto3(this, 7, 0));
+};
+
+
+/** @param {number} value  */
+proto.ns.GatewayStatsFrameLog.prototype.setTxPacketsReceived = function(value) {
+  jspb.Message.setField(this, 7, value);
+};
+
+
+/**
+ * optional uint32 tx_packets_emitted = 8;
+ * @return {number}
+ */
+proto.ns.GatewayStatsFrameLog.prototype.getTxPacketsEmitted = function() {
+  return /** @type {number} */ (jspb.Message.getFieldProto3(this, 8, 0));
+};
+
+
+/** @param {number} value  */
+proto.ns.GatewayStatsFrameLog.prototype.setTxPacketsEmitted = function(value) {
+  jspb.Message.setField(this, 8, value);
+};
+
+
+/**
+ * map<string, string> meta_data = 10;
+ * @param {boolean=} opt_noLazyCreate Do not create the map if
+ * empty, instead returning `undefined`
+ * @return {!jspb.Map<string,string>}
+ */
+proto.ns.GatewayStatsFrameLog.prototype.getMetaDataMap = function(opt_noLazyCreate) {
+  return /** @type {!jspb.Map<string,string>} */ (
+      jspb.Message.getMapField(this, 10, opt_noLazyCreate,
+      null));
+};
+
+
+/**
+ * optional bytes stats_id = 11;
+ * @return {!(string|Uint8Array)}
+ */
+proto.ns.GatewayStatsFrameLog.prototype.getStatsId = function() {
+  return /** @type {!(string|Uint8Array)} */ (jspb.Message.getFieldProto3(this, 11, ""));
+};
+
+
+/**
+ * optional bytes stats_id = 11;
+ * This is a type-conversion wrapper around `getStatsId()`
+ * @return {string}
+ */
+proto.ns.GatewayStatsFrameLog.prototype.getStatsId_asB64 = function() {
+  return /** @type {string} */ (jspb.Message.bytesAsB64(
+      this.getStatsId()));
+};
+
+
+/**
+ * optional bytes stats_id = 11;
+ * Note that Uint8Array is not supported on all browsers.
+ * @see http://caniuse.com/Uint8Array
+ * This is a type-conversion wrapper around `getStatsId()`
+ * @return {!Uint8Array}
+ */
+proto.ns.GatewayStatsFrameLog.prototype.getStatsId_asU8 = function() {
+  return /** @type {!Uint8Array} */ (jspb.Message.bytesAsU8(
+      this.getStatsId()));
+};
+
+
+/** @param {!(string|Uint8Array)} value  */
+proto.ns.GatewayStatsFrameLog.prototype.setStatsId = function(value) {
+  jspb.Message.setField(this, 11, value);
+};
+
+
+/**
+ * optional google.protobuf.Timestamp published_at = 12;
+ * @return {proto.google.protobuf.Timestamp}
+ */
+proto.ns.GatewayStatsFrameLog.prototype.getPublishedAt = function() {
+  return /** @type{proto.google.protobuf.Timestamp} */ (
+    jspb.Message.getWrapperField(this, google_protobuf_timestamp_pb.Timestamp, 12));
+};
+
+
+/** @param {proto.google.protobuf.Timestamp|undefined} value  */
+proto.ns.GatewayStatsFrameLog.prototype.setPublishedAt = function(value) {
+  jspb.Message.setWrapperField(this, 12, value);
+};
+
+
+proto.ns.GatewayStatsFrameLog.prototype.clearPublishedAt = function() {
+  this.setPublishedAt(undefined);
+};
+
+
+/**
+ * Returns whether this field is set.
+ * @return{!boolean}
+ */
+proto.ns.GatewayStatsFrameLog.prototype.hasPublishedAt = function() {
+  return jspb.Message.getField(this, 12) != null;
+};
+
+
+
+/**
+ * Generated by JsPbCodeGenerator.
+ * @param {Array=} opt_data Optional initial data array, typically from a
+ * server response, or constructed directly in Javascript. The array is used
+ * in place and becomes part of the constructed object. It is not cloned.
+ * If no data is provided, the constructed object will be empty, but still
+ * valid.
+ * @extends {jspb.Message}
+ * @constructor
+ */
 proto.ns.StreamFrameLogsForGatewayRequest = function(opt_data) {
   jspb.Message.initialize(this, opt_data, 0, -1, null, null);
 };
@@ -12765,7 +13318,7 @@ if (goog.DEBUG && !COMPILED) {
  * @private {!Array<!Array<number>>}
  * @const
  */
-proto.ns.StreamFrameLogsForGatewayResponse.oneofGroups_ = [[1,2]];
+proto.ns.StreamFrameLogsForGatewayResponse.oneofGroups_ = [[1,2,3]];
 
 /**
  * @enum {number}
@@ -12773,7 +13326,8 @@ proto.ns.StreamFrameLogsForGatewayResponse.oneofGroups_ = [[1,2]];
 proto.ns.StreamFrameLogsForGatewayResponse.FrameCase = {
   FRAME_NOT_SET: 0,
   UPLINK_FRAME_SET: 1,
-  DOWNLINK_FRAME: 2
+  DOWNLINK_FRAME: 2,
+  STATS_FRAME: 3
 };
 
 /**
@@ -12812,7 +13366,8 @@ proto.ns.StreamFrameLogsForGatewayResponse.prototype.toObject = function(opt_inc
 proto.ns.StreamFrameLogsForGatewayResponse.toObject = function(includeInstance, msg) {
   var f, obj = {
     uplinkFrameSet: (f = msg.getUplinkFrameSet()) && proto.ns.UplinkFrameLog.toObject(includeInstance, f),
-    downlinkFrame: (f = msg.getDownlinkFrame()) && proto.ns.DownlinkFrameLog.toObject(includeInstance, f)
+    downlinkFrame: (f = msg.getDownlinkFrame()) && proto.ns.DownlinkFrameLog.toObject(includeInstance, f),
+    statsFrame: (f = msg.getStatsFrame()) && proto.ns.GatewayStatsFrameLog.toObject(includeInstance, f)
   };
 
   if (includeInstance) {
@@ -12858,6 +13413,11 @@ proto.ns.StreamFrameLogsForGatewayResponse.deserializeBinaryFromReader = functio
       var value = new proto.ns.DownlinkFrameLog;
       reader.readMessage(value,proto.ns.DownlinkFrameLog.deserializeBinaryFromReader);
       msg.setDownlinkFrame(value);
+      break;
+    case 3:
+      var value = new proto.ns.GatewayStatsFrameLog;
+      reader.readMessage(value,proto.ns.GatewayStatsFrameLog.deserializeBinaryFromReader);
+      msg.setStatsFrame(value);
       break;
     default:
       reader.skipField();
@@ -12911,6 +13471,14 @@ proto.ns.StreamFrameLogsForGatewayResponse.prototype.serializeBinaryToWriter = f
       2,
       f,
       proto.ns.DownlinkFrameLog.serializeBinaryToWriter
+    );
+  }
+  f = this.getStatsFrame();
+  if (f != null) {
+    writer.writeMessage(
+      3,
+      f,
+      proto.ns.GatewayStatsFrameLog.serializeBinaryToWriter
     );
   }
 };
@@ -12985,6 +13553,36 @@ proto.ns.StreamFrameLogsForGatewayResponse.prototype.hasDownlinkFrame = function
 };
 
 
+/**
+ * optional GatewayStatsFrameLog stats_frame = 3;
+ * @return {proto.ns.GatewayStatsFrameLog}
+ */
+proto.ns.StreamFrameLogsForGatewayResponse.prototype.getStatsFrame = function() {
+  return /** @type{proto.ns.GatewayStatsFrameLog} */ (
+    jspb.Message.getWrapperField(this, proto.ns.GatewayStatsFrameLog, 3));
+};
+
+
+/** @param {proto.ns.GatewayStatsFrameLog|undefined} value  */
+proto.ns.StreamFrameLogsForGatewayResponse.prototype.setStatsFrame = function(value) {
+  jspb.Message.setOneofWrapperField(this, 3, proto.ns.StreamFrameLogsForGatewayResponse.oneofGroups_[0], value);
+};
+
+
+proto.ns.StreamFrameLogsForGatewayResponse.prototype.clearStatsFrame = function() {
+  this.setStatsFrame(undefined);
+};
+
+
+/**
+ * Returns whether this field is set.
+ * @return{!boolean}
+ */
+proto.ns.StreamFrameLogsForGatewayResponse.prototype.hasStatsFrame = function() {
+  return jspb.Message.getField(this, 3) != null;
+};
+
+
 
 /**
  * Generated by JsPbCodeGenerator.
@@ -13011,7 +13609,7 @@ if (goog.DEBUG && !COMPILED) {
  * @private {!Array<!Array<number>>}
  * @const
  */
-proto.ns.StreamGlobalFrameLogsForGatewayResponse.oneofGroups_ = [[1,2]];
+proto.ns.StreamGlobalFrameLogsForGatewayResponse.oneofGroups_ = [[1,2,3]];
 
 /**
  * @enum {number}
@@ -13019,7 +13617,8 @@ proto.ns.StreamGlobalFrameLogsForGatewayResponse.oneofGroups_ = [[1,2]];
 proto.ns.StreamGlobalFrameLogsForGatewayResponse.FrameCase = {
   FRAME_NOT_SET: 0,
   UPLINK_FRAME_SET: 1,
-  DOWNLINK_FRAME: 2
+  DOWNLINK_FRAME: 2,
+  STATS_FRAME: 3
 };
 
 /**
@@ -13059,6 +13658,7 @@ proto.ns.StreamGlobalFrameLogsForGatewayResponse.toObject = function(includeInst
   var f, obj = {
     uplinkFrameSet: (f = msg.getUplinkFrameSet()) && proto.ns.UplinkFrameLog.toObject(includeInstance, f),
     downlinkFrame: (f = msg.getDownlinkFrame()) && proto.ns.DownlinkFrameLog.toObject(includeInstance, f),
+    statsFrame: (f = msg.getStatsFrame()) && proto.ns.GatewayStatsFrameLog.toObject(includeInstance, f),
     gatewayEui: msg.getGatewayEui_asB64()
   };
 
@@ -13107,6 +13707,11 @@ proto.ns.StreamGlobalFrameLogsForGatewayResponse.deserializeBinaryFromReader = f
       msg.setDownlinkFrame(value);
       break;
     case 3:
+      var value = new proto.ns.GatewayStatsFrameLog;
+      reader.readMessage(value,proto.ns.GatewayStatsFrameLog.deserializeBinaryFromReader);
+      msg.setStatsFrame(value);
+      break;
+    case 4:
       var value = /** @type {!Uint8Array} */ (reader.readBytes());
       msg.setGatewayEui(value);
       break;
@@ -13164,10 +13769,18 @@ proto.ns.StreamGlobalFrameLogsForGatewayResponse.prototype.serializeBinaryToWrit
       proto.ns.DownlinkFrameLog.serializeBinaryToWriter
     );
   }
+  f = this.getStatsFrame();
+  if (f != null) {
+    writer.writeMessage(
+      3,
+      f,
+      proto.ns.GatewayStatsFrameLog.serializeBinaryToWriter
+    );
+  }
   f = this.getGatewayEui_asU8();
   if (f.length > 0) {
     writer.writeBytes(
-      3,
+      4,
       f
     );
   }
@@ -13244,16 +13857,46 @@ proto.ns.StreamGlobalFrameLogsForGatewayResponse.prototype.hasDownlinkFrame = fu
 
 
 /**
- * optional bytes gateway_eui = 3;
- * @return {!(string|Uint8Array)}
+ * optional GatewayStatsFrameLog stats_frame = 3;
+ * @return {proto.ns.GatewayStatsFrameLog}
  */
-proto.ns.StreamGlobalFrameLogsForGatewayResponse.prototype.getGatewayEui = function() {
-  return /** @type {!(string|Uint8Array)} */ (jspb.Message.getFieldProto3(this, 3, ""));
+proto.ns.StreamGlobalFrameLogsForGatewayResponse.prototype.getStatsFrame = function() {
+  return /** @type{proto.ns.GatewayStatsFrameLog} */ (
+    jspb.Message.getWrapperField(this, proto.ns.GatewayStatsFrameLog, 3));
+};
+
+
+/** @param {proto.ns.GatewayStatsFrameLog|undefined} value  */
+proto.ns.StreamGlobalFrameLogsForGatewayResponse.prototype.setStatsFrame = function(value) {
+  jspb.Message.setOneofWrapperField(this, 3, proto.ns.StreamGlobalFrameLogsForGatewayResponse.oneofGroups_[0], value);
+};
+
+
+proto.ns.StreamGlobalFrameLogsForGatewayResponse.prototype.clearStatsFrame = function() {
+  this.setStatsFrame(undefined);
 };
 
 
 /**
- * optional bytes gateway_eui = 3;
+ * Returns whether this field is set.
+ * @return{!boolean}
+ */
+proto.ns.StreamGlobalFrameLogsForGatewayResponse.prototype.hasStatsFrame = function() {
+  return jspb.Message.getField(this, 3) != null;
+};
+
+
+/**
+ * optional bytes gateway_eui = 4;
+ * @return {!(string|Uint8Array)}
+ */
+proto.ns.StreamGlobalFrameLogsForGatewayResponse.prototype.getGatewayEui = function() {
+  return /** @type {!(string|Uint8Array)} */ (jspb.Message.getFieldProto3(this, 4, ""));
+};
+
+
+/**
+ * optional bytes gateway_eui = 4;
  * This is a type-conversion wrapper around `getGatewayEui()`
  * @return {string}
  */
@@ -13264,7 +13907,7 @@ proto.ns.StreamGlobalFrameLogsForGatewayResponse.prototype.getGatewayEui_asB64 =
 
 
 /**
- * optional bytes gateway_eui = 3;
+ * optional bytes gateway_eui = 4;
  * Note that Uint8Array is not supported on all browsers.
  * @see http://caniuse.com/Uint8Array
  * This is a type-conversion wrapper around `getGatewayEui()`
@@ -13278,7 +13921,7 @@ proto.ns.StreamGlobalFrameLogsForGatewayResponse.prototype.getGatewayEui_asU8 = 
 
 /** @param {!(string|Uint8Array)} value  */
 proto.ns.StreamGlobalFrameLogsForGatewayResponse.prototype.setGatewayEui = function(value) {
-  jspb.Message.setField(this, 3, value);
+  jspb.Message.setField(this, 4, value);
 };
 
 

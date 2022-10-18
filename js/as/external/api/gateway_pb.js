@@ -5062,7 +5062,7 @@ if (goog.DEBUG && !COMPILED) {
  * @private {!Array<!Array<number>>}
  * @const
  */
-proto.api.StreamGatewayFrameLogsResponse.oneofGroups_ = [[1,2]];
+proto.api.StreamGatewayFrameLogsResponse.oneofGroups_ = [[1,2,3]];
 
 /**
  * @enum {number}
@@ -5070,7 +5070,8 @@ proto.api.StreamGatewayFrameLogsResponse.oneofGroups_ = [[1,2]];
 proto.api.StreamGatewayFrameLogsResponse.FrameCase = {
   FRAME_NOT_SET: 0,
   UPLINK_FRAME: 1,
-  DOWNLINK_FRAME: 2
+  DOWNLINK_FRAME: 2,
+  STATS_FRAME: 3
 };
 
 /**
@@ -5109,7 +5110,8 @@ proto.api.StreamGatewayFrameLogsResponse.prototype.toObject = function(opt_inclu
 proto.api.StreamGatewayFrameLogsResponse.toObject = function(includeInstance, msg) {
   var f, obj = {
     uplinkFrame: (f = msg.getUplinkFrame()) && as_external_api_frameLog_pb.UplinkFrameLog.toObject(includeInstance, f),
-    downlinkFrame: (f = msg.getDownlinkFrame()) && as_external_api_frameLog_pb.DownlinkFrameLog.toObject(includeInstance, f)
+    downlinkFrame: (f = msg.getDownlinkFrame()) && as_external_api_frameLog_pb.DownlinkFrameLog.toObject(includeInstance, f),
+    statsFrame: (f = msg.getStatsFrame()) && as_external_api_frameLog_pb.GatewayStatsFrameLog.toObject(includeInstance, f)
   };
 
   if (includeInstance) {
@@ -5155,6 +5157,11 @@ proto.api.StreamGatewayFrameLogsResponse.deserializeBinaryFromReader = function(
       var value = new as_external_api_frameLog_pb.DownlinkFrameLog;
       reader.readMessage(value,as_external_api_frameLog_pb.DownlinkFrameLog.deserializeBinaryFromReader);
       msg.setDownlinkFrame(value);
+      break;
+    case 3:
+      var value = new as_external_api_frameLog_pb.GatewayStatsFrameLog;
+      reader.readMessage(value,as_external_api_frameLog_pb.GatewayStatsFrameLog.deserializeBinaryFromReader);
+      msg.setStatsFrame(value);
       break;
     default:
       reader.skipField();
@@ -5208,6 +5215,14 @@ proto.api.StreamGatewayFrameLogsResponse.prototype.serializeBinaryToWriter = fun
       2,
       f,
       as_external_api_frameLog_pb.DownlinkFrameLog.serializeBinaryToWriter
+    );
+  }
+  f = this.getStatsFrame();
+  if (f != null) {
+    writer.writeMessage(
+      3,
+      f,
+      as_external_api_frameLog_pb.GatewayStatsFrameLog.serializeBinaryToWriter
     );
   }
 };
@@ -5279,6 +5294,36 @@ proto.api.StreamGatewayFrameLogsResponse.prototype.clearDownlinkFrame = function
  */
 proto.api.StreamGatewayFrameLogsResponse.prototype.hasDownlinkFrame = function() {
   return jspb.Message.getField(this, 2) != null;
+};
+
+
+/**
+ * optional GatewayStatsFrameLog stats_frame = 3;
+ * @return {proto.api.GatewayStatsFrameLog}
+ */
+proto.api.StreamGatewayFrameLogsResponse.prototype.getStatsFrame = function() {
+  return /** @type{proto.api.GatewayStatsFrameLog} */ (
+    jspb.Message.getWrapperField(this, as_external_api_frameLog_pb.GatewayStatsFrameLog, 3));
+};
+
+
+/** @param {proto.api.GatewayStatsFrameLog|undefined} value  */
+proto.api.StreamGatewayFrameLogsResponse.prototype.setStatsFrame = function(value) {
+  jspb.Message.setOneofWrapperField(this, 3, proto.api.StreamGatewayFrameLogsResponse.oneofGroups_[0], value);
+};
+
+
+proto.api.StreamGatewayFrameLogsResponse.prototype.clearStatsFrame = function() {
+  this.setStatsFrame(undefined);
+};
+
+
+/**
+ * Returns whether this field is set.
+ * @return{!boolean}
+ */
+proto.api.StreamGatewayFrameLogsResponse.prototype.hasStatsFrame = function() {
+  return jspb.Message.getField(this, 3) != null;
 };
 
 
@@ -5494,7 +5539,7 @@ if (goog.DEBUG && !COMPILED) {
  * @private {!Array<!Array<number>>}
  * @const
  */
-proto.api.StreamGlobalGatewayFrameLogsResponse.oneofGroups_ = [[2,3]];
+proto.api.StreamGlobalGatewayFrameLogsResponse.oneofGroups_ = [[2,3,4]];
 
 /**
  * @enum {number}
@@ -5502,7 +5547,8 @@ proto.api.StreamGlobalGatewayFrameLogsResponse.oneofGroups_ = [[2,3]];
 proto.api.StreamGlobalGatewayFrameLogsResponse.FrameCase = {
   FRAME_NOT_SET: 0,
   UPLINK_FRAME: 2,
-  DOWNLINK_FRAME: 3
+  DOWNLINK_FRAME: 3,
+  STATS_FRAME: 4
 };
 
 /**
@@ -5542,7 +5588,8 @@ proto.api.StreamGlobalGatewayFrameLogsResponse.toObject = function(includeInstan
   var f, obj = {
     gatewayEui: msg.getGatewayEui(),
     uplinkFrame: (f = msg.getUplinkFrame()) && as_external_api_frameLog_pb.UplinkFrameLog.toObject(includeInstance, f),
-    downlinkFrame: (f = msg.getDownlinkFrame()) && as_external_api_frameLog_pb.DownlinkFrameLog.toObject(includeInstance, f)
+    downlinkFrame: (f = msg.getDownlinkFrame()) && as_external_api_frameLog_pb.DownlinkFrameLog.toObject(includeInstance, f),
+    statsFrame: (f = msg.getStatsFrame()) && as_external_api_frameLog_pb.GatewayStatsFrameLog.toObject(includeInstance, f)
   };
 
   if (includeInstance) {
@@ -5592,6 +5639,11 @@ proto.api.StreamGlobalGatewayFrameLogsResponse.deserializeBinaryFromReader = fun
       var value = new as_external_api_frameLog_pb.DownlinkFrameLog;
       reader.readMessage(value,as_external_api_frameLog_pb.DownlinkFrameLog.deserializeBinaryFromReader);
       msg.setDownlinkFrame(value);
+      break;
+    case 4:
+      var value = new as_external_api_frameLog_pb.GatewayStatsFrameLog;
+      reader.readMessage(value,as_external_api_frameLog_pb.GatewayStatsFrameLog.deserializeBinaryFromReader);
+      msg.setStatsFrame(value);
       break;
     default:
       reader.skipField();
@@ -5652,6 +5704,14 @@ proto.api.StreamGlobalGatewayFrameLogsResponse.prototype.serializeBinaryToWriter
       3,
       f,
       as_external_api_frameLog_pb.DownlinkFrameLog.serializeBinaryToWriter
+    );
+  }
+  f = this.getStatsFrame();
+  if (f != null) {
+    writer.writeMessage(
+      4,
+      f,
+      as_external_api_frameLog_pb.GatewayStatsFrameLog.serializeBinaryToWriter
     );
   }
 };
@@ -5738,6 +5798,36 @@ proto.api.StreamGlobalGatewayFrameLogsResponse.prototype.clearDownlinkFrame = fu
  */
 proto.api.StreamGlobalGatewayFrameLogsResponse.prototype.hasDownlinkFrame = function() {
   return jspb.Message.getField(this, 3) != null;
+};
+
+
+/**
+ * optional GatewayStatsFrameLog stats_frame = 4;
+ * @return {proto.api.GatewayStatsFrameLog}
+ */
+proto.api.StreamGlobalGatewayFrameLogsResponse.prototype.getStatsFrame = function() {
+  return /** @type{proto.api.GatewayStatsFrameLog} */ (
+    jspb.Message.getWrapperField(this, as_external_api_frameLog_pb.GatewayStatsFrameLog, 4));
+};
+
+
+/** @param {proto.api.GatewayStatsFrameLog|undefined} value  */
+proto.api.StreamGlobalGatewayFrameLogsResponse.prototype.setStatsFrame = function(value) {
+  jspb.Message.setOneofWrapperField(this, 4, proto.api.StreamGlobalGatewayFrameLogsResponse.oneofGroups_[0], value);
+};
+
+
+proto.api.StreamGlobalGatewayFrameLogsResponse.prototype.clearStatsFrame = function() {
+  this.setStatsFrame(undefined);
+};
+
+
+/**
+ * Returns whether this field is set.
+ * @return{!boolean}
+ */
+proto.api.StreamGlobalGatewayFrameLogsResponse.prototype.hasStatsFrame = function() {
+  return jspb.Message.getField(this, 4) != null;
 };
 
 
