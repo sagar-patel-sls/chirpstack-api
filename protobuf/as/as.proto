@@ -82,6 +82,9 @@ enum ErrorType {
 
     // Downlink gateway error.
     DATA_DOWN_GATEWAY = 7;
+
+    // Downlink queue device not activated error.
+    DOWNLINK_DEVICE_NOT_ACTIVATED = 8;
 }
 
 

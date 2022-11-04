@@ -44,6 +44,9 @@ enum ErrorType {
 
     // Downlink gateway error.
     DOWNLINK_GATEWAY = 9;
+
+    // Downlink queue device not activated error.
+    DOWNLINK_DEVICE_NOT_ACTIVATED = 10;
 }
 
 // UplinkEvent is the message sent when an uplink payload has been received.

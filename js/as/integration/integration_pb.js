@@ -4700,7 +4700,8 @@ proto.integration.ErrorType = {
   UPLINK_FCNT_RESET: 6,
   UPLINK_MIC: 7,
   UPLINK_FCNT_RETRANSMISSION: 8,
-  DOWNLINK_GATEWAY: 9
+  DOWNLINK_GATEWAY: 9,
+  DOWNLINK_DEVICE_NOT_ACTIVATED: 10
 };
 
 goog.object.extend(exports, proto.integration);

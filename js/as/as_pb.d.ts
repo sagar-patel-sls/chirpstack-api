@@ -580,6 +580,7 @@ export interface ErrorTypeMap {
   DEVICE_QUEUE_ITEM_FCNT: 5;
   DATA_UP_FCNT_RETRANSMISSION: 6;
   DATA_DOWN_GATEWAY: 7;
+  DOWNLINK_DEVICE_NOT_ACTIVATED: 8;
 }
 
 export const ErrorType: ErrorTypeMap;
