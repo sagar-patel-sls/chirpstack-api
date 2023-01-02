@@ -390,8 +390,38 @@ message DeviceActivation {
     bool skip_f_cnt_check = 9;
 }
 
+message ExtraSessionParameter{
+    // RXDelay
+    uint32 RXDelay = 1;
+
+    // RX1 data-rate offset
+    uint32 RX1DROffset = 2;
+
+    // RX2 data-rate
+    uint32 RX2DR = 3;
+
+    // RX2 frequency
+    uint32 RX2Frequency = 4;
+
+    // tx power index
+    int32 TXPowerIndex = 5;
+
+    // Extra Uplink channels
+    repeated ExtraChannels extra_uplink_channels = 6;
+
+    // Last Device Status Requested time-stamp.
+    google.protobuf.Timestamp last_dev_status_requested = 7;
+}
+
+message ExtraChannels {
+    uint32 index = 1;
+    uint32 frequency = 2;
+    uint32 minDR = 3;
+    uint32 maxDR = 4;
+}
+
 message ActivateDeviceRequest {
-    // Device-activation to activate a device (ABP).
+    // Device-activation to activate a device.
     DeviceActivation device_activation = 1;
 }
 
@@ -408,6 +438,9 @@ message GetDeviceActivationRequest {
 message GetDeviceActivationResponse {
     // Device-activation object.
     DeviceActivation device_activation = 1;
+
+    //Device Session Extra Parameters
+    ExtraSessionParameter extra_session_parameter = 2;
 }
 
 message GetRandomDevAddrResponse {

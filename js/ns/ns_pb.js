@@ -47,6 +47,8 @@ goog.exportSymbol('proto.ns.DeviceActivation', null, global);
 goog.exportSymbol('proto.ns.DeviceQueueItem', null, global);
 goog.exportSymbol('proto.ns.DownlinkFrameLog', null, global);
 goog.exportSymbol('proto.ns.EnqueueMulticastQueueItemRequest', null, global);
+goog.exportSymbol('proto.ns.ExtraChannels', null, global);
+goog.exportSymbol('proto.ns.ExtraSessionParameter', null, global);
 goog.exportSymbol('proto.ns.FlushDeviceQueueForDevEUIRequest', null, global);
 goog.exportSymbol('proto.ns.FlushMulticastQueueForMulticastGroupRequest', null, global);
 goog.exportSymbol('proto.ns.Gateway', null, global);
@@ -5537,6 +5539,603 @@ proto.ns.DeviceActivation.prototype.setSkipFCntCheck = function(value) {
  * @extends {jspb.Message}
  * @constructor
  */
+proto.ns.ExtraSessionParameter = function(opt_data) {
+  jspb.Message.initialize(this, opt_data, 0, -1, proto.ns.ExtraSessionParameter.repeatedFields_, null);
+};
+goog.inherits(proto.ns.ExtraSessionParameter, jspb.Message);
+if (goog.DEBUG && !COMPILED) {
+  proto.ns.ExtraSessionParameter.displayName = 'proto.ns.ExtraSessionParameter';
+}
+/**
+ * List of repeated fields within this message type.
+ * @private {!Array<number>}
+ * @const
+ */
+proto.ns.ExtraSessionParameter.repeatedFields_ = [6];
+
+
+
+if (jspb.Message.GENERATE_TO_OBJECT) {
+/**
+ * Creates an object representation of this proto suitable for use in Soy templates.
+ * Field names that are reserved in JavaScript and will be renamed to pb_name.
+ * To access a reserved field use, foo.pb_<name>, eg, foo.pb_default.
+ * For the list of reserved names please see:
+ *     com.google.apps.jspb.JsClassTemplate.JS_RESERVED_WORDS.
+ * @param {boolean=} opt_includeInstance Whether to include the JSPB instance
+ *     for transitional soy proto support: http://goto/soy-param-migration
+ * @return {!Object}
+ */
+proto.ns.ExtraSessionParameter.prototype.toObject = function(opt_includeInstance) {
+  return proto.ns.ExtraSessionParameter.toObject(opt_includeInstance, this);
+};
+
+
+/**
+ * Static version of the {@see toObject} method.
+ * @param {boolean|undefined} includeInstance Whether to include the JSPB
+ *     instance for transitional soy proto support:
+ *     http://goto/soy-param-migration
+ * @param {!proto.ns.ExtraSessionParameter} msg The msg instance to transform.
+ * @return {!Object}
+ */
+proto.ns.ExtraSessionParameter.toObject = function(includeInstance, msg) {
+  var f, obj = {
+    rxdelay: msg.getRxdelay(),
+    rx1droffset: msg.getRx1droffset(),
+    rx2dr: msg.getRx2dr(),
+    rx2frequency: msg.getRx2frequency(),
+    txpowerindex: msg.getTxpowerindex(),
+    extraUplinkChannelsList: jspb.Message.toObjectList(msg.getExtraUplinkChannelsList(),
+    proto.ns.ExtraChannels.toObject, includeInstance),
+    lastDevStatusRequested: (f = msg.getLastDevStatusRequested()) && google_protobuf_timestamp_pb.Timestamp.toObject(includeInstance, f)
+  };
+
+  if (includeInstance) {
+    obj.$jspbMessageInstance = msg;
+  }
+  return obj;
+};
+}
+
+
+/**
+ * Deserializes binary data (in protobuf wire format).
+ * @param {jspb.ByteSource} bytes The bytes to deserialize.
+ * @return {!proto.ns.ExtraSessionParameter}
+ */
+proto.ns.ExtraSessionParameter.deserializeBinary = function(bytes) {
+  var reader = new jspb.BinaryReader(bytes);
+  var msg = new proto.ns.ExtraSessionParameter;
+  return proto.ns.ExtraSessionParameter.deserializeBinaryFromReader(msg, reader);
+};
+
+
+/**
+ * Deserializes binary data (in protobuf wire format) from the
+ * given reader into the given message object.
+ * @param {!proto.ns.ExtraSessionParameter} msg The message object to deserialize into.
+ * @param {!jspb.BinaryReader} reader The BinaryReader to use.
+ * @return {!proto.ns.ExtraSessionParameter}
+ */
+proto.ns.ExtraSessionParameter.deserializeBinaryFromReader = function(msg, reader) {
+  while (reader.nextField()) {
+    if (reader.isEndGroup()) {
+      break;
+    }
+    var field = reader.getFieldNumber();
+    switch (field) {
+    case 1:
+      var value = /** @type {number} */ (reader.readUint32());
+      msg.setRxdelay(value);
+      break;
+    case 2:
+      var value = /** @type {number} */ (reader.readUint32());
+      msg.setRx1droffset(value);
+      break;
+    case 3:
+      var value = /** @type {number} */ (reader.readUint32());
+      msg.setRx2dr(value);
+      break;
+    case 4:
+      var value = /** @type {number} */ (reader.readUint32());
+      msg.setRx2frequency(value);
+      break;
+    case 5:
+      var value = /** @type {number} */ (reader.readInt32());
+      msg.setTxpowerindex(value);
+      break;
+    case 6:
+      var value = new proto.ns.ExtraChannels;
+      reader.readMessage(value,proto.ns.ExtraChannels.deserializeBinaryFromReader);
+      msg.getExtraUplinkChannelsList().push(value);
+      msg.setExtraUplinkChannelsList(msg.getExtraUplinkChannelsList());
+      break;
+    case 7:
+      var value = new google_protobuf_timestamp_pb.Timestamp;
+      reader.readMessage(value,google_protobuf_timestamp_pb.Timestamp.deserializeBinaryFromReader);
+      msg.setLastDevStatusRequested(value);
+      break;
+    default:
+      reader.skipField();
+      break;
+    }
+  }
+  return msg;
+};
+
+
+/**
+ * Class method variant: serializes the given message to binary data
+ * (in protobuf wire format), writing to the given BinaryWriter.
+ * @param {!proto.ns.ExtraSessionParameter} message
+ * @param {!jspb.BinaryWriter} writer
+ */
+proto.ns.ExtraSessionParameter.serializeBinaryToWriter = function(message, writer) {
+  message.serializeBinaryToWriter(writer);
+};
+
+
+/**
+ * Serializes the message to binary data (in protobuf wire format).
+ * @return {!Uint8Array}
+ */
+proto.ns.ExtraSessionParameter.prototype.serializeBinary = function() {
+  var writer = new jspb.BinaryWriter();
+  this.serializeBinaryToWriter(writer);
+  return writer.getResultBuffer();
+};
+
+
+/**
+ * Serializes the message to binary data (in protobuf wire format),
+ * writing to the given BinaryWriter.
+ * @param {!jspb.BinaryWriter} writer
+ */
+proto.ns.ExtraSessionParameter.prototype.serializeBinaryToWriter = function (writer) {
+  var f = undefined;
+  f = this.getRxdelay();
+  if (f !== 0) {
+    writer.writeUint32(
+      1,
+      f
+    );
+  }
+  f = this.getRx1droffset();
+  if (f !== 0) {
+    writer.writeUint32(
+      2,
+      f
+    );
+  }
+  f = this.getRx2dr();
+  if (f !== 0) {
+    writer.writeUint32(
+      3,
+      f
+    );
+  }
+  f = this.getRx2frequency();
+  if (f !== 0) {
+    writer.writeUint32(
+      4,
+      f
+    );
+  }
+  f = this.getTxpowerindex();
+  if (f !== 0) {
+    writer.writeInt32(
+      5,
+      f
+    );
+  }
+  f = this.getExtraUplinkChannelsList();
+  if (f.length > 0) {
+    writer.writeRepeatedMessage(
+      6,
+      f,
+      proto.ns.ExtraChannels.serializeBinaryToWriter
+    );
+  }
+  f = this.getLastDevStatusRequested();
+  if (f != null) {
+    writer.writeMessage(
+      7,
+      f,
+      google_protobuf_timestamp_pb.Timestamp.serializeBinaryToWriter
+    );
+  }
+};
+
+
+/**
+ * Creates a deep clone of this proto. No data is shared with the original.
+ * @return {!proto.ns.ExtraSessionParameter} The clone.
+ */
+proto.ns.ExtraSessionParameter.prototype.cloneMessage = function() {
+  return /** @type {!proto.ns.ExtraSessionParameter} */ (jspb.Message.cloneMessage(this));
+};
+
+
+/**
+ * optional uint32 RXDelay = 1;
+ * @return {number}
+ */
+proto.ns.ExtraSessionParameter.prototype.getRxdelay = function() {
+  return /** @type {number} */ (jspb.Message.getFieldProto3(this, 1, 0));
+};
+
+
+/** @param {number} value  */
+proto.ns.ExtraSessionParameter.prototype.setRxdelay = function(value) {
+  jspb.Message.setField(this, 1, value);
+};
+
+
+/**
+ * optional uint32 RX1DROffset = 2;
+ * @return {number}
+ */
+proto.ns.ExtraSessionParameter.prototype.getRx1droffset = function() {
+  return /** @type {number} */ (jspb.Message.getFieldProto3(this, 2, 0));
+};
+
+
+/** @param {number} value  */
+proto.ns.ExtraSessionParameter.prototype.setRx1droffset = function(value) {
+  jspb.Message.setField(this, 2, value);
+};
+
+
+/**
+ * optional uint32 RX2DR = 3;
+ * @return {number}
+ */
+proto.ns.ExtraSessionParameter.prototype.getRx2dr = function() {
+  return /** @type {number} */ (jspb.Message.getFieldProto3(this, 3, 0));
+};
+
+
+/** @param {number} value  */
+proto.ns.ExtraSessionParameter.prototype.setRx2dr = function(value) {
+  jspb.Message.setField(this, 3, value);
+};
+
+
+/**
+ * optional uint32 RX2Frequency = 4;
+ * @return {number}
+ */
+proto.ns.ExtraSessionParameter.prototype.getRx2frequency = function() {
+  return /** @type {number} */ (jspb.Message.getFieldProto3(this, 4, 0));
+};
+
+
+/** @param {number} value  */
+proto.ns.ExtraSessionParameter.prototype.setRx2frequency = function(value) {
+  jspb.Message.setField(this, 4, value);
+};
+
+
+/**
+ * optional int32 TXPowerIndex = 5;
+ * @return {number}
+ */
+proto.ns.ExtraSessionParameter.prototype.getTxpowerindex = function() {
+  return /** @type {number} */ (jspb.Message.getFieldProto3(this, 5, 0));
+};
+
+
+/** @param {number} value  */
+proto.ns.ExtraSessionParameter.prototype.setTxpowerindex = function(value) {
+  jspb.Message.setField(this, 5, value);
+};
+
+
+/**
+ * repeated ExtraChannels extra_uplink_channels = 6;
+ * If you change this array by adding, removing or replacing elements, or if you
+ * replace the array itself, then you must call the setter to update it.
+ * @return {!Array.<!proto.ns.ExtraChannels>}
+ */
+proto.ns.ExtraSessionParameter.prototype.getExtraUplinkChannelsList = function() {
+  return /** @type{!Array.<!proto.ns.ExtraChannels>} */ (
+    jspb.Message.getRepeatedWrapperField(this, proto.ns.ExtraChannels, 6));
+};
+
+
+/** @param {Array.<!proto.ns.ExtraChannels>} value  */
+proto.ns.ExtraSessionParameter.prototype.setExtraUplinkChannelsList = function(value) {
+  jspb.Message.setRepeatedWrapperField(this, 6, value);
+};
+
+
+proto.ns.ExtraSessionParameter.prototype.clearExtraUplinkChannelsList = function() {
+  this.setExtraUplinkChannelsList([]);
+};
+
+
+/**
+ * optional google.protobuf.Timestamp last_dev_status_requested = 7;
+ * @return {proto.google.protobuf.Timestamp}
+ */
+proto.ns.ExtraSessionParameter.prototype.getLastDevStatusRequested = function() {
+  return /** @type{proto.google.protobuf.Timestamp} */ (
+    jspb.Message.getWrapperField(this, google_protobuf_timestamp_pb.Timestamp, 7));
+};
+
+
+/** @param {proto.google.protobuf.Timestamp|undefined} value  */
+proto.ns.ExtraSessionParameter.prototype.setLastDevStatusRequested = function(value) {
+  jspb.Message.setWrapperField(this, 7, value);
+};
+
+
+proto.ns.ExtraSessionParameter.prototype.clearLastDevStatusRequested = function() {
+  this.setLastDevStatusRequested(undefined);
+};
+
+
+/**
+ * Returns whether this field is set.
+ * @return{!boolean}
+ */
+proto.ns.ExtraSessionParameter.prototype.hasLastDevStatusRequested = function() {
+  return jspb.Message.getField(this, 7) != null;
+};
+
+
+
+/**
+ * Generated by JsPbCodeGenerator.
+ * @param {Array=} opt_data Optional initial data array, typically from a
+ * server response, or constructed directly in Javascript. The array is used
+ * in place and becomes part of the constructed object. It is not cloned.
+ * If no data is provided, the constructed object will be empty, but still
+ * valid.
+ * @extends {jspb.Message}
+ * @constructor
+ */
+proto.ns.ExtraChannels = function(opt_data) {
+  jspb.Message.initialize(this, opt_data, 0, -1, null, null);
+};
+goog.inherits(proto.ns.ExtraChannels, jspb.Message);
+if (goog.DEBUG && !COMPILED) {
+  proto.ns.ExtraChannels.displayName = 'proto.ns.ExtraChannels';
+}
+
+
+if (jspb.Message.GENERATE_TO_OBJECT) {
+/**
+ * Creates an object representation of this proto suitable for use in Soy templates.
+ * Field names that are reserved in JavaScript and will be renamed to pb_name.
+ * To access a reserved field use, foo.pb_<name>, eg, foo.pb_default.
+ * For the list of reserved names please see:
+ *     com.google.apps.jspb.JsClassTemplate.JS_RESERVED_WORDS.
+ * @param {boolean=} opt_includeInstance Whether to include the JSPB instance
+ *     for transitional soy proto support: http://goto/soy-param-migration
+ * @return {!Object}
+ */
+proto.ns.ExtraChannels.prototype.toObject = function(opt_includeInstance) {
+  return proto.ns.ExtraChannels.toObject(opt_includeInstance, this);
+};
+
+
+/**
+ * Static version of the {@see toObject} method.
+ * @param {boolean|undefined} includeInstance Whether to include the JSPB
+ *     instance for transitional soy proto support:
+ *     http://goto/soy-param-migration
+ * @param {!proto.ns.ExtraChannels} msg The msg instance to transform.
+ * @return {!Object}
+ */
+proto.ns.ExtraChannels.toObject = function(includeInstance, msg) {
+  var f, obj = {
+    index: msg.getIndex(),
+    frequency: msg.getFrequency(),
+    mindr: msg.getMindr(),
+    maxdr: msg.getMaxdr()
+  };
+
+  if (includeInstance) {
+    obj.$jspbMessageInstance = msg;
+  }
+  return obj;
+};
+}
+
+
+/**
+ * Deserializes binary data (in protobuf wire format).
+ * @param {jspb.ByteSource} bytes The bytes to deserialize.
+ * @return {!proto.ns.ExtraChannels}
+ */
+proto.ns.ExtraChannels.deserializeBinary = function(bytes) {
+  var reader = new jspb.BinaryReader(bytes);
+  var msg = new proto.ns.ExtraChannels;
+  return proto.ns.ExtraChannels.deserializeBinaryFromReader(msg, reader);
+};
+
+
+/**
+ * Deserializes binary data (in protobuf wire format) from the
+ * given reader into the given message object.
+ * @param {!proto.ns.ExtraChannels} msg The message object to deserialize into.
+ * @param {!jspb.BinaryReader} reader The BinaryReader to use.
+ * @return {!proto.ns.ExtraChannels}
+ */
+proto.ns.ExtraChannels.deserializeBinaryFromReader = function(msg, reader) {
+  while (reader.nextField()) {
+    if (reader.isEndGroup()) {
+      break;
+    }
+    var field = reader.getFieldNumber();
+    switch (field) {
+    case 1:
+      var value = /** @type {number} */ (reader.readUint32());
+      msg.setIndex(value);
+      break;
+    case 2:
+      var value = /** @type {number} */ (reader.readUint32());
+      msg.setFrequency(value);
+      break;
+    case 3:
+      var value = /** @type {number} */ (reader.readUint32());
+      msg.setMindr(value);
+      break;
+    case 4:
+      var value = /** @type {number} */ (reader.readUint32());
+      msg.setMaxdr(value);
+      break;
+    default:
+      reader.skipField();
+      break;
+    }
+  }
+  return msg;
+};
+
+
+/**
+ * Class method variant: serializes the given message to binary data
+ * (in protobuf wire format), writing to the given BinaryWriter.
+ * @param {!proto.ns.ExtraChannels} message
+ * @param {!jspb.BinaryWriter} writer
+ */
+proto.ns.ExtraChannels.serializeBinaryToWriter = function(message, writer) {
+  message.serializeBinaryToWriter(writer);
+};
+
+
+/**
+ * Serializes the message to binary data (in protobuf wire format).
+ * @return {!Uint8Array}
+ */
+proto.ns.ExtraChannels.prototype.serializeBinary = function() {
+  var writer = new jspb.BinaryWriter();
+  this.serializeBinaryToWriter(writer);
+  return writer.getResultBuffer();
+};
+
+
+/**
+ * Serializes the message to binary data (in protobuf wire format),
+ * writing to the given BinaryWriter.
+ * @param {!jspb.BinaryWriter} writer
+ */
+proto.ns.ExtraChannels.prototype.serializeBinaryToWriter = function (writer) {
+  var f = undefined;
+  f = this.getIndex();
+  if (f !== 0) {
+    writer.writeUint32(
+      1,
+      f
+    );
+  }
+  f = this.getFrequency();
+  if (f !== 0) {
+    writer.writeUint32(
+      2,
+      f
+    );
+  }
+  f = this.getMindr();
+  if (f !== 0) {
+    writer.writeUint32(
+      3,
+      f
+    );
+  }
+  f = this.getMaxdr();
+  if (f !== 0) {
+    writer.writeUint32(
+      4,
+      f
+    );
+  }
+};
+
+
+/**
+ * Creates a deep clone of this proto. No data is shared with the original.
+ * @return {!proto.ns.ExtraChannels} The clone.
+ */
+proto.ns.ExtraChannels.prototype.cloneMessage = function() {
+  return /** @type {!proto.ns.ExtraChannels} */ (jspb.Message.cloneMessage(this));
+};
+
+
+/**
+ * optional uint32 index = 1;
+ * @return {number}
+ */
+proto.ns.ExtraChannels.prototype.getIndex = function() {
+  return /** @type {number} */ (jspb.Message.getFieldProto3(this, 1, 0));
+};
+
+
+/** @param {number} value  */
+proto.ns.ExtraChannels.prototype.setIndex = function(value) {
+  jspb.Message.setField(this, 1, value);
+};
+
+
+/**
+ * optional uint32 frequency = 2;
+ * @return {number}
+ */
+proto.ns.ExtraChannels.prototype.getFrequency = function() {
+  return /** @type {number} */ (jspb.Message.getFieldProto3(this, 2, 0));
+};
+
+
+/** @param {number} value  */
+proto.ns.ExtraChannels.prototype.setFrequency = function(value) {
+  jspb.Message.setField(this, 2, value);
+};
+
+
+/**
+ * optional uint32 minDR = 3;
+ * @return {number}
+ */
+proto.ns.ExtraChannels.prototype.getMindr = function() {
+  return /** @type {number} */ (jspb.Message.getFieldProto3(this, 3, 0));
+};
+
+
+/** @param {number} value  */
+proto.ns.ExtraChannels.prototype.setMindr = function(value) {
+  jspb.Message.setField(this, 3, value);
+};
+
+
+/**
+ * optional uint32 maxDR = 4;
+ * @return {number}
+ */
+proto.ns.ExtraChannels.prototype.getMaxdr = function() {
+  return /** @type {number} */ (jspb.Message.getFieldProto3(this, 4, 0));
+};
+
+
+/** @param {number} value  */
+proto.ns.ExtraChannels.prototype.setMaxdr = function(value) {
+  jspb.Message.setField(this, 4, value);
+};
+
+
+
+/**
+ * Generated by JsPbCodeGenerator.
+ * @param {Array=} opt_data Optional initial data array, typically from a
+ * server response, or constructed directly in Javascript. The array is used
+ * in place and becomes part of the constructed object. It is not cloned.
+ * If no data is provided, the constructed object will be empty, but still
+ * valid.
+ * @extends {jspb.Message}
+ * @constructor
+ */
 proto.ns.ActivateDeviceRequest = function(opt_data) {
   jspb.Message.initialize(this, opt_data, 0, -1, null, null);
 };
@@ -6114,7 +6713,8 @@ proto.ns.GetDeviceActivationResponse.prototype.toObject = function(opt_includeIn
  */
 proto.ns.GetDeviceActivationResponse.toObject = function(includeInstance, msg) {
   var f, obj = {
-    deviceActivation: (f = msg.getDeviceActivation()) && proto.ns.DeviceActivation.toObject(includeInstance, f)
+    deviceActivation: (f = msg.getDeviceActivation()) && proto.ns.DeviceActivation.toObject(includeInstance, f),
+    extraSessionParameter: (f = msg.getExtraSessionParameter()) && proto.ns.ExtraSessionParameter.toObject(includeInstance, f)
   };
 
   if (includeInstance) {
@@ -6155,6 +6755,11 @@ proto.ns.GetDeviceActivationResponse.deserializeBinaryFromReader = function(msg,
       var value = new proto.ns.DeviceActivation;
       reader.readMessage(value,proto.ns.DeviceActivation.deserializeBinaryFromReader);
       msg.setDeviceActivation(value);
+      break;
+    case 2:
+      var value = new proto.ns.ExtraSessionParameter;
+      reader.readMessage(value,proto.ns.ExtraSessionParameter.deserializeBinaryFromReader);
+      msg.setExtraSessionParameter(value);
       break;
     default:
       reader.skipField();
@@ -6202,6 +6807,14 @@ proto.ns.GetDeviceActivationResponse.prototype.serializeBinaryToWriter = functio
       proto.ns.DeviceActivation.serializeBinaryToWriter
     );
   }
+  f = this.getExtraSessionParameter();
+  if (f != null) {
+    writer.writeMessage(
+      2,
+      f,
+      proto.ns.ExtraSessionParameter.serializeBinaryToWriter
+    );
+  }
 };
 
 
@@ -6241,6 +6854,36 @@ proto.ns.GetDeviceActivationResponse.prototype.clearDeviceActivation = function(
  */
 proto.ns.GetDeviceActivationResponse.prototype.hasDeviceActivation = function() {
   return jspb.Message.getField(this, 1) != null;
+};
+
+
+/**
+ * optional ExtraSessionParameter extra_session_parameter = 2;
+ * @return {proto.ns.ExtraSessionParameter}
+ */
+proto.ns.GetDeviceActivationResponse.prototype.getExtraSessionParameter = function() {
+  return /** @type{proto.ns.ExtraSessionParameter} */ (
+    jspb.Message.getWrapperField(this, proto.ns.ExtraSessionParameter, 2));
+};
+
+
+/** @param {proto.ns.ExtraSessionParameter|undefined} value  */
+proto.ns.GetDeviceActivationResponse.prototype.setExtraSessionParameter = function(value) {
+  jspb.Message.setWrapperField(this, 2, value);
+};
+
+
+proto.ns.GetDeviceActivationResponse.prototype.clearExtraSessionParameter = function() {
+  this.setExtraSessionParameter(undefined);
+};
+
+
+/**
+ * Returns whether this field is set.
+ * @return{!boolean}
+ */
+proto.ns.GetDeviceActivationResponse.prototype.hasExtraSessionParameter = function() {
+  return jspb.Message.getField(this, 2) != null;
 };
 
 

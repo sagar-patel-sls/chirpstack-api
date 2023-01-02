@@ -885,12 +885,79 @@
         }
       }
     },
+    "apiExtraChannels": {
+      "type": "object",
+      "properties": {
+        "index": {
+          "type": "integer",
+          "format": "int64"
+        },
+        "frequency": {
+          "type": "integer",
+          "format": "int64"
+        },
+        "minDR": {
+          "type": "integer",
+          "format": "int64"
+        },
+        "maxDR": {
+          "type": "integer",
+          "format": "int64"
+        }
+      }
+    },
+    "apiExtraSessionParameter": {
+      "type": "object",
+      "properties": {
+        "RXDelay": {
+          "type": "integer",
+          "format": "int64",
+          "title": "RXDelay"
+        },
+        "RX1DROffset": {
+          "type": "integer",
+          "format": "int64",
+          "title": "RX1 data-rate offset"
+        },
+        "RX2DR": {
+          "type": "integer",
+          "format": "int64",
+          "title": "RX2 data-rate"
+        },
+        "RX2Frequency": {
+          "type": "integer",
+          "format": "int64",
+          "title": "RX2 frequency"
+        },
+        "TXPowerIndex": {
+          "type": "integer",
+          "format": "int32",
+          "title": "tx power index"
+        },
+        "extraUplinkChannels": {
+          "type": "array",
+          "items": {
+            "$ref": "#/definitions/apiExtraChannels"
+          },
+          "title": "Extra Uplink channels"
+        },
+        "lastDevStatusRequested": {
+          "type": "string",
+          "format": "date-time",
+          "description": "Last Device Status Requested time-stamp."
+        }
+      }
+    },
     "apiGetDeviceActivationResponse": {
       "type": "object",
       "properties": {
         "deviceActivation": {
           "$ref": "#/definitions/apiDeviceActivation",
           "description": "Device-activation object."
+        },
+        "extraSessionParameter": {
+          "$ref": "#/definitions/apiExtraSessionParameter",
+          "title": "Device Session Extra Parameters"
         }
       }
     },

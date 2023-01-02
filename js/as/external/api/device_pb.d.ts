@@ -590,6 +590,86 @@ export namespace DeviceActivation {
   }
 }
 
+export class ExtraSessionParameter extends jspb.Message {
+  getRxdelay(): number;
+  setRxdelay(value: number): void;
+
+  getRx1droffset(): number;
+  setRx1droffset(value: number): void;
+
+  getRx2dr(): number;
+  setRx2dr(value: number): void;
+
+  getRx2frequency(): number;
+  setRx2frequency(value: number): void;
+
+  getTxpowerindex(): number;
+  setTxpowerindex(value: number): void;
+
+  clearExtraUplinkChannelsList(): void;
+  getExtraUplinkChannelsList(): Array<ExtraChannels>;
+  setExtraUplinkChannelsList(value: Array<ExtraChannels>): void;
+  addExtraUplinkChannels(value?: ExtraChannels, index?: number): ExtraChannels;
+
+  hasLastDevStatusRequested(): boolean;
+  clearLastDevStatusRequested(): void;
+  getLastDevStatusRequested(): google_protobuf_timestamp_pb.Timestamp | undefined;
+  setLastDevStatusRequested(value?: google_protobuf_timestamp_pb.Timestamp): void;
+
+  serializeBinary(): Uint8Array;
+  toObject(includeInstance?: boolean): ExtraSessionParameter.AsObject;
+  static toObject(includeInstance: boolean, msg: ExtraSessionParameter): ExtraSessionParameter.AsObject;
+  static extensions: {[key: number]: jspb.ExtensionFieldInfo<jspb.Message>};
+  static extensionsBinary: {[key: number]: jspb.ExtensionFieldBinaryInfo<jspb.Message>};
+  static serializeBinaryToWriter(message: ExtraSessionParameter, writer: jspb.BinaryWriter): void;
+  static deserializeBinary(bytes: Uint8Array): ExtraSessionParameter;
+  static deserializeBinaryFromReader(message: ExtraSessionParameter, reader: jspb.BinaryReader): ExtraSessionParameter;
+}
+
+export namespace ExtraSessionParameter {
+  export type AsObject = {
+    rxdelay: number,
+    rx1droffset: number,
+    rx2dr: number,
+    rx2frequency: number,
+    txpowerindex: number,
+    extraUplinkChannelsList: Array<ExtraChannels.AsObject>,
+    lastDevStatusRequested?: google_protobuf_timestamp_pb.Timestamp.AsObject,
+  }
+}
+
+export class ExtraChannels extends jspb.Message {
+  getIndex(): number;
+  setIndex(value: number): void;
+
+  getFrequency(): number;
+  setFrequency(value: number): void;
+
+  getMindr(): number;
+  setMindr(value: number): void;
+
+  getMaxdr(): number;
+  setMaxdr(value: number): void;
+
+  serializeBinary(): Uint8Array;
+  toObject(includeInstance?: boolean): ExtraChannels.AsObject;
+  static toObject(includeInstance: boolean, msg: ExtraChannels): ExtraChannels.AsObject;
+  static extensions: {[key: number]: jspb.ExtensionFieldInfo<jspb.Message>};
+  static extensionsBinary: {[key: number]: jspb.ExtensionFieldBinaryInfo<jspb.Message>};
+  static serializeBinaryToWriter(message: ExtraChannels, writer: jspb.BinaryWriter): void;
+  static deserializeBinary(bytes: Uint8Array): ExtraChannels;
+  static deserializeBinaryFromReader(message: ExtraChannels, reader: jspb.BinaryReader): ExtraChannels;
+}
+
+export namespace ExtraChannels {
+  export type AsObject = {
+    index: number,
+    frequency: number,
+    mindr: number,
+    maxdr: number,
+  }
+}
+
 export class ActivateDeviceRequest extends jspb.Message {
   hasDeviceActivation(): boolean;
   clearDeviceActivation(): void;
@@ -658,6 +738,11 @@ export class GetDeviceActivationResponse extends jspb.Message {
   getDeviceActivation(): DeviceActivation | undefined;
   setDeviceActivation(value?: DeviceActivation): void;
 
+  hasExtraSessionParameter(): boolean;
+  clearExtraSessionParameter(): void;
+  getExtraSessionParameter(): ExtraSessionParameter | undefined;
+  setExtraSessionParameter(value?: ExtraSessionParameter): void;
+
   serializeBinary(): Uint8Array;
   toObject(includeInstance?: boolean): GetDeviceActivationResponse.AsObject;
   static toObject(includeInstance: boolean, msg: GetDeviceActivationResponse): GetDeviceActivationResponse.AsObject;
@@ -671,6 +756,7 @@ export class GetDeviceActivationResponse extends jspb.Message {
 export namespace GetDeviceActivationResponse {
   export type AsObject = {
     deviceActivation?: DeviceActivation.AsObject,
+    extraSessionParameter?: ExtraSessionParameter.AsObject,
   }
 }
 
