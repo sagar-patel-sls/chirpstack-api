@@ -546,6 +546,9 @@ export class HandleConnStateRequest extends jspb.Message {
   getStatsId_asB64(): string;
   setStatsId(value: Uint8Array | string): void;
 
+  getIsRetained(): boolean;
+  setIsRetained(value: boolean): void;
+
   serializeBinary(): Uint8Array;
   toObject(includeInstance?: boolean): HandleConnStateRequest.AsObject;
   static toObject(includeInstance: boolean, msg: HandleConnStateRequest): HandleConnStateRequest.AsObject;
@@ -561,6 +564,7 @@ export namespace HandleConnStateRequest {
     gatewayId: Uint8Array | string,
     state: gw_gw_pb.StateMap[keyof gw_gw_pb.StateMap],
     statsId: Uint8Array | string,
+    isRetained: boolean,
   }
 }
 

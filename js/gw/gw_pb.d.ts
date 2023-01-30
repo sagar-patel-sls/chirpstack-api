@@ -1122,6 +1122,14 @@ export class ConnState extends jspb.Message {
   getState(): StateMap[keyof StateMap];
   setState(value: StateMap[keyof StateMap]): void;
 
+  getIsRetained(): boolean;
+  setIsRetained(value: boolean): void;
+
+  getStatsId(): Uint8Array | string;
+  getStatsId_asU8(): Uint8Array;
+  getStatsId_asB64(): string;
+  setStatsId(value: Uint8Array | string): void;
+
   serializeBinary(): Uint8Array;
   toObject(includeInstance?: boolean): ConnState.AsObject;
   static toObject(includeInstance: boolean, msg: ConnState): ConnState.AsObject;
@@ -1136,6 +1144,8 @@ export namespace ConnState {
   export type AsObject = {
     gatewayId: Uint8Array | string,
     state: StateMap[keyof StateMap],
+    isRetained: boolean,
+    statsId: Uint8Array | string,
   }
 }
 

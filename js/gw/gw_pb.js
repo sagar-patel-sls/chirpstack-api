@@ -8565,7 +8565,9 @@ proto.gw.ConnState.prototype.toObject = function(opt_includeInstance) {
 proto.gw.ConnState.toObject = function(includeInstance, msg) {
   var f, obj = {
     gatewayId: msg.getGatewayId_asB64(),
-    state: msg.getState()
+    state: msg.getState(),
+    isRetained: msg.getIsRetained(),
+    statsId: msg.getStatsId_asB64()
   };
 
   if (includeInstance) {
@@ -8609,6 +8611,14 @@ proto.gw.ConnState.deserializeBinaryFromReader = function(msg, reader) {
     case 2:
       var value = /** @type {!proto.gw.State} */ (reader.readEnum());
       msg.setState(value);
+      break;
+    case 3:
+      var value = /** @type {boolean} */ (reader.readBool());
+      msg.setIsRetained(value);
+      break;
+    case 4:
+      var value = /** @type {!Uint8Array} */ (reader.readBytes());
+      msg.setStatsId(value);
       break;
     default:
       reader.skipField();
@@ -8659,6 +8669,20 @@ proto.gw.ConnState.prototype.serializeBinaryToWriter = function (writer) {
   if (f !== 0.0) {
     writer.writeEnum(
       2,
+      f
+    );
+  }
+  f = this.getIsRetained();
+  if (f) {
+    writer.writeBool(
+      3,
+      f
+    );
+  }
+  f = this.getStatsId_asU8();
+  if (f.length > 0) {
+    writer.writeBytes(
+      4,
       f
     );
   }
@@ -8725,6 +8749,62 @@ proto.gw.ConnState.prototype.getState = function() {
 /** @param {!proto.gw.State} value  */
 proto.gw.ConnState.prototype.setState = function(value) {
   jspb.Message.setField(this, 2, value);
+};
+
+
+/**
+ * optional bool is_retained = 3;
+ * Note that Boolean fields may be set to 0/1 when serialized from a Java server.
+ * You should avoid comparisons like {@code val === true/false} in those cases.
+ * @return {boolean}
+ */
+proto.gw.ConnState.prototype.getIsRetained = function() {
+  return /** @type {boolean} */ (jspb.Message.getFieldProto3(this, 3, false));
+};
+
+
+/** @param {boolean} value  */
+proto.gw.ConnState.prototype.setIsRetained = function(value) {
+  jspb.Message.setField(this, 3, value);
+};
+
+
+/**
+ * optional bytes stats_id = 4;
+ * @return {!(string|Uint8Array)}
+ */
+proto.gw.ConnState.prototype.getStatsId = function() {
+  return /** @type {!(string|Uint8Array)} */ (jspb.Message.getFieldProto3(this, 4, ""));
+};
+
+
+/**
+ * optional bytes stats_id = 4;
+ * This is a type-conversion wrapper around `getStatsId()`
+ * @return {string}
+ */
+proto.gw.ConnState.prototype.getStatsId_asB64 = function() {
+  return /** @type {string} */ (jspb.Message.bytesAsB64(
+      this.getStatsId()));
+};
+
+
+/**
+ * optional bytes stats_id = 4;
+ * Note that Uint8Array is not supported on all browsers.
+ * @see http://caniuse.com/Uint8Array
+ * This is a type-conversion wrapper around `getStatsId()`
+ * @return {!Uint8Array}
+ */
+proto.gw.ConnState.prototype.getStatsId_asU8 = function() {
+  return /** @type {!Uint8Array} */ (jspb.Message.bytesAsU8(
+      this.getStatsId()));
+};
+
+
+/** @param {!(string|Uint8Array)} value  */
+proto.gw.ConnState.prototype.setStatsId = function(value) {
+  jspb.Message.setField(this, 4, value);
 };
 
 

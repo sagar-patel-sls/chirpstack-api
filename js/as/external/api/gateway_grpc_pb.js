@@ -141,6 +141,28 @@ function deserialize_api_ListGatewayResponse(buffer_arg) {
   return as_external_api_gateway_pb.ListGatewayResponse.deserializeBinary(new Uint8Array(buffer_arg));
 }
 
+function serialize_api_StreamGatewayEventLogsRequest(arg) {
+  if (!(arg instanceof as_external_api_gateway_pb.StreamGatewayEventLogsRequest)) {
+    throw new Error('Expected argument of type api.StreamGatewayEventLogsRequest');
+  }
+  return Buffer.from(arg.serializeBinary());
+}
+
+function deserialize_api_StreamGatewayEventLogsRequest(buffer_arg) {
+  return as_external_api_gateway_pb.StreamGatewayEventLogsRequest.deserializeBinary(new Uint8Array(buffer_arg));
+}
+
+function serialize_api_StreamGatewayEventLogsResponse(arg) {
+  if (!(arg instanceof as_external_api_gateway_pb.StreamGatewayEventLogsResponse)) {
+    throw new Error('Expected argument of type api.StreamGatewayEventLogsResponse');
+  }
+  return Buffer.from(arg.serializeBinary());
+}
+
+function deserialize_api_StreamGatewayEventLogsResponse(buffer_arg) {
+  return as_external_api_gateway_pb.StreamGatewayEventLogsResponse.deserializeBinary(new Uint8Array(buffer_arg));
+}
+
 function serialize_api_StreamGatewayFrameLogsRequest(arg) {
   if (!(arg instanceof as_external_api_gateway_pb.StreamGatewayFrameLogsRequest)) {
     throw new Error('Expected argument of type api.StreamGatewayFrameLogsRequest');
@@ -338,6 +360,21 @@ streamGlobalFrameLogs: {
     requestDeserialize: deserialize_api_StreamGlobalGatewayFrameLogsRequest,
     responseSerialize: serialize_api_StreamGlobalGatewayFrameLogsResponse,
     responseDeserialize: deserialize_api_StreamGlobalGatewayFrameLogsResponse,
+  },
+  // StreamEventLogs streams the connection event logs given gateway ID.
+// Notes:
+//   * These are the raw LoRaWAN frames and this endpoint is intended for debugging only.
+//   * This endpoint does not work from a web-browser.
+streamEventLogs: {
+    path: '/api.GatewayService/StreamEventLogs',
+    requestStream: false,
+    responseStream: true,
+    requestType: as_external_api_gateway_pb.StreamGatewayEventLogsRequest,
+    responseType: as_external_api_gateway_pb.StreamGatewayEventLogsResponse,
+    requestSerialize: serialize_api_StreamGatewayEventLogsRequest,
+    requestDeserialize: deserialize_api_StreamGatewayEventLogsRequest,
+    responseSerialize: serialize_api_StreamGatewayEventLogsResponse,
+    responseDeserialize: deserialize_api_StreamGatewayEventLogsResponse,
   },
 };
 

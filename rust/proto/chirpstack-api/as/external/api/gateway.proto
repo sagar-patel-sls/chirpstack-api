@@ -96,6 +96,16 @@ service GatewayService {
             get: "/api/organizations/{organization_id}/gateways/frames"
         };
 	}
+
+	// StreamEventLogs streams the connection event logs given gateway ID.
+	// Notes:
+	//   * These are the raw LoRaWAN frames and this endpoint is intended for debugging only.
+	//   * This endpoint does not work from a web-browser.
+    rpc StreamEventLogs(StreamGatewayEventLogsRequest) returns (stream StreamGatewayEventLogsResponse) {
+        option (google.api.http) = {
+            get: "/api/gateways/{gateway_id}/events"
+        };
+	}
 }
 
 enum ISMBand {
@@ -332,6 +342,12 @@ message GatewayStats {
 
 	// Tx packets (Transmitted) frequency utilization.
     map<uint32, float> tx_frequency_utilization = 13;
+
+	// Gateway Connection Status (ONLINE/OFFLINE)
+    map<string, uint32> conn_status = 14;
+
+	// Stat Packet count
+	int32 stats_count = 15;
 }
 
 message GetGatewayStatsRequest {
@@ -432,4 +448,23 @@ message StreamGlobalGatewayFrameLogsResponse {
 		// Contains a stats frame.
         GatewayStatsFrameLog stats_frame = 4;
     }
+}
+
+message StreamGatewayEventLogsRequest {
+	// Gateway ID (HEX encoded).
+	string gateway_id = 1 [json_name = "gatewayID"];
+}
+
+message StreamGatewayEventLogsResponse {
+   // The event type.
+    string type = 1;
+
+    // The event payload in JSON encoding.
+    string payload_json = 2 [json_name = "payloadJSON"];
+
+    // Published at timestamp.
+    google.protobuf.Timestamp published_at = 3;
+
+    // Stream ID.
+    string stream_id = 4 [json_name = "streamID"];
 }

@@ -600,6 +600,19 @@ export class GatewayConnStatEvent extends jspb.Message {
   clearMetaDataMap(): void;
   getTagsMap(): jspb.Map<string, string>;
   clearTagsMap(): void;
+  getStatsId(): Uint8Array | string;
+  getStatsId_asU8(): Uint8Array;
+  getStatsId_asB64(): string;
+  setStatsId(value: Uint8Array | string): void;
+
+  getIsRetained(): boolean;
+  setIsRetained(value: boolean): void;
+
+  hasPublishedAt(): boolean;
+  clearPublishedAt(): void;
+  getPublishedAt(): google_protobuf_timestamp_pb.Timestamp | undefined;
+  setPublishedAt(value?: google_protobuf_timestamp_pb.Timestamp): void;
+
   serializeBinary(): Uint8Array;
   toObject(includeInstance?: boolean): GatewayConnStatEvent.AsObject;
   static toObject(includeInstance: boolean, msg: GatewayConnStatEvent): GatewayConnStatEvent.AsObject;
@@ -616,6 +629,9 @@ export namespace GatewayConnStatEvent {
     state: gw_gw_pb.StateMap[keyof gw_gw_pb.StateMap],
     metaDataMap: Array<[string, string]>,
     tagsMap: Array<[string, string]>,
+    statsId: Uint8Array | string,
+    isRetained: boolean,
+    publishedAt?: google_protobuf_timestamp_pb.Timestamp.AsObject,
   }
 }
 

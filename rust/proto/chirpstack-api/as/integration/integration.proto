@@ -394,4 +394,14 @@ message GatewayConnStatEvent {
     // These tags are exposed in the stat event payloads or to integration. Tags are
     // intended for aggregation and filtering.
     map<string, string> tags = 4;
+
+    // Stats ID (UUID).
+    // Unique identifier for the gateway stats.
+    bytes stats_id = 5 [json_name = "statsID"];
+
+    // MQTT Message Retained or not.
+    bool is_retained = 6;
+
+    // Published at timestamp.
+    google.protobuf.Timestamp published_at = 7;
 }

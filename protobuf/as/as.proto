@@ -329,4 +329,7 @@ message HandleConnStateRequest {
 
     // Stats ID (UUID).
     bytes stats_id = 3;
+
+    // MQTT Message Retained or not.
+    bool is_retained = 4;
 }

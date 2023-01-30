@@ -460,6 +460,11 @@ export class GatewayStats extends jspb.Message {
   clearRxFrequencyUtilizationMap(): void;
   getTxFrequencyUtilizationMap(): jspb.Map<number, number>;
   clearTxFrequencyUtilizationMap(): void;
+  getConnStatusMap(): jspb.Map<string, number>;
+  clearConnStatusMap(): void;
+  getStatsCount(): number;
+  setStatsCount(value: number): void;
+
   serializeBinary(): Uint8Array;
   toObject(includeInstance?: boolean): GatewayStats.AsObject;
   static toObject(includeInstance: boolean, msg: GatewayStats): GatewayStats.AsObject;
@@ -485,6 +490,8 @@ export namespace GatewayStats {
     mtypeCountMap: Array<[string, number]>,
     rxFrequencyUtilizationMap: Array<[number, number]>,
     txFrequencyUtilizationMap: Array<[number, number]>,
+    connStatusMap: Array<[string, number]>,
+    statsCount: number,
   }
 }
 
@@ -771,6 +778,60 @@ export namespace StreamGlobalGatewayFrameLogsResponse {
     UPLINK_FRAME = 2,
     DOWNLINK_FRAME = 3,
     STATS_FRAME = 4,
+  }
+}
+
+export class StreamGatewayEventLogsRequest extends jspb.Message {
+  getGatewayId(): string;
+  setGatewayId(value: string): void;
+
+  serializeBinary(): Uint8Array;
+  toObject(includeInstance?: boolean): StreamGatewayEventLogsRequest.AsObject;
+  static toObject(includeInstance: boolean, msg: StreamGatewayEventLogsRequest): StreamGatewayEventLogsRequest.AsObject;
+  static extensions: {[key: number]: jspb.ExtensionFieldInfo<jspb.Message>};
+  static extensionsBinary: {[key: number]: jspb.ExtensionFieldBinaryInfo<jspb.Message>};
+  static serializeBinaryToWriter(message: StreamGatewayEventLogsRequest, writer: jspb.BinaryWriter): void;
+  static deserializeBinary(bytes: Uint8Array): StreamGatewayEventLogsRequest;
+  static deserializeBinaryFromReader(message: StreamGatewayEventLogsRequest, reader: jspb.BinaryReader): StreamGatewayEventLogsRequest;
+}
+
+export namespace StreamGatewayEventLogsRequest {
+  export type AsObject = {
+    gatewayId: string,
+  }
+}
+
+export class StreamGatewayEventLogsResponse extends jspb.Message {
+  getType(): string;
+  setType(value: string): void;
+
+  getPayloadJson(): string;
+  setPayloadJson(value: string): void;
+
+  hasPublishedAt(): boolean;
+  clearPublishedAt(): void;
+  getPublishedAt(): google_protobuf_timestamp_pb.Timestamp | undefined;
+  setPublishedAt(value?: google_protobuf_timestamp_pb.Timestamp): void;
+
+  getStreamId(): string;
+  setStreamId(value: string): void;
+
+  serializeBinary(): Uint8Array;
+  toObject(includeInstance?: boolean): StreamGatewayEventLogsResponse.AsObject;
+  static toObject(includeInstance: boolean, msg: StreamGatewayEventLogsResponse): StreamGatewayEventLogsResponse.AsObject;
+  static extensions: {[key: number]: jspb.ExtensionFieldInfo<jspb.Message>};
+  static extensionsBinary: {[key: number]: jspb.ExtensionFieldBinaryInfo<jspb.Message>};
+  static serializeBinaryToWriter(message: StreamGatewayEventLogsResponse, writer: jspb.BinaryWriter): void;
+  static deserializeBinary(bytes: Uint8Array): StreamGatewayEventLogsResponse;
+  static deserializeBinaryFromReader(message: StreamGatewayEventLogsResponse, reader: jspb.BinaryReader): StreamGatewayEventLogsResponse;
+}
+
+export namespace StreamGatewayEventLogsResponse {
+  export type AsObject = {
+    type: string,
+    payloadJson: string,
+    publishedAt?: google_protobuf_timestamp_pb.Timestamp.AsObject,
+    streamId: string,
   }
 }
 

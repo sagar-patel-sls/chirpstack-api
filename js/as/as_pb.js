@@ -4228,7 +4228,8 @@ proto.as.HandleConnStateRequest.toObject = function(includeInstance, msg) {
   var f, obj = {
     gatewayId: msg.getGatewayId_asB64(),
     state: msg.getState(),
-    statsId: msg.getStatsId_asB64()
+    statsId: msg.getStatsId_asB64(),
+    isRetained: msg.getIsRetained()
   };
 
   if (includeInstance) {
@@ -4276,6 +4277,10 @@ proto.as.HandleConnStateRequest.deserializeBinaryFromReader = function(msg, read
     case 3:
       var value = /** @type {!Uint8Array} */ (reader.readBytes());
       msg.setStatsId(value);
+      break;
+    case 4:
+      var value = /** @type {boolean} */ (reader.readBool());
+      msg.setIsRetained(value);
       break;
     default:
       reader.skipField();
@@ -4333,6 +4338,13 @@ proto.as.HandleConnStateRequest.prototype.serializeBinaryToWriter = function (wr
   if (f.length > 0) {
     writer.writeBytes(
       3,
+      f
+    );
+  }
+  f = this.getIsRetained();
+  if (f) {
+    writer.writeBool(
+      4,
       f
     );
   }
@@ -4438,6 +4450,23 @@ proto.as.HandleConnStateRequest.prototype.getStatsId_asU8 = function() {
 /** @param {!(string|Uint8Array)} value  */
 proto.as.HandleConnStateRequest.prototype.setStatsId = function(value) {
   jspb.Message.setField(this, 3, value);
+};
+
+
+/**
+ * optional bool is_retained = 4;
+ * Note that Boolean fields may be set to 0/1 when serialized from a Java server.
+ * You should avoid comparisons like {@code val === true/false} in those cases.
+ * @return {boolean}
+ */
+proto.as.HandleConnStateRequest.prototype.getIsRetained = function() {
+  return /** @type {boolean} */ (jspb.Message.getFieldProto3(this, 4, false));
+};
+
+
+/** @param {boolean} value  */
+proto.as.HandleConnStateRequest.prototype.setIsRetained = function(value) {
+  jspb.Message.setField(this, 4, value);
 };
 
 

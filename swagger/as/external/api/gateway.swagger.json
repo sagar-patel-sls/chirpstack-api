@@ -124,6 +124,32 @@
         ]
       }
     },
+    "/api/gateways/{gateway_id}/events": {
+      "get": {
+        "summary": "StreamEventLogs streams the connection event logs given gateway ID.\nNotes:\n  * These are the raw LoRaWAN frames and this endpoint is intended for debugging only.\n  * This endpoint does not work from a web-browser.",
+        "operationId": "StreamEventLogs",
+        "responses": {
+          "200": {
+            "description": "A successful response.(streaming responses)",
+            "schema": {
+              "$ref": "#/x-stream-definitions/apiStreamGatewayEventLogsResponse"
+            }
+          }
+        },
+        "parameters": [
+          {
+            "name": "gateway_id",
+            "description": "Gateway ID (HEX encoded).",
+            "in": "path",
+            "required": true,
+            "type": "string"
+          }
+        ],
+        "tags": [
+          "GatewayService"
+        ]
+      }
+    },
     "/api/gateways/{gateway_id}/frames": {
       "get": {
         "summary": "StreamFrameLogs streams the uplink and downlink frame-logs for the given gateway ID.\nNotes:\n  * These are the raw LoRaWAN frames and this endpoint is intended for debugging only.\n  * This endpoint does not work from a web-browser.",
@@ -623,6 +649,19 @@
             "format": "float"
           },
           "description": "Tx packets (Transmitted) frequency utilization."
+        },
+        "connStatus": {
+          "type": "object",
+          "additionalProperties": {
+            "type": "integer",
+            "format": "int64"
+          },
+          "title": "Gateway Connection Status (ONLINE/OFFLINE)"
+        },
+        "statsCount": {
+          "type": "integer",
+          "format": "int32",
+          "title": "Stat Packet count"
         }
       }
     },
@@ -851,6 +890,28 @@
           "type": "number",
           "format": "double",
           "description": "Altitude of the gateway in meters."
+        }
+      }
+    },
+    "apiStreamGatewayEventLogsResponse": {
+      "type": "object",
+      "properties": {
+        "type": {
+          "type": "string",
+          "description": "The event type."
+        },
+        "payloadJSON": {
+          "type": "string",
+          "description": "The event payload in JSON encoding."
+        },
+        "publishedAt": {
+          "type": "string",
+          "format": "date-time",
+          "description": "Published at timestamp."
+        },
+        "streamID": {
+          "type": "string",
+          "description": "Stream ID."
         }
       }
     },
@@ -1325,6 +1386,18 @@
     }
   },
   "x-stream-definitions": {
+    "apiStreamGatewayEventLogsResponse": {
+      "type": "object",
+      "properties": {
+        "result": {
+          "$ref": "#/definitions/apiStreamGatewayEventLogsResponse"
+        },
+        "error": {
+          "$ref": "#/definitions/runtimeStreamError"
+        }
+      },
+      "title": "Stream result of apiStreamGatewayEventLogsResponse"
+    },
     "apiStreamGatewayFrameLogsResponse": {
       "type": "object",
       "properties": {

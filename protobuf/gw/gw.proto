@@ -554,4 +554,11 @@ message ConnState {
     bytes gateway_id = 1 [json_name = "gatewayID"];
 
     State state = 2;
+
+    // MQTT Message Retained or not.
+    bool is_retained = 3;
+
+    // Stats ID (UUID).
+    // Unique identifier for the gateway stats.
+    bytes stats_id = 4 [json_name = "statsID"];
 }

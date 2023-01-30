@@ -4478,7 +4478,10 @@ proto.integration.GatewayConnStatEvent.toObject = function(includeInstance, msg)
     gatewayId: msg.getGatewayId_asB64(),
     state: msg.getState(),
     metaDataMap: (f = msg.getMetaDataMap(true)) ? f.toArray() : [],
-    tagsMap: (f = msg.getTagsMap(true)) ? f.toArray() : []
+    tagsMap: (f = msg.getTagsMap(true)) ? f.toArray() : [],
+    statsId: msg.getStatsId_asB64(),
+    isRetained: msg.getIsRetained(),
+    publishedAt: (f = msg.getPublishedAt()) && google_protobuf_timestamp_pb.Timestamp.toObject(includeInstance, f)
   };
 
   if (includeInstance) {
@@ -4534,6 +4537,19 @@ proto.integration.GatewayConnStatEvent.deserializeBinaryFromReader = function(ms
       reader.readMessage(value, function(message, reader) {
         jspb.Map.deserializeBinary(message, reader, jspb.BinaryReader.prototype.readString, jspb.BinaryReader.prototype.readString);
          });
+      break;
+    case 5:
+      var value = /** @type {!Uint8Array} */ (reader.readBytes());
+      msg.setStatsId(value);
+      break;
+    case 6:
+      var value = /** @type {boolean} */ (reader.readBool());
+      msg.setIsRetained(value);
+      break;
+    case 7:
+      var value = new google_protobuf_timestamp_pb.Timestamp;
+      reader.readMessage(value,google_protobuf_timestamp_pb.Timestamp.deserializeBinaryFromReader);
+      msg.setPublishedAt(value);
       break;
     default:
       reader.skipField();
@@ -4594,6 +4610,28 @@ proto.integration.GatewayConnStatEvent.prototype.serializeBinaryToWriter = funct
   f = this.getTagsMap(true);
   if (f && f.getLength() > 0) {
     f.serializeBinary(4, writer, jspb.BinaryWriter.prototype.writeString, jspb.BinaryWriter.prototype.writeString);
+  }
+  f = this.getStatsId_asU8();
+  if (f.length > 0) {
+    writer.writeBytes(
+      5,
+      f
+    );
+  }
+  f = this.getIsRetained();
+  if (f) {
+    writer.writeBool(
+      6,
+      f
+    );
+  }
+  f = this.getPublishedAt();
+  if (f != null) {
+    writer.writeMessage(
+      7,
+      f,
+      google_protobuf_timestamp_pb.Timestamp.serializeBinaryToWriter
+    );
   }
 };
 
@@ -4684,6 +4722,92 @@ proto.integration.GatewayConnStatEvent.prototype.getTagsMap = function(opt_noLaz
   return /** @type {!jspb.Map<string,string>} */ (
       jspb.Message.getMapField(this, 4, opt_noLazyCreate,
       null));
+};
+
+
+/**
+ * optional bytes stats_id = 5;
+ * @return {!(string|Uint8Array)}
+ */
+proto.integration.GatewayConnStatEvent.prototype.getStatsId = function() {
+  return /** @type {!(string|Uint8Array)} */ (jspb.Message.getFieldProto3(this, 5, ""));
+};
+
+
+/**
+ * optional bytes stats_id = 5;
+ * This is a type-conversion wrapper around `getStatsId()`
+ * @return {string}
+ */
+proto.integration.GatewayConnStatEvent.prototype.getStatsId_asB64 = function() {
+  return /** @type {string} */ (jspb.Message.bytesAsB64(
+      this.getStatsId()));
+};
+
+
+/**
+ * optional bytes stats_id = 5;
+ * Note that Uint8Array is not supported on all browsers.
+ * @see http://caniuse.com/Uint8Array
+ * This is a type-conversion wrapper around `getStatsId()`
+ * @return {!Uint8Array}
+ */
+proto.integration.GatewayConnStatEvent.prototype.getStatsId_asU8 = function() {
+  return /** @type {!Uint8Array} */ (jspb.Message.bytesAsU8(
+      this.getStatsId()));
+};
+
+
+/** @param {!(string|Uint8Array)} value  */
+proto.integration.GatewayConnStatEvent.prototype.setStatsId = function(value) {
+  jspb.Message.setField(this, 5, value);
+};
+
+
+/**
+ * optional bool is_retained = 6;
+ * Note that Boolean fields may be set to 0/1 when serialized from a Java server.
+ * You should avoid comparisons like {@code val === true/false} in those cases.
+ * @return {boolean}
+ */
+proto.integration.GatewayConnStatEvent.prototype.getIsRetained = function() {
+  return /** @type {boolean} */ (jspb.Message.getFieldProto3(this, 6, false));
+};
+
+
+/** @param {boolean} value  */
+proto.integration.GatewayConnStatEvent.prototype.setIsRetained = function(value) {
+  jspb.Message.setField(this, 6, value);
+};
+
+
+/**
+ * optional google.protobuf.Timestamp published_at = 7;
+ * @return {proto.google.protobuf.Timestamp}
+ */
+proto.integration.GatewayConnStatEvent.prototype.getPublishedAt = function() {
+  return /** @type{proto.google.protobuf.Timestamp} */ (
+    jspb.Message.getWrapperField(this, google_protobuf_timestamp_pb.Timestamp, 7));
+};
+
+
+/** @param {proto.google.protobuf.Timestamp|undefined} value  */
+proto.integration.GatewayConnStatEvent.prototype.setPublishedAt = function(value) {
+  jspb.Message.setWrapperField(this, 7, value);
+};
+
+
+proto.integration.GatewayConnStatEvent.prototype.clearPublishedAt = function() {
+  this.setPublishedAt(undefined);
+};
+
+
+/**
+ * Returns whether this field is set.
+ * @return{!boolean}
+ */
+proto.integration.GatewayConnStatEvent.prototype.hasPublishedAt = function() {
+  return jspb.Message.getField(this, 7) != null;
 };
 
 
