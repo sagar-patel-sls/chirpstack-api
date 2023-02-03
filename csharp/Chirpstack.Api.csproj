@@ -1,0 +1,64 @@
+<Project Sdk="Microsoft.NET.Sdk">
+
+  <PropertyGroup>
+    <TargetFramework>net7.0</TargetFramework>
+    <Nullable>enable</Nullable>
+    <ImplicitUsings>enable</ImplicitUsings>
+    <Version>3.13.0</Version>
+  </PropertyGroup>
+
+  <ItemGroup>
+  <!-- External -->
+    <Protobuf Include="../protobuf/as/external/api/application.proto" ProtoRoot="../protobuf/" OutputDir="chirpstack/" CompileOutputs="false" AdditionalImportDirs="/googleproto" />
+    <Protobuf Include="../protobuf/as/external/api/device.proto" ProtoRoot="../protobuf/" OutputDir="chirpstack/" CompileOutputs="false" AdditionalImportDirs="/googleproto" />
+    <Protobuf Include="../protobuf/as/external/api/deviceProfile.proto" ProtoRoot="../protobuf/" OutputDir="chirpstack/" CompileOutputs="false" AdditionalImportDirs="/googleproto" />
+    <Protobuf Include="../protobuf/as/external/api/deviceQueue.proto" ProtoRoot="../protobuf/" OutputDir="chirpstack/" CompileOutputs="false" AdditionalImportDirs="/googleproto" />
+    <Protobuf Include="../protobuf/as/external/api/fragmentationDeployment.proto" ProtoRoot="../protobuf/" OutputDir="chirpstack/" CompileOutputs="false" AdditionalImportDirs="/googleproto" />
+    <Protobuf Include="../protobuf/as/external/api/frameLog.proto" ProtoRoot="../protobuf/" OutputDir="chirpstack/" CompileOutputs="false" AdditionalImportDirs="/googleproto" />
+    <Protobuf Include="../protobuf/as/external/api/fuotaDeployment.proto" ProtoRoot="../protobuf/" OutputDir="chirpstack/" CompileOutputs="false" AdditionalImportDirs="/googleproto" />
+    <Protobuf Include="../protobuf/as/external/api/gateway.proto" ProtoRoot="../protobuf/" OutputDir="chirpstack/" CompileOutputs="false" AdditionalImportDirs="/googleproto" />
+    <Protobuf Include="../protobuf/as/external/api/gatewayProfile.proto" ProtoRoot="../protobuf/" OutputDir="chirpstack/" CompileOutputs="false" AdditionalImportDirs="/googleproto" />
+    <Protobuf Include="../protobuf/as/external/api/internal.proto" ProtoRoot="../protobuf/" OutputDir="chirpstack/" CompileOutputs="false" AdditionalImportDirs="/googleproto" />
+    <Protobuf Include="../protobuf/as/external/api/multicastGroup.proto" ProtoRoot="../protobuf/" OutputDir="chirpstack/" CompileOutputs="false" AdditionalImportDirs="/googleproto" />
+    <Protobuf Include="../protobuf/as/external/api/networkServer.proto" ProtoRoot="../protobuf/" OutputDir="chirpstack/" CompileOutputs="false" AdditionalImportDirs="/googleproto" />
+    <Protobuf Include="../protobuf/as/external/api/organization.proto" ProtoRoot="../protobuf/" OutputDir="chirpstack/" CompileOutputs="false" AdditionalImportDirs="/googleproto" />
+    <Protobuf Include="../protobuf/as/external/api/profiles.proto" ProtoRoot="../protobuf/" OutputDir="chirpstack/" CompileOutputs="false" AdditionalImportDirs="/googleproto" />
+    <Protobuf Include="../protobuf/as/external/api/remoteMulticastGroup.proto" ProtoRoot="../protobuf/" OutputDir="chirpstack/" CompileOutputs="false" AdditionalImportDirs="/googleproto" />
+    <Protobuf Include="../protobuf/as/external/api/serviceProfile.proto" ProtoRoot="../protobuf/" OutputDir="chirpstack/" CompileOutputs="false" AdditionalImportDirs="/googleproto" />
+    <Protobuf Include="../protobuf/as/external/api/user.proto" ProtoRoot="../protobuf/" OutputDir="chirpstack/" CompileOutputs="false" AdditionalImportDirs="/googleproto" />
+
+  <!-- Integration -->
+    <Protobuf Include="../protobuf/as/integration/integration.proto" ProtoRoot="../protobuf/" OutputDir="chirpstack/" CompileOutputs="false" AdditionalImportDirs="/googleproto" />
+
+  <!-- AS -->
+    <Protobuf Include="../protobuf/as/as.proto" ProtoRoot="../protobuf/" OutputDir="chirpstack/" CompileOutputs="false" AdditionalImportDirs="/googleproto" />
+
+  <!-- Common -->
+    <Protobuf Include="../protobuf/common/common.proto" ProtoRoot="../protobuf/" OutputDir="chirpstack/" CompileOutputs="false" AdditionalImportDirs="/googleproto" />
+
+  <!-- GW  -->
+    <Protobuf Include="../protobuf/gw/gw.proto" ProtoRoot="../protobuf/" OutputDir="chirpstack/" CompileOutputs="false" AdditionalImportDirs="/googleproto" />
+
+  <!-- NC  -->
+    <Protobuf Include="../protobuf/nc/nc.proto" ProtoRoot="../protobuf/" OutputDir="chirpstack/" CompileOutputs="false" AdditionalImportDirs="/googleproto" />
+
+  <!-- NS  -->
+    <Protobuf Include="../protobuf/ns/ns.proto" ProtoRoot="../protobuf/" OutputDir="chirpstack/" CompileOutputs="false" AdditionalImportDirs="/googleproto" />
+    <Protobuf Include="../protobuf/ns/profiles.proto" ProtoRoot="../protobuf/" OutputDir="chirpstack/" CompileOutputs="false" AdditionalImportDirs="/googleproto" />
+
+  <!-- GEO  -->
+    <Protobuf Include="../protobuf/geo/geo.proto" ProtoRoot="../protobuf/" OutputDir="chirpstack/" CompileOutputs="false" AdditionalImportDirs="/googleproto" />
+
+    <Protobuf Include="/googleproto/google/api/*.proto" ProtoRoot="/googleproto" OutputDir="chirpstack/" CompileOutputs="false" />
+  </ItemGroup>
+
+  <ItemGroup>
+    <PackageReference Include="Google.Protobuf" Version="3.21.12" />
+    <PackageReference Include="Grpc.Core" Version="2.46.6" />
+    <PackageReference Include="Grpc.Tools" Version="2.51.0">
+      <PrivateAssets>all</PrivateAssets>
+      <IncludeAssets>runtime; build; native; contentfiles; analyzers; buildtransitive</IncludeAssets>
+    </PackageReference>
+  </ItemGroup>
+
+</Project>

@@ -18,7 +18,7 @@ CLASSIFIERS = [
 
 setup(
     name='chirpstack-api',
-    version = "3.12.8",
+    version = "3.13.0",
     url='https://github.com/sagar-patel-sls/chirpstack-api',
     author='Orne Brocaar',
     author_email='info@brocaar.com',

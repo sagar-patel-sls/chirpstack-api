@@ -14,3 +14,7 @@
 
 # java
 /java/build/
+
+# csharp
+/csharp/obj
+/csharp/chirpstack

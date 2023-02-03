@@ -16,7 +16,7 @@ services:
       - ./:/chirpstack-api
   chirpstack-api-js:
     environment:
-      - VERSION=3.12.8
+      - VERSION=3.13.0
     build:
       context: .
       dockerfile: Dockerfile-js
@@ -25,7 +25,7 @@ services:
       - ./:/chirpstack-api
   chirpstack-api-rust:
     environment:
-      - VERSION=3.12.8
+      - VERSION=3.13.0
     build:
       context: .
       dockerfile: Dockerfile-rust
@@ -34,7 +34,7 @@ services:
       - ./:/chirpstack-api
   chirpstack-api-python:
     environment:
-      - VERSION=3.12.8
+      - VERSION=3.13.0
     build:
       context: .
       dockerfile: Dockerfile-python
@@ -43,7 +43,7 @@ services:
       - ./:/chirpstack-api
   chirpstack-api-java:
     environment:
-      - VERSION=3.12.8
+      - VERSION=3.13.0
     build:
       context: .
       dockerfile: Dockerfile-java
@@ -53,7 +53,7 @@ services:
   chirpstack-api-java-current-user:
     user: ${CURRENT_UID}
     environment:
-      - VERSION=3.12.8
+      - VERSION=3.13.0
       - MAVEN_CONFIG=/var/maven/.m2
     build:
       context: .
@@ -62,3 +62,10 @@ services:
     volumes:
       - ./:/chirpstack-api
       - ${CURRENT_HOME}/.m2:/var/maven/.m2
+  chirpstack-api-csharp:
+    build:
+      context: .
+      dockerfile: Dockerfile-csharp
+    command: bash -c "cd csharp && make all"
+    volumes:
+      - ./:/chirpstack-api
