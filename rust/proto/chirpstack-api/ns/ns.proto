@@ -770,6 +770,12 @@ message GatewayStatsFrameLog {
 
     // Published at timestamp.
     google.protobuf.Timestamp published_at = 12;
+
+    // As the exposed ack-rate represents the last reported ack-rate by the GW,
+    // it is also important to monitor the ack-rate count. If this value does
+    // not increment, it could mean that the GW is no longer reporting the
+    // ack-rate and thus the exposed ack-rate is stale.
+    float ack_rate = 13;
 }
 
 message StreamFrameLogsForGatewayRequest {

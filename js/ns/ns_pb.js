@@ -13257,7 +13257,8 @@ proto.ns.GatewayStatsFrameLog.toObject = function(includeInstance, msg) {
     txPacketsEmitted: msg.getTxPacketsEmitted(),
     metaDataMap: (f = msg.getMetaDataMap(true)) ? f.toArray() : [],
     statsId: msg.getStatsId_asB64(),
-    publishedAt: (f = msg.getPublishedAt()) && google_protobuf_timestamp_pb.Timestamp.toObject(includeInstance, f)
+    publishedAt: (f = msg.getPublishedAt()) && google_protobuf_timestamp_pb.Timestamp.toObject(includeInstance, f),
+    ackRate: msg.getAckRate()
   };
 
   if (includeInstance) {
@@ -13346,6 +13347,10 @@ proto.ns.GatewayStatsFrameLog.deserializeBinaryFromReader = function(msg, reader
       var value = new google_protobuf_timestamp_pb.Timestamp;
       reader.readMessage(value,google_protobuf_timestamp_pb.Timestamp.deserializeBinaryFromReader);
       msg.setPublishedAt(value);
+      break;
+    case 13:
+      var value = /** @type {number} */ (reader.readFloat());
+      msg.setAckRate(value);
       break;
     default:
       reader.skipField();
@@ -13467,6 +13472,13 @@ proto.ns.GatewayStatsFrameLog.prototype.serializeBinaryToWriter = function (writ
       12,
       f,
       google_protobuf_timestamp_pb.Timestamp.serializeBinaryToWriter
+    );
+  }
+  f = this.getAckRate();
+  if (f !== 0.0) {
+    writer.writeFloat(
+      13,
+      f
     );
   }
 };
@@ -13749,6 +13761,21 @@ proto.ns.GatewayStatsFrameLog.prototype.clearPublishedAt = function() {
  */
 proto.ns.GatewayStatsFrameLog.prototype.hasPublishedAt = function() {
   return jspb.Message.getField(this, 12) != null;
+};
+
+
+/**
+ * optional float ack_rate = 13;
+ * @return {number}
+ */
+proto.ns.GatewayStatsFrameLog.prototype.getAckRate = function() {
+  return /** @type {number} */ (jspb.Message.getFieldProto3(this, 13, 0));
+};
+
+
+/** @param {number} value  */
+proto.ns.GatewayStatsFrameLog.prototype.setAckRate = function(value) {
+  jspb.Message.setField(this, 13, value);
 };
 
 

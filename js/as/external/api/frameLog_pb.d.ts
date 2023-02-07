@@ -126,6 +126,9 @@ export class GatewayStatsFrameLog extends jspb.Message {
   getPublishedAt(): google_protobuf_timestamp_pb.Timestamp | undefined;
   setPublishedAt(value?: google_protobuf_timestamp_pb.Timestamp): void;
 
+  getAckRate(): number;
+  setAckRate(value: number): void;
+
   serializeBinary(): Uint8Array;
   toObject(includeInstance?: boolean): GatewayStatsFrameLog.AsObject;
   static toObject(includeInstance: boolean, msg: GatewayStatsFrameLog): GatewayStatsFrameLog.AsObject;
@@ -150,6 +153,7 @@ export namespace GatewayStatsFrameLog {
     metaDataMap: Array<[string, string]>,
     statsId: Uint8Array | string,
     publishedAt?: google_protobuf_timestamp_pb.Timestamp.AsObject,
+    ackRate: number,
   }
 }
 

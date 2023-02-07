@@ -295,6 +295,9 @@ export class GatewayStats extends jspb.Message {
   clearTxPacketsPerStatusMap(): void;
   getMtypeCountMap(): jspb.Map<string, number>;
   clearMtypeCountMap(): void;
+  getAckRate(): number;
+  setAckRate(value: number): void;
+
   serializeBinary(): Uint8Array;
   toObject(includeInstance?: boolean): GatewayStats.AsObject;
   static toObject(includeInstance: boolean, msg: GatewayStats): GatewayStats.AsObject;
@@ -324,6 +327,7 @@ export namespace GatewayStats {
     rxPacketsPerModulationList: Array<PerModulationCount.AsObject>,
     txPacketsPerStatusMap: Array<[string, number]>,
     mtypeCountMap: Array<[string, number]>,
+    ackRate: number,
   }
 }
 

@@ -2208,7 +2208,8 @@ proto.integration.ErrorEvent.toObject = function(includeInstance, msg) {
     error: msg.getError(),
     fCnt: msg.getFCnt(),
     tagsMap: (f = msg.getTagsMap(true)) ? f.toArray() : [],
-    publishedAt: (f = msg.getPublishedAt()) && google_protobuf_timestamp_pb.Timestamp.toObject(includeInstance, f)
+    publishedAt: (f = msg.getPublishedAt()) && google_protobuf_timestamp_pb.Timestamp.toObject(includeInstance, f),
+    contextMap: (f = msg.getContextMap(true)) ? f.toArray() : []
   };
 
   if (includeInstance) {
@@ -2283,6 +2284,12 @@ proto.integration.ErrorEvent.deserializeBinaryFromReader = function(msg, reader)
       var value = new google_protobuf_timestamp_pb.Timestamp;
       reader.readMessage(value,google_protobuf_timestamp_pb.Timestamp.deserializeBinaryFromReader);
       msg.setPublishedAt(value);
+      break;
+    case 10:
+      var value = msg.getContextMap();
+      reader.readMessage(value, function(message, reader) {
+        jspb.Map.deserializeBinary(message, reader, jspb.BinaryReader.prototype.readString, jspb.BinaryReader.prototype.readString);
+         });
       break;
     default:
       reader.skipField();
@@ -2382,6 +2389,10 @@ proto.integration.ErrorEvent.prototype.serializeBinaryToWriter = function (write
       f,
       google_protobuf_timestamp_pb.Timestamp.serializeBinaryToWriter
     );
+  }
+  f = this.getContextMap(true);
+  if (f && f.getLength() > 0) {
+    f.serializeBinary(10, writer, jspb.BinaryWriter.prototype.writeString, jspb.BinaryWriter.prototype.writeString);
   }
 };
 
@@ -2564,6 +2575,19 @@ proto.integration.ErrorEvent.prototype.clearPublishedAt = function() {
  */
 proto.integration.ErrorEvent.prototype.hasPublishedAt = function() {
   return jspb.Message.getField(this, 9) != null;
+};
+
+
+/**
+ * map<string, string> context = 10;
+ * @param {boolean=} opt_noLazyCreate Do not create the map if
+ * empty, instead returning `undefined`
+ * @return {!jspb.Map<string,string>}
+ */
+proto.integration.ErrorEvent.prototype.getContextMap = function(opt_noLazyCreate) {
+  return /** @type {!jspb.Map<string,string>} */ (
+      jspb.Message.getMapField(this, 10, opt_noLazyCreate,
+      null));
 };
 
 
@@ -3954,7 +3978,8 @@ proto.integration.GatewayStatsEvent.toObject = function(includeInstance, msg) {
     txPacketsEmitted: msg.getTxPacketsEmitted(),
     metaDataMap: (f = msg.getMetaDataMap(true)) ? f.toArray() : [],
     statsId: msg.getStatsId_asB64(),
-    tagsMap: (f = msg.getTagsMap(true)) ? f.toArray() : []
+    tagsMap: (f = msg.getTagsMap(true)) ? f.toArray() : [],
+    ackRate: msg.getAckRate()
   };
 
   if (includeInstance) {
@@ -4044,6 +4069,10 @@ proto.integration.GatewayStatsEvent.deserializeBinaryFromReader = function(msg, 
       reader.readMessage(value, function(message, reader) {
         jspb.Map.deserializeBinary(message, reader, jspb.BinaryReader.prototype.readString, jspb.BinaryReader.prototype.readString);
          });
+      break;
+    case 13:
+      var value = /** @type {number} */ (reader.readFloat());
+      msg.setAckRate(value);
       break;
     default:
       reader.skipField();
@@ -4162,6 +4191,13 @@ proto.integration.GatewayStatsEvent.prototype.serializeBinaryToWriter = function
   f = this.getTagsMap(true);
   if (f && f.getLength() > 0) {
     f.serializeBinary(12, writer, jspb.BinaryWriter.prototype.writeString, jspb.BinaryWriter.prototype.writeString);
+  }
+  f = this.getAckRate();
+  if (f !== 0.0) {
+    writer.writeFloat(
+      13,
+      f
+    );
   }
 };
 
@@ -4426,6 +4462,21 @@ proto.integration.GatewayStatsEvent.prototype.getTagsMap = function(opt_noLazyCr
   return /** @type {!jspb.Map<string,string>} */ (
       jspb.Message.getMapField(this, 12, opt_noLazyCreate,
       null));
+};
+
+
+/**
+ * optional float ack_rate = 13;
+ * @return {number}
+ */
+proto.integration.GatewayStatsEvent.prototype.getAckRate = function() {
+  return /** @type {number} */ (jspb.Message.getFieldProto3(this, 13, 0));
+};
+
+
+/** @param {number} value  */
+proto.integration.GatewayStatsEvent.prototype.setAckRate = function(value) {
+  jspb.Message.setField(this, 13, value);
 };
 
 

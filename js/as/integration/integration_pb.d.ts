@@ -318,6 +318,8 @@ export class ErrorEvent extends jspb.Message {
   getPublishedAt(): google_protobuf_timestamp_pb.Timestamp | undefined;
   setPublishedAt(value?: google_protobuf_timestamp_pb.Timestamp): void;
 
+  getContextMap(): jspb.Map<string, string>;
+  clearContextMap(): void;
   serializeBinary(): Uint8Array;
   toObject(includeInstance?: boolean): ErrorEvent.AsObject;
   static toObject(includeInstance: boolean, msg: ErrorEvent): ErrorEvent.AsObject;
@@ -339,6 +341,7 @@ export namespace ErrorEvent {
     fCnt: number,
     tagsMap: Array<[string, string]>,
     publishedAt?: google_protobuf_timestamp_pb.Timestamp.AsObject,
+    contextMap: Array<[string, string]>,
   }
 }
 
@@ -560,6 +563,9 @@ export class GatewayStatsEvent extends jspb.Message {
 
   getTagsMap(): jspb.Map<string, string>;
   clearTagsMap(): void;
+  getAckRate(): number;
+  setAckRate(value: number): void;
+
   serializeBinary(): Uint8Array;
   toObject(includeInstance?: boolean): GatewayStatsEvent.AsObject;
   static toObject(includeInstance: boolean, msg: GatewayStatsEvent): GatewayStatsEvent.AsObject;
@@ -584,6 +590,7 @@ export namespace GatewayStatsEvent {
     metaDataMap: Array<[string, string]>,
     statsId: Uint8Array | string,
     tagsMap: Array<[string, string]>,
+    ackRate: number,
   }
 }
 

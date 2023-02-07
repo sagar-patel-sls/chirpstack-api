@@ -662,6 +662,11 @@
           "type": "integer",
           "format": "int32",
           "title": "Stat Packet count"
+        },
+        "ackRate": {
+          "type": "number",
+          "format": "float",
+          "description": "As the exposed ack-rate represents the last reported ack-rate by the GW,\nit is also important to monitor the ack-rate count. If this value does\nnot increment, it could mean that the GW is no longer reporting the\nack-rate and thus the exposed ack-rate is stale."
         }
       }
     },
@@ -726,6 +731,11 @@
           "type": "string",
           "format": "date-time",
           "description": "Published at timestamp."
+        },
+        "ackRate": {
+          "type": "number",
+          "format": "float",
+          "description": "As the exposed ack-rate represents the last reported ack-rate by the GW,\nit is also important to monitor the ack-rate count. If this value does\nnot increment, it could mean that the GW is no longer reporting the\nack-rate and thus the exposed ack-rate is stale."
         }
       }
     },

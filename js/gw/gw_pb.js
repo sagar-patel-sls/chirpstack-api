@@ -1831,7 +1831,8 @@ proto.gw.GatewayStats.toObject = function(includeInstance, msg) {
     rxPacketsPerModulationList: jspb.Message.toObjectList(msg.getRxPacketsPerModulationList(),
     proto.gw.PerModulationCount.toObject, includeInstance),
     txPacketsPerStatusMap: (f = msg.getTxPacketsPerStatusMap(true)) ? f.toArray() : [],
-    mtypeCountMap: (f = msg.getMtypeCountMap(true)) ? f.toArray() : []
+    mtypeCountMap: (f = msg.getMtypeCountMap(true)) ? f.toArray() : [],
+    ackRate: msg.getAckRate()
   };
 
   if (includeInstance) {
@@ -1951,6 +1952,10 @@ proto.gw.GatewayStats.deserializeBinaryFromReader = function(msg, reader) {
       reader.readMessage(value, function(message, reader) {
         jspb.Map.deserializeBinary(message, reader, jspb.BinaryReader.prototype.readString, jspb.BinaryReader.prototype.readUint32);
          });
+      break;
+    case 18:
+      var value = /** @type {number} */ (reader.readFloat());
+      msg.setAckRate(value);
       break;
     default:
       reader.skipField();
@@ -2097,6 +2102,13 @@ proto.gw.GatewayStats.prototype.serializeBinaryToWriter = function (writer) {
   f = this.getMtypeCountMap(true);
   if (f && f.getLength() > 0) {
     f.serializeBinary(17, writer, jspb.BinaryWriter.prototype.writeString, jspb.BinaryWriter.prototype.writeUint32);
+  }
+  f = this.getAckRate();
+  if (f !== 0.0) {
+    writer.writeFloat(
+      18,
+      f
+    );
   }
 };
 
@@ -2446,6 +2458,21 @@ proto.gw.GatewayStats.prototype.getMtypeCountMap = function(opt_noLazyCreate) {
   return /** @type {!jspb.Map<string,number>} */ (
       jspb.Message.getMapField(this, 17, opt_noLazyCreate,
       null));
+};
+
+
+/**
+ * optional float ack_rate = 18;
+ * @return {number}
+ */
+proto.gw.GatewayStats.prototype.getAckRate = function() {
+  return /** @type {number} */ (jspb.Message.getFieldProto3(this, 18, 0));
+};
+
+
+/** @param {number} value  */
+proto.gw.GatewayStats.prototype.setAckRate = function(value) {
+  jspb.Message.setField(this, 18, value);
 };
 
 

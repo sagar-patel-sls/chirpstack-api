@@ -349,6 +349,12 @@ message GatewayStats {
 
 	// Stat Packet count
 	int32 stats_count = 15;
+
+	// As the exposed ack-rate represents the last reported ack-rate by the GW,
+    // it is also important to monitor the ack-rate count. If this value does
+    // not increment, it could mean that the GW is no longer reporting the
+    // ack-rate and thus the exposed ack-rate is stale.
+    float ack_rate = 16;
 }
 
 message GetGatewayStatsRequest {

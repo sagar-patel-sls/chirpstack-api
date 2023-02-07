@@ -162,6 +162,8 @@ export class HandleErrorRequest extends jspb.Message {
   getFCnt(): number;
   setFCnt(value: number): void;
 
+  getContextMap(): jspb.Map<string, string>;
+  clearContextMap(): void;
   serializeBinary(): Uint8Array;
   toObject(includeInstance?: boolean): HandleErrorRequest.AsObject;
   static toObject(includeInstance: boolean, msg: HandleErrorRequest): HandleErrorRequest.AsObject;
@@ -178,6 +180,7 @@ export namespace HandleErrorRequest {
     type: ErrorTypeMap[keyof ErrorTypeMap],
     error: string,
     fCnt: number,
+    contextMap: Array<[string, string]>,
   }
 }
 
@@ -336,6 +339,9 @@ export class HandleGatewayStatsRequest extends jspb.Message {
   clearTxPacketsPerStatusMap(): void;
   getMtypeCountMap(): jspb.Map<string, number>;
   clearMtypeCountMap(): void;
+  getAckRate(): number;
+  setAckRate(value: number): void;
+
   serializeBinary(): Uint8Array;
   toObject(includeInstance?: boolean): HandleGatewayStatsRequest.AsObject;
   static toObject(includeInstance: boolean, msg: HandleGatewayStatsRequest): HandleGatewayStatsRequest.AsObject;
@@ -363,6 +369,7 @@ export namespace HandleGatewayStatsRequest {
     rxPacketsPerDrMap: Array<[number, number]>,
     txPacketsPerStatusMap: Array<[string, number]>,
     mtypeCountMap: Array<[string, number]>,
+    ackRate: number,
   }
 }
 

@@ -3282,7 +3282,8 @@ proto.api.GatewayStats.toObject = function(includeInstance, msg) {
     rxFrequencyUtilizationMap: (f = msg.getRxFrequencyUtilizationMap(true)) ? f.toArray() : [],
     txFrequencyUtilizationMap: (f = msg.getTxFrequencyUtilizationMap(true)) ? f.toArray() : [],
     connStatusMap: (f = msg.getConnStatusMap(true)) ? f.toArray() : [],
-    statsCount: msg.getStatsCount()
+    statsCount: msg.getStatsCount(),
+    ackRate: msg.getAckRate()
   };
 
   if (includeInstance) {
@@ -3398,6 +3399,10 @@ proto.api.GatewayStats.deserializeBinaryFromReader = function(msg, reader) {
       var value = /** @type {number} */ (reader.readInt32());
       msg.setStatsCount(value);
       break;
+    case 16:
+      var value = /** @type {number} */ (reader.readFloat());
+      msg.setAckRate(value);
+      break;
     default:
       reader.skipField();
       break;
@@ -3512,6 +3517,13 @@ proto.api.GatewayStats.prototype.serializeBinaryToWriter = function (writer) {
   if (f !== 0) {
     writer.writeInt32(
       15,
+      f
+    );
+  }
+  f = this.getAckRate();
+  if (f !== 0.0) {
+    writer.writeFloat(
+      16,
       f
     );
   }
@@ -3746,6 +3758,21 @@ proto.api.GatewayStats.prototype.getStatsCount = function() {
 /** @param {number} value  */
 proto.api.GatewayStats.prototype.setStatsCount = function(value) {
   jspb.Message.setField(this, 15, value);
+};
+
+
+/**
+ * optional float ack_rate = 16;
+ * @return {number}
+ */
+proto.api.GatewayStats.prototype.getAckRate = function() {
+  return /** @type {number} */ (jspb.Message.getFieldProto3(this, 16, 0));
+};
+
+
+/** @param {number} value  */
+proto.api.GatewayStats.prototype.setAckRate = function(value) {
+  jspb.Message.setField(this, 16, value);
 };
 
 

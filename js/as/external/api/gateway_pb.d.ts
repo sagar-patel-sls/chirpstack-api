@@ -465,6 +465,9 @@ export class GatewayStats extends jspb.Message {
   getStatsCount(): number;
   setStatsCount(value: number): void;
 
+  getAckRate(): number;
+  setAckRate(value: number): void;
+
   serializeBinary(): Uint8Array;
   toObject(includeInstance?: boolean): GatewayStats.AsObject;
   static toObject(includeInstance: boolean, msg: GatewayStats): GatewayStats.AsObject;
@@ -492,6 +495,7 @@ export namespace GatewayStats {
     txFrequencyUtilizationMap: Array<[number, number]>,
     connStatusMap: Array<[string, number]>,
     statsCount: number,
+    ackRate: number,
   }
 }
 

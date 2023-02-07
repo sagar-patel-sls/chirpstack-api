@@ -236,6 +236,9 @@ message ErrorEvent {
 
     // Published at timestamp.
     google.protobuf.Timestamp published_at = 9;
+
+    // Error context related to the error.
+    map<string, string> context = 10;
 }
 
 // StatusEvent is the message sent when a device-status mac-command was sent
@@ -378,6 +381,12 @@ message GatewayStatsEvent {
     // These tags are exposed in the stat event payloads or to integration. Tags are
     // intended for aggregation and filtering.
     map<string, string> tags = 12;
+
+    // As the exposed ack-rate represents the last reported ack-rate by the GW,
+    // it is also important to monitor the ack-rate count. If this value does
+    // not increment, it could mean that the GW is no longer reporting the
+    // ack-rate and thus the exposed ack-rate is stale.
+    float ack_rate = 13;
 }
 
 // GatewayConnStatEvent is the message sent gateway connection stats.

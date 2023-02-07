@@ -1187,7 +1187,8 @@ proto.as.HandleErrorRequest.toObject = function(includeInstance, msg) {
     devEui: msg.getDevEui_asB64(),
     type: msg.getType(),
     error: msg.getError(),
-    fCnt: msg.getFCnt()
+    fCnt: msg.getFCnt(),
+    contextMap: (f = msg.getContextMap(true)) ? f.toArray() : []
   };
 
   if (includeInstance) {
@@ -1239,6 +1240,12 @@ proto.as.HandleErrorRequest.deserializeBinaryFromReader = function(msg, reader) 
     case 5:
       var value = /** @type {number} */ (reader.readUint32());
       msg.setFCnt(value);
+      break;
+    case 6:
+      var value = msg.getContextMap();
+      reader.readMessage(value, function(message, reader) {
+        jspb.Map.deserializeBinary(message, reader, jspb.BinaryReader.prototype.readString, jspb.BinaryReader.prototype.readString);
+         });
       break;
     default:
       reader.skipField();
@@ -1305,6 +1312,10 @@ proto.as.HandleErrorRequest.prototype.serializeBinaryToWriter = function (writer
       5,
       f
     );
+  }
+  f = this.getContextMap(true);
+  if (f && f.getLength() > 0) {
+    f.serializeBinary(6, writer, jspb.BinaryWriter.prototype.writeString, jspb.BinaryWriter.prototype.writeString);
   }
 };
 
@@ -1399,6 +1410,19 @@ proto.as.HandleErrorRequest.prototype.getFCnt = function() {
 /** @param {number} value  */
 proto.as.HandleErrorRequest.prototype.setFCnt = function(value) {
   jspb.Message.setField(this, 5, value);
+};
+
+
+/**
+ * map<string, string> context = 6;
+ * @param {boolean=} opt_noLazyCreate Do not create the map if
+ * empty, instead returning `undefined`
+ * @return {!jspb.Map<string,string>}
+ */
+proto.as.HandleErrorRequest.prototype.getContextMap = function(opt_noLazyCreate) {
+  return /** @type {!jspb.Map<string,string>} */ (
+      jspb.Message.getMapField(this, 6, opt_noLazyCreate,
+      null));
 };
 
 
@@ -2320,7 +2344,8 @@ proto.as.HandleGatewayStatsRequest.toObject = function(includeInstance, msg) {
     txPacketsPerDrMap: (f = msg.getTxPacketsPerDrMap(true)) ? f.toArray() : [],
     rxPacketsPerDrMap: (f = msg.getRxPacketsPerDrMap(true)) ? f.toArray() : [],
     txPacketsPerStatusMap: (f = msg.getTxPacketsPerStatusMap(true)) ? f.toArray() : [],
-    mtypeCountMap: (f = msg.getMtypeCountMap(true)) ? f.toArray() : []
+    mtypeCountMap: (f = msg.getMtypeCountMap(true)) ? f.toArray() : [],
+    ackRate: msg.getAckRate()
   };
 
   if (includeInstance) {
@@ -2432,6 +2457,10 @@ proto.as.HandleGatewayStatsRequest.deserializeBinaryFromReader = function(msg, r
       reader.readMessage(value, function(message, reader) {
         jspb.Map.deserializeBinary(message, reader, jspb.BinaryReader.prototype.readString, jspb.BinaryReader.prototype.readUint32);
          });
+      break;
+    case 16:
+      var value = /** @type {number} */ (reader.readFloat());
+      msg.setAckRate(value);
       break;
     default:
       reader.skipField();
@@ -2556,6 +2585,13 @@ proto.as.HandleGatewayStatsRequest.prototype.serializeBinaryToWriter = function 
   f = this.getMtypeCountMap(true);
   if (f && f.getLength() > 0) {
     f.serializeBinary(15, writer, jspb.BinaryWriter.prototype.writeString, jspb.BinaryWriter.prototype.writeUint32);
+  }
+  f = this.getAckRate();
+  if (f !== 0.0) {
+    writer.writeFloat(
+      16,
+      f
+    );
   }
 };
 
@@ -2855,6 +2891,21 @@ proto.as.HandleGatewayStatsRequest.prototype.getMtypeCountMap = function(opt_noL
   return /** @type {!jspb.Map<string,number>} */ (
       jspb.Message.getMapField(this, 15, opt_noLazyCreate,
       null));
+};
+
+
+/**
+ * optional float ack_rate = 16;
+ * @return {number}
+ */
+proto.as.HandleGatewayStatsRequest.prototype.getAckRate = function() {
+  return /** @type {number} */ (jspb.Message.getFieldProto3(this, 16, 0));
+};
+
+
+/** @param {number} value  */
+proto.as.HandleGatewayStatsRequest.prototype.setAckRate = function(value) {
+  jspb.Message.setField(this, 16, value);
 };
 
 
