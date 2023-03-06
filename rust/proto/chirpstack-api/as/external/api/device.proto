@@ -550,6 +550,9 @@ message DeviceStats {
     // Packets and Total Packets History.
     // This Packet Success Rate metrics shows daily basis.
     PacketSuccess packet_success_rate = 12;
+
+    // Packets count per MType (JoinRequest, JoinAccept, Confirm/UnConfirm)
+    map<string, uint32> mtype_count = 13;
 }
 
 message GetDeviceStatsRequest {

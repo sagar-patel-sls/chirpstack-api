@@ -860,6 +860,14 @@
         "packetSuccessRate": {
           "$ref": "#/definitions/apiPacketSuccess",
           "description": "Packet Success Rate (%)\nPSR calculation based on the missing frame counter from the history of\nuplink events (per device). Returns Packet Success Rate(%), No. of Lost\nPackets and Total Packets History.\nThis Packet Success Rate metrics shows daily basis."
+        },
+        "mtypeCount": {
+          "type": "object",
+          "additionalProperties": {
+            "type": "integer",
+            "format": "int64"
+          },
+          "title": "Packets count per MType (JoinRequest, JoinAccept, Confirm/UnConfirm)"
         }
       }
     },

@@ -66,6 +66,11 @@ class ApplicationServerServiceStub(object):
                 request_serializer=chirpstack__api_dot_as__pb_dot_as__pb__pb2.HandleConnStateRequest.SerializeToString,
                 response_deserializer=google_dot_protobuf_dot_empty__pb2.Empty.FromString,
                 )
+        self.HandleDeviceMTypeMetrics = channel.unary_unary(
+                '/as.ApplicationServerService/HandleDeviceMTypeMetrics',
+                request_serializer=chirpstack__api_dot_as__pb_dot_as__pb__pb2.HandleMTypeRequest.SerializeToString,
+                response_deserializer=google_dot_protobuf_dot_empty__pb2.Empty.FromString,
+                )
 
 
 class ApplicationServerServiceServicer(object):
@@ -149,6 +154,14 @@ class ApplicationServerServiceServicer(object):
         context.set_details('Method not implemented!')
         raise NotImplementedError('Method not implemented!')
 
+    def HandleDeviceMTypeMetrics(self, request, context):
+        """HandleDeviceMTypeMetrics The application server receives the message type so that 
+        the details page can display message type metrics.
+        """
+        context.set_code(grpc.StatusCode.UNIMPLEMENTED)
+        context.set_details('Method not implemented!')
+        raise NotImplementedError('Method not implemented!')
+
 
 def add_ApplicationServerServiceServicer_to_server(servicer, server):
     rpc_method_handlers = {
@@ -200,6 +213,11 @@ def add_ApplicationServerServiceServicer_to_server(servicer, server):
             'HandleGatewayConnStats': grpc.unary_unary_rpc_method_handler(
                     servicer.HandleGatewayConnStats,
                     request_deserializer=chirpstack__api_dot_as__pb_dot_as__pb__pb2.HandleConnStateRequest.FromString,
+                    response_serializer=google_dot_protobuf_dot_empty__pb2.Empty.SerializeToString,
+            ),
+            'HandleDeviceMTypeMetrics': grpc.unary_unary_rpc_method_handler(
+                    servicer.HandleDeviceMTypeMetrics,
+                    request_deserializer=chirpstack__api_dot_as__pb_dot_as__pb__pb2.HandleMTypeRequest.FromString,
                     response_serializer=google_dot_protobuf_dot_empty__pb2.Empty.SerializeToString,
             ),
     }
@@ -379,6 +397,23 @@ class ApplicationServerService(object):
             metadata=None):
         return grpc.experimental.unary_unary(request, target, '/as.ApplicationServerService/HandleGatewayConnStats',
             chirpstack__api_dot_as__pb_dot_as__pb__pb2.HandleConnStateRequest.SerializeToString,
+            google_dot_protobuf_dot_empty__pb2.Empty.FromString,
+            options, channel_credentials,
+            insecure, call_credentials, compression, wait_for_ready, timeout, metadata)
+
+    @staticmethod
+    def HandleDeviceMTypeMetrics(request,
+            target,
+            options=(),
+            channel_credentials=None,
+            call_credentials=None,
+            insecure=False,
+            compression=None,
+            wait_for_ready=None,
+            timeout=None,
+            metadata=None):
+        return grpc.experimental.unary_unary(request, target, '/as.ApplicationServerService/HandleDeviceMTypeMetrics',
+            chirpstack__api_dot_as__pb_dot_as__pb__pb2.HandleMTypeRequest.SerializeToString,
             google_dot_protobuf_dot_empty__pb2.Empty.FromString,
             options, channel_credentials,
             insecure, call_credentials, compression, wait_for_ready, timeout, metadata)

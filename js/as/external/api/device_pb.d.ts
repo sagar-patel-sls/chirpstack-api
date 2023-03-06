@@ -835,6 +835,8 @@ export class DeviceStats extends jspb.Message {
   getPacketSuccessRate(): PacketSuccess | undefined;
   setPacketSuccessRate(value?: PacketSuccess): void;
 
+  getMtypeCountMap(): jspb.Map<string, number>;
+  clearMtypeCountMap(): void;
   serializeBinary(): Uint8Array;
   toObject(includeInstance?: boolean): DeviceStats.AsObject;
   static toObject(includeInstance: boolean, msg: DeviceStats): DeviceStats.AsObject;
@@ -859,6 +861,7 @@ export namespace DeviceStats {
     rssiPerGatewayMap: Array<[string, number]>,
     snrPerGatewayMap: Array<[string, number]>,
     packetSuccessRate?: PacketSuccess.AsObject,
+    mtypeCountMap: Array<[string, number]>,
   }
 }
 

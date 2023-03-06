@@ -6151,7 +6151,8 @@ proto.api.DeviceStats.toObject = function(includeInstance, msg) {
     txPacketsAckMap: (f = msg.getTxPacketsAckMap(true)) ? f.toArray() : [],
     rssiPerGatewayMap: (f = msg.getRssiPerGatewayMap(true)) ? f.toArray() : [],
     snrPerGatewayMap: (f = msg.getSnrPerGatewayMap(true)) ? f.toArray() : [],
-    packetSuccessRate: (f = msg.getPacketSuccessRate()) && proto.api.PacketSuccess.toObject(includeInstance, f)
+    packetSuccessRate: (f = msg.getPacketSuccessRate()) && proto.api.PacketSuccess.toObject(includeInstance, f),
+    mtypeCountMap: (f = msg.getMtypeCountMap(true)) ? f.toArray() : []
   };
 
   if (includeInstance) {
@@ -6249,6 +6250,12 @@ proto.api.DeviceStats.deserializeBinaryFromReader = function(msg, reader) {
       var value = new proto.api.PacketSuccess;
       reader.readMessage(value,proto.api.PacketSuccess.deserializeBinaryFromReader);
       msg.setPacketSuccessRate(value);
+      break;
+    case 13:
+      var value = msg.getMtypeCountMap();
+      reader.readMessage(value, function(message, reader) {
+        jspb.Map.deserializeBinary(message, reader, jspb.BinaryReader.prototype.readString, jspb.BinaryReader.prototype.readUint32);
+         });
       break;
     default:
       reader.skipField();
@@ -6355,6 +6362,10 @@ proto.api.DeviceStats.prototype.serializeBinaryToWriter = function (writer) {
       f,
       proto.api.PacketSuccess.serializeBinaryToWriter
     );
+  }
+  f = this.getMtypeCountMap(true);
+  if (f && f.getLength() > 0) {
+    f.serializeBinary(13, writer, jspb.BinaryWriter.prototype.writeString, jspb.BinaryWriter.prototype.writeUint32);
   }
 };
 
@@ -6563,6 +6574,19 @@ proto.api.DeviceStats.prototype.clearPacketSuccessRate = function() {
  */
 proto.api.DeviceStats.prototype.hasPacketSuccessRate = function() {
   return jspb.Message.getField(this, 12) != null;
+};
+
+
+/**
+ * map<string, uint32> mtype_count = 13;
+ * @param {boolean=} opt_noLazyCreate Do not create the map if
+ * empty, instead returning `undefined`
+ * @return {!jspb.Map<string,number>}
+ */
+proto.api.DeviceStats.prototype.getMtypeCountMap = function(opt_noLazyCreate) {
+  return /** @type {!jspb.Map<string,number>} */ (
+      jspb.Message.getMapField(this, 13, opt_noLazyCreate,
+      null));
 };
 
 

@@ -52,6 +52,10 @@ service ApplicationServerService {
 
     // HandleGatewayConnStats handles the connection state of a gateway.
     rpc HandleGatewayConnStats(HandleConnStateRequest) returns (google.protobuf.Empty) {}
+
+    // HandleDeviceMTypeMetrics The application server receives the message type so that 
+    // the details page can display message type metrics.
+    rpc HandleDeviceMTypeMetrics(HandleMTypeRequest) returns (google.protobuf.Empty) {}
 }
 
 enum RXWindow {
@@ -134,6 +138,9 @@ message HandleUplinkDataRequest {
 
     // Uplink was of type confirmed.
     bool confirmed_uplink = 11;
+
+     // Message type.
+    common.MType m_type = 12;
 }
 
 message HandleProprietaryUplinkRequest {
@@ -342,4 +349,12 @@ message HandleConnStateRequest {
 
     // MQTT Message Retained or not.
     bool is_retained = 4;
+}
+
+message HandleMTypeRequest {
+    // Device EUI (8 bytes).
+    bytes dev_eui = 1;
+
+    // Message type.
+    common.MType m_type = 2;
 }

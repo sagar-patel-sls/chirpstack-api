@@ -18,6 +18,7 @@ interface IApplicationServerServiceService extends grpc.ServiceDefinition<grpc.U
   setDeviceLocation: grpc.MethodDefinition<as_as_pb.SetDeviceLocationRequest, google_protobuf_empty_pb.Empty>;
   reEncryptDeviceQueueItems: grpc.MethodDefinition<as_as_pb.ReEncryptDeviceQueueItemsRequest, as_as_pb.ReEncryptDeviceQueueItemsResponse>;
   handleGatewayConnStats: grpc.MethodDefinition<as_as_pb.HandleConnStateRequest, google_protobuf_empty_pb.Empty>;
+  handleDeviceMTypeMetrics: grpc.MethodDefinition<as_as_pb.HandleMTypeRequest, google_protobuf_empty_pb.Empty>;
 }
 
 export const ApplicationServerServiceService: IApplicationServerServiceService;
@@ -33,6 +34,7 @@ export interface IApplicationServerServiceServer extends grpc.UntypedServiceImpl
   setDeviceLocation: grpc.handleUnaryCall<as_as_pb.SetDeviceLocationRequest, google_protobuf_empty_pb.Empty>;
   reEncryptDeviceQueueItems: grpc.handleUnaryCall<as_as_pb.ReEncryptDeviceQueueItemsRequest, as_as_pb.ReEncryptDeviceQueueItemsResponse>;
   handleGatewayConnStats: grpc.handleUnaryCall<as_as_pb.HandleConnStateRequest, google_protobuf_empty_pb.Empty>;
+  handleDeviceMTypeMetrics: grpc.handleUnaryCall<as_as_pb.HandleMTypeRequest, google_protobuf_empty_pb.Empty>;
 }
 
 export class ApplicationServerServiceClient extends grpc.Client {
@@ -67,4 +69,7 @@ export class ApplicationServerServiceClient extends grpc.Client {
   handleGatewayConnStats(argument: as_as_pb.HandleConnStateRequest, callback: grpc.requestCallback<google_protobuf_empty_pb.Empty>): grpc.ClientUnaryCall;
   handleGatewayConnStats(argument: as_as_pb.HandleConnStateRequest, metadataOrOptions: grpc.Metadata | grpc.CallOptions | null, callback: grpc.requestCallback<google_protobuf_empty_pb.Empty>): grpc.ClientUnaryCall;
   handleGatewayConnStats(argument: as_as_pb.HandleConnStateRequest, metadata: grpc.Metadata | null, options: grpc.CallOptions | null, callback: grpc.requestCallback<google_protobuf_empty_pb.Empty>): grpc.ClientUnaryCall;
+  handleDeviceMTypeMetrics(argument: as_as_pb.HandleMTypeRequest, callback: grpc.requestCallback<google_protobuf_empty_pb.Empty>): grpc.ClientUnaryCall;
+  handleDeviceMTypeMetrics(argument: as_as_pb.HandleMTypeRequest, metadataOrOptions: grpc.Metadata | grpc.CallOptions | null, callback: grpc.requestCallback<google_protobuf_empty_pb.Empty>): grpc.ClientUnaryCall;
+  handleDeviceMTypeMetrics(argument: as_as_pb.HandleMTypeRequest, metadata: grpc.Metadata | null, options: grpc.CallOptions | null, callback: grpc.requestCallback<google_protobuf_empty_pb.Empty>): grpc.ClientUnaryCall;
 }

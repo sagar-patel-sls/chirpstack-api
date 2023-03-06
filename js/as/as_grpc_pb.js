@@ -52,6 +52,17 @@ function deserialize_as_HandleGatewayStatsRequest(buffer_arg) {
   return as_as_pb.HandleGatewayStatsRequest.deserializeBinary(new Uint8Array(buffer_arg));
 }
 
+function serialize_as_HandleMTypeRequest(arg) {
+  if (!(arg instanceof as_as_pb.HandleMTypeRequest)) {
+    throw new Error('Expected argument of type as.HandleMTypeRequest');
+  }
+  return Buffer.from(arg.serializeBinary());
+}
+
+function deserialize_as_HandleMTypeRequest(buffer_arg) {
+  return as_as_pb.HandleMTypeRequest.deserializeBinary(new Uint8Array(buffer_arg));
+}
+
 function serialize_as_HandleProprietaryUplinkRequest(arg) {
   if (!(arg instanceof as_as_pb.HandleProprietaryUplinkRequest)) {
     throw new Error('Expected argument of type as.HandleProprietaryUplinkRequest');
@@ -267,6 +278,19 @@ handleGatewayConnStats: {
     responseType: google_protobuf_empty_pb.Empty,
     requestSerialize: serialize_as_HandleConnStateRequest,
     requestDeserialize: deserialize_as_HandleConnStateRequest,
+    responseSerialize: serialize_google_protobuf_Empty,
+    responseDeserialize: deserialize_google_protobuf_Empty,
+  },
+  // HandleDeviceMTypeMetrics The application server receives the message type so that 
+// the details page can display message type metrics.
+handleDeviceMTypeMetrics: {
+    path: '/as.ApplicationServerService/HandleDeviceMTypeMetrics',
+    requestStream: false,
+    responseStream: false,
+    requestType: as_as_pb.HandleMTypeRequest,
+    responseType: google_protobuf_empty_pb.Empty,
+    requestSerialize: serialize_as_HandleMTypeRequest,
+    requestDeserialize: deserialize_as_HandleMTypeRequest,
     responseSerialize: serialize_google_protobuf_Empty,
     responseDeserialize: deserialize_google_protobuf_Empty,
   },

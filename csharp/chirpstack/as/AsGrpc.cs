@@ -72,6 +72,8 @@ namespace chirpstack.as {
     static readonly grpc::Marshaller<global::chirpstack.as.ReEncryptDeviceQueueItemsResponse> __Marshaller_as_ReEncryptDeviceQueueItemsResponse = grpc::Marshallers.Create(__Helper_SerializeMessage, context => __Helper_DeserializeMessage(context, global::chirpstack.as.ReEncryptDeviceQueueItemsResponse.Parser));
     [global::System.CodeDom.Compiler.GeneratedCode("grpc_csharp_plugin", null)]
     static readonly grpc::Marshaller<global::chirpstack.as.HandleConnStateRequest> __Marshaller_as_HandleConnStateRequest = grpc::Marshallers.Create(__Helper_SerializeMessage, context => __Helper_DeserializeMessage(context, global::chirpstack.as.HandleConnStateRequest.Parser));
+    [global::System.CodeDom.Compiler.GeneratedCode("grpc_csharp_plugin", null)]
+    static readonly grpc::Marshaller<global::chirpstack.as.HandleMTypeRequest> __Marshaller_as_HandleMTypeRequest = grpc::Marshallers.Create(__Helper_SerializeMessage, context => __Helper_DeserializeMessage(context, global::chirpstack.as.HandleMTypeRequest.Parser));
 
     [global::System.CodeDom.Compiler.GeneratedCode("grpc_csharp_plugin", null)]
     static readonly grpc::Method<global::chirpstack.as.HandleUplinkDataRequest, global::Google.Protobuf.WellKnownTypes.Empty> __Method_HandleUplinkData = new grpc::Method<global::chirpstack.as.HandleUplinkDataRequest, global::Google.Protobuf.WellKnownTypes.Empty>(
@@ -151,6 +153,14 @@ namespace chirpstack.as {
         __ServiceName,
         "HandleGatewayConnStats",
         __Marshaller_as_HandleConnStateRequest,
+        __Marshaller_google_protobuf_Empty);
+
+    [global::System.CodeDom.Compiler.GeneratedCode("grpc_csharp_plugin", null)]
+    static readonly grpc::Method<global::chirpstack.as.HandleMTypeRequest, global::Google.Protobuf.WellKnownTypes.Empty> __Method_HandleDeviceMTypeMetrics = new grpc::Method<global::chirpstack.as.HandleMTypeRequest, global::Google.Protobuf.WellKnownTypes.Empty>(
+        grpc::MethodType.Unary,
+        __ServiceName,
+        "HandleDeviceMTypeMetrics",
+        __Marshaller_as_HandleMTypeRequest,
         __Marshaller_google_protobuf_Empty);
 
     /// <summary>Service descriptor</summary>
@@ -286,6 +296,19 @@ namespace chirpstack.as {
       /// <returns>The response to send back to the client (wrapped by a task).</returns>
       [global::System.CodeDom.Compiler.GeneratedCode("grpc_csharp_plugin", null)]
       public virtual global::System.Threading.Tasks.Task<global::Google.Protobuf.WellKnownTypes.Empty> HandleGatewayConnStats(global::chirpstack.as.HandleConnStateRequest request, grpc::ServerCallContext context)
+      {
+        throw new grpc::RpcException(new grpc::Status(grpc::StatusCode.Unimplemented, ""));
+      }
+
+      /// <summary>
+      /// HandleDeviceMTypeMetrics The application server receives the message type so that 
+      /// the details page can display message type metrics.
+      /// </summary>
+      /// <param name="request">The request received from the client.</param>
+      /// <param name="context">The context of the server-side call handler being invoked.</param>
+      /// <returns>The response to send back to the client (wrapped by a task).</returns>
+      [global::System.CodeDom.Compiler.GeneratedCode("grpc_csharp_plugin", null)]
+      public virtual global::System.Threading.Tasks.Task<global::Google.Protobuf.WellKnownTypes.Empty> HandleDeviceMTypeMetrics(global::chirpstack.as.HandleMTypeRequest request, grpc::ServerCallContext context)
       {
         throw new grpc::RpcException(new grpc::Status(grpc::StatusCode.Unimplemented, ""));
       }
@@ -827,6 +850,58 @@ namespace chirpstack.as {
       {
         return CallInvoker.AsyncUnaryCall(__Method_HandleGatewayConnStats, null, options, request);
       }
+      /// <summary>
+      /// HandleDeviceMTypeMetrics The application server receives the message type so that 
+      /// the details page can display message type metrics.
+      /// </summary>
+      /// <param name="request">The request to send to the server.</param>
+      /// <param name="headers">The initial metadata to send with the call. This parameter is optional.</param>
+      /// <param name="deadline">An optional deadline for the call. The call will be cancelled if deadline is hit.</param>
+      /// <param name="cancellationToken">An optional token for canceling the call.</param>
+      /// <returns>The response received from the server.</returns>
+      [global::System.CodeDom.Compiler.GeneratedCode("grpc_csharp_plugin", null)]
+      public virtual global::Google.Protobuf.WellKnownTypes.Empty HandleDeviceMTypeMetrics(global::chirpstack.as.HandleMTypeRequest request, grpc::Metadata headers = null, global::System.DateTime? deadline = null, global::System.Threading.CancellationToken cancellationToken = default(global::System.Threading.CancellationToken))
+      {
+        return HandleDeviceMTypeMetrics(request, new grpc::CallOptions(headers, deadline, cancellationToken));
+      }
+      /// <summary>
+      /// HandleDeviceMTypeMetrics The application server receives the message type so that 
+      /// the details page can display message type metrics.
+      /// </summary>
+      /// <param name="request">The request to send to the server.</param>
+      /// <param name="options">The options for the call.</param>
+      /// <returns>The response received from the server.</returns>
+      [global::System.CodeDom.Compiler.GeneratedCode("grpc_csharp_plugin", null)]
+      public virtual global::Google.Protobuf.WellKnownTypes.Empty HandleDeviceMTypeMetrics(global::chirpstack.as.HandleMTypeRequest request, grpc::CallOptions options)
+      {
+        return CallInvoker.BlockingUnaryCall(__Method_HandleDeviceMTypeMetrics, null, options, request);
+      }
+      /// <summary>
+      /// HandleDeviceMTypeMetrics The application server receives the message type so that 
+      /// the details page can display message type metrics.
+      /// </summary>
+      /// <param name="request">The request to send to the server.</param>
+      /// <param name="headers">The initial metadata to send with the call. This parameter is optional.</param>
+      /// <param name="deadline">An optional deadline for the call. The call will be cancelled if deadline is hit.</param>
+      /// <param name="cancellationToken">An optional token for canceling the call.</param>
+      /// <returns>The call object.</returns>
+      [global::System.CodeDom.Compiler.GeneratedCode("grpc_csharp_plugin", null)]
+      public virtual grpc::AsyncUnaryCall<global::Google.Protobuf.WellKnownTypes.Empty> HandleDeviceMTypeMetricsAsync(global::chirpstack.as.HandleMTypeRequest request, grpc::Metadata headers = null, global::System.DateTime? deadline = null, global::System.Threading.CancellationToken cancellationToken = default(global::System.Threading.CancellationToken))
+      {
+        return HandleDeviceMTypeMetricsAsync(request, new grpc::CallOptions(headers, deadline, cancellationToken));
+      }
+      /// <summary>
+      /// HandleDeviceMTypeMetrics The application server receives the message type so that 
+      /// the details page can display message type metrics.
+      /// </summary>
+      /// <param name="request">The request to send to the server.</param>
+      /// <param name="options">The options for the call.</param>
+      /// <returns>The call object.</returns>
+      [global::System.CodeDom.Compiler.GeneratedCode("grpc_csharp_plugin", null)]
+      public virtual grpc::AsyncUnaryCall<global::Google.Protobuf.WellKnownTypes.Empty> HandleDeviceMTypeMetricsAsync(global::chirpstack.as.HandleMTypeRequest request, grpc::CallOptions options)
+      {
+        return CallInvoker.AsyncUnaryCall(__Method_HandleDeviceMTypeMetrics, null, options, request);
+      }
       /// <summary>Creates a new instance of client from given <c>ClientBaseConfiguration</c>.</summary>
       [global::System.CodeDom.Compiler.GeneratedCode("grpc_csharp_plugin", null)]
       protected override ApplicationServerServiceClient NewInstance(ClientBaseConfiguration configuration)
@@ -850,7 +925,8 @@ namespace chirpstack.as {
           .AddMethod(__Method_SetDeviceStatus, serviceImpl.SetDeviceStatus)
           .AddMethod(__Method_SetDeviceLocation, serviceImpl.SetDeviceLocation)
           .AddMethod(__Method_ReEncryptDeviceQueueItems, serviceImpl.ReEncryptDeviceQueueItems)
-          .AddMethod(__Method_HandleGatewayConnStats, serviceImpl.HandleGatewayConnStats).Build();
+          .AddMethod(__Method_HandleGatewayConnStats, serviceImpl.HandleGatewayConnStats)
+          .AddMethod(__Method_HandleDeviceMTypeMetrics, serviceImpl.HandleDeviceMTypeMetrics).Build();
     }
 
     /// <summary>Register service method with a service binder with or without implementation. Useful when customizing the service binding logic.
@@ -870,6 +946,7 @@ namespace chirpstack.as {
       serviceBinder.AddMethod(__Method_SetDeviceLocation, serviceImpl == null ? null : new grpc::UnaryServerMethod<global::chirpstack.as.SetDeviceLocationRequest, global::Google.Protobuf.WellKnownTypes.Empty>(serviceImpl.SetDeviceLocation));
       serviceBinder.AddMethod(__Method_ReEncryptDeviceQueueItems, serviceImpl == null ? null : new grpc::UnaryServerMethod<global::chirpstack.as.ReEncryptDeviceQueueItemsRequest, global::chirpstack.as.ReEncryptDeviceQueueItemsResponse>(serviceImpl.ReEncryptDeviceQueueItems));
       serviceBinder.AddMethod(__Method_HandleGatewayConnStats, serviceImpl == null ? null : new grpc::UnaryServerMethod<global::chirpstack.as.HandleConnStateRequest, global::Google.Protobuf.WellKnownTypes.Empty>(serviceImpl.HandleGatewayConnStats));
+      serviceBinder.AddMethod(__Method_HandleDeviceMTypeMetrics, serviceImpl == null ? null : new grpc::UnaryServerMethod<global::chirpstack.as.HandleMTypeRequest, global::Google.Protobuf.WellKnownTypes.Empty>(serviceImpl.HandleDeviceMTypeMetrics));
     }
 
   }

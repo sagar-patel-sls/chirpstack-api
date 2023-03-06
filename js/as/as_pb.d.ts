@@ -81,6 +81,9 @@ export class HandleUplinkDataRequest extends jspb.Message {
   getConfirmedUplink(): boolean;
   setConfirmedUplink(value: boolean): void;
 
+  getMType(): common_common_pb.MTypeMap[keyof common_common_pb.MTypeMap];
+  setMType(value: common_common_pb.MTypeMap[keyof common_common_pb.MTypeMap]): void;
+
   serializeBinary(): Uint8Array;
   toObject(includeInstance?: boolean): HandleUplinkDataRequest.AsObject;
   static toObject(includeInstance: boolean, msg: HandleUplinkDataRequest): HandleUplinkDataRequest.AsObject;
@@ -104,6 +107,7 @@ export namespace HandleUplinkDataRequest {
     data: Uint8Array | string,
     deviceActivationContext?: DeviceActivationContext.AsObject,
     confirmedUplink: boolean,
+    mType: common_common_pb.MTypeMap[keyof common_common_pb.MTypeMap],
   }
 }
 
@@ -572,6 +576,32 @@ export namespace HandleConnStateRequest {
     state: gw_gw_pb.StateMap[keyof gw_gw_pb.StateMap],
     statsId: Uint8Array | string,
     isRetained: boolean,
+  }
+}
+
+export class HandleMTypeRequest extends jspb.Message {
+  getDevEui(): Uint8Array | string;
+  getDevEui_asU8(): Uint8Array;
+  getDevEui_asB64(): string;
+  setDevEui(value: Uint8Array | string): void;
+
+  getMType(): common_common_pb.MTypeMap[keyof common_common_pb.MTypeMap];
+  setMType(value: common_common_pb.MTypeMap[keyof common_common_pb.MTypeMap]): void;
+
+  serializeBinary(): Uint8Array;
+  toObject(includeInstance?: boolean): HandleMTypeRequest.AsObject;
+  static toObject(includeInstance: boolean, msg: HandleMTypeRequest): HandleMTypeRequest.AsObject;
+  static extensions: {[key: number]: jspb.ExtensionFieldInfo<jspb.Message>};
+  static extensionsBinary: {[key: number]: jspb.ExtensionFieldBinaryInfo<jspb.Message>};
+  static serializeBinaryToWriter(message: HandleMTypeRequest, writer: jspb.BinaryWriter): void;
+  static deserializeBinary(bytes: Uint8Array): HandleMTypeRequest;
+  static deserializeBinaryFromReader(message: HandleMTypeRequest, reader: jspb.BinaryReader): HandleMTypeRequest;
+}
+
+export namespace HandleMTypeRequest {
+  export type AsObject = {
+    devEui: Uint8Array | string,
+    mType: common_common_pb.MTypeMap[keyof common_common_pb.MTypeMap],
   }
 }
 
