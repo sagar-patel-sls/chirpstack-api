@@ -667,6 +667,11 @@
           "type": "number",
           "format": "float",
           "description": "As the exposed ack-rate represents the last reported ack-rate by the GW,\nit is also important to monitor the ack-rate count. If this value does\nnot increment, it could mean that the GW is no longer reporting the\nack-rate and thus the exposed ack-rate is stale."
+        },
+        "connectedKnownDevices": {
+          "type": "integer",
+          "format": "int32",
+          "title": "Connected Known Devices counter per Gateway\nRepresents how many devices connected to this gateway"
         }
       }
     },

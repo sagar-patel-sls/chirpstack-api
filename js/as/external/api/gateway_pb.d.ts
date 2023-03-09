@@ -468,6 +468,9 @@ export class GatewayStats extends jspb.Message {
   getAckRate(): number;
   setAckRate(value: number): void;
 
+  getConnectedKnownDevices(): number;
+  setConnectedKnownDevices(value: number): void;
+
   serializeBinary(): Uint8Array;
   toObject(includeInstance?: boolean): GatewayStats.AsObject;
   static toObject(includeInstance: boolean, msg: GatewayStats): GatewayStats.AsObject;
@@ -496,6 +499,7 @@ export namespace GatewayStats {
     connStatusMap: Array<[string, number]>,
     statsCount: number,
     ackRate: number,
+    connectedKnownDevices: number,
   }
 }
 

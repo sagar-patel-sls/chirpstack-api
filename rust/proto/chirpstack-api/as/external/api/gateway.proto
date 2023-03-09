@@ -355,6 +355,10 @@ message GatewayStats {
     // not increment, it could mean that the GW is no longer reporting the
     // ack-rate and thus the exposed ack-rate is stale.
     float ack_rate = 16;
+
+	// Connected Known Devices counter per Gateway
+	// Represents how many devices connected to this gateway
+	int32 connected_known_devices = 17;
 }
 
 message GetGatewayStatsRequest {
