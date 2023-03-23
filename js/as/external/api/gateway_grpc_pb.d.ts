@@ -19,6 +19,7 @@ interface IGatewayServiceService extends grpc.ServiceDefinition<grpc.UntypedServ
   streamFrameLogs: grpc.MethodDefinition<as_external_api_gateway_pb.StreamGatewayFrameLogsRequest, as_external_api_gateway_pb.StreamGatewayFrameLogsResponse>;
   streamGlobalFrameLogs: grpc.MethodDefinition<as_external_api_gateway_pb.StreamGlobalGatewayFrameLogsRequest, as_external_api_gateway_pb.StreamGlobalGatewayFrameLogsResponse>;
   streamEventLogs: grpc.MethodDefinition<as_external_api_gateway_pb.StreamGatewayEventLogsRequest, as_external_api_gateway_pb.StreamGatewayEventLogsResponse>;
+  getUptime: grpc.MethodDefinition<as_external_api_gateway_pb.GetGatewayUptimeRequest, as_external_api_gateway_pb.GetGatewayUptimeResponse>;
 }
 
 export const GatewayServiceService: IGatewayServiceService;
@@ -35,6 +36,7 @@ export interface IGatewayServiceServer extends grpc.UntypedServiceImplementation
   streamFrameLogs: grpc.handleServerStreamingCall<as_external_api_gateway_pb.StreamGatewayFrameLogsRequest, as_external_api_gateway_pb.StreamGatewayFrameLogsResponse>;
   streamGlobalFrameLogs: grpc.handleServerStreamingCall<as_external_api_gateway_pb.StreamGlobalGatewayFrameLogsRequest, as_external_api_gateway_pb.StreamGlobalGatewayFrameLogsResponse>;
   streamEventLogs: grpc.handleServerStreamingCall<as_external_api_gateway_pb.StreamGatewayEventLogsRequest, as_external_api_gateway_pb.StreamGatewayEventLogsResponse>;
+  getUptime: grpc.handleUnaryCall<as_external_api_gateway_pb.GetGatewayUptimeRequest, as_external_api_gateway_pb.GetGatewayUptimeResponse>;
 }
 
 export class GatewayServiceClient extends grpc.Client {
@@ -69,4 +71,7 @@ export class GatewayServiceClient extends grpc.Client {
   streamGlobalFrameLogs(argument: as_external_api_gateway_pb.StreamGlobalGatewayFrameLogsRequest, metadata?: grpc.Metadata | null, options?: grpc.CallOptions | null): grpc.ClientReadableStream<as_external_api_gateway_pb.StreamGlobalGatewayFrameLogsResponse>;
   streamEventLogs(argument: as_external_api_gateway_pb.StreamGatewayEventLogsRequest, metadataOrOptions?: grpc.Metadata | grpc.CallOptions | null): grpc.ClientReadableStream<as_external_api_gateway_pb.StreamGatewayEventLogsResponse>;
   streamEventLogs(argument: as_external_api_gateway_pb.StreamGatewayEventLogsRequest, metadata?: grpc.Metadata | null, options?: grpc.CallOptions | null): grpc.ClientReadableStream<as_external_api_gateway_pb.StreamGatewayEventLogsResponse>;
+  getUptime(argument: as_external_api_gateway_pb.GetGatewayUptimeRequest, callback: grpc.requestCallback<as_external_api_gateway_pb.GetGatewayUptimeResponse>): grpc.ClientUnaryCall;
+  getUptime(argument: as_external_api_gateway_pb.GetGatewayUptimeRequest, metadataOrOptions: grpc.Metadata | grpc.CallOptions | null, callback: grpc.requestCallback<as_external_api_gateway_pb.GetGatewayUptimeResponse>): grpc.ClientUnaryCall;
+  getUptime(argument: as_external_api_gateway_pb.GetGatewayUptimeRequest, metadata: grpc.Metadata | null, options: grpc.CallOptions | null, callback: grpc.requestCallback<as_external_api_gateway_pb.GetGatewayUptimeResponse>): grpc.ClientUnaryCall;
 }

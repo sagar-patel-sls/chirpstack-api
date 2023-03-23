@@ -107,6 +107,13 @@ service GatewayService {
             get: "/api/gateways/{gateway_id}/events"
         };
 	}
+
+		// GetUptime lists the gateway uptime stats given the query parameters.
+	rpc GetUptime(GetGatewayUptimeRequest) returns (GetGatewayUptimeResponse) {
+		option (google.api.http) = {
+			get: "/api/gateways/{gateway_id}/uptime"
+		};
+	}
 }
 
 enum ISMBand {
@@ -478,4 +485,34 @@ message StreamGatewayEventLogsResponse {
 
     // Stream ID.
     string stream_id = 4 [json_name = "streamID"];
+}
+
+message GatewayUptime {
+	// Timestamp of the (aggregated) measurement.
+	google.protobuf.Timestamp timestamp = 1;
+
+	// Gateway Connection Stat (ONLINE/OFFLINE).
+    string conn_stat = 2;
+
+	// Gateway Connection Stat created time (EPOCH second).
+	int64 stat_created_at = 3;
+}
+
+message GetGatewayUptimeRequest {
+	// Gateway ID (HEX encoded).
+	string gateway_id = 1 [json_name = "gatewayID"];
+
+	// Aggregation interval.  One of "second", "minute", "hour", "day", "week",
+	// "month", "quarter", "year".  Case insensitive.
+	string interval = 2;
+
+	// Timestamp to start from.
+	google.protobuf.Timestamp start_timestamp = 3;
+
+	// Timestamp until to get from.
+	google.protobuf.Timestamp end_timestamp = 4;
+}
+
+message GetGatewayUptimeResponse {
+	repeated GatewayUptime result = 1;
 }

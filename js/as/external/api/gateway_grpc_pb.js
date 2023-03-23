@@ -97,6 +97,28 @@ function deserialize_api_GetGatewayStatsResponse(buffer_arg) {
   return as_external_api_gateway_pb.GetGatewayStatsResponse.deserializeBinary(new Uint8Array(buffer_arg));
 }
 
+function serialize_api_GetGatewayUptimeRequest(arg) {
+  if (!(arg instanceof as_external_api_gateway_pb.GetGatewayUptimeRequest)) {
+    throw new Error('Expected argument of type api.GetGatewayUptimeRequest');
+  }
+  return Buffer.from(arg.serializeBinary());
+}
+
+function deserialize_api_GetGatewayUptimeRequest(buffer_arg) {
+  return as_external_api_gateway_pb.GetGatewayUptimeRequest.deserializeBinary(new Uint8Array(buffer_arg));
+}
+
+function serialize_api_GetGatewayUptimeResponse(arg) {
+  if (!(arg instanceof as_external_api_gateway_pb.GetGatewayUptimeResponse)) {
+    throw new Error('Expected argument of type api.GetGatewayUptimeResponse');
+  }
+  return Buffer.from(arg.serializeBinary());
+}
+
+function deserialize_api_GetGatewayUptimeResponse(buffer_arg) {
+  return as_external_api_gateway_pb.GetGatewayUptimeResponse.deserializeBinary(new Uint8Array(buffer_arg));
+}
+
 function serialize_api_GetLastPingRequest(arg) {
   if (!(arg instanceof as_external_api_gateway_pb.GetLastPingRequest)) {
     throw new Error('Expected argument of type api.GetLastPingRequest');
@@ -375,6 +397,18 @@ streamEventLogs: {
     requestDeserialize: deserialize_api_StreamGatewayEventLogsRequest,
     responseSerialize: serialize_api_StreamGatewayEventLogsResponse,
     responseDeserialize: deserialize_api_StreamGatewayEventLogsResponse,
+  },
+  // GetUptime lists the gateway uptime stats given the query parameters.
+getUptime: {
+    path: '/api.GatewayService/GetUptime',
+    requestStream: false,
+    responseStream: false,
+    requestType: as_external_api_gateway_pb.GetGatewayUptimeRequest,
+    responseType: as_external_api_gateway_pb.GetGatewayUptimeResponse,
+    requestSerialize: serialize_api_GetGatewayUptimeRequest,
+    requestDeserialize: deserialize_api_GetGatewayUptimeRequest,
+    responseSerialize: serialize_api_GetGatewayUptimeResponse,
+    responseDeserialize: deserialize_api_GetGatewayUptimeResponse,
   },
 };
 

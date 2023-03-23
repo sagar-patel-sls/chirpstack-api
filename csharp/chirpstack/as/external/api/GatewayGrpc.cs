@@ -88,6 +88,10 @@ namespace chirpstack.as.external.api {
     static readonly grpc::Marshaller<global::chirpstack.as.external.api.StreamGatewayEventLogsRequest> __Marshaller_api_StreamGatewayEventLogsRequest = grpc::Marshallers.Create(__Helper_SerializeMessage, context => __Helper_DeserializeMessage(context, global::chirpstack.as.external.api.StreamGatewayEventLogsRequest.Parser));
     [global::System.CodeDom.Compiler.GeneratedCode("grpc_csharp_plugin", null)]
     static readonly grpc::Marshaller<global::chirpstack.as.external.api.StreamGatewayEventLogsResponse> __Marshaller_api_StreamGatewayEventLogsResponse = grpc::Marshallers.Create(__Helper_SerializeMessage, context => __Helper_DeserializeMessage(context, global::chirpstack.as.external.api.StreamGatewayEventLogsResponse.Parser));
+    [global::System.CodeDom.Compiler.GeneratedCode("grpc_csharp_plugin", null)]
+    static readonly grpc::Marshaller<global::chirpstack.as.external.api.GetGatewayUptimeRequest> __Marshaller_api_GetGatewayUptimeRequest = grpc::Marshallers.Create(__Helper_SerializeMessage, context => __Helper_DeserializeMessage(context, global::chirpstack.as.external.api.GetGatewayUptimeRequest.Parser));
+    [global::System.CodeDom.Compiler.GeneratedCode("grpc_csharp_plugin", null)]
+    static readonly grpc::Marshaller<global::chirpstack.as.external.api.GetGatewayUptimeResponse> __Marshaller_api_GetGatewayUptimeResponse = grpc::Marshallers.Create(__Helper_SerializeMessage, context => __Helper_DeserializeMessage(context, global::chirpstack.as.external.api.GetGatewayUptimeResponse.Parser));
 
     [global::System.CodeDom.Compiler.GeneratedCode("grpc_csharp_plugin", null)]
     static readonly grpc::Method<global::chirpstack.as.external.api.CreateGatewayRequest, global::Google.Protobuf.WellKnownTypes.Empty> __Method_Create = new grpc::Method<global::chirpstack.as.external.api.CreateGatewayRequest, global::Google.Protobuf.WellKnownTypes.Empty>(
@@ -176,6 +180,14 @@ namespace chirpstack.as.external.api {
         "StreamEventLogs",
         __Marshaller_api_StreamGatewayEventLogsRequest,
         __Marshaller_api_StreamGatewayEventLogsResponse);
+
+    [global::System.CodeDom.Compiler.GeneratedCode("grpc_csharp_plugin", null)]
+    static readonly grpc::Method<global::chirpstack.as.external.api.GetGatewayUptimeRequest, global::chirpstack.as.external.api.GetGatewayUptimeResponse> __Method_GetUptime = new grpc::Method<global::chirpstack.as.external.api.GetGatewayUptimeRequest, global::chirpstack.as.external.api.GetGatewayUptimeResponse>(
+        grpc::MethodType.Unary,
+        __ServiceName,
+        "GetUptime",
+        __Marshaller_api_GetGatewayUptimeRequest,
+        __Marshaller_api_GetGatewayUptimeResponse);
 
     /// <summary>Service descriptor</summary>
     public static global::Google.Protobuf.Reflection.ServiceDescriptor Descriptor
@@ -330,6 +342,18 @@ namespace chirpstack.as.external.api {
       /// <returns>A task indicating completion of the handler.</returns>
       [global::System.CodeDom.Compiler.GeneratedCode("grpc_csharp_plugin", null)]
       public virtual global::System.Threading.Tasks.Task StreamEventLogs(global::chirpstack.as.external.api.StreamGatewayEventLogsRequest request, grpc::IServerStreamWriter<global::chirpstack.as.external.api.StreamGatewayEventLogsResponse> responseStream, grpc::ServerCallContext context)
+      {
+        throw new grpc::RpcException(new grpc::Status(grpc::StatusCode.Unimplemented, ""));
+      }
+
+      /// <summary>
+      /// GetUptime lists the gateway uptime stats given the query parameters.
+      /// </summary>
+      /// <param name="request">The request received from the client.</param>
+      /// <param name="context">The context of the server-side call handler being invoked.</param>
+      /// <returns>The response to send back to the client (wrapped by a task).</returns>
+      [global::System.CodeDom.Compiler.GeneratedCode("grpc_csharp_plugin", null)]
+      public virtual global::System.Threading.Tasks.Task<global::chirpstack.as.external.api.GetGatewayUptimeResponse> GetUptime(global::chirpstack.as.external.api.GetGatewayUptimeRequest request, grpc::ServerCallContext context)
       {
         throw new grpc::RpcException(new grpc::Status(grpc::StatusCode.Unimplemented, ""));
       }
@@ -849,6 +873,54 @@ namespace chirpstack.as.external.api {
       {
         return CallInvoker.AsyncServerStreamingCall(__Method_StreamEventLogs, null, options, request);
       }
+      /// <summary>
+      /// GetUptime lists the gateway uptime stats given the query parameters.
+      /// </summary>
+      /// <param name="request">The request to send to the server.</param>
+      /// <param name="headers">The initial metadata to send with the call. This parameter is optional.</param>
+      /// <param name="deadline">An optional deadline for the call. The call will be cancelled if deadline is hit.</param>
+      /// <param name="cancellationToken">An optional token for canceling the call.</param>
+      /// <returns>The response received from the server.</returns>
+      [global::System.CodeDom.Compiler.GeneratedCode("grpc_csharp_plugin", null)]
+      public virtual global::chirpstack.as.external.api.GetGatewayUptimeResponse GetUptime(global::chirpstack.as.external.api.GetGatewayUptimeRequest request, grpc::Metadata headers = null, global::System.DateTime? deadline = null, global::System.Threading.CancellationToken cancellationToken = default(global::System.Threading.CancellationToken))
+      {
+        return GetUptime(request, new grpc::CallOptions(headers, deadline, cancellationToken));
+      }
+      /// <summary>
+      /// GetUptime lists the gateway uptime stats given the query parameters.
+      /// </summary>
+      /// <param name="request">The request to send to the server.</param>
+      /// <param name="options">The options for the call.</param>
+      /// <returns>The response received from the server.</returns>
+      [global::System.CodeDom.Compiler.GeneratedCode("grpc_csharp_plugin", null)]
+      public virtual global::chirpstack.as.external.api.GetGatewayUptimeResponse GetUptime(global::chirpstack.as.external.api.GetGatewayUptimeRequest request, grpc::CallOptions options)
+      {
+        return CallInvoker.BlockingUnaryCall(__Method_GetUptime, null, options, request);
+      }
+      /// <summary>
+      /// GetUptime lists the gateway uptime stats given the query parameters.
+      /// </summary>
+      /// <param name="request">The request to send to the server.</param>
+      /// <param name="headers">The initial metadata to send with the call. This parameter is optional.</param>
+      /// <param name="deadline">An optional deadline for the call. The call will be cancelled if deadline is hit.</param>
+      /// <param name="cancellationToken">An optional token for canceling the call.</param>
+      /// <returns>The call object.</returns>
+      [global::System.CodeDom.Compiler.GeneratedCode("grpc_csharp_plugin", null)]
+      public virtual grpc::AsyncUnaryCall<global::chirpstack.as.external.api.GetGatewayUptimeResponse> GetUptimeAsync(global::chirpstack.as.external.api.GetGatewayUptimeRequest request, grpc::Metadata headers = null, global::System.DateTime? deadline = null, global::System.Threading.CancellationToken cancellationToken = default(global::System.Threading.CancellationToken))
+      {
+        return GetUptimeAsync(request, new grpc::CallOptions(headers, deadline, cancellationToken));
+      }
+      /// <summary>
+      /// GetUptime lists the gateway uptime stats given the query parameters.
+      /// </summary>
+      /// <param name="request">The request to send to the server.</param>
+      /// <param name="options">The options for the call.</param>
+      /// <returns>The call object.</returns>
+      [global::System.CodeDom.Compiler.GeneratedCode("grpc_csharp_plugin", null)]
+      public virtual grpc::AsyncUnaryCall<global::chirpstack.as.external.api.GetGatewayUptimeResponse> GetUptimeAsync(global::chirpstack.as.external.api.GetGatewayUptimeRequest request, grpc::CallOptions options)
+      {
+        return CallInvoker.AsyncUnaryCall(__Method_GetUptime, null, options, request);
+      }
       /// <summary>Creates a new instance of client from given <c>ClientBaseConfiguration</c>.</summary>
       [global::System.CodeDom.Compiler.GeneratedCode("grpc_csharp_plugin", null)]
       protected override GatewayServiceClient NewInstance(ClientBaseConfiguration configuration)
@@ -873,7 +945,8 @@ namespace chirpstack.as.external.api {
           .AddMethod(__Method_GenerateGatewayClientCertificate, serviceImpl.GenerateGatewayClientCertificate)
           .AddMethod(__Method_StreamFrameLogs, serviceImpl.StreamFrameLogs)
           .AddMethod(__Method_StreamGlobalFrameLogs, serviceImpl.StreamGlobalFrameLogs)
-          .AddMethod(__Method_StreamEventLogs, serviceImpl.StreamEventLogs).Build();
+          .AddMethod(__Method_StreamEventLogs, serviceImpl.StreamEventLogs)
+          .AddMethod(__Method_GetUptime, serviceImpl.GetUptime).Build();
     }
 
     /// <summary>Register service method with a service binder with or without implementation. Useful when customizing the service binding logic.
@@ -894,6 +967,7 @@ namespace chirpstack.as.external.api {
       serviceBinder.AddMethod(__Method_StreamFrameLogs, serviceImpl == null ? null : new grpc::ServerStreamingServerMethod<global::chirpstack.as.external.api.StreamGatewayFrameLogsRequest, global::chirpstack.as.external.api.StreamGatewayFrameLogsResponse>(serviceImpl.StreamFrameLogs));
       serviceBinder.AddMethod(__Method_StreamGlobalFrameLogs, serviceImpl == null ? null : new grpc::ServerStreamingServerMethod<global::chirpstack.as.external.api.StreamGlobalGatewayFrameLogsRequest, global::chirpstack.as.external.api.StreamGlobalGatewayFrameLogsResponse>(serviceImpl.StreamGlobalFrameLogs));
       serviceBinder.AddMethod(__Method_StreamEventLogs, serviceImpl == null ? null : new grpc::ServerStreamingServerMethod<global::chirpstack.as.external.api.StreamGatewayEventLogsRequest, global::chirpstack.as.external.api.StreamGatewayEventLogsResponse>(serviceImpl.StreamEventLogs));
+      serviceBinder.AddMethod(__Method_GetUptime, serviceImpl == null ? null : new grpc::UnaryServerMethod<global::chirpstack.as.external.api.GetGatewayUptimeRequest, global::chirpstack.as.external.api.GetGatewayUptimeResponse>(serviceImpl.GetUptime));
     }
 
   }

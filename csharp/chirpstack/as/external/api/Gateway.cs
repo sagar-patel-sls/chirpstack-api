@@ -133,44 +133,54 @@ namespace chirpstack.as.external.api {
             "YW1HYXRld2F5RXZlbnRMb2dzUmVzcG9uc2USDAoEdHlwZRgBIAEoCRIhCgxw",
             "YXlsb2FkX2pzb24YAiABKAlSC3BheWxvYWRKU09OEjAKDHB1Ymxpc2hlZF9h",
             "dBgDIAEoCzIaLmdvb2dsZS5wcm90b2J1Zi5UaW1lc3RhbXASGwoJc3RyZWFt",
-            "X2lkGAQgASgJUghzdHJlYW1JRCqrAQoHSVNNQmFuZBIJCgVJTjg2NRAAEgkK",
-            "BUVVODY4EAESCQoFVVM5MTUQAhIJCgVDTjc3ORADEgkKBUVVNDMzEAQSCQoF",
-            "QVU5MTUQBRIJCgVDTjQ3MBAGEgkKBUFTOTIzEAcSCwoHQVM5MjNfMhAIEgsK",
-            "B0FTOTIzXzMQCRILCgdBUzkyM180EAoSCQoFS1I5MjAQCxIJCgVSVTg2NBAM",
-            "EgsKB0lTTTI0MDAQDTKqCgoOR2F0ZXdheVNlcnZpY2USVQoGQ3JlYXRlEhku",
-            "YXBpLkNyZWF0ZUdhdGV3YXlSZXF1ZXN0GhYuZ29vZ2xlLnByb3RvYnVmLkVt",
-            "cHR5IhiC0+STAhIiDS9hcGkvZ2F0ZXdheXM6ASoSUgoDR2V0EhYuYXBpLkdl",
-            "dEdhdGV3YXlSZXF1ZXN0GhcuYXBpLkdldEdhdGV3YXlSZXNwb25zZSIagtPk",
-            "kwIUEhIvYXBpL2dhdGV3YXlzL3tpZH0SYgoGVXBkYXRlEhkuYXBpLlVwZGF0",
-            "ZUdhdGV3YXlSZXF1ZXN0GhYuZ29vZ2xlLnByb3RvYnVmLkVtcHR5IiWC0+ST",
-            "Ah8aGi9hcGkvZ2F0ZXdheXMve2dhdGV3YXkuaWR9OgEqElcKBkRlbGV0ZRIZ",
-            "LmFwaS5EZWxldGVHYXRld2F5UmVxdWVzdBoWLmdvb2dsZS5wcm90b2J1Zi5F",
-            "bXB0eSIagtPkkwIUKhIvYXBpL2dhdGV3YXlzL3tpZH0SUAoETGlzdBIXLmFw",
-            "aS5MaXN0R2F0ZXdheVJlcXVlc3QaGC5hcGkuTGlzdEdhdGV3YXlSZXNwb25z",
-            "ZSIVgtPkkwIPEg0vYXBpL2dhdGV3YXlzEm8KCEdldFN0YXRzEhsuYXBpLkdl",
-            "dEdhdGV3YXlTdGF0c1JlcXVlc3QaHC5hcGkuR2V0R2F0ZXdheVN0YXRzUmVz",
-            "cG9uc2UiKILT5JMCIhIgL2FwaS9nYXRld2F5cy97Z2F0ZXdheV9pZH0vc3Rh",
-            "dHMSbwoLR2V0TGFzdFBpbmcSFy5hcGkuR2V0TGFzdFBpbmdSZXF1ZXN0Ghgu",
-            "YXBpLkdldExhc3RQaW5nUmVzcG9uc2UiLYLT5JMCJxIlL2FwaS9nYXRld2F5",
-            "cy97Z2F0ZXdheV9pZH0vcGluZ3MvbGFzdBK4AQogR2VuZXJhdGVHYXRld2F5",
-            "Q2xpZW50Q2VydGlmaWNhdGUSLC5hcGkuR2VuZXJhdGVHYXRld2F5Q2xpZW50",
-            "Q2VydGlmaWNhdGVSZXF1ZXN0Gi0uYXBpLkdlbmVyYXRlR2F0ZXdheUNsaWVu",
-            "dENlcnRpZmljYXRlUmVzcG9uc2UiN4LT5JMCMSIvL2FwaS9nYXRld2F5cy97",
-            "Z2F0ZXdheV9pZH0vZ2VuZXJhdGUtY2VydGlmaWNhdGUShwEKD1N0cmVhbUZy",
-            "YW1lTG9ncxIiLmFwaS5TdHJlYW1HYXRld2F5RnJhbWVMb2dzUmVxdWVzdBoj",
-            "LmFwaS5TdHJlYW1HYXRld2F5RnJhbWVMb2dzUmVzcG9uc2UiKYLT5JMCIxIh",
-            "L2FwaS9nYXRld2F5cy97Z2F0ZXdheV9pZH0vZnJhbWVzMAESrAEKFVN0cmVh",
-            "bUdsb2JhbEZyYW1lTG9ncxIoLmFwaS5TdHJlYW1HbG9iYWxHYXRld2F5RnJh",
-            "bWVMb2dzUmVxdWVzdBopLmFwaS5TdHJlYW1HbG9iYWxHYXRld2F5RnJhbWVM",
-            "b2dzUmVzcG9uc2UiPILT5JMCNhI0L2FwaS9vcmdhbml6YXRpb25zL3tvcmdh",
-            "bml6YXRpb25faWR9L2dhdGV3YXlzL2ZyYW1lczABEocBCg9TdHJlYW1FdmVu",
-            "dExvZ3MSIi5hcGkuU3RyZWFtR2F0ZXdheUV2ZW50TG9nc1JlcXVlc3QaIy5h",
-            "cGkuU3RyZWFtR2F0ZXdheUV2ZW50TG9nc1Jlc3BvbnNlIimC0+STAiMSIS9h",
-            "cGkvZ2F0ZXdheXMve2dhdGV3YXlfaWR9L2V2ZW50czABQpEBCiFpby5jaGly",
-            "cHN0YWNrLmFwaS5hcy5leHRlcm5hbC5hcGlCDEdhdGV3YXlQcm90b1ABWj9n",
-            "aXRodWIuY29tL3NhZ2FyLXBhdGVsLXNscy9jaGlycHN0YWNrLWFwaS9nby92",
-            "My9hcy9leHRlcm5hbC9hcGmqAhpjaGlycHN0YWNrLmFzLmV4dGVybmFsLmFw",
-            "aWIGcHJvdG8z"));
+            "X2lkGAQgASgJUghzdHJlYW1JRCJqCg1HYXRld2F5VXB0aW1lEi0KCXRpbWVz",
+            "dGFtcBgBIAEoCzIaLmdvb2dsZS5wcm90b2J1Zi5UaW1lc3RhbXASEQoJY29u",
+            "bl9zdGF0GAIgASgJEhcKD3N0YXRfY3JlYXRlZF9hdBgDIAEoAyKyAQoXR2V0",
+            "R2F0ZXdheVVwdGltZVJlcXVlc3QSHQoKZ2F0ZXdheV9pZBgBIAEoCVIJZ2F0",
+            "ZXdheUlEEhAKCGludGVydmFsGAIgASgJEjMKD3N0YXJ0X3RpbWVzdGFtcBgD",
+            "IAEoCzIaLmdvb2dsZS5wcm90b2J1Zi5UaW1lc3RhbXASMQoNZW5kX3RpbWVz",
+            "dGFtcBgEIAEoCzIaLmdvb2dsZS5wcm90b2J1Zi5UaW1lc3RhbXAiPgoYR2V0",
+            "R2F0ZXdheVVwdGltZVJlc3BvbnNlEiIKBnJlc3VsdBgBIAMoCzISLmFwaS5H",
+            "YXRld2F5VXB0aW1lKqsBCgdJU01CYW5kEgkKBUlOODY1EAASCQoFRVU4NjgQ",
+            "ARIJCgVVUzkxNRACEgkKBUNONzc5EAMSCQoFRVU0MzMQBBIJCgVBVTkxNRAF",
+            "EgkKBUNONDcwEAYSCQoFQVM5MjMQBxILCgdBUzkyM18yEAgSCwoHQVM5MjNf",
+            "MxAJEgsKB0FTOTIzXzQQChIJCgVLUjkyMBALEgkKBVJVODY0EAwSCwoHSVNN",
+            "MjQwMBANMp8LCg5HYXRld2F5U2VydmljZRJVCgZDcmVhdGUSGS5hcGkuQ3Jl",
+            "YXRlR2F0ZXdheVJlcXVlc3QaFi5nb29nbGUucHJvdG9idWYuRW1wdHkiGILT",
+            "5JMCEiINL2FwaS9nYXRld2F5czoBKhJSCgNHZXQSFi5hcGkuR2V0R2F0ZXdh",
+            "eVJlcXVlc3QaFy5hcGkuR2V0R2F0ZXdheVJlc3BvbnNlIhqC0+STAhQSEi9h",
+            "cGkvZ2F0ZXdheXMve2lkfRJiCgZVcGRhdGUSGS5hcGkuVXBkYXRlR2F0ZXdh",
+            "eVJlcXVlc3QaFi5nb29nbGUucHJvdG9idWYuRW1wdHkiJYLT5JMCHxoaL2Fw",
+            "aS9nYXRld2F5cy97Z2F0ZXdheS5pZH06ASoSVwoGRGVsZXRlEhkuYXBpLkRl",
+            "bGV0ZUdhdGV3YXlSZXF1ZXN0GhYuZ29vZ2xlLnByb3RvYnVmLkVtcHR5IhqC",
+            "0+STAhQqEi9hcGkvZ2F0ZXdheXMve2lkfRJQCgRMaXN0EhcuYXBpLkxpc3RH",
+            "YXRld2F5UmVxdWVzdBoYLmFwaS5MaXN0R2F0ZXdheVJlc3BvbnNlIhWC0+ST",
+            "Ag8SDS9hcGkvZ2F0ZXdheXMSbwoIR2V0U3RhdHMSGy5hcGkuR2V0R2F0ZXdh",
+            "eVN0YXRzUmVxdWVzdBocLmFwaS5HZXRHYXRld2F5U3RhdHNSZXNwb25zZSIo",
+            "gtPkkwIiEiAvYXBpL2dhdGV3YXlzL3tnYXRld2F5X2lkfS9zdGF0cxJvCgtH",
+            "ZXRMYXN0UGluZxIXLmFwaS5HZXRMYXN0UGluZ1JlcXVlc3QaGC5hcGkuR2V0",
+            "TGFzdFBpbmdSZXNwb25zZSItgtPkkwInEiUvYXBpL2dhdGV3YXlzL3tnYXRl",
+            "d2F5X2lkfS9waW5ncy9sYXN0ErgBCiBHZW5lcmF0ZUdhdGV3YXlDbGllbnRD",
+            "ZXJ0aWZpY2F0ZRIsLmFwaS5HZW5lcmF0ZUdhdGV3YXlDbGllbnRDZXJ0aWZp",
+            "Y2F0ZVJlcXVlc3QaLS5hcGkuR2VuZXJhdGVHYXRld2F5Q2xpZW50Q2VydGlm",
+            "aWNhdGVSZXNwb25zZSI3gtPkkwIxIi8vYXBpL2dhdGV3YXlzL3tnYXRld2F5",
+            "X2lkfS9nZW5lcmF0ZS1jZXJ0aWZpY2F0ZRKHAQoPU3RyZWFtRnJhbWVMb2dz",
+            "EiIuYXBpLlN0cmVhbUdhdGV3YXlGcmFtZUxvZ3NSZXF1ZXN0GiMuYXBpLlN0",
+            "cmVhbUdhdGV3YXlGcmFtZUxvZ3NSZXNwb25zZSIpgtPkkwIjEiEvYXBpL2dh",
+            "dGV3YXlzL3tnYXRld2F5X2lkfS9mcmFtZXMwARKsAQoVU3RyZWFtR2xvYmFs",
+            "RnJhbWVMb2dzEiguYXBpLlN0cmVhbUdsb2JhbEdhdGV3YXlGcmFtZUxvZ3NS",
+            "ZXF1ZXN0GikuYXBpLlN0cmVhbUdsb2JhbEdhdGV3YXlGcmFtZUxvZ3NSZXNw",
+            "b25zZSI8gtPkkwI2EjQvYXBpL29yZ2FuaXphdGlvbnMve29yZ2FuaXphdGlv",
+            "bl9pZH0vZ2F0ZXdheXMvZnJhbWVzMAEShwEKD1N0cmVhbUV2ZW50TG9ncxIi",
+            "LmFwaS5TdHJlYW1HYXRld2F5RXZlbnRMb2dzUmVxdWVzdBojLmFwaS5TdHJl",
+            "YW1HYXRld2F5RXZlbnRMb2dzUmVzcG9uc2UiKYLT5JMCIxIhL2FwaS9nYXRl",
+            "d2F5cy97Z2F0ZXdheV9pZH0vZXZlbnRzMAEScwoJR2V0VXB0aW1lEhwuYXBp",
+            "LkdldEdhdGV3YXlVcHRpbWVSZXF1ZXN0Gh0uYXBpLkdldEdhdGV3YXlVcHRp",
+            "bWVSZXNwb25zZSIpgtPkkwIjEiEvYXBpL2dhdGV3YXlzL3tnYXRld2F5X2lk",
+            "fS91cHRpbWVCkQEKIWlvLmNoaXJwc3RhY2suYXBpLmFzLmV4dGVybmFsLmFw",
+            "aUIMR2F0ZXdheVByb3RvUAFaP2dpdGh1Yi5jb20vc2FnYXItcGF0ZWwtc2xz",
+            "L2NoaXJwc3RhY2stYXBpL2dvL3YzL2FzL2V4dGVybmFsL2FwaaoCGmNoaXJw",
+            "c3RhY2suYXMuZXh0ZXJuYWwuYXBpYgZwcm90bzM="));
       descriptor = pbr::FileDescriptor.FromGeneratedCode(descriptorData,
           new pbr::FileDescriptor[] { global::Google.Api.AnnotationsReflection.Descriptor, global::Google.Protobuf.WellKnownTypes.TimestampReflection.Descriptor, global::Google.Protobuf.WellKnownTypes.EmptyReflection.Descriptor, global::chirpstack.common.CommonReflection.Descriptor, global::chirpstack.as.external.api.FrameLogReflection.Descriptor, },
           new pbr::GeneratedClrTypeInfo(new[] {typeof(global::chirpstack.as.external.api.ISMBand), }, null, new pbr::GeneratedClrTypeInfo[] {
@@ -197,7 +207,10 @@ namespace chirpstack.as.external.api {
             new pbr::GeneratedClrTypeInfo(typeof(global::chirpstack.as.external.api.StreamGlobalGatewayFrameLogsRequest), global::chirpstack.as.external.api.StreamGlobalGatewayFrameLogsRequest.Parser, new[]{ "OrganizationId", "Region" }, null, null, null, null),
             new pbr::GeneratedClrTypeInfo(typeof(global::chirpstack.as.external.api.StreamGlobalGatewayFrameLogsResponse), global::chirpstack.as.external.api.StreamGlobalGatewayFrameLogsResponse.Parser, new[]{ "GatewayEui", "UplinkFrame", "DownlinkFrame", "StatsFrame" }, new[]{ "Frame" }, null, null, null),
             new pbr::GeneratedClrTypeInfo(typeof(global::chirpstack.as.external.api.StreamGatewayEventLogsRequest), global::chirpstack.as.external.api.StreamGatewayEventLogsRequest.Parser, new[]{ "GatewayId" }, null, null, null, null),
-            new pbr::GeneratedClrTypeInfo(typeof(global::chirpstack.as.external.api.StreamGatewayEventLogsResponse), global::chirpstack.as.external.api.StreamGatewayEventLogsResponse.Parser, new[]{ "Type", "PayloadJson", "PublishedAt", "StreamId" }, null, null, null, null)
+            new pbr::GeneratedClrTypeInfo(typeof(global::chirpstack.as.external.api.StreamGatewayEventLogsResponse), global::chirpstack.as.external.api.StreamGatewayEventLogsResponse.Parser, new[]{ "Type", "PayloadJson", "PublishedAt", "StreamId" }, null, null, null, null),
+            new pbr::GeneratedClrTypeInfo(typeof(global::chirpstack.as.external.api.GatewayUptime), global::chirpstack.as.external.api.GatewayUptime.Parser, new[]{ "Timestamp", "ConnStat", "StatCreatedAt" }, null, null, null, null),
+            new pbr::GeneratedClrTypeInfo(typeof(global::chirpstack.as.external.api.GetGatewayUptimeRequest), global::chirpstack.as.external.api.GetGatewayUptimeRequest.Parser, new[]{ "GatewayId", "Interval", "StartTimestamp", "EndTimestamp" }, null, null, null, null),
+            new pbr::GeneratedClrTypeInfo(typeof(global::chirpstack.as.external.api.GetGatewayUptimeResponse), global::chirpstack.as.external.api.GetGatewayUptimeResponse.Parser, new[]{ "Result" }, null, null, null, null)
           }));
     }
     #endregion
@@ -7918,6 +7931,796 @@ namespace chirpstack.as.external.api {
           }
           case 34: {
             StreamId = input.ReadString();
+            break;
+          }
+        }
+      }
+    }
+    #endif
+
+  }
+
+  public sealed partial class GatewayUptime : pb::IMessage<GatewayUptime>
+  #if !GOOGLE_PROTOBUF_REFSTRUCT_COMPATIBILITY_MODE
+      , pb::IBufferMessage
+  #endif
+  {
+    private static readonly pb::MessageParser<GatewayUptime> _parser = new pb::MessageParser<GatewayUptime>(() => new GatewayUptime());
+    private pb::UnknownFieldSet _unknownFields;
+    [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
+    [global::System.CodeDom.Compiler.GeneratedCode("protoc", null)]
+    public static pb::MessageParser<GatewayUptime> Parser { get { return _parser; } }
+
+    [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
+    [global::System.CodeDom.Compiler.GeneratedCode("protoc", null)]
+    public static pbr::MessageDescriptor Descriptor {
+      get { return global::chirpstack.as.external.api.GatewayReflection.Descriptor.MessageTypes[24]; }
+    }
+
+    [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
+    [global::System.CodeDom.Compiler.GeneratedCode("protoc", null)]
+    pbr::MessageDescriptor pb::IMessage.Descriptor {
+      get { return Descriptor; }
+    }
+
+    [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
+    [global::System.CodeDom.Compiler.GeneratedCode("protoc", null)]
+    public GatewayUptime() {
+      OnConstruction();
+    }
+
+    partial void OnConstruction();
+
+    [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
+    [global::System.CodeDom.Compiler.GeneratedCode("protoc", null)]
+    public GatewayUptime(GatewayUptime other) : this() {
+      timestamp_ = other.timestamp_ != null ? other.timestamp_.Clone() : null;
+      connStat_ = other.connStat_;
+      statCreatedAt_ = other.statCreatedAt_;
+      _unknownFields = pb::UnknownFieldSet.Clone(other._unknownFields);
+    }
+
+    [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
+    [global::System.CodeDom.Compiler.GeneratedCode("protoc", null)]
+    public GatewayUptime Clone() {
+      return new GatewayUptime(this);
+    }
+
+    /// <summary>Field number for the "timestamp" field.</summary>
+    public const int TimestampFieldNumber = 1;
+    private global::Google.Protobuf.WellKnownTypes.Timestamp timestamp_;
+    /// <summary>
+    /// Timestamp of the (aggregated) measurement.
+    /// </summary>
+    [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
+    [global::System.CodeDom.Compiler.GeneratedCode("protoc", null)]
+    public global::Google.Protobuf.WellKnownTypes.Timestamp Timestamp {
+      get { return timestamp_; }
+      set {
+        timestamp_ = value;
+      }
+    }
+
+    /// <summary>Field number for the "conn_stat" field.</summary>
+    public const int ConnStatFieldNumber = 2;
+    private string connStat_ = "";
+    /// <summary>
+    /// Gateway Connection Stat (ONLINE/OFFLINE).
+    /// </summary>
+    [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
+    [global::System.CodeDom.Compiler.GeneratedCode("protoc", null)]
+    public string ConnStat {
+      get { return connStat_; }
+      set {
+        connStat_ = pb::ProtoPreconditions.CheckNotNull(value, "value");
+      }
+    }
+
+    /// <summary>Field number for the "stat_created_at" field.</summary>
+    public const int StatCreatedAtFieldNumber = 3;
+    private long statCreatedAt_;
+    /// <summary>
+    /// Gateway Connection Stat created time (EPOCH second).
+    /// </summary>
+    [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
+    [global::System.CodeDom.Compiler.GeneratedCode("protoc", null)]
+    public long StatCreatedAt {
+      get { return statCreatedAt_; }
+      set {
+        statCreatedAt_ = value;
+      }
+    }
+
+    [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
+    [global::System.CodeDom.Compiler.GeneratedCode("protoc", null)]
+    public override bool Equals(object other) {
+      return Equals(other as GatewayUptime);
+    }
+
+    [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
+    [global::System.CodeDom.Compiler.GeneratedCode("protoc", null)]
+    public bool Equals(GatewayUptime other) {
+      if (ReferenceEquals(other, null)) {
+        return false;
+      }
+      if (ReferenceEquals(other, this)) {
+        return true;
+      }
+      if (!object.Equals(Timestamp, other.Timestamp)) return false;
+      if (ConnStat != other.ConnStat) return false;
+      if (StatCreatedAt != other.StatCreatedAt) return false;
+      return Equals(_unknownFields, other._unknownFields);
+    }
+
+    [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
+    [global::System.CodeDom.Compiler.GeneratedCode("protoc", null)]
+    public override int GetHashCode() {
+      int hash = 1;
+      if (timestamp_ != null) hash ^= Timestamp.GetHashCode();
+      if (ConnStat.Length != 0) hash ^= ConnStat.GetHashCode();
+      if (StatCreatedAt != 0L) hash ^= StatCreatedAt.GetHashCode();
+      if (_unknownFields != null) {
+        hash ^= _unknownFields.GetHashCode();
+      }
+      return hash;
+    }
+
+    [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
+    [global::System.CodeDom.Compiler.GeneratedCode("protoc", null)]
+    public override string ToString() {
+      return pb::JsonFormatter.ToDiagnosticString(this);
+    }
+
+    [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
+    [global::System.CodeDom.Compiler.GeneratedCode("protoc", null)]
+    public void WriteTo(pb::CodedOutputStream output) {
+    #if !GOOGLE_PROTOBUF_REFSTRUCT_COMPATIBILITY_MODE
+      output.WriteRawMessage(this);
+    #else
+      if (timestamp_ != null) {
+        output.WriteRawTag(10);
+        output.WriteMessage(Timestamp);
+      }
+      if (ConnStat.Length != 0) {
+        output.WriteRawTag(18);
+        output.WriteString(ConnStat);
+      }
+      if (StatCreatedAt != 0L) {
+        output.WriteRawTag(24);
+        output.WriteInt64(StatCreatedAt);
+      }
+      if (_unknownFields != null) {
+        _unknownFields.WriteTo(output);
+      }
+    #endif
+    }
+
+    #if !GOOGLE_PROTOBUF_REFSTRUCT_COMPATIBILITY_MODE
+    [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
+    [global::System.CodeDom.Compiler.GeneratedCode("protoc", null)]
+    void pb::IBufferMessage.InternalWriteTo(ref pb::WriteContext output) {
+      if (timestamp_ != null) {
+        output.WriteRawTag(10);
+        output.WriteMessage(Timestamp);
+      }
+      if (ConnStat.Length != 0) {
+        output.WriteRawTag(18);
+        output.WriteString(ConnStat);
+      }
+      if (StatCreatedAt != 0L) {
+        output.WriteRawTag(24);
+        output.WriteInt64(StatCreatedAt);
+      }
+      if (_unknownFields != null) {
+        _unknownFields.WriteTo(ref output);
+      }
+    }
+    #endif
+
+    [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
+    [global::System.CodeDom.Compiler.GeneratedCode("protoc", null)]
+    public int CalculateSize() {
+      int size = 0;
+      if (timestamp_ != null) {
+        size += 1 + pb::CodedOutputStream.ComputeMessageSize(Timestamp);
+      }
+      if (ConnStat.Length != 0) {
+        size += 1 + pb::CodedOutputStream.ComputeStringSize(ConnStat);
+      }
+      if (StatCreatedAt != 0L) {
+        size += 1 + pb::CodedOutputStream.ComputeInt64Size(StatCreatedAt);
+      }
+      if (_unknownFields != null) {
+        size += _unknownFields.CalculateSize();
+      }
+      return size;
+    }
+
+    [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
+    [global::System.CodeDom.Compiler.GeneratedCode("protoc", null)]
+    public void MergeFrom(GatewayUptime other) {
+      if (other == null) {
+        return;
+      }
+      if (other.timestamp_ != null) {
+        if (timestamp_ == null) {
+          Timestamp = new global::Google.Protobuf.WellKnownTypes.Timestamp();
+        }
+        Timestamp.MergeFrom(other.Timestamp);
+      }
+      if (other.ConnStat.Length != 0) {
+        ConnStat = other.ConnStat;
+      }
+      if (other.StatCreatedAt != 0L) {
+        StatCreatedAt = other.StatCreatedAt;
+      }
+      _unknownFields = pb::UnknownFieldSet.MergeFrom(_unknownFields, other._unknownFields);
+    }
+
+    [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
+    [global::System.CodeDom.Compiler.GeneratedCode("protoc", null)]
+    public void MergeFrom(pb::CodedInputStream input) {
+    #if !GOOGLE_PROTOBUF_REFSTRUCT_COMPATIBILITY_MODE
+      input.ReadRawMessage(this);
+    #else
+      uint tag;
+      while ((tag = input.ReadTag()) != 0) {
+        switch(tag) {
+          default:
+            _unknownFields = pb::UnknownFieldSet.MergeFieldFrom(_unknownFields, input);
+            break;
+          case 10: {
+            if (timestamp_ == null) {
+              Timestamp = new global::Google.Protobuf.WellKnownTypes.Timestamp();
+            }
+            input.ReadMessage(Timestamp);
+            break;
+          }
+          case 18: {
+            ConnStat = input.ReadString();
+            break;
+          }
+          case 24: {
+            StatCreatedAt = input.ReadInt64();
+            break;
+          }
+        }
+      }
+    #endif
+    }
+
+    #if !GOOGLE_PROTOBUF_REFSTRUCT_COMPATIBILITY_MODE
+    [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
+    [global::System.CodeDom.Compiler.GeneratedCode("protoc", null)]
+    void pb::IBufferMessage.InternalMergeFrom(ref pb::ParseContext input) {
+      uint tag;
+      while ((tag = input.ReadTag()) != 0) {
+        switch(tag) {
+          default:
+            _unknownFields = pb::UnknownFieldSet.MergeFieldFrom(_unknownFields, ref input);
+            break;
+          case 10: {
+            if (timestamp_ == null) {
+              Timestamp = new global::Google.Protobuf.WellKnownTypes.Timestamp();
+            }
+            input.ReadMessage(Timestamp);
+            break;
+          }
+          case 18: {
+            ConnStat = input.ReadString();
+            break;
+          }
+          case 24: {
+            StatCreatedAt = input.ReadInt64();
+            break;
+          }
+        }
+      }
+    }
+    #endif
+
+  }
+
+  public sealed partial class GetGatewayUptimeRequest : pb::IMessage<GetGatewayUptimeRequest>
+  #if !GOOGLE_PROTOBUF_REFSTRUCT_COMPATIBILITY_MODE
+      , pb::IBufferMessage
+  #endif
+  {
+    private static readonly pb::MessageParser<GetGatewayUptimeRequest> _parser = new pb::MessageParser<GetGatewayUptimeRequest>(() => new GetGatewayUptimeRequest());
+    private pb::UnknownFieldSet _unknownFields;
+    [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
+    [global::System.CodeDom.Compiler.GeneratedCode("protoc", null)]
+    public static pb::MessageParser<GetGatewayUptimeRequest> Parser { get { return _parser; } }
+
+    [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
+    [global::System.CodeDom.Compiler.GeneratedCode("protoc", null)]
+    public static pbr::MessageDescriptor Descriptor {
+      get { return global::chirpstack.as.external.api.GatewayReflection.Descriptor.MessageTypes[25]; }
+    }
+
+    [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
+    [global::System.CodeDom.Compiler.GeneratedCode("protoc", null)]
+    pbr::MessageDescriptor pb::IMessage.Descriptor {
+      get { return Descriptor; }
+    }
+
+    [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
+    [global::System.CodeDom.Compiler.GeneratedCode("protoc", null)]
+    public GetGatewayUptimeRequest() {
+      OnConstruction();
+    }
+
+    partial void OnConstruction();
+
+    [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
+    [global::System.CodeDom.Compiler.GeneratedCode("protoc", null)]
+    public GetGatewayUptimeRequest(GetGatewayUptimeRequest other) : this() {
+      gatewayId_ = other.gatewayId_;
+      interval_ = other.interval_;
+      startTimestamp_ = other.startTimestamp_ != null ? other.startTimestamp_.Clone() : null;
+      endTimestamp_ = other.endTimestamp_ != null ? other.endTimestamp_.Clone() : null;
+      _unknownFields = pb::UnknownFieldSet.Clone(other._unknownFields);
+    }
+
+    [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
+    [global::System.CodeDom.Compiler.GeneratedCode("protoc", null)]
+    public GetGatewayUptimeRequest Clone() {
+      return new GetGatewayUptimeRequest(this);
+    }
+
+    /// <summary>Field number for the "gateway_id" field.</summary>
+    public const int GatewayIdFieldNumber = 1;
+    private string gatewayId_ = "";
+    /// <summary>
+    /// Gateway ID (HEX encoded).
+    /// </summary>
+    [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
+    [global::System.CodeDom.Compiler.GeneratedCode("protoc", null)]
+    public string GatewayId {
+      get { return gatewayId_; }
+      set {
+        gatewayId_ = pb::ProtoPreconditions.CheckNotNull(value, "value");
+      }
+    }
+
+    /// <summary>Field number for the "interval" field.</summary>
+    public const int IntervalFieldNumber = 2;
+    private string interval_ = "";
+    /// <summary>
+    /// Aggregation interval.  One of "second", "minute", "hour", "day", "week",
+    /// "month", "quarter", "year".  Case insensitive.
+    /// </summary>
+    [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
+    [global::System.CodeDom.Compiler.GeneratedCode("protoc", null)]
+    public string Interval {
+      get { return interval_; }
+      set {
+        interval_ = pb::ProtoPreconditions.CheckNotNull(value, "value");
+      }
+    }
+
+    /// <summary>Field number for the "start_timestamp" field.</summary>
+    public const int StartTimestampFieldNumber = 3;
+    private global::Google.Protobuf.WellKnownTypes.Timestamp startTimestamp_;
+    /// <summary>
+    /// Timestamp to start from.
+    /// </summary>
+    [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
+    [global::System.CodeDom.Compiler.GeneratedCode("protoc", null)]
+    public global::Google.Protobuf.WellKnownTypes.Timestamp StartTimestamp {
+      get { return startTimestamp_; }
+      set {
+        startTimestamp_ = value;
+      }
+    }
+
+    /// <summary>Field number for the "end_timestamp" field.</summary>
+    public const int EndTimestampFieldNumber = 4;
+    private global::Google.Protobuf.WellKnownTypes.Timestamp endTimestamp_;
+    /// <summary>
+    /// Timestamp until to get from.
+    /// </summary>
+    [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
+    [global::System.CodeDom.Compiler.GeneratedCode("protoc", null)]
+    public global::Google.Protobuf.WellKnownTypes.Timestamp EndTimestamp {
+      get { return endTimestamp_; }
+      set {
+        endTimestamp_ = value;
+      }
+    }
+
+    [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
+    [global::System.CodeDom.Compiler.GeneratedCode("protoc", null)]
+    public override bool Equals(object other) {
+      return Equals(other as GetGatewayUptimeRequest);
+    }
+
+    [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
+    [global::System.CodeDom.Compiler.GeneratedCode("protoc", null)]
+    public bool Equals(GetGatewayUptimeRequest other) {
+      if (ReferenceEquals(other, null)) {
+        return false;
+      }
+      if (ReferenceEquals(other, this)) {
+        return true;
+      }
+      if (GatewayId != other.GatewayId) return false;
+      if (Interval != other.Interval) return false;
+      if (!object.Equals(StartTimestamp, other.StartTimestamp)) return false;
+      if (!object.Equals(EndTimestamp, other.EndTimestamp)) return false;
+      return Equals(_unknownFields, other._unknownFields);
+    }
+
+    [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
+    [global::System.CodeDom.Compiler.GeneratedCode("protoc", null)]
+    public override int GetHashCode() {
+      int hash = 1;
+      if (GatewayId.Length != 0) hash ^= GatewayId.GetHashCode();
+      if (Interval.Length != 0) hash ^= Interval.GetHashCode();
+      if (startTimestamp_ != null) hash ^= StartTimestamp.GetHashCode();
+      if (endTimestamp_ != null) hash ^= EndTimestamp.GetHashCode();
+      if (_unknownFields != null) {
+        hash ^= _unknownFields.GetHashCode();
+      }
+      return hash;
+    }
+
+    [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
+    [global::System.CodeDom.Compiler.GeneratedCode("protoc", null)]
+    public override string ToString() {
+      return pb::JsonFormatter.ToDiagnosticString(this);
+    }
+
+    [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
+    [global::System.CodeDom.Compiler.GeneratedCode("protoc", null)]
+    public void WriteTo(pb::CodedOutputStream output) {
+    #if !GOOGLE_PROTOBUF_REFSTRUCT_COMPATIBILITY_MODE
+      output.WriteRawMessage(this);
+    #else
+      if (GatewayId.Length != 0) {
+        output.WriteRawTag(10);
+        output.WriteString(GatewayId);
+      }
+      if (Interval.Length != 0) {
+        output.WriteRawTag(18);
+        output.WriteString(Interval);
+      }
+      if (startTimestamp_ != null) {
+        output.WriteRawTag(26);
+        output.WriteMessage(StartTimestamp);
+      }
+      if (endTimestamp_ != null) {
+        output.WriteRawTag(34);
+        output.WriteMessage(EndTimestamp);
+      }
+      if (_unknownFields != null) {
+        _unknownFields.WriteTo(output);
+      }
+    #endif
+    }
+
+    #if !GOOGLE_PROTOBUF_REFSTRUCT_COMPATIBILITY_MODE
+    [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
+    [global::System.CodeDom.Compiler.GeneratedCode("protoc", null)]
+    void pb::IBufferMessage.InternalWriteTo(ref pb::WriteContext output) {
+      if (GatewayId.Length != 0) {
+        output.WriteRawTag(10);
+        output.WriteString(GatewayId);
+      }
+      if (Interval.Length != 0) {
+        output.WriteRawTag(18);
+        output.WriteString(Interval);
+      }
+      if (startTimestamp_ != null) {
+        output.WriteRawTag(26);
+        output.WriteMessage(StartTimestamp);
+      }
+      if (endTimestamp_ != null) {
+        output.WriteRawTag(34);
+        output.WriteMessage(EndTimestamp);
+      }
+      if (_unknownFields != null) {
+        _unknownFields.WriteTo(ref output);
+      }
+    }
+    #endif
+
+    [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
+    [global::System.CodeDom.Compiler.GeneratedCode("protoc", null)]
+    public int CalculateSize() {
+      int size = 0;
+      if (GatewayId.Length != 0) {
+        size += 1 + pb::CodedOutputStream.ComputeStringSize(GatewayId);
+      }
+      if (Interval.Length != 0) {
+        size += 1 + pb::CodedOutputStream.ComputeStringSize(Interval);
+      }
+      if (startTimestamp_ != null) {
+        size += 1 + pb::CodedOutputStream.ComputeMessageSize(StartTimestamp);
+      }
+      if (endTimestamp_ != null) {
+        size += 1 + pb::CodedOutputStream.ComputeMessageSize(EndTimestamp);
+      }
+      if (_unknownFields != null) {
+        size += _unknownFields.CalculateSize();
+      }
+      return size;
+    }
+
+    [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
+    [global::System.CodeDom.Compiler.GeneratedCode("protoc", null)]
+    public void MergeFrom(GetGatewayUptimeRequest other) {
+      if (other == null) {
+        return;
+      }
+      if (other.GatewayId.Length != 0) {
+        GatewayId = other.GatewayId;
+      }
+      if (other.Interval.Length != 0) {
+        Interval = other.Interval;
+      }
+      if (other.startTimestamp_ != null) {
+        if (startTimestamp_ == null) {
+          StartTimestamp = new global::Google.Protobuf.WellKnownTypes.Timestamp();
+        }
+        StartTimestamp.MergeFrom(other.StartTimestamp);
+      }
+      if (other.endTimestamp_ != null) {
+        if (endTimestamp_ == null) {
+          EndTimestamp = new global::Google.Protobuf.WellKnownTypes.Timestamp();
+        }
+        EndTimestamp.MergeFrom(other.EndTimestamp);
+      }
+      _unknownFields = pb::UnknownFieldSet.MergeFrom(_unknownFields, other._unknownFields);
+    }
+
+    [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
+    [global::System.CodeDom.Compiler.GeneratedCode("protoc", null)]
+    public void MergeFrom(pb::CodedInputStream input) {
+    #if !GOOGLE_PROTOBUF_REFSTRUCT_COMPATIBILITY_MODE
+      input.ReadRawMessage(this);
+    #else
+      uint tag;
+      while ((tag = input.ReadTag()) != 0) {
+        switch(tag) {
+          default:
+            _unknownFields = pb::UnknownFieldSet.MergeFieldFrom(_unknownFields, input);
+            break;
+          case 10: {
+            GatewayId = input.ReadString();
+            break;
+          }
+          case 18: {
+            Interval = input.ReadString();
+            break;
+          }
+          case 26: {
+            if (startTimestamp_ == null) {
+              StartTimestamp = new global::Google.Protobuf.WellKnownTypes.Timestamp();
+            }
+            input.ReadMessage(StartTimestamp);
+            break;
+          }
+          case 34: {
+            if (endTimestamp_ == null) {
+              EndTimestamp = new global::Google.Protobuf.WellKnownTypes.Timestamp();
+            }
+            input.ReadMessage(EndTimestamp);
+            break;
+          }
+        }
+      }
+    #endif
+    }
+
+    #if !GOOGLE_PROTOBUF_REFSTRUCT_COMPATIBILITY_MODE
+    [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
+    [global::System.CodeDom.Compiler.GeneratedCode("protoc", null)]
+    void pb::IBufferMessage.InternalMergeFrom(ref pb::ParseContext input) {
+      uint tag;
+      while ((tag = input.ReadTag()) != 0) {
+        switch(tag) {
+          default:
+            _unknownFields = pb::UnknownFieldSet.MergeFieldFrom(_unknownFields, ref input);
+            break;
+          case 10: {
+            GatewayId = input.ReadString();
+            break;
+          }
+          case 18: {
+            Interval = input.ReadString();
+            break;
+          }
+          case 26: {
+            if (startTimestamp_ == null) {
+              StartTimestamp = new global::Google.Protobuf.WellKnownTypes.Timestamp();
+            }
+            input.ReadMessage(StartTimestamp);
+            break;
+          }
+          case 34: {
+            if (endTimestamp_ == null) {
+              EndTimestamp = new global::Google.Protobuf.WellKnownTypes.Timestamp();
+            }
+            input.ReadMessage(EndTimestamp);
+            break;
+          }
+        }
+      }
+    }
+    #endif
+
+  }
+
+  public sealed partial class GetGatewayUptimeResponse : pb::IMessage<GetGatewayUptimeResponse>
+  #if !GOOGLE_PROTOBUF_REFSTRUCT_COMPATIBILITY_MODE
+      , pb::IBufferMessage
+  #endif
+  {
+    private static readonly pb::MessageParser<GetGatewayUptimeResponse> _parser = new pb::MessageParser<GetGatewayUptimeResponse>(() => new GetGatewayUptimeResponse());
+    private pb::UnknownFieldSet _unknownFields;
+    [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
+    [global::System.CodeDom.Compiler.GeneratedCode("protoc", null)]
+    public static pb::MessageParser<GetGatewayUptimeResponse> Parser { get { return _parser; } }
+
+    [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
+    [global::System.CodeDom.Compiler.GeneratedCode("protoc", null)]
+    public static pbr::MessageDescriptor Descriptor {
+      get { return global::chirpstack.as.external.api.GatewayReflection.Descriptor.MessageTypes[26]; }
+    }
+
+    [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
+    [global::System.CodeDom.Compiler.GeneratedCode("protoc", null)]
+    pbr::MessageDescriptor pb::IMessage.Descriptor {
+      get { return Descriptor; }
+    }
+
+    [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
+    [global::System.CodeDom.Compiler.GeneratedCode("protoc", null)]
+    public GetGatewayUptimeResponse() {
+      OnConstruction();
+    }
+
+    partial void OnConstruction();
+
+    [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
+    [global::System.CodeDom.Compiler.GeneratedCode("protoc", null)]
+    public GetGatewayUptimeResponse(GetGatewayUptimeResponse other) : this() {
+      result_ = other.result_.Clone();
+      _unknownFields = pb::UnknownFieldSet.Clone(other._unknownFields);
+    }
+
+    [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
+    [global::System.CodeDom.Compiler.GeneratedCode("protoc", null)]
+    public GetGatewayUptimeResponse Clone() {
+      return new GetGatewayUptimeResponse(this);
+    }
+
+    /// <summary>Field number for the "result" field.</summary>
+    public const int ResultFieldNumber = 1;
+    private static readonly pb::FieldCodec<global::chirpstack.as.external.api.GatewayUptime> _repeated_result_codec
+        = pb::FieldCodec.ForMessage(10, global::chirpstack.as.external.api.GatewayUptime.Parser);
+    private readonly pbc::RepeatedField<global::chirpstack.as.external.api.GatewayUptime> result_ = new pbc::RepeatedField<global::chirpstack.as.external.api.GatewayUptime>();
+    [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
+    [global::System.CodeDom.Compiler.GeneratedCode("protoc", null)]
+    public pbc::RepeatedField<global::chirpstack.as.external.api.GatewayUptime> Result {
+      get { return result_; }
+    }
+
+    [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
+    [global::System.CodeDom.Compiler.GeneratedCode("protoc", null)]
+    public override bool Equals(object other) {
+      return Equals(other as GetGatewayUptimeResponse);
+    }
+
+    [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
+    [global::System.CodeDom.Compiler.GeneratedCode("protoc", null)]
+    public bool Equals(GetGatewayUptimeResponse other) {
+      if (ReferenceEquals(other, null)) {
+        return false;
+      }
+      if (ReferenceEquals(other, this)) {
+        return true;
+      }
+      if(!result_.Equals(other.result_)) return false;
+      return Equals(_unknownFields, other._unknownFields);
+    }
+
+    [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
+    [global::System.CodeDom.Compiler.GeneratedCode("protoc", null)]
+    public override int GetHashCode() {
+      int hash = 1;
+      hash ^= result_.GetHashCode();
+      if (_unknownFields != null) {
+        hash ^= _unknownFields.GetHashCode();
+      }
+      return hash;
+    }
+
+    [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
+    [global::System.CodeDom.Compiler.GeneratedCode("protoc", null)]
+    public override string ToString() {
+      return pb::JsonFormatter.ToDiagnosticString(this);
+    }
+
+    [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
+    [global::System.CodeDom.Compiler.GeneratedCode("protoc", null)]
+    public void WriteTo(pb::CodedOutputStream output) {
+    #if !GOOGLE_PROTOBUF_REFSTRUCT_COMPATIBILITY_MODE
+      output.WriteRawMessage(this);
+    #else
+      result_.WriteTo(output, _repeated_result_codec);
+      if (_unknownFields != null) {
+        _unknownFields.WriteTo(output);
+      }
+    #endif
+    }
+
+    #if !GOOGLE_PROTOBUF_REFSTRUCT_COMPATIBILITY_MODE
+    [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
+    [global::System.CodeDom.Compiler.GeneratedCode("protoc", null)]
+    void pb::IBufferMessage.InternalWriteTo(ref pb::WriteContext output) {
+      result_.WriteTo(ref output, _repeated_result_codec);
+      if (_unknownFields != null) {
+        _unknownFields.WriteTo(ref output);
+      }
+    }
+    #endif
+
+    [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
+    [global::System.CodeDom.Compiler.GeneratedCode("protoc", null)]
+    public int CalculateSize() {
+      int size = 0;
+      size += result_.CalculateSize(_repeated_result_codec);
+      if (_unknownFields != null) {
+        size += _unknownFields.CalculateSize();
+      }
+      return size;
+    }
+
+    [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
+    [global::System.CodeDom.Compiler.GeneratedCode("protoc", null)]
+    public void MergeFrom(GetGatewayUptimeResponse other) {
+      if (other == null) {
+        return;
+      }
+      result_.Add(other.result_);
+      _unknownFields = pb::UnknownFieldSet.MergeFrom(_unknownFields, other._unknownFields);
+    }
+
+    [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
+    [global::System.CodeDom.Compiler.GeneratedCode("protoc", null)]
+    public void MergeFrom(pb::CodedInputStream input) {
+    #if !GOOGLE_PROTOBUF_REFSTRUCT_COMPATIBILITY_MODE
+      input.ReadRawMessage(this);
+    #else
+      uint tag;
+      while ((tag = input.ReadTag()) != 0) {
+        switch(tag) {
+          default:
+            _unknownFields = pb::UnknownFieldSet.MergeFieldFrom(_unknownFields, input);
+            break;
+          case 10: {
+            result_.AddEntriesFrom(input, _repeated_result_codec);
+            break;
+          }
+        }
+      }
+    #endif
+    }
+
+    #if !GOOGLE_PROTOBUF_REFSTRUCT_COMPATIBILITY_MODE
+    [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
+    [global::System.CodeDom.Compiler.GeneratedCode("protoc", null)]
+    void pb::IBufferMessage.InternalMergeFrom(ref pb::ParseContext input) {
+      uint tag;
+      while ((tag = input.ReadTag()) != 0) {
+        switch(tag) {
+          default:
+            _unknownFields = pb::UnknownFieldSet.MergeFieldFrom(_unknownFields, ref input);
+            break;
+          case 10: {
+            result_.AddEntriesFrom(ref input, _repeated_result_codec);
             break;
           }
         }

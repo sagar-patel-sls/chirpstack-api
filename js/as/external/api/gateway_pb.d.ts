@@ -843,6 +843,94 @@ export namespace StreamGatewayEventLogsResponse {
   }
 }
 
+export class GatewayUptime extends jspb.Message {
+  hasTimestamp(): boolean;
+  clearTimestamp(): void;
+  getTimestamp(): google_protobuf_timestamp_pb.Timestamp | undefined;
+  setTimestamp(value?: google_protobuf_timestamp_pb.Timestamp): void;
+
+  getConnStat(): string;
+  setConnStat(value: string): void;
+
+  getStatCreatedAt(): number;
+  setStatCreatedAt(value: number): void;
+
+  serializeBinary(): Uint8Array;
+  toObject(includeInstance?: boolean): GatewayUptime.AsObject;
+  static toObject(includeInstance: boolean, msg: GatewayUptime): GatewayUptime.AsObject;
+  static extensions: {[key: number]: jspb.ExtensionFieldInfo<jspb.Message>};
+  static extensionsBinary: {[key: number]: jspb.ExtensionFieldBinaryInfo<jspb.Message>};
+  static serializeBinaryToWriter(message: GatewayUptime, writer: jspb.BinaryWriter): void;
+  static deserializeBinary(bytes: Uint8Array): GatewayUptime;
+  static deserializeBinaryFromReader(message: GatewayUptime, reader: jspb.BinaryReader): GatewayUptime;
+}
+
+export namespace GatewayUptime {
+  export type AsObject = {
+    timestamp?: google_protobuf_timestamp_pb.Timestamp.AsObject,
+    connStat: string,
+    statCreatedAt: number,
+  }
+}
+
+export class GetGatewayUptimeRequest extends jspb.Message {
+  getGatewayId(): string;
+  setGatewayId(value: string): void;
+
+  getInterval(): string;
+  setInterval(value: string): void;
+
+  hasStartTimestamp(): boolean;
+  clearStartTimestamp(): void;
+  getStartTimestamp(): google_protobuf_timestamp_pb.Timestamp | undefined;
+  setStartTimestamp(value?: google_protobuf_timestamp_pb.Timestamp): void;
+
+  hasEndTimestamp(): boolean;
+  clearEndTimestamp(): void;
+  getEndTimestamp(): google_protobuf_timestamp_pb.Timestamp | undefined;
+  setEndTimestamp(value?: google_protobuf_timestamp_pb.Timestamp): void;
+
+  serializeBinary(): Uint8Array;
+  toObject(includeInstance?: boolean): GetGatewayUptimeRequest.AsObject;
+  static toObject(includeInstance: boolean, msg: GetGatewayUptimeRequest): GetGatewayUptimeRequest.AsObject;
+  static extensions: {[key: number]: jspb.ExtensionFieldInfo<jspb.Message>};
+  static extensionsBinary: {[key: number]: jspb.ExtensionFieldBinaryInfo<jspb.Message>};
+  static serializeBinaryToWriter(message: GetGatewayUptimeRequest, writer: jspb.BinaryWriter): void;
+  static deserializeBinary(bytes: Uint8Array): GetGatewayUptimeRequest;
+  static deserializeBinaryFromReader(message: GetGatewayUptimeRequest, reader: jspb.BinaryReader): GetGatewayUptimeRequest;
+}
+
+export namespace GetGatewayUptimeRequest {
+  export type AsObject = {
+    gatewayId: string,
+    interval: string,
+    startTimestamp?: google_protobuf_timestamp_pb.Timestamp.AsObject,
+    endTimestamp?: google_protobuf_timestamp_pb.Timestamp.AsObject,
+  }
+}
+
+export class GetGatewayUptimeResponse extends jspb.Message {
+  clearResultList(): void;
+  getResultList(): Array<GatewayUptime>;
+  setResultList(value: Array<GatewayUptime>): void;
+  addResult(value?: GatewayUptime, index?: number): GatewayUptime;
+
+  serializeBinary(): Uint8Array;
+  toObject(includeInstance?: boolean): GetGatewayUptimeResponse.AsObject;
+  static toObject(includeInstance: boolean, msg: GetGatewayUptimeResponse): GetGatewayUptimeResponse.AsObject;
+  static extensions: {[key: number]: jspb.ExtensionFieldInfo<jspb.Message>};
+  static extensionsBinary: {[key: number]: jspb.ExtensionFieldBinaryInfo<jspb.Message>};
+  static serializeBinaryToWriter(message: GetGatewayUptimeResponse, writer: jspb.BinaryWriter): void;
+  static deserializeBinary(bytes: Uint8Array): GetGatewayUptimeResponse;
+  static deserializeBinaryFromReader(message: GetGatewayUptimeResponse, reader: jspb.BinaryReader): GetGatewayUptimeResponse;
+}
+
+export namespace GetGatewayUptimeResponse {
+  export type AsObject = {
+    resultList: Array<GatewayUptime.AsObject>,
+  }
+}
+
 export interface ISMBandMap {
   IN865: 0;
   EU868: 1;

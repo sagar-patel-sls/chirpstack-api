@@ -277,6 +277,55 @@
         ]
       }
     },
+    "/api/gateways/{gateway_id}/uptime": {
+      "get": {
+        "summary": "GetUptime lists the gateway uptime stats given the query parameters.",
+        "operationId": "GetUptime",
+        "responses": {
+          "200": {
+            "description": "A successful response.",
+            "schema": {
+              "$ref": "#/definitions/apiGetGatewayUptimeResponse"
+            }
+          }
+        },
+        "parameters": [
+          {
+            "name": "gateway_id",
+            "description": "Gateway ID (HEX encoded).",
+            "in": "path",
+            "required": true,
+            "type": "string"
+          },
+          {
+            "name": "interval",
+            "description": "Aggregation interval.  One of \"second\", \"minute\", \"hour\", \"day\", \"week\",\n\"month\", \"quarter\", \"year\".  Case insensitive.",
+            "in": "query",
+            "required": false,
+            "type": "string"
+          },
+          {
+            "name": "startTimestamp",
+            "description": "Timestamp to start from.",
+            "in": "query",
+            "required": false,
+            "type": "string",
+            "format": "date-time"
+          },
+          {
+            "name": "endTimestamp",
+            "description": "Timestamp until to get from.",
+            "in": "query",
+            "required": false,
+            "type": "string",
+            "format": "date-time"
+          }
+        ],
+        "tags": [
+          "GatewayService"
+        ]
+      }
+    },
     "/api/gateways/{id}": {
       "get": {
         "summary": "Get returns the gateway for the requested mac address.",
@@ -744,6 +793,25 @@
         }
       }
     },
+    "apiGatewayUptime": {
+      "type": "object",
+      "properties": {
+        "timestamp": {
+          "type": "string",
+          "format": "date-time",
+          "description": "Timestamp of the (aggregated) measurement."
+        },
+        "connStat": {
+          "type": "string",
+          "description": "Gateway Connection Stat (ONLINE/OFFLINE)."
+        },
+        "statCreatedAt": {
+          "type": "string",
+          "format": "int64",
+          "description": "Gateway Connection Stat created time (EPOCH second)."
+        }
+      }
+    },
     "apiGenerateGatewayClientCertificateResponse": {
       "type": "object",
       "properties": {
@@ -806,6 +874,17 @@
           "type": "array",
           "items": {
             "$ref": "#/definitions/apiGatewayStats"
+          }
+        }
+      }
+    },
+    "apiGetGatewayUptimeResponse": {
+      "type": "object",
+      "properties": {
+        "result": {
+          "type": "array",
+          "items": {
+            "$ref": "#/definitions/apiGatewayUptime"
           }
         }
       }
